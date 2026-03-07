@@ -1,9 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const STORAGE_KEYS = {
+  // Cache keys
   CACHED_BATHROOMS: '@peedom/cached_bathrooms',
   CACHED_REGION: '@peedom/cached_region',
+  CACHED_FAVORITES: '@peedom/cached_favorites',
+  
+  // Offline keys
   OFFLINE_QUEUE: '@peedom/offline_queue',
+  
+  // Intent keys
+  RETURN_INTENT: '@peedom/return_intent',
+  
+  // User preference keys
   USER_PREFERENCES: '@peedom/user_preferences',
 } as const;
 
@@ -45,6 +54,15 @@ export const storage = {
     } catch (error) {
       console.error('Error clearing storage:', error);
       throw error;
+    }
+  },
+
+  async getAllKeys(): Promise<readonly string[]> {
+    try {
+      return await AsyncStorage.getAllKeys();
+    } catch (error) {
+      console.error('Error getting all keys:', error);
+      return [];
     }
   },
 };
