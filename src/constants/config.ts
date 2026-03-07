@@ -1,9 +1,7 @@
-import Constants from 'expo-constants';
-
 export const config = {
-  env: Constants.expoConfig?.extra?.EXPO_PUBLIC_ENV ?? 'local',
-  apiBaseUrl: Constants.expoConfig?.extra?.EXPO_PUBLIC_API_BASE_URL ?? '',
-  supabaseUrl: Constants.expoConfig?.extra?.EXPO_PUBLIC_SUPABASE_URL ?? '',
+  env: process.env.EXPO_PUBLIC_ENV ?? 'local',
+  apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? '',
+  supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? '',
   
   // Map defaults
   map: {
