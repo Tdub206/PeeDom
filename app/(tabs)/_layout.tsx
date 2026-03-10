@@ -72,9 +72,17 @@ export default function TabLayout() {
 // Simple icon component placeholder
 function TabBarIcon({ name, color }: { name: string; color: string }) {
   const { View, Text } = require('react-native');
+  const iconMap: Record<string, string> = {
+    map: '🗺️',
+    search: '🔎',
+    heart: '❤️',
+    user: '👤',
+    briefcase: '💼',
+  };
+
   return (
     <View style={{ width: 24, height: 24, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ color, fontSize: 20 }}>●</Text>
+      <Text style={{ color, fontSize: 16 }}>{iconMap[name] ?? '•'}</Text>
     </View>
   );
 }
