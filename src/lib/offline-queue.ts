@@ -2,6 +2,12 @@ import { storage } from './storage';
 import { QueuedMutation, MutationType, QueueProcessResult } from '@/types';
 import { queuedMutationsSchema } from '@/utils/validate';
 
+export const MAX_QUEUE_RETRY_COUNT = 3;
+
+export function shouldDropQueuedMutation(nextRetryCount: number): boolean {
+  return nextRetryCount > MAX_QUEUE_RETRY_COUNT;
+}
+
 class OfflineQueueManager {
   private queue: QueuedMutation[] = [];
   private isProcessing = false;
@@ -79,7 +85,6 @@ class OfflineQueueManager {
     this.isProcessing = true;
     let processedCount = 0;
     let droppedCount = 0;
-    const MAX_RETRIES = 3;
 
     try {
       const mutations = [...this.queue];
@@ -99,8 +104,8 @@ class OfflineQueueManager {
               this.queue[mutationIndex].retry_count++;
               this.queue[mutationIndex].last_attempt_at = new Date().toISOString();
 
-              // Remove if max retries exceeded
-              if (this.queue[mutationIndex].retry_count >= MAX_RETRIES) {
+              // Allow three replay attempts and drop on the fourth failed replay.
+              if (shouldDropQueuedMutation(this.queue[mutationIndex].retry_count)) {
                 console.warn(`Mutation ${mutation.id} exceeded max retries, removing from queue`);
                 this.queue = this.queue.filter(m => m.id !== mutation.id);
                 droppedCount++;
@@ -116,7 +121,7 @@ class OfflineQueueManager {
             this.queue[mutationIndex].retry_count++;
             this.queue[mutationIndex].last_attempt_at = new Date().toISOString();
 
-            if (this.queue[mutationIndex].retry_count >= MAX_RETRIES) {
+            if (shouldDropQueuedMutation(this.queue[mutationIndex].retry_count)) {
               this.queue = this.queue.filter(m => m.id !== mutation.id);
               droppedCount++;
             }

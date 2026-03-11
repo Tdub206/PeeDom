@@ -116,6 +116,13 @@ export default function SearchTab() {
                 Enter at least two characters, or enable a filter to narrow the bathroom list immediately.
               </Text>
             </View>
+          ) : searchResults.isFetching && bathrooms.length > 0 ? (
+            <View className="mt-4 rounded-[30px] border border-brand-200 bg-brand-50 px-5 py-5">
+              <Text className="text-base font-bold text-brand-700">Refreshing results</Text>
+              <Text className="mt-2 text-sm leading-6 text-brand-700">
+                Showing your current matches while the latest bathroom search finishes.
+              </Text>
+            </View>
           ) : searchResults.error ? (
             <View className="mt-4 rounded-[30px] border border-danger/20 bg-danger/10 px-5 py-6">
               <Text className="text-lg font-bold text-danger">Search unavailable</Text>

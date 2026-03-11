@@ -134,6 +134,15 @@ export default function MapTab() {
           </View>
         ) : null}
 
+        {bathroomsQuery.isFetching && bathrooms.length > 0 ? (
+          <View className="mt-4 rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
+            <Text className="text-sm font-semibold text-brand-700">Refreshing bathrooms</Text>
+            <Text className="mt-1 text-sm leading-5 text-brand-700">
+              Updating the current map region without interrupting your existing pins.
+            </Text>
+          </View>
+        ) : null}
+
         <View className="mt-4 flex-1">
           <BathroomMapView
             bathrooms={bathrooms}

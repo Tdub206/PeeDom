@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { fetchBathroomsNearRegion } from '@/api/bathrooms';
 import { config } from '@/constants/config';
@@ -23,7 +23,22 @@ function markItemsAsStale(items: BathroomListItem[]): BathroomListItem[] {
 }
 
 export function useBathrooms({ region, filters, enabled = true }: UseBathroomsOptions) {
-  const cacheKey = useMemo(() => `bathrooms:${buildBathroomsCacheKey(region, filters)}`, [filters, region]);
+  const [debouncedRegion, setDebouncedRegion] = useState(region);
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      setDebouncedRegion(region);
+    }, 300);
+
+    return () => {
+      clearTimeout(debounceTimer);
+    };
+  }, [region]);
+
+  const cacheKey = useMemo(
+    () => `bathrooms:${buildBathroomsCacheKey(debouncedRegion, filters)}`,
+    [debouncedRegion, filters]
+  );
 
   return useQuery<BathroomQueryResult, Error>({
     queryKey: ['bathrooms', cacheKey],
@@ -33,7 +48,7 @@ export function useBathrooms({ region, filters, enabled = true }: UseBathroomsOp
 
       try {
         const result = await fetchBathroomsNearRegion({
-          region,
+          region: debouncedRegion,
           filters,
         });
 
@@ -47,8 +62,8 @@ export function useBathrooms({ region, filters, enabled = true }: UseBathroomsOp
             cachedAt,
             stale: false,
             origin: {
-              latitude: region.latitude,
-              longitude: region.longitude,
+              latitude: debouncedRegion.latitude,
+              longitude: debouncedRegion.longitude,
             },
           })
         );

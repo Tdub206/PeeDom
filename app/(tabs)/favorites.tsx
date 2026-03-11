@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { Alert, FlatList, Pressable, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Swipeable } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BathroomCard } from '@/components/BathroomCard';
 import { Button } from '@/components/Button';
@@ -8,6 +9,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useFavorites } from '@/hooks/useFavorites';
+import { pushSafely } from '@/lib/navigation';
 import { FavoriteItem } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
@@ -29,6 +31,46 @@ export default function FavoritesTab() {
     [favorites]
   );
 
+  const confirmRemoval = useCallback(
+    (favoriteItem: FavoriteItem) => {
+      Alert.alert(
+        'Remove favorite?',
+        `Stop saving ${favoriteItem.place_name} in your favorites list?`,
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+          },
+          {
+            text: 'Remove',
+            style: 'destructive',
+            onPress: () => {
+              void handleToggleFavorite(favoriteItem);
+            },
+          },
+        ]
+      );
+    },
+    [handleToggleFavorite]
+  );
+
+  const renderRightActions = useCallback(
+    (favoriteItem: FavoriteItem) => {
+      return (
+        <View className="ml-3 w-[112px] justify-center">
+          <Pressable
+            accessibilityRole="button"
+            className="flex-1 items-center justify-center rounded-[28px] bg-danger px-4"
+            onPress={() => confirmRemoval(favoriteItem)}
+          >
+            <Text className="text-sm font-semibold text-white">Remove</Text>
+          </Pressable>
+        </View>
+      );
+    },
+    [confirmRemoval]
+  );
+
   if (isGuest) {
     return (
       <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
@@ -46,7 +88,11 @@ export default function FavoritesTab() {
             <Text className="mt-2 text-sm leading-6 text-ink-600">
               Guest mode lets you browse bathrooms, but favorites are only saved for signed-in accounts.
             </Text>
-            <Button className="mt-5" label="Sign In To Save Favorites" onPress={() => router.push(routes.auth.login)} />
+            <Button
+              className="mt-5"
+              label="Sign In To Save Favorites"
+              onPress={() => pushSafely(router, routes.auth.login, routes.auth.login)}
+            />
           </View>
         </View>
       </SafeAreaView>
@@ -102,15 +148,17 @@ export default function FavoritesTab() {
             })}
             keyExtractor={(item) => item.bathroom_id}
             renderItem={({ item }) => (
-              <BathroomCard
-                isFavorited={favorites.isFavorite(item.bathroom_id)}
-                isFavoritePending={favorites.isFavoritePending(item.bathroom_id)}
-                item={item}
-                onPress={() => router.push(routes.bathroomDetail(item.bathroom_id))}
-                onToggleFavorite={() => {
-                  void handleToggleFavorite(item);
-                }}
-              />
+              <Swipeable overshootRight={false} renderRightActions={() => renderRightActions(item)}>
+                <BathroomCard
+                  isFavorited={favorites.isFavorite(item.bathroom_id)}
+                  isFavoritePending={favorites.isFavoritePending(item.bathroom_id)}
+                  item={item}
+                  onPress={() => router.push(routes.bathroomDetail(item.bathroom_id))}
+                  onToggleFavorite={() => {
+                    void handleToggleFavorite(item);
+                  }}
+                />
+              </Swipeable>
             )}
             showsVerticalScrollIndicator={false}
           />

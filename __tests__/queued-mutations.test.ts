@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
+import { shouldDropQueuedMutation } from '@/lib/offline-queue';
 import { queuedMutationsSchema } from '@/utils/validate';
 
 describe('queuedMutationsSchema', () => {
@@ -36,5 +37,12 @@ describe('queuedMutationsSchema', () => {
     ]);
 
     expect(result.success).toBe(false);
+  });
+
+  it('keeps a queued mutation through three failed replays and drops it on the fourth', () => {
+    expect(shouldDropQueuedMutation(1)).toBe(false);
+    expect(shouldDropQueuedMutation(2)).toBe(false);
+    expect(shouldDropQueuedMutation(3)).toBe(false);
+    expect(shouldDropQueuedMutation(4)).toBe(true);
   });
 });
