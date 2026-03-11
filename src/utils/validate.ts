@@ -38,7 +38,7 @@ export type RegisterFormValues = z.infer<typeof registerSchema>;
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
 
 export function getFieldErrors<T extends Record<string, unknown>>(error: z.ZodError<T>): FieldErrors<T> {
-  const flattened = error.flatten().fieldErrors;
+  const flattened = error.flatten().fieldErrors as Record<string, string[] | undefined>;
   const entries = Object.entries(flattened).map(([key, messages]) => [key, messages?.[0] ?? '']);
   return Object.fromEntries(entries) as FieldErrors<T>;
 }

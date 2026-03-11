@@ -25,49 +25,39 @@ export interface SignUpPayload extends SignInPayload {
   displayName: string;
 }
 
-async function withAuthResult<T>(
-  operation: () => Promise<{ data: T; error: AuthError | null }>
-): Promise<{ data: T | null; error: AuthError | null }> {
-  try {
-    const { data, error } = await operation();
-
-    if (error) {
-      return { data: null, error };
-    }
-
-    return { data, error: null };
-  } catch (error) {
-    return {
-      data: null,
-      error: error instanceof AuthError ? error : new AuthError('Unexpected authentication error.'),
-    };
-  }
-}
-
-export async function signInWithEmail(payload: SignInPayload): Promise<AuthResult> {
-  const result = await withAuthResult(() =>
-    supabase.auth.signInWithPassword({
-      email: payload.email,
-      password: payload.password,
-    })
-  );
-
-  if (result.error || !result.data) {
-    return { error: result.error ?? new AuthError('Unable to sign in.'), data: null };
-  }
-
+function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
   return {
-    error: null,
-    data: {
-      session: result.data.session,
-      user: result.data.user,
-    },
+    error: error instanceof AuthError ? error : new AuthError(fallbackMessage),
+    data: null,
   };
 }
 
+export async function signInWithEmail(payload: SignInPayload): Promise<AuthResult> {
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: payload.email,
+      password: payload.password,
+    });
+
+    if (error) {
+      return { error, data: null };
+    }
+
+    return {
+      error: null,
+      data: {
+        session: data.session,
+        user: data.user,
+      },
+    };
+  } catch (error) {
+    return toFailure(error, 'Unable to sign in.');
+  }
+}
+
 export async function signUpWithEmail(payload: SignUpPayload): Promise<AuthResult> {
-  const result = await withAuthResult(() =>
-    supabase.auth.signUp({
+  try {
+    const { data, error } = await supabase.auth.signUp({
       email: payload.email,
       password: payload.password,
       options: {
@@ -75,20 +65,22 @@ export async function signUpWithEmail(payload: SignUpPayload): Promise<AuthResul
           display_name: payload.displayName,
         },
       },
-    })
-  );
+    });
 
-  if (result.error || !result.data) {
-    return { error: result.error ?? new AuthError('Unable to create account.'), data: null };
+    if (error) {
+      return { error, data: null };
+    }
+
+    return {
+      error: null,
+      data: {
+        session: data.session,
+        user: data.user,
+      },
+    };
+  } catch (error) {
+    return toFailure(error, 'Unable to create account.');
   }
-
-  return {
-    error: null,
-    data: {
-      session: result.data.session,
-      user: result.data.user,
-    },
-  };
 }
 
 export async function signOutUser(): Promise<{ error: AuthError | null }> {
