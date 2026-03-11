@@ -1,5 +1,10 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
 
+const iosBuildNumber = process.env.IOS_BUILD_NUMBER?.trim() || '1';
+const androidVersionCodeFromEnv = Number.parseInt(process.env.ANDROID_VERSION_CODE ?? '1', 10);
+const androidVersionCode =
+  Number.isFinite(androidVersionCodeFromEnv) && androidVersionCodeFromEnv > 0 ? androidVersionCodeFromEnv : 1;
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Pee-Dom',
@@ -18,10 +23,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: 'com.peedom.mobile',
-    infoPlist: {
-      NSLocationWhenInUseUsageDescription:
-        'Pee-Dom uses your location to show nearby bathrooms when you tap "Use My Location".',
-    },
+    buildNumber: iosBuildNumber,
     config: {
       googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
     },
@@ -32,10 +34,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#ffffff',
     },
     package: 'com.peedom.mobile',
-    permissions: [
-      'ACCESS_FINE_LOCATION',
-      'ACCESS_COARSE_LOCATION',
-    ],
+    versionCode: androidVersionCode,
     config: {
       googleMaps: {
         apiKey: process.env.ANDROID_GOOGLE_MAPS_API_KEY || '',
@@ -45,13 +44,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     'expo-router',
     'expo-secure-store',
-    [
-      'expo-location',
-      {
-        locationWhenInUsePermission:
-          'Pee-Dom uses your location to show nearby bathrooms when you tap "Use My Location".',
-      },
-    ],
   ],
   experiments: {
     typedRoutes: true,

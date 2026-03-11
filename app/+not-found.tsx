@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/Button';
 import { routes } from '@/constants/routes';
+import { replaceSafely } from '@/lib/navigation';
 
 export default function NotFoundScreen() {
   const router = useRouter();
@@ -18,7 +19,7 @@ export default function NotFoundScreen() {
           <Button
             className="mt-6"
             label="Back To Map"
-            onPress={() => router.replace(routes.tabs.map)}
+            onPress={() => replaceSafely(router, routes.tabs.map, routes.tabs.map)}
           />
         </View>
       </View>

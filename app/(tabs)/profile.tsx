@@ -6,11 +6,12 @@ import { Button } from '@/components/Button';
 import { useAuth } from '@/contexts/AuthContext';
 import { routes } from '@/constants/routes';
 import { useToast } from '@/hooks/useToast';
+import { pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
 export default function ProfileTab() {
   const router = useRouter();
-  const { isAuthenticated, isGuest, profile, sessionState, signOut, user } = useAuth();
+  const { authIssue, isAuthenticated, isGuest, profile, sessionState, signOut, user } = useAuth();
   const { showToast } = useToast();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
@@ -51,6 +52,12 @@ export default function ProfileTab() {
           <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Session State</Text>
           <Text className="mt-3 text-2xl font-bold text-ink-900">{sessionState.status}</Text>
 
+          {authIssue ? (
+            <Text className="mt-4 rounded-2xl bg-warning/10 px-4 py-3 text-sm leading-5 text-warning">
+              {authIssue}
+            </Text>
+          ) : null}
+
           {isAuthenticated ? (
             <View className="mt-6 gap-4">
               <View className="rounded-2xl bg-surface-muted px-4 py-4">
@@ -88,10 +95,10 @@ export default function ProfileTab() {
               <Text className="text-base leading-6 text-ink-600">
                 You are browsing in guest mode. Sign in to save favorites, submit bathroom codes, and sync activity.
               </Text>
-              <Button label="Sign In" onPress={() => router.push(routes.auth.login)} />
+              <Button label="Sign In" onPress={() => pushSafely(router, routes.auth.login, routes.auth.login)} />
               <Button
                 label="Create Account"
-                onPress={() => router.push(routes.auth.register)}
+                onPress={() => pushSafely(router, routes.auth.register, routes.auth.register)}
                 variant="secondary"
               />
             </View>

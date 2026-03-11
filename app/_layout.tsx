@@ -9,12 +9,17 @@ import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { ConfigurationErrorScreen } from '@/components/ConfigurationErrorScreen';
+import { OfflineBanner } from '@/components/OfflineBanner';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
+import { LocationProvider } from '@/contexts/LocationContext';
+import { useOfflineSync } from '@/hooks/useOfflineSync';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
+import { supabaseConfigState } from '@/lib/supabase';
 
 initializeSentry();
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
@@ -24,6 +29,7 @@ function RootNavigator() {
     ...Ionicons.font,
   });
   const { loading } = useAuth();
+  useOfflineSync();
   const isAppReady = !loading && (fontsLoaded || Boolean(fontError));
 
   useEffect(() => {
@@ -47,6 +53,7 @@ function RootNavigator() {
   return (
     <>
       <StatusBar style="dark" />
+      <OfflineBanner />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(auth)" options={{ presentation: 'modal', animation: 'slide_from_bottom' }} />
@@ -65,6 +72,22 @@ function RootNavigator() {
 }
 
 export default function RootLayout() {
+  if (!supabaseConfigState.isConfigured) {
+    return (
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SafeAreaProvider>
+          <ConfigurationErrorScreen
+            title="Launch configuration is incomplete"
+            message={
+              supabaseConfigState.errorMessage ??
+              'This build is missing the runtime configuration required to talk to Supabase.'
+            }
+          />
+        </SafeAreaProvider>
+      </GestureHandlerRootView>
+    );
+  }
+
   return (
     <ErrorBoundary>
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -72,7 +95,9 @@ export default function RootLayout() {
           <QueryClientProvider client={queryClient}>
             <ToastProvider>
               <AuthProvider>
-                <RootNavigator />
+                <LocationProvider>
+                  <RootNavigator />
+                </LocationProvider>
               </AuthProvider>
             </ToastProvider>
           </QueryClientProvider>

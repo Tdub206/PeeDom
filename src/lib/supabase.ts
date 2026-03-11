@@ -1,27 +1,35 @@
 import 'react-native-url-polyfill/auto';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from '@/types';
+import { supabaseRuntimeConfig } from '@/lib/supabase-config';
 
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL ?? '';
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? '';
+let supabaseClient: SupabaseClient<Database> | null = null;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn(
-    'Supabase credentials not configured. ' +
-    'Set EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY in your .env file.'
-  );
-}
+export const supabaseConfigState = supabaseRuntimeConfig;
 
-export const supabase = createClient<Database>(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'placeholder-key',
-  {
+function createSupabaseClient(): SupabaseClient<Database> {
+  return createClient<Database>(supabaseRuntimeConfig.supabaseUrl, supabaseRuntimeConfig.supabaseAnonKey, {
     auth: {
       storage: AsyncStorage,
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: false,
     },
+  });
+}
+
+export function getSupabaseClient(): SupabaseClient<Database> {
+  if (!supabaseRuntimeConfig.isConfigured) {
+    throw new Error(
+      supabaseRuntimeConfig.errorMessage ??
+        'Supabase runtime configuration is missing. Configure the required environment variables before launch.'
+    );
   }
-);
+
+  if (!supabaseClient) {
+    supabaseClient = createSupabaseClient();
+  }
+
+  return supabaseClient;
+}

@@ -28,9 +28,29 @@ const AUTH_MESSAGE_MAP: Array<{ pattern: RegExp; message: string }> = [
   },
 ];
 
+const DATABASE_CODE_MESSAGE_MAP: Record<string, string> = {
+  '23505': "You've already done that.",
+  '23503': 'That bathroom no longer exists.',
+  PGRST116: "We couldn't find that item.",
+  '42501': "You don't have permission to do that.",
+  NETWORK_ERROR: 'No connection. Your action has been saved for later.',
+};
+
+interface ErrorLike {
+  code?: string;
+  message?: string;
+}
+
 export function getErrorMessage(error: unknown, fallback = 'Something went wrong. Please try again.'): string {
   if (error instanceof ZodError) {
     return error.issues[0]?.message ?? fallback;
+  }
+
+  if (error && typeof error === 'object' && 'code' in error) {
+    const code = String((error as ErrorLike).code ?? '');
+    if (code && DATABASE_CODE_MESSAGE_MAP[code]) {
+      return DATABASE_CODE_MESSAGE_MAP[code];
+    }
   }
 
   if (error instanceof AuthError) {

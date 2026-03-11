@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { Stack, useRouter } from 'expo-router';
 import { useAuth } from '@/contexts/AuthContext';
 import { routes } from '@/constants/routes';
-import { returnIntent } from '@/lib/return-intent';
+import { replaceSafely, toSafeRoute } from '@/lib/navigation';
 
 export default function AuthLayout() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, peekReturnIntent } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -15,15 +15,15 @@ export default function AuthLayout() {
 
     void (async () => {
       try {
-        const intent = await returnIntent.consume();
-        const destination = (intent?.route ?? routes.tabs.profile) as Parameters<typeof router.replace>[0];
-        router.replace(destination);
+        const intent = peekReturnIntent();
+        const destination = toSafeRoute(intent?.route, routes.tabs.profile);
+        replaceSafely(router, destination, routes.tabs.profile);
       } catch (error) {
         console.error('Unable to restore the protected-route destination:', error);
-        router.replace(routes.tabs.profile);
+        replaceSafely(router, routes.tabs.profile, routes.tabs.profile);
       }
     })();
-  }, [isAuthenticated, loading, router]);
+  }, [isAuthenticated, loading, peekReturnIntent, router]);
 
   return (
     <Stack

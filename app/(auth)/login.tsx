@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useToast } from '@/hooks/useToast';
+import { pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import { FieldErrors, LoginFormValues, getFieldErrors, loginSchema } from '@/utils/validate';
 
@@ -155,7 +156,7 @@ export default function LoginScreen() {
               <Pressable
                 accessibilityRole="button"
                 className="mt-5 items-center"
-                onPress={() => router.push(routes.auth.register)}
+                onPress={() => pushSafely(router, routes.auth.register, routes.auth.register)}
               >
                 <Text className="text-sm font-medium text-ink-600">
                   Need an account? <Text className="text-brand-700">Create one now</Text>

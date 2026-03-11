@@ -35,7 +35,20 @@ export const registerSchema = loginSchema
 export type LoginFormValues = z.infer<typeof loginSchema>;
 export type RegisterFormValues = z.infer<typeof registerSchema>;
 
+export const queuedMutationSchema = z.object({
+  id: z.string().min(1),
+  type: z.enum(['favorite_add', 'favorite_remove', 'code_vote', 'report_create', 'rating_create']),
+  payload: z.record(z.string(), z.unknown()),
+  created_at: z.string().datetime(),
+  retry_count: z.number().int().min(0),
+  last_attempt_at: z.string().datetime().nullable(),
+  user_id: z.string().min(1),
+});
+
+export const queuedMutationsSchema = z.array(queuedMutationSchema);
+
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
+export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 
 export function getFieldErrors<T extends Record<string, unknown>>(error: z.ZodError<T>): FieldErrors<T> {
   const flattened = error.flatten().fieldErrors as Record<string, string[] | undefined>;

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { useRouter, useSegments } from 'expo-router';
+import { usePathname, useRouter } from 'expo-router';
 import { useAuth } from '@/contexts/AuthContext';
-import { returnIntent } from '@/lib/return-intent';
+import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { routes } from '@/constants/routes';
 import { IntentType, ReplayStrategy } from '@/types';
 
@@ -35,9 +35,14 @@ interface UseProtectedRouteOptions {
  */
 export function useProtectedRoute(options: UseProtectedRouteOptions = {}) {
   const { requireAuth = false, intentType, intentParams, replayStrategy = 'immediate_after_auth' } = options;
-  const { isAuthenticated, loading, canAccessProtectedRoute } = useAuth();
+  const {
+    canAccessProtectedRoute,
+    isAuthenticated,
+    loading,
+    requireAuth: requireAuthenticatedUser,
+  } = useAuth();
   const router = useRouter();
-  const segments = useSegments();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (loading) {
@@ -45,27 +50,29 @@ export function useProtectedRoute(options: UseProtectedRouteOptions = {}) {
     }
 
     if (requireAuth && !isAuthenticated) {
-      const currentRoute = '/' + segments.join('/');
-
-      void (async () => {
-        try {
-          if (intentType && intentParams) {
-            await returnIntent.set({
+      requireAuthenticatedUser(
+        intentType && intentParams
+          ? {
               type: intentType,
-              route: currentRoute,
+              route: pathname,
               params: intentParams,
               replay_strategy: replayStrategy,
-            });
-          }
-
-          router.replace(routes.auth.login);
-        } catch (error) {
-          console.error('Unable to persist the protected-route intent:', error);
-          router.replace(routes.auth.login);
-        }
-      })();
+            }
+          : undefined
+      );
+      replaceSafely(router, routes.auth.login, routes.auth.login);
     }
-  }, [requireAuth, isAuthenticated, loading, segments, intentType, intentParams, replayStrategy, router]);
+  }, [
+    intentParams,
+    intentType,
+    isAuthenticated,
+    loading,
+    pathname,
+    replayStrategy,
+    requireAuth,
+    requireAuthenticatedUser,
+    router,
+  ]);
 
   return {
     canAccess: canAccessProtectedRoute,
@@ -92,9 +99,9 @@ export function useProtectedRoute(options: UseProtectedRouteOptions = {}) {
  * };
  */
 export function useProtectedAction() {
-  const { isAuthenticated, loading } = useAuth();
+  const { isAuthenticated, loading, requireAuth } = useAuth();
   const router = useRouter();
-  const segments = useSegments();
+  const pathname = usePathname();
 
   return (options: {
     intentType: IntentType;
@@ -104,20 +111,14 @@ export function useProtectedAction() {
     if (loading) return false;
 
     if (!isAuthenticated) {
-      const currentRoute = '/' + segments.join('/');
+      requireAuth({
+        type: options.intentType,
+        route: pathname,
+        params: options.intentParams,
+        replay_strategy: options.replayStrategy || 'immediate_after_auth',
+      });
 
-      void returnIntent
-        .set({
-          type: options.intentType,
-          route: currentRoute,
-          params: options.intentParams,
-          replay_strategy: options.replayStrategy || 'immediate_after_auth',
-        })
-        .catch((error) => {
-          console.error('Unable to persist the protected action intent:', error);
-        });
-
-      router.push(routes.auth.login);
+      pushSafely(router, routes.auth.login, routes.auth.login);
       return false;
     }
 

@@ -5,6 +5,7 @@ const STORAGE_KEYS = {
   CACHED_BATHROOMS: '@peedom/cached_bathrooms',
   CACHED_REGION: '@peedom/cached_region',
   CACHED_FAVORITES: '@peedom/cached_favorites',
+  CACHED_PROFILE: '@peedom/cached_profile',
   
   // Offline keys
   OFFLINE_QUEUE: '@peedom/offline_queue',

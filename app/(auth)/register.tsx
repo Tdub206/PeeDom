@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useToast } from '@/hooks/useToast';
+import { replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import { FieldErrors, RegisterFormValues, getFieldErrors, registerSchema } from '@/utils/validate';
 
@@ -92,7 +93,7 @@ export default function RegisterScreen() {
         message: 'We sent a confirmation email. Once you verify it, sign in to continue.',
         variant: 'success',
       });
-      router.replace(routes.auth.login);
+      replaceSafely(router, routes.auth.login, routes.auth.login);
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to create your account right now.');
       setSubmitError(message);
@@ -198,7 +199,7 @@ export default function RegisterScreen() {
               <Pressable
                 accessibilityRole="button"
                 className="mt-5 items-center"
-                onPress={() => router.replace(routes.auth.login)}
+                onPress={() => replaceSafely(router, routes.auth.login, routes.auth.login)}
               >
                 <Text className="text-sm font-medium text-ink-600">
                   Already registered? <Text className="text-brand-700">Sign in instead</Text>

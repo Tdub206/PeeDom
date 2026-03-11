@@ -1,36 +1,121 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { useCallback } from 'react';
+import { FlatList, Text, View } from 'react-native';
+import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { BathroomCard } from '@/components/BathroomCard';
+import { Button } from '@/components/Button';
+import { LoadingScreen } from '@/components/LoadingScreen';
+import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
+import { useFavorites } from '@/hooks/useFavorites';
+import { FavoriteItem } from '@/types';
+import { getErrorMessage } from '@/utils/errorMap';
+
+const FAVORITE_ITEM_HEIGHT = 250;
 
 export default function FavoritesTab() {
+  const router = useRouter();
+  const { isGuest } = useAuth();
+  const favorites = useFavorites();
+
+  const handleToggleFavorite = useCallback(
+    async (favoriteItem: FavoriteItem) => {
+      try {
+        await favorites.toggleFavorite(favoriteItem);
+      } catch (error) {
+        // The hook already handles the failure toast.
+      }
+    },
+    [favorites]
+  );
+
+  if (isGuest) {
+    return (
+      <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
+        <View className="flex-1 px-4 py-4">
+          <View className="rounded-[30px] bg-ink-900 px-5 py-5">
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-white/70">Favorites</Text>
+            <Text className="mt-2 text-3xl font-black tracking-tight text-white">Save reliable stops.</Text>
+            <Text className="mt-2 text-sm leading-6 text-white/80">
+              Sign in to build a synced favorites list that follows you across Pee-Dom sessions.
+            </Text>
+          </View>
+
+          <View className="mt-4 rounded-[30px] border border-surface-strong bg-surface-card px-5 py-6">
+            <Text className="text-lg font-bold text-ink-900">Your list is empty for now.</Text>
+            <Text className="mt-2 text-sm leading-6 text-ink-600">
+              Guest mode lets you browse bathrooms, but favorites are only saved for signed-in accounts.
+            </Text>
+            <Button className="mt-5" label="Sign In To Save Favorites" onPress={() => router.push(routes.auth.login)} />
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (favorites.isLoading && !favorites.favorites.length) {
+    return <LoadingScreen message="Loading the bathrooms you saved to your account." />;
+  }
+
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
-      <View style={styles.content}>
-        <Text style={styles.title}>Favorites Tab</Text>
-        <Text style={styles.subtitle}>Phase 1 Scaffold - Favorites will be implemented in Phase 3</Text>
+    <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
+      <View className="flex-1 px-4 pb-4 pt-3">
+        <View className="rounded-[30px] bg-brand-600 px-5 py-5">
+          <Text className="text-xs font-semibold uppercase tracking-[1px] text-white/80">Favorites</Text>
+          <Text className="mt-2 text-3xl font-black tracking-tight text-white">Your saved bathrooms.</Text>
+          <Text className="mt-2 text-sm leading-6 text-white/85">
+            Keep dependable access points close at hand, even when you need to move quickly.
+          </Text>
+        </View>
+
+        {favorites.error ? (
+          <View className="mt-4 rounded-[30px] border border-danger/20 bg-danger/10 px-5 py-6">
+            <Text className="text-lg font-bold text-danger">Favorites unavailable</Text>
+            <Text className="mt-2 text-sm leading-6 text-danger">
+              {getErrorMessage(favorites.error, 'We could not load your favorites right now.')}
+            </Text>
+            <Button
+              className="mt-5"
+              label="Try Again"
+              onPress={() => {
+                void favorites.refetch();
+              }}
+              variant="secondary"
+            />
+          </View>
+        ) : favorites.favorites.length === 0 ? (
+          <View className="mt-4 rounded-[30px] border border-surface-strong bg-surface-card px-5 py-6">
+            <Text className="text-lg font-bold text-ink-900">No favorites saved yet.</Text>
+            <Text className="mt-2 text-sm leading-6 text-ink-600">
+              Add bathrooms from the map or search tab to keep them pinned here for quick access later.
+            </Text>
+            <Button className="mt-5" label="Browse Search" onPress={() => router.push(routes.tabs.search)} />
+          </View>
+        ) : (
+          <FlatList
+            contentContainerStyle={{ gap: 16, paddingTop: 16, paddingBottom: 8 }}
+            data={favorites.favorites}
+            getItemLayout={(_, index) => ({
+              index,
+              length: FAVORITE_ITEM_HEIGHT,
+              offset: FAVORITE_ITEM_HEIGHT * index,
+            })}
+            keyExtractor={(item) => item.bathroom_id}
+            renderItem={({ item }) => (
+              <BathroomCard
+                isFavorited={favorites.isFavorite(item.bathroom_id)}
+                isFavoritePending={favorites.isFavoritePending(item.bathroom_id)}
+                item={item}
+                onPress={() => router.push(routes.bathroomDetail(item.bathroom_id))}
+                onToggleFavorite={() => {
+                  void handleToggleFavorite(item);
+                }}
+              />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
+        )}
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  content: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 14,
-    color: '#6b7280',
-    textAlign: 'center',
-  },
-});

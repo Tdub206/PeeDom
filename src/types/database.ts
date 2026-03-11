@@ -361,7 +361,38 @@ export interface Database {
         }
       }
     }
-    Functions: {}
+    Functions: {
+      get_bathrooms_near: {
+        Args: {
+          lat: number
+          lng: number
+          radius_m?: number
+        }
+        Returns: {
+          id: string
+          place_name: string
+          address_line1: string | null
+          city: string | null
+          state: string | null
+          postal_code: string | null
+          country_code: string
+          latitude: number
+          longitude: number
+          is_locked: boolean | null
+          is_accessible: boolean | null
+          is_customer_only: boolean
+          hours_json: Json | null
+          code_id: string | null
+          confidence_score: number | null
+          up_votes: number | null
+          down_votes: number | null
+          last_verified_at: string | null
+          expires_at: string | null
+          updated_at: string
+          distance_meters: number
+        }[]
+      }
+    }
     Enums: {}
   }
 }

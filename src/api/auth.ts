@@ -1,5 +1,5 @@
 import { AuthError, Session, User } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 
 interface AuthSuccess {
   error: null;
@@ -34,7 +34,7 @@ function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
 
 export async function signInWithEmail(payload: SignInPayload): Promise<AuthResult> {
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await getSupabaseClient().auth.signInWithPassword({
       email: payload.email,
       password: payload.password,
     });
@@ -57,7 +57,7 @@ export async function signInWithEmail(payload: SignInPayload): Promise<AuthResul
 
 export async function signUpWithEmail(payload: SignUpPayload): Promise<AuthResult> {
   try {
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await getSupabaseClient().auth.signUp({
       email: payload.email,
       password: payload.password,
       options: {
@@ -85,7 +85,7 @@ export async function signUpWithEmail(payload: SignUpPayload): Promise<AuthResul
 
 export async function signOutUser(): Promise<{ error: AuthError | null }> {
   try {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await getSupabaseClient().auth.signOut();
     return { error };
   } catch (error) {
     return {
@@ -96,7 +96,7 @@ export async function signOutUser(): Promise<{ error: AuthError | null }> {
 
 export async function resetPassword(email: string): Promise<{ error: AuthError | null }> {
   try {
-    const { error } = await supabase.auth.resetPasswordForEmail(email);
+    const { error } = await getSupabaseClient().auth.resetPasswordForEmail(email);
     return { error };
   } catch (error) {
     return {

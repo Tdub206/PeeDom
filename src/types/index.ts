@@ -15,6 +15,8 @@ export type SessionStatus =
 
 export type UserRole = 'user' | 'business' | 'admin';
 
+export type MutationOutcome = 'completed' | 'auth_required' | 'queued_retry';
+
 export interface SessionState {
   status: SessionStatus;
   session: {
@@ -53,6 +55,13 @@ export interface ReturnIntent {
   replay_strategy: ReplayStrategy;
 }
 
+export interface RequireAuthOptions {
+  type: IntentType;
+  route: string;
+  params: Record<string, unknown>;
+  replay_strategy?: ReplayStrategy;
+}
+
 // ============================================================================
 // OFFLINE QUEUE TYPES
 // ============================================================================
@@ -64,14 +73,24 @@ export type MutationType =
   | 'report_create'
   | 'rating_create';
 
+export interface FavoriteMutationPayload {
+  bathroom_id: string;
+}
+
 export interface QueuedMutation {
   id: string;
   type: MutationType;
-  payload: unknown;
+  payload: Record<string, unknown>;
   created_at: string;
   retry_count: number;
   last_attempt_at: string | null;
   user_id: string;
+}
+
+export interface QueueProcessResult {
+  processed_count: number;
+  dropped_count: number;
+  pending_count: number;
 }
 
 // ============================================================================
@@ -80,7 +99,7 @@ export interface QueuedMutation {
 
 export type DraftType = 'add_bathroom' | 'claim_business';
 
-export interface Draft<T = unknown> {
+export interface Draft<T = Record<string, unknown>> {
   id: string;
   type: DraftType;
   data: T;
@@ -120,6 +139,12 @@ export interface Coordinates {
   longitude: number;
 }
 
+export interface BathroomFilters {
+  isAccessible: boolean | null;
+  isLocked: boolean | null;
+  isCustomerOnly: boolean | null;
+}
+
 export interface BathroomFlags {
   is_locked: boolean | null;
   is_accessible: boolean | null;
@@ -146,6 +171,13 @@ export interface BathroomListItem {
   distance_meters?: number;
   primary_code_summary: CodeSummary;
   sync: SyncMetadata;
+}
+
+export interface BathroomQueryResult {
+  items: BathroomListItem[];
+  source: 'network' | 'cache';
+  cached_at: string;
+  is_stale: boolean;
 }
 
 export interface Address {
@@ -201,18 +233,29 @@ export interface BathroomDetail {
 // FAVORITES TYPES
 // ============================================================================
 
-export interface FavoriteItem {
+export interface FavoriteItem extends BathroomListItem {
   bathroom_id: string;
-  place_name: string;
-  address: string;
-  distance_meters?: number;
-  primary_code_summary: CodeSummary;
+  favorited_at: string;
 }
 
 export interface FavoritesList {
   user_id: string;
   items: FavoriteItem[];
   sync: SyncMetadata;
+}
+
+// ============================================================================
+// LOCATION TYPES
+// ============================================================================
+
+export type LocationPermissionState = 'unknown' | 'granted' | 'denied' | 'blocked';
+
+export interface LocationSnapshot {
+  coordinates: Coordinates | null;
+  permission_status: LocationPermissionState;
+  error_message: string | null;
+  is_requesting_permission: boolean;
+  is_refreshing: boolean;
 }
 
 // ============================================================================

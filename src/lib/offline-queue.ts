@@ -1,5 +1,6 @@
 import { storage } from './storage';
-import { QueuedMutation, MutationType } from '@/types';
+import { QueuedMutation, MutationType, QueueProcessResult } from '@/types';
+import { queuedMutationsSchema } from '@/utils/validate';
 
 class OfflineQueueManager {
   private queue: QueuedMutation[] = [];
@@ -9,13 +10,17 @@ class OfflineQueueManager {
    * Initialize queue from storage
    */
   async initialize(userId: string): Promise<void> {
-    const stored = await storage.get<QueuedMutation[]>(storage.keys.OFFLINE_QUEUE);
-    if (stored) {
-      // Filter queue to only include mutations for current user
-      this.queue = stored.filter(mutation => mutation.user_id === userId);
-    } else {
+    const stored = await storage.get<unknown>(storage.keys.OFFLINE_QUEUE);
+    const parsedQueue = queuedMutationsSchema.safeParse(stored);
+
+    if (!parsedQueue.success) {
       this.queue = [];
+      await storage.remove(storage.keys.OFFLINE_QUEUE);
+      return;
     }
+
+    this.queue = parsedQueue.data.filter((mutation) => mutation.user_id === userId);
+    await this.persist();
   }
 
   /**
@@ -24,7 +29,7 @@ class OfflineQueueManager {
    */
   async enqueue(
     type: MutationType,
-    payload: unknown,
+    payload: Record<string, unknown>,
     userId: string
   ): Promise<void> {
     const mutation: QueuedMutation = {
@@ -61,14 +66,19 @@ class OfflineQueueManager {
    */
   async process(
     executor: (mutation: QueuedMutation) => Promise<boolean>
-  ): Promise<number> {
+  ): Promise<QueueProcessResult> {
     if (this.isProcessing) {
       console.log('Queue is already being processed');
-      return 0;
+      return {
+        processed_count: 0,
+        dropped_count: 0,
+        pending_count: this.queue.length,
+      };
     }
 
     this.isProcessing = true;
     let processedCount = 0;
+    let droppedCount = 0;
     const MAX_RETRIES = 3;
 
     try {
@@ -93,6 +103,7 @@ class OfflineQueueManager {
               if (this.queue[mutationIndex].retry_count >= MAX_RETRIES) {
                 console.warn(`Mutation ${mutation.id} exceeded max retries, removing from queue`);
                 this.queue = this.queue.filter(m => m.id !== mutation.id);
+                droppedCount++;
               }
             }
           }
@@ -107,13 +118,18 @@ class OfflineQueueManager {
 
             if (this.queue[mutationIndex].retry_count >= MAX_RETRIES) {
               this.queue = this.queue.filter(m => m.id !== mutation.id);
+              droppedCount++;
             }
           }
         }
       }
 
       await this.persist();
-      return processedCount;
+      return {
+        processed_count: processedCount,
+        dropped_count: droppedCount,
+        pending_count: this.queue.length,
+      };
     } finally {
       this.isProcessing = false;
     }

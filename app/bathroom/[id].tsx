@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useToast } from '@/hooks/useToast';
+import { replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
 type HoursEntry = { open: string; close: string };
@@ -142,7 +143,7 @@ export default function BathroomDetailScreen() {
             <Button
               className="mt-3"
               label="Back To Map"
-              onPress={() => router.replace(routes.tabs.map)}
+              onPress={() => replaceSafely(router, routes.tabs.map, routes.tabs.map)}
               variant="secondary"
             />
           </View>

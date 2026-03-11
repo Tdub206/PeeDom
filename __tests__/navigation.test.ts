@@ -1,0 +1,22 @@
+import { describe, expect, it } from '@jest/globals';
+
+import { routes } from '@/constants/routes';
+import { isAppRoute, routeFromSegments, toSafeRoute } from '@/lib/navigation';
+
+describe('navigation guards', () => {
+  it('accepts declared app routes and bathroom detail routes', () => {
+    expect(isAppRoute(routes.tabs.map)).toBe(true);
+    expect(isAppRoute(routes.auth.login)).toBe(true);
+    expect(isAppRoute('/bathroom/abc123')).toBe(true);
+  });
+
+  it('rejects unknown routes and falls back safely', () => {
+    expect(isAppRoute('/admin')).toBe(false);
+    expect(toSafeRoute('/admin', routes.tabs.map)).toBe(routes.tabs.map);
+  });
+
+  it('converts active segments into a guarded return route', () => {
+    expect(routeFromSegments(['(tabs)', 'profile'], routes.tabs.map)).toBe(routes.tabs.profile);
+    expect(routeFromSegments([], routes.tabs.map)).toBe(routes.tabs.map);
+  });
+});

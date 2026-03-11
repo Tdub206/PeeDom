@@ -1,212 +1,391 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import { Session, User, AuthError } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
-import { SessionStatus, SessionState, UserProfile } from '@/types';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { AuthError, Session, User } from '@supabase/supabase-js';
+import { useToastContext } from '@/contexts/ToastContext';
 import { storage } from '@/lib/storage';
+import { getSupabaseClient } from '@/lib/supabase';
+import { classifySupabaseError, SupabaseErrorDetails } from '@/lib/supabase-error';
+import { RequireAuthOptions, ReturnIntent, SessionState, SessionStatus, UserProfile } from '@/types';
 
 interface AuthContextType {
   sessionState: SessionState;
   session: Session | null;
   user: User | null;
   profile: UserProfile | null;
+  authIssue: string | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: AuthError | null }>;
   signUp: (email: string, password: string, displayName?: string) => Promise<{ error: AuthError | null }>;
   signOut: () => Promise<void>;
   refreshProfile: () => Promise<void>;
-  requireAuth: () => User;
+  refreshUser: () => Promise<void>;
+  requireAuth: (options?: RequireAuthOptions) => User | null;
+  peekReturnIntent: () => ReturnIntent | null;
+  consumeReturnIntent: () => ReturnIntent | null;
+  clearReturnIntent: () => void;
   isGuest: boolean;
   isAuthenticated: boolean;
   canAccessProtectedRoute: boolean;
 }
 
+interface ProfileLoadResult {
+  profile: UserProfile | null;
+  errorDetails: SupabaseErrorDetails | null;
+  usedCache: boolean;
+}
+
+interface ApplyAuthenticatedSessionOptions {
+  demoteToGuestOnFailure?: boolean;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+function getCachedProfileKey(userId: string): string {
+  return `${storage.keys.CACHED_PROFILE}:${userId}`;
+}
+
+async function readCachedProfile(userId: string): Promise<UserProfile | null> {
+  return storage.get<UserProfile>(getCachedProfileKey(userId));
+}
+
+async function cacheProfile(profile: UserProfile): Promise<void> {
+  await storage.set(getCachedProfileKey(profile.id), profile);
+}
+
+async function clearCachedProfile(userId: string | null | undefined): Promise<void> {
+  if (!userId) {
+    return;
+  }
+
+  try {
+    await storage.remove(getCachedProfileKey(userId));
+  } catch (error) {
+    console.error('Unable to clear the cached profile:', error);
+  }
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const { showToast } = useToastContext();
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [authIssue, setAuthIssue] = useState<string | null>(null);
   const [sessionStatus, setSessionStatus] = useState<SessionStatus>('BOOTSTRAPPING');
   const [loading, setLoading] = useState(true);
+  const lastReportedIssue = useRef<string | null>(null);
+  const returnIntentRef = useRef<ReturnIntent | null>(null);
 
-  // Fetch user profile from database
-  const fetchProfile = useCallback(async (userId: string): Promise<UserProfile | null> => {
+  const buildReturnIntent = useCallback((options: RequireAuthOptions): ReturnIntent => {
+    return {
+      intent_id: `intent_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`,
+      type: options.type,
+      route: options.route,
+      params: options.params,
+      created_at: new Date().toISOString(),
+      replay_strategy: options.replay_strategy ?? 'immediate_after_auth',
+    };
+  }, []);
+
+  const clearReturnIntent = useCallback(() => {
+    returnIntentRef.current = null;
+  }, []);
+
+  const peekReturnIntent = useCallback(() => {
+    return returnIntentRef.current;
+  }, []);
+
+  const consumeReturnIntent = useCallback(() => {
+    const currentIntent = returnIntentRef.current;
+    returnIntentRef.current = null;
+    return currentIntent;
+  }, []);
+
+  const reportAuthIssue = useCallback(
+    (details: SupabaseErrorDetails) => {
+      setAuthIssue(details.message);
+
+      if (lastReportedIssue.current === details.message) {
+        return;
+      }
+
+      lastReportedIssue.current = details.message;
+      showToast({
+        title: details.title,
+        message: details.message,
+        variant: details.kind === 'offline' ? 'warning' : 'error',
+      });
+    },
+    [showToast]
+  );
+
+  const clearReportedIssue = useCallback(() => {
+    lastReportedIssue.current = null;
+    setAuthIssue(null);
+  }, []);
+
+  const clearAuthState = useCallback((nextStatus: SessionStatus = 'GUEST') => {
+    setSession(null);
+    setUser(null);
+    setProfile(null);
+    setSessionStatus(nextStatus);
+    setLoading(false);
+  }, []);
+
+  const clearSessionArtifacts = useCallback(
+    async (userId?: string) => {
+      clearReturnIntent();
+
+      try {
+        await storage.remove(storage.keys.OFFLINE_QUEUE);
+      } catch (error) {
+        console.error('Unable to clear the offline queue:', error);
+      }
+
+      try {
+        await storage.remove(storage.keys.RETURN_INTENT);
+      } catch (error) {
+        console.error('Unable to clear the legacy persisted return intent:', error);
+      }
+
+      await clearCachedProfile(userId);
+    },
+    [clearReturnIntent]
+  );
+
+  const clearPersistedSession = useCallback(async () => {
     try {
-      const { data, error } = await supabase
+      await getSupabaseClient().auth.signOut();
+    } catch (error) {
+      console.error('Unable to clear the persisted auth session:', error);
+    }
+  }, []);
+
+  const determineSessionStatus = useCallback(
+    (currentSession: Session | null, currentProfile: UserProfile | null): SessionStatus => {
+      if (!currentSession) {
+        return 'GUEST';
+      }
+
+      if (!currentProfile) {
+        return 'AUTHENTICATED_USER';
+      }
+
+      switch (currentProfile.role) {
+        case 'admin':
+          return 'AUTHENTICATED_ADMIN';
+        case 'business':
+          return 'AUTHENTICATED_BUSINESS';
+        case 'user':
+        default:
+          return 'AUTHENTICATED_USER';
+      }
+    },
+    []
+  );
+
+  const loadProfile = useCallback(async (userId: string): Promise<ProfileLoadResult> => {
+    try {
+      const { data, error } = await getSupabaseClient()
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
 
       if (error) {
-        console.error('Error fetching profile:', error);
-        return null;
+        throw error;
       }
 
-      return data;
+      if (!data) {
+        return {
+          profile: null,
+          errorDetails: classifySupabaseError(
+            new Error('We could not find a profile for this authenticated user.'),
+            'We could not restore your Pee-Dom profile.'
+          ),
+          usedCache: false,
+        };
+      }
+
+      await cacheProfile(data);
+
+      return {
+        profile: data,
+        errorDetails: null,
+        usedCache: false,
+      };
     } catch (error) {
-      console.error('Error in fetchProfile:', error);
-      return null;
+      const errorDetails = classifySupabaseError(error, 'We could not restore your Pee-Dom profile.');
+
+      if (errorDetails.kind === 'offline') {
+        const cachedProfile = await readCachedProfile(userId);
+
+        if (cachedProfile) {
+          return {
+            profile: cachedProfile,
+            errorDetails,
+            usedCache: true,
+          };
+        }
+      }
+
+      return {
+        profile: null,
+        errorDetails,
+        usedCache: false,
+      };
     }
   }, []);
 
-  // Determine session status based on session and profile
-  const determineSessionStatus = useCallback((
-    currentSession: Session | null,
-    currentProfile: UserProfile | null
-  ): SessionStatus => {
-    if (!currentSession || !currentProfile) {
-      return 'GUEST';
-    }
+  const applyAuthenticatedSession = useCallback(
+    async (
+      currentSession: Session,
+      options?: ApplyAuthenticatedSessionOptions
+    ): Promise<boolean> => {
+      setSessionStatus('SESSION_RECOVERY');
+      setSession(currentSession);
+      setUser(currentSession.user);
 
-    switch (currentProfile.role) {
-      case 'admin':
-        return 'AUTHENTICATED_ADMIN';
-      case 'business':
-        return 'AUTHENTICATED_BUSINESS';
-      case 'user':
-      default:
-        return 'AUTHENTICATED_USER';
-    }
-  }, []);
+      const result = await loadProfile(currentSession.user.id);
 
-  // Initialize session on mount
+      if (result.profile) {
+        setProfile(result.profile);
+        setSessionStatus(determineSessionStatus(currentSession, result.profile));
+        setLoading(false);
+
+        if (result.usedCache && result.errorDetails) {
+          reportAuthIssue(result.errorDetails);
+        } else {
+          clearReportedIssue();
+        }
+
+        return true;
+      }
+
+      if (result.errorDetails) {
+        reportAuthIssue(result.errorDetails);
+      }
+
+      if (options?.demoteToGuestOnFailure) {
+        await clearSessionArtifacts(currentSession.user.id);
+
+        if (result.errorDetails?.shouldClearSession) {
+          await clearPersistedSession();
+        }
+
+        clearAuthState('GUEST');
+        return false;
+      }
+
+      if (result.errorDetails?.kind === 'offline') {
+        setProfile(null);
+        setSessionStatus(determineSessionStatus(currentSession, null));
+        setLoading(false);
+        return false;
+      }
+
+      if (result.errorDetails?.shouldClearSession) {
+        await clearSessionArtifacts(currentSession.user.id);
+        await clearPersistedSession();
+        clearAuthState('GUEST');
+        return false;
+      }
+
+      clearAuthState('SESSION_INVALID');
+      return false;
+    },
+    [
+      clearAuthState,
+      clearPersistedSession,
+      clearReportedIssue,
+      clearSessionArtifacts,
+      determineSessionStatus,
+      loadProfile,
+      reportAuthIssue,
+    ]
+  );
+
   useEffect(() => {
     let mounted = true;
 
     const initializeSession = async () => {
       try {
         setSessionStatus('BOOTSTRAPPING');
-        
-        // Get current session
-        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
+
+        const {
+          data: { session: currentSession },
+          error,
+        } = await getSupabaseClient().auth.getSession();
+
+        if (!mounted) {
+          return;
+        }
 
         if (error) {
-          console.error('Error getting session:', error);
-          if (mounted) {
-            setSession(null);
-            setUser(null);
-            setProfile(null);
-            setSessionStatus('GUEST');
-            setLoading(false);
-          }
+          reportAuthIssue(classifySupabaseError(error, 'We could not restore your session.'));
+          clearAuthState('GUEST');
           return;
         }
 
         if (!currentSession) {
-          // No session - user is guest
-          if (mounted) {
-            setSession(null);
-            setUser(null);
-            setProfile(null);
-            setSessionStatus('GUEST');
-            setLoading(false);
-          }
+          clearReportedIssue();
+          clearAuthState('GUEST');
           return;
         }
 
-        // Session exists - fetch profile
-        if (mounted) {
-          setSessionStatus('SESSION_RECOVERY');
-          setSession(currentSession);
-          setUser(currentSession.user);
-        }
-
-        const userProfile = await fetchProfile(currentSession.user.id);
-
-        if (!userProfile) {
-          // Profile fetch failed - treat as invalid session
-          if (mounted) {
-            setSession(null);
-            setUser(null);
-            setProfile(null);
-            setSessionStatus('SESSION_INVALID');
-            setLoading(false);
-          }
-          return;
-        }
-
-        if (mounted) {
-          setProfile(userProfile);
-          setSessionStatus(determineSessionStatus(currentSession, userProfile));
-          setLoading(false);
-        }
+        await applyAuthenticatedSession(currentSession);
       } catch (error) {
-        console.error('Error initializing session:', error);
-        if (mounted) {
-          setSession(null);
-          setUser(null);
-          setProfile(null);
-          setSessionStatus('GUEST');
-          setLoading(false);
+        if (!mounted) {
+          return;
         }
+
+        reportAuthIssue(classifySupabaseError(error, 'We could not initialize authentication.'));
+        clearAuthState('GUEST');
       }
     };
 
-    initializeSession();
+    void initializeSession();
 
     return () => {
       mounted = false;
     };
-  }, [fetchProfile, determineSessionStatus]);
+  }, [applyAuthenticatedSession, clearAuthState, clearReportedIssue, reportAuthIssue]);
 
-  // Listen for auth state changes
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
-      console.log('Auth state change:', event);
+    const {
+      data: { subscription },
+    } = getSupabaseClient().auth.onAuthStateChange((event, currentSession) => {
+      void (async () => {
+        console.log('Auth state change:', event);
 
-      if (event === 'SIGNED_OUT') {
-        setSession(null);
-        setUser(null);
-        setProfile(null);
-        setSessionStatus('GUEST');
-        setLoading(false);
-        // Clear auth-dependent cache
-        await storage.remove(storage.keys.OFFLINE_QUEUE);
-        return;
-      }
-
-      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        if (currentSession) {
-          setSessionStatus('SESSION_RECOVERY');
-          setSession(currentSession);
-          setUser(currentSession.user);
-
-          const userProfile = await fetchProfile(currentSession.user.id);
-          
-          if (userProfile) {
-            setProfile(userProfile);
-            setSessionStatus(determineSessionStatus(currentSession, userProfile));
-          } else {
-            setSessionStatus('SESSION_INVALID');
+        try {
+          if (event === 'SIGNED_OUT') {
+            await clearSessionArtifacts(currentSession?.user.id ?? user?.id);
+            clearReportedIssue();
+            clearAuthState('GUEST');
+            return;
           }
-          
-          setLoading(false);
-        }
-        return;
-      }
 
-      if (event === 'USER_UPDATED') {
-        if (currentSession) {
-          setSession(currentSession);
-          setUser(currentSession.user);
-          
-          // Refresh profile on user update
-          const userProfile = await fetchProfile(currentSession.user.id);
-          if (userProfile) {
-            setProfile(userProfile);
+          if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED') {
+            if (!currentSession) {
+              await clearSessionArtifacts(user?.id);
+              clearAuthState('GUEST');
+              return;
+            }
+
+            await applyAuthenticatedSession(currentSession);
           }
+        } catch (error) {
+          reportAuthIssue(classifySupabaseError(error, 'The authentication state could not be updated.'));
+          clearAuthState('SESSION_INVALID');
         }
-      }
+      })();
     });
 
     return () => subscription.unsubscribe();
-  }, [fetchProfile, determineSessionStatus]);
+  }, [applyAuthenticatedSession, clearAuthState, clearReportedIssue, clearSessionArtifacts, reportAuthIssue, user?.id]);
 
-  // Sign in
   const signIn = useCallback(async (email: string, password: string) => {
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error } = await getSupabaseClient().auth.signInWithPassword({
         email,
         password,
       });
@@ -218,10 +397,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Sign up
   const signUp = useCallback(async (email: string, password: string, displayName?: string) => {
     try {
-      const { error } = await supabase.auth.signUp({
+      const { error } = await getSupabaseClient().auth.signUp({
         email,
         password,
         options: {
@@ -238,71 +416,146 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Sign out
   const signOut = useCallback(async () => {
     try {
-      await supabase.auth.signOut();
-      // Clear all auth-dependent local data
-      await storage.remove(storage.keys.OFFLINE_QUEUE);
-      await storage.remove(storage.keys.RETURN_INTENT);
+      const currentUserId = user?.id;
+      clearReturnIntent();
+      await getSupabaseClient().auth.signOut();
+      await clearSessionArtifacts(currentUserId);
+      clearReportedIssue();
     } catch (error) {
       console.error('Sign out error:', error);
       throw error;
     }
-  }, []);
+  }, [clearReportedIssue, clearReturnIntent, clearSessionArtifacts, user?.id]);
 
-  // Refresh profile
   const refreshProfile = useCallback(async () => {
     try {
-      if (!user) return;
-      
-      const userProfile = await fetchProfile(user.id);
-      if (userProfile) {
-        setProfile(userProfile);
+      if (!user) {
+        return;
+      }
+
+      const result = await loadProfile(user.id);
+
+      if (result.profile) {
+        setProfile(result.profile);
+
+        if (result.usedCache && result.errorDetails) {
+          reportAuthIssue(result.errorDetails);
+        } else {
+          clearReportedIssue();
+        }
+
+        return;
+      }
+
+      if (result.errorDetails) {
+        reportAuthIssue(result.errorDetails);
       }
     } catch (error) {
       console.error('Refresh profile error:', error);
     }
-  }, [user, fetchProfile]);
+  }, [clearReportedIssue, loadProfile, reportAuthIssue, user]);
 
-  // Derived state
+  const refreshUser = useCallback(async () => {
+    setLoading(true);
+
+    try {
+      const {
+        data: { session: currentSession },
+        error,
+      } = await getSupabaseClient().auth.getSession();
+
+      if (error) {
+        reportAuthIssue(classifySupabaseError(error, 'We could not refresh your session.'));
+        await clearSessionArtifacts(user?.id ?? session?.user.id);
+        await clearPersistedSession();
+        clearAuthState('GUEST');
+        return;
+      }
+
+      if (!currentSession) {
+        await clearSessionArtifacts(user?.id ?? session?.user.id);
+        await clearPersistedSession();
+        clearAuthState('GUEST');
+        return;
+      }
+
+      await applyAuthenticatedSession(currentSession, {
+        demoteToGuestOnFailure: true,
+      });
+    } catch (error) {
+      reportAuthIssue(classifySupabaseError(error, 'We could not refresh your session.'));
+      await clearSessionArtifacts(user?.id ?? session?.user.id);
+      await clearPersistedSession();
+      clearAuthState('GUEST');
+    }
+  }, [
+    applyAuthenticatedSession,
+    clearAuthState,
+    clearPersistedSession,
+    clearSessionArtifacts,
+    reportAuthIssue,
+    session?.user.id,
+    user?.id,
+  ]);
+
   const isGuest = sessionStatus === 'GUEST';
   const isAuthenticated = sessionStatus.startsWith('AUTHENTICATED_');
   const canAccessProtectedRoute = isAuthenticated && sessionStatus !== 'SESSION_INVALID';
 
-  const requireAuth = useCallback((): User => {
-    if (!user || !canAccessProtectedRoute) {
-      throw new Error('Authentication is required to perform this action.');
-    }
+  const requireAuth = useCallback(
+    (options?: RequireAuthOptions): User | null => {
+      if (!user || !canAccessProtectedRoute) {
+        if (options) {
+          returnIntentRef.current = buildReturnIntent(options);
+        }
 
-    return user;
-  }, [user, canAccessProtectedRoute]);
+        return null;
+      }
 
-  const sessionState: SessionState = {
-    status: sessionStatus,
-    session: session ? {
-      user_id: session.user.id,
-      email: session.user.email || '',
-    } : null,
-    profile: profile ? {
-      role: profile.role,
-      display_name: profile.display_name,
-      points_balance: profile.points_balance,
-      is_premium: profile.is_premium,
-    } : null,
-  };
+      return user;
+    },
+    [buildReturnIntent, canAccessProtectedRoute, user]
+  );
+
+  const sessionState: SessionState = useMemo(
+    () => ({
+      status: sessionStatus,
+      session: session
+        ? {
+            user_id: session.user.id,
+            email: session.user.email || '',
+          }
+        : null,
+      profile: profile
+        ? {
+            role: profile.role,
+            display_name: profile.display_name,
+            points_balance: profile.points_balance,
+            is_premium: profile.is_premium,
+          }
+        : null,
+    }),
+    [profile, session, sessionStatus]
+  );
 
   const value: AuthContextType = {
     sessionState,
     session,
     user,
     profile,
+    authIssue,
     loading,
     signIn,
     signUp,
     signOut,
     refreshProfile,
+    refreshUser,
     requireAuth,
+    peekReturnIntent,
+    consumeReturnIntent,
+    clearReturnIntent,
     isGuest,
     isAuthenticated,
     canAccessProtectedRoute,
@@ -313,8 +566,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
+
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider');
   }
+
   return context;
 }
