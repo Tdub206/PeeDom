@@ -24,6 +24,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: false,
     bundleIdentifier: 'com.peedom.mobile',
     buildNumber: iosBuildNumber,
+    infoPlist: {
+      NSLocationWhenInUseUsageDescription:
+        'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+    },
     config: {
       googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
     },
@@ -35,6 +39,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     package: 'com.peedom.mobile',
     versionCode: androidVersionCode,
+    permissions: [
+      'ACCESS_COARSE_LOCATION',
+      'ACCESS_FINE_LOCATION',
+    ],
     config: {
       googleMaps: {
         apiKey: process.env.ANDROID_GOOGLE_MAPS_API_KEY || '',
@@ -44,6 +52,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     'expo-router',
     'expo-secure-store',
+    'expo-font',
+    [
+      'expo-image-picker',
+      {
+        photosPermission: 'Pee-Dom lets you attach a bathroom photo to improve listing trust.',
+      },
+    ],
+    [
+      'expo-location',
+      {
+        locationWhenInUsePermission:
+          'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

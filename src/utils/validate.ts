@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+const MAX_BATHROOM_PHOTO_SIZE_BYTES = 5 * 1024 * 1024;
+const SUPPORTED_BATHROOM_PHOTO_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp'] as const;
+
 export const loginSchema = z.object({
   email: z
     .string()
@@ -47,6 +50,101 @@ export const queuedMutationSchema = z.object({
 
 export const queuedMutationsSchema = z.array(queuedMutationSchema);
 
+export const addBathroomSchema = z
+  .object({
+    place_name: z
+      .string()
+      .trim()
+      .min(2, 'Bathroom name must be at least 2 characters long.')
+      .max(120, 'Bathroom name must be 120 characters or fewer.'),
+    address_line1: z
+      .string()
+      .trim()
+      .max(160, 'Street address must be 160 characters or fewer.')
+      .optional(),
+    city: z
+      .string()
+      .trim()
+      .max(80, 'City must be 80 characters or fewer.')
+      .optional(),
+    state: z
+      .string()
+      .trim()
+      .max(80, 'State must be 80 characters or fewer.')
+      .optional(),
+    postal_code: z
+      .string()
+      .trim()
+      .max(20, 'Postal code must be 20 characters or fewer.')
+      .optional(),
+    latitude: z.coerce
+      .number({
+        invalid_type_error: 'Latitude is required.',
+      })
+      .min(-90, 'Latitude must be between -90 and 90.')
+      .max(90, 'Latitude must be between -90 and 90.'),
+    longitude: z.coerce
+      .number({
+        invalid_type_error: 'Longitude is required.',
+      })
+      .min(-180, 'Longitude must be between -180 and 180.')
+      .max(180, 'Longitude must be between -180 and 180.'),
+    is_locked: z.boolean(),
+    is_accessible: z.boolean(),
+    is_customer_only: z.boolean(),
+  })
+  .superRefine((value, context) => {
+    const hasAddressDetail = Boolean(value.address_line1?.trim() || value.city?.trim() || value.state?.trim());
+
+    if (!hasAddressDetail) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['address_line1'],
+        message: 'Add at least a street address or city details.',
+      });
+    }
+  });
+
+export const bathroomPhotoSchema = z
+  .object({
+    uri: z.string().trim().min(1, 'A photo URI is required.'),
+    fileName: z
+      .string()
+      .trim()
+      .max(120, 'Photo filename must be 120 characters or fewer.')
+      .nullable()
+      .optional(),
+    mimeType: z
+      .string()
+      .trim()
+      .max(100, 'Photo type must be 100 characters or fewer.')
+      .nullable()
+      .optional(),
+    fileSize: z
+      .number()
+      .int()
+      .positive('Photo size must be greater than 0 bytes.')
+      .max(MAX_BATHROOM_PHOTO_SIZE_BYTES, 'Photos must be 5 MB or smaller.')
+      .nullable()
+      .optional(),
+    width: z.number().int().positive().nullable().optional(),
+    height: z.number().int().positive().nullable().optional(),
+  })
+  .superRefine((value, context) => {
+    if (
+      value.mimeType &&
+      !SUPPORTED_BATHROOM_PHOTO_MIME_TYPES.includes(
+        value.mimeType as (typeof SUPPORTED_BATHROOM_PHOTO_MIME_TYPES)[number]
+      )
+    ) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['mimeType'],
+        message: 'Only JPG, PNG, and WEBP photos are supported.',
+      });
+    }
+  });
+
 export const reportCreateSchema = z.object({
   bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
   report_type: z.enum([
@@ -66,6 +164,8 @@ export const reportCreateSchema = z.object({
 });
 
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
+export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
+export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
 

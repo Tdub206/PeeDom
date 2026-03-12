@@ -120,6 +120,12 @@ export interface AddBathroomDraft {
   is_accessible?: boolean;
   is_customer_only?: boolean;
   initial_code?: string;
+  photo_uri?: string;
+  photo_file_name?: string;
+  photo_mime_type?: string;
+  photo_file_size?: number;
+  photo_width?: number;
+  photo_height?: number;
 }
 
 export interface ClaimBusinessDraft {
@@ -208,6 +214,29 @@ export interface CommunityMetrics {
   open_report_count: number;
 }
 
+export interface BathroomPhotoUploadInput {
+  uri: string;
+  fileName?: string | null;
+  mimeType?: string | null;
+  fileSize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+
+export interface BathroomCreateInput {
+  place_name: string;
+  address_line1?: string;
+  city?: string;
+  state?: string;
+  postal_code?: string;
+  latitude: number;
+  longitude: number;
+  is_locked: boolean;
+  is_accessible: boolean;
+  is_customer_only: boolean;
+  photo?: BathroomPhotoUploadInput | null;
+}
+
 export interface ViewerState {
   is_favorited: boolean;
   can_vote: boolean;
@@ -227,6 +256,20 @@ export interface BathroomDetail {
   community: CommunityMetrics;
   viewer_state: ViewerState;
   sync: SyncMetadata;
+}
+
+export interface BathroomPhoto {
+  id: string;
+  bathroom_id: string;
+  uploaded_by: string;
+  storage_bucket: string;
+  storage_path: string;
+  content_type: string;
+  file_size_bytes: number | null;
+  width: number | null;
+  height: number | null;
+  is_primary: boolean;
+  created_at: string;
 }
 
 // ============================================================================
@@ -377,3 +420,4 @@ export type DbCode = Database['public']['Tables']['bathroom_access_codes']['Row'
 export type DbFavorite = Database['public']['Tables']['favorites']['Row'];
 export type DbReport = Database['public']['Tables']['bathroom_reports']['Row'];
 export type DbClaim = Database['public']['Tables']['business_claims']['Row'];
+export type DbBathroomPhoto = Database['public']['Tables']['bathroom_photos']['Row'];

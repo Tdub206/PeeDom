@@ -9,10 +9,12 @@ import { Button } from '@/components/Button';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { BathroomMapView } from '@/components/MapView';
 import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
 import { useBathrooms } from '@/hooks/useBathrooms';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
+import { pushSafely } from '@/lib/navigation';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useMapStore } from '@/store/useMapStore';
 import { BathroomListItem } from '@/types';
@@ -21,6 +23,7 @@ import { getErrorMessage } from '@/utils/errorMap';
 export default function MapTab() {
   const router = useRouter();
   const { showToast } = useToast();
+  const { requireAuth } = useAuth();
   const filters = useFilterStore((state) => state.filters);
   const activeBathroomId = useMapStore((state) => state.activeBathroomId);
   const centerOnUser = useMapStore((state) => state.centerOnUser);
@@ -96,6 +99,22 @@ export default function MapTab() {
     void Haptics.selectionAsync().catch(() => undefined);
   }, [setActiveBathroomId]);
 
+  const handleOpenAddBathroom = useCallback(() => {
+    const authenticatedUser = requireAuth({
+      type: 'add_bathroom',
+      route: '/modal/add-bathroom',
+      params: {},
+      replay_strategy: 'draft_resume',
+    });
+
+    if (!authenticatedUser) {
+      pushSafely(router, routes.auth.login, routes.auth.login);
+      return;
+    }
+
+    pushSafely(router, routes.modal.addBathroom, routes.tabs.map);
+  }, [requireAuth, router]);
+
   if (bathroomsQuery.isLoading && !bathrooms.length) {
     return <LoadingScreen message="Finding bathrooms around the current map region." />;
   }
@@ -115,6 +134,13 @@ export default function MapTab() {
             onPress={() => router.push(routes.tabs.search)}
           >
             <Text className="text-sm font-semibold text-white">Open search</Text>
+          </Pressable>
+          <Pressable
+            accessibilityRole="button"
+            className="mt-3 self-start rounded-full border border-white/20 bg-white px-4 py-2"
+            onPress={handleOpenAddBathroom}
+          >
+            <Text className="text-sm font-semibold text-brand-700">Add a spot</Text>
           </Pressable>
         </View>
 

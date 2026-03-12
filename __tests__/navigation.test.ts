@@ -7,8 +7,12 @@ describe('navigation guards', () => {
   it('accepts declared app routes and bathroom detail routes', () => {
     expect(isAppRoute(routes.tabs.map)).toBe(true);
     expect(isAppRoute(routes.auth.login)).toBe(true);
+    expect(isAppRoute(routes.modal.addBathroom)).toBe(true);
+    expect(isAppRoute('/modal/add-bathroom?draft_id=draft-123')).toBe(true);
     expect(isAppRoute(routes.modal.report)).toBe(true);
+    expect(isAppRoute('/modal/report?bathroom_id=abc123')).toBe(true);
     expect(isAppRoute('/bathroom/abc123')).toBe(true);
+    expect(isAppRoute('/bathroom/abc123?from=login')).toBe(true);
   });
 
   it('rejects unknown routes and falls back safely', () => {

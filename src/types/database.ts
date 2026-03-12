@@ -108,6 +108,47 @@ export interface Database {
           updated_at?: string
         }
       }
+      bathroom_photos: {
+        Row: {
+          id: string
+          bathroom_id: string
+          uploaded_by: string
+          storage_bucket: string
+          storage_path: string
+          content_type: string
+          file_size_bytes: number | null
+          width: number | null
+          height: number | null
+          is_primary: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          uploaded_by: string
+          storage_bucket?: string
+          storage_path: string
+          content_type: string
+          file_size_bytes?: number | null
+          width?: number | null
+          height?: number | null
+          is_primary?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          uploaded_by?: string
+          storage_bucket?: string
+          storage_path?: string
+          content_type?: string
+          file_size_bytes?: number | null
+          width?: number | null
+          height?: number | null
+          is_primary?: boolean
+          created_at?: string
+        }
+      }
       bathroom_access_codes: {
         Row: {
           id: string

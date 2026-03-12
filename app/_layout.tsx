@@ -73,6 +73,14 @@ function RootNavigator() {
             headerTitle: 'Report Issue',
           }}
         />
+        <Stack.Screen
+          name="modal/add-bathroom"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Add A Spot',
+          }}
+        />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
       </Stack>
     </>

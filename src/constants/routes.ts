@@ -13,6 +13,14 @@ export const routes = {
     register: '/register' as Href,
   },
   modal: {
+    addBathroom: '/modal/add-bathroom' as Href,
+    addBathroomDraft: (draftId: string) =>
+      ({
+        pathname: '/modal/add-bathroom',
+        params: {
+          draft_id: draftId,
+        },
+      }) as Href,
     report: '/modal/report' as Href,
     reportBathroom: (bathroomId: string) =>
       ({

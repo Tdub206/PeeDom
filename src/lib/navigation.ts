@@ -9,7 +9,11 @@ function getRoutePath(route: RouteInput): string | null {
     return null;
   }
 
-  return typeof route === 'string' ? route : route.pathname;
+  if (typeof route === 'string') {
+    return route.split('#')[0]?.split('?')[0] ?? null;
+  }
+
+  return route.pathname;
 }
 
 const STATIC_ROUTES = new Set<string>(
@@ -21,6 +25,7 @@ const STATIC_ROUTES = new Set<string>(
     routes.tabs.business,
     routes.auth.login,
     routes.auth.register,
+    routes.modal.addBathroom,
     routes.modal.report,
   ]
     .map((route) => getRoutePath(route))
