@@ -1,4 +1,4 @@
-import { Database } from './database';
+import type { Database } from './database';
 
 // ============================================================================
 // SESSION & AUTH TYPES
@@ -14,6 +14,8 @@ export type SessionStatus =
   | 'SESSION_INVALID';
 
 export type UserRole = 'user' | 'business' | 'admin';
+
+export type MutationOutcome = 'completed' | 'auth_required' | 'queued_retry';
 
 export interface SessionState {
   status: SessionStatus;
@@ -53,17 +55,15 @@ export interface ReturnIntent {
   replay_strategy: ReplayStrategy;
 }
 
-/**
- * Options passed to AuthContext.requireAuth().
- * When provided, the intent is persisted before returning false so the login
- * screen can replay the action after successful authentication.
- */
-export interface RequireAuthIntent {
+export interface RequireAuthOptions {
   type: IntentType;
   route: string;
   params: Record<string, unknown>;
   replay_strategy?: ReplayStrategy;
 }
+
+// Keep the refactor bundle's alias while preserving the repo's original type.
+export type RequireAuthIntent = RequireAuthOptions;
 
 // ============================================================================
 // OFFLINE QUEUE TYPES
@@ -76,41 +76,24 @@ export type MutationType =
   | 'report_create'
   | 'rating_create';
 
+export interface FavoriteMutationPayload {
+  bathroom_id: string;
+}
+
 export interface QueuedMutation {
   id: string;
   type: MutationType;
-  payload: unknown;
+  payload: Record<string, unknown>;
   created_at: string;
   retry_count: number;
   last_attempt_at: string | null;
   user_id: string;
 }
 
-// ============================================================================
-// MUTATION OUTCOME — canonical public result type for all write operations
-//
-//   completed    → server accepted the mutation
-//   auth_required → guest attempted a protected action; no queue write
-//   queued_retry  → transient network failure; item enqueued for later replay
-// ============================================================================
-
-export type MutationOutcome = 'completed' | 'auth_required' | 'queued_retry';
-
-// ============================================================================
-// NETWORK STATUS
-// ============================================================================
-
-export type NetworkStatus = 'online' | 'offline' | 'unknown';
-
-// ============================================================================
-// MAP / REGION
-// ============================================================================
-
-export interface MapRegion {
-  latitude: number;
-  longitude: number;
-  latitudeDelta: number;
-  longitudeDelta: number;
+export interface QueueProcessResult {
+  processed_count: number;
+  dropped_count: number;
+  pending_count: number;
 }
 
 // ============================================================================
@@ -119,7 +102,7 @@ export interface MapRegion {
 
 export type DraftType = 'add_bathroom' | 'claim_business';
 
-export interface Draft<T = unknown> {
+export interface Draft<T = Record<string, unknown>> {
   id: string;
   type: DraftType;
   data: T;
@@ -140,6 +123,12 @@ export interface AddBathroomDraft {
   is_accessible?: boolean;
   is_customer_only?: boolean;
   initial_code?: string;
+  photo_uri?: string;
+  photo_file_name?: string;
+  photo_mime_type?: string;
+  photo_file_size?: number;
+  photo_width?: number;
+  photo_height?: number;
 }
 
 export interface ClaimBusinessDraft {
@@ -157,6 +146,12 @@ export interface ClaimBusinessDraft {
 export interface Coordinates {
   latitude: number;
   longitude: number;
+}
+
+export interface BathroomFilters {
+  isAccessible: boolean | null;
+  isLocked: boolean | null;
+  isCustomerOnly: boolean | null;
 }
 
 export interface BathroomFlags {
@@ -187,6 +182,13 @@ export interface BathroomListItem {
   sync: SyncMetadata;
 }
 
+export interface BathroomQueryResult {
+  items: BathroomListItem[];
+  source: 'network' | 'cache';
+  cached_at: string;
+  is_stale: boolean;
+}
+
 export interface Address {
   line1: string | null;
   city: string | null;
@@ -215,6 +217,29 @@ export interface CommunityMetrics {
   open_report_count: number;
 }
 
+export interface BathroomPhotoUploadInput {
+  uri: string;
+  fileName?: string | null;
+  mimeType?: string | null;
+  fileSize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+
+export interface BathroomCreateInput {
+  place_name: string;
+  address_line1?: string;
+  city?: string;
+  state?: string;
+  postal_code?: string;
+  latitude: number;
+  longitude: number;
+  is_locked: boolean;
+  is_accessible: boolean;
+  is_customer_only: boolean;
+  photo?: BathroomPhotoUploadInput | null;
+}
+
 export interface ViewerState {
   is_favorited: boolean;
   can_vote: boolean;
@@ -236,22 +261,47 @@ export interface BathroomDetail {
   sync: SyncMetadata;
 }
 
+export interface BathroomPhoto {
+  id: string;
+  bathroom_id: string;
+  uploaded_by: string;
+  storage_bucket: string;
+  storage_path: string;
+  content_type: string;
+  file_size_bytes: number | null;
+  width: number | null;
+  height: number | null;
+  is_primary: boolean;
+  created_at: string;
+}
+
 // ============================================================================
 // FAVORITES TYPES
 // ============================================================================
 
-export interface FavoriteItem {
+export interface FavoriteItem extends BathroomListItem {
   bathroom_id: string;
-  place_name: string;
-  address: string;
-  distance_meters?: number;
-  primary_code_summary: CodeSummary;
+  favorited_at: string;
 }
 
 export interface FavoritesList {
   user_id: string;
   items: FavoriteItem[];
   sync: SyncMetadata;
+}
+
+// ============================================================================
+// LOCATION TYPES
+// ============================================================================
+
+export type LocationPermissionState = 'unknown' | 'granted' | 'denied' | 'blocked';
+
+export interface LocationSnapshot {
+  coordinates: Coordinates | null;
+  permission_status: LocationPermissionState;
+  error_message: string | null;
+  is_requesting_permission: boolean;
+  is_refreshing: boolean;
 }
 
 // ============================================================================
@@ -346,6 +396,20 @@ export interface RegionBounds {
   longitude: number;
   latitudeDelta: number;
   longitudeDelta: number;
+}
+
+// ============================================================================
+// TOAST TYPES
+// ============================================================================
+
+export type ToastVariant = 'success' | 'error' | 'info' | 'warning';
+
+export interface ToastMessage {
+  id: string;
+  title: string;
+  message: string;
+  variant: ToastVariant;
+  duration: number;
 }
 
 // ============================================================================

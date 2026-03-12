@@ -15,8 +15,8 @@
  */
 
 import { QueuedMutation, MutationType } from '@/types';
-import { queueStorage, validatePayload } from './queue-storage';
-import { getRegistryEntry } from './mutation-registry';
+import { queueStorage } from './queue-storage';
+import { getRegistryEntry, validatePayload } from './mutation-registry';
 
 export const MAX_QUEUE_RETRY_COUNT = 3;
 
@@ -68,7 +68,7 @@ class OfflineQueueManager {
     const mutation: QueuedMutation = {
       id,
       type,
-      payload: validation.data,
+      payload: validation.data as Record<string, unknown>,
       created_at: new Date().toISOString(),
       retry_count: 0,
       last_attempt_at: null,

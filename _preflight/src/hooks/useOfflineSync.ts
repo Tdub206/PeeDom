@@ -52,8 +52,6 @@ export function useOfflineSync() {
               `[useOfflineSync] Flushed ${res.processed} item(s)` +
                 (res.stopped ? ` (stopped: ${res.stopReason})` : '')
             );
-            // TODO: Toast notification — batch, once per flush cycle
-            // Example: Toast.show(`${res.processed} action(s) synced`);
           }
         },
         onAuthChanged: () => {
@@ -76,7 +74,7 @@ export function useOfflineSync() {
       // Flush after hydration in case there are pending items from a previous session
       void flush();
     });
-  }, [userId, isAuthenticated]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [flush, isAuthenticated, userId]);
 
   // ── Auth transition: guest → authenticated ─────────────────────────────────
 
@@ -88,7 +86,7 @@ export function useOfflineSync() {
       // Transition detected — flush any mutations queued while offline/guest
       void flush();
     }
-  }, [isAuthenticated, userId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [flush, isAuthenticated, userId]);
 
   // ── NetInfo: reconnect ─────────────────────────────────────────────────────
 
@@ -102,7 +100,7 @@ export function useOfflineSync() {
     });
 
     return () => unsubscribe();
-  }, [isAuthenticated, userId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [flush, isAuthenticated, userId]);
 
   // ── AppState: foreground ───────────────────────────────────────────────────
 
@@ -116,7 +114,7 @@ export function useOfflineSync() {
 
     const subscription = AppState.addEventListener('change', handleAppStateChange);
     return () => subscription.remove();
-  }, [isAuthenticated, userId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [flush, isAuthenticated, userId]);
 
   return {
     flush,

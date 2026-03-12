@@ -13,7 +13,7 @@
 
 import { z } from 'zod';
 import { QueryClient } from '@tanstack/react-query';
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import { MutationType } from '@/types';
 
 // ── Optimistic snapshot shape ─────────────────────────────────────────────────
@@ -102,9 +102,10 @@ const registry: Record<MutationType, RegistryEntry<any>> = {
     payloadSchema: FavoriteAddPayloadSchema,
 
     async executor(payload: FavoriteAddPayload, userId: string): Promise<void> {
+      const supabase = getSupabaseClient();
       const { error } = await supabase
         .from('favorites')
-        .insert({ user_id: userId, bathroom_id: payload.bathroom_id });
+        .insert({ user_id: userId, bathroom_id: payload.bathroom_id } as never);
       if (error) throw new Error(error.message);
     },
 
@@ -132,6 +133,7 @@ const registry: Record<MutationType, RegistryEntry<any>> = {
     payloadSchema: FavoriteRemovePayloadSchema,
 
     async executor(payload: FavoriteRemovePayload, userId: string): Promise<void> {
+      const supabase = getSupabaseClient();
       const { error } = await supabase
         .from('favorites')
         .delete()
@@ -166,8 +168,9 @@ const registry: Record<MutationType, RegistryEntry<any>> = {
     payloadSchema: CodeVotePayloadSchema,
 
     async executor(payload: CodeVotePayload, userId: string): Promise<void> {
+      const supabase = getSupabaseClient();
       const { error } = await supabase.from('code_votes').upsert(
-        { code_id: payload.code_id, user_id: userId, vote: payload.vote },
+        { code_id: payload.code_id, user_id: userId, vote: payload.vote } as never,
         { onConflict: 'code_id,user_id' }
       );
       if (error) throw new Error(error.message);
@@ -182,12 +185,15 @@ const registry: Record<MutationType, RegistryEntry<any>> = {
     payloadSchema: ReportCreatePayloadSchema,
 
     async executor(payload: ReportCreatePayload, userId: string): Promise<void> {
-      const { error } = await supabase.from('bathroom_reports').insert({
-        bathroom_id: payload.bathroom_id,
-        reported_by: userId,
-        report_type: payload.report_type,
-        notes: payload.notes ?? null,
-      });
+      const supabase = getSupabaseClient();
+      const { error } = await supabase.from('bathroom_reports').insert(
+        {
+          bathroom_id: payload.bathroom_id,
+          reported_by: userId,
+          report_type: payload.report_type,
+          notes: payload.notes ?? null,
+        } as never
+      );
       if (error) throw new Error(error.message);
     },
 
@@ -200,13 +206,14 @@ const registry: Record<MutationType, RegistryEntry<any>> = {
     payloadSchema: RatingCreatePayloadSchema,
 
     async executor(payload: RatingCreatePayload, userId: string): Promise<void> {
+      const supabase = getSupabaseClient();
       const { error } = await supabase.from('cleanliness_ratings').upsert(
         {
           bathroom_id: payload.bathroom_id,
           user_id: userId,
           rating: payload.rating,
           notes: payload.notes ?? null,
-        },
+        } as never,
         { onConflict: 'bathroom_id,user_id' }
       );
       if (error) throw new Error(error.message);

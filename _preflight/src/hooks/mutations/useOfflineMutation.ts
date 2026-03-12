@@ -36,8 +36,8 @@
  * Only non-retryable business/validation errors cause mutateAsync to reject.
  */
 
-import { useRef, useCallback } from 'react';
-import { useMutation, useQueryClient, QueryClient } from '@tanstack/react-query';
+import { useRef } from 'react';
+import { useMutation, useQueryClient, QueryClient, onlineManager } from '@tanstack/react-query';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useAuthContext } from '@/contexts/AuthProvider';
 import { offlineQueue } from '@/lib/offline/offline-queue';
@@ -95,9 +95,7 @@ export function useOfflineMutation<TPayload>({
 }: UseOfflineMutationOptions<TPayload>) {
   const queryClient = useQueryClient();
   const { refreshUser } = useAuthContext();
-  const isOffline = useAuthStore((s) => s.sessionStatus === 'GUEST') === false &&
-    // We read network status from the TanStack online manager (wired in query-client.ts)
-    typeof navigator !== 'undefined' && !navigator.onLine;
+  const isOffline = onlineManager.isOnline() === false;
 
   // Ref to carry userIdAtInvocation from onMutate → mutationFn
   // (TanStack does not pass context to mutationFn directly)

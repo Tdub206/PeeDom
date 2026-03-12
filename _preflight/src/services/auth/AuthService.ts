@@ -9,7 +9,7 @@
  * the old AuthContext provider.
  */
 
-import { supabase } from '@/lib/supabase';
+import { getSupabaseClient } from '@/lib/supabase';
 import { UserProfile } from '@/types';
 import { authCache } from './auth-cache';
 import {
@@ -100,6 +100,7 @@ export const AuthService = {
    */
   async getSession(): Promise<GetSessionResult> {
     try {
+      const supabase = getSupabaseClient();
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
@@ -137,6 +138,7 @@ export const AuthService = {
    */
   async signInWithEmail(email: string, password: string): Promise<SignInResult> {
     try {
+      const supabase = getSupabaseClient();
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -177,6 +179,7 @@ export const AuthService = {
     displayName?: string
   ): Promise<SignUpResult> {
     try {
+      const supabase = getSupabaseClient();
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -215,6 +218,7 @@ export const AuthService = {
    */
   async signOut(): Promise<SignOutResult> {
     try {
+      const supabase = getSupabaseClient();
       const { error } = await supabase.auth.signOut();
       if (error) {
         return {
@@ -247,6 +251,7 @@ export const AuthService = {
     options: { allowCachedProfile: boolean } = { allowCachedProfile: false }
   ): Promise<LoadProfileResult> {
     try {
+      const supabase = getSupabaseClient();
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
@@ -308,6 +313,7 @@ export const AuthService = {
    */
   async clearPersistedSession(): Promise<void> {
     try {
+      const supabase = getSupabaseClient();
       // Signing out locally removes the persisted session from AsyncStorage
       // without making a network request to Supabase's revoke endpoint.
       await supabase.auth.signOut({ scope: 'local' });

@@ -13,7 +13,6 @@
  */
 
 import { useCallback } from 'react';
-import { useAuthStore } from '@/store/useAuthStore';
 import { useOfflineMutation } from './useOfflineMutation';
 import { MutationOutcome } from '@/types';
 import { FavoriteAddPayload, FavoriteRemovePayload } from '@/lib/offline/mutation-registry';
@@ -28,8 +27,6 @@ export function useToggleFavoriteMutation(options?: {
   onSuccess?: (outcome: MutationOutcome) => void;
   onAuthRequired?: () => void;
 }) {
-  const userId = useAuthStore((s) => s.user?.id);
-
   const addMutation = useOfflineMutation<FavoriteAddPayload>({
     mutationType: 'favorite_add',
     onSuccess: (outcome) => options?.onSuccess?.(outcome),

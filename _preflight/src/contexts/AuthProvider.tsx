@@ -29,8 +29,8 @@ import React, {
   useCallback,
   useRef,
 } from 'react';
-import { AuthError } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
+import { AuthChangeEvent, AuthError, Session, User } from '@supabase/supabase-js';
+import { getSupabaseClient } from '@/lib/supabase';
 import { useAuthStore, AuthIssue } from '@/store/useAuthStore';
 import { AuthService } from '@/services/auth/AuthService';
 import { offlineQueue } from '@/lib/offline/offline-queue';
@@ -50,10 +50,10 @@ interface AuthContextValue {
   refreshUser: () => Promise<void>;
   /**
    * Synchronous guest gate.
-   * Returns true → caller is authenticated, may proceed.
-   * Returns false → user is a guest; intent persisted in store; caller MUST navigate to login.
+   * Returns the current user when authenticated.
+   * Returns null when guest; intent is persisted in store and caller must navigate to login.
    */
-  requireAuth: (intent?: RequireAuthIntent) => boolean;
+  requireAuth: (intent?: RequireAuthIntent) => User | null;
   /** Read the pending return intent without consuming it. */
   peekReturnIntent: () => ReturnIntent | null;
   /** Consume (read + clear) the pending return intent. Returns it or null. */
@@ -154,73 +154,84 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => {
       mounted = false;
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [demoteToGuest, store]);
 
   // ── Supabase auth state listener ───────────────────────────────────────────
 
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      const state = store.getState();
-      console.log('[AuthProvider] auth event:', event);
+    } = getSupabaseClient().auth.onAuthStateChange(
+      async (event: AuthChangeEvent, session: Session | null) => {
+        const state = store.getState();
+        console.log('[AuthProvider] auth event:', event);
 
-      switch (event) {
-        case 'SIGNED_OUT': {
-          const userId = state.user?.id;
-          if (userId) {
-            // Explicit sign-out: clear the signed-out user's scoped queue AND cache
-            await offlineQueue.clearForUser(userId);
-            await AuthService.clearCachedProfile(userId);
+        switch (event) {
+          case 'SIGNED_OUT': {
+            const userId = state.user?.id;
+            if (userId) {
+              // Explicit sign-out: clear the signed-out user's scoped queue AND cache
+              await offlineQueue.clearForUser(userId);
+              await AuthService.clearCachedProfile(userId);
+            }
+            state.setGuest();
+            state.clearReturnIntent();
+            break;
           }
-          state.setGuest();
-          state.clearReturnIntent();
-          break;
-        }
 
-        case 'SIGNED_IN':
-        case 'TOKEN_REFRESHED': {
-          if (!session) {
-            demoteToGuest({ code: 'session_fetch_failed', message: 'No session in event payload.' });
-            return;
-          }
-          state.setSessionRecovery();
-          const profileResult = await AuthService.loadProfile(session.user.id, {
-            allowCachedProfile: true,
-          });
-          if (!profileResult.ok) {
-            demoteToGuest({ code: profileResult.code, message: profileResult.message });
-            return;
-          }
-          state.setAuthenticated({
-            session,
-            user: session.user,
-            profile: profileResult.data,
-            role: profileResult.data.role,
-          });
-          await offlineQueue.initialize(session.user.id);
-          break;
-        }
-
-        case 'USER_UPDATED': {
-          if (session) {
+          case 'SIGNED_IN':
+          case 'TOKEN_REFRESHED': {
+            if (!session) {
+              demoteToGuest({ code: 'session_fetch_failed', message: 'No session in event payload.' });
+              return;
+            }
+            state.setSessionRecovery();
+            const profileResult = await AuthService.loadProfile(session.user.id, {
+              allowCachedProfile: true,
+            });
+            if (!profileResult.ok) {
+              demoteToGuest({ code: profileResult.code, message: profileResult.message });
+              return;
+            }
             state.setAuthenticated({
               session,
               user: session.user,
-              profile: state.profile ?? (await AuthService.readCachedProfile(session.user.id)) ?? state.profile!,
-              role: (state.profile?.role) ?? 'user',
+              profile: profileResult.data,
+              role: profileResult.data.role,
             });
+            await offlineQueue.initialize(session.user.id);
+            break;
           }
-          break;
-        }
 
-        default:
-          break;
+          case 'USER_UPDATED': {
+            if (session) {
+              const profileResult = await AuthService.loadProfile(session.user.id, {
+                allowCachedProfile: true,
+              });
+
+              if (!profileResult.ok) {
+                demoteToGuest({ code: profileResult.code, message: profileResult.message });
+                return;
+              }
+
+              state.setAuthenticated({
+                session,
+                user: session.user,
+                profile: profileResult.data,
+                role: profileResult.data.role,
+              });
+            }
+            break;
+          }
+
+          default:
+            break;
+        }
       }
-    });
+    );
 
     return () => subscription.unsubscribe();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [demoteToGuest, store]);
 
   // ── Actions ────────────────────────────────────────────────────────────────
 
@@ -228,7 +239,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     async (email: string, password: string): Promise<{ error: AuthError | null }> => {
       const result = await AuthService.signInWithEmail(email, password);
       if (!result.ok) {
-        return { error: { message: result.message } as AuthError };
+        return { error: new AuthError(result.message) };
       }
       return { error: null };
     },
@@ -243,7 +254,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     ): Promise<{ error: AuthError | null; needsEmailConfirmation?: boolean }> => {
       const result = await AuthService.signUpWithEmail(email, password, displayName);
       if (!result.ok) {
-        return { error: { message: result.message } as AuthError };
+        return { error: new AuthError(result.message) };
       }
       return { error: null, needsEmailConfirmation: result.data.needsEmailConfirmation };
     },
@@ -335,14 +346,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [store, demoteToGuest]);
 
   const requireAuth = useCallback(
-    (intent?: RequireAuthIntent): boolean => {
-      const { sessionStatus } = store.getState();
+    (intent?: RequireAuthIntent): User | null => {
+      const { sessionStatus, user } = store.getState();
       const isAuthenticated =
         sessionStatus === 'AUTHENTICATED_USER' ||
         sessionStatus === 'AUTHENTICATED_ADMIN' ||
         sessionStatus === 'AUTHENTICATED_BUSINESS';
 
-      if (isAuthenticated) return true;
+      if (isAuthenticated && user) {
+        return user;
+      }
 
       if (intent) {
         const returnIntent: ReturnIntent = {
@@ -356,7 +369,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         store.getState().setReturnIntent(returnIntent);
       }
 
-      return false;
+      return null;
     },
     [store]
   );

@@ -41,7 +41,7 @@ export function isAppRoute(route: RouteInput): boolean {
 
 export function toSafeRoute(route: RouteInput, fallbackRoute: Href): Href {
   if (route && isAppRoute(route)) {
-    return route;
+    return route as Href;
   }
 
   return fallbackRoute;

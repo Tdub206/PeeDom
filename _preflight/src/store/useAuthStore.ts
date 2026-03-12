@@ -187,10 +187,9 @@ export const useIsAuthenticated = () =>
 /** True when authenticated and not SESSION_INVALID. Safe to render protected screens. */
 export const useCanAccessProtectedRoute = () =>
   useAuthStore((s) =>
-    (s.sessionStatus === 'AUTHENTICATED_USER' ||
-      s.sessionStatus === 'AUTHENTICATED_ADMIN' ||
-      s.sessionStatus === 'AUTHENTICATED_BUSINESS') &&
-    s.sessionStatus !== 'SESSION_INVALID'
+    s.sessionStatus === 'AUTHENTICATED_USER' ||
+    s.sessionStatus === 'AUTHENTICATED_ADMIN' ||
+    s.sessionStatus === 'AUTHENTICATED_BUSINESS'
   );
 
 /** Current non-null auth issue if any — drives error banners. */

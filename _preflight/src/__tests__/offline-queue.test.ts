@@ -130,7 +130,7 @@ describe('process() — flush stop rules', () => {
     await offlineQueue.initialize('user-111');
 
     let callCount = 0;
-    const executor = jest.fn(async (_mutation: QueuedMutation) => {
+    const executor = jest.fn(async () => {
       callCount++;
       if (callCount === 1) return 'auth_required' as const;
       return 'completed' as const;
@@ -153,7 +153,7 @@ describe('process() — flush stop rules', () => {
     mockQueueStorage.load.mockResolvedValueOnce([item1, item2]);
     await offlineQueue.initialize('user-111');
 
-    const executor = jest.fn(async (_mutation: QueuedMutation) => 'queued_retry' as const);
+    const executor = jest.fn(async () => 'queued_retry' as const);
 
     const result = await offlineQueue.process(executor);
 

@@ -14,6 +14,7 @@
  *   const { signIn } = useAuthContext();   // imperative actions
  */
 
+import { SessionState } from '@/types';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useAuthContext } from '@/contexts/AuthProvider';
 
@@ -31,8 +32,24 @@ export function useAuth() {
     sessionStatus === 'AUTHENTICATED_USER' ||
     sessionStatus === 'AUTHENTICATED_ADMIN' ||
     sessionStatus === 'AUTHENTICATED_BUSINESS';
-  const canAccessProtectedRoute =
-    isAuthenticated && sessionStatus !== 'SESSION_INVALID';
+  const canAccessProtectedRoute = isAuthenticated;
+  const sessionState: SessionState = {
+    status: sessionStatus,
+    session: session
+      ? {
+          user_id: session.user.id,
+          email: session.user.email ?? '',
+        }
+      : null,
+    profile: profile
+      ? {
+          role: profile.role,
+          display_name: profile.display_name,
+          points_balance: profile.points_balance,
+          is_premium: profile.is_premium,
+        }
+      : null,
+  };
 
   // ── Actions from context ───────────────────────────────────────────────────
   const {
@@ -52,9 +69,10 @@ export function useAuth() {
     session,
     user,
     profile,
+    sessionState,
     sessionStatus,
     loading,
-    authIssue,
+    authIssue: authIssue?.message ?? null,
     isGuest,
     isAuthenticated,
     canAccessProtectedRoute,

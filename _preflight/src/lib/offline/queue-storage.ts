@@ -13,7 +13,7 @@
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { z } from 'zod';
-import { QueuedMutation, MutationType } from '@/types';
+import { QueuedMutation } from '@/types';
 
 // ── Zod schema ────────────────────────────────────────────────────────────────
 
