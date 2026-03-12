@@ -32,6 +32,7 @@ supabase/.env
 *.aab
 *.keystore
 android/.gradle/
+android/.kotlin/
 android/build/
 android/local.properties
 android/app/build/

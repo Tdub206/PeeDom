@@ -70,4 +70,4 @@ jobs:
         run: printf "sdk.dir=%s\n" "$ANDROID_SDK_ROOT" > android/local.properties
 
       - name: Assemble Android debug build
-        run: ./android/gradlew assembleDebug
+        run: npm run android:assembleDebug:emulator

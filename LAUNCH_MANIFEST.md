@@ -2,7 +2,7 @@
 
 **MASTER LAUNCH MANIFEST**
 
-March 11, 2026
+March 12, 2026
 Repo-verified on this workspace
 
 This document is the canonical reference for PeeDom. If a pasted status block or chat summary disagrees with this file, this file wins.
@@ -27,6 +27,7 @@ This document is the canonical reference for PeeDom. If a pasted status block or
 | [package.json](C:/Users/T/Desktop/PeeDom/package.json) | Present. Required runtime packages for the current implementation are installed. |
 | `assets/icon.png`, `assets/adaptive-icon.png`, `assets/splash.png` | Present. Placeholder build assets exist and unblock Expo prebuild. Final branded assets are still a release task. |
 | [eas.json](C:/Users/T/Desktop/PeeDom/eas.json) | Present. EAS profiles exist. |
+| `android/` | Present and supported as the tracked native Android Studio surface. Regenerate it with `npm.cmd run android:prebuild` when Expo config, plugins, or native-capable dependencies change. |
 | `.env` variants | Present. Repo standard is `EXPO_PUBLIC_SUPABASE_ANON_KEY`. |
 
 ## **1.2 App Surface**
@@ -67,7 +68,7 @@ This document is the canonical reference for PeeDom. If a pasted status block or
 
 # **2. Verification Snapshot**
 
-Verified on March 11, 2026 from this workspace.
+Verified on March 12, 2026 from this workspace.
 
 Local shell note: this PowerShell environment blocks `npm.ps1` and `npx.ps1`, so validation was run with `npm.cmd` and `npx.cmd`.
 
@@ -76,8 +77,9 @@ Local shell note: this PowerShell environment blocks `npm.ps1` and `npx.ps1`, so
 | `npm.cmd run type-check` | PASS |
 | `npm.cmd run lint` | PASS |
 | `npm.cmd test -- --runInBand` | PASS |
-| `npx.cmd expo install --check` | FAIL |
-| `npx.cmd expo run:android` | FAIL |
+| `npx.cmd expo config --type public` | PASS |
+| `npm.cmd run android:prebuild` | PASS |
+| `npm.cmd run android:assembleDebug:emulator` | PASS |
 
 ## **2.1 Test Coverage Present**
 
@@ -114,17 +116,22 @@ Recommendation:
 
 ## **3.2 Local Android Build Environment**
 
-`npx.cmd expo run:android` still fails locally because this machine does not have a usable Android SDK exposed.
+The local Android Studio workflow is now configured and verified on this machine.
 
-Current failure on March 11, 2026:
+Current state on March 12, 2026:
 
 | Check | Result |
 | :---- | :---- |
-| Android SDK default path | Missing at `C:\Users\T\AppData\Local\Android\Sdk` |
-| `adb` on `PATH` | Missing |
-| Expo prebuild | No longer blocked by missing assets |
+| Android SDK default path | Present at `C:\Users\T\AppData\Local\Android\Sdk` |
+| Java runtime | Android Studio JBR configured for the user environment at `C:\Program Files\Android\Android Studio\jbr` |
+| `android/local.properties` | Present locally and ignored by Git |
+| Expo Android prebuild | PASS via `npm.cmd run android:prebuild` |
+| Debug APK build | PASS via `npm.cmd run android:assembleDebug:emulator` |
+| Debug artifact | Generated at `android/app/build/outputs/apk/debug/app-debug.apk` |
 
-This is a local environment blocker, not a repo-code blocker.
+Operational note:
+
+The full multi-ABI `assembleDebug` build is significantly slower on this Windows machine than the shell timeout used in this workspace. The supported smoke-check path is the emulator-focused `x86_64` build, while Android Studio can still build the selected target ABI during normal local development.
 
 ## **3.3 Release Automation**
 
@@ -202,7 +209,7 @@ What is true as of March 11, 2026:
 
 1. The major Phase 4 screens and supporting hooks/components exist in code.
 2. The repo passes `npm.cmd run check-deps`, `npx.cmd expo config --type public`, `npm.cmd run lint`, `npm.cmd run type-check`, and `npm.cmd test`.
-3. Local Android native build verification is still blocked by missing SDK tooling.
+3. Local Android native build verification now passes through the tracked Android Studio surface with `npm.cmd run android:prebuild` and `npm.cmd run android:assembleDebug:emulator`.
 4. Dependency drift is resolved in this workspace after aligning the Expo SDK 54 companion package set and declaring Zustand explicitly.
 5. Baseline GitHub mobile verification CI now exists; authenticated EAS build and submit automation is still pending.
 
@@ -225,7 +232,7 @@ These are safe to do next without forcing a stack upgrade:
 1. Add authenticated EAS build and submit automation once Expo GitHub App / `EXPO_TOKEN` / project linkage are configured
 2. Add screen-level integration coverage for auth replay and offline sync
 3. Verify [002_functions.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/002_functions.sql) is applied in the target Supabase project
-4. Device-test the existing Phase 4 flows once Android/iOS tooling is available
+4. Device-test the existing Phase 4 flows now that Android local tooling is available again
 5. Replace temporary app art with final branded assets before store submission
 
 ## **6.2 Work That Needs Explicit Approval**
@@ -240,7 +247,7 @@ These are not safe "background fixes" and should be treated as deliberate tracks
 
 | Area | Status |
 | :---- | :---- |
-| Android local build | Blocked by machine setup |
+| Android local build | Verified locally through Android Studio / emulator ABI debug build |
 | Device validation | Pending |
 | CI/CD | Baseline GitHub verification added; authenticated EAS build and submit automation pending |
 | Store metadata | Pending |

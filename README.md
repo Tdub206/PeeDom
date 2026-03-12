@@ -35,9 +35,11 @@ sdk.dir=C\:/Users/T/AppData/Local/Android/Sdk
 4. Open `android/` in Android Studio and wait for Gradle sync.
 5. Start Metro with `npm run start`.
 6. Run the `app` configuration from Android Studio, or build from the terminal with `npm run android:assembleDebug`.
+7. For a faster Windows emulator-only smoke build, use `npm run android:assembleDebug:emulator`.
 
 ## Release workflow
 
 - Local Android builds: Android Studio or `npm run android:assembleDebug`
+- Fast Windows emulator verification: `npm run android:assembleDebug:emulator`
 - Android release artifacts: EAS via `eas.json`
 - iOS local builds: `npx expo run:ios`

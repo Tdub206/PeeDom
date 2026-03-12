@@ -10,6 +10,7 @@
     "prebuild:clean": "expo prebuild --clean",
     "android:prebuild": "expo prebuild --platform android --clean",
     "android:assembleDebug": "node -e \"const { spawnSync } = require('node:child_process'); const isWin = process.platform === 'win32'; const command = isWin ? 'gradlew.bat' : './gradlew'; const result = spawnSync(command, ['assembleDebug'], { cwd: 'android', stdio: 'inherit', shell: isWin }); process.exit(result.status ?? 1);\"",
+    "android:assembleDebug:emulator": "node -e \"const { spawnSync } = require('node:child_process'); const isWin = process.platform === 'win32'; const command = isWin ? 'gradlew.bat' : './gradlew'; const result = spawnSync(command, ['-PreactNativeArchitectures=x86_64', 'assembleDebug'], { cwd: 'android', stdio: 'inherit', shell: isWin }); process.exit(result.status ?? 1);\"",
     "lint": "eslint .",
     "test": "jest",
     "type-check": "tsc --noEmit",
