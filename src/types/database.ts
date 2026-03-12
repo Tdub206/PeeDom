@@ -62,7 +62,7 @@ export interface Database {
           is_customer_only: boolean
           hours_json: Json | null
           source_type: 'community' | 'business' | 'imported' | 'admin'
-          moderation_status: 'active' | 'flagged' | 'hidden' | 'deleted'
+          moderation_status: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by: string | null
           created_at: string
           updated_at: string
@@ -82,7 +82,7 @@ export interface Database {
           is_customer_only?: boolean
           hours_json?: Json | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
-          moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted'
+          moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by?: string | null
           created_at?: string
           updated_at?: string
@@ -102,7 +102,7 @@ export interface Database {
           is_customer_only?: boolean
           hours_json?: Json | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
-          moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted'
+          moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by?: string | null
           created_at?: string
           updated_at?: string

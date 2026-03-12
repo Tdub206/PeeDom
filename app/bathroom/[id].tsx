@@ -7,7 +7,7 @@ import { Button } from '@/components/Button';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useToast } from '@/hooks/useToast';
-import { replaceSafely } from '@/lib/navigation';
+import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
 type HoursEntry = { open: string; close: string };
@@ -227,6 +227,25 @@ export default function BathroomDetailScreen() {
                 Hours have not been reported for this bathroom yet.
               </Text>
             )}
+          </View>
+
+          <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
+            <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Community Actions</Text>
+            <Text className="mt-3 text-base leading-6 text-ink-600">
+              Notice a problem at this location? Submit a report so we can protect map quality.
+            </Text>
+            <Button
+              className="mt-4"
+              label="Report An Issue"
+              onPress={() =>
+                pushSafely(
+                  router,
+                  routes.modal.reportBathroom(bathroomDetail.id),
+                  routes.bathroomDetail(bathroomDetail.id)
+                )
+              }
+              variant="destructive"
+            />
           </View>
         </View>
       </ScrollView>

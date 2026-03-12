@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { getFieldErrors, loginSchema, registerSchema } from '@/utils/validate';
+import { getFieldErrors, loginSchema, registerSchema, reportCreateSchema } from '@/utils/validate';
 
 describe('loginSchema', () => {
   it('trims a valid email address during parsing', () => {
@@ -48,6 +48,37 @@ describe('registerSchema', () => {
 
     expect(getFieldErrors(result.error)).toEqual({
       confirmPassword: 'Passwords do not match.',
+    });
+  });
+});
+
+describe('reportCreateSchema', () => {
+  it('accepts valid report payloads', () => {
+    const result = reportCreateSchema.parse({
+      bathroom_id: 'bathroom-123',
+      report_type: 'closed',
+      notes: 'Closed after 9pm.',
+    });
+
+    expect(result.report_type).toBe('closed');
+  });
+
+  it('rejects empty bathroom ids and long notes', () => {
+    const result = reportCreateSchema.safeParse({
+      bathroom_id: '',
+      report_type: 'other',
+      notes: 'a'.repeat(501),
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected report validation to fail for invalid input.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      bathroom_id: 'Bathroom identifier is required.',
+      notes: 'Report details must be 500 characters or fewer.',
     });
   });
 });

@@ -12,5 +12,15 @@ export const routes = {
     login: '/login' as Href,
     register: '/register' as Href,
   },
+  modal: {
+    report: '/modal/report' as Href,
+    reportBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/report',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as Href,
+  },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;

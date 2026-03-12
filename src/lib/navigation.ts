@@ -21,6 +21,7 @@ const STATIC_ROUTES = new Set<string>(
     routes.tabs.business,
     routes.auth.login,
     routes.auth.register,
+    routes.modal.report,
   ]
     .map((route) => getRoutePath(route))
     .filter((route): route is string => Boolean(route))

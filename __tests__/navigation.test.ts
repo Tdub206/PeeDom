@@ -7,6 +7,7 @@ describe('navigation guards', () => {
   it('accepts declared app routes and bathroom detail routes', () => {
     expect(isAppRoute(routes.tabs.map)).toBe(true);
     expect(isAppRoute(routes.auth.login)).toBe(true);
+    expect(isAppRoute(routes.modal.report)).toBe(true);
     expect(isAppRoute('/bathroom/abc123')).toBe(true);
   });
 

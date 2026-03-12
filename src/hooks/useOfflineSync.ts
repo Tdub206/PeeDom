@@ -3,15 +3,46 @@ import { AppState, AppStateStatus } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useQueryClient } from '@tanstack/react-query';
 import { addFavorite, removeFavorite } from '@/api/favorites';
+import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
 import { offlineQueue } from '@/lib/offline-queue';
-import { FavoriteMutationPayload } from '@/types';
+import { FavoriteMutationPayload, ReportType } from '@/types';
 import { useToast } from '@/hooks/useToast';
 
 function isFavoriteMutationPayload(
   payload: Record<string, unknown>
 ): payload is Record<string, unknown> & FavoriteMutationPayload {
   return typeof payload.bathroom_id === 'string' && payload.bathroom_id.length > 0;
+}
+
+const REPORT_TYPES: ReportType[] = [
+  'wrong_code',
+  'closed',
+  'unsafe',
+  'duplicate',
+  'incorrect_hours',
+  'no_restroom',
+  'other',
+];
+
+interface ReportMutationPayload {
+  bathroom_id: string;
+  report_type: ReportType;
+  notes?: string | null;
+}
+
+function isReportMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & ReportMutationPayload {
+  return (
+    typeof payload.bathroom_id === 'string' &&
+    payload.bathroom_id.length > 0 &&
+    typeof payload.report_type === 'string' &&
+    REPORT_TYPES.includes(payload.report_type as ReportType) &&
+    (typeof payload.notes === 'undefined' ||
+      payload.notes === null ||
+      typeof payload.notes === 'string')
+  );
 }
 
 export function useOfflineSync() {
@@ -32,18 +63,38 @@ export function useOfflineSync() {
     }
 
     const result = await offlineQueue.process(async (mutation) => {
-      if (mutation.user_id !== user.id || !isFavoriteMutationPayload(mutation.payload)) {
+      if (mutation.user_id !== user.id) {
         return false;
       }
 
       switch (mutation.type) {
         case 'favorite_add': {
+          if (!isFavoriteMutationPayload(mutation.payload)) {
+            return false;
+          }
+
           const addResult = await addFavorite(user.id, mutation.payload.bathroom_id);
           return !addResult.error;
         }
         case 'favorite_remove': {
+          if (!isFavoriteMutationPayload(mutation.payload)) {
+            return false;
+          }
+
           const removeResult = await removeFavorite(user.id, mutation.payload.bathroom_id);
           return !removeResult.error;
+        }
+        case 'report_create': {
+          if (!isReportMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const reportResult = await createBathroomReport(user.id, {
+            bathroom_id: mutation.payload.bathroom_id,
+            report_type: mutation.payload.report_type,
+            notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
+          });
+          return !reportResult.error;
         }
         default:
           return true;
@@ -51,13 +102,18 @@ export function useOfflineSync() {
     });
 
     if (result.processed_count > 0) {
-      await queryClient.invalidateQueries({
-        queryKey: ['favorites', user.id],
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: ['favorites', user.id],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathrooms'],
+        }),
+      ]);
 
       showToast({
-        title: 'Favorites synced',
-        message: 'Queued favorite changes are now synced with your account.',
+        title: 'Offline changes synced',
+        message: 'Queued updates are now synced with your account.',
         variant: 'success',
       });
     }
@@ -65,7 +121,7 @@ export function useOfflineSync() {
     if (result.dropped_count > 0) {
       showToast({
         title: 'Some changes were dropped',
-        message: 'A few queued favorite changes could not be synced. Please retry them manually.',
+        message: 'A few queued updates could not be synced. Please retry those actions manually.',
         variant: 'warning',
       });
     }

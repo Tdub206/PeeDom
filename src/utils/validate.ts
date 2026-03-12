@@ -47,8 +47,27 @@ export const queuedMutationSchema = z.object({
 
 export const queuedMutationsSchema = z.array(queuedMutationSchema);
 
+export const reportCreateSchema = z.object({
+  bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+  report_type: z.enum([
+    'wrong_code',
+    'closed',
+    'unsafe',
+    'duplicate',
+    'incorrect_hours',
+    'no_restroom',
+    'other',
+  ]),
+  notes: z
+    .string()
+    .trim()
+    .max(500, 'Report details must be 500 characters or fewer.')
+    .optional(),
+});
+
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
+export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
 
 export function getFieldErrors<T extends Record<string, unknown>>(error: z.ZodError<T>): FieldErrors<T> {
   const flattened = error.flatten().fieldErrors as Record<string, string[] | undefined>;
