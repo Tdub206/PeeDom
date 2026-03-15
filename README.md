@@ -34,6 +34,7 @@ sdk.dir=C\:/Users/T/AppData/Local/Android/Sdk
 
 4. Open `android/` in Android Studio and wait for Gradle sync.
 5. Start Metro with `npm run start`.
+   This wrapper normalizes malformed boolean env vars such as `CI=1 ` that would otherwise crash Expo CLI before Metro starts.
 6. Run the `app` configuration from Android Studio, or build from the terminal with `npm run android:assembleDebug`.
 7. For a faster Windows emulator-only smoke build, use `npm run android:assembleDebug:emulator`.
 
