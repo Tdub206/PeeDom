@@ -163,13 +163,21 @@ export const reportCreateSchema = z.object({
     .optional(),
 });
 
-export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
+export const accountDeletionSchema = z.object({
+  confirmation: z
+    .string()
+    .trim()
+    .refine((value) => value === 'DELETE', 'Type DELETE to confirm account deletion.'),
+});
+
+export type FieldErrors<T extends object> = Partial<Record<keyof T, string>>;
 export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
+export type AccountDeletionFormValues = z.infer<typeof accountDeletionSchema>;
 
-export function getFieldErrors<T extends Record<string, unknown>>(error: z.ZodError<T>): FieldErrors<T> {
+export function getFieldErrors<T extends object>(error: z.ZodError<T>): FieldErrors<T> {
   const flattened = error.flatten().fieldErrors as Record<string, string[] | undefined>;
   const entries = Object.entries(flattened).map(([key, messages]) => [key, messages?.[0] ?? '']);
   return Object.fromEntries(entries) as FieldErrors<T>;

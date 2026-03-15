@@ -22,9 +22,10 @@ const STATIC_ROUTES = new Set<string>(
     routes.tabs.search,
     routes.tabs.favorites,
     routes.tabs.profile,
-    routes.tabs.business,
     routes.auth.login,
     routes.auth.register,
+    routes.legal.privacy,
+    routes.legal.accountDeletion,
     routes.modal.addBathroom,
     routes.modal.report,
   ]

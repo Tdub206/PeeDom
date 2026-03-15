@@ -6,11 +6,14 @@ export const routes = {
     search: '/search' as Href,
     favorites: '/favorites' as Href,
     profile: '/profile' as Href,
-    business: '/business' as Href,
   },
   auth: {
     login: '/login' as Href,
     register: '/register' as Href,
+  },
+  legal: {
+    privacy: '/legal/privacy' as Href,
+    accountDeletion: '/legal/account-deletion' as Href,
   },
   modal: {
     addBathroom: '/modal/add-bathroom' as Href,

@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 
 import {
   addBathroomSchema,
+  accountDeletionSchema,
   bathroomPhotoSchema,
   getFieldErrors,
   loginSchema,
@@ -86,6 +87,32 @@ describe('reportCreateSchema', () => {
     expect(getFieldErrors(result.error)).toEqual({
       bathroom_id: 'Bathroom identifier is required.',
       notes: 'Report details must be 500 characters or fewer.',
+    });
+  });
+});
+
+describe('accountDeletionSchema', () => {
+  it('accepts the expected destructive confirmation phrase', () => {
+    const result = accountDeletionSchema.parse({
+      confirmation: 'DELETE',
+    });
+
+    expect(result.confirmation).toBe('DELETE');
+  });
+
+  it('rejects anything other than DELETE', () => {
+    const result = accountDeletionSchema.safeParse({
+      confirmation: 'delete',
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected account deletion validation to fail for the wrong confirmation phrase.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      confirmation: 'Type DELETE to confirm account deletion.',
     });
   });
 });

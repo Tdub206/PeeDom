@@ -87,6 +87,11 @@ export default function ProfileTab() {
                   void handleSignOut();
                 }}
               />
+              <Button
+                label="Delete Account"
+                onPress={() => pushSafely(router, routes.legal.accountDeletion, routes.legal.accountDeletion)}
+                variant="secondary"
+              />
             </View>
           ) : null}
 
@@ -101,7 +106,21 @@ export default function ProfileTab() {
                 onPress={() => pushSafely(router, routes.auth.register, routes.auth.register)}
                 variant="secondary"
               />
+              <Button
+                label="Privacy Policy"
+                onPress={() => pushSafely(router, routes.legal.privacy, routes.legal.privacy)}
+                variant="ghost"
+              />
             </View>
+          ) : null}
+
+          {isAuthenticated ? (
+            <Button
+              className="mt-6"
+              label="Privacy Policy"
+              onPress={() => pushSafely(router, routes.legal.privacy, routes.legal.privacy)}
+              variant="ghost"
+            />
           ) : null}
         </View>
       </View>

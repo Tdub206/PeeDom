@@ -4,14 +4,13 @@ import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
 
-type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business';
+type TabIconName = 'index' | 'search' | 'favorites' | 'profile';
 
 const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   index: 'map-outline',
   search: 'search-outline',
   favorites: 'heart-outline',
   profile: 'person-circle-outline',
-  business: 'briefcase-outline',
 };
 
 export default function TabLayout() {
@@ -54,13 +53,6 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => <TabBarIcon routeName="profile" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="business"
-        options={{
-          title: 'Business',
-          tabBarIcon: ({ color }) => <TabBarIcon routeName="business" color={color} />,
         }}
       />
     </Tabs>

@@ -67,6 +67,15 @@ react {
  * Set this to true in release builds to optimize the app using [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization).
  */
 def enableMinifyInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBuilds') ?: false).toBoolean()
+def repoDebugKeystore = file('debug.keystore')
+def userHomeDebugKeystore = new File(System.getProperty('user.home'), '.android/debug.keystore')
+def resolvedDebugKeystore = repoDebugKeystore.exists() ? repoDebugKeystore : userHomeDebugKeystore
+
+if (!resolvedDebugKeystore.exists()) {
+    throw new GradleException(
+        "Debug keystore not found. Checked ${repoDebugKeystore.absolutePath} and ${userHomeDebugKeystore.absolutePath}."
+    )
+}
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -99,7 +108,7 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('debug.keystore')
+            storeFile resolvedDebugKeystore
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'

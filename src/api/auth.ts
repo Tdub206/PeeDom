@@ -16,6 +16,11 @@ interface AuthFailure {
 
 export type AuthResult = AuthSuccess | AuthFailure;
 
+export interface DeleteAccountResult {
+  error: Error | null;
+  warning: string | null;
+}
+
 export interface SignInPayload {
   email: string;
   password: string;
@@ -101,6 +106,41 @@ export async function resetPassword(email: string): Promise<{ error: AuthError |
   } catch (error) {
     return {
       error: error instanceof AuthError ? error : new AuthError('Unable to send the reset email.'),
+    };
+  }
+}
+
+export async function deleteCurrentAccount(): Promise<DeleteAccountResult> {
+  try {
+    const { data, error } = await getSupabaseClient().functions.invoke<{
+      success: boolean;
+      warning?: string | null;
+    }>('delete-account', {
+      body: {},
+    });
+
+    if (error) {
+      return {
+        error: error instanceof Error ? error : new Error('Unable to delete your account right now.'),
+        warning: null,
+      };
+    }
+
+    if (!data?.success) {
+      return {
+        error: new Error('The account deletion request completed without a success response.'),
+        warning: null,
+      };
+    }
+
+    return {
+      error: null,
+      warning: data.warning ?? null,
+    };
+  } catch (error) {
+    return {
+      error: error instanceof Error ? error : new Error('Unable to delete your account right now.'),
+      warning: null,
     };
   }
 }

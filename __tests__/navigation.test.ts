@@ -7,6 +7,8 @@ describe('navigation guards', () => {
   it('accepts declared app routes and bathroom detail routes', () => {
     expect(isAppRoute(routes.tabs.map)).toBe(true);
     expect(isAppRoute(routes.auth.login)).toBe(true);
+    expect(isAppRoute(routes.legal.privacy)).toBe(true);
+    expect(isAppRoute(routes.legal.accountDeletion)).toBe(true);
     expect(isAppRoute(routes.modal.addBathroom)).toBe(true);
     expect(isAppRoute('/modal/add-bathroom?draft_id=draft-123')).toBe(true);
     expect(isAppRoute(routes.modal.report)).toBe(true);
@@ -22,6 +24,7 @@ describe('navigation guards', () => {
 
   it('converts active segments into a guarded return route', () => {
     expect(routeFromSegments(['(tabs)', 'profile'], routes.tabs.map)).toBe(routes.tabs.profile);
+    expect(routeFromSegments(['legal', 'privacy'], routes.tabs.map)).toBe(routes.legal.privacy);
     expect(routeFromSegments([], routes.tabs.map)).toBe(routes.tabs.map);
   });
 });

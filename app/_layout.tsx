@@ -81,6 +81,22 @@ function RootNavigator() {
             headerTitle: 'Add A Spot',
           }}
         />
+        <Stack.Screen
+          name="legal/privacy"
+          options={{
+            presentation: 'card',
+            headerShown: true,
+            headerTitle: 'Privacy Policy',
+          }}
+        />
+        <Stack.Screen
+          name="legal/account-deletion"
+          options={{
+            presentation: 'card',
+            headerShown: true,
+            headerTitle: 'Account Deletion',
+          }}
+        />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
       </Stack>
     </>

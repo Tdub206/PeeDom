@@ -1,9 +1,14 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
+import { readBuildVersionConfig, readMapsBuildConfig, shouldRequireMapsKeys } from './build-config';
 
-const iosBuildNumber = process.env.IOS_BUILD_NUMBER?.trim() || '1';
-const androidVersionCodeFromEnv = Number.parseInt(process.env.ANDROID_VERSION_CODE ?? '1', 10);
-const androidVersionCode =
-  Number.isFinite(androidVersionCodeFromEnv) && androidVersionCodeFromEnv > 0 ? androidVersionCodeFromEnv : 1;
+const buildVersionConfig = readBuildVersionConfig(process.env);
+const mapsBuildConfig = readMapsBuildConfig(process.env, {
+  requireKeys: shouldRequireMapsKeys(process.env),
+});
+
+if (!mapsBuildConfig.isConfigured) {
+  throw new Error(mapsBuildConfig.errorMessage ?? 'Google Maps build configuration is incomplete.');
+}
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
@@ -23,13 +28,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     bundleIdentifier: 'com.peedom.mobile',
-    buildNumber: iosBuildNumber,
+    buildNumber: buildVersionConfig.iosBuildNumber,
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
         'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
     },
     config: {
-      googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
+      googleMapsApiKey: mapsBuildConfig.iosGoogleMapsApiKey,
     },
   },
   android: {
@@ -38,7 +43,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: '#ffffff',
     },
     package: 'com.peedom.mobile',
-    versionCode: androidVersionCode,
+    versionCode: buildVersionConfig.androidVersionCode,
     permissions: [
       'ACCESS_COARSE_LOCATION',
       'ACCESS_FINE_LOCATION',
@@ -51,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     config: {
       googleMaps: {
-        apiKey: process.env.ANDROID_GOOGLE_MAPS_API_KEY || '',
+        apiKey: mapsBuildConfig.androidGoogleMapsApiKey,
       },
     },
   },
