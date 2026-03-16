@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useToast } from '@/hooks/useToast';
-import { showRewardedCodeRevealAd } from '@/lib/admob';
-import { adMobRuntimeConfig } from '@/lib/admob-config';
+import { getAdMobAvailability, showRewardedCodeRevealAd } from '@/lib/admob';
 import { clearExpiredCodeUnlocks, grantCodeUnlock, hasActiveCodeUnlock } from '@/lib/code-unlocks';
 import { getErrorMessage } from '@/utils/errorMap';
 
@@ -21,6 +20,7 @@ export function useRewardedCodeUnlock({
   const [isCheckingUnlock, setIsCheckingUnlock] = useState(false);
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [unlockIssue, setUnlockIssue] = useState<string | null>(null);
+  const adMobAvailability = useMemo(() => getAdMobAvailability(), []);
 
   useEffect(() => {
     let isMounted = true;
@@ -115,8 +115,8 @@ export function useRewardedCodeUnlock({
     hasUnlock,
     isCheckingUnlock,
     isUnlocking,
-    isAdUnlockAvailable: adMobRuntimeConfig.isEnabled,
-    adUnlockUnavailableReason: adMobRuntimeConfig.errorMessage,
+    isAdUnlockAvailable: adMobAvailability.isAvailable,
+    adUnlockUnavailableReason: adMobAvailability.errorMessage,
     unlockIssue,
     unlockWithAd,
   };

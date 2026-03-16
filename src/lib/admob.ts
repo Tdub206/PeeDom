@@ -1,10 +1,3 @@
-import mobileAds, {
-  AdEventType,
-  AdsConsent,
-  RewardedAd,
-  RewardedAdEventType,
-  TestIds,
-} from 'react-native-google-mobile-ads';
 import { adMobRuntimeConfig } from '@/lib/admob-config';
 
 interface RewardedCodeRevealOptions {
@@ -17,34 +10,111 @@ export interface RewardedCodeRevealResult {
   message: string | null;
 }
 
+export interface AdMobAvailability {
+  isAvailable: boolean;
+  errorMessage: string | null;
+}
+
+type GoogleMobileAdsModule = typeof import('react-native-google-mobile-ads');
+
+interface GoogleMobileAdsModuleState {
+  module: GoogleMobileAdsModule | null;
+  errorMessage: string | null;
+}
+
 let initializePromise: Promise<void> | null = null;
 
-function getRewardedCodeRevealUnitId(): string | null {
+const MISSING_NATIVE_MODULE_MESSAGE =
+  'Rewarded ads are unavailable because this build does not include the Google Mobile Ads native module. Rebuild and reinstall the app to enable ad unlocks.';
+
+function getUnknownErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message.trim()) {
+    return error.message;
+  }
+
+  return 'Unknown error';
+}
+
+function loadGoogleMobileAdsModule(): GoogleMobileAdsModuleState {
   if (!adMobRuntimeConfig.isEnabled) {
+    return {
+      module: null,
+      errorMessage: adMobRuntimeConfig.errorMessage,
+    };
+  }
+
+  try {
+    const googleMobileAdsModule = require('react-native-google-mobile-ads') as GoogleMobileAdsModule;
+
+    return {
+      module: googleMobileAdsModule,
+      errorMessage: null,
+    };
+  } catch (error) {
+    const rawMessage = getUnknownErrorMessage(error);
+    const errorMessage = rawMessage.includes('RNGoogleMobileAdsModule')
+      ? MISSING_NATIVE_MODULE_MESSAGE
+      : `Rewarded ads are unavailable because Google Mobile Ads failed to load: ${rawMessage}`;
+
+    console.warn('[admob] Google Mobile Ads is unavailable in this build.', error);
+
+    return {
+      module: null,
+      errorMessage,
+    };
+  }
+}
+
+const googleMobileAdsModuleState = loadGoogleMobileAdsModule();
+
+export function getAdMobAvailability(): AdMobAvailability {
+  if (!adMobRuntimeConfig.isEnabled) {
+    return {
+      isAvailable: false,
+      errorMessage: adMobRuntimeConfig.errorMessage,
+    };
+  }
+
+  return {
+    isAvailable: googleMobileAdsModuleState.module !== null,
+    errorMessage: googleMobileAdsModuleState.errorMessage,
+  };
+}
+
+function getRewardedCodeRevealUnitId(): string | null {
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
+
+  if (!adMobRuntimeConfig.isEnabled || !googleMobileAdsModule) {
     return null;
   }
 
   if (adMobRuntimeConfig.usesTestIds) {
-    return TestIds.REWARDED;
+    return googleMobileAdsModule.TestIds.REWARDED;
   }
 
   return adMobRuntimeConfig.rewardedCodeRevealUnitId || null;
 }
 
 async function ensureMobileAdsReady(): Promise<void> {
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
+
+  if (!googleMobileAdsModule) {
+    throw new Error(googleMobileAdsModuleState.errorMessage ?? MISSING_NATIVE_MODULE_MESSAGE);
+  }
+
   if (initializePromise) {
     return initializePromise;
   }
 
   initializePromise = (async () => {
     try {
-      await AdsConsent.gatherConsent();
+      await googleMobileAdsModule.AdsConsent.gatherConsent();
     } catch (error) {
       console.warn('[admob] Consent gathering failed, continuing with the previous consent state.', error);
     }
 
     try {
-      const consentInfo = await AdsConsent.getConsentInfo();
+      const consentInfo = await googleMobileAdsModule.AdsConsent.getConsentInfo();
 
       if (consentInfo.canRequestAds === false) {
         throw new Error('Ad consent is required before loading a rewarded ad.');
@@ -54,20 +124,23 @@ async function ensureMobileAdsReady(): Promise<void> {
       throw error;
     }
 
-    await mobileAds().initialize();
+    await googleMobileAdsModule.default().initialize();
   })();
 
   return initializePromise;
 }
 
 async function buildRequestOptions({ bathroomId, userId }: RewardedCodeRevealOptions) {
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
   let requestNonPersonalizedAdsOnly = false;
 
-  try {
-    const userChoices = await AdsConsent.getUserChoices();
-    requestNonPersonalizedAdsOnly = userChoices.selectPersonalisedAds === false;
-  } catch (error) {
-    requestNonPersonalizedAdsOnly = false;
+  if (googleMobileAdsModule) {
+    try {
+      const userChoices = await googleMobileAdsModule.AdsConsent.getUserChoices();
+      requestNonPersonalizedAdsOnly = userChoices.selectPersonalisedAds === false;
+    } catch (error) {
+      requestNonPersonalizedAdsOnly = false;
+    }
   }
 
   return {
@@ -82,21 +155,30 @@ async function buildRequestOptions({ bathroomId, userId }: RewardedCodeRevealOpt
 export async function showRewardedCodeRevealAd(
   options: RewardedCodeRevealOptions
 ): Promise<RewardedCodeRevealResult> {
+  const availability = getAdMobAvailability();
   const adUnitId = getRewardedCodeRevealUnitId();
 
-  if (!adUnitId) {
+  if (!availability.isAvailable || !adUnitId) {
     return {
       outcome: 'unavailable',
-      message: adMobRuntimeConfig.errorMessage ?? 'Ad unlock is unavailable in this build.',
+      message: availability.errorMessage ?? 'Ad unlock is unavailable in this build.',
     };
   }
 
   await ensureMobileAdsReady();
 
   const requestOptions = await buildRequestOptions(options);
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
+
+  if (!googleMobileAdsModule) {
+    return {
+      outcome: 'unavailable',
+      message: availability.errorMessage ?? MISSING_NATIVE_MODULE_MESSAGE,
+    };
+  }
 
   return new Promise((resolve, reject) => {
-    const rewardedAd = RewardedAd.createForAdRequest(adUnitId, requestOptions);
+    const rewardedAd = googleMobileAdsModule.RewardedAd.createForAdRequest(adUnitId, requestOptions);
     let hasResolved = false;
     let earnedReward = false;
 
@@ -128,21 +210,24 @@ export async function showRewardedCodeRevealAd(
       reject(error);
     };
 
-    const unsubscribeLoaded = rewardedAd.addAdEventListener(RewardedAdEventType.LOADED, () => {
+    const unsubscribeLoaded = rewardedAd.addAdEventListener(googleMobileAdsModule.RewardedAdEventType.LOADED, () => {
       rewardedAd.show().catch((error) => {
         fail(error instanceof Error ? error : new Error('Unable to show the rewarded ad.'));
       });
     });
-    const unsubscribeClosed = rewardedAd.addAdEventListener(AdEventType.CLOSED, () => {
+    const unsubscribeClosed = rewardedAd.addAdEventListener(googleMobileAdsModule.AdEventType.CLOSED, () => {
       finish({
         outcome: earnedReward ? 'earned' : 'dismissed',
         message: earnedReward ? null : 'The ad was closed before the reward completed.',
       });
     });
-    const unsubscribeEarned = rewardedAd.addAdEventListener(RewardedAdEventType.EARNED_REWARD, () => {
-      earnedReward = true;
-    });
-    const unsubscribeError = rewardedAd.addAdEventListener(AdEventType.ERROR, (error) => {
+    const unsubscribeEarned = rewardedAd.addAdEventListener(
+      googleMobileAdsModule.RewardedAdEventType.EARNED_REWARD,
+      () => {
+        earnedReward = true;
+      }
+    );
+    const unsubscribeError = rewardedAd.addAdEventListener(googleMobileAdsModule.AdEventType.ERROR, (error) => {
       fail(new Error(error.message || 'Unable to load a rewarded ad right now.'));
     });
     const loadTimeout = setTimeout(() => {

@@ -110,6 +110,36 @@ function ensureDirectory(directoryPath) {
   fs.mkdirSync(directoryPath, { recursive: true });
 }
 
+function collectFilesWithSuffix(rootPath, suffix) {
+  const matches = [];
+
+  if (!fs.existsSync(rootPath)) {
+    return matches;
+  }
+
+  const stack = [rootPath];
+
+  while (stack.length > 0) {
+    const currentPath = stack.pop();
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const entryPath = path.join(currentPath, entry.name);
+
+      if (entry.isDirectory()) {
+        stack.push(entryPath);
+        continue;
+      }
+
+      if (entry.isFile() && entry.name.endsWith(suffix)) {
+        matches.push(entryPath);
+      }
+    }
+  }
+
+  return matches;
+}
+
 function resolveAndroidSdkPath(env) {
   const candidates = [
     env.ANDROID_HOME,
@@ -136,6 +166,97 @@ function resolveGradleUserHome(env) {
   }
 
   return path.join(env.USERPROFILE ?? os.homedir(), '.g', 'peedom');
+}
+
+function resolveAndroidStudioOptionsDirectories(env) {
+  const appDataRoot =
+    env.APPDATA ?? path.join(env.USERPROFILE ?? os.homedir(), 'AppData', 'Roaming');
+  const googleConfigRoot = path.join(appDataRoot, 'Google');
+
+  if (!fs.existsSync(googleConfigRoot)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(googleConfigRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && entry.name.startsWith('AndroidStudio'))
+    .map((entry) => path.join(googleConfigRoot, entry.name, 'options'))
+    .filter((optionsDirectory) => fs.existsSync(optionsDirectory))
+    .sort((left, right) => right.localeCompare(left, undefined, { numeric: true }));
+}
+
+function ensureAndroidStudioGradleServiceDirectory(env, gradleUserHome) {
+  if (!gradleUserHome) {
+    return 0;
+  }
+
+  const normalizedGradleUserHome = gradleUserHome.replace(/\\/g, '/');
+  const optionsDirectories = resolveAndroidStudioOptionsDirectories(env);
+  let updatedFiles = 0;
+
+  for (const optionsDirectory of optionsDirectories) {
+    const gradleSettingsPath = path.join(optionsDirectory, 'gradle.settings.xml');
+    const desiredOption = `    <option name="serviceDirectoryPath" value="${normalizedGradleUserHome}" />`;
+    const desiredComponent = [
+      '  <component name="GradleSystemSettings">',
+      desiredOption,
+      '  </component>',
+    ].join(os.EOL);
+    const fallbackContent = [
+      '<application>',
+      desiredComponent,
+      '</application>',
+      '',
+    ].join(os.EOL);
+    const currentContent = fs.existsSync(gradleSettingsPath)
+      ? fs.readFileSync(gradleSettingsPath, 'utf8')
+      : null;
+    let nextContent = fallbackContent;
+
+    if (currentContent) {
+      if (currentContent.includes('<component name="GradleSystemSettings">')) {
+        nextContent = currentContent.replace(
+          /<component name="GradleSystemSettings">[\s\S]*?<\/component>/,
+          desiredComponent
+        );
+      } else if (currentContent.includes('</application>')) {
+        nextContent = currentContent.replace('</application>', `${desiredComponent}${os.EOL}</application>`);
+      } else {
+        nextContent = fallbackContent;
+      }
+    }
+
+    if (currentContent === nextContent) {
+      continue;
+    }
+
+    fs.writeFileSync(gradleSettingsPath, nextContent, 'utf8');
+    updatedFiles += 1;
+  }
+
+  return updatedFiles;
+}
+
+function removeCompletedGradleLocks(wrapperDistsRoot) {
+  const lockPaths = collectFilesWithSuffix(wrapperDistsRoot, '.zip.lck');
+  let removedLocks = 0;
+
+  for (const lockPath of lockPaths) {
+    const completedMarkerPath = lockPath.replace(/\.lck$/, '.ok');
+
+    if (!fs.existsSync(completedMarkerPath)) {
+      continue;
+    }
+
+    try {
+      fs.rmSync(lockPath, { force: true });
+      removedLocks += 1;
+    } catch (error) {
+      console.warn(`[android-tooling] Unable to remove stale Gradle lock: ${lockPath}`);
+    }
+  }
+
+  return removedLocks;
 }
 
 function writeLocalProperties(env, sdkPath) {
@@ -253,6 +374,30 @@ function launchAndroidStudio() {
   if (!studioExecutable) {
     console.error('[android-tooling] Android Studio executable not found.');
     process.exit(1);
+  }
+
+  const updatedGradleSettings = ensureAndroidStudioGradleServiceDirectory(env, gradleUserHome);
+
+  if (updatedGradleSettings > 0) {
+    console.log(
+      `[android-tooling] Updated Android Studio Gradle settings in ${updatedGradleSettings} file(s) to use GRADLE_USER_HOME.`
+    );
+  }
+
+  const studioRoot = path.dirname(path.dirname(studioExecutable));
+  const wrapperDistsRoots = [path.join(studioRoot, 'wrapper', 'dists')];
+
+  if (gradleUserHome) {
+    wrapperDistsRoots.push(path.join(gradleUserHome, 'wrapper', 'dists'));
+  }
+
+  const removedLocks = wrapperDistsRoots.reduce(
+    (count, wrapperDistsRoot) => count + removeCompletedGradleLocks(wrapperDistsRoot),
+    0
+  );
+
+  if (removedLocks > 0) {
+    console.log(`[android-tooling] Removed ${removedLocks} stale Gradle wrapper lock file(s) before launch.`);
   }
 
   console.log(`[android-tooling] Launching Android Studio with GRADLE_USER_HOME=${gradleUserHome}`);
