@@ -1,20 +1,59 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Linking, Platform, ScrollView, Text, View } from 'react-native';
+import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import * as ImagePicker from 'expo-image-picker';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
 import { fetchBathroomDetailById, PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
+import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
+import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { PhotoProofGallery } from '@/components/PhotoProofGallery';
+import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
+import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
+import { useRealtimeCode } from '@/hooks/useRealtimeCode';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useToast } from '@/hooks/useToast';
+import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { bathroomPhotoSchema } from '@/utils/validate';
 
 type HoursEntry = { open: string; close: string };
+type PhotoTypeOption = {
+  value: BathroomPhotoType;
+  label: string;
+  description: string;
+};
+
+const PHOTO_TYPE_OPTIONS: PhotoTypeOption[] = [
+  {
+    value: 'interior',
+    label: 'Interior',
+    description: 'General bathroom condition and cleanliness.',
+  },
+  {
+    value: 'exterior',
+    label: 'Exterior',
+    description: 'Entrance, hallway, or storefront context.',
+  },
+  {
+    value: 'keypad',
+    label: 'Keypad',
+    description: 'Protected proof of the keypad or lock hardware.',
+  },
+  {
+    value: 'sign',
+    label: 'Door sign',
+    description: 'Protected proof of posted instructions or code signage.',
+  },
+];
 
 function formatAddress(detail: PublicBathroomDetailRow): string {
   return [
@@ -66,6 +105,9 @@ export default function BathroomDetailScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingCode, setIsLoadingCode] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
+  const [isPickingPhoto, setIsPickingPhoto] = useState(false);
+  const [pendingVerificationVote, setPendingVerificationVote] = useState<-1 | 1 | null>(null);
+  const [selectedPhotoType, setSelectedPhotoType] = useState<BathroomPhotoType>('interior');
 
   const bathroomId = useMemo(() => {
     if (Array.isArray(id)) {
@@ -83,7 +125,7 @@ export default function BathroomDetailScreen() {
     () => (bathroomDetail ? formatHours(bathroomDetail.hours_json) : []),
     [bathroomDetail]
   );
-  const isPremiumUser = Boolean(profile?.is_premium);
+  const isPremiumUser = hasActivePremium(profile);
   const {
     hasUnlock: hasRewardedCodeUnlock,
     isUnlocking: isUnlockingWithAd,
@@ -93,7 +135,6 @@ export default function BathroomDetailScreen() {
     unlockWithAd,
   } = useRewardedCodeUnlock({
     bathroomId: bathroomId || null,
-    codeExpiresAt: bathroomDetail?.expires_at ?? null,
     userId: user?.id ?? null,
   });
   const shouldRevealCode = Boolean(bathroomDetail?.code_id) && (isPremiumUser || hasRewardedCodeUnlock);
@@ -102,8 +143,12 @@ export default function BathroomDetailScreen() {
     return nextValue ? nextValue : null;
   }, [revealedCode?.code_value]);
   const codeRevealIssueMessage = codeErrorMessage ?? unlockIssue;
+  const trustScore = revealedCode?.confidence_score ?? bathroomDetail?.confidence_score ?? null;
+  const trustUpVotes = revealedCode?.up_votes ?? bathroomDetail?.up_votes ?? 0;
+  const trustDownVotes = revealedCode?.down_votes ?? bathroomDetail?.down_votes ?? 0;
+  const trustLastVerifiedAt = revealedCode?.last_verified_at ?? bathroomDetail?.last_verified_at ?? null;
 
-  const loadBathroomDetail = useCallback(async () => {
+  const loadBathroomDetail = useCallback(async (showLoadingState = true) => {
     if (!bathroomId) {
       const message = 'The bathroom identifier was missing from the route.';
       setErrorMessage(message);
@@ -111,7 +156,10 @@ export default function BathroomDetailScreen() {
       return;
     }
 
-    setIsLoading(true);
+    if (showLoadingState) {
+      setIsLoading(true);
+    }
+
     setErrorMessage('');
 
     try {
@@ -119,7 +167,11 @@ export default function BathroomDetailScreen() {
 
       if (result.error || !result.data) {
         const message = getErrorMessage(result.error, 'Unable to load bathroom details right now.');
-        setBathroomDetail(null);
+
+        if (showLoadingState) {
+          setBathroomDetail(null);
+        }
+
         setErrorMessage(message);
         showToast({
           title: 'Detail unavailable',
@@ -132,7 +184,11 @@ export default function BathroomDetailScreen() {
       setBathroomDetail(result.data);
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to load bathroom details right now.');
-      setBathroomDetail(null);
+
+      if (showLoadingState) {
+        setBathroomDetail(null);
+      }
+
       setErrorMessage(message);
       showToast({
         title: 'Detail unavailable',
@@ -140,73 +196,175 @@ export default function BathroomDetailScreen() {
         variant: 'error',
       });
     } finally {
-      setIsLoading(false);
+      if (showLoadingState) {
+        setIsLoading(false);
+      }
     }
   }, [bathroomId, showToast]);
+
+  const loadVisibleCode = useCallback(async () => {
+    if (!bathroomId || !bathroomDetail?.code_id || !shouldRevealCode) {
+      setRevealedCode(null);
+      setCodeErrorMessage(null);
+      setIsLoadingCode(false);
+      return;
+    }
+
+    setIsLoadingCode(true);
+    setCodeErrorMessage(null);
+
+    try {
+      const result = await fetchLatestVisibleBathroomCode(bathroomId);
+
+      if (result.error) {
+        setRevealedCode(null);
+        setCodeErrorMessage(getErrorMessage(result.error, 'Unable to load the current bathroom code right now.'));
+        return;
+      }
+
+      if (!result.data) {
+        setRevealedCode(null);
+        setCodeErrorMessage('The latest verified bathroom code is not available right now.');
+        return;
+      }
+
+      setRevealedCode(result.data);
+      setCodeErrorMessage(null);
+    } catch (error) {
+      setRevealedCode(null);
+      setCodeErrorMessage(getErrorMessage(error, 'Unable to load the current bathroom code right now.'));
+    } finally {
+      setIsLoadingCode(false);
+    }
+  }, [bathroomDetail?.code_id, bathroomId, shouldRevealCode]);
+
+  const refreshTrustSignals = useCallback(async () => {
+    await Promise.all([loadBathroomDetail(false), loadVisibleCode()]);
+  }, [loadBathroomDetail, loadVisibleCode]);
+
+  useRealtimeCode({
+    bathroomId: bathroomId || null,
+    onChange: refreshTrustSignals,
+  });
+
+  const { currentVote, isSubmittingVote, submitVerificationVote } = useBathroomCodeVerification({
+    bathroomId,
+    codeId: bathroomDetail?.code_id ?? null,
+    onVoteRecorded: refreshTrustSignals,
+  });
+  const { isLoadingPhotos, isUploadingPhoto, photos, photosError, uploadPhotoProof } = useBathroomPhotos({
+    bathroomId,
+    includeProtectedTypes: Boolean(visibleCodeValue),
+  });
 
   useEffect(() => {
     void loadBathroomDetail();
   }, [loadBathroomDetail]);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const loadVisibleCode = async () => {
-      if (!bathroomId || !bathroomDetail?.code_id || !shouldRevealCode) {
-        if (isMounted) {
-          setRevealedCode(null);
-          setCodeErrorMessage(null);
-          setIsLoadingCode(false);
-        }
-        return;
-      }
-
-      setIsLoadingCode(true);
-      setCodeErrorMessage(null);
-
-      try {
-        const result = await fetchLatestVisibleBathroomCode(bathroomId);
-
-        if (!isMounted) {
-          return;
-        }
-
-        if (result.error) {
-          setRevealedCode(null);
-          setCodeErrorMessage(getErrorMessage(result.error, 'Unable to load the current bathroom code right now.'));
-          return;
-        }
-
-        if (!result.data) {
-          setRevealedCode(null);
-          setCodeErrorMessage('The latest verified bathroom code is not available right now.');
-          return;
-        }
-
-        setRevealedCode(result.data);
-        setCodeErrorMessage(null);
-      } catch (error) {
-        if (isMounted) {
-          setRevealedCode(null);
-          setCodeErrorMessage(getErrorMessage(error, 'Unable to load the current bathroom code right now.'));
-        }
-      } finally {
-        if (isMounted) {
-          setIsLoadingCode(false);
-        }
-      }
-    };
-
     void loadVisibleCode();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [bathroomDetail?.code_id, bathroomId, shouldRevealCode]);
+  }, [loadVisibleCode]);
 
   const handleUnlockWithAd = useCallback(() => {
     void unlockWithAd();
   }, [unlockWithAd]);
+
+  const handleWorkedVote = useCallback(async () => {
+    setPendingVerificationVote(1);
+
+    try {
+      await submitVerificationVote(1);
+    } finally {
+      setPendingVerificationVote(null);
+    }
+  }, [submitVerificationVote]);
+
+  const handleFailedVote = useCallback(async () => {
+    if (!bathroomDetail) {
+      return;
+    }
+
+    setPendingVerificationVote(-1);
+
+    try {
+      const outcome = await submitVerificationVote(-1);
+
+      if (outcome === 'completed' || outcome === 'queued_retry') {
+        pushSafely(
+          router,
+          routes.modal.reportBathroom(bathroomDetail.id, 'wrong_code'),
+          routes.bathroomDetail(bathroomDetail.id)
+        );
+      }
+    } finally {
+      setPendingVerificationVote(null);
+    }
+  }, [bathroomDetail, router, submitVerificationVote]);
+
+  const handleUploadPhotoProof = useCallback(async () => {
+    if (!bathroomId) {
+      return;
+    }
+
+    setIsPickingPhoto(true);
+
+    try {
+      const permissionResponse = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+      if (!permissionResponse.granted) {
+        showToast({
+          title: 'Photo permission needed',
+          message: 'Allow photo access to attach proof photos from your library.',
+          variant: 'warning',
+        });
+        return;
+      }
+
+      const pickerResult = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [4, 3],
+        mediaTypes: ['images'],
+        quality: 0.82,
+        selectionLimit: 1,
+      });
+
+      if (pickerResult.canceled || !pickerResult.assets.length) {
+        return;
+      }
+
+      const selectedAsset = pickerResult.assets[0];
+      const parsedPhoto = bathroomPhotoSchema.safeParse({
+        uri: selectedAsset.uri,
+        fileName: selectedAsset.fileName ?? null,
+        mimeType: selectedAsset.mimeType ?? null,
+        fileSize: selectedAsset.fileSize ?? null,
+        width: selectedAsset.width || null,
+        height: selectedAsset.height || null,
+      });
+
+      if (!parsedPhoto.success) {
+        showToast({
+          title: 'Photo not accepted',
+          message: getErrorMessage(parsedPhoto.error, 'Select a JPG, PNG, or WEBP photo under 5 MB.'),
+          variant: 'warning',
+        });
+        return;
+      }
+
+      await uploadPhotoProof({
+        photo: parsedPhoto.data,
+        photo_type: selectedPhotoType,
+      });
+    } catch (error) {
+      showToast({
+        title: 'Photo picker unavailable',
+        message: getErrorMessage(error, 'We could not open the photo library right now.'),
+        variant: 'error',
+      });
+    } finally {
+      setIsPickingPhoto(false);
+    }
+  }, [bathroomId, selectedPhotoType, showToast, uploadPhotoProof]);
 
   const handleOpenDirections = useCallback(async () => {
     if (!bathroomDetail) {
@@ -293,8 +451,13 @@ export default function BathroomDetailScreen() {
             <Text className="mt-3 text-base leading-6 text-white/80">{address}</Text>
           </View>
 
+          <BathroomStatusBanner bathroomId={bathroomDetail.id} />
+
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
-            <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Access Summary</Text>
+            <View className="flex-row items-center justify-between gap-3">
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Access Summary</Text>
+              <LiveCodeBadge isVisible={Boolean(bathroomDetail.code_id)} />
+            </View>
             <Text className="mt-3 text-2xl font-bold text-ink-900">
               {bathroomDetail.code_id ? 'Code submitted' : 'No code submitted yet'}
             </Text>
@@ -319,6 +482,13 @@ export default function BathroomDetailScreen() {
             ) : null}
           </View>
 
+          <CodeConfidenceCard
+            confidenceScore={trustScore}
+            downVotes={trustDownVotes}
+            lastVerifiedAt={trustLastVerifiedAt}
+            upVotes={trustUpVotes}
+          />
+
           <CodeRevealCard
             hasCode={Boolean(bathroomDetail.code_id)}
             codeValue={visibleCodeValue}
@@ -328,12 +498,84 @@ export default function BathroomDetailScreen() {
             isLoadingCode={isLoadingCode}
             isUnlockingWithAd={isUnlockingWithAd}
             isPremiumUser={isPremiumUser}
+            requiresAuthForUnlock={!user}
             isRewardedUnlockActive={hasRewardedCodeUnlock}
             isAdUnlockAvailable={isAdUnlockAvailable}
             unavailableReason={adUnlockUnavailableReason}
             issueMessage={codeRevealIssueMessage}
             onUnlockWithAd={handleUnlockWithAd}
           />
+
+          <CodeVerificationCard
+            currentVote={currentVote}
+            hasCode={Boolean(bathroomDetail.code_id)}
+            isSubmitting={isSubmittingVote}
+            onFailed={() => {
+              void handleFailedVote();
+            }}
+            onWorked={() => {
+              void handleWorkedVote();
+            }}
+            pendingVote={pendingVerificationVote}
+          />
+
+          <PhotoProofGallery isCodeVisible={Boolean(visibleCodeValue)} photos={photos} />
+
+          {isLoadingPhotos ? (
+            <Text className="mt-4 text-sm text-ink-600">Loading the latest community proof photos...</Text>
+          ) : null}
+
+          {photosError ? (
+            <Text className="mt-4 text-sm text-warning">{photosError}</Text>
+          ) : null}
+
+          <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
+            <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Add Photo Proof</Text>
+            <Text className="mt-3 text-base leading-6 text-ink-600">
+              Upload the entrance, interior, keypad, or sign so the next person can trust what they are seeing.
+            </Text>
+
+            <View className="mt-4 gap-3">
+              {PHOTO_TYPE_OPTIONS.map((option) => {
+                const isSelected = selectedPhotoType === option.value;
+
+                return (
+                  <Pressable
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: isSelected }}
+                    className={[
+                      'rounded-2xl border px-4 py-4',
+                      isSelected ? 'border-brand-600 bg-brand-50' : 'border-surface-strong bg-surface-base',
+                    ].join(' ')}
+                    key={option.value}
+                    onPress={() => setSelectedPhotoType(option.value)}
+                  >
+                    <Text className={['text-base font-bold', isSelected ? 'text-brand-700' : 'text-ink-900'].join(' ')}>
+                      {option.label}
+                    </Text>
+                    <Text className={['mt-1 text-sm', isSelected ? 'text-brand-700' : 'text-ink-600'].join(' ')}>
+                      {option.description}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+
+            {(selectedPhotoType === 'keypad' || selectedPhotoType === 'sign') ? (
+              <Text className="mt-4 text-sm text-ink-600">
+                Keypad and sign proof stays protected until users reveal the code.
+              </Text>
+            ) : null}
+
+            <Button
+              className="mt-5"
+              label={isUploadingPhoto || isPickingPhoto ? 'Uploading Photo Proof...' : 'Upload Photo Proof'}
+              loading={isUploadingPhoto || isPickingPhoto}
+              onPress={() => {
+                void handleUploadPhotoProof();
+              }}
+            />
+          </View>
 
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Facility Notes</Text>

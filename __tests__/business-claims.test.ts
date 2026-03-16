@@ -45,6 +45,7 @@ const baseBathroom: BathroomDetailRow = {
   down_votes: null,
   last_verified_at: null,
   expires_at: null,
+  cleanliness_avg: null,
   updated_at: '2026-03-15T12:00:00.000Z',
 };
 

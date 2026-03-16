@@ -6,6 +6,7 @@ interface FilterStoreState {
   filters: BathroomFilters;
   setSearchQuery: (query: string) => void;
   toggleFilter: (filterName: keyof BathroomFilters) => void;
+  setMinCleanlinessRating: (rating: number | null) => void;
   resetFilters: () => void;
 }
 
@@ -13,6 +14,9 @@ const defaultFilters: BathroomFilters = {
   isAccessible: null,
   isLocked: null,
   isCustomerOnly: null,
+  openNow: null,
+  noCodeRequired: null,
+  minCleanlinessRating: null,
 };
 
 export const useFilterStore = create<FilterStoreState>((set) => ({
@@ -24,6 +28,13 @@ export const useFilterStore = create<FilterStoreState>((set) => ({
       filters: {
         ...state.filters,
         [filterName]: state.filters[filterName] ? null : true,
+      },
+    })),
+  setMinCleanlinessRating: (minCleanlinessRating) =>
+    set((state) => ({
+      filters: {
+        ...state.filters,
+        minCleanlinessRating,
       },
     })),
   resetFilters: () =>

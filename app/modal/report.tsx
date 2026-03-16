@@ -55,10 +55,22 @@ type ReportFormState = {
 
 export default function ReportBathroomModalScreen() {
   const router = useRouter();
-  const { bathroom_id } = useLocalSearchParams<{ bathroom_id?: string | string[] }>();
+  const { bathroom_id, report_type } = useLocalSearchParams<{
+    bathroom_id?: string | string[];
+    report_type?: ReportType | ReportType[] | string | string[];
+  }>();
   const { isSubmitting, submitReport } = useBathroomReports();
+  const preselectedReportType = useMemo(() => {
+    const rawValue = Array.isArray(report_type) ? report_type[0] : report_type;
+
+    if (!rawValue) {
+      return null;
+    }
+
+    return REPORT_OPTIONS.some((option) => option.value === rawValue) ? (rawValue as ReportType) : null;
+  }, [report_type]);
   const [formState, setFormState] = useState<ReportFormState>({
-    reportType: null,
+    reportType: preselectedReportType,
     notes: '',
   });
   const [fieldErrors, setFieldErrors] = useState<Partial<Record<keyof ReportCreateFormValues, string>>>({});
@@ -147,6 +159,11 @@ export default function ReportBathroomModalScreen() {
               <Text className="mt-2 text-sm leading-6 text-white/85">
                 Select what went wrong and add details. We use reports to protect map quality.
               </Text>
+              {preselectedReportType === 'wrong_code' ? (
+                <Text className="mt-3 text-sm leading-6 text-white">
+                  Wrong code is already selected because you marked this access code as failed.
+                </Text>
+              ) : null}
             </View>
 
             <View className="mt-6 rounded-[30px] border border-surface-strong bg-surface-card p-5">

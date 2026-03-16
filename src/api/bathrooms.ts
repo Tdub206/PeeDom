@@ -127,7 +127,7 @@ async function fetchNearbyBathroomsFallback(
     }
 
     return {
-      data: parsedData.data,
+      data: applyBathroomFilters(parsedData.data as PublicBathroomDetailRow[], options.filters),
       error: null,
     };
   } catch (error) {
@@ -319,7 +319,10 @@ export async function searchBathrooms(
     }
 
     return {
-      data: sortBathroomsByDistance(parsedData.data, options.origin),
+      data: sortBathroomsByDistance(
+        applyBathroomFilters(parsedData.data as PublicBathroomDetailRow[], options.filters),
+        options.origin
+      ),
       error: null,
     };
   } catch (error) {

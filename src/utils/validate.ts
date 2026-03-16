@@ -145,6 +145,12 @@ export const bathroomPhotoSchema = z
     }
   });
 
+export const bathroomPhotoProofSchema = z.object({
+  bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+  photo_type: z.enum(['exterior', 'interior', 'keypad', 'sign']),
+  photo: bathroomPhotoSchema,
+});
+
 export const reportCreateSchema = z.object({
   bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
   report_type: z.enum([
@@ -221,6 +227,7 @@ export const claimBusinessSchema = z
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
 export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
+export type BathroomPhotoProofFormValues = z.infer<typeof bathroomPhotoProofSchema>;
 export type ClaimBusinessFormValues = z.infer<typeof claimBusinessSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;

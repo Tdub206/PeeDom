@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useMemo } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Linking, Platform, Pressable, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BathroomCard } from '@/components/BathroomCard';
 import { BottomSheet } from '@/components/BottomSheet';
-import { Button } from '@/components/Button';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
+import { MapFilterDrawer } from '@/components/MapFilterDrawer';
 import { BathroomMapView } from '@/components/MapView';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
@@ -25,12 +25,17 @@ export default function MapTab() {
   const { showToast } = useToast();
   const { requireAuth } = useAuth();
   const filters = useFilterStore((state) => state.filters);
+  const resetFilters = useFilterStore((state) => state.resetFilters);
+  const setMinCleanlinessRating = useFilterStore((state) => state.setMinCleanlinessRating);
+  const toggleFilter = useFilterStore((state) => state.toggleFilter);
   const activeBathroomId = useMapStore((state) => state.activeBathroomId);
   const centerOnUser = useMapStore((state) => state.centerOnUser);
   const hasCenteredOnUser = useMapStore((state) => state.hasCenteredOnUser);
   const region = useMapStore((state) => state.region);
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
   const setRegion = useMapStore((state) => state.setRegion);
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const {
     coordinates,
     error_message,
@@ -48,6 +53,42 @@ export default function MapTab() {
     () => bathrooms.find((bathroom) => bathroom.id === activeBathroomId) ?? null,
     [activeBathroomId, bathrooms]
   );
+  const activeFilterCount = useMemo(() => {
+    let count = 0;
+
+    if (filters.isAccessible) {
+      count += 1;
+    }
+
+    if (filters.isLocked) {
+      count += 1;
+    }
+
+    if (filters.isCustomerOnly) {
+      count += 1;
+    }
+
+    if (filters.openNow) {
+      count += 1;
+    }
+
+    if (filters.noCodeRequired) {
+      count += 1;
+    }
+
+    if (typeof filters.minCleanlinessRating === 'number') {
+      count += 1;
+    }
+
+    return count;
+  }, [
+    filters.isAccessible,
+    filters.isCustomerOnly,
+    filters.isLocked,
+    filters.minCleanlinessRating,
+    filters.noCodeRequired,
+    filters.openNow,
+  ]);
   const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(bathrooms);
 
   useEffect(() => {
@@ -98,6 +139,89 @@ export default function MapTab() {
     setActiveBathroomId(bathroomId);
     void Haptics.selectionAsync().catch(() => undefined);
   }, [setActiveBathroomId]);
+
+  const handleOpenFilterDrawer = useCallback(() => {
+    setActiveBathroomId(null);
+    setIsFilterDrawerOpen(true);
+  }, [setActiveBathroomId]);
+
+  const handleCloseFilterDrawer = useCallback(() => {
+    setIsFilterDrawerOpen(false);
+  }, []);
+
+  const handleResetFilters = useCallback(() => {
+    resetFilters();
+  }, [resetFilters]);
+
+  const handleToggleFilter = useCallback(
+    (filterKey: 'isAccessible' | 'isLocked' | 'isCustomerOnly' | 'openNow' | 'noCodeRequired') => {
+      toggleFilter(filterKey);
+    },
+    [toggleFilter]
+  );
+
+  const handleSetMinCleanlinessRating = useCallback(
+    (rating: number | null) => {
+      setMinCleanlinessRating(rating);
+    },
+    [setMinCleanlinessRating]
+  );
+
+  const handleNavigateToBathroom = useCallback(
+    async (bathroom: BathroomListItem) => {
+      const encodedLabel = encodeURIComponent(bathroom.place_name);
+      const latitude = bathroom.coordinates.latitude;
+      const longitude = bathroom.coordinates.longitude;
+      const appleMapsUrl = `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodedLabel}`;
+      const googleNavigationUrl = `google.navigation:q=${latitude},${longitude}`;
+      const browserFallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
+
+      setIsOpeningDirections(true);
+
+      try {
+        if (Platform.OS === 'ios') {
+          const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
+
+          if (canOpenAppleMaps) {
+            await Linking.openURL(appleMapsUrl);
+            return;
+          }
+        } else {
+          const canOpenGoogleNavigation = await Linking.canOpenURL(googleNavigationUrl);
+
+          if (canOpenGoogleNavigation) {
+            await Linking.openURL(googleNavigationUrl);
+            return;
+          }
+        }
+
+        await Linking.openURL(browserFallbackUrl);
+      } catch (error) {
+        showToast({
+          title: 'Navigation unavailable',
+          message: getErrorMessage(error, 'We could not open navigation right now.'),
+          variant: 'error',
+        });
+      } finally {
+        setIsOpeningDirections(false);
+      }
+    },
+    [showToast]
+  );
+
+  const handleOpenBathroomDetail = useCallback(
+    (bathroomId: string) => {
+      pushSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+    },
+    [router]
+  );
+
+  const handleOpenReport = useCallback(
+    (bathroomId: string) => {
+      pushSafely(router, routes.modal.reportBathroom(bathroomId), routes.tabs.map);
+    },
+    [router]
+  );
 
   const handleOpenAddBathroom = useCallback(() => {
     const authenticatedUser = requireAuth({
@@ -171,8 +295,10 @@ export default function MapTab() {
 
         <View className="mt-4 flex-1">
           <BathroomMapView
+            activeFilterCount={activeFilterCount}
             bathrooms={bathrooms}
             isRefreshingLocation={is_refreshing}
+            onFilterPress={handleOpenFilterDrawer}
             onLocateMe={() => {
               void handleLocateMe();
             }}
@@ -183,30 +309,37 @@ export default function MapTab() {
             userLocation={coordinates}
           />
 
-          <BottomSheet isOpen={Boolean(activeBathroom)} onClose={() => setActiveBathroomId(null)}>
+          <BottomSheet isOpen={Boolean(activeBathroom)} onClose={() => setActiveBathroomId(null)} snapPoints={['44%', '76%']}>
             <View className="flex-1 px-4 pb-6 pt-2">
               {activeBathroom ? (
-                <>
-                  <BathroomCard
-                    isFavorited={isFavorite(activeBathroom.id)}
-                    isFavoritePending={isFavoritePending(activeBathroom.id)}
-                    item={activeBathroom}
-                    onPress={() => router.push(routes.bathroomDetail(activeBathroom.id))}
-                    onToggleFavorite={() => {
-                      void handleToggleFavorite(activeBathroom);
-                    }}
-                  />
-                  <Button
-                    className="mt-4"
-                    label="Open Full Detail"
-                    onPress={() => router.push(routes.bathroomDetail(activeBathroom.id))}
-                  />
-                </>
+                <MapDetailSheetCard
+                  bathroom={activeBathroom}
+                  isFavorited={isFavorite(activeBathroom.id)}
+                  isFavoritePending={isFavoritePending(activeBathroom.id)}
+                  isNavigating={isOpeningDirections}
+                  onNavigate={() => {
+                    void handleNavigateToBathroom(activeBathroom);
+                  }}
+                  onOpenDetail={() => handleOpenBathroomDetail(activeBathroom.id)}
+                  onReport={() => handleOpenReport(activeBathroom.id)}
+                  onToggleFavorite={() => {
+                    void handleToggleFavorite(activeBathroom);
+                  }}
+                />
               ) : null}
             </View>
           </BottomSheet>
         </View>
       </View>
+
+      <MapFilterDrawer
+        filters={filters}
+        isOpen={isFilterDrawerOpen}
+        onClose={handleCloseFilterDrawer}
+        onReset={handleResetFilters}
+        onSetMinCleanlinessRating={handleSetMinCleanlinessRating}
+        onToggleFilter={handleToggleFilter}
+      />
     </SafeAreaView>
   );
 }

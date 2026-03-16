@@ -12,6 +12,13 @@ const jsonValueSchema: z.ZodType<Json> = z.lazy(() =>
 
 const rawTextSchema = z.string().min(1);
 
+export const notificationPrefsSchema = z.object({
+  code_verified: z.boolean(),
+  favorite_update: z.boolean(),
+  nearby_new: z.boolean(),
+  streak_reminder: z.boolean(),
+});
+
 export const dbProfileSchema = z.object({
   id: rawTextSchema,
   email: z.string().email().nullable(),
@@ -19,7 +26,16 @@ export const dbProfileSchema = z.object({
   role: z.enum(['user', 'business', 'admin']),
   points_balance: z.number().int(),
   is_premium: z.boolean(),
+  premium_expires_at: dateTimeStringSchema.nullable(),
   is_suspended: z.boolean(),
+  current_streak: z.number().int().nonnegative(),
+  longest_streak: z.number().int().nonnegative(),
+  last_contribution_date: z.string().nullable(),
+  streak_multiplier: z.number(),
+  streak_multiplier_expires_at: dateTimeStringSchema.nullable(),
+  push_token: z.string().nullable(),
+  push_enabled: z.boolean(),
+  notification_prefs: notificationPrefsSchema,
   created_at: dateTimeStringSchema,
   updated_at: dateTimeStringSchema,
 });
@@ -56,7 +72,92 @@ export const dbBathroomPhotoSchema = z.object({
   width: z.number().int().nullable(),
   height: z.number().int().nullable(),
   is_primary: z.boolean(),
+  photo_type: z.enum(['exterior', 'interior', 'keypad', 'sign']),
+  moderation_status: z.enum(['approved', 'pending', 'rejected']),
   created_at: dateTimeStringSchema,
+});
+
+export const dbCodeVoteSchema = z.object({
+  id: rawTextSchema,
+  code_id: rawTextSchema,
+  user_id: rawTextSchema,
+  vote: z.union([z.literal(-1), z.literal(1)]),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const dbCodeRevealGrantSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  user_id: rawTextSchema,
+  grant_source: z.literal('rewarded_ad'),
+  expires_at: dateTimeStringSchema,
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const dbPointEventSchema = z.object({
+  id: rawTextSchema,
+  user_id: rawTextSchema,
+  event_type: z.enum([
+    'bathroom_added',
+    'bathroom_photo_uploaded',
+    'code_submitted',
+    'code_verification',
+    'report_resolved',
+    'code_milestone',
+    'premium_redeemed',
+  ]),
+  reference_table: rawTextSchema,
+  reference_id: rawTextSchema,
+  points_awarded: z.number().int(),
+  metadata: jsonValueSchema,
+  created_at: dateTimeStringSchema,
+});
+
+export const dbUserBadgeSchema = z.object({
+  id: rawTextSchema,
+  user_id: rawTextSchema,
+  badge_key: rawTextSchema,
+  badge_name: rawTextSchema,
+  badge_description: rawTextSchema,
+  badge_category: z.enum(['milestone', 'streak', 'time', 'accessibility', 'city']),
+  context_city_slug: z.string().nullable(),
+  awarded_at: dateTimeStringSchema,
+});
+
+export const gamificationSummarySchema = z.object({
+  total_bathrooms_added: z.number().int(),
+  total_codes_submitted: z.number().int(),
+  total_code_verifications: z.number().int(),
+  total_reports_filed: z.number().int(),
+  total_photos_uploaded: z.number().int(),
+  total_badges: z.number().int(),
+  primary_city: z.string().nullable(),
+  primary_state: z.string().nullable(),
+});
+
+export const leaderboardEntrySchema = z.object({
+  user_id: rawTextSchema,
+  display_name: rawTextSchema,
+  total_points: z.number().int(),
+  bathrooms_added: z.number().int(),
+  codes_submitted: z.number().int(),
+  verifications: z.number().int(),
+  photos_uploaded: z.number().int(),
+  reports_resolved: z.number().int(),
+  leaderboard_scope: z.enum(['global', 'state', 'city']),
+  scope_label: rawTextSchema,
+  rank: z.number().int().positive(),
+});
+
+export const premiumRedemptionSchema = z.object({
+  user_id: rawTextSchema,
+  months_redeemed: z.number().int().positive(),
+  points_spent: z.number().int().positive(),
+  remaining_points: z.number().int().nonnegative(),
+  premium_expires_at: dateTimeStringSchema,
+  is_premium: z.boolean(),
 });
 
 export const dbFavoriteSchema = z.object({
@@ -75,6 +176,22 @@ export const dbReportSchema = z.object({
   notes: z.string().nullable(),
   created_at: dateTimeStringSchema,
   updated_at: dateTimeStringSchema,
+});
+
+export const dbBathroomStatusEventSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  reported_by: rawTextSchema,
+  status: z.enum(['clean', 'dirty', 'closed', 'out_of_order', 'long_wait']),
+  note: z.string().nullable(),
+  expires_at: dateTimeStringSchema,
+  created_at: dateTimeStringSchema,
+});
+
+export const notificationSettingsResultSchema = z.object({
+  success: z.boolean(),
+  error: z.string().optional(),
+  key: z.string().optional(),
 });
 
 export const bathroomAccessCodeSchema = z.object({
@@ -113,6 +230,7 @@ export const publicBathroomDetailRowSchema = z.object({
   down_votes: z.number().int().nullable(),
   last_verified_at: dateTimeStringSchema.nullable(),
   expires_at: dateTimeStringSchema.nullable(),
+  cleanliness_avg: z.number().nullable(),
   updated_at: dateTimeStringSchema,
 });
 

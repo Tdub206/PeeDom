@@ -16,6 +16,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { LocationProvider } from '@/contexts/LocationContext';
 import { useOfflineSync } from '@/hooks/useOfflineSync';
+import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { initializeAnalytics, trackAnalyticsEvent } from '@/lib/analytics';
 import { initializeQueryLifecycleManagers } from '@/lib/query-lifecycle';
 import { ToastProvider } from '@/contexts/ToastContext';
@@ -35,6 +36,7 @@ function RootNavigator() {
   const { loading } = useAuth();
   const hasTrackedBootstrap = useRef(false);
   useOfflineSync();
+  usePushNotifications();
   const isAppReady = !loading && (fontsLoaded || Boolean(fontError));
 
   useEffect(() => {

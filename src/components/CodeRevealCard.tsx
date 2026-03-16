@@ -11,6 +11,7 @@ interface CodeRevealCardProps {
   isLoadingCode: boolean;
   isUnlockingWithAd: boolean;
   isPremiumUser: boolean;
+  requiresAuthForUnlock?: boolean;
   isRewardedUnlockActive: boolean;
   isAdUnlockAvailable: boolean;
   unavailableReason?: string | null;
@@ -41,6 +42,7 @@ function CodeRevealCardComponent({
   isLoadingCode,
   isUnlockingWithAd,
   isPremiumUser,
+  requiresAuthForUnlock = false,
   isRewardedUnlockActive,
   isAdUnlockAvailable,
   unavailableReason,
@@ -85,7 +87,9 @@ function CodeRevealCardComponent({
           <Text className="mt-3 text-base leading-6 text-ink-600">
             {isPremiumUser
               ? 'Premium accounts can reveal verified bathroom codes instantly.'
-              : 'Watch a rewarded AdMob ad to reveal the latest verified bathroom code on this device.'}
+              : requiresAuthForUnlock
+                ? 'Sign in and watch a rewarded ad to reveal the latest verified bathroom code for your account.'
+                : 'Watch a rewarded AdMob ad to reveal the latest verified bathroom code for your account.'}
           </Text>
 
           {!isPremiumUser ? (
@@ -97,7 +101,9 @@ function CodeRevealCardComponent({
                   ? 'Loading Rewarded Ad...'
                   : isRevealPending
                     ? 'Revealing Code...'
-                    : 'Watch Ad To Reveal Code'
+                    : requiresAuthForUnlock
+                      ? 'Sign In To Reveal Code'
+                      : 'Watch Ad To Reveal Code'
               }
               loading={isUnlockingWithAd}
               onPress={onUnlockWithAd}

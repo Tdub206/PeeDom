@@ -28,6 +28,7 @@ export interface SessionState {
     display_name: string | null;
     points_balance: number;
     is_premium: boolean;
+    premium_expires_at?: string | null;
   } | null;
 }
 
@@ -38,9 +39,11 @@ export interface SessionState {
 export type IntentType =
   | 'favorite_toggle'
   | 'submit_code'
+  | 'reveal_code'
   | 'vote_code'
   | 'report_bathroom'
   | 'add_bathroom'
+  | 'upload_bathroom_photo'
   | 'claim_business'
   | 'rate_cleanliness';
 
@@ -75,6 +78,11 @@ export type MutationType =
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
+}
+
+export interface CodeVoteMutationPayload {
+  code_id: string;
+  vote: -1 | 1;
 }
 
 export interface QueuedMutation {
@@ -149,6 +157,9 @@ export interface BathroomFilters {
   isAccessible: boolean | null;
   isLocked: boolean | null;
   isCustomerOnly: boolean | null;
+  openNow: boolean | null;
+  noCodeRequired: boolean | null;
+  minCleanlinessRating: number | null;
 }
 
 export interface BathroomFlags {
@@ -174,6 +185,8 @@ export interface BathroomListItem {
   address: string;
   coordinates: Coordinates;
   flags: BathroomFlags;
+  hours: HoursData | null;
+  cleanliness_avg: number | null;
   distance_meters?: number;
   primary_code_summary: CodeSummary;
   sync: SyncMetadata;
@@ -223,6 +236,16 @@ export interface BathroomPhotoUploadInput {
   height?: number | null;
 }
 
+export type BathroomPhotoType = 'exterior' | 'interior' | 'keypad' | 'sign';
+export type BathroomPhotoModerationStatus = 'approved' | 'pending' | 'rejected';
+export type CodeRevealGrantSource = 'rewarded_ad';
+
+export interface BathroomPhotoProofCreateInput {
+  bathroom_id: string;
+  photo: BathroomPhotoUploadInput;
+  photo_type: BathroomPhotoType;
+}
+
 export interface BathroomCreateInput {
   place_name: string;
   address_line1?: string;
@@ -264,11 +287,14 @@ export interface BathroomPhoto {
   uploaded_by: string;
   storage_bucket: string;
   storage_path: string;
+  public_url: string;
   content_type: string;
   file_size_bytes: number | null;
   width: number | null;
   height: number | null;
   is_primary: boolean;
+  photo_type: BathroomPhotoType;
+  moderation_status: BathroomPhotoModerationStatus;
   created_at: string;
 }
 
@@ -388,8 +414,112 @@ export interface UserProfile {
   role: UserRole;
   points_balance: number;
   is_premium: boolean;
+  premium_expires_at: string | null;
   is_suspended: boolean;
+  current_streak: number;
+  longest_streak: number;
+  last_contribution_date: string | null;
+  streak_multiplier: number;
+  streak_multiplier_expires_at: string | null;
+  push_token: string | null;
+  push_enabled: boolean;
+  notification_prefs: NotificationPrefs;
   created_at: string;
+  updated_at: string;
+}
+
+export interface NotificationPrefs {
+  code_verified: boolean;
+  favorite_update: boolean;
+  nearby_new: boolean;
+  streak_reminder: boolean;
+}
+
+export const DEFAULT_NOTIFICATION_PREFS: NotificationPrefs = {
+  code_verified: true,
+  favorite_update: true,
+  nearby_new: false,
+  streak_reminder: true,
+};
+
+export type NotificationType =
+  | 'favorite_update'
+  | 'code_verified'
+  | 'nearby_new'
+  | 'streak_reminder';
+
+export interface NotificationRouteData {
+  type?: NotificationType;
+  route?: string;
+  bathroom_id?: string;
+}
+
+export type BathroomLiveStatus = Database['public']['Tables']['bathroom_status_events']['Row']['status'];
+
+export interface BathroomStatusEvent {
+  id: string;
+  bathroom_id: string;
+  reported_by: string;
+  status: BathroomLiveStatus;
+  note: string | null;
+  expires_at: string;
+  created_at: string;
+}
+
+export interface NotificationSettingsResult {
+  success: boolean;
+  error?: string;
+  key?: string;
+}
+
+export type PointEventType = Database['public']['Tables']['point_events']['Row']['event_type'];
+export type UserBadgeCategory = Database['public']['Tables']['user_badges']['Row']['badge_category'];
+export type LeaderboardScope = 'global' | 'state' | 'city';
+export type LeaderboardTimeframe = 'weekly' | 'all_time';
+
+export interface UserBadge {
+  id: string;
+  user_id: string;
+  badge_key: string;
+  badge_name: string;
+  badge_description: string;
+  badge_category: UserBadgeCategory;
+  context_city_slug: string | null;
+  awarded_at: string;
+}
+
+export interface GamificationSummary {
+  total_bathrooms_added: number;
+  total_codes_submitted: number;
+  total_code_verifications: number;
+  total_reports_filed: number;
+  total_photos_uploaded: number;
+  total_badges: number;
+  primary_city: string | null;
+  primary_state: string | null;
+}
+
+export interface LeaderboardEntry {
+  user_id: string;
+  display_name: string;
+  total_points: number;
+  bathrooms_added: number;
+  codes_submitted: number;
+  verifications: number;
+  photos_uploaded: number;
+  reports_resolved: number;
+  leaderboard_scope: LeaderboardScope;
+  scope_label: string;
+  rank: number;
+}
+
+export interface PremiumRedemptionResult {
+  user_id: string;
+  months_redeemed: number;
+  points_spent: number;
+  remaining_points: number;
+  premium_expires_at: string;
+  is_premium: boolean;
 }
 
 // ============================================================================
@@ -451,6 +581,12 @@ export type DbProfile = Database['public']['Tables']['profiles']['Row'];
 export type DbBathroom = Database['public']['Tables']['bathrooms']['Row'];
 export type DbCode = Database['public']['Tables']['bathroom_access_codes']['Row'];
 export type DbFavorite = Database['public']['Tables']['favorites']['Row'];
+export type DbPushSubscription = Database['public']['Tables']['push_subscriptions']['Row'];
 export type DbReport = Database['public']['Tables']['bathroom_reports']['Row'];
 export type DbClaim = Database['public']['Tables']['business_claims']['Row'];
 export type DbBathroomPhoto = Database['public']['Tables']['bathroom_photos']['Row'];
+export type DbCodeVote = Database['public']['Tables']['code_votes']['Row'];
+export type DbCodeRevealGrant = Database['public']['Tables']['code_reveal_grants']['Row'];
+export type DbPointEvent = Database['public']['Tables']['point_events']['Row'];
+export type DbUserBadge = Database['public']['Tables']['user_badges']['Row'];
+export type DbBathroomStatusEvent = Database['public']['Tables']['bathroom_status_events']['Row'];

@@ -1,26 +1,32 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'expo-router';
+import { fetchBathroomCodeRevealAccess, grantBathroomCodeRevealAccess } from '@/api/access-codes';
+import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { getAdMobAvailability, showRewardedCodeRevealAd } from '@/lib/admob';
-import { clearExpiredCodeUnlocks, grantCodeUnlock, hasActiveCodeUnlock } from '@/lib/code-unlocks';
+import { hasActivePremium } from '@/lib/gamification';
+import { pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
 interface UseRewardedCodeUnlockOptions {
   bathroomId: string | null;
-  codeExpiresAt?: string | null;
   userId?: string | null;
 }
 
 export function useRewardedCodeUnlock({
   bathroomId,
-  codeExpiresAt,
   userId,
 }: UseRewardedCodeUnlockOptions) {
+  const router = useRouter();
+  const { profile, requireAuth } = useAuth();
   const { showToast } = useToast();
   const [hasUnlock, setHasUnlock] = useState(false);
   const [isCheckingUnlock, setIsCheckingUnlock] = useState(false);
   const [isUnlocking, setIsUnlocking] = useState(false);
   const [unlockIssue, setUnlockIssue] = useState<string | null>(null);
   const adMobAvailability = useMemo(() => getAdMobAvailability(), []);
+  const isPremiumUser = hasActivePremium(profile);
 
   useEffect(() => {
     let isMounted = true;
@@ -34,15 +40,32 @@ export function useRewardedCodeUnlock({
         return;
       }
 
+      if (isPremiumUser) {
+        if (isMounted) {
+          setHasUnlock(true);
+          setUnlockIssue(null);
+          setIsCheckingUnlock(false);
+        }
+        return;
+      }
+
+      if (!userId) {
+        if (isMounted) {
+          setHasUnlock(false);
+          setUnlockIssue(null);
+          setIsCheckingUnlock(false);
+        }
+        return;
+      }
+
       setIsCheckingUnlock(true);
 
       try {
-        await clearExpiredCodeUnlocks();
-        const unlocked = await hasActiveCodeUnlock(bathroomId);
+        const unlocked = await fetchBathroomCodeRevealAccess(bathroomId);
 
         if (isMounted) {
-          setHasUnlock(unlocked);
-          setUnlockIssue(null);
+          setHasUnlock(unlocked.data);
+          setUnlockIssue(unlocked.error ? getErrorMessage(unlocked.error, 'Unable to restore your rewarded unlock right now.') : null);
         }
       } catch (error) {
         if (isMounted) {
@@ -61,10 +84,24 @@ export function useRewardedCodeUnlock({
     return () => {
       isMounted = false;
     };
-  }, [bathroomId]);
+  }, [bathroomId, isPremiumUser, userId]);
 
   const unlockWithAd = useCallback(async (): Promise<boolean> => {
     if (!bathroomId) {
+      return false;
+    }
+
+    const authenticatedUser = requireAuth({
+      type: 'reveal_code',
+      route: `/bathroom/${bathroomId}`,
+      params: {
+        bathroom_id: bathroomId,
+      },
+    });
+
+    if (!authenticatedUser) {
+      setUnlockIssue('Sign in to reveal this bathroom code after a rewarded ad.');
+      pushSafely(router, routes.auth.login, routes.auth.login);
       return false;
     }
 
@@ -77,12 +114,24 @@ export function useRewardedCodeUnlock({
       });
 
       if (result.outcome === 'earned') {
-        await grantCodeUnlock(bathroomId, codeExpiresAt);
+        const grantResult = await grantBathroomCodeRevealAccess(bathroomId);
+
+        if (grantResult.error || !grantResult.data) {
+          const message = getErrorMessage(grantResult.error, 'The reward completed, but the code could not be unlocked.');
+          setUnlockIssue(message);
+          showToast({
+            title: 'Unlock failed',
+            message,
+            variant: 'error',
+          });
+          return false;
+        }
+
         setHasUnlock(true);
         setUnlockIssue(null);
         showToast({
           title: 'Code unlocked',
-          message: 'Your rewarded ad completed. The bathroom code is now visible on this device.',
+          message: 'Your rewarded ad completed. The bathroom code is now visible for your account.',
           variant: 'success',
         });
         return true;
@@ -109,7 +158,7 @@ export function useRewardedCodeUnlock({
     } finally {
       setIsUnlocking(false);
     }
-  }, [bathroomId, codeExpiresAt, showToast, userId]);
+  }, [bathroomId, requireAuth, router, showToast, userId]);
 
   return {
     hasUnlock,

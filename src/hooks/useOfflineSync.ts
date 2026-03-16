@@ -2,14 +2,15 @@ import { useCallback, useEffect, useRef } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useQueryClient } from '@tanstack/react-query';
+import { upsertCodeVote } from '@/api/access-codes';
 import { addFavorite, removeFavorite } from '@/api/favorites';
 import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineQueue } from '@/lib/offline-queue';
-import { FavoriteMutationPayload, ReportType } from '@/types';
-import { useToast } from '@/hooks/useToast';
+import { CodeVoteMutationPayload, FavoriteMutationPayload, ReportType } from '@/types';
 
 function isFavoriteMutationPayload(
   payload: Record<string, unknown>
@@ -47,14 +48,25 @@ function isReportMutationPayload(
   );
 }
 
+function isCodeVoteMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & CodeVoteMutationPayload {
+  return (
+    typeof payload.code_id === 'string' &&
+    payload.code_id.length > 0 &&
+    (payload.vote === 1 || payload.vote === -1)
+  );
+}
+
 export function useOfflineSync() {
   const { user } = useAuth();
   const { showToast } = useToast();
   const queryClient = useQueryClient();
   const isConnectedRef = useRef<boolean | null>(null);
+  const userId = user?.id ?? null;
 
   const processQueue = useCallback(async () => {
-    if (!user?.id) {
+    if (!userId) {
       return;
     }
 
@@ -65,7 +77,7 @@ export function useOfflineSync() {
     }
 
     const result = await offlineQueue.process(async (mutation) => {
-      if (mutation.user_id !== user.id) {
+      if (mutation.user_id !== userId) {
         return false;
       }
 
@@ -75,7 +87,7 @@ export function useOfflineSync() {
             return false;
           }
 
-          const addResult = await addFavorite(user.id, mutation.payload.bathroom_id);
+          const addResult = await addFavorite(userId, mutation.payload.bathroom_id);
           return !addResult.error;
         }
         case 'favorite_remove': {
@@ -83,7 +95,7 @@ export function useOfflineSync() {
             return false;
           }
 
-          const removeResult = await removeFavorite(user.id, mutation.payload.bathroom_id);
+          const removeResult = await removeFavorite(userId, mutation.payload.bathroom_id);
           return !removeResult.error;
         }
         case 'report_create': {
@@ -91,12 +103,20 @@ export function useOfflineSync() {
             return false;
           }
 
-          const reportResult = await createBathroomReport(user.id, {
+          const reportResult = await createBathroomReport(userId, {
             bathroom_id: mutation.payload.bathroom_id,
             report_type: mutation.payload.report_type,
             notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
           });
           return !reportResult.error;
+        }
+        case 'code_vote': {
+          if (!isCodeVoteMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const voteResult = await upsertCodeVote(userId, mutation.payload.code_id, mutation.payload.vote);
+          return !voteResult.error;
         }
         default:
           return true;
@@ -112,7 +132,10 @@ export function useOfflineSync() {
 
       await Promise.all([
         queryClient.invalidateQueries({
-          queryKey: ['favorites', user.id],
+          queryKey: ['favorites', userId],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['code-vote'],
         }),
         queryClient.invalidateQueries({
           queryKey: ['bathrooms'],
@@ -139,15 +162,15 @@ export function useOfflineSync() {
         variant: 'warning',
       });
     }
-  }, [queryClient, showToast, user?.id]);
+  }, [queryClient, showToast, userId]);
 
   useEffect(() => {
-    if (!user?.id) {
+    if (!userId) {
       return;
     }
 
-    void offlineQueue.initialize(user.id);
-  }, [user?.id]);
+    void offlineQueue.initialize(userId);
+  }, [userId]);
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {

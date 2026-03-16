@@ -1,14 +1,16 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { AuthError, Session, User } from '@supabase/supabase-js';
+import { clearPushToken } from '@/api/notifications';
 import { useToastContext } from '@/contexts/ToastContext';
 import { clearAnalyticsIdentity, identifyAnalyticsUser } from '@/lib/analytics';
+import { hasActivePremium } from '@/lib/gamification';
 import { storage } from '@/lib/storage';
 import { dbProfileSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 import { classifySupabaseError, SupabaseErrorDetails } from '@/lib/supabase-error';
 import { setSentryUserContext } from '@/lib/sentry';
 import { useAuthStore } from '@/store/useAuthStore';
-import { RequireAuthOptions, ReturnIntent, SessionState, SessionStatus, UserProfile } from '@/types';
+import { DEFAULT_NOTIFICATION_PREFS, RequireAuthOptions, ReturnIntent, SessionState, SessionStatus, UserProfile } from '@/types';
 
 interface AuthContextType {
   sessionState: SessionState;
@@ -48,7 +50,64 @@ function getCachedProfileKey(userId: string): string {
 }
 
 async function readCachedProfile(userId: string): Promise<UserProfile | null> {
-  return storage.get<UserProfile>(getCachedProfileKey(userId));
+  const cachedProfile = await storage.get<Partial<UserProfile> | null>(getCachedProfileKey(userId));
+
+  if (!cachedProfile || cachedProfile.id !== userId || typeof cachedProfile.created_at !== 'string') {
+    return null;
+  }
+
+  return {
+    id: cachedProfile.id,
+    email: typeof cachedProfile.email === 'string' || cachedProfile.email === null ? cachedProfile.email : null,
+    display_name:
+      typeof cachedProfile.display_name === 'string' || cachedProfile.display_name === null
+        ? cachedProfile.display_name
+        : null,
+    role:
+      cachedProfile.role === 'admin' || cachedProfile.role === 'business' || cachedProfile.role === 'user'
+        ? cachedProfile.role
+        : 'user',
+    points_balance: typeof cachedProfile.points_balance === 'number' ? cachedProfile.points_balance : 0,
+    is_premium: Boolean(cachedProfile.is_premium),
+    premium_expires_at: typeof cachedProfile.premium_expires_at === 'string' ? cachedProfile.premium_expires_at : null,
+    is_suspended: Boolean(cachedProfile.is_suspended),
+    current_streak: typeof cachedProfile.current_streak === 'number' ? cachedProfile.current_streak : 0,
+    longest_streak: typeof cachedProfile.longest_streak === 'number' ? cachedProfile.longest_streak : 0,
+    last_contribution_date:
+      typeof cachedProfile.last_contribution_date === 'string' ? cachedProfile.last_contribution_date : null,
+    streak_multiplier: typeof cachedProfile.streak_multiplier === 'number' ? cachedProfile.streak_multiplier : 1,
+    streak_multiplier_expires_at:
+      typeof cachedProfile.streak_multiplier_expires_at === 'string'
+        ? cachedProfile.streak_multiplier_expires_at
+        : null,
+    push_token: typeof cachedProfile.push_token === 'string' ? cachedProfile.push_token : null,
+    push_enabled: typeof cachedProfile.push_enabled === 'boolean' ? cachedProfile.push_enabled : true,
+    notification_prefs:
+      cachedProfile.notification_prefs &&
+      typeof cachedProfile.notification_prefs === 'object' &&
+      !Array.isArray(cachedProfile.notification_prefs)
+        ? {
+            code_verified:
+              typeof cachedProfile.notification_prefs.code_verified === 'boolean'
+                ? cachedProfile.notification_prefs.code_verified
+                : DEFAULT_NOTIFICATION_PREFS.code_verified,
+            favorite_update:
+              typeof cachedProfile.notification_prefs.favorite_update === 'boolean'
+                ? cachedProfile.notification_prefs.favorite_update
+                : DEFAULT_NOTIFICATION_PREFS.favorite_update,
+            nearby_new:
+              typeof cachedProfile.notification_prefs.nearby_new === 'boolean'
+                ? cachedProfile.notification_prefs.nearby_new
+                : DEFAULT_NOTIFICATION_PREFS.nearby_new,
+            streak_reminder:
+              typeof cachedProfile.notification_prefs.streak_reminder === 'boolean'
+                ? cachedProfile.notification_prefs.streak_reminder
+                : DEFAULT_NOTIFICATION_PREFS.streak_reminder,
+          }
+        : DEFAULT_NOTIFICATION_PREFS,
+    created_at: cachedProfile.created_at,
+    updated_at: typeof cachedProfile.updated_at === 'string' ? cachedProfile.updated_at : cachedProfile.created_at,
+  };
 }
 
 async function cacheProfile(profile: UserProfile): Promise<void> {
@@ -336,11 +395,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     setSentryUserContext({
       id: user.id,
-      isPremium: profile?.is_premium ?? false,
+      isPremium: hasActivePremium(profile),
       role: profile?.role ?? null,
     });
     void identifyAnalyticsUser(user.id);
-  }, [profile?.is_premium, profile?.role, user]);
+  }, [profile?.is_premium, profile?.premium_expires_at, profile?.role, user]);
 
   useEffect(() => {
     let mounted = true;
@@ -462,6 +521,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const currentUserId = user?.id;
       clearReturnIntent();
+      if (currentUserId) {
+        await clearPushToken();
+      }
       await getSupabaseClient().auth.signOut();
       await clearSessionArtifacts(currentUserId);
       clearReportedIssue();
@@ -576,7 +638,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             role: profile.role,
             display_name: profile.display_name,
             points_balance: profile.points_balance,
-            is_premium: profile.is_premium,
+            is_premium: hasActivePremium(profile),
+            premium_expires_at: profile.premium_expires_at,
           }
         : null,
     }),

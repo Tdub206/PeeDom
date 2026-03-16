@@ -1,4 +1,5 @@
 import { Href } from 'expo-router';
+import type { ReportType } from '@/types';
 
 export const routes = {
   tabs: {
@@ -22,11 +23,12 @@ export const routes = {
         },
       }) as Href,
     report: '/modal/report' as Href,
-    reportBathroom: (bathroomId: string) =>
+    reportBathroom: (bathroomId: string, reportType?: ReportType) =>
       ({
         pathname: '/modal/report',
         params: {
           bathroom_id: bathroomId,
+          ...(reportType ? { report_type: reportType } : {}),
         },
       }) as Href,
     claimBusiness: '/modal/claim-business' as Href,

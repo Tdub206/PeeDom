@@ -86,6 +86,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       permissions: [
         'ACCESS_COARSE_LOCATION',
         'ACCESS_FINE_LOCATION',
+        'POST_NOTIFICATIONS',
       ],
       blockedPermissions: [
         'android.permission.READ_EXTERNAL_STORAGE',
@@ -115,6 +116,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         {
           locationWhenInUsePermission:
             'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+        },
+      ],
+      [
+        'expo-notifications',
+        {
+          color: '#2563eb',
+          defaultChannel: 'default',
         },
       ],
     ],

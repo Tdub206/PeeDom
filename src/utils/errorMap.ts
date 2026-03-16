@@ -33,7 +33,14 @@ const DATABASE_CODE_MESSAGE_MAP: Record<string, string> = {
   '23503': 'That bathroom no longer exists.',
   PGRST116: "We couldn't find that item.",
   '42501': "You don't have permission to do that.",
+  AUTH_REQUIRED: 'Sign in to continue with that action.',
+  CODE_REVEAL_NOT_GRANTED: 'Complete a rewarded unlock before revealing this bathroom code.',
+  CODE_NOT_AVAILABLE: 'There is no active community code to reveal for this bathroom right now.',
+  INSUFFICIENT_POINTS: 'You need more contribution points before redeeming premium access.',
+  INVALID_REDEMPTION_PERIOD: 'Choose a valid premium redemption period.',
   NETWORK_ERROR: 'No connection. Your action has been saved for later.',
+  PROFILE_NOT_FOUND: 'Your Pee-Dom profile could not be loaded right now.',
+  SELF_CODE_VOTE: "You can't verify a bathroom code that you submitted yourself.",
 };
 
 interface ErrorLike {

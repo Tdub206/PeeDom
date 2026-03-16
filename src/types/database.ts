@@ -19,7 +19,16 @@ export interface Database {
           role: 'user' | 'business' | 'admin'
           points_balance: number
           is_premium: boolean
+          premium_expires_at: string | null
           is_suspended: boolean
+          current_streak: number
+          longest_streak: number
+          last_contribution_date: string | null
+          streak_multiplier: number
+          streak_multiplier_expires_at: string | null
+          push_token: string | null
+          push_enabled: boolean
+          notification_prefs: Json
           created_at: string
           updated_at: string
         }
@@ -30,7 +39,16 @@ export interface Database {
           role?: 'user' | 'business' | 'admin'
           points_balance?: number
           is_premium?: boolean
+          premium_expires_at?: string | null
           is_suspended?: boolean
+          current_streak?: number
+          longest_streak?: number
+          last_contribution_date?: string | null
+          streak_multiplier?: number
+          streak_multiplier_expires_at?: string | null
+          push_token?: string | null
+          push_enabled?: boolean
+          notification_prefs?: Json
           created_at?: string
           updated_at?: string
         }
@@ -41,7 +59,130 @@ export interface Database {
           role?: 'user' | 'business' | 'admin'
           points_balance?: number
           is_premium?: boolean
+          premium_expires_at?: string | null
           is_suspended?: boolean
+          current_streak?: number
+          longest_streak?: number
+          last_contribution_date?: string | null
+          streak_multiplier?: number
+          streak_multiplier_expires_at?: string | null
+          push_token?: string | null
+          push_enabled?: boolean
+          notification_prefs?: Json
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      point_events: {
+        Row: {
+          id: string
+          user_id: string
+          event_type:
+            | 'bathroom_added'
+            | 'bathroom_photo_uploaded'
+            | 'code_submitted'
+            | 'code_verification'
+            | 'report_resolved'
+            | 'code_milestone'
+            | 'premium_redeemed'
+          reference_table: string
+          reference_id: string
+          points_awarded: number
+          metadata: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          event_type:
+            | 'bathroom_added'
+            | 'bathroom_photo_uploaded'
+            | 'code_submitted'
+            | 'code_verification'
+            | 'report_resolved'
+            | 'code_milestone'
+            | 'premium_redeemed'
+          reference_table: string
+          reference_id: string
+          points_awarded: number
+          metadata?: Json
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          event_type?:
+            | 'bathroom_added'
+            | 'bathroom_photo_uploaded'
+            | 'code_submitted'
+            | 'code_verification'
+            | 'report_resolved'
+            | 'code_milestone'
+            | 'premium_redeemed'
+          reference_table?: string
+          reference_id?: string
+          points_awarded?: number
+          metadata?: Json
+          created_at?: string
+        }
+      }
+      user_badges: {
+        Row: {
+          id: string
+          user_id: string
+          badge_key: string
+          badge_name: string
+          badge_description: string
+          badge_category: 'milestone' | 'streak' | 'time' | 'accessibility' | 'city'
+          context_city_slug: string | null
+          awarded_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          badge_key: string
+          badge_name: string
+          badge_description: string
+          badge_category: 'milestone' | 'streak' | 'time' | 'accessibility' | 'city'
+          context_city_slug?: string | null
+          awarded_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          badge_key?: string
+          badge_name?: string
+          badge_description?: string
+          badge_category?: 'milestone' | 'streak' | 'time' | 'accessibility' | 'city'
+          context_city_slug?: string | null
+          awarded_at?: string
+        }
+      }
+      code_reveal_grants: {
+        Row: {
+          id: string
+          bathroom_id: string
+          user_id: string
+          grant_source: 'rewarded_ad'
+          expires_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          user_id: string
+          grant_source?: 'rewarded_ad'
+          expires_at: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          user_id?: string
+          grant_source?: 'rewarded_ad'
+          expires_at?: string
           created_at?: string
           updated_at?: string
         }
@@ -120,6 +261,8 @@ export interface Database {
           width: number | null
           height: number | null
           is_primary: boolean
+          photo_type: 'exterior' | 'interior' | 'keypad' | 'sign'
+          moderation_status: 'approved' | 'pending' | 'rejected'
           created_at: string
         }
         Insert: {
@@ -133,6 +276,8 @@ export interface Database {
           width?: number | null
           height?: number | null
           is_primary?: boolean
+          photo_type?: 'exterior' | 'interior' | 'keypad' | 'sign'
+          moderation_status?: 'approved' | 'pending' | 'rejected'
           created_at?: string
         }
         Update: {
@@ -146,6 +291,8 @@ export interface Database {
           width?: number | null
           height?: number | null
           is_primary?: boolean
+          photo_type?: 'exterior' | 'interior' | 'keypad' | 'sign'
+          moderation_status?: 'approved' | 'pending' | 'rejected'
           created_at?: string
         }
       }
@@ -239,6 +386,55 @@ export interface Database {
           id?: string
           user_id?: string
           bathroom_id?: string
+          created_at?: string
+        }
+      }
+      push_subscriptions: {
+        Row: {
+          id: string
+          user_id: string
+          bathroom_id: string
+          subscribed_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          bathroom_id: string
+          subscribed_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          bathroom_id?: string
+          subscribed_at?: string
+        }
+      }
+      bathroom_status_events: {
+        Row: {
+          id: string
+          bathroom_id: string
+          reported_by: string
+          status: 'clean' | 'dirty' | 'closed' | 'out_of_order' | 'long_wait'
+          note: string | null
+          expires_at: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          reported_by: string
+          status: 'clean' | 'dirty' | 'closed' | 'out_of_order' | 'long_wait'
+          note?: string | null
+          expires_at?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          reported_by?: string
+          status?: 'clean' | 'dirty' | 'closed' | 'out_of_order' | 'long_wait'
+          note?: string | null
+          expires_at?: string
           created_at?: string
         }
       }
@@ -398,11 +594,88 @@ export interface Database {
           down_votes: number | null
           last_verified_at: string | null
           expires_at: string | null
+          cleanliness_avg: number | null
           updated_at: string
         }
       }
     }
     Functions: {
+      expire_stale_bathroom_access_codes: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          code_id: string
+          bathroom_id: string
+        }[]
+      }
+      get_revealed_bathroom_code: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: {
+          id: string
+          bathroom_id: string
+          submitted_by: string
+          code_value: string
+          confidence_score: number
+          up_votes: number
+          down_votes: number
+          last_verified_at: string | null
+          expires_at: string | null
+          visibility_status: 'visible' | 'needs_review' | 'removed'
+          lifecycle_status: 'active' | 'expired' | 'superseded'
+          created_at: string
+          updated_at: string
+        }[]
+      }
+      get_contributor_leaderboard: {
+        Args: {
+          p_scope?: string
+          p_timeframe?: string
+          p_state?: string | null
+          p_city?: string | null
+          p_limit?: number
+        }
+        Returns: {
+          user_id: string
+          display_name: string
+          total_points: number
+          bathrooms_added: number
+          codes_submitted: number
+          verifications: number
+          photos_uploaded: number
+          reports_resolved: number
+          leaderboard_scope: string
+          scope_label: string
+          rank: number
+        }[]
+      }
+      get_my_gamification_summary: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          total_bathrooms_added: number
+          total_codes_submitted: number
+          total_code_verifications: number
+          total_reports_filed: number
+          total_photos_uploaded: number
+          total_badges: number
+          primary_city: string | null
+          primary_state: string | null
+        }[]
+      }
+      grant_bathroom_code_reveal_access: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: {
+          id: string
+          bathroom_id: string
+          user_id: string
+          grant_source: 'rewarded_ad'
+          expires_at: string
+          created_at: string
+          updated_at: string
+        }[]
+      }
       get_bathrooms_near: {
         Args: {
           lat: number
@@ -429,9 +702,63 @@ export interface Database {
           down_votes: number | null
           last_verified_at: string | null
           expires_at: string | null
+          cleanliness_avg: number | null
           updated_at: string
           distance_meters: number
         }[]
+      }
+      has_bathroom_code_reveal_access: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: boolean
+      }
+      redeem_points_for_premium: {
+        Args: {
+          p_months?: number
+        }
+        Returns: {
+          user_id: string
+          months_redeemed: number
+          points_spent: number
+          remaining_points: number
+          premium_expires_at: string
+          is_premium: boolean
+        }[]
+      }
+      register_push_token: {
+        Args: {
+          p_token: string
+        }
+        Returns: void
+      }
+      clear_push_token: {
+        Args: Record<PropertyKey, never>
+        Returns: void
+      }
+      update_notification_settings: {
+        Args: {
+          p_push_enabled?: boolean | null
+          p_notification_prefs?: Json | null
+        }
+        Returns: Json
+      }
+      get_subscribers_for_bathroom: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: {
+          user_id: string
+          push_token: string
+        }[]
+      }
+      report_bathroom_status: {
+        Args: {
+          p_bathroom_id: string
+          p_status: string
+          p_note?: string | null
+        }
+        Returns: Json
       }
     }
     Enums: {}
