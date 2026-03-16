@@ -2,7 +2,23 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+import java.util.Properties
+
 def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withInputStream { stream ->
+        localProperties.load(stream)
+    }
+}
+
+def expoEnvironment = (System.getenv('EXPO_PUBLIC_ENV') ?: localProperties.getProperty('EXPO_PUBLIC_ENV') ?: 'local').trim()
+def googleMapsApiKey = (System.getenv('ANDROID_GOOGLE_MAPS_API_KEY') ?: localProperties.getProperty('ANDROID_GOOGLE_MAPS_API_KEY') ?: '').trim()
+def configuredAndroidAdMobAppId = (System.getenv('ANDROID_ADMOB_APP_ID') ?: localProperties.getProperty('ANDROID_ADMOB_APP_ID') ?: '').trim()
+def defaultAndroidAdMobAppId = expoEnvironment == 'production' ? '' : 'ca-app-pub-3940256099942544~3347511713'
+def androidAdMobAppId = configuredAndroidAdMobAppId ?: defaultAndroidAdMobAppId
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -103,6 +119,10 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.0"
+        manifestPlaceholders = [
+            googleMapsApiKey: googleMapsApiKey,
+            googleMobileAdsAppId: androidAdMobAppId,
+        ]
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
     }

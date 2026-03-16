@@ -62,6 +62,15 @@ if ($LASTEXITCODE -eq 0) {
 
 Write-Host ""
 
+# 5.1 Configure Gradle home
+$gradleUserHome = $env:GRADLE_USER_HOME
+if (-not $gradleUserHome) {
+    $gradleUserHome = Join-Path $env:USERPROFILE ".g\peedom"
+}
+New-Item -ItemType Directory -Force -Path $gradleUserHome | Out-Null
+$env:GRADLE_USER_HOME = $gradleUserHome
+Write-Host "  Gradle user home: $gradleUserHome" -ForegroundColor Green
+
 # 6. Load .env.local
 Write-Host "Loading .env.local..." -ForegroundColor Yellow
 if (-not (Test-Path ".env.local")) {
@@ -138,7 +147,9 @@ Write-Host "============================================================" -Foreg
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "  1. Open Android Studio" -ForegroundColor White
-Write-Host "     File > Open > select the android/ subfolder (NOT the repo root)" -ForegroundColor DarkGray
+Write-Host "     Prefer: npm run android:studio" -ForegroundColor DarkGray
+Write-Host "     Or launch Android Studio from a shell with GRADLE_USER_HOME=$gradleUserHome" -ForegroundColor DarkGray
+Write-Host "     Then open the android/ subfolder (NOT the repo root)" -ForegroundColor DarkGray
 Write-Host ""
 Write-Host "  2. Wait for Gradle sync (5-10 min first run)" -ForegroundColor White
 Write-Host ""

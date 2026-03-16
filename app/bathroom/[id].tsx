@@ -2,10 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Linking, Platform, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
 import { fetchBathroomDetailById, PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
+import { CodeRevealCard } from '@/components/CodeRevealCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useToast } from '@/hooks/useToast';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -53,10 +57,14 @@ function formatHours(hoursJson: PublicBathroomDetailRow['hours_json']): string[]
 export default function BathroomDetailScreen() {
   const router = useRouter();
   const { id } = useLocalSearchParams<{ id?: string | string[] }>();
+  const { profile, user } = useAuth();
   const { showToast } = useToast();
   const [bathroomDetail, setBathroomDetail] = useState<PublicBathroomDetailRow | null>(null);
+  const [revealedCode, setRevealedCode] = useState<BathroomAccessCodeRow | null>(null);
+  const [codeErrorMessage, setCodeErrorMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingCode, setIsLoadingCode] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
 
   const bathroomId = useMemo(() => {
@@ -75,6 +83,25 @@ export default function BathroomDetailScreen() {
     () => (bathroomDetail ? formatHours(bathroomDetail.hours_json) : []),
     [bathroomDetail]
   );
+  const isPremiumUser = Boolean(profile?.is_premium);
+  const {
+    hasUnlock: hasRewardedCodeUnlock,
+    isUnlocking: isUnlockingWithAd,
+    isAdUnlockAvailable,
+    adUnlockUnavailableReason,
+    unlockIssue,
+    unlockWithAd,
+  } = useRewardedCodeUnlock({
+    bathroomId: bathroomId || null,
+    codeExpiresAt: bathroomDetail?.expires_at ?? null,
+    userId: user?.id ?? null,
+  });
+  const shouldRevealCode = Boolean(bathroomDetail?.code_id) && (isPremiumUser || hasRewardedCodeUnlock);
+  const visibleCodeValue = useMemo(() => {
+    const nextValue = revealedCode?.code_value?.trim();
+    return nextValue ? nextValue : null;
+  }, [revealedCode?.code_value]);
+  const codeRevealIssueMessage = codeErrorMessage ?? unlockIssue;
 
   const loadBathroomDetail = useCallback(async () => {
     if (!bathroomId) {
@@ -120,6 +147,66 @@ export default function BathroomDetailScreen() {
   useEffect(() => {
     void loadBathroomDetail();
   }, [loadBathroomDetail]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadVisibleCode = async () => {
+      if (!bathroomId || !bathroomDetail?.code_id || !shouldRevealCode) {
+        if (isMounted) {
+          setRevealedCode(null);
+          setCodeErrorMessage(null);
+          setIsLoadingCode(false);
+        }
+        return;
+      }
+
+      setIsLoadingCode(true);
+      setCodeErrorMessage(null);
+
+      try {
+        const result = await fetchLatestVisibleBathroomCode(bathroomId);
+
+        if (!isMounted) {
+          return;
+        }
+
+        if (result.error) {
+          setRevealedCode(null);
+          setCodeErrorMessage(getErrorMessage(result.error, 'Unable to load the current bathroom code right now.'));
+          return;
+        }
+
+        if (!result.data) {
+          setRevealedCode(null);
+          setCodeErrorMessage('The latest verified bathroom code is not available right now.');
+          return;
+        }
+
+        setRevealedCode(result.data);
+        setCodeErrorMessage(null);
+      } catch (error) {
+        if (isMounted) {
+          setRevealedCode(null);
+          setCodeErrorMessage(getErrorMessage(error, 'Unable to load the current bathroom code right now.'));
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingCode(false);
+        }
+      }
+    };
+
+    void loadVisibleCode();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [bathroomDetail?.code_id, bathroomId, shouldRevealCode]);
+
+  const handleUnlockWithAd = useCallback(() => {
+    void unlockWithAd();
+  }, [unlockWithAd]);
 
   const handleOpenDirections = useCallback(async () => {
     if (!bathroomDetail) {
@@ -231,6 +318,22 @@ export default function BathroomDetailScreen() {
               </View>
             ) : null}
           </View>
+
+          <CodeRevealCard
+            hasCode={Boolean(bathroomDetail.code_id)}
+            codeValue={visibleCodeValue}
+            confidenceScore={revealedCode?.confidence_score ?? bathroomDetail.confidence_score ?? null}
+            lastVerifiedAt={revealedCode?.last_verified_at ?? bathroomDetail.last_verified_at}
+            expiresAt={revealedCode?.expires_at ?? bathroomDetail.expires_at}
+            isLoadingCode={isLoadingCode}
+            isUnlockingWithAd={isUnlockingWithAd}
+            isPremiumUser={isPremiumUser}
+            isRewardedUnlockActive={hasRewardedCodeUnlock}
+            isAdUnlockAvailable={isAdUnlockAvailable}
+            unavailableReason={adUnlockUnavailableReason}
+            issueMessage={codeRevealIssueMessage}
+            onUnlockWithAd={handleUnlockWithAd}
+          />
 
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Facility Notes</Text>
