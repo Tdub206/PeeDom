@@ -1,9 +1,13 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { AuthError, Session, User } from '@supabase/supabase-js';
 import { useToastContext } from '@/contexts/ToastContext';
+import { clearAnalyticsIdentity, identifyAnalyticsUser } from '@/lib/analytics';
 import { storage } from '@/lib/storage';
+import { dbProfileSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 import { classifySupabaseError, SupabaseErrorDetails } from '@/lib/supabase-error';
+import { setSentryUserContext } from '@/lib/sentry';
+import { useAuthStore } from '@/store/useAuthStore';
 import { RequireAuthOptions, ReturnIntent, SessionState, SessionStatus, UserProfile } from '@/types';
 
 interface AuthContextType {
@@ -65,12 +69,17 @@ async function clearCachedProfile(userId: string | null | undefined): Promise<vo
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { showToast } = useToastContext();
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [authIssue, setAuthIssue] = useState<string | null>(null);
-  const [sessionStatus, setSessionStatus] = useState<SessionStatus>('BOOTSTRAPPING');
-  const [loading, setLoading] = useState(true);
+  const authIssue = useAuthStore((state) => state.authIssue);
+  const loading = useAuthStore((state) => state.loading);
+  const profile = useAuthStore((state) => state.profile);
+  const session = useAuthStore((state) => state.session);
+  const sessionStatus = useAuthStore((state) => state.sessionStatus);
+  const user = useAuthStore((state) => state.user);
+  const clearStoredAuthState = useAuthStore((state) => state.clearAuthState);
+  const setAuthIssue = useAuthStore((state) => state.setAuthIssue);
+  const setLoading = useAuthStore((state) => state.setLoading);
+  const setProfile = useAuthStore((state) => state.setProfile);
+  const setSnapshot = useAuthStore((state) => state.setSnapshot);
   const lastReportedIssue = useRef<string | null>(null);
   const returnIntentRef = useRef<ReturnIntent | null>(null);
 
@@ -114,21 +123,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         variant: details.kind === 'offline' ? 'warning' : 'error',
       });
     },
-    [showToast]
+    [setAuthIssue, showToast]
   );
 
   const clearReportedIssue = useCallback(() => {
     lastReportedIssue.current = null;
     setAuthIssue(null);
-  }, []);
+  }, [setAuthIssue]);
 
   const clearAuthState = useCallback((nextStatus: SessionStatus = 'GUEST') => {
-    setSession(null);
-    setUser(null);
-    setProfile(null);
-    setSessionStatus(nextStatus);
-    setLoading(false);
-  }, []);
+    clearStoredAuthState(nextStatus);
+  }, [clearStoredAuthState]);
 
   const clearSessionArtifacts = useCallback(
     async (userId?: string) => {
@@ -194,7 +199,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw error;
       }
 
-      if (!data) {
+      const parsedProfile = parseSupabaseNullableRow(
+        dbProfileSchema,
+        data,
+        'profile',
+        'We could not restore your Pee-Dom profile.'
+      );
+
+      if (parsedProfile.error) {
+        throw parsedProfile.error;
+      }
+
+      if (!parsedProfile.data) {
         return {
           profile: null,
           errorDetails: classifySupabaseError(
@@ -205,10 +221,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         };
       }
 
-      await cacheProfile(data);
+      await cacheProfile(parsedProfile.data);
 
       return {
-        profile: data,
+        profile: parsedProfile.data,
         errorDetails: null,
         usedCache: false,
       };
@@ -240,16 +256,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       currentSession: Session,
       options?: ApplyAuthenticatedSessionOptions
     ): Promise<boolean> => {
-      setSessionStatus('SESSION_RECOVERY');
-      setSession(currentSession);
-      setUser(currentSession.user);
+      setSnapshot({
+        loading: true,
+        session: currentSession,
+        sessionStatus: 'SESSION_RECOVERY',
+        user: currentSession.user,
+      });
 
       const result = await loadProfile(currentSession.user.id);
 
       if (result.profile) {
-        setProfile(result.profile);
-        setSessionStatus(determineSessionStatus(currentSession, result.profile));
-        setLoading(false);
+        setSnapshot({
+          loading: false,
+          profile: result.profile,
+          sessionStatus: determineSessionStatus(currentSession, result.profile),
+        });
 
         if (result.usedCache && result.errorDetails) {
           reportAuthIssue(result.errorDetails);
@@ -276,9 +297,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       if (result.errorDetails?.kind === 'offline') {
-        setProfile(null);
-        setSessionStatus(determineSessionStatus(currentSession, null));
-        setLoading(false);
+        setSnapshot({
+          loading: false,
+          profile: null,
+          sessionStatus: determineSessionStatus(currentSession, null),
+        });
         return false;
       }
 
@@ -300,15 +323,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       determineSessionStatus,
       loadProfile,
       reportAuthIssue,
+      setSnapshot,
     ]
   );
+
+  useEffect(() => {
+    if (!user) {
+      setSentryUserContext(null);
+      void clearAnalyticsIdentity();
+      return;
+    }
+
+    setSentryUserContext({
+      id: user.id,
+      isPremium: profile?.is_premium ?? false,
+      role: profile?.role ?? null,
+    });
+    void identifyAnalyticsUser(user.id);
+  }, [profile?.is_premium, profile?.role, user]);
 
   useEffect(() => {
     let mounted = true;
 
     const initializeSession = async () => {
       try {
-        setSessionStatus('BOOTSTRAPPING');
+        setSnapshot({
+          loading: true,
+          sessionStatus: 'BOOTSTRAPPING',
+        });
 
         const {
           data: { session: currentSession },
@@ -347,7 +389,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => {
       mounted = false;
     };
-  }, [applyAuthenticatedSession, clearAuthState, clearReportedIssue, reportAuthIssue]);
+  }, [applyAuthenticatedSession, clearAuthState, clearReportedIssue, reportAuthIssue, setSnapshot]);
 
   useEffect(() => {
     const {
@@ -455,7 +497,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Refresh profile error:', error);
     }
-  }, [clearReportedIssue, loadProfile, reportAuthIssue, user]);
+  }, [clearReportedIssue, loadProfile, reportAuthIssue, setProfile, user]);
 
   const refreshUser = useCallback(async () => {
     setLoading(true);
@@ -497,6 +539,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     clearSessionArtifacts,
     reportAuthIssue,
     session?.user.id,
+    setLoading,
     user?.id,
   ]);
 

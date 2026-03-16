@@ -1,4 +1,10 @@
 import { BathroomFilters, Coordinates, RegionBounds, type Database } from '@/types';
+import {
+  nearbyBathroomRowSchema,
+  parseSupabaseNullableRow,
+  parseSupabaseRows,
+  publicBathroomDetailRowSchema,
+} from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 import {
   applyBathroomFilters,
@@ -106,8 +112,22 @@ async function fetchNearbyBathroomsFallback(
       };
     }
 
-    return {
+    const parsedData = parseSupabaseRows(
+      publicBathroomDetailRowSchema,
       data,
+      'bathroom directory',
+      'Unable to load nearby bathrooms.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data,
       error: null,
     };
   } catch (error) {
@@ -145,8 +165,22 @@ export async function fetchBathroomDetailById(
       };
     }
 
-    return {
+    const parsedData = parseSupabaseNullableRow(
+      publicBathroomDetailRowSchema,
       data,
+      'bathroom detail',
+      'Unable to load bathroom details.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data,
       error: null,
     };
   } catch (error) {
@@ -186,10 +220,22 @@ export async function fetchBathroomsNearRegion(
       return fetchNearbyBathroomsFallback(options);
     }
 
-    const typedData = (data ?? []) as NearbyBathroomRow[];
+    const parsedData = parseSupabaseRows(
+      nearbyBathroomRowSchema,
+      data,
+      'nearby bathrooms',
+      'Unable to load nearby bathrooms.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
 
     return {
-      data: sortBathroomsByDistance(applyBathroomFilters(typedData, options.filters), {
+      data: sortBathroomsByDistance(applyBathroomFilters(parsedData.data as NearbyBathroomRow[], options.filters), {
         latitude: options.region.latitude,
         longitude: options.region.longitude,
       }),
@@ -258,8 +304,22 @@ export async function searchBathrooms(
       };
     }
 
+    const parsedData = parseSupabaseRows(
+      publicBathroomDetailRowSchema,
+      data,
+      'search bathrooms',
+      'Unable to search bathrooms.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data: sortBathroomsByDistance(data, options.origin),
+      data: sortBathroomsByDistance(parsedData.data, options.origin),
       error: null,
     };
   } catch (error) {
@@ -297,8 +357,21 @@ export async function fetchBathroomsByIds(
     }
 
     const orderLookup = new Map(options.bathroomIds.map((bathroomId, index) => [bathroomId, index]));
-    const typedData = (data ?? []) as PublicBathroomDetailRow[];
-    const orderedBathrooms = sortBathroomsByDistance(typedData, options.origin).sort(
+    const parsedData = parseSupabaseRows(
+      publicBathroomDetailRowSchema,
+      data,
+      'selected bathrooms',
+      'Unable to load the selected bathrooms.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    const orderedBathrooms = sortBathroomsByDistance(parsedData.data as PublicBathroomDetailRow[], options.origin).sort(
       (leftBathroom, rightBathroom) =>
         (orderLookup.get(leftBathroom.id) ?? Number.MAX_SAFE_INTEGER) -
         (orderLookup.get(rightBathroom.id) ?? Number.MAX_SAFE_INTEGER)

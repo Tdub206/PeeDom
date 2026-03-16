@@ -1,4 +1,5 @@
 import { DbFavorite } from '@/types';
+import { dbFavoriteSchema, parseSupabaseNullableRow, parseSupabaseRows } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
 interface FavoriteMutationResponse {
@@ -29,8 +30,17 @@ export async function fetchFavoriteRows(
       };
     }
 
+    const parsedData = parseSupabaseRows(dbFavoriteSchema, data, 'favorites', 'Unable to load favorites.');
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data,
+      data: parsedData.data as DbFavorite[],
       error: null,
     };
   } catch (error) {
@@ -69,8 +79,22 @@ export async function addFavorite(userId: string, bathroomId: string): Promise<F
       };
     }
 
+    const parsedData = parseSupabaseNullableRow(
+      dbFavoriteSchema,
+      data,
+      'favorite',
+      'Unable to save this favorite.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data: (data as DbFavorite | null) ?? null,
+      data: parsedData.data as DbFavorite | null,
       error: null,
     };
   } catch (error) {
@@ -101,8 +125,22 @@ export async function removeFavorite(userId: string, bathroomId: string): Promis
       };
     }
 
+    const parsedData = parseSupabaseNullableRow(
+      dbFavoriteSchema,
+      data,
+      'favorite',
+      'Unable to remove this favorite.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data: (data as DbFavorite | null) ?? null,
+      data: parsedData.data as DbFavorite | null,
       error: null,
     };
   } catch (error) {

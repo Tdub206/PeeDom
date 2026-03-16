@@ -1,4 +1,5 @@
 import { AuthError, Session, User } from '@supabase/supabase-js';
+import { z } from 'zod';
 import { getSupabaseClient } from '@/lib/supabase';
 
 interface AuthSuccess {
@@ -25,6 +26,15 @@ export interface SignUpPayload extends SignInPayload {
   displayName: string;
 }
 
+const signInPayloadSchema = z.object({
+  email: z.string().trim().min(1).email(),
+  password: z.string().min(8),
+});
+
+const signUpPayloadSchema = signInPayloadSchema.extend({
+  displayName: z.string().trim().min(2).max(50),
+});
+
 function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
   return {
     error: error instanceof AuthError ? error : new AuthError(fallbackMessage),
@@ -32,11 +42,24 @@ function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
   };
 }
 
+function toValidationFailure(error: z.ZodError, fallbackMessage: string): AuthFailure {
+  return {
+    error: new AuthError(error.issues[0]?.message || fallbackMessage),
+    data: null,
+  };
+}
+
 export async function signInWithEmail(payload: SignInPayload): Promise<AuthResult> {
+  const parsedPayload = signInPayloadSchema.safeParse(payload);
+
+  if (!parsedPayload.success) {
+    return toValidationFailure(parsedPayload.error, 'Unable to sign in.');
+  }
+
   try {
     const { data, error } = await getSupabaseClient().auth.signInWithPassword({
-      email: payload.email,
-      password: payload.password,
+      email: parsedPayload.data.email,
+      password: parsedPayload.data.password,
     });
 
     if (error) {
@@ -56,13 +79,19 @@ export async function signInWithEmail(payload: SignInPayload): Promise<AuthResul
 }
 
 export async function signUpWithEmail(payload: SignUpPayload): Promise<AuthResult> {
+  const parsedPayload = signUpPayloadSchema.safeParse(payload);
+
+  if (!parsedPayload.success) {
+    return toValidationFailure(parsedPayload.error, 'Unable to create account.');
+  }
+
   try {
     const { data, error } = await getSupabaseClient().auth.signUp({
-      email: payload.email,
-      password: payload.password,
+      email: parsedPayload.data.email,
+      password: parsedPayload.data.password,
       options: {
         data: {
-          display_name: payload.displayName,
+          display_name: parsedPayload.data.displayName,
         },
       },
     });

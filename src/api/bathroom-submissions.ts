@@ -6,6 +6,11 @@ import {
   DbBathroomPhoto,
   type Database,
 } from '@/types';
+import {
+  dbBathroomPhotoSchema,
+  dbBathroomSchema,
+  parseSupabaseNullableRow,
+} from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
 const BATHROOM_PHOTO_BUCKET = 'bathroom-photos';
@@ -193,8 +198,23 @@ async function uploadBathroomPhoto(
       };
     }
 
+    const parsedPhoto = parseSupabaseNullableRow(
+      dbBathroomPhotoSchema,
+      data,
+      'bathroom photo',
+      'The bathroom was saved, but the photo metadata could not be recorded.'
+    );
+
+    if (parsedPhoto.error) {
+      await removeUploadedObject(storagePath);
+      return {
+        data: null,
+        error: parsedPhoto.error,
+      };
+    }
+
     return {
-      data: (data as DbBathroomPhoto | null) ?? null,
+      data: parsedPhoto.data as DbBathroomPhoto | null,
       error: null,
     };
   } catch (error) {
@@ -244,7 +264,22 @@ export async function createBathroomSubmission(
       };
     }
 
-    const createdBathroom = (data as DbBathroom | null) ?? null;
+    const parsedBathroom = parseSupabaseNullableRow(
+      dbBathroomSchema,
+      data,
+      'bathroom',
+      'Unable to add this bathroom right now.'
+    );
+
+    if (parsedBathroom.error) {
+      return {
+        data: null,
+        error: parsedBathroom.error,
+        warning: null,
+      };
+    }
+
+    const createdBathroom = parsedBathroom.data as DbBathroom | null;
 
     if (!createdBathroom) {
       return {

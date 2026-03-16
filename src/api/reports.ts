@@ -1,4 +1,5 @@
 import { DbReport, ReportCreate } from '@/types';
+import { dbReportSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
 interface ReportMutationResponse {
@@ -36,8 +37,22 @@ export async function createBathroomReport(
       };
     }
 
+    const parsedData = parseSupabaseNullableRow(
+      dbReportSchema,
+      data,
+      'bathroom report',
+      'Unable to submit this report.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data: (data as DbReport | null) ?? null,
+      data: parsedData.data as DbReport | null,
       error: null,
     };
   } catch (error) {

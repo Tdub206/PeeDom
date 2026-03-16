@@ -25,7 +25,12 @@ on:
         required: true
         default: false
         type: boolean
+  pull_request:
+    branches:
+      - main
   push:
+    branches:
+      - main
     tags:
       - 'v*'
 
@@ -35,6 +40,7 @@ concurrency:
 
 jobs:
   release:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -45,7 +51,7 @@ jobs:
       EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
       EXPO_PUBLIC_API_BASE_URL: ${{ vars.EXPO_PUBLIC_API_BASE_URL }}
       EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
-      EXPO_PUBLIC_ENV: ${{ github.event_name == 'push' && 'production' || inputs.profile }}
+      EXPO_PUBLIC_ENV: ${{ github.event_name == 'pull_request' && 'preview' || github.event_name == 'push' && 'production' || inputs.profile }}
       ANDROID_GOOGLE_MAPS_API_KEY: ${{ secrets.ANDROID_GOOGLE_MAPS_API_KEY }}
       IOS_GOOGLE_MAPS_API_KEY: ${{ secrets.IOS_GOOGLE_MAPS_API_KEY }}
     steps:
@@ -105,6 +111,14 @@ jobs:
             echo "platform=all" >> "$GITHUB_OUTPUT"
             echo "profile=production" >> "$GITHUB_OUTPUT"
             echo "auto_submit=true" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "platform=all" >> "$GITHUB_OUTPUT"
+            echo "profile=production" >> "$GITHUB_OUTPUT"
+            echo "auto_submit=false" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
+            echo "platform=all" >> "$GITHUB_OUTPUT"
+            echo "profile=preview" >> "$GITHUB_OUTPUT"
+            echo "auto_submit=false" >> "$GITHUB_OUTPUT"
           else
             echo "platform=${{ inputs.platform }}" >> "$GITHUB_OUTPUT"
             echo "profile=${{ inputs.profile }}" >> "$GITHUB_OUTPUT"

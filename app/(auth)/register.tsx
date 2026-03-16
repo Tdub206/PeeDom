@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackAnalyticsEvent } from '@/lib/analytics';
 import { useToast } from '@/hooks/useToast';
 import { replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -52,6 +53,9 @@ export default function RegisterScreen() {
 
       setFieldErrors(nextFieldErrors);
       setSubmitError(message);
+      void trackAnalyticsEvent('auth_sign_up_failed', {
+        failure_source: 'validation',
+      });
       showToast({
         title: 'Check your entries',
         message,
@@ -73,6 +77,9 @@ export default function RegisterScreen() {
       if (result.error) {
         const message = getErrorMessage(result.error, 'Unable to create your account right now.');
         setSubmitError(message);
+        void trackAnalyticsEvent('auth_sign_up_failed', {
+          failure_source: 'supabase',
+        });
         showToast({
           title: 'Account creation failed',
           message,
@@ -88,10 +95,18 @@ export default function RegisterScreen() {
           variant: 'success',
         });
         const nextIntent = consumeReturnIntent();
+        void trackAnalyticsEvent('auth_sign_up_succeeded', {
+          has_return_intent: Boolean(nextIntent),
+          requires_email_confirmation: false,
+        });
         replaceSafely(router, nextIntent?.route ?? routes.tabs.profile, routes.tabs.profile);
         return;
       }
 
+      void trackAnalyticsEvent('auth_sign_up_succeeded', {
+        has_return_intent: false,
+        requires_email_confirmation: true,
+      });
       showToast({
         title: 'Check your inbox',
         message: 'We sent a confirmation email. Once you verify it, sign in to continue.',
@@ -101,6 +116,9 @@ export default function RegisterScreen() {
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to create your account right now.');
       setSubmitError(message);
+      void trackAnalyticsEvent('auth_sign_up_failed', {
+        failure_source: 'exception',
+      });
       showToast({
         title: 'Account creation failed',
         message,

@@ -16,6 +16,7 @@ const STORAGE_KEYS = {
   // User preference keys
   USER_PREFERENCES: '@peedom/user_preferences',
   CODE_UNLOCKS: '@peedom/code_unlocks',
+  ANALYTICS_ANONYMOUS_ID: '@peedom/analytics_anonymous_id',
 } as const;
 
 export const storage = {

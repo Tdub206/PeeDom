@@ -1,6 +1,6 @@
 import '../global.css';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,12 +16,16 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { LocationProvider } from '@/contexts/LocationContext';
 import { useOfflineSync } from '@/hooks/useOfflineSync';
+import { initializeAnalytics, trackAnalyticsEvent } from '@/lib/analytics';
+import { initializeQueryLifecycleManagers } from '@/lib/query-lifecycle';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
 import { supabaseConfigState } from '@/lib/supabase';
 
 initializeSentry();
+initializeQueryLifecycleManagers();
+void initializeAnalytics().catch(() => undefined);
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function RootNavigator() {
@@ -29,6 +33,7 @@ function RootNavigator() {
     ...Ionicons.font,
   });
   const { loading } = useAuth();
+  const hasTrackedBootstrap = useRef(false);
   useOfflineSync();
   const isAppReady = !loading && (fontsLoaded || Boolean(fontError));
 
@@ -37,6 +42,22 @@ function RootNavigator() {
       Sentry.captureException(fontError);
     }
   }, [fontError]);
+
+  useEffect(() => {
+    if (!isAppReady) {
+      return;
+    }
+
+    if (hasTrackedBootstrap.current) {
+      return;
+    }
+
+    hasTrackedBootstrap.current = true;
+    void trackAnalyticsEvent('app_bootstrapped', {
+      auth_loading: loading,
+      fonts_ready: fontsLoaded || Boolean(fontError),
+    });
+  }, [fontError, fontsLoaded, isAppReady, loading]);
 
   useEffect(() => {
     if (!isAppReady) {

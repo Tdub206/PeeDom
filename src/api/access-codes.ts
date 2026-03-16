@@ -1,4 +1,5 @@
 import type { Database } from '@/types';
+import { bathroomAccessCodeSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
 export type BathroomAccessCodeRow = Database['public']['Tables']['bathroom_access_codes']['Row'];
@@ -34,8 +35,22 @@ export async function fetchLatestVisibleBathroomCode(bathroomId: string): Promis
       };
     }
 
+    const parsedData = parseSupabaseNullableRow(
+      bathroomAccessCodeSchema,
+      data,
+      'bathroom access code',
+      'Unable to load the current bathroom code.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
     return {
-      data: (data as BathroomAccessCodeRow | null) ?? null,
+      data: parsedData.data as BathroomAccessCodeRow | null,
       error: null,
     };
   } catch (error) {

@@ -1,10 +1,26 @@
+import { readAnalyticsRuntimeConfig } from '@/lib/analytics-config';
+
+const environment = process.env.EXPO_PUBLIC_ENV?.trim() || 'local';
+const analyticsRuntimeConfig = readAnalyticsRuntimeConfig({
+  EXPO_PUBLIC_ANALYTICS_ENABLED: process.env.EXPO_PUBLIC_ANALYTICS_ENABLED,
+  EXPO_PUBLIC_ANALYTICS_ENDPOINT: process.env.EXPO_PUBLIC_ANALYTICS_ENDPOINT,
+  EXPO_PUBLIC_ANALYTICS_WRITE_KEY: process.env.EXPO_PUBLIC_ANALYTICS_WRITE_KEY,
+  EXPO_PUBLIC_ANALYTICS_FLUSH_INTERVAL_MS: process.env.EXPO_PUBLIC_ANALYTICS_FLUSH_INTERVAL_MS,
+});
+const sentryDsn = process.env.EXPO_PUBLIC_SENTRY_DSN?.trim() || '';
+
 export const config = {
   appName: 'Pee-Dom',
-  env: process.env.EXPO_PUBLIC_ENV ?? 'local',
+  env: environment,
   apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? '',
   supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? '',
-  sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN ?? '',
-  
+  sentryDsn,
+  sentry: {
+    dsn: sentryDsn,
+    tracesSampleRate: 0.1,
+  },
+  analytics: analyticsRuntimeConfig,
+
   // Map defaults
   map: {
     defaultRegion: {
@@ -25,8 +41,8 @@ export const config = {
   features: {
     offlineMode: true,
     hapticFeedback: true,
-    analyticsEnabled: false,
+    analyticsEnabled: analyticsRuntimeConfig.enabled,
   },
 } as const;
 
-export const isProductionEnv = config.env === 'production';
+export const isProductionEnv = environment === 'production';

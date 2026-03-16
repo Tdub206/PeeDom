@@ -5,6 +5,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { addFavorite, removeFavorite } from '@/api/favorites';
 import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackAnalyticsEvent } from '@/lib/analytics';
+import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineQueue } from '@/lib/offline-queue';
 import { FavoriteMutationPayload, ReportType } from '@/types';
 import { useToast } from '@/hooks/useToast';
@@ -58,7 +60,7 @@ export function useOfflineSync() {
 
     const networkState = await NetInfo.fetch();
 
-    if (!networkState.isConnected) {
+    if (!isNetworkStateOnline(networkState)) {
       return;
     }
 
@@ -102,6 +104,12 @@ export function useOfflineSync() {
     });
 
     if (result.processed_count > 0) {
+      void trackAnalyticsEvent('offline_queue_synced', {
+        dropped_count: result.dropped_count,
+        pending_count: result.pending_count,
+        processed_count: result.processed_count,
+      });
+
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: ['favorites', user.id],
@@ -119,6 +127,12 @@ export function useOfflineSync() {
     }
 
     if (result.dropped_count > 0) {
+      void trackAnalyticsEvent('offline_queue_dropped', {
+        dropped_count: result.dropped_count,
+        pending_count: result.pending_count,
+        processed_count: result.processed_count,
+      });
+
       showToast({
         title: 'Some changes were dropped',
         message: 'A few queued updates could not be synced. Please retry those actions manually.',
@@ -137,7 +151,7 @@ export function useOfflineSync() {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
-      const isConnected = Boolean(state.isConnected);
+      const isConnected = isNetworkStateOnline(state);
 
       if (isConnectedRef.current === false && isConnected) {
         void processQueue();

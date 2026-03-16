@@ -7,6 +7,7 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { trackAnalyticsEvent } from '@/lib/analytics';
 import { useToast } from '@/hooks/useToast';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -50,6 +51,9 @@ export default function LoginScreen() {
 
       setFieldErrors(nextFieldErrors);
       setSubmitError(message);
+      void trackAnalyticsEvent('auth_sign_in_failed', {
+        failure_source: 'validation',
+      });
       showToast({
         title: 'Check your entries',
         message,
@@ -67,6 +71,9 @@ export default function LoginScreen() {
       if (result.error) {
         const message = getErrorMessage(result.error, 'Unable to sign in right now.');
         setSubmitError(message);
+        void trackAnalyticsEvent('auth_sign_in_failed', {
+          failure_source: 'supabase',
+        });
         showToast({
           title: 'Sign in failed',
           message,
@@ -82,10 +89,16 @@ export default function LoginScreen() {
       });
 
       const nextIntent = consumeReturnIntent();
+      void trackAnalyticsEvent('auth_sign_in_succeeded', {
+        has_return_intent: Boolean(nextIntent),
+      });
       replaceSafely(router, nextIntent?.route ?? routes.tabs.profile, routes.tabs.profile);
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to sign in right now.');
       setSubmitError(message);
+      void trackAnalyticsEvent('auth_sign_in_failed', {
+        failure_source: 'exception',
+      });
       showToast({
         title: 'Sign in failed',
         message,
