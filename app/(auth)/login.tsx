@@ -6,13 +6,15 @@ import { signInWithEmail } from '@/api/auth';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
-import { pushSafely } from '@/lib/navigation';
+import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import { FieldErrors, LoginFormValues, getFieldErrors, loginSchema } from '@/utils/validate';
 
 export default function LoginScreen() {
   const router = useRouter();
+  const { consumeReturnIntent } = useAuth();
   const { showToast } = useToast();
   const [formValues, setFormValues] = useState<LoginFormValues>({
     email: '',
@@ -78,6 +80,9 @@ export default function LoginScreen() {
         message: 'Your account session has been restored.',
         variant: 'success',
       });
+
+      const nextIntent = consumeReturnIntent();
+      replaceSafely(router, nextIntent?.route ?? routes.tabs.profile, routes.tabs.profile);
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to sign in right now.');
       setSubmitError(message);
@@ -89,7 +94,7 @@ export default function LoginScreen() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formValues, isSubmitting, showToast]);
+  }, [consumeReturnIntent, formValues, isSubmitting, router, showToast]);
 
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['bottom']}>

@@ -379,7 +379,7 @@ export default function BathroomDetailScreen() {
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Community Actions</Text>
             <Text className="mt-3 text-base leading-6 text-ink-600">
-              Notice a problem at this location? Submit a report so we can protect map quality.
+              Open navigation, report a problem, or start a business ownership claim for this location.
             </Text>
             <Button
               className="mt-4"
@@ -388,6 +388,18 @@ export default function BathroomDetailScreen() {
               onPress={() => {
                 void handleOpenDirections();
               }}
+            />
+            <Button
+              className="mt-3"
+              label="Claim This Business"
+              onPress={() =>
+                pushSafely(
+                  router,
+                  routes.modal.claimBusinessBathroom(bathroomDetail.id),
+                  routes.bathroomDetail(bathroomDetail.id)
+                )
+              }
+              variant="secondary"
             />
             <Button
               className="mt-3"

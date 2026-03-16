@@ -163,9 +163,65 @@ export const reportCreateSchema = z.object({
     .optional(),
 });
 
+const CONTACT_PHONE_REGEX = /^[0-9+().\-\s]{7,25}$/;
+
+export const claimBusinessSchema = z
+  .object({
+    bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+    business_name: z
+      .string()
+      .trim()
+      .min(2, 'Business name must be at least 2 characters long.')
+      .max(120, 'Business name must be 120 characters or fewer.'),
+    contact_email: z
+      .string()
+      .trim()
+      .min(1, 'Contact email is required.')
+      .email('Enter a valid contact email address.'),
+    contact_phone: z
+      .string()
+      .trim()
+      .max(25, 'Phone number must be 25 characters or fewer.')
+      .optional(),
+    evidence_url: z
+      .string()
+      .trim()
+      .max(500, 'Evidence link must be 500 characters or fewer.')
+      .optional(),
+  })
+  .superRefine((value, context) => {
+    const contactPhone = value.contact_phone?.trim();
+
+    if (contactPhone && !CONTACT_PHONE_REGEX.test(contactPhone)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['contact_phone'],
+        message: 'Enter a valid phone number.',
+      });
+    }
+
+    const evidenceUrl = value.evidence_url?.trim();
+
+    if (!evidenceUrl) {
+      return;
+    }
+
+    try {
+      // eslint-disable-next-line no-new
+      new URL(evidenceUrl);
+    } catch {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['evidence_url'],
+        message: 'Enter a valid URL.',
+      });
+    }
+  });
+
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
 export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
+export type ClaimBusinessFormValues = z.infer<typeof claimBusinessSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
 

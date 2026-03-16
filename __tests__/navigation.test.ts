@@ -11,6 +11,8 @@ describe('navigation guards', () => {
     expect(isAppRoute('/modal/add-bathroom?draft_id=draft-123')).toBe(true);
     expect(isAppRoute(routes.modal.report)).toBe(true);
     expect(isAppRoute('/modal/report?bathroom_id=abc123')).toBe(true);
+    expect(isAppRoute(routes.modal.claimBusiness)).toBe(true);
+    expect(isAppRoute('/modal/claim-business?bathroom_id=abc123&draft_id=draft-123')).toBe(true);
     expect(isAppRoute('/bathroom/abc123')).toBe(true);
     expect(isAppRoute('/bathroom/abc123?from=login')).toBe(true);
   });

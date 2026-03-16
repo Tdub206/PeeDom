@@ -6,6 +6,7 @@ import { signUpWithEmail } from '@/api/auth';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -13,6 +14,7 @@ import { FieldErrors, RegisterFormValues, getFieldErrors, registerSchema } from 
 
 export default function RegisterScreen() {
   const router = useRouter();
+  const { consumeReturnIntent } = useAuth();
   const { showToast } = useToast();
   const [formValues, setFormValues] = useState<RegisterFormValues>({
     displayName: '',
@@ -85,6 +87,8 @@ export default function RegisterScreen() {
           message: 'You are signed in and ready to start using Pee-Dom.',
           variant: 'success',
         });
+        const nextIntent = consumeReturnIntent();
+        replaceSafely(router, nextIntent?.route ?? routes.tabs.profile, routes.tabs.profile);
         return;
       }
 
@@ -105,7 +109,7 @@ export default function RegisterScreen() {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formValues, isSubmitting, router, showToast]);
+  }, [consumeReturnIntent, formValues, isSubmitting, router, showToast]);
 
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['bottom']}>

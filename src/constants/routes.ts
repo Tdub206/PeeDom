@@ -29,6 +29,22 @@ export const routes = {
           bathroom_id: bathroomId,
         },
       }) as Href,
+    claimBusiness: '/modal/claim-business' as Href,
+    claimBusinessBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/claim-business',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as Href,
+    claimBusinessDraft: (bathroomId: string, draftId: string) =>
+      ({
+        pathname: '/modal/claim-business',
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: draftId,
+        },
+      }) as Href,
   },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;

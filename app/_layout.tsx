@@ -81,6 +81,14 @@ function RootNavigator() {
             headerTitle: 'Add A Spot',
           }}
         />
+        <Stack.Screen
+          name="modal/claim-business"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Claim A Business',
+          }}
+        />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
       </Stack>
     </>

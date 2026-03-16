@@ -3,6 +3,7 @@ import { describe, expect, it } from '@jest/globals';
 import {
   addBathroomSchema,
   bathroomPhotoSchema,
+  claimBusinessSchema,
   getFieldErrors,
   loginSchema,
   registerSchema,
@@ -167,6 +168,45 @@ describe('bathroomPhotoSchema', () => {
     expect(getFieldErrors(result.error)).toEqual({
       fileSize: 'Photos must be 5 MB or smaller.',
       mimeType: 'Only JPG, PNG, and WEBP photos are supported.',
+    });
+  });
+});
+
+describe('claimBusinessSchema', () => {
+  it('accepts valid business claim submissions', () => {
+    const result = claimBusinessSchema.parse({
+      bathroom_id: 'bathroom-123',
+      business_name: 'Central Cafe',
+      contact_email: ' owner@example.com ',
+      contact_phone: '(206) 555-0199',
+      evidence_url: 'https://example.com/team',
+    });
+
+    expect(result.contact_email).toBe('owner@example.com');
+    expect(result.business_name).toBe('Central Cafe');
+  });
+
+  it('rejects invalid business claim contact data', () => {
+    const result = claimBusinessSchema.safeParse({
+      bathroom_id: '',
+      business_name: 'A',
+      contact_email: 'not-an-email',
+      contact_phone: '12',
+      evidence_url: 'not-a-url',
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected claim validation to fail for invalid contact data.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      bathroom_id: 'Bathroom identifier is required.',
+      business_name: 'Business name must be at least 2 characters long.',
+      contact_email: 'Enter a valid contact email address.',
+      contact_phone: 'Enter a valid phone number.',
+      evidence_url: 'Enter a valid URL.',
     });
   });
 });

@@ -331,6 +331,39 @@ export interface Report {
 }
 
 // ============================================================================
+// BUSINESS CLAIM TYPES
+// ============================================================================
+
+export type BusinessClaimStatus = Database['public']['Tables']['business_claims']['Row']['review_status'];
+
+export interface BusinessClaimCreate {
+  bathroom_id: string;
+  business_name: string;
+  contact_email: string;
+  contact_phone?: string;
+  evidence_url?: string;
+}
+
+export interface BusinessClaimBathroomSummary {
+  id: string;
+  place_name: string;
+  address: string;
+  is_locked: boolean | null;
+  is_accessible: boolean | null;
+  is_customer_only: boolean;
+}
+
+export type BusinessClaimListItem = Database['public']['Tables']['business_claims']['Row'] & {
+  bathroom: BusinessClaimBathroomSummary | null;
+};
+
+export interface BusinessClaimStatusCounts {
+  pending: number;
+  approved: number;
+  rejected: number;
+}
+
+// ============================================================================
 // CODE SUBMISSION TYPES
 // ============================================================================
 
