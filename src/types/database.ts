@@ -201,7 +201,9 @@ export interface Database {
           is_locked: boolean | null
           is_accessible: boolean | null
           is_customer_only: boolean
+          accessibility_features: Json
           hours_json: Json | null
+          search_vector: unknown | null
           source_type: 'community' | 'business' | 'imported' | 'admin'
           moderation_status: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by: string | null
@@ -221,7 +223,9 @@ export interface Database {
           is_locked?: boolean | null
           is_accessible?: boolean | null
           is_customer_only?: boolean
+          accessibility_features?: Json
           hours_json?: Json | null
+          search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by?: string | null
@@ -241,7 +245,9 @@ export interface Database {
           is_locked?: boolean | null
           is_accessible?: boolean | null
           is_customer_only?: boolean
+          accessibility_features?: Json
           hours_json?: Json | null
+          search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           created_by?: string | null
@@ -438,6 +444,38 @@ export interface Database {
           created_at?: string
         }
       }
+      premium_arrival_alerts: {
+        Row: {
+          id: string
+          user_id: string
+          bathroom_id: string
+          target_arrival_at: string
+          lead_minutes: 15 | 30 | 60
+          status: 'active' | 'cancelled' | 'expired'
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          bathroom_id: string
+          target_arrival_at: string
+          lead_minutes?: 15 | 30 | 60
+          status?: 'active' | 'cancelled' | 'expired'
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          bathroom_id?: string
+          target_arrival_at?: string
+          lead_minutes?: 15 | 30 | 60
+          status?: 'active' | 'cancelled' | 'expired'
+          created_at?: string
+          updated_at?: string
+        }
+      }
       bathroom_reports: {
         Row: {
           id: string
@@ -587,6 +625,7 @@ export interface Database {
           is_locked: boolean | null
           is_accessible: boolean | null
           is_customer_only: boolean
+          accessibility_features: Json
           hours_json: Json | null
           code_id: string | null
           confidence_score: number | null
@@ -691,6 +730,132 @@ export interface Database {
           postal_code: string | null
           country_code: string
           latitude: number
+            longitude: number
+            is_locked: boolean | null
+            is_accessible: boolean | null
+            is_customer_only: boolean
+            accessibility_features: Json
+            hours_json: Json | null
+            code_id: string | null
+          confidence_score: number | null
+          up_votes: number | null
+          down_votes: number | null
+          last_verified_at: string | null
+          expires_at: string | null
+          cleanliness_avg: number | null
+          updated_at: string
+          distance_meters: number
+        }[]
+      }
+      search_bathrooms: {
+        Args: {
+          p_query: string
+          p_user_lat?: number | null
+          p_user_lng?: number | null
+          p_limit?: number
+        }
+        Returns: {
+          id: string
+          place_name: string
+          address_line1: string | null
+          city: string | null
+          state: string | null
+          postal_code: string | null
+          country_code: string
+          latitude: number
+            longitude: number
+            is_locked: boolean | null
+            is_accessible: boolean | null
+            is_customer_only: boolean
+            accessibility_features: Json
+            hours_json: Json | null
+            code_id: string | null
+          confidence_score: number | null
+          up_votes: number | null
+          down_votes: number | null
+          last_verified_at: string | null
+          expires_at: string | null
+          cleanliness_avg: number | null
+          updated_at: string
+          distance_meters: number | null
+          rank: number
+        }[]
+      }
+      get_city_browse: {
+        Args: {
+          p_limit?: number
+        }
+        Returns: {
+          city: string
+          state: string
+          bathroom_count: number
+        }[]
+      }
+      get_premium_city_packs: {
+        Args: {
+          p_limit?: number
+        }
+        Returns: {
+          slug: string
+          city: string
+          state: string
+          country_code: string
+          bathroom_count: number
+          center_latitude: number
+          center_longitude: number
+          min_latitude: number
+          max_latitude: number
+          min_longitude: number
+          max_longitude: number
+          latest_bathroom_update_at: string
+          latest_code_verified_at: string | null
+        }[]
+      }
+      get_premium_city_pack_bathrooms: {
+        Args: {
+          p_city: string
+          p_state: string
+          p_country_code?: string | null
+        }
+        Returns: {
+          id: string
+          place_name: string
+          address_line1: string | null
+          city: string | null
+          state: string | null
+          postal_code: string | null
+          country_code: string
+          latitude: number
+          longitude: number
+          is_locked: boolean | null
+          is_accessible: boolean | null
+          is_customer_only: boolean
+          accessibility_features: Json
+          hours_json: Json | null
+          code_id: string | null
+          confidence_score: number | null
+          up_votes: number | null
+          down_votes: number | null
+          last_verified_at: string | null
+          expires_at: string | null
+          cleanliness_avg: number | null
+          updated_at: string
+        }[]
+      }
+      get_user_favorites: {
+        Args: {
+          p_user_lat?: number | null
+          p_user_lng?: number | null
+        }
+        Returns: {
+          id: string
+          place_name: string
+          address_line1: string | null
+          city: string | null
+          state: string | null
+          postal_code: string | null
+          country_code: string
+          latitude: number
           longitude: number
           is_locked: boolean | null
           is_accessible: boolean | null
@@ -704,7 +869,40 @@ export interface Database {
           expires_at: string | null
           cleanliness_avg: number | null
           updated_at: string
-          distance_meters: number
+          distance_meters: number | null
+          favorited_at: string
+        }[]
+      }
+      upsert_premium_arrival_alert: {
+        Args: {
+          p_bathroom_id: string
+          p_target_arrival_at: string
+          p_lead_minutes?: number
+        }
+        Returns: {
+          id: string
+          user_id: string
+          bathroom_id: string
+          target_arrival_at: string
+          lead_minutes: 15 | 30 | 60
+          status: 'active' | 'cancelled' | 'expired'
+          created_at: string
+          updated_at: string
+        }[]
+      }
+      cancel_premium_arrival_alert: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: void
+      }
+      get_arrival_alert_recipients: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: {
+          user_id: string
+          push_token: string
         }[]
       }
       has_bathroom_code_reveal_access: {
@@ -740,6 +938,12 @@ export interface Database {
         Args: {
           p_push_enabled?: boolean | null
           p_notification_prefs?: Json | null
+        }
+        Returns: Json
+      }
+      update_display_name: {
+        Args: {
+          p_display_name: string
         }
         Returns: Json
       }

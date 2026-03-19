@@ -59,7 +59,7 @@ Deno.serve(async (request) => {
 
     const payload = (await request.json()) as BathroomCodeInsertWebhookPayload;
 
-    if (payload.type !== 'INSERT' || payload.table !== 'bathroom_access_codes') {
+    if ((payload.type !== 'INSERT' && payload.type !== 'UPDATE') || payload.table !== 'bathroom_access_codes') {
       return jsonResponse(200, {
         success: true,
         skipped: true,
@@ -82,9 +82,12 @@ Deno.serve(async (request) => {
       },
     });
 
-    const [bathroomResult, subscribersResult] = await Promise.all([
+    const [bathroomResult, favoriteSubscribersResult, arrivalAlertSubscribersResult] = await Promise.all([
       supabase.from('bathrooms').select('place_name').eq('id', bathroomId).maybeSingle(),
       supabase.rpc('get_subscribers_for_bathroom', {
+        p_bathroom_id: bathroomId,
+      }),
+      supabase.rpc('get_arrival_alert_recipients', {
         p_bathroom_id: bathroomId,
       }),
     ]);
@@ -93,8 +96,12 @@ Deno.serve(async (request) => {
       throw bathroomResult.error;
     }
 
-    if (subscribersResult.error) {
-      throw subscribersResult.error;
+    if (favoriteSubscribersResult.error) {
+      throw favoriteSubscribersResult.error;
+    }
+
+    if (arrivalAlertSubscribersResult.error) {
+      throw arrivalAlertSubscribersResult.error;
     }
 
     if (!bathroomResult.data) {
@@ -103,10 +110,14 @@ Deno.serve(async (request) => {
       });
     }
 
-    const tokens = ((subscribersResult.data ?? []) as SubscriberRow[])
-      .filter((subscriber) => subscriber.user_id !== submittingUserId)
-      .map((subscriber) => subscriber.push_token)
-      .filter((token) => token.length > 0);
+    const tokens = Array.from(
+      new Set(
+        [...((favoriteSubscribersResult.data ?? []) as SubscriberRow[]), ...((arrivalAlertSubscribersResult.data ?? []) as SubscriberRow[])]
+          .filter((subscriber) => subscriber.user_id !== submittingUserId)
+          .map((subscriber) => subscriber.push_token)
+          .filter((token) => token.length > 0)
+      )
+    );
 
     if (!tokens.length) {
       return jsonResponse(200, {
@@ -123,8 +134,8 @@ Deno.serve(async (request) => {
       },
       body: JSON.stringify({
         tokens,
-        title: `New code for ${bathroomResult.data.place_name}`,
-        body: 'A saved bathroom just received a new community-submitted access code.',
+        title: `Bathroom update for ${bathroomResult.data.place_name}`,
+        body: 'A saved bathroom or active arrival alert just received a fresh community code update.',
         data: {
           type: 'favorite_update',
           bathroom_id: bathroomId,

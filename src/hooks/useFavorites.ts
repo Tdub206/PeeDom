@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter } from 'expo-router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { addFavorite, fetchFavoriteRows, removeFavorite } from '@/api/favorites';
-import { fetchBathroomsByIds } from '@/api/bathrooms';
+import { addFavorite, fetchFavoriteBathrooms, removeFavorite } from '@/api/favorites';
 import { useAuth } from '@/contexts/AuthContext';
 import { routes } from '@/constants/routes';
 import { offlineQueue } from '@/lib/offline-queue';
@@ -14,7 +13,6 @@ import {
   FavoritesList,
   MutationOutcome,
 } from '@/types';
-import { mapBathroomRowToFavoriteItem } from '@/utils/bathroom';
 import { getErrorMessage } from '@/utils/errorMap';
 import { isTransientNetworkError } from '@/utils/network';
 import { useToast } from '@/hooks/useToast';
@@ -91,46 +89,26 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
         return getEmptyFavorites('guest');
       }
 
-      const favoritesResult = await fetchFavoriteRows(user.id);
+      const favoritesResult = await fetchFavoriteBathrooms({
+        userId: user.id,
+        origin: userLocation,
+      });
 
       if (favoritesResult.error) {
         throw favoritesResult.error;
       }
 
-      const favoriteLookup = new Map(
-        favoritesResult.data.map((favoriteRow) => [favoriteRow.bathroom_id, favoriteRow.created_at])
-      );
-      const favoriteBathroomIds = favoritesResult.data.map((favoriteRow) => favoriteRow.bathroom_id);
-
-      if (!favoriteBathroomIds.length) {
-        return getEmptyFavorites(user.id);
-      }
-
-      const bathroomsResult = await fetchBathroomsByIds({
-        bathroomIds: favoriteBathroomIds,
-        origin: userLocation,
-      });
-
-      if (bathroomsResult.error) {
-        throw bathroomsResult.error;
-      }
-
       const cachedAt = new Date().toISOString();
-      const items = bathroomsResult.data.map((bathroom) =>
-        mapBathroomRowToFavoriteItem(
-          bathroom,
-          favoriteLookup.get(bathroom.id) ?? cachedAt,
-          {
-            cachedAt,
-            stale: false,
-            origin: userLocation,
-          }
-        )
-      );
 
       return {
         user_id: user.id,
-        items,
+        items: favoritesResult.data.map((favoriteItem) => ({
+          ...favoriteItem,
+          sync: {
+            ...favoriteItem.sync,
+            cached_at: cachedAt,
+          },
+        })),
         sync: {
           cached_at: cachedAt,
           stale: false,

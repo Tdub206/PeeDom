@@ -57,7 +57,7 @@ export function useGamificationDashboard() {
     queryKey: gamificationQueryKeys.history,
     enabled: isAuthenticated,
     queryFn: async () => {
-      const result = await fetchMyPointEvents();
+      const result = await fetchMyPointEvents(20);
 
       if (result.error) {
         throw result.error;
@@ -69,12 +69,12 @@ export function useGamificationDashboard() {
 
   const globalWeeklyLeaderboardQuery = useQuery({
     queryKey: gamificationQueryKeys.leaderboard('global', 'weekly'),
-    enabled: isAuthenticated,
+    enabled: true,
     queryFn: async () => {
       const result = await fetchContributorLeaderboard({
         scope: 'global',
         timeframe: 'weekly',
-        limit: 5,
+        limit: 10,
       });
 
       if (result.error) {
@@ -146,6 +146,40 @@ export function useGamificationDashboard() {
     return redeemMutation.mutateAsync(months);
   }, [redeemMutation]);
 
+  const refreshDashboard = useCallback(async () => {
+    const refreshOperations: Array<Promise<unknown>> = [globalWeeklyLeaderboardQuery.refetch()];
+
+    if (isAuthenticated) {
+      refreshOperations.push(
+        refreshProfile(),
+        summaryQuery.refetch(),
+        badgesQuery.refetch(),
+        historyQuery.refetch()
+      );
+
+      if (summaryQuery.data?.primary_city) {
+        refreshOperations.push(cityWeeklyLeaderboardQuery.refetch());
+      }
+    }
+
+    await Promise.all(refreshOperations);
+  }, [
+    badgesQuery,
+    cityWeeklyLeaderboardQuery,
+    globalWeeklyLeaderboardQuery,
+    historyQuery,
+    isAuthenticated,
+    refreshProfile,
+    summaryQuery,
+  ]);
+
+  const isRefreshingDashboard =
+    summaryQuery.isFetching ||
+    badgesQuery.isFetching ||
+    historyQuery.isFetching ||
+    globalWeeklyLeaderboardQuery.isFetching ||
+    cityWeeklyLeaderboardQuery.isFetching;
+
   return {
     badges: badgesQuery.data ?? [],
     badgesError: badgesQuery.error ? getErrorMessage(badgesQuery.error, 'Unable to load badges.') : null,
@@ -162,11 +196,13 @@ export function useGamificationDashboard() {
     isLoadingGlobalWeeklyLeaderboard: globalWeeklyLeaderboardQuery.isLoading,
     isLoadingHistory: historyQuery.isLoading,
     isLoadingSummary: summaryQuery.isLoading,
+    isRefreshingDashboard,
     isRedeemingPremium: redeemMutation.isPending,
     pointHistory: historyQuery.data ?? [],
     pointHistoryError: historyQuery.error ? getErrorMessage(historyQuery.error, 'Unable to load recent activity.') : null,
     primaryCity: summaryQuery.data?.primary_city ?? null,
     primaryState: summaryQuery.data?.primary_state ?? null,
+    refreshDashboard,
     redeemPremium,
     summary: summaryQuery.data,
     summaryError: summaryQuery.error ? getErrorMessage(summaryQuery.error, 'Unable to load your contribution summary.') : null,

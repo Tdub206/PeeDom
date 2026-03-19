@@ -11,11 +11,13 @@ import { CodeRevealCard } from '@/components/CodeRevealCard';
 import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
+import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
 import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
+import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
 import { useRealtimeCode } from '@/hooks/useRealtimeCode';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useToast } from '@/hooks/useToast';
@@ -256,6 +258,14 @@ export default function BathroomDetailScreen() {
     bathroomId,
     includeProtectedTypes: Boolean(visibleCodeValue),
   });
+  const {
+    activeAlert,
+    alertsError,
+    armAlert,
+    cancelAlert,
+    isAlertLoading,
+    isAlertUpdating,
+  } = usePremiumArrivalAlert(bathroomId || null);
 
   useEffect(() => {
     void loadBathroomDetail();
@@ -600,6 +610,23 @@ export default function BathroomDetailScreen() {
               </View>
             </View>
           </View>
+
+          <PremiumArrivalAlertCard
+            activeAlert={activeAlert}
+            isLoading={isAlertLoading}
+            isPremiumUser={isPremiumUser}
+            isUpdating={isAlertUpdating}
+            onArmAlert={(minutes) => {
+              void armAlert(minutes);
+            }}
+            onCancelAlert={() => {
+              void cancelAlert();
+            }}
+          />
+
+          {alertsError ? (
+            <Text className="mt-4 text-sm text-warning">{alertsError}</Text>
+          ) : null}
 
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Hours</Text>

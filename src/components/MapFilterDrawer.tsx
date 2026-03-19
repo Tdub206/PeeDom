@@ -3,15 +3,27 @@ import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
+import { useAuth } from '@/contexts/AuthContext';
+import { useToast } from '@/hooks/useToast';
+import { hasActivePremium } from '@/lib/gamification';
 import { BathroomFilters } from '@/types';
 
-type BooleanFilterKey = 'isAccessible' | 'isLocked' | 'isCustomerOnly' | 'openNow' | 'noCodeRequired';
+type BooleanFilterKey =
+  | 'isAccessible'
+  | 'isLocked'
+  | 'isCustomerOnly'
+  | 'openNow'
+  | 'noCodeRequired'
+  | 'recentlyVerifiedOnly'
+  | 'hasChangingTable'
+  | 'isFamilyRestroom';
 
 interface FilterOption {
   key: BooleanFilterKey;
   label: string;
   description: string;
   icon: keyof typeof Ionicons.glyphMap;
+  premiumOnly?: boolean;
 }
 
 interface MapFilterDrawerProps {
@@ -54,6 +66,27 @@ const FILTER_OPTIONS: FilterOption[] = [
     description: 'Surface bathrooms that require an access code or door unlock.',
     icon: 'lock-closed-outline',
   },
+  {
+    key: 'recentlyVerifiedOnly',
+    label: 'Recently verified',
+    description: 'Only keep bathrooms whose latest code verification happened recently.',
+    icon: 'shield-checkmark-outline',
+    premiumOnly: true,
+  },
+  {
+    key: 'hasChangingTable',
+    label: 'Changing table',
+    description: 'Focus on bathrooms with a reported baby changing table.',
+    icon: 'happy-outline',
+    premiumOnly: true,
+  },
+  {
+    key: 'isFamilyRestroom',
+    label: 'Family restroom',
+    description: 'Show family restroom options first.',
+    icon: 'people-outline',
+    premiumOnly: true,
+  },
 ];
 
 const CLEANLINESS_OPTIONS = [
@@ -71,6 +104,23 @@ function MapFilterDrawerComponent({
   onSetMinCleanlinessRating,
   onReset,
 }: MapFilterDrawerProps) {
+  const { profile } = useAuth();
+  const { showToast } = useToast();
+  const isPremiumUser = hasActivePremium(profile);
+
+  const handleToggleFilter = (filterOption: FilterOption) => {
+    if (filterOption.premiumOnly && !isPremiumUser) {
+      showToast({
+        title: 'Premium filter',
+        message: 'Premium unlocks recently verified, changing table, and family restroom filters.',
+        variant: 'info',
+      });
+      return;
+    }
+
+    onToggleFilter(filterOption.key);
+  };
+
   return (
     <Modal
       animationType="slide"
@@ -117,7 +167,7 @@ function MapFilterDrawerComponent({
                         isActive ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
                       ].join(' ')}
                       key={filterOption.key}
-                      onPress={() => onToggleFilter(filterOption.key)}
+                      onPress={() => handleToggleFilter(filterOption)}
                     >
                       <View className="flex-row items-start gap-3">
                         <View
@@ -136,15 +186,24 @@ function MapFilterDrawerComponent({
                         <View className="flex-1">
                           <View className="flex-row items-center justify-between gap-4">
                             <Text className="text-base font-bold text-ink-900">{filterOption.label}</Text>
-                            <View
-                              className={[
-                                'rounded-full px-3 py-1',
-                                isActive ? 'bg-brand-600' : 'bg-surface-muted',
-                              ].join(' ')}
-                            >
-                              <Text className={['text-xs font-black uppercase tracking-[0.8px]', isActive ? 'text-white' : 'text-ink-600'].join(' ')}>
-                                {isActive ? 'On' : 'Off'}
-                              </Text>
+                            <View className="flex-row items-center gap-2">
+                              {filterOption.premiumOnly ? (
+                                <View className="rounded-full bg-warning/15 px-3 py-1">
+                                  <Text className="text-[11px] font-black uppercase tracking-[0.8px] text-warning">
+                                    Pro
+                                  </Text>
+                                </View>
+                              ) : null}
+                              <View
+                                className={[
+                                  'rounded-full px-3 py-1',
+                                  isActive ? 'bg-brand-600' : 'bg-surface-muted',
+                                ].join(' ')}
+                              >
+                                <Text className={['text-xs font-black uppercase tracking-[0.8px]', isActive ? 'text-white' : 'text-ink-600'].join(' ')}>
+                                  {isActive ? 'On' : 'Off'}
+                                </Text>
+                              </View>
                             </View>
                           </View>
                           <Text className="mt-1 text-sm leading-5 text-ink-600">{filterOption.description}</Text>

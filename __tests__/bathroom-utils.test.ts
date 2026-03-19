@@ -25,6 +25,15 @@ const bathroomRow: BathroomRow = {
   is_locked: true,
   is_accessible: true,
   is_customer_only: false,
+  accessibility_features: {
+    has_grab_bars: true,
+    door_width_inches: 34,
+    is_automatic_door: false,
+    has_changing_table: true,
+    is_family_restroom: false,
+    is_gender_neutral: false,
+    has_audio_cue: false,
+  },
   hours_json: {
     sunday: [{ open: '00:00', close: '23:59' }],
     monday: [{ open: '00:00', close: '23:59' }],
@@ -38,10 +47,10 @@ const bathroomRow: BathroomRow = {
   confidence_score: 88,
   up_votes: 14,
   down_votes: 2,
-  last_verified_at: '2026-03-10T12:00:00.000Z',
+  last_verified_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
   expires_at: null,
   cleanliness_avg: 4.3,
-  updated_at: '2026-03-10T12:00:00.000Z',
+  updated_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
 };
 
 describe('bathroom utilities', () => {
@@ -75,6 +84,9 @@ describe('bathroom utilities', () => {
         isCustomerOnly: null,
         openNow: null,
         noCodeRequired: null,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
         minCleanlinessRating: null,
       }
     );
@@ -95,6 +107,7 @@ describe('bathroom utilities', () => {
 
     expect(listItem.place_name).toBe('Central Cafe');
     expect(listItem.cleanliness_avg).toBe(4.3);
+    expect(listItem.accessibility_features.has_changing_table).toBe(true);
     expect(listItem.primary_code_summary.has_code).toBe(true);
     expect(listItem.distance_meters).toBeGreaterThan(0);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
@@ -158,11 +171,45 @@ describe('bathroom utilities', () => {
         isCustomerOnly: null,
         openNow: true,
         noCodeRequired: true,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
         minCleanlinessRating: 4,
       }
     );
 
     expect(filteredRows).toHaveLength(1);
     expect(filteredRows[0]?.id).toBe('bathroom-4');
+  });
+
+  it('filters premium restroom metadata for changing tables and recent verifications', () => {
+    const filteredRows = applyBathroomFilters(
+      [
+        bathroomRow,
+        {
+          ...bathroomRow,
+          id: 'bathroom-5',
+          accessibility_features: {
+            ...(bathroomRow.accessibility_features as Record<string, unknown>),
+            has_changing_table: false,
+          },
+          last_verified_at: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        },
+      ],
+      {
+        isAccessible: null,
+        isLocked: null,
+        isCustomerOnly: null,
+        openNow: null,
+        noCodeRequired: null,
+        recentlyVerifiedOnly: true,
+        hasChangingTable: true,
+        isFamilyRestroom: null,
+        minCleanlinessRating: null,
+      }
+    );
+
+    expect(filteredRows).toHaveLength(1);
+    expect(filteredRows[0]?.id).toBe('bathroom-1');
   });
 });

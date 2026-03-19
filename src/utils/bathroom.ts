@@ -1,7 +1,9 @@
 import {
+  AccessibilityFeatures,
   BathroomFilters,
   BathroomListItem,
   Coordinates,
+  DEFAULT_ACCESSIBILITY_FEATURES,
   FavoriteItem,
   HoursData,
   RegionBounds,
@@ -9,9 +11,44 @@ import {
   type Database,
 } from '@/types';
 
-export type BathroomRow = Database['public']['Views']['v_bathroom_detail_public']['Row'];
-export type NearbyBathroomRow = Database['public']['Functions']['get_bathrooms_near']['Returns'][number];
-export type BathroomDirectoryRow = BathroomRow | NearbyBathroomRow;
+type BathroomAccessibilityFeaturesInput =
+  | AccessibilityFeatures
+  | Database['public']['Views']['v_bathroom_detail_public']['Row']['accessibility_features']
+  | null;
+
+interface BathroomDirectoryRowBase {
+  id: string;
+  place_name: string;
+  address_line1: string | null;
+  city: string | null;
+  state: string | null;
+  postal_code: string | null;
+  country_code: string;
+  latitude: number;
+  longitude: number;
+  is_locked: boolean | null;
+  is_accessible: boolean | null;
+  is_customer_only: boolean;
+  accessibility_features: BathroomAccessibilityFeaturesInput;
+  hours_json: Database['public']['Views']['v_bathroom_detail_public']['Row']['hours_json'];
+  code_id: string | null;
+  confidence_score: number | null;
+  up_votes: number | null;
+  down_votes: number | null;
+  last_verified_at: string | null;
+  expires_at: string | null;
+  cleanliness_avg: number | null;
+  updated_at: string;
+  distance_meters?: number | null;
+  rank?: number;
+  favorited_at?: string;
+}
+
+export type BathroomRow = BathroomDirectoryRowBase;
+export type NearbyBathroomRow = BathroomDirectoryRowBase & { distance_meters: number };
+export type SearchBathroomRow = BathroomDirectoryRowBase & { distance_meters: number | null; rank: number };
+export type FavoriteBathroomRow = BathroomDirectoryRowBase & { distance_meters: number | null; favorited_at: string };
+export type BathroomDirectoryRow = BathroomDirectoryRowBase;
 
 type HoursEntry = {
   open: string;
@@ -25,6 +62,8 @@ interface MappingOptions {
   stale: boolean;
   origin?: Coordinates | null;
 }
+
+const RECENT_VERIFICATION_WINDOW_DAYS = 14;
 
 function roundCoordinate(value: number): number {
   return Math.round(value * 1000) / 1000;
@@ -67,6 +106,41 @@ function buildSyncMetadata(options: MappingOptions): SyncMetadata {
     cached_at: options.cachedAt,
     stale: options.stale,
   };
+}
+
+export function normalizeAccessibilityFeatures(
+  accessibilityFeatures: BathroomDirectoryRow['accessibility_features']
+): AccessibilityFeatures {
+  if (!accessibilityFeatures || typeof accessibilityFeatures !== 'object' || Array.isArray(accessibilityFeatures)) {
+    return DEFAULT_ACCESSIBILITY_FEATURES;
+  }
+
+  return {
+    has_grab_bars: accessibilityFeatures.has_grab_bars === true,
+    door_width_inches:
+      typeof accessibilityFeatures.door_width_inches === 'number'
+        ? accessibilityFeatures.door_width_inches
+        : null,
+    is_automatic_door: accessibilityFeatures.is_automatic_door === true,
+    has_changing_table: accessibilityFeatures.has_changing_table === true,
+    is_family_restroom: accessibilityFeatures.is_family_restroom === true,
+    is_gender_neutral: accessibilityFeatures.is_gender_neutral === true,
+    has_audio_cue: accessibilityFeatures.has_audio_cue === true,
+  };
+}
+
+export function hasRecentlyVerifiedCode(lastVerifiedAt: string | null | undefined): boolean {
+  if (!lastVerifiedAt) {
+    return false;
+  }
+
+  const parsedTimestamp = new Date(lastVerifiedAt).getTime();
+
+  if (Number.isNaN(parsedTimestamp)) {
+    return false;
+  }
+
+  return parsedTimestamp >= Date.now() - RECENT_VERIFICATION_WINDOW_DAYS * 24 * 60 * 60 * 1000;
 }
 
 function getHoursEntries(hoursJson: BathroomDirectoryRow['hours_json'], targetDate: Date): HoursEntry[] {
@@ -218,6 +292,7 @@ export function mapBathroomRowToListItem(
       is_accessible: bathroom.is_accessible,
       is_customer_only: bathroom.is_customer_only,
     },
+    accessibility_features: normalizeAccessibilityFeatures(bathroom.accessibility_features),
     hours: toHoursData(bathroom.hours_json),
     cleanliness_avg: bathroom.cleanliness_avg ?? null,
     distance_meters: computedDistance,
@@ -245,7 +320,10 @@ export function mapBathroomRowToFavoriteItem(
 }
 
 export function applyBathroomFilters<
-  T extends Pick<BathroomDirectoryRow, 'is_accessible' | 'is_customer_only' | 'is_locked' | 'hours_json' | 'cleanliness_avg'>
+  T extends Pick<
+    BathroomDirectoryRow,
+    'is_accessible' | 'is_customer_only' | 'is_locked' | 'hours_json' | 'cleanliness_avg' | 'last_verified_at' | 'accessibility_features'
+  >
 >(
   bathrooms: T[],
   filters: BathroomFilters
@@ -271,6 +349,22 @@ export function applyBathroomFilters<
       return false;
     }
 
+    if (filters.recentlyVerifiedOnly && !hasRecentlyVerifiedCode(bathroom.last_verified_at)) {
+      return false;
+    }
+
+    const accessibilityFeatures = normalizeAccessibilityFeatures(
+      bathroom.accessibility_features as BathroomDirectoryRow['accessibility_features']
+    );
+
+    if (filters.hasChangingTable && accessibilityFeatures.has_changing_table !== true) {
+      return false;
+    }
+
+    if (filters.isFamilyRestroom && accessibilityFeatures.is_family_restroom !== true) {
+      return false;
+    }
+
     if (
       typeof filters.minCleanlinessRating === 'number' &&
       (bathroom.cleanliness_avg ?? 0) < filters.minCleanlinessRating
@@ -289,6 +383,9 @@ export function hasActiveBathroomFilters(filters: BathroomFilters): boolean {
       filters.isCustomerOnly ||
       filters.openNow ||
       filters.noCodeRequired ||
+      filters.recentlyVerifiedOnly ||
+      filters.hasChangingTable ||
+      filters.isFamilyRestroom ||
       typeof filters.minCleanlinessRating === 'number'
   );
 }
@@ -334,6 +431,9 @@ export function buildBathroomsCacheKey(region: RegionBounds, filters: BathroomFi
     filters.isCustomerOnly ? 'customers' : 'all-customers',
     filters.openNow ? 'open-now' : 'all-hours',
     filters.noCodeRequired ? 'no-code' : 'all-access-types',
+    filters.recentlyVerifiedOnly ? 'recently-verified' : 'all-verification',
+    filters.hasChangingTable ? 'changing-table' : 'all-changing-table',
+    filters.isFamilyRestroom ? 'family-restroom' : 'all-family',
     typeof filters.minCleanlinessRating === 'number' ? `clean-${filters.minCleanlinessRating}` : 'all-clean',
   ].join(':');
 }
@@ -346,6 +446,9 @@ export function buildSearchCacheKey(query: string, filters: BathroomFilters, ori
     filters.isCustomerOnly ? 'customers' : 'all-customers',
     filters.openNow ? 'open-now' : 'all-hours',
     filters.noCodeRequired ? 'no-code' : 'all-access-types',
+    filters.recentlyVerifiedOnly ? 'recently-verified' : 'all-verification',
+    filters.hasChangingTable ? 'changing-table' : 'all-changing-table',
+    filters.isFamilyRestroom ? 'family-restroom' : 'all-family',
     typeof filters.minCleanlinessRating === 'number' ? `clean-${filters.minCleanlinessRating}` : 'all-clean',
     origin ? storageSafeNumber(origin.latitude) : 'no-origin',
     origin ? storageSafeNumber(origin.longitude) : 'no-origin',

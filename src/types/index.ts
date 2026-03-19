@@ -159,8 +159,31 @@ export interface BathroomFilters {
   isCustomerOnly: boolean | null;
   openNow: boolean | null;
   noCodeRequired: boolean | null;
+  recentlyVerifiedOnly: boolean | null;
+  hasChangingTable: boolean | null;
+  isFamilyRestroom: boolean | null;
   minCleanlinessRating: number | null;
 }
+
+export interface AccessibilityFeatures {
+  has_grab_bars: boolean;
+  door_width_inches: number | null;
+  is_automatic_door: boolean;
+  has_changing_table: boolean;
+  is_family_restroom: boolean;
+  is_gender_neutral: boolean;
+  has_audio_cue: boolean;
+}
+
+export const DEFAULT_ACCESSIBILITY_FEATURES: AccessibilityFeatures = {
+  has_grab_bars: false,
+  door_width_inches: null,
+  is_automatic_door: false,
+  has_changing_table: false,
+  is_family_restroom: false,
+  is_gender_neutral: false,
+  has_audio_cue: false,
+};
 
 export interface BathroomFlags {
   is_locked: boolean | null;
@@ -185,6 +208,7 @@ export interface BathroomListItem {
   address: string;
   coordinates: Coordinates;
   flags: BathroomFlags;
+  accessibility_features: AccessibilityFeatures;
   hours: HoursData | null;
   cleanliness_avg: number | null;
   distance_meters?: number;
@@ -313,6 +337,26 @@ export interface FavoritesList {
   sync: SyncMetadata;
 }
 
+export interface DisplayNameUpdateResult {
+  success: boolean;
+  error?: string;
+}
+
+// ============================================================================
+// SEARCH TYPES
+// ============================================================================
+
+export interface SearchHistoryItem {
+  query: string;
+  searched_at: string;
+}
+
+export interface CityBrowseItem {
+  city: string;
+  state: string;
+  bathroom_count: number;
+}
+
 // ============================================================================
 // LOCATION TYPES
 // ============================================================================
@@ -433,6 +477,7 @@ export interface NotificationPrefs {
   favorite_update: boolean;
   nearby_new: boolean;
   streak_reminder: boolean;
+  arrival_alert: boolean;
 }
 
 export const DEFAULT_NOTIFICATION_PREFS: NotificationPrefs = {
@@ -440,13 +485,15 @@ export const DEFAULT_NOTIFICATION_PREFS: NotificationPrefs = {
   favorite_update: true,
   nearby_new: false,
   streak_reminder: true,
+  arrival_alert: true,
 };
 
 export type NotificationType =
   | 'favorite_update'
   | 'code_verified'
   | 'nearby_new'
-  | 'streak_reminder';
+  | 'streak_reminder'
+  | 'arrival_alert';
 
 export interface NotificationRouteData {
   type?: NotificationType;
@@ -522,6 +569,37 @@ export interface PremiumRedemptionResult {
   is_premium: boolean;
 }
 
+export interface PremiumCityPackManifest {
+  slug: string;
+  city: string;
+  state: string;
+  country_code: string;
+  bathroom_count: number;
+  center_latitude: number;
+  center_longitude: number;
+  min_latitude: number;
+  max_latitude: number;
+  min_longitude: number;
+  max_longitude: number;
+  latest_bathroom_update_at: string;
+  latest_code_verified_at: string | null;
+}
+
+export interface DownloadedPremiumCityPack extends PremiumCityPackManifest {
+  downloaded_at: string;
+}
+
+export interface PremiumArrivalAlert {
+  id: string;
+  user_id: string;
+  bathroom_id: string;
+  target_arrival_at: string;
+  lead_minutes: 15 | 30 | 60;
+  status: 'active' | 'cancelled' | 'expired';
+  created_at: string;
+  updated_at: string;
+}
+
 // ============================================================================
 // API RESPONSE TYPES
 // ============================================================================
@@ -590,3 +668,4 @@ export type DbCodeRevealGrant = Database['public']['Tables']['code_reveal_grants
 export type DbPointEvent = Database['public']['Tables']['point_events']['Row'];
 export type DbUserBadge = Database['public']['Tables']['user_badges']['Row'];
 export type DbBathroomStatusEvent = Database['public']['Tables']['bathroom_status_events']['Row'];
+export type DbPremiumArrivalAlert = Database['public']['Tables']['premium_arrival_alerts']['Row'];

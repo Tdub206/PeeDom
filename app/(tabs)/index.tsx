@@ -76,6 +76,18 @@ export default function MapTab() {
       count += 1;
     }
 
+    if (filters.recentlyVerifiedOnly) {
+      count += 1;
+    }
+
+    if (filters.hasChangingTable) {
+      count += 1;
+    }
+
+    if (filters.isFamilyRestroom) {
+      count += 1;
+    }
+
     if (typeof filters.minCleanlinessRating === 'number') {
       count += 1;
     }
@@ -83,11 +95,14 @@ export default function MapTab() {
     return count;
   }, [
     filters.isAccessible,
+    filters.hasChangingTable,
     filters.isCustomerOnly,
+    filters.isFamilyRestroom,
     filters.isLocked,
     filters.minCleanlinessRating,
     filters.noCodeRequired,
     filters.openNow,
+    filters.recentlyVerifiedOnly,
   ]);
   const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(bathrooms);
 
@@ -154,7 +169,17 @@ export default function MapTab() {
   }, [resetFilters]);
 
   const handleToggleFilter = useCallback(
-    (filterKey: 'isAccessible' | 'isLocked' | 'isCustomerOnly' | 'openNow' | 'noCodeRequired') => {
+    (
+      filterKey:
+        | 'isAccessible'
+        | 'isLocked'
+        | 'isCustomerOnly'
+        | 'openNow'
+        | 'noCodeRequired'
+        | 'recentlyVerifiedOnly'
+        | 'hasChangingTable'
+        | 'isFamilyRestroom'
+    ) => {
       toggleFilter(filterKey);
     },
     [toggleFilter]

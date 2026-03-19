@@ -144,6 +144,7 @@ export function useNotificationPreferences() {
   );
 
   return {
+    hasPendingUpdate: pendingKey !== null,
     isPushEnabled: Boolean(profile?.push_enabled),
     isUpdating: (key: NotificationSettingKey) => pendingKey === key,
     settings,

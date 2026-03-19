@@ -103,6 +103,10 @@ async function readCachedProfile(userId: string): Promise<UserProfile | null> {
               typeof cachedProfile.notification_prefs.streak_reminder === 'boolean'
                 ? cachedProfile.notification_prefs.streak_reminder
                 : DEFAULT_NOTIFICATION_PREFS.streak_reminder,
+            arrival_alert:
+              typeof cachedProfile.notification_prefs.arrival_alert === 'boolean'
+                ? cachedProfile.notification_prefs.arrival_alert
+                : DEFAULT_NOTIFICATION_PREFS.arrival_alert,
           }
         : DEFAULT_NOTIFICATION_PREFS,
     created_at: cachedProfile.created_at,
@@ -280,10 +284,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         };
       }
 
-      await cacheProfile(parsedProfile.data);
+      const normalizedProfile: UserProfile = {
+        ...parsedProfile.data,
+        notification_prefs: {
+          ...DEFAULT_NOTIFICATION_PREFS,
+          ...parsedProfile.data.notification_prefs,
+        },
+      };
+
+      await cacheProfile(normalizedProfile);
 
       return {
-        profile: parsedProfile.data,
+        profile: normalizedProfile,
         errorDetails: null,
         usedCache: false,
       };

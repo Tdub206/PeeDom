@@ -1,9 +1,12 @@
-import { BathroomFilters, Coordinates, RegionBounds, type Database } from '@/types';
+import { z } from 'zod';
+import { BathroomFilters, Coordinates, RegionBounds } from '@/types';
 import {
+  cityBrowseRowSchema,
   nearbyBathroomRowSchema,
   parseSupabaseNullableRow,
   parseSupabaseRows,
   publicBathroomDetailRowSchema,
+  searchBathroomRowSchema,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 import {
@@ -13,10 +16,13 @@ import {
   getRegionBounds,
   type BathroomDirectoryRow,
 } from '@/utils/bathroom';
+import { groupCityBrowseRows } from '@/utils/search';
 import { isMissingRpcError } from '@/utils/network';
 
-export type PublicBathroomDetailRow = Database['public']['Views']['v_bathroom_detail_public']['Row'];
-export type NearbyBathroomRow = Database['public']['Functions']['get_bathrooms_near']['Returns'][number];
+export type PublicBathroomDetailRow = z.infer<typeof publicBathroomDetailRowSchema>;
+export type NearbyBathroomRow = z.infer<typeof nearbyBathroomRowSchema>;
+export type SearchBathroomRow = z.infer<typeof searchBathroomRowSchema>;
+export type CityBrowseRow = z.infer<typeof cityBrowseRowSchema>;
 
 interface NearbyBathroomsOptions {
   region: RegionBounds;
@@ -33,6 +39,10 @@ interface SearchBathroomsOptions {
 interface BathroomsByIdOptions {
   bathroomIds: string[];
   origin?: Coordinates | null;
+}
+
+interface CityBrowseOptions {
+  limit?: number;
 }
 
 interface ApiErrorShape {
@@ -180,7 +190,7 @@ export async function fetchBathroomDetailById(
     }
 
     return {
-      data: parsedData.data,
+      data: parsedData.data as PublicBathroomDetailRow,
       error: null,
     };
   } catch (error) {
@@ -267,6 +277,66 @@ export async function fetchBathroomsNearRegion(
 export async function searchBathrooms(
   options: SearchBathroomsOptions
 ): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
+  const trimmedQuery = options.query.trim();
+
+  if (trimmedQuery.length < 2) {
+    return searchBathroomsFallback(options);
+  }
+
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'search_bathrooms' as never,
+      {
+        p_query: trimmedQuery,
+        p_user_lat: options.origin?.latitude ?? null,
+        p_user_lng: options.origin?.longitude ?? null,
+        p_limit: options.limit ?? 40,
+      } as never
+    );
+
+    if (error) {
+      if (!isMissingRpcError(error)) {
+        return {
+          data: [],
+          error: toAppError(error, 'Unable to search bathrooms.'),
+        };
+      }
+
+      return searchBathroomsFallback(options);
+    }
+
+    const parsedData = parseSupabaseRows(
+      searchBathroomRowSchema,
+      data,
+      'search bathrooms',
+      'Unable to search bathrooms.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: applyBathroomFilters(parsedData.data as SearchBathroomRow[], options.filters),
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: [],
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to search bathrooms.'),
+        'Unable to search bathrooms.'
+      ),
+    };
+  }
+}
+
+async function searchBathroomsFallback(
+  options: SearchBathroomsOptions
+): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
   try {
     let query = getSupabaseClient()
       .from('v_bathroom_detail_public')
@@ -286,10 +356,8 @@ export async function searchBathrooms(
       query = query.eq('is_customer_only', true);
     }
 
-    const trimmedQuery = options.query.trim();
-
-    if (trimmedQuery.length >= 2) {
-      const searchPattern = buildSearchPattern(trimmedQuery);
+    if (options.query.trim().length >= 2) {
+      const searchPattern = buildSearchPattern(options.query.trim());
       query = query.or(
         `place_name.ilike.${searchPattern},address_line1.ilike.${searchPattern},city.ilike.${searchPattern},state.ilike.${searchPattern},postal_code.ilike.${searchPattern}`
       );
@@ -331,6 +399,90 @@ export async function searchBathrooms(
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to search bathrooms.'),
         'Unable to search bathrooms.'
+      ),
+    };
+  }
+}
+
+export async function fetchCityBrowse(
+  options: CityBrowseOptions = {}
+): Promise<{ data: CityBrowseRow[]; error: (Error & { code?: string }) | null }> {
+  const limit = options.limit ?? 12;
+
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_city_browse' as never,
+      {
+        p_limit: limit,
+      } as never
+    );
+
+    if (error) {
+      if (!isMissingRpcError(error)) {
+        return {
+          data: [],
+          error: toAppError(error, 'Unable to load cities right now.'),
+        };
+      }
+
+      return fetchCityBrowseFallback(limit);
+    }
+
+    const parsedData = parseSupabaseRows(
+      cityBrowseRowSchema,
+      data,
+      'city browse',
+      'Unable to load cities right now.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data as CityBrowseRow[],
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: [],
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load cities right now.'),
+        'Unable to load cities right now.'
+      ),
+    };
+  }
+}
+
+async function fetchCityBrowseFallback(
+  limit: number
+): Promise<{ data: CityBrowseRow[]; error: (Error & { code?: string }) | null }> {
+  try {
+    const { data, error } = await getSupabaseClient()
+      .from('v_bathrooms_public')
+      .select('city,state')
+      .limit(Math.max(limit * 40, 200));
+
+    if (error) {
+      return {
+        data: [],
+        error: toAppError(error, 'Unable to load cities right now.'),
+      };
+    }
+
+    return {
+      data: groupCityBrowseRows((data ?? []) as Array<{ city: string | null; state: string | null }>, limit) as CityBrowseRow[],
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: [],
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load cities right now.'),
+        'Unable to load cities right now.'
       ),
     };
   }

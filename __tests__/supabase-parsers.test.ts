@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import {
   dbBathroomStatusEventSchema,
+  dbPremiumArrivalAlertSchema,
   dbPointEventSchema,
   dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
@@ -10,6 +11,7 @@ import {
   leaderboardEntrySchema,
   parseSupabaseNullableRow,
   parseSupabaseRows,
+  premiumCityPackManifestSchema,
   premiumRedemptionSchema,
   publicBathroomDetailRowSchema,
 } from '@/lib/supabase-parsers';
@@ -108,6 +110,27 @@ describe('notification and realtime parser schemas', () => {
     expect(result.error).toBeNull();
     expect(result.data?.status).toBe('clean');
   });
+
+  it('parses a premium arrival alert row', () => {
+    const result = parseSupabaseNullableRow(
+      dbPremiumArrivalAlertSchema,
+      {
+        id: 'alert-1',
+        user_id: 'user-123',
+        bathroom_id: 'bathroom-123',
+        target_arrival_at: '2026-03-16T14:00:00.000Z',
+        lead_minutes: 30,
+        status: 'active',
+        created_at: '2026-03-16T12:00:00.000Z',
+        updated_at: '2026-03-16T12:05:00.000Z',
+      },
+      'premium arrival alert',
+      'Unable to parse premium arrival alert.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.lead_minutes).toBe(30);
+  });
 });
 
 describe('parseSupabaseRows', () => {
@@ -168,6 +191,34 @@ describe('parseSupabaseRows', () => {
 
     expect(result.error).toBeNull();
     expect(result.data[0]?.grant_source).toBe('rewarded_ad');
+  });
+
+  it('parses premium city pack manifests', () => {
+    const result = parseSupabaseRows(
+      premiumCityPackManifestSchema,
+      [
+        {
+          slug: 'seattle-wa-us',
+          city: 'Seattle',
+          state: 'WA',
+          country_code: 'US',
+          bathroom_count: 42,
+          center_latitude: 47.61,
+          center_longitude: -122.33,
+          min_latitude: 47.5,
+          max_latitude: 47.7,
+          min_longitude: -122.4,
+          max_longitude: -122.2,
+          latest_bathroom_update_at: '2026-03-16T12:00:00.000Z',
+          latest_code_verified_at: '2026-03-16T11:00:00.000Z',
+        },
+      ],
+      'premium city packs',
+      'Unable to parse premium city pack manifests.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data[0]?.bathroom_count).toBe(42);
   });
 });
 

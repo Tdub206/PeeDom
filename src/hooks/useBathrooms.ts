@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchBathroomsNearRegion } from '@/api/bathrooms';
 import { config } from '@/constants/config';
 import { cacheManager } from '@/lib/cache-manager';
+import { premiumCityPackStorage } from '@/lib/premium-city-packs';
 import { BathroomListItem, BathroomQueryResult, RegionBounds, BathroomFilters } from '@/types';
 import { buildBathroomsCacheKey, mapBathroomRowToListItem } from '@/utils/bathroom';
 
@@ -83,6 +84,17 @@ export function useBathrooms({ region, filters, enabled = true }: UseBathroomsOp
             source: 'cache',
             cached_at: cachedBathrooms.cached_at,
             is_stale: true,
+          };
+        }
+
+        const downloadedCityPackResult = await premiumCityPackStorage.findBathroomsInRegion(debouncedRegion, filters);
+
+        if (downloadedCityPackResult) {
+          return {
+            items: downloadedCityPackResult.items,
+            source: 'cache',
+            cached_at: downloadedCityPackResult.cached_at,
+            is_stale: false,
           };
         }
 

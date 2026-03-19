@@ -17,6 +17,9 @@ const STORAGE_KEYS = {
   USER_PREFERENCES: '@peedom/user_preferences',
   CODE_UNLOCKS: '@peedom/code_unlocks',
   ANALYTICS_ANONYMOUS_ID: '@peedom/analytics_anonymous_id',
+  SEARCH_HISTORY: '@peedom/search_history',
+  PREMIUM_CITY_PACK_INDEX: '@peedom/premium_city_pack_index',
+  PREMIUM_CITY_PACK_PREFIX: '@peedom/premium_city_pack',
 } as const;
 
 export const storage = {

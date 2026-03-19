@@ -5,7 +5,7 @@ interface FilterStoreState {
   searchQuery: string;
   filters: BathroomFilters;
   setSearchQuery: (query: string) => void;
-  toggleFilter: (filterName: keyof BathroomFilters) => void;
+  toggleFilter: (filterName: Exclude<keyof BathroomFilters, 'minCleanlinessRating'>) => void;
   setMinCleanlinessRating: (rating: number | null) => void;
   resetFilters: () => void;
 }
@@ -16,6 +16,9 @@ const defaultFilters: BathroomFilters = {
   isCustomerOnly: null,
   openNow: null,
   noCodeRequired: null,
+  recentlyVerifiedOnly: null,
+  hasChangingTable: null,
+  isFamilyRestroom: null,
   minCleanlinessRating: null,
 };
 

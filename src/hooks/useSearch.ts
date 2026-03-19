@@ -1,8 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { searchBathrooms } from '@/api/bathrooms';
-import { BathroomListItem, BathroomQueryResult, BathroomFilters, Coordinates } from '@/types';
+import { fetchCityBrowse, searchBathrooms } from '@/api/bathrooms';
 import { cacheManager } from '@/lib/cache-manager';
+import { premiumCityPackStorage } from '@/lib/premium-city-packs';
+import { SearchQuerySchema } from '@/lib/validators';
+import {
+  BathroomFilters,
+  BathroomListItem,
+  BathroomQueryResult,
+  CityBrowseItem,
+  Coordinates,
+} from '@/types';
 import { buildSearchCacheKey, hasActiveBathroomFilters, mapBathroomRowToListItem } from '@/utils/bathroom';
 
 interface UseSearchOptions {
@@ -20,6 +28,8 @@ function markItemsAsStale(items: BathroomListItem[]): BathroomListItem[] {
     },
   }));
 }
+
+const CITY_BROWSE_LIMIT = 12;
 
 export function useSearch({ query, filters, origin }: UseSearchOptions) {
   const [debouncedQuery, setDebouncedQuery] = useState(query.trim());
@@ -44,12 +54,20 @@ export function useSearch({ query, filters, origin }: UseSearchOptions) {
   const queryResult = useQuery<BathroomQueryResult, Error>({
     queryKey: ['search', cacheKey],
     enabled: isSearchReady,
+    placeholderData: (previousData) => previousData,
     queryFn: async () => {
       const cachedBathrooms = await cacheManager.getWithMeta<BathroomListItem[]>(cacheKey);
+      const validatedQuery =
+        debouncedQuery.length >= 2
+          ? SearchQuerySchema.safeParse({
+              query: debouncedQuery,
+              limit: 40,
+            })
+          : null;
 
       try {
         const result = await searchBathrooms({
-          query: debouncedQuery,
+          query: validatedQuery?.success ? validatedQuery.data.query : debouncedQuery,
           filters,
           origin,
         });
@@ -85,6 +103,21 @@ export function useSearch({ query, filters, origin }: UseSearchOptions) {
           };
         }
 
+        const downloadedCityPackResult = await premiumCityPackStorage.searchBathrooms({
+          query: validatedQuery?.success ? validatedQuery.data.query : debouncedQuery,
+          filters,
+          origin,
+        });
+
+        if (downloadedCityPackResult) {
+          return {
+            items: downloadedCityPackResult.items,
+            source: 'cache',
+            cached_at: downloadedCityPackResult.cached_at,
+            is_stale: false,
+          };
+        }
+
         throw error instanceof Error ? error : new Error('Unable to search bathrooms.');
       }
     },
@@ -96,4 +129,22 @@ export function useSearch({ query, filters, origin }: UseSearchOptions) {
     hasActiveFilters: hasFilters,
     isSearchReady,
   };
+}
+
+export function useCityBrowse(limit = CITY_BROWSE_LIMIT) {
+  return useQuery<CityBrowseItem[], Error>({
+    queryKey: ['search', 'city-browse', limit],
+    staleTime: 15 * 60 * 1000,
+    queryFn: async () => {
+      const result = await fetchCityBrowse({
+        limit,
+      });
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      return result.data;
+    },
+  });
 }

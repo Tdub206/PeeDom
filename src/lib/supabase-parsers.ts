@@ -17,6 +17,17 @@ export const notificationPrefsSchema = z.object({
   favorite_update: z.boolean(),
   nearby_new: z.boolean(),
   streak_reminder: z.boolean(),
+  arrival_alert: z.boolean().default(true),
+});
+
+export const accessibilityFeaturesSchema = z.object({
+  has_grab_bars: z.boolean().default(false),
+  door_width_inches: z.number().nullable().default(null),
+  is_automatic_door: z.boolean().default(false),
+  has_changing_table: z.boolean().default(false),
+  is_family_restroom: z.boolean().default(false),
+  is_gender_neutral: z.boolean().default(false),
+  has_audio_cue: z.boolean().default(false),
 });
 
 export const dbProfileSchema = z.object({
@@ -53,6 +64,15 @@ export const dbBathroomSchema = z.object({
   is_locked: z.boolean().nullable(),
   is_accessible: z.boolean().nullable(),
   is_customer_only: z.boolean(),
+  accessibility_features: accessibilityFeaturesSchema.default({
+    has_grab_bars: false,
+    door_width_inches: null,
+    is_automatic_door: false,
+    has_changing_table: false,
+    is_family_restroom: false,
+    is_gender_neutral: false,
+    has_audio_cue: false,
+  }),
   hours_json: jsonValueSchema.nullable(),
   source_type: z.enum(['community', 'business', 'imported', 'admin']),
   moderation_status: z.enum(['active', 'flagged', 'hidden', 'deleted', 'unverified']),
@@ -194,6 +214,33 @@ export const notificationSettingsResultSchema = z.object({
   key: z.string().optional(),
 });
 
+export const dbPremiumArrivalAlertSchema = z.object({
+  id: rawTextSchema,
+  user_id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  target_arrival_at: dateTimeStringSchema,
+  lead_minutes: z.union([z.literal(15), z.literal(30), z.literal(60)]),
+  status: z.enum(['active', 'cancelled', 'expired']),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const premiumCityPackManifestSchema = z.object({
+  slug: rawTextSchema,
+  city: rawTextSchema,
+  state: rawTextSchema,
+  country_code: rawTextSchema,
+  bathroom_count: z.number().int().nonnegative(),
+  center_latitude: z.number(),
+  center_longitude: z.number(),
+  min_latitude: z.number(),
+  max_latitude: z.number(),
+  min_longitude: z.number(),
+  max_longitude: z.number(),
+  latest_bathroom_update_at: dateTimeStringSchema,
+  latest_code_verified_at: dateTimeStringSchema.nullable(),
+});
+
 export const bathroomAccessCodeSchema = z.object({
   id: rawTextSchema,
   bathroom_id: rawTextSchema,
@@ -223,6 +270,15 @@ export const publicBathroomDetailRowSchema = z.object({
   is_locked: z.boolean().nullable(),
   is_accessible: z.boolean().nullable(),
   is_customer_only: z.boolean(),
+  accessibility_features: accessibilityFeaturesSchema.default({
+    has_grab_bars: false,
+    door_width_inches: null,
+    is_automatic_door: false,
+    has_changing_table: false,
+    is_family_restroom: false,
+    is_gender_neutral: false,
+    has_audio_cue: false,
+  }),
   hours_json: jsonValueSchema.nullable(),
   code_id: z.string().nullable(),
   confidence_score: z.number().nullable(),
@@ -236,6 +292,22 @@ export const publicBathroomDetailRowSchema = z.object({
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({
   distance_meters: z.number(),
+});
+
+export const searchBathroomRowSchema = publicBathroomDetailRowSchema.extend({
+  distance_meters: z.number().nullable(),
+  rank: z.number(),
+});
+
+export const favoriteBathroomRowSchema = publicBathroomDetailRowSchema.extend({
+  distance_meters: z.number().nullable(),
+  favorited_at: dateTimeStringSchema,
+});
+
+export const cityBrowseRowSchema = z.object({
+  city: rawTextSchema,
+  state: rawTextSchema,
+  bathroom_count: z.number().int().nonnegative(),
 });
 
 function buildValidationError(
