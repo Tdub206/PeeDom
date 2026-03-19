@@ -683,6 +683,56 @@ export interface Database {
           created_at?: string
         }
       }
+      user_accessibility_preferences: {
+        Row: {
+          id: string
+          user_id: string
+          accessibility_mode_enabled: boolean
+          require_grab_bars: boolean
+          require_automatic_door: boolean
+          require_gender_neutral: boolean
+          require_family_restroom: boolean
+          require_changing_table: boolean
+          min_door_width_inches: number | null
+          min_stall_width_inches: number | null
+          prioritize_accessible: boolean
+          hide_non_accessible: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          accessibility_mode_enabled?: boolean
+          require_grab_bars?: boolean
+          require_automatic_door?: boolean
+          require_gender_neutral?: boolean
+          require_family_restroom?: boolean
+          require_changing_table?: boolean
+          min_door_width_inches?: number | null
+          min_stall_width_inches?: number | null
+          prioritize_accessible?: boolean
+          hide_non_accessible?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          accessibility_mode_enabled?: boolean
+          require_grab_bars?: boolean
+          require_automatic_door?: boolean
+          require_gender_neutral?: boolean
+          require_family_restroom?: boolean
+          require_changing_table?: boolean
+          min_door_width_inches?: number | null
+          min_stall_width_inches?: number | null
+          prioritize_accessible?: boolean
+          hide_non_accessible?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
     }
     Views: {
       v_bathrooms_public: {
@@ -731,6 +781,7 @@ export interface Database {
           is_accessible: boolean | null
           is_customer_only: boolean
           accessibility_features: Json
+          accessibility_score: number
           hours_json: Json | null
           code_id: string | null
           confidence_score: number | null
@@ -840,6 +891,7 @@ export interface Database {
             is_accessible: boolean | null
             is_customer_only: boolean
             accessibility_features: Json
+            accessibility_score: number
             hours_json: Json | null
             code_id: string | null
           confidence_score: number | null
@@ -873,6 +925,7 @@ export interface Database {
             is_accessible: boolean | null
             is_customer_only: boolean
             accessibility_features: Json
+            accessibility_score: number
             hours_json: Json | null
             code_id: string | null
           confidence_score: number | null
@@ -936,6 +989,7 @@ export interface Database {
           is_accessible: boolean | null
           is_customer_only: boolean
           accessibility_features: Json
+          accessibility_score: number
           hours_json: Json | null
           code_id: string | null
           confidence_score: number | null
@@ -965,6 +1019,8 @@ export interface Database {
           is_locked: boolean | null
           is_accessible: boolean | null
           is_customer_only: boolean
+          accessibility_features: Json
+          accessibility_score: number
           hours_json: Json | null
           code_id: string | null
           confidence_score: number | null
@@ -1113,6 +1169,19 @@ export interface Database {
           p_note?: string | null
         }
         Returns: Json
+      }
+      upsert_bathroom_accessibility_features: {
+        Args: {
+          p_bathroom_id: string
+          p_accessibility_features: Json
+        }
+        Returns: {
+          bathroom_id: string
+          accessibility_features: Json
+          is_accessible: boolean
+          accessibility_score: number
+          updated_at: string
+        }[]
       }
     }
     Enums: {}

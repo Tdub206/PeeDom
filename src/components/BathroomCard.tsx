@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
 import { BathroomListItem, FavoriteItem } from '@/types';
 import { CodeBadge } from '@/components/CodeBadge';
+import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 
 interface BathroomCardProps {
   item: BathroomListItem | FavoriteItem;
@@ -51,11 +52,13 @@ function BathroomCardComponent({
       chips.push('Public access');
     }
 
-    return chips;
-  }, [item.flags.is_accessible, item.flags.is_customer_only, item.flags.is_locked]);
+    return [...chips, ...buildAccessibilityFeatureLabels(item.accessibility_features, 2)];
+  }, [item.accessibility_features, item.flags.is_accessible, item.flags.is_customer_only, item.flags.is_locked]);
 
   return (
     <Pressable
+      accessibilityHint="Opens the bathroom detail screen."
+      accessibilityLabel={buildBathroomAccessibilityLabel(item)}
       accessibilityRole="button"
       className="rounded-[28px] border border-surface-strong bg-surface-card p-5"
       onPress={onPress}
@@ -70,6 +73,7 @@ function BathroomCardComponent({
         {onToggleFavorite ? (
           <Pressable
             accessibilityLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+            accessibilityHint="Saves this bathroom for faster access later."
             accessibilityRole="button"
             accessibilityState={{ busy: isFavoritePending }}
             className={[

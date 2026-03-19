@@ -3,6 +3,7 @@ import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
+import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
 
 interface SearchResultItemProps {
@@ -84,11 +85,13 @@ function SearchResultItemComponent({
       nextTags.push('Closed');
     }
 
-    return nextTags;
-  }, [item.distance_meters, item.flags.is_accessible, item.flags.is_customer_only, openNow]);
+    return [...nextTags, ...buildAccessibilityFeatureLabels(item.accessibility_features, 2)];
+  }, [item.accessibility_features, item.distance_meters, item.flags.is_accessible, item.flags.is_customer_only, openNow]);
 
   return (
     <Pressable
+      accessibilityHint="Centers the map on this bathroom and opens the preview sheet."
+      accessibilityLabel={buildBathroomAccessibilityLabel(item)}
       accessibilityRole="button"
       className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5"
       onPress={onPress}
@@ -111,6 +114,7 @@ function SearchResultItemComponent({
 
         <Pressable
           accessibilityLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+          accessibilityHint="Saves this bathroom for faster access later."
           accessibilityRole="button"
           accessibilityState={{ busy: isFavoritePending }}
           className={[

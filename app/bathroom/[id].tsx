@@ -12,6 +12,7 @@ import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
+import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
 import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
@@ -551,6 +552,8 @@ export default function BathroomDetailScreen() {
 
                 return (
                   <Pressable
+                    accessibilityHint={option.description}
+                    accessibilityLabel={`${option.label} proof photo type`}
                     accessibilityRole="button"
                     accessibilityState={{ selected: isSelected }}
                     className={[
@@ -599,7 +602,9 @@ export default function BathroomDetailScreen() {
               <View className="rounded-2xl bg-surface-muted px-4 py-4">
                 <Text className="text-sm font-semibold text-ink-700">Accessible</Text>
                 <Text className="mt-1 text-base text-ink-900">
-                  {bathroomDetail.is_accessible ? 'Accessibility information available' : 'Not reported'}
+                  {bathroomDetail.is_accessible
+                    ? `${bathroomDetail.accessibility_score ?? 0}/100 accessibility score`
+                    : 'Not reported'}
                 </Text>
               </View>
               <View className="rounded-2xl bg-surface-muted px-4 py-4">
@@ -609,6 +614,14 @@ export default function BathroomDetailScreen() {
                 </Text>
               </View>
             </View>
+          </View>
+
+          <View className="mt-6">
+            <AccessibilitySummaryCard
+              accessibilityFeatures={bathroomDetail.accessibility_features}
+              accessibilityScore={bathroomDetail.accessibility_score ?? 0}
+              isAccessible={bathroomDetail.is_accessible}
+            />
           </View>
 
           <PremiumArrivalAlertCard

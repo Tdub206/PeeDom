@@ -5,6 +5,7 @@ import {
   dbPointEventSchema,
   dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
+  bathroomAccessibilityUpdateResultSchema,
   dbProfileSchema,
   dbUserBadgeSchema,
   gamificationSummarySchema,
@@ -14,6 +15,7 @@ import {
   premiumCityPackManifestSchema,
   premiumRedemptionSchema,
   publicBathroomDetailRowSchema,
+  userAccessibilityPreferencesSchema,
 } from '@/lib/supabase-parsers';
 
 describe('parseSupabaseNullableRow', () => {
@@ -151,6 +153,24 @@ describe('parseSupabaseRows', () => {
           is_locked: true,
           is_accessible: true,
           is_customer_only: false,
+          accessibility_features: {
+            has_grab_bars: true,
+            door_width_inches: 34,
+            is_automatic_door: false,
+            has_changing_table: true,
+            is_family_restroom: false,
+            is_gender_neutral: true,
+            has_audio_cue: false,
+            has_braille_signage: true,
+            has_wheelchair_ramp: true,
+            has_elevator_access: false,
+            stall_width_inches: 60,
+            turning_radius_inches: 64,
+            notes: 'Wide stall near the entry.',
+            photo_urls: [],
+            verification_date: '2026-03-15T12:00:00.000Z',
+          },
+          accessibility_score: 72,
           hours_json: null,
           code_id: 'code-123',
           confidence_score: 92,
@@ -169,6 +189,7 @@ describe('parseSupabaseRows', () => {
     expect(result.error).toBeNull();
     expect(result.data).toHaveLength(1);
     expect(result.data[0]?.place_name).toBe('Pike Place Bathroom');
+    expect(result.data[0]?.accessibility_score).toBe(72);
   });
 
   it('parses server-backed code reveal grants', () => {
@@ -219,6 +240,71 @@ describe('parseSupabaseRows', () => {
 
     expect(result.error).toBeNull();
     expect(result.data[0]?.bathroom_count).toBe(42);
+  });
+});
+
+describe('accessibility parser schemas', () => {
+  it('parses saved user accessibility preferences', () => {
+    const result = parseSupabaseNullableRow(
+      userAccessibilityPreferencesSchema,
+      {
+        id: 'prefs-1',
+        user_id: 'user-123',
+        accessibility_mode_enabled: true,
+        require_grab_bars: true,
+        require_automatic_door: false,
+        require_gender_neutral: true,
+        require_family_restroom: false,
+        require_changing_table: true,
+        min_door_width_inches: 32,
+        min_stall_width_inches: 60,
+        prioritize_accessible: true,
+        hide_non_accessible: false,
+        created_at: '2026-03-18T12:00:00.000Z',
+        updated_at: '2026-03-18T12:05:00.000Z',
+      },
+      'accessibility preferences',
+      'Unable to parse accessibility preferences.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.accessibility_mode_enabled).toBe(true);
+    expect(result.data?.min_stall_width_inches).toBe(60);
+  });
+
+  it('parses accessibility update RPC results', () => {
+    const result = parseSupabaseNullableRow(
+      bathroomAccessibilityUpdateResultSchema,
+      {
+        bathroom_id: 'bathroom-123',
+        accessibility_features: {
+          has_grab_bars: true,
+          door_width_inches: 34,
+          is_automatic_door: false,
+          has_changing_table: false,
+          is_family_restroom: false,
+          is_gender_neutral: false,
+          has_audio_cue: false,
+          has_braille_signage: true,
+          has_wheelchair_ramp: true,
+          has_elevator_access: false,
+          stall_width_inches: 60,
+          turning_radius_inches: 64,
+          notes: null,
+          photo_urls: [],
+          verification_date: '2026-03-18T12:05:00.000Z',
+        },
+        is_accessible: true,
+        accessibility_score: 68,
+        updated_at: '2026-03-18T12:05:00.000Z',
+      },
+      'bathroom accessibility update',
+      'Unable to parse bathroom accessibility updates.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.accessibility_score).toBe(68);
+    expect(result.data?.accessibility_features.has_braille_signage).toBe(true);
   });
 });
 

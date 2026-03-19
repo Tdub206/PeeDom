@@ -1,8 +1,10 @@
 import {
   AccessibilityFeatures,
+  AccessibilityPreferenceState,
   BathroomFilters,
   BathroomListItem,
   Coordinates,
+  DEFAULT_ACCESSIBILITY_PREFERENCES,
   DEFAULT_ACCESSIBILITY_FEATURES,
   FavoriteItem,
   HoursData,
@@ -30,6 +32,7 @@ interface BathroomDirectoryRowBase {
   is_accessible: boolean | null;
   is_customer_only: boolean;
   accessibility_features: BathroomAccessibilityFeaturesInput;
+  accessibility_score?: number | null;
   hours_json: Database['public']['Views']['v_bathroom_detail_public']['Row']['hours_json'];
   code_id: string | null;
   confidence_score: number | null;
@@ -115,6 +118,8 @@ export function normalizeAccessibilityFeatures(
     return DEFAULT_ACCESSIBILITY_FEATURES;
   }
 
+  const rawPhotoUrls = accessibilityFeatures.photo_urls;
+
   return {
     has_grab_bars: accessibilityFeatures.has_grab_bars === true,
     door_width_inches:
@@ -126,6 +131,103 @@ export function normalizeAccessibilityFeatures(
     is_family_restroom: accessibilityFeatures.is_family_restroom === true,
     is_gender_neutral: accessibilityFeatures.is_gender_neutral === true,
     has_audio_cue: accessibilityFeatures.has_audio_cue === true,
+    has_braille_signage: accessibilityFeatures.has_braille_signage === true,
+    has_wheelchair_ramp: accessibilityFeatures.has_wheelchair_ramp === true,
+    has_elevator_access: accessibilityFeatures.has_elevator_access === true,
+    stall_width_inches:
+      typeof accessibilityFeatures.stall_width_inches === 'number'
+        ? accessibilityFeatures.stall_width_inches
+        : null,
+    turning_radius_inches:
+      typeof accessibilityFeatures.turning_radius_inches === 'number'
+        ? accessibilityFeatures.turning_radius_inches
+        : null,
+    notes: typeof accessibilityFeatures.notes === 'string' ? accessibilityFeatures.notes : null,
+    photo_urls: Array.isArray(rawPhotoUrls)
+      ? rawPhotoUrls.reduce<string[]>((photoUrls, value) => {
+          if (typeof value === 'string') {
+            photoUrls.push(value);
+          }
+
+          return photoUrls;
+        }, [])
+      : [],
+    verification_date:
+      typeof accessibilityFeatures.verification_date === 'string'
+        ? accessibilityFeatures.verification_date
+        : null,
+  };
+}
+
+export function calculateAccessibilityScore(
+  accessibilityFeatures: AccessibilityFeatures,
+  isAccessible: boolean | null | undefined
+): number {
+  const score =
+    (isAccessible ? 20 : 0) +
+    (accessibilityFeatures.has_grab_bars ? 15 : 0) +
+    (accessibilityFeatures.is_automatic_door ? 10 : 0) +
+    (accessibilityFeatures.has_wheelchair_ramp ? 10 : 0) +
+    (accessibilityFeatures.has_elevator_access ? 10 : 0) +
+    (accessibilityFeatures.is_family_restroom ? 10 : 0) +
+    (accessibilityFeatures.is_gender_neutral ? 10 : 0) +
+    (accessibilityFeatures.has_changing_table ? 10 : 0) +
+    (accessibilityFeatures.has_braille_signage ? 5 : 0) +
+    (accessibilityFeatures.has_audio_cue ? 5 : 0) +
+    ((accessibilityFeatures.door_width_inches ?? 0) >= 32 ? 5 : 0) +
+    ((accessibilityFeatures.stall_width_inches ?? 0) >= 60 ? 5 : 0) +
+    ((accessibilityFeatures.turning_radius_inches ?? 0) >= 60 ? 5 : 0);
+
+  return Math.min(100, Math.max(0, score));
+}
+
+function isBathroomAccessible(
+  accessibilityFeatures: AccessibilityFeatures,
+  isAccessible: boolean | null | undefined
+): boolean {
+  return Boolean(isAccessible) || calculateAccessibilityScore(accessibilityFeatures, isAccessible) > 0;
+}
+
+export function mergeAccessibilityFilters(
+  filters: BathroomFilters,
+  isAccessibilityMode: boolean,
+  accessibilityPreferences: AccessibilityPreferenceState = DEFAULT_ACCESSIBILITY_PREFERENCES
+): BathroomFilters {
+  if (!isAccessibilityMode) {
+    return filters;
+  }
+
+  return {
+    ...filters,
+    isAccessible: filters.isAccessible || accessibilityPreferences.hideNonAccessible ? true : filters.isAccessible,
+    hasChangingTable:
+      filters.hasChangingTable || accessibilityPreferences.requireChangingTable ? true : filters.hasChangingTable,
+    isFamilyRestroom:
+      filters.isFamilyRestroom || accessibilityPreferences.requireFamilyRestroom ? true : filters.isFamilyRestroom,
+    requireGrabBars:
+      filters.requireGrabBars || accessibilityPreferences.requireGrabBars ? true : filters.requireGrabBars,
+    requireAutomaticDoor:
+      filters.requireAutomaticDoor || accessibilityPreferences.requireAutomaticDoor
+        ? true
+        : filters.requireAutomaticDoor,
+    requireGenderNeutral:
+      filters.requireGenderNeutral || accessibilityPreferences.requireGenderNeutral
+        ? true
+        : filters.requireGenderNeutral,
+    minDoorWidth:
+      typeof filters.minDoorWidth === 'number'
+        ? filters.minDoorWidth
+        : accessibilityPreferences.minDoorWidth,
+    minStallWidth:
+      typeof filters.minStallWidth === 'number'
+        ? filters.minStallWidth
+        : accessibilityPreferences.minStallWidth,
+    prioritizeAccessible:
+      filters.prioritizeAccessible || accessibilityPreferences.prioritizeAccessible
+        ? true
+        : filters.prioritizeAccessible,
+    hideNonAccessible:
+      filters.hideNonAccessible || accessibilityPreferences.hideNonAccessible ? true : filters.hideNonAccessible,
   };
 }
 
@@ -268,6 +370,11 @@ export function mapBathroomRowToListItem(
   bathroom: BathroomDirectoryRow,
   options: MappingOptions
 ): BathroomListItem {
+  const accessibilityFeatures = normalizeAccessibilityFeatures(bathroom.accessibility_features);
+  const accessibilityScore =
+    typeof bathroom.accessibility_score === 'number'
+      ? bathroom.accessibility_score
+      : calculateAccessibilityScore(accessibilityFeatures, bathroom.is_accessible);
   const origin = options.origin ?? null;
   const computedDistance =
     'distance_meters' in bathroom && typeof bathroom.distance_meters === 'number'
@@ -292,7 +399,8 @@ export function mapBathroomRowToListItem(
       is_accessible: bathroom.is_accessible,
       is_customer_only: bathroom.is_customer_only,
     },
-    accessibility_features: normalizeAccessibilityFeatures(bathroom.accessibility_features),
+    accessibility_features: accessibilityFeatures,
+    accessibility_score: accessibilityScore,
     hours: toHoursData(bathroom.hours_json),
     cleanliness_avg: bathroom.cleanliness_avg ?? null,
     distance_meters: computedDistance,
@@ -322,14 +430,29 @@ export function mapBathroomRowToFavoriteItem(
 export function applyBathroomFilters<
   T extends Pick<
     BathroomDirectoryRow,
-    'is_accessible' | 'is_customer_only' | 'is_locked' | 'hours_json' | 'cleanliness_avg' | 'last_verified_at' | 'accessibility_features'
+    | 'is_accessible'
+    | 'is_customer_only'
+    | 'is_locked'
+    | 'hours_json'
+    | 'cleanliness_avg'
+    | 'last_verified_at'
+    | 'accessibility_features'
+    | 'accessibility_score'
   >
 >(
   bathrooms: T[],
   filters: BathroomFilters
 ): T[] {
   return bathrooms.filter((bathroom) => {
-    if (filters.isAccessible && bathroom.is_accessible !== true) {
+    const accessibilityFeatures = normalizeAccessibilityFeatures(
+      bathroom.accessibility_features as BathroomDirectoryRow['accessibility_features']
+    );
+    const accessibilityScore =
+      typeof bathroom.accessibility_score === 'number'
+        ? bathroom.accessibility_score
+        : calculateAccessibilityScore(accessibilityFeatures, bathroom.is_accessible);
+
+    if (filters.isAccessible && !isBathroomAccessible(accessibilityFeatures, bathroom.is_accessible)) {
       return false;
     }
 
@@ -353,15 +476,41 @@ export function applyBathroomFilters<
       return false;
     }
 
-    const accessibilityFeatures = normalizeAccessibilityFeatures(
-      bathroom.accessibility_features as BathroomDirectoryRow['accessibility_features']
-    );
-
     if (filters.hasChangingTable && accessibilityFeatures.has_changing_table !== true) {
       return false;
     }
 
     if (filters.isFamilyRestroom && accessibilityFeatures.is_family_restroom !== true) {
+      return false;
+    }
+
+    if (filters.requireGrabBars && accessibilityFeatures.has_grab_bars !== true) {
+      return false;
+    }
+
+    if (filters.requireAutomaticDoor && accessibilityFeatures.is_automatic_door !== true) {
+      return false;
+    }
+
+    if (filters.requireGenderNeutral && accessibilityFeatures.is_gender_neutral !== true) {
+      return false;
+    }
+
+    if (
+      typeof filters.minDoorWidth === 'number' &&
+      (accessibilityFeatures.door_width_inches ?? 0) < filters.minDoorWidth
+    ) {
+      return false;
+    }
+
+    if (
+      typeof filters.minStallWidth === 'number' &&
+      (accessibilityFeatures.stall_width_inches ?? 0) < filters.minStallWidth
+    ) {
+      return false;
+    }
+
+    if (filters.hideNonAccessible && accessibilityScore <= 0) {
       return false;
     }
 
@@ -386,8 +535,78 @@ export function hasActiveBathroomFilters(filters: BathroomFilters): boolean {
       filters.recentlyVerifiedOnly ||
       filters.hasChangingTable ||
       filters.isFamilyRestroom ||
+      filters.requireGrabBars ||
+      filters.requireAutomaticDoor ||
+      filters.requireGenderNeutral ||
+      filters.prioritizeAccessible ||
+      filters.hideNonAccessible ||
+      typeof filters.minDoorWidth === 'number' ||
+      typeof filters.minStallWidth === 'number' ||
       typeof filters.minCleanlinessRating === 'number'
   );
+}
+
+export function sortBathroomsByDistance<T extends BathroomDirectoryRow>(
+  bathrooms: T[],
+  origin?: Coordinates | null
+): T[] {
+  if (!origin) {
+    return bathrooms;
+  }
+
+  return [...bathrooms].sort((leftBathroom, rightBathroom) => {
+    const leftDistance =
+      'distance_meters' in leftBathroom && typeof leftBathroom.distance_meters === 'number'
+        ? leftBathroom.distance_meters
+        : calculateDistanceMeters(origin, {
+            latitude: leftBathroom.latitude,
+            longitude: leftBathroom.longitude,
+          });
+    const rightDistance =
+      'distance_meters' in rightBathroom && typeof rightBathroom.distance_meters === 'number'
+        ? rightBathroom.distance_meters
+        : calculateDistanceMeters(origin, {
+            latitude: rightBathroom.latitude,
+            longitude: rightBathroom.longitude,
+          });
+
+    return leftDistance - rightDistance;
+  });
+}
+
+export function sortBathroomsByFilters<T extends BathroomDirectoryRow>(
+  bathrooms: T[],
+  filters: BathroomFilters,
+  origin?: Coordinates | null
+): T[] {
+  const sortedBathrooms = sortBathroomsByDistance(bathrooms, origin);
+
+  if (!filters.prioritizeAccessible) {
+    return sortedBathrooms;
+  }
+
+  return [...sortedBathrooms].sort((leftBathroom, rightBathroom) => {
+    const leftFeatures = normalizeAccessibilityFeatures(
+      leftBathroom.accessibility_features as BathroomDirectoryRow['accessibility_features']
+    );
+    const rightFeatures = normalizeAccessibilityFeatures(
+      rightBathroom.accessibility_features as BathroomDirectoryRow['accessibility_features']
+    );
+    const leftScore =
+      typeof leftBathroom.accessibility_score === 'number'
+        ? leftBathroom.accessibility_score
+        : calculateAccessibilityScore(leftFeatures, leftBathroom.is_accessible);
+    const rightScore =
+      typeof rightBathroom.accessibility_score === 'number'
+        ? rightBathroom.accessibility_score
+        : calculateAccessibilityScore(rightFeatures, rightBathroom.is_accessible);
+
+    if (rightScore !== leftScore) {
+      return rightScore - leftScore;
+    }
+
+    return 0;
+  });
 }
 
 export function getRegionBounds(region: RegionBounds): {
@@ -434,6 +653,13 @@ export function buildBathroomsCacheKey(region: RegionBounds, filters: BathroomFi
     filters.recentlyVerifiedOnly ? 'recently-verified' : 'all-verification',
     filters.hasChangingTable ? 'changing-table' : 'all-changing-table',
     filters.isFamilyRestroom ? 'family-restroom' : 'all-family',
+    filters.requireGrabBars ? 'grab-bars' : 'all-grab-bars',
+    filters.requireAutomaticDoor ? 'automatic-door' : 'all-doors',
+    filters.requireGenderNeutral ? 'gender-neutral' : 'all-gender',
+    typeof filters.minDoorWidth === 'number' ? `door-${filters.minDoorWidth}` : 'all-door-width',
+    typeof filters.minStallWidth === 'number' ? `stall-${filters.minStallWidth}` : 'all-stall-width',
+    filters.prioritizeAccessible ? 'accessible-first' : 'default-sort',
+    filters.hideNonAccessible ? 'hide-non-accessible' : 'show-all-accessibility',
     typeof filters.minCleanlinessRating === 'number' ? `clean-${filters.minCleanlinessRating}` : 'all-clean',
   ].join(':');
 }
@@ -449,6 +675,13 @@ export function buildSearchCacheKey(query: string, filters: BathroomFilters, ori
     filters.recentlyVerifiedOnly ? 'recently-verified' : 'all-verification',
     filters.hasChangingTable ? 'changing-table' : 'all-changing-table',
     filters.isFamilyRestroom ? 'family-restroom' : 'all-family',
+    filters.requireGrabBars ? 'grab-bars' : 'all-grab-bars',
+    filters.requireAutomaticDoor ? 'automatic-door' : 'all-doors',
+    filters.requireGenderNeutral ? 'gender-neutral' : 'all-gender',
+    typeof filters.minDoorWidth === 'number' ? `door-${filters.minDoorWidth}` : 'all-door-width',
+    typeof filters.minStallWidth === 'number' ? `stall-${filters.minStallWidth}` : 'all-stall-width',
+    filters.prioritizeAccessible ? 'accessible-first' : 'default-sort',
+    filters.hideNonAccessible ? 'hide-non-accessible' : 'show-all-accessibility',
     typeof filters.minCleanlinessRating === 'number' ? `clean-${filters.minCleanlinessRating}` : 'all-clean',
     origin ? storageSafeNumber(origin.latitude) : 'no-origin',
     origin ? storageSafeNumber(origin.longitude) : 'no-origin',

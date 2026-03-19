@@ -5,6 +5,7 @@ import { Circle, Marker, Polyline, Region } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
 import { BathroomListItem, Coordinates, RegionBounds } from '@/types';
+import { buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { calculateDistanceMeters, getBathroomMapPinTone } from '@/utils/bathroom';
 
 interface BathroomMapViewProps {
@@ -175,6 +176,9 @@ function BathroomMapViewComponent({
 
     return (
       <Marker
+        accessibilityHint="Double tap to zoom into this cluster of bathrooms."
+        accessibilityLabel={`${cluster.properties.point_count} bathrooms grouped together`}
+        accessibilityRole="button"
         coordinate={{
           latitude: cluster.geometry.coordinates[1],
           longitude: cluster.geometry.coordinates[0],
@@ -253,6 +257,9 @@ function BathroomMapViewComponent({
 
           return (
             <Marker
+              accessibilityHint="Double tap to open the bathroom preview card."
+              accessibilityLabel={buildBathroomAccessibilityLabel(bathroom)}
+              accessibilityRole="button"
               coordinate={bathroom.coordinates}
               description={bathroom.address}
               key={`${bathroom.id}-${isSelected ? 'selected' : 'idle'}`}
@@ -299,6 +306,7 @@ function BathroomMapViewComponent({
         <View className="gap-3">
           <Pressable
             accessibilityLabel="Center on my location"
+            accessibilityHint="Refreshes your location and centers the map on you."
             accessibilityRole="button"
             className={[
               'h-14 w-14 items-center justify-center rounded-2xl border bg-surface-card/95',
@@ -315,6 +323,7 @@ function BathroomMapViewComponent({
 
           <Pressable
             accessibilityLabel="Open map filters"
+            accessibilityHint="Opens the filter drawer for access, cleanliness, and accessibility preferences."
             accessibilityRole="button"
             className="h-14 min-w-[56px] flex-row items-center justify-center gap-2 rounded-2xl border border-surface-strong bg-surface-card/95 px-4"
             onPress={onFilterPress}

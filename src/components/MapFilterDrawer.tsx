@@ -1,12 +1,16 @@
-import React, { memo } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { memo, useCallback, useEffect } from 'react';
+import { Modal, Pressable, ScrollView, Switch, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
+import { useAccessibilityInfo } from '@/hooks/useAccessibilityInfo';
+import { useAccessibilityPreferences, useSyncAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
-import { BathroomFilters } from '@/types';
+import { useAccessibilityStore } from '@/store/useAccessibilityStore';
+import { AccessibilityPreset, BathroomFilters } from '@/types';
+import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 
 type BooleanFilterKey =
   | 'isAccessible'
@@ -45,7 +49,7 @@ const FILTER_OPTIONS: FilterOption[] = [
   {
     key: 'isAccessible',
     label: 'Accessible',
-    description: 'Prioritize bathrooms marked as accessible.',
+    description: 'Surface bathrooms with reported accessibility signals first.',
     icon: 'accessibility-outline',
   },
   {
@@ -96,6 +100,20 @@ const CLEANLINESS_OPTIONS = [
   { label: '4.5+', value: 4.5 },
 ] as const;
 
+const DOOR_WIDTH_OPTIONS = [
+  { label: 'Any', value: null },
+  { label: '32"+', value: 32 },
+  { label: '36"+', value: 36 },
+  { label: '40"+', value: 40 },
+] as const;
+
+const STALL_WIDTH_OPTIONS = [
+  { label: 'Any', value: null },
+  { label: '60"+', value: 60 },
+  { label: '72"+', value: 72 },
+  { label: '84"+', value: 84 },
+] as const;
+
 function MapFilterDrawerComponent({
   isOpen,
   filters,
@@ -106,31 +124,92 @@ function MapFilterDrawerComponent({
 }: MapFilterDrawerProps) {
   const { profile } = useAuth();
   const { showToast } = useToast();
+  const { isScreenReaderEnabled, announce } = useAccessibilityInfo();
   const isPremiumUser = hasActivePremium(profile);
+  const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
+  const preferences = useAccessibilityStore((state) => state.preferences);
+  const setAccessibilityMode = useAccessibilityStore((state) => state.setAccessibilityMode);
+  const setPreference = useAccessibilityStore((state) => state.setPreference);
+  const applyPreset = useAccessibilityStore((state) => state.applyPreset);
+  const resetPreferences = useAccessibilityStore((state) => state.resetPreferences);
+  const syncPreferences = useSyncAccessibilityPreferences();
+  const activeAccessibilityCount = countActiveAccessibilityPreferences(preferences);
 
-  const handleToggleFilter = (filterOption: FilterOption) => {
-    if (filterOption.premiumOnly && !isPremiumUser) {
-      showToast({
-        title: 'Premium filter',
-        message: 'Premium unlocks recently verified, changing table, and family restroom filters.',
-        variant: 'info',
-      });
+  useAccessibilityPreferences();
+
+  useEffect(() => {
+    if (!isOpen || !isScreenReaderEnabled) {
       return;
     }
 
-    onToggleFilter(filterOption.key);
-  };
+    void announce('Map filters opened. Accessibility controls are available below the standard filters.');
+  }, [announce, isOpen, isScreenReaderEnabled]);
+
+  const handleToggleFilter = useCallback(
+    (filterOption: FilterOption) => {
+      if (filterOption.premiumOnly && !isPremiumUser) {
+        showToast({
+          title: 'Premium filter',
+          message: 'Premium unlocks recently verified, changing table, and family restroom filters.',
+          variant: 'info',
+        });
+        return;
+      }
+
+      onToggleFilter(filterOption.key);
+    },
+    [isPremiumUser, onToggleFilter, showToast]
+  );
+
+  const handleDismiss = useCallback(() => {
+    const closeDrawer = async () => {
+      try {
+        await syncPreferences();
+      } catch (error) {
+        showToast({
+          title: 'Preferences not synced',
+          message: error instanceof Error ? error.message : 'Your local accessibility settings were kept on this device.',
+          variant: 'warning',
+        });
+      } finally {
+        onClose();
+
+        if (isScreenReaderEnabled) {
+          void announce('Map filters closed.');
+        }
+      }
+    };
+
+    void closeDrawer();
+  }, [announce, isScreenReaderEnabled, onClose, showToast, syncPreferences]);
+
+  const handleApply = useCallback(() => {
+    handleDismiss();
+  }, [handleDismiss]);
+
+  const handleResetAll = useCallback(() => {
+    onReset();
+    resetPreferences();
+  }, [onReset, resetPreferences]);
+
+  const handleApplyPreset = useCallback((preset: AccessibilityPreset) => {
+    applyPreset(preset);
+  }, [applyPreset]);
 
   return (
     <Modal
       animationType="slide"
-      onRequestClose={onClose}
+      onRequestClose={handleDismiss}
       transparent
       visible={isOpen}
     >
-      <Pressable className="flex-1 bg-black/45" onPress={onClose}>
+      <Pressable className="flex-1 bg-black/45" onPress={handleDismiss}>
         <SafeAreaView className="flex-1 justify-end" edges={['bottom']}>
-          <Pressable className="max-h-[82%] rounded-t-[32px] bg-surface-card px-5 pb-6 pt-4" onPress={() => undefined}>
+          <Pressable
+            accessibilityViewIsModal
+            className="max-h-[88%] rounded-t-[32px] bg-surface-card px-5 pb-6 pt-4"
+            onPress={() => undefined}
+          >
             <View className="items-center">
               <View className="h-1.5 w-14 rounded-full bg-surface-strong" />
             </View>
@@ -140,15 +219,16 @@ function MapFilterDrawerComponent({
                 <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Map filters</Text>
                 <Text className="mt-2 text-2xl font-black text-ink-900">Tune the bathroom map.</Text>
                 <Text className="mt-2 text-sm leading-6 text-ink-600">
-                  Keep the pin field focused on access rules, posted hours, and cleanliness signals that matter right now.
+                  Blend access rules, cleanliness, and inclusive accessibility preferences without leaving the map.
                 </Text>
               </View>
 
               <Pressable
+                accessibilityHint="Closes the filter drawer and keeps your current selections."
                 accessibilityLabel="Close map filters"
                 accessibilityRole="button"
                 className="h-12 w-12 items-center justify-center rounded-full border border-surface-strong bg-surface-base"
-                onPress={onClose}
+                onPress={handleDismiss}
               >
                 <Ionicons color="#374151" name="close" size={20} />
               </Pressable>
@@ -161,7 +241,10 @@ function MapFilterDrawerComponent({
 
                   return (
                     <Pressable
+                      accessibilityHint={filterOption.description}
+                      accessibilityLabel={`${filterOption.label} filter`}
                       accessibilityRole="button"
+                      accessibilityState={{ selected: isActive }}
                       className={[
                         'rounded-[24px] border px-4 py-4',
                         isActive ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
@@ -215,6 +298,139 @@ function MapFilterDrawerComponent({
               </View>
 
               <View className="mt-6 rounded-[24px] border border-surface-strong bg-surface-base px-4 py-4">
+                <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Accessibility mode</Text>
+                <View className="mt-3 flex-row items-center justify-between gap-4">
+                  <View className="flex-1">
+                    <Text className="text-base font-bold text-ink-900">Prioritize inclusive bathrooms</Text>
+                    <Text className="mt-1 text-sm leading-5 text-ink-600">
+                      Keep your accessibility preferences persistent across sessions and surface better matches first.
+                    </Text>
+                  </View>
+                  <Switch
+                    accessibilityHint="Turns the saved accessibility preferences on or off for map and search results."
+                    accessibilityLabel="Accessibility mode"
+                    accessibilityRole="switch"
+                    onValueChange={setAccessibilityMode}
+                    trackColor={{ false: '#cbd5e1', true: '#2563eb' }}
+                    value={isAccessibilityMode}
+                  />
+                </View>
+
+                <View className="mt-4 rounded-2xl bg-surface-muted px-4 py-3">
+                  <Text className="text-sm font-semibold text-ink-900">
+                    {isAccessibilityMode
+                      ? `${activeAccessibilityCount} saved accessibility preferences active`
+                      : 'Accessibility preferences are saved but currently paused'}
+                  </Text>
+                  <Text className="mt-1 text-xs leading-5 text-ink-600">
+                    {profile ? 'Changes sync to your account when you apply filters.' : 'Changes stay on this device until you sign in.'}
+                  </Text>
+                </View>
+
+                <View className="mt-4 flex-row flex-wrap gap-2">
+                  <PresetChip
+                    active={preferences.requireGrabBars && preferences.requireAutomaticDoor}
+                    icon="♿"
+                    label="Wheelchair"
+                    onPress={() => handleApplyPreset('wheelchair')}
+                  />
+                  <PresetChip
+                    active={preferences.requireGenderNeutral}
+                    icon="🚻"
+                    label="Gender neutral"
+                    onPress={() => handleApplyPreset('gender_neutral')}
+                  />
+                  <PresetChip
+                    active={preferences.requireFamilyRestroom && preferences.requireChangingTable}
+                    icon="👶"
+                    label="Family"
+                    onPress={() => handleApplyPreset('family')}
+                  />
+                </View>
+
+                <View className="mt-5 gap-4">
+                  <AccessibilitySwitchRow
+                    description="Only show bathrooms with grab bars."
+                    label="Grab bars"
+                    onValueChange={(value) => setPreference('requireGrabBars', value)}
+                    value={preferences.requireGrabBars}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Require an automatic door opener."
+                    label="Automatic door"
+                    onValueChange={(value) => setPreference('requireAutomaticDoor', value)}
+                    value={preferences.requireAutomaticDoor}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Require a gender-neutral restroom."
+                    label="Gender neutral"
+                    onValueChange={(value) => setPreference('requireGenderNeutral', value)}
+                    value={preferences.requireGenderNeutral}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Require a family restroom layout."
+                    label="Family restroom"
+                    onValueChange={(value) => setPreference('requireFamilyRestroom', value)}
+                    value={preferences.requireFamilyRestroom}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Require a baby changing table."
+                    label="Changing table"
+                    onValueChange={(value) => setPreference('requireChangingTable', value)}
+                    value={preferences.requireChangingTable}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Sort bathrooms with stronger accessibility coverage first."
+                    label="Accessible first"
+                    onValueChange={(value) => setPreference('prioritizeAccessible', value)}
+                    value={preferences.prioritizeAccessible}
+                  />
+                  <AccessibilitySwitchRow
+                    description="Hide bathrooms without reported accessibility support."
+                    label="Hide weak matches"
+                    onValueChange={(value) => setPreference('hideNonAccessible', value)}
+                    value={preferences.hideNonAccessible}
+                  />
+                </View>
+
+                <View className="mt-5">
+                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Minimum door width</Text>
+                  <View className="mt-3 flex-row flex-wrap gap-2">
+                    {DOOR_WIDTH_OPTIONS.map((option) => {
+                      const isSelected = preferences.minDoorWidth === option.value;
+
+                      return (
+                        <OptionChip
+                          key={option.label}
+                          label={option.label}
+                          onPress={() => setPreference('minDoorWidth', option.value)}
+                          selected={isSelected}
+                        />
+                      );
+                    })}
+                  </View>
+                </View>
+
+                <View className="mt-5">
+                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Minimum stall width</Text>
+                  <View className="mt-3 flex-row flex-wrap gap-2">
+                    {STALL_WIDTH_OPTIONS.map((option) => {
+                      const isSelected = preferences.minStallWidth === option.value;
+
+                      return (
+                        <OptionChip
+                          key={option.label}
+                          label={option.label}
+                          onPress={() => setPreference('minStallWidth', option.value)}
+                          selected={isSelected}
+                        />
+                      );
+                    })}
+                  </View>
+                </View>
+              </View>
+
+              <View className="mt-6 rounded-[24px] border border-surface-strong bg-surface-base px-4 py-4">
                 <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Cleanliness floor</Text>
                 <Text className="mt-2 text-base font-bold text-ink-900">Only surface bathrooms rated above your minimum.</Text>
 
@@ -223,19 +439,12 @@ function MapFilterDrawerComponent({
                     const isSelected = filters.minCleanlinessRating === option.value;
 
                     return (
-                      <Pressable
-                        accessibilityRole="button"
-                        className={[
-                          'rounded-full border px-4 py-2',
-                          isSelected ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card',
-                        ].join(' ')}
+                      <OptionChip
                         key={option.label}
+                        label={option.label}
                         onPress={() => onSetMinCleanlinessRating(option.value)}
-                      >
-                        <Text className={['text-sm font-semibold', isSelected ? 'text-brand-700' : 'text-ink-700'].join(' ')}>
-                          {option.label}
-                        </Text>
-                      </Pressable>
+                        selected={isSelected}
+                      />
                     );
                   })}
                 </View>
@@ -243,13 +452,95 @@ function MapFilterDrawerComponent({
             </ScrollView>
 
             <View className="mt-6 flex-row gap-3">
-              <Button fullWidth={false} className="flex-1" label="Reset" onPress={onReset} variant="secondary" />
-              <Button fullWidth={false} className="flex-1" label="Apply filters" onPress={onClose} />
+              <Button fullWidth={false} className="flex-1" label="Reset all" onPress={handleResetAll} variant="secondary" />
+              <Button fullWidth={false} className="flex-1" label="Apply filters" onPress={handleApply} />
             </View>
           </Pressable>
         </SafeAreaView>
       </Pressable>
     </Modal>
+  );
+}
+
+function AccessibilitySwitchRow({
+  label,
+  description,
+  value,
+  onValueChange,
+}: {
+  label: string;
+  description: string;
+  value: boolean;
+  onValueChange: (value: boolean) => void;
+}) {
+  return (
+    <View className="flex-row items-start justify-between gap-4 rounded-2xl bg-surface-card px-4 py-3">
+      <View className="flex-1">
+        <Text className="text-sm font-bold text-ink-900">{label}</Text>
+        <Text className="mt-1 text-xs leading-5 text-ink-600">{description}</Text>
+      </View>
+      <Switch
+        accessibilityHint={description}
+        accessibilityLabel={label}
+        accessibilityRole="switch"
+        onValueChange={onValueChange}
+        trackColor={{ false: '#cbd5e1', true: '#2563eb' }}
+        value={value}
+      />
+    </View>
+  );
+}
+
+function PresetChip({
+  active,
+  icon,
+  label,
+  onPress,
+}: {
+  active: boolean;
+  icon: string;
+  label: string;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      accessibilityLabel={`${label} accessibility preset`}
+      accessibilityRole="button"
+      accessibilityState={{ selected: active }}
+      className={[
+        'flex-row items-center gap-2 rounded-full border px-4 py-2',
+        active ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card',
+      ].join(' ')}
+      onPress={onPress}
+    >
+      <Text>{icon}</Text>
+      <Text className={['text-sm font-semibold', active ? 'text-brand-700' : 'text-ink-700'].join(' ')}>{label}</Text>
+    </Pressable>
+  );
+}
+
+function OptionChip({
+  label,
+  selected,
+  onPress,
+}: {
+  label: string;
+  selected: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      accessibilityLabel={`${label} option`}
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      className={[
+        'rounded-full border px-4 py-2',
+        selected ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card',
+      ].join(' ')}
+      onPress={onPress}
+    >
+      <Text className={['text-sm font-semibold', selected ? 'text-brand-700' : 'text-ink-700'].join(' ')}>{label}</Text>
+    </Pressable>
   );
 }
 

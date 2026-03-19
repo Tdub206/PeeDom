@@ -234,7 +234,13 @@ class PremiumCityPackStorage {
           },
         })
       )
-      .sort((leftBathroom, rightBathroom) => (leftBathroom.distance_meters ?? 0) - (rightBathroom.distance_meters ?? 0));
+      .sort((leftBathroom, rightBathroom) => {
+        if (filters.prioritizeAccessible && rightBathroom.accessibility_score !== leftBathroom.accessibility_score) {
+          return rightBathroom.accessibility_score - leftBathroom.accessibility_score;
+        }
+
+        return (leftBathroom.distance_meters ?? 0) - (rightBathroom.distance_meters ?? 0);
+      });
 
     const cachedAt = filteredRows
       .map((row) => row.downloaded_at)
@@ -305,6 +311,13 @@ class PremiumCityPackStorage {
 
         if (scoreDelta !== 0) {
           return scoreDelta;
+        }
+
+        if (
+          input.filters.prioritizeAccessible &&
+          rightBathroom.accessibility_score !== leftBathroom.accessibility_score
+        ) {
+          return rightBathroom.accessibility_score - leftBathroom.accessibility_score;
         }
 
         if (input.origin) {

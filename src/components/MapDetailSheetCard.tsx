@@ -5,6 +5,7 @@ import { Button } from '@/components/Button';
 import { CodeBadge } from '@/components/CodeBadge';
 import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
+import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
 
 interface MapDetailSheetCardProps {
@@ -118,11 +119,15 @@ function MapDetailSheetCardComponent({
       chips.push('Walk-in access');
     }
 
-    return chips;
-  }, [bathroom.flags.is_accessible, bathroom.flags.is_customer_only, bathroom.flags.is_locked]);
+    return [...chips, ...buildAccessibilityFeatureLabels(bathroom.accessibility_features, 3)];
+  }, [bathroom.accessibility_features, bathroom.flags.is_accessible, bathroom.flags.is_customer_only, bathroom.flags.is_locked]);
 
   return (
-    <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5">
+    <View
+      accessible
+      accessibilityLabel={buildBathroomAccessibilityLabel(bathroom)}
+      className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5"
+    >
       <View className="flex-row items-start gap-4">
         <View className="flex-1">
           <View className={['self-start rounded-full px-3 py-1.5', statusCopy.backgroundClassName].join(' ')}>
@@ -141,6 +146,7 @@ function MapDetailSheetCardComponent({
 
         <Pressable
           accessibilityLabel={isFavorited ? 'Remove bathroom from favorites' : 'Save bathroom to favorites'}
+          accessibilityHint="Adds this bathroom to your saved list."
           accessibilityRole="button"
           accessibilityState={{ busy: isFavoritePending }}
           className={[
@@ -191,6 +197,7 @@ function MapDetailSheetCardComponent({
       <View className="mt-5 flex-row gap-3">
         <Pressable
           accessibilityLabel="Open navigation to this bathroom"
+          accessibilityHint="Launches turn-by-turn navigation in your maps app."
           accessibilityRole="button"
           className="flex-1 rounded-[22px] border border-surface-strong bg-surface-base px-4 py-4"
           disabled={isNavigating}
@@ -209,6 +216,7 @@ function MapDetailSheetCardComponent({
 
         <Pressable
           accessibilityLabel="Report this bathroom"
+          accessibilityHint="Opens the issue report flow for this bathroom."
           accessibilityRole="button"
           className="flex-1 rounded-[22px] border border-surface-strong bg-surface-base px-4 py-4"
           onPress={onReport}
@@ -228,6 +236,7 @@ function MapDetailSheetCardComponent({
       <Button
         className="mt-5"
         label="Open details and verify"
+        accessibilityHint="Opens the full bathroom detail screen with code verification and accessibility details."
         onPress={onOpenDetail}
       />
     </View>

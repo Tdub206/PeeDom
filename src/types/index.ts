@@ -162,6 +162,13 @@ export interface BathroomFilters {
   recentlyVerifiedOnly: boolean | null;
   hasChangingTable: boolean | null;
   isFamilyRestroom: boolean | null;
+  requireGrabBars: boolean | null;
+  requireAutomaticDoor: boolean | null;
+  requireGenderNeutral: boolean | null;
+  minDoorWidth: number | null;
+  minStallWidth: number | null;
+  prioritizeAccessible: boolean | null;
+  hideNonAccessible: boolean | null;
   minCleanlinessRating: number | null;
 }
 
@@ -173,6 +180,14 @@ export interface AccessibilityFeatures {
   is_family_restroom: boolean;
   is_gender_neutral: boolean;
   has_audio_cue: boolean;
+  has_braille_signage: boolean;
+  has_wheelchair_ramp: boolean;
+  has_elevator_access: boolean;
+  stall_width_inches: number | null;
+  turning_radius_inches: number | null;
+  notes: string | null;
+  photo_urls: string[];
+  verification_date: string | null;
 }
 
 export const DEFAULT_ACCESSIBILITY_FEATURES: AccessibilityFeatures = {
@@ -183,7 +198,83 @@ export const DEFAULT_ACCESSIBILITY_FEATURES: AccessibilityFeatures = {
   is_family_restroom: false,
   is_gender_neutral: false,
   has_audio_cue: false,
+  has_braille_signage: false,
+  has_wheelchair_ramp: false,
+  has_elevator_access: false,
+  stall_width_inches: null,
+  turning_radius_inches: null,
+  notes: null,
+  photo_urls: [],
+  verification_date: null,
 };
+
+export type AccessibilityPreset = 'wheelchair' | 'gender_neutral' | 'family';
+
+export interface AccessibilityPreferenceState {
+  requireGrabBars: boolean;
+  requireAutomaticDoor: boolean;
+  requireGenderNeutral: boolean;
+  requireFamilyRestroom: boolean;
+  requireChangingTable: boolean;
+  minDoorWidth: number | null;
+  minStallWidth: number | null;
+  prioritizeAccessible: boolean;
+  hideNonAccessible: boolean;
+}
+
+export const DEFAULT_ACCESSIBILITY_PREFERENCES: AccessibilityPreferenceState = {
+  requireGrabBars: false,
+  requireAutomaticDoor: false,
+  requireGenderNeutral: false,
+  requireFamilyRestroom: false,
+  requireChangingTable: false,
+  minDoorWidth: null,
+  minStallWidth: null,
+  prioritizeAccessible: false,
+  hideNonAccessible: false,
+};
+
+export interface UserAccessibilityPreferences {
+  id: string;
+  user_id: string;
+  accessibility_mode_enabled: boolean;
+  require_grab_bars: boolean;
+  require_automatic_door: boolean;
+  require_gender_neutral: boolean;
+  require_family_restroom: boolean;
+  require_changing_table: boolean;
+  min_door_width_inches: number | null;
+  min_stall_width_inches: number | null;
+  prioritize_accessible: boolean;
+  hide_non_accessible: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UpdateAccessibilityPreferencesInput {
+  accessibility_mode_enabled?: boolean;
+  require_grab_bars?: boolean;
+  require_automatic_door?: boolean;
+  require_gender_neutral?: boolean;
+  require_family_restroom?: boolean;
+  require_changing_table?: boolean;
+  min_door_width_inches?: number | null;
+  min_stall_width_inches?: number | null;
+  prioritize_accessible?: boolean;
+  hide_non_accessible?: boolean;
+}
+
+export interface BathroomAccessibilityUpdateInput extends Partial<AccessibilityFeatures> {
+  bathroom_id: string;
+}
+
+export interface BathroomAccessibilityUpdateResult {
+  bathroom_id: string;
+  accessibility_features: AccessibilityFeatures;
+  is_accessible: boolean;
+  accessibility_score: number;
+  updated_at: string;
+}
 
 export interface BathroomFlags {
   is_locked: boolean | null;
@@ -209,6 +300,7 @@ export interface BathroomListItem {
   coordinates: Coordinates;
   flags: BathroomFlags;
   accessibility_features: AccessibilityFeatures;
+  accessibility_score: number;
   hours: HoursData | null;
   cleanliness_avg: number | null;
   distance_meters?: number;
@@ -768,3 +860,4 @@ export type DbPremiumArrivalAlert = Database['public']['Tables']['premium_arriva
 export type DbBusinessVerificationBadge = Database['public']['Tables']['business_verification_badges']['Row'];
 export type DbBusinessFeaturedPlacement = Database['public']['Tables']['business_featured_placements']['Row'];
 export type DbBusinessHoursUpdate = Database['public']['Tables']['business_hours_updates']['Row'];
+export type DbUserAccessibilityPreferences = Database['public']['Tables']['user_accessibility_preferences']['Row'];

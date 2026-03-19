@@ -1,20 +1,29 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Keyboard, KeyboardAvoidingView, ScrollView, Text, View, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { CityBrowse, RecentSearches, SearchBar, SearchFilters, SearchResultsList } from '@/components/search';
 import { routes } from '@/constants/routes';
 import { useFavorites } from '@/hooks/useFavorites';
+import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useSearch } from '@/hooks/useSearch';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
 import { pushSafely } from '@/lib/navigation';
+import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useMapStore } from '@/store/useMapStore';
 import { BathroomListItem } from '@/types';
+import { mergeAccessibilityFilters } from '@/utils/bathroom';
 
 export default function SearchTab() {
   const router = useRouter();
   const filters = useFilterStore((state) => state.filters);
+  const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
+  const accessibilityPreferences = useAccessibilityStore((state) => state.preferences);
+  const resolvedFilters = useMemo(
+    () => mergeAccessibilityFilters(filters, isAccessibilityMode, accessibilityPreferences),
+    [accessibilityPreferences, filters, isAccessibilityMode]
+  );
   const searchQuery = useFilterStore((state) => state.searchQuery);
   const setSearchQuery = useFilterStore((state) => state.setSearchQuery);
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
@@ -22,9 +31,10 @@ export default function SearchTab() {
   const userLocation = useMapStore((state) => state.userLocation);
   const searchResults = useSearch({
     query: searchQuery,
-    filters,
+    filters: resolvedFilters,
     origin: userLocation,
   });
+  useAccessibilityPreferences();
   const bathrooms = searchResults.data?.items ?? [];
   const {
     addToHistory,

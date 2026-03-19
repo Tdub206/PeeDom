@@ -4,9 +4,12 @@ import {
   applyBathroomFilters,
   buildBathroomAddress,
   calculateDistanceMeters,
+  calculateAccessibilityScore,
   getBathroomMapPinTone,
   isBathroomOpenNow,
+  mergeAccessibilityFilters,
   mapBathroomRowToListItem,
+  sortBathroomsByFilters,
 } from '@/utils/bathroom';
 import type { Database } from '@/types';
 
@@ -33,7 +36,16 @@ const bathroomRow: BathroomRow = {
     is_family_restroom: false,
     is_gender_neutral: false,
     has_audio_cue: false,
+    has_braille_signage: false,
+    has_wheelchair_ramp: true,
+    has_elevator_access: false,
+    stall_width_inches: 62,
+    turning_radius_inches: 64,
+    notes: 'Wide entry with a clear turning circle.',
+    photo_urls: [],
+    verification_date: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
   },
+  accessibility_score: 55,
   hours_json: {
     sunday: [{ open: '00:00', close: '23:59' }],
     monday: [{ open: '00:00', close: '23:59' }],
@@ -76,6 +88,16 @@ describe('bathroom utilities', () => {
           ...bathroomRow,
           id: 'bathroom-2',
           is_accessible: false,
+          accessibility_score: 0,
+          accessibility_features: {
+            ...(bathroomRow.accessibility_features as Record<string, unknown>),
+            has_grab_bars: false,
+            has_wheelchair_ramp: false,
+            has_changing_table: false,
+            door_width_inches: null,
+            stall_width_inches: null,
+            turning_radius_inches: null,
+          },
         },
       ],
       {
@@ -87,6 +109,13 @@ describe('bathroom utilities', () => {
         recentlyVerifiedOnly: null,
         hasChangingTable: null,
         isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
         minCleanlinessRating: null,
       }
     );
@@ -108,6 +137,7 @@ describe('bathroom utilities', () => {
     expect(listItem.place_name).toBe('Central Cafe');
     expect(listItem.cleanliness_avg).toBe(4.3);
     expect(listItem.accessibility_features.has_changing_table).toBe(true);
+    expect(listItem.accessibility_score).toBe(55);
     expect(listItem.primary_code_summary.has_code).toBe(true);
     expect(listItem.distance_meters).toBeGreaterThan(0);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
@@ -174,6 +204,13 @@ describe('bathroom utilities', () => {
         recentlyVerifiedOnly: null,
         hasChangingTable: null,
         isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
         minCleanlinessRating: 4,
       }
     );
@@ -205,11 +242,148 @@ describe('bathroom utilities', () => {
         recentlyVerifiedOnly: true,
         hasChangingTable: true,
         isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
         minCleanlinessRating: null,
       }
     );
 
     expect(filteredRows).toHaveLength(1);
     expect(filteredRows[0]?.id).toBe('bathroom-1');
+  });
+
+  it('filters bathrooms by detailed accessibility requirements', () => {
+    const filteredRows = applyBathroomFilters(
+      [
+        bathroomRow,
+        {
+          ...bathroomRow,
+          id: 'bathroom-6',
+          accessibility_features: {
+            ...(bathroomRow.accessibility_features as Record<string, unknown>),
+            has_grab_bars: false,
+            door_width_inches: 30,
+          },
+          accessibility_score: 20,
+        },
+      ],
+      {
+        isAccessible: null,
+        isLocked: null,
+        isCustomerOnly: null,
+        openNow: null,
+        noCodeRequired: null,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
+        requireGrabBars: true,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: 32,
+        minStallWidth: 60,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
+        minCleanlinessRating: null,
+      }
+    );
+
+    expect(filteredRows).toHaveLength(1);
+    expect(filteredRows[0]?.id).toBe('bathroom-1');
+  });
+
+  it('scores accessibility features and sorts accessible-first when requested', () => {
+    const sortedRows = sortBathroomsByFilters(
+      [
+        {
+          ...bathroomRow,
+          id: 'bathroom-7',
+          accessibility_features: {
+            ...(bathroomRow.accessibility_features as Record<string, unknown>),
+            has_grab_bars: false,
+            has_wheelchair_ramp: false,
+            stall_width_inches: null,
+          },
+          accessibility_score: 25,
+          distance_meters: 150,
+        },
+        {
+          ...bathroomRow,
+          id: 'bathroom-8',
+          distance_meters: 300,
+          accessibility_score: 80,
+        },
+      ],
+      {
+        isAccessible: null,
+        isLocked: null,
+        isCustomerOnly: null,
+        openNow: null,
+        noCodeRequired: null,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: true,
+        hideNonAccessible: null,
+        minCleanlinessRating: null,
+      },
+      null
+    );
+
+    expect(sortedRows[0]?.id).toBe('bathroom-8');
+    expect(calculateAccessibilityScore(mapBathroomRowToListItem(bathroomRow, {
+      cachedAt: '2026-03-10T12:05:00.000Z',
+      stale: false,
+    }).accessibility_features, true)).toBeGreaterThan(0);
+  });
+
+  it('merges persistent accessibility preferences into the active filter set', () => {
+    const mergedFilters = mergeAccessibilityFilters(
+      {
+        isAccessible: null,
+        isLocked: null,
+        isCustomerOnly: null,
+        openNow: null,
+        noCodeRequired: null,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
+        minCleanlinessRating: null,
+      },
+      true,
+      {
+        requireGrabBars: true,
+        requireAutomaticDoor: false,
+        requireGenderNeutral: true,
+        requireFamilyRestroom: false,
+        requireChangingTable: true,
+        minDoorWidth: 32,
+        minStallWidth: null,
+        prioritizeAccessible: true,
+        hideNonAccessible: true,
+      }
+    );
+
+    expect(mergedFilters.requireGrabBars).toBe(true);
+    expect(mergedFilters.requireGenderNeutral).toBe(true);
+    expect(mergedFilters.hasChangingTable).toBe(true);
+    expect(mergedFilters.isAccessible).toBe(true);
+    expect(mergedFilters.minDoorWidth).toBe(32);
   });
 });

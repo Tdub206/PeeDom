@@ -1,12 +1,29 @@
 import { create } from 'zustand';
 import { BathroomFilters } from '@/types';
 
+type ToggleableFilterName =
+  | 'isAccessible'
+  | 'isLocked'
+  | 'isCustomerOnly'
+  | 'openNow'
+  | 'noCodeRequired'
+  | 'recentlyVerifiedOnly'
+  | 'hasChangingTable'
+  | 'isFamilyRestroom'
+  | 'requireGrabBars'
+  | 'requireAutomaticDoor'
+  | 'requireGenderNeutral'
+  | 'prioritizeAccessible'
+  | 'hideNonAccessible';
+
 interface FilterStoreState {
   searchQuery: string;
   filters: BathroomFilters;
   setSearchQuery: (query: string) => void;
-  toggleFilter: (filterName: Exclude<keyof BathroomFilters, 'minCleanlinessRating'>) => void;
+  toggleFilter: (filterName: ToggleableFilterName) => void;
   setMinCleanlinessRating: (rating: number | null) => void;
+  setMinDoorWidth: (width: number | null) => void;
+  setMinStallWidth: (width: number | null) => void;
   resetFilters: () => void;
 }
 
@@ -19,6 +36,13 @@ const defaultFilters: BathroomFilters = {
   recentlyVerifiedOnly: null,
   hasChangingTable: null,
   isFamilyRestroom: null,
+  requireGrabBars: null,
+  requireAutomaticDoor: null,
+  requireGenderNeutral: null,
+  minDoorWidth: null,
+  minStallWidth: null,
+  prioritizeAccessible: null,
+  hideNonAccessible: null,
   minCleanlinessRating: null,
 };
 
@@ -38,6 +62,20 @@ export const useFilterStore = create<FilterStoreState>((set) => ({
       filters: {
         ...state.filters,
         minCleanlinessRating,
+      },
+    })),
+  setMinDoorWidth: (minDoorWidth) =>
+    set((state) => ({
+      filters: {
+        ...state.filters,
+        minDoorWidth,
+      },
+    })),
+  setMinStallWidth: (minStallWidth) =>
+    set((state) => ({
+      filters: {
+        ...state.filters,
+        minStallWidth,
       },
     })),
   resetFilters: () =>

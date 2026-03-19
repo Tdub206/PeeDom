@@ -80,7 +80,6 @@ select
   bathrooms.is_locked,
   bathrooms.is_accessible,
   bathrooms.is_customer_only,
-  bathrooms.accessibility_features,
   bathrooms.hours_json,
   code_summary.code_id,
   code_summary.confidence_score,
@@ -89,13 +88,16 @@ select
   code_summary.last_verified_at,
   code_summary.expires_at,
   cleanliness_summary.cleanliness_avg,
-  bathrooms.updated_at
+  bathrooms.updated_at,
+  bathrooms.accessibility_features
 from public.bathrooms bathrooms
 left join public.v_bathroom_code_summary code_summary
   on code_summary.bathroom_id = bathrooms.id
 left join public.v_bathroom_cleanliness_summary cleanliness_summary
   on cleanliness_summary.bathroom_id = bathrooms.id
 where bathrooms.moderation_status = 'active';
+
+drop function if exists public.get_bathrooms_near(double precision, double precision, integer);
 
 create or replace function public.get_bathrooms_near(
   lat double precision,
@@ -165,6 +167,8 @@ as $$
   )
   order by distance_meters asc, details.updated_at desc;
 $$;
+
+drop function if exists public.search_bathrooms(text, double precision, double precision, integer);
 
 create or replace function public.search_bathrooms(
   p_query text,

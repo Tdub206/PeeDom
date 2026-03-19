@@ -11,7 +11,9 @@ select
 from public.cleanliness_ratings
 group by cleanliness_ratings.bathroom_id;
 
-create or replace view public.v_bathroom_detail_public as
+drop view if exists public.v_bathroom_detail_public;
+
+create view public.v_bathroom_detail_public as
 select
   bathrooms.id,
   bathrooms.place_name,
@@ -41,7 +43,9 @@ left join public.v_bathroom_cleanliness_summary cleanliness_summary
   on cleanliness_summary.bathroom_id = bathrooms.id
 where bathrooms.moderation_status = 'active';
 
-create or replace function public.get_bathrooms_near(
+drop function if exists public.get_bathrooms_near(double precision, double precision, integer);
+
+create function public.get_bathrooms_near(
   lat double precision,
   lng double precision,
   radius_m integer default 1000

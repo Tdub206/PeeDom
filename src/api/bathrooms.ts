@@ -11,9 +11,10 @@ import {
 import { getSupabaseClient } from '@/lib/supabase';
 import {
   applyBathroomFilters,
-  calculateDistanceMeters,
   computeRegionRadiusMeters,
   getRegionBounds,
+  sortBathroomsByDistance,
+  sortBathroomsByFilters,
   type BathroomDirectoryRow,
 } from '@/utils/bathroom';
 import { groupCityBrowseRows } from '@/utils/search';
@@ -59,31 +60,6 @@ function toAppError(error: ApiErrorShape | Error, fallbackMessage: string): Erro
 function buildSearchPattern(query: string): string {
   const normalizedQuery = query.trim().replace(/[%_']/g, '').replace(/\s+/g, ' ');
   return `%${normalizedQuery}%`;
-}
-
-function sortBathroomsByDistance<T extends BathroomDirectoryRow>(bathrooms: T[], origin?: Coordinates | null): T[] {
-  if (!origin) {
-    return bathrooms;
-  }
-
-  return [...bathrooms].sort((leftBathroom, rightBathroom) => {
-    const leftDistance =
-      'distance_meters' in leftBathroom && typeof leftBathroom.distance_meters === 'number'
-        ? leftBathroom.distance_meters
-        : calculateDistanceMeters(origin, {
-            latitude: leftBathroom.latitude,
-            longitude: leftBathroom.longitude,
-          });
-    const rightDistance =
-      'distance_meters' in rightBathroom && typeof rightBathroom.distance_meters === 'number'
-        ? rightBathroom.distance_meters
-        : calculateDistanceMeters(origin, {
-            latitude: rightBathroom.latitude,
-            longitude: rightBathroom.longitude,
-          });
-
-    return leftDistance - rightDistance;
-  });
 }
 
 async function fetchNearbyBathroomsFallback(
@@ -245,7 +221,7 @@ export async function fetchBathroomsNearRegion(
     }
 
     return {
-      data: sortBathroomsByDistance(applyBathroomFilters(parsedData.data as NearbyBathroomRow[], options.filters), {
+      data: sortBathroomsByFilters(applyBathroomFilters(parsedData.data as NearbyBathroomRow[], options.filters), options.filters, {
         latitude: options.region.latitude,
         longitude: options.region.longitude,
       }),
@@ -256,7 +232,7 @@ export async function fetchBathroomsNearRegion(
 
     if (!fallbackResult.error) {
       return {
-        data: sortBathroomsByDistance(fallbackResult.data, {
+        data: sortBathroomsByFilters(fallbackResult.data, options.filters, {
           latitude: options.region.latitude,
           longitude: options.region.longitude,
         }),
@@ -387,8 +363,9 @@ async function searchBathroomsFallback(
     }
 
     return {
-      data: sortBathroomsByDistance(
+      data: sortBathroomsByFilters(
         applyBathroomFilters(parsedData.data as PublicBathroomDetailRow[], options.filters),
+        options.filters,
         options.origin
       ),
       error: null,

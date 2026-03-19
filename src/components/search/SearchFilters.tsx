@@ -1,10 +1,13 @@
 import { memo } from 'react';
 import { Pressable, ScrollView, Text } from 'react-native';
+import { useSyncAccessibilityPreferences } from '@/hooks/useAccessibility';
+import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { useFilterStore } from '@/store/useFilterStore';
-import { hasActiveBathroomFilters } from '@/utils/bathroom';
+import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
+import { hasActiveBathroomFilters, mergeAccessibilityFilters } from '@/utils/bathroom';
 
 const FILTER_OPTIONS: Array<{
   key:
@@ -36,7 +39,14 @@ function SearchFiltersComponent() {
   const resetFilters = useFilterStore((state) => state.resetFilters);
   const setMinCleanlinessRating = useFilterStore((state) => state.setMinCleanlinessRating);
   const toggleFilter = useFilterStore((state) => state.toggleFilter);
-  const hasActiveFilters = hasActiveBathroomFilters(filters);
+  const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
+  const preferences = useAccessibilityStore((state) => state.preferences);
+  const setAccessibilityMode = useAccessibilityStore((state) => state.setAccessibilityMode);
+  const resetAccessibilityPreferences = useAccessibilityStore((state) => state.resetPreferences);
+  const syncAccessibilityPreferences = useSyncAccessibilityPreferences();
+  const resolvedFilters = mergeAccessibilityFilters(filters, isAccessibilityMode, preferences);
+  const hasActiveFilters = hasActiveBathroomFilters(resolvedFilters);
+  const activeAccessibilityCount = countActiveAccessibilityPreferences(preferences);
   const isPremiumUser = hasActivePremium(profile);
 
   const handleToggleFilter = (
@@ -55,6 +65,33 @@ function SearchFiltersComponent() {
     toggleFilter(filterKey);
   };
 
+  const handleResetAll = async () => {
+    try {
+      resetFilters();
+      resetAccessibilityPreferences();
+      await syncAccessibilityPreferences();
+    } catch (error) {
+      showToast({
+        title: 'Preferences kept locally',
+        message: error instanceof Error ? error.message : 'Your accessibility preferences could not sync right now.',
+        variant: 'warning',
+      });
+    }
+  };
+
+  const handleDisableAccessibilityMode = async () => {
+    try {
+      setAccessibilityMode(false);
+      await syncAccessibilityPreferences();
+    } catch (error) {
+      showToast({
+        title: 'Preferences kept locally',
+        message: error instanceof Error ? error.message : 'Your accessibility preferences could not sync right now.',
+        variant: 'warning',
+      });
+    }
+  };
+
   return (
     <ScrollView
       className="mt-4"
@@ -66,9 +103,26 @@ function SearchFiltersComponent() {
         <Pressable
           accessibilityRole="button"
           className="rounded-full border border-danger/30 bg-danger/10 px-4 py-2"
-          onPress={resetFilters}
+          onPress={() => {
+            void handleResetAll();
+          }}
         >
           <Text className="text-sm font-semibold text-danger">Reset</Text>
+        </Pressable>
+      ) : null}
+
+      {isAccessibilityMode ? (
+        <Pressable
+          accessibilityLabel="Disable accessibility mode"
+          accessibilityRole="button"
+          className="rounded-full border border-brand-200 bg-brand-50 px-4 py-2"
+          onPress={() => {
+            void handleDisableAccessibilityMode();
+          }}
+        >
+          <Text className="text-sm font-semibold text-brand-700">
+            A11y mode {activeAccessibilityCount > 0 ? `${activeAccessibilityCount}` : 'on'}
+          </Text>
         </Pressable>
       ) : null}
 

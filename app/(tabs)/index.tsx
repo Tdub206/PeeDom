@@ -11,14 +11,18 @@ import { BathroomMapView } from '@/components/MapView';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathrooms } from '@/hooks/useBathrooms';
+import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { pushSafely } from '@/lib/navigation';
+import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useMapStore } from '@/store/useMapStore';
 import { BathroomListItem } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { mergeAccessibilityFilters, hasActiveBathroomFilters } from '@/utils/bathroom';
+import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 
 export default function MapTab() {
   const router = useRouter();
@@ -36,6 +40,12 @@ export default function MapTab() {
   const setRegion = useMapStore((state) => state.setRegion);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
+  const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
+  const accessibilityPreferences = useAccessibilityStore((state) => state.preferences);
+  const resolvedFilters = useMemo(
+    () => mergeAccessibilityFilters(filters, isAccessibilityMode, accessibilityPreferences),
+    [accessibilityPreferences, filters, isAccessibilityMode]
+  );
   const {
     coordinates,
     error_message,
@@ -46,64 +56,37 @@ export default function MapTab() {
   } = useLocation();
   const bathroomsQuery = useBathrooms({
     region,
-    filters,
+    filters: resolvedFilters,
   });
+  useAccessibilityPreferences();
   const bathrooms = bathroomsQuery.data?.items ?? [];
   const activeBathroom = useMemo(
     () => bathrooms.find((bathroom) => bathroom.id === activeBathroomId) ?? null,
     [activeBathroomId, bathrooms]
   );
   const activeFilterCount = useMemo(() => {
+    if (!hasActiveBathroomFilters(resolvedFilters)) {
+      return 0;
+    }
+
     let count = 0;
 
-    if (filters.isAccessible) {
-      count += 1;
-    }
+    Object.entries(resolvedFilters).forEach(([, value]) => {
+      if (typeof value === 'boolean' && value) {
+        count += 1;
+      }
 
-    if (filters.isLocked) {
-      count += 1;
-    }
+      if (typeof value === 'number') {
+        count += 1;
+      }
+    });
 
-    if (filters.isCustomerOnly) {
-      count += 1;
-    }
-
-    if (filters.openNow) {
-      count += 1;
-    }
-
-    if (filters.noCodeRequired) {
-      count += 1;
-    }
-
-    if (filters.recentlyVerifiedOnly) {
-      count += 1;
-    }
-
-    if (filters.hasChangingTable) {
-      count += 1;
-    }
-
-    if (filters.isFamilyRestroom) {
-      count += 1;
-    }
-
-    if (typeof filters.minCleanlinessRating === 'number') {
-      count += 1;
+    if (isAccessibilityMode) {
+      count = Math.max(count, countActiveAccessibilityPreferences(accessibilityPreferences));
     }
 
     return count;
-  }, [
-    filters.isAccessible,
-    filters.hasChangingTable,
-    filters.isCustomerOnly,
-    filters.isFamilyRestroom,
-    filters.isLocked,
-    filters.minCleanlinessRating,
-    filters.noCodeRequired,
-    filters.openNow,
-    filters.recentlyVerifiedOnly,
-  ]);
+  }, [accessibilityPreferences, isAccessibilityMode, resolvedFilters]);
   const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(bathrooms);
 
   useEffect(() => {
