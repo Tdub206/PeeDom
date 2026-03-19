@@ -105,6 +105,30 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="modal/submit-code"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Submit Access Code',
+          }}
+        />
+        <Stack.Screen
+          name="modal/rate-cleanliness"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Rate Cleanliness',
+          }}
+        />
+        <Stack.Screen
+          name="modal/live-status"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Live Status',
+          }}
+        />
+        <Stack.Screen
           name="modal/claim-business"
           options={{
             presentation: 'modal',

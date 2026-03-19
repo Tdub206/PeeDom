@@ -31,6 +31,54 @@ export const routes = {
           ...(reportType ? { report_type: reportType } : {}),
         },
       }) as Href,
+    submitCode: '/modal/submit-code' as Href,
+    submitCodeBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/submit-code',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as unknown as Href,
+    submitCodeDraft: (bathroomId: string, draftId: string) =>
+      ({
+        pathname: '/modal/submit-code',
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: draftId,
+        },
+      }) as unknown as Href,
+    rateCleanliness: '/modal/rate-cleanliness' as Href,
+    rateCleanlinessBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/rate-cleanliness',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as unknown as Href,
+    rateCleanlinessDraft: (bathroomId: string, draftId: string) =>
+      ({
+        pathname: '/modal/rate-cleanliness',
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: draftId,
+        },
+      }) as unknown as Href,
+    liveStatus: '/modal/live-status' as Href,
+    liveStatusBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/live-status',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as unknown as Href,
+    liveStatusDraft: (bathroomId: string, draftId: string) =>
+      ({
+        pathname: '/modal/live-status',
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: draftId,
+        },
+      }) as unknown as Href,
     claimBusiness: '/modal/claim-business' as Href,
     claimBusinessBathroom: (bathroomId: string) =>
       ({

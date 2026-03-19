@@ -2,15 +2,24 @@ import { useCallback, useEffect, useRef } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useQueryClient } from '@tanstack/react-query';
-import { upsertCodeVote } from '@/api/access-codes';
+import { createBathroomAccessCode, upsertCodeVote } from '@/api/access-codes';
+import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
+import { reportBathroomStatus } from '@/api/notifications';
 import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineQueue } from '@/lib/offline-queue';
-import { CodeVoteMutationPayload, FavoriteMutationPayload, ReportType } from '@/types';
+import {
+  BathroomStatusMutationPayload,
+  CleanlinessRatingMutationPayload,
+  CodeSubmitMutationPayload,
+  CodeVoteMutationPayload,
+  FavoriteMutationPayload,
+  ReportType,
+} from '@/types';
 
 function isFavoriteMutationPayload(
   payload: Record<string, unknown>
@@ -55,6 +64,43 @@ function isCodeVoteMutationPayload(
     typeof payload.code_id === 'string' &&
     payload.code_id.length > 0 &&
     (payload.vote === 1 || payload.vote === -1)
+  );
+}
+
+function isCodeSubmitMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & CodeSubmitMutationPayload {
+  return (
+    typeof payload.bathroom_id === 'string' &&
+    payload.bathroom_id.length > 0 &&
+    typeof payload.code_value === 'string' &&
+    payload.code_value.trim().length >= 2
+  );
+}
+
+function isCleanlinessRatingMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & CleanlinessRatingMutationPayload {
+  return (
+    typeof payload.bathroom_id === 'string' &&
+    payload.bathroom_id.length > 0 &&
+    typeof payload.rating === 'number' &&
+    Number.isInteger(payload.rating) &&
+    payload.rating >= 1 &&
+    payload.rating <= 5 &&
+    (typeof payload.notes === 'undefined' || payload.notes === null || typeof payload.notes === 'string')
+  );
+}
+
+function isBathroomStatusMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & BathroomStatusMutationPayload {
+  return (
+    typeof payload.bathroom_id === 'string' &&
+    payload.bathroom_id.length > 0 &&
+    typeof payload.status === 'string' &&
+    ['clean', 'dirty', 'closed', 'out_of_order', 'long_wait'].includes(payload.status) &&
+    (typeof payload.note === 'undefined' || payload.note === null || typeof payload.note === 'string')
   );
 }
 
@@ -110,6 +156,17 @@ export function useOfflineSync() {
           });
           return !reportResult.error;
         }
+        case 'code_submit': {
+          if (!isCodeSubmitMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const submissionResult = await createBathroomAccessCode(userId, {
+            bathroom_id: mutation.payload.bathroom_id,
+            code_value: mutation.payload.code_value,
+          });
+          return !submissionResult.error;
+        }
         case 'code_vote': {
           if (!isCodeVoteMutationPayload(mutation.payload)) {
             return false;
@@ -117,6 +174,30 @@ export function useOfflineSync() {
 
           const voteResult = await upsertCodeVote(userId, mutation.payload.code_id, mutation.payload.vote);
           return !voteResult.error;
+        }
+        case 'rating_create': {
+          if (!isCleanlinessRatingMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const ratingResult = await upsertCleanlinessRating(userId, {
+            bathroom_id: mutation.payload.bathroom_id,
+            rating: mutation.payload.rating,
+            notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
+          });
+          return !ratingResult.error;
+        }
+        case 'status_report': {
+          if (!isBathroomStatusMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const statusResult = await reportBathroomStatus({
+            bathroomId: mutation.payload.bathroom_id,
+            status: mutation.payload.status,
+            note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
+          });
+          return !statusResult.error;
         }
         default:
           return true;
@@ -139,6 +220,15 @@ export function useOfflineSync() {
         }),
         queryClient.invalidateQueries({
           queryKey: ['bathrooms'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['search'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['cleanliness-rating'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathroom-live-status'],
         }),
       ]);
 

@@ -147,6 +147,15 @@ export const dbCodeVoteSchema = z.object({
   updated_at: dateTimeStringSchema,
 });
 
+export const dbCleanlinessRatingSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  user_id: rawTextSchema,
+  rating: z.number().int().min(1).max(5),
+  notes: z.string().nullable(),
+  created_at: dateTimeStringSchema,
+});
+
 export const dbCodeRevealGrantSchema = z.object({
   id: rawTextSchema,
   bathroom_id: rawTextSchema,

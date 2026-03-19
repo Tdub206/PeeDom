@@ -17,6 +17,7 @@ import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
+import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
 import { useRealtimeCode } from '@/hooks/useRealtimeCode';
@@ -267,6 +268,10 @@ export default function BathroomDetailScreen() {
     isAlertLoading,
     isAlertUpdating,
   } = usePremiumArrivalAlert(bathroomId || null);
+  const {
+    currentRating,
+    isLoadingCurrentRating,
+  } = useCleanlinessRating(bathroomId || null);
 
   useEffect(() => {
     void loadBathroomDetail();
@@ -616,6 +621,43 @@ export default function BathroomDetailScreen() {
             </View>
           </View>
 
+          <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
+            <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Cleanliness</Text>
+            <Text className="mt-3 text-2xl font-bold text-ink-900">
+              {typeof bathroomDetail.cleanliness_avg === 'number'
+                ? `${bathroomDetail.cleanliness_avg.toFixed(1)} / 5 community average`
+                : 'No cleanliness ratings yet'}
+            </Text>
+            <Text className="mt-2 text-base leading-6 text-ink-600">
+              Share how clean this bathroom was when you arrived so future riders can filter for more reliable stops.
+            </Text>
+            {isLoadingCurrentRating ? (
+              <Text className="mt-3 text-sm text-ink-600">Loading your previous rating...</Text>
+            ) : currentRating ? (
+              <View className="mt-4 rounded-2xl bg-surface-muted px-4 py-4">
+                <Text className="text-sm font-semibold text-ink-700">Your last rating</Text>
+                <Text className="mt-1 text-base text-ink-900">
+                  {'★'.repeat(currentRating.rating)}{'☆'.repeat(5 - currentRating.rating)} {currentRating.rating} / 5
+                </Text>
+                {currentRating.notes ? (
+                  <Text className="mt-2 text-sm leading-5 text-ink-600">{currentRating.notes}</Text>
+                ) : null}
+              </View>
+            ) : null}
+            <Button
+              className="mt-5"
+              label={currentRating ? 'Update Cleanliness Rating' : 'Rate Cleanliness'}
+              onPress={() =>
+                pushSafely(
+                  router,
+                  routes.modal.rateCleanlinessBathroom(bathroomDetail.id),
+                  routes.bathroomDetail(bathroomDetail.id)
+                )
+              }
+              variant="secondary"
+            />
+          </View>
+
           <View className="mt-6">
             <AccessibilitySummaryCard
               accessibilityFeatures={bathroomDetail.accessibility_features}
@@ -670,6 +712,18 @@ export default function BathroomDetailScreen() {
               onPress={() => {
                 void handleOpenDirections();
               }}
+            />
+            <Button
+              className="mt-3"
+              label={bathroomDetail.code_id ? 'Submit Updated Code' : 'Submit Access Code'}
+              onPress={() =>
+                pushSafely(
+                  router,
+                  routes.modal.submitCodeBathroom(bathroomDetail.id),
+                  routes.bathroomDetail(bathroomDetail.id)
+                )
+              }
+              variant="secondary"
             />
             <Button
               className="mt-3"

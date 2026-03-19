@@ -1,4 +1,4 @@
-import type { Database, DbCodeRevealGrant, DbCodeVote } from '@/types';
+import type { Database, DbCode, DbCodeRevealGrant, DbCodeVote } from '@/types';
 import {
   bathroomAccessCodeSchema,
   dbCodeRevealGrantSchema,
@@ -14,6 +14,11 @@ type CodeRevealGrantRpcRow = Database['public']['Functions']['grant_bathroom_cod
 
 interface AccessCodeResponse {
   data: BathroomAccessCodeRow | null;
+  error: (Error & { code?: string }) | null;
+}
+
+interface AccessCodeMutationResponse {
+  data: DbCode | null;
   error: (Error & { code?: string }) | null;
 }
 
@@ -82,6 +87,60 @@ export async function fetchLatestVisibleBathroomCode(bathroomId: string): Promis
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to load the current bathroom code.'),
         'Unable to load the current bathroom code.'
+      ),
+    };
+  }
+}
+
+export async function createBathroomAccessCode(
+  userId: string,
+  submission: {
+    bathroom_id: string;
+    code_value: string;
+  }
+): Promise<AccessCodeMutationResponse> {
+  try {
+    const { data, error } = await getSupabaseClient()
+      .from('bathroom_access_codes')
+      .insert({
+        bathroom_id: submission.bathroom_id,
+        submitted_by: userId,
+        code_value: submission.code_value.trim(),
+      } as never)
+      .select('*')
+      .maybeSingle();
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to submit this bathroom code.'),
+      };
+    }
+
+    const parsedCode = parseSupabaseNullableRow(
+      bathroomAccessCodeSchema,
+      data,
+      'bathroom access code',
+      'Unable to submit this bathroom code.'
+    );
+
+    if (parsedCode.error) {
+      return {
+        data: null,
+        error: parsedCode.error,
+      };
+    }
+
+    return {
+      data: parsedCode.data as DbCode | null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to submit this bathroom code.'),
+        'Unable to submit this bathroom code.'
       ),
     };
   }

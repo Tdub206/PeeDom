@@ -42,6 +42,7 @@ export type IntentType =
   | 'reveal_code'
   | 'vote_code'
   | 'report_bathroom'
+  | 'report_live_status'
   | 'add_bathroom'
   | 'upload_bathroom_photo'
   | 'claim_business'
@@ -72,9 +73,11 @@ export interface RequireAuthOptions {
 export type MutationType =
   | 'favorite_add'
   | 'favorite_remove'
+  | 'code_submit'
   | 'code_vote'
   | 'report_create'
-  | 'rating_create';
+  | 'rating_create'
+  | 'status_report';
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
@@ -83,6 +86,23 @@ export interface FavoriteMutationPayload {
 export interface CodeVoteMutationPayload {
   code_id: string;
   vote: -1 | 1;
+}
+
+export interface CodeSubmitMutationPayload {
+  bathroom_id: string;
+  code_value: string;
+}
+
+export interface CleanlinessRatingMutationPayload {
+  bathroom_id: string;
+  rating: number;
+  notes?: string | null;
+}
+
+export interface BathroomStatusMutationPayload {
+  bathroom_id: string;
+  status: BathroomLiveStatus;
+  note?: string | null;
 }
 
 export interface QueuedMutation {
@@ -105,7 +125,12 @@ export interface QueueProcessResult {
 // DRAFT TYPES
 // ============================================================================
 
-export type DraftType = 'add_bathroom' | 'claim_business';
+export type DraftType =
+  | 'add_bathroom'
+  | 'claim_business'
+  | 'submit_code'
+  | 'rate_cleanliness'
+  | 'report_live_status';
 
 export interface Draft<T = Record<string, unknown>> {
   id: string;
@@ -142,6 +167,23 @@ export interface ClaimBusinessDraft {
   contact_email: string;
   contact_phone?: string;
   evidence_url?: string;
+}
+
+export interface SubmitCodeDraft {
+  bathroom_id: string;
+  code_value: string;
+}
+
+export interface CleanlinessRatingDraft {
+  bathroom_id: string;
+  rating: number;
+  notes?: string;
+}
+
+export interface LiveStatusDraft {
+  bathroom_id: string;
+  status: BathroomLiveStatus;
+  note?: string;
 }
 
 // ============================================================================
@@ -635,6 +677,27 @@ export interface CodeVote {
   vote: -1 | 1;
 }
 
+export interface CleanlinessRatingCreate {
+  bathroom_id: string;
+  rating: number;
+  notes?: string;
+}
+
+export interface LiveStatusReportCreate {
+  bathroom_id: string;
+  status: BathroomLiveStatus;
+  note?: string;
+}
+
+export interface CleanlinessRating {
+  id: string;
+  bathroom_id: string;
+  user_id: string;
+  rating: number;
+  notes: string | null;
+  created_at: string;
+}
+
 // ============================================================================
 // PROFILE TYPES
 // ============================================================================
@@ -853,6 +916,7 @@ export type DbClaim = Database['public']['Tables']['business_claims']['Row'];
 export type DbBathroomPhoto = Database['public']['Tables']['bathroom_photos']['Row'];
 export type DbCodeVote = Database['public']['Tables']['code_votes']['Row'];
 export type DbCodeRevealGrant = Database['public']['Tables']['code_reveal_grants']['Row'];
+export type DbCleanlinessRating = Database['public']['Tables']['cleanliness_ratings']['Row'];
 export type DbPointEvent = Database['public']['Tables']['point_events']['Row'];
 export type DbUserBadge = Database['public']['Tables']['user_badges']['Row'];
 export type DbBathroomStatusEvent = Database['public']['Tables']['bathroom_status_events']['Row'];

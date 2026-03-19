@@ -40,7 +40,15 @@ export type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export const queuedMutationSchema = z.object({
   id: z.string().min(1),
-  type: z.enum(['favorite_add', 'favorite_remove', 'code_vote', 'report_create', 'rating_create']),
+  type: z.enum([
+    'favorite_add',
+    'favorite_remove',
+    'code_submit',
+    'code_vote',
+    'report_create',
+    'rating_create',
+    'status_report',
+  ]),
   payload: z.record(z.string(), z.unknown()),
   created_at: z.string().datetime(),
   retry_count: z.number().int().min(0),
@@ -151,6 +159,44 @@ export const bathroomPhotoProofSchema = z.object({
   photo: bathroomPhotoSchema,
 });
 
+export const codeSubmitSchema = z.object({
+  bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+  code_value: z
+    .string()
+    .trim()
+    .min(2, 'Access code must be at least 2 characters long.')
+    .max(32, 'Access code must be 32 characters or fewer.')
+    .regex(/^[A-Za-z0-9\-_\s#*.]+$/, 'Use only letters, numbers, spaces, or basic keypad symbols.'),
+});
+
+export const cleanlinessRatingSchema = z.object({
+  bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+  rating: z.coerce
+    .number({
+      invalid_type_error: 'Choose a cleanliness rating.',
+    })
+    .int('Choose a whole-number cleanliness rating.')
+    .min(1, 'Choose a cleanliness rating between 1 and 5.')
+    .max(5, 'Choose a cleanliness rating between 1 and 5.'),
+  notes: z
+    .string()
+    .trim()
+      .max(300, 'Cleanliness notes must be 300 characters or fewer.')
+      .optional(),
+});
+
+export const liveStatusReportSchema = z.object({
+  bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
+  status: z.enum(['clean', 'dirty', 'closed', 'out_of_order', 'long_wait'], {
+    message: 'Choose the live status you want to share.',
+  }),
+  note: z
+    .string()
+    .trim()
+    .max(280, 'Live status notes must be 280 characters or fewer.')
+    .optional(),
+});
+
 export const reportCreateSchema = z.object({
   bathroom_id: z.string().trim().min(1, 'Bathroom identifier is required.'),
   report_type: z.enum([
@@ -229,6 +275,9 @@ export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
 export type BathroomPhotoProofFormValues = z.infer<typeof bathroomPhotoProofSchema>;
 export type ClaimBusinessFormValues = z.infer<typeof claimBusinessSchema>;
+export type CleanlinessRatingFormValues = z.infer<typeof cleanlinessRatingSchema>;
+export type CodeSubmitFormValues = z.infer<typeof codeSubmitSchema>;
+export type LiveStatusReportFormValues = z.infer<typeof liveStatusReportSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
 

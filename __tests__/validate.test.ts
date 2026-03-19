@@ -4,7 +4,10 @@ import {
   addBathroomSchema,
   bathroomPhotoSchema,
   claimBusinessSchema,
+  cleanlinessRatingSchema,
+  codeSubmitSchema,
   getFieldErrors,
+  liveStatusReportSchema,
   loginSchema,
   registerSchema,
   reportCreateSchema,
@@ -87,6 +90,101 @@ describe('reportCreateSchema', () => {
     expect(getFieldErrors(result.error)).toEqual({
       bathroom_id: 'Bathroom identifier is required.',
       notes: 'Report details must be 500 characters or fewer.',
+    });
+  });
+});
+
+describe('codeSubmitSchema', () => {
+  it('accepts valid access code submissions', () => {
+    const result = codeSubmitSchema.parse({
+      bathroom_id: 'bathroom-123',
+      code_value: '  1234#  ',
+    });
+
+    expect(result.code_value).toBe('1234#');
+  });
+
+  it('rejects missing bathroom ids and invalid code characters', () => {
+    const result = codeSubmitSchema.safeParse({
+      bathroom_id: '',
+      code_value: '!',
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected code submission validation to fail for invalid input.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      bathroom_id: 'Bathroom identifier is required.',
+      code_value: 'Access code must be at least 2 characters long.',
+    });
+  });
+});
+
+describe('cleanlinessRatingSchema', () => {
+  it('accepts valid cleanliness ratings', () => {
+    const result = cleanlinessRatingSchema.parse({
+      bathroom_id: 'bathroom-123',
+      rating: 4,
+      notes: 'Clean but missing paper towels.',
+    });
+
+    expect(result.rating).toBe(4);
+    expect(result.notes).toBe('Clean but missing paper towels.');
+  });
+
+  it('rejects missing bathroom ids and out-of-range ratings', () => {
+    const result = cleanlinessRatingSchema.safeParse({
+      bathroom_id: '',
+      rating: 6,
+      notes: 'a'.repeat(301),
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected cleanliness rating validation to fail for invalid input.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      bathroom_id: 'Bathroom identifier is required.',
+      rating: 'Choose a cleanliness rating between 1 and 5.',
+      notes: 'Cleanliness notes must be 300 characters or fewer.',
+    });
+  });
+});
+
+describe('liveStatusReportSchema', () => {
+  it('accepts valid live status updates', () => {
+    const result = liveStatusReportSchema.parse({
+      bathroom_id: 'bathroom-123',
+      status: 'long_wait',
+      note: 'Line wrapped around the hallway.',
+    });
+
+    expect(result.status).toBe('long_wait');
+    expect(result.note).toBe('Line wrapped around the hallway.');
+  });
+
+  it('rejects missing bathroom ids, invalid statuses, and long notes', () => {
+    const result = liveStatusReportSchema.safeParse({
+      bathroom_id: '',
+      status: 'broken',
+      note: 'a'.repeat(281),
+    });
+
+    expect(result.success).toBe(false);
+
+    if (result.success) {
+      throw new Error('Expected live status validation to fail for invalid input.');
+    }
+
+    expect(getFieldErrors(result.error)).toEqual({
+      bathroom_id: 'Bathroom identifier is required.',
+      status: 'Choose the live status you want to share.',
+      note: 'Live status notes must be 280 characters or fewer.',
     });
   });
 });

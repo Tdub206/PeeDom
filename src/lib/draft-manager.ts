@@ -1,5 +1,13 @@
 import { storage } from './storage';
-import { Draft, DraftType, AddBathroomDraft, ClaimBusinessDraft } from '@/types';
+import {
+  AddBathroomDraft,
+  ClaimBusinessDraft,
+  CleanlinessRatingDraft,
+  Draft,
+  DraftType,
+  LiveStatusDraft,
+  SubmitCodeDraft,
+} from '@/types';
 
 class DraftManager {
   /**
@@ -145,4 +153,28 @@ export const claimBusinessDrafts = {
   get: (draftId: string) => draftManager.get<ClaimBusinessDraft>('claim_business', draftId),
   list: (userId: string) => draftManager.list<ClaimBusinessDraft>('claim_business', userId),
   delete: (draftId: string, userId: string) => draftManager.delete('claim_business', draftId, userId),
+};
+
+export const submitCodeDrafts = {
+  save: (data: SubmitCodeDraft, userId: string, draftId?: string) =>
+    draftManager.save('submit_code', data, userId, draftId),
+  get: (draftId: string) => draftManager.get<SubmitCodeDraft>('submit_code', draftId),
+  list: (userId: string) => draftManager.list<SubmitCodeDraft>('submit_code', userId),
+  delete: (draftId: string, userId: string) => draftManager.delete('submit_code', draftId, userId),
+};
+
+export const cleanlinessRatingDrafts = {
+  save: (data: CleanlinessRatingDraft, userId: string, draftId?: string) =>
+    draftManager.save('rate_cleanliness', data, userId, draftId),
+  get: (draftId: string) => draftManager.get<CleanlinessRatingDraft>('rate_cleanliness', draftId),
+  list: (userId: string) => draftManager.list<CleanlinessRatingDraft>('rate_cleanliness', userId),
+  delete: (draftId: string, userId: string) => draftManager.delete('rate_cleanliness', draftId, userId),
+};
+
+export const liveStatusDrafts = {
+  save: (data: LiveStatusDraft, userId: string, draftId?: string) =>
+    draftManager.save('report_live_status', data, userId, draftId),
+  get: (draftId: string) => draftManager.get<LiveStatusDraft>('report_live_status', draftId),
+  list: (userId: string) => draftManager.list<LiveStatusDraft>('report_live_status', userId),
+  delete: (draftId: string, userId: string) => draftManager.delete('report_live_status', draftId, userId),
 };

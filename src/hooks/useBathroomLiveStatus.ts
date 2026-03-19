@@ -1,18 +1,46 @@
-import { useCallback, useEffect } from 'react';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from 'expo-router';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchCurrentBathroomStatus, reportBathroomStatus } from '@/api/notifications';
+import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
+import { offlineQueue } from '@/lib/offline-queue';
+import { pushSafely } from '@/lib/navigation';
 import { getSupabaseClient } from '@/lib/supabase';
 import { Sentry } from '@/lib/sentry';
-import type { BathroomLiveStatus } from '@/types';
+import type { BathroomLiveStatus, LiveStatusReportCreate, MutationOutcome } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { isTransientNetworkError } from '@/utils/network';
+
+interface SubmitBathroomLiveStatusOptions {
+  draftId?: string | null;
+}
 
 export const bathroomLiveStatusQueryKey = (bathroomId: string | null) =>
   ['bathroom-live-status', bathroomId ?? 'unknown'] as const;
 
+function buildLiveStatusReturnRoute(
+  input: LiveStatusReportCreate,
+  draftId?: string | null
+): string {
+  const searchParams = new URLSearchParams({
+    bathroom_id: input.bathroom_id,
+  });
+
+  if (draftId) {
+    searchParams.set('draft_id', draftId);
+  }
+
+  return `${routes.modal.liveStatus}?${searchParams.toString()}`;
+}
+
 export function useBathroomLiveStatus(bathroomId: string | null) {
+  const router = useRouter();
   const queryClient = useQueryClient();
+  const { requireAuth } = useAuth();
   const { showToast } = useToast();
+  const [isReportingStatus, setIsReportingStatus] = useState(false);
 
   const currentStatusQuery = useQuery({
     queryKey: bathroomLiveStatusQueryKey(bathroomId),
@@ -32,46 +60,6 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
     },
     staleTime: 60_000,
     refetchInterval: 5 * 60_000,
-  });
-
-  const reportMutation = useMutation({
-    mutationFn: async (input: { status: BathroomLiveStatus; note?: string | null }) => {
-      if (!bathroomId) {
-        throw new Error('A bathroom identifier is required before reporting live status.');
-      }
-
-      const result = await reportBathroomStatus({
-        bathroomId,
-        status: input.status,
-        note: input.note ?? null,
-      });
-
-      if (result.error) {
-        throw result.error;
-      }
-    },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: bathroomLiveStatusQueryKey(bathroomId),
-      });
-
-      showToast({
-        title: 'Status reported',
-        message: 'Thanks for sharing a live update for this bathroom.',
-        variant: 'success',
-      });
-    },
-    onError: (error: Error & { code?: string }) => {
-      const isRateLimited = typeof error.code === 'string' && error.code.toLowerCase() === 'rate_limited';
-
-      showToast({
-        title: isRateLimited ? 'Status recently reported' : 'Status update failed',
-        message: isRateLimited
-          ? 'You can report this bathroom again after the current cooldown ends.'
-          : getErrorMessage(error, 'We could not save that live status right now.'),
-        variant: isRateLimited ? 'warning' : 'error',
-      });
-    },
   });
 
   useEffect(() => {
@@ -108,25 +96,105 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
   }, [bathroomId, queryClient]);
 
   const reportStatus = useCallback(
-    async (status: BathroomLiveStatus, note?: string | null) => {
+    async (
+      status: BathroomLiveStatus,
+      note?: string | null,
+      options?: SubmitBathroomLiveStatusOptions
+    ): Promise<MutationOutcome> => {
+      if (!bathroomId) {
+        throw new Error('A bathroom identifier is required before reporting live status.');
+      }
+
+      const input: LiveStatusReportCreate = {
+        bathroom_id: bathroomId,
+        status,
+        note: note?.trim() || undefined,
+      };
+
+      const authenticatedUser = requireAuth({
+        type: 'report_live_status',
+        route: buildLiveStatusReturnRoute(input, options?.draftId),
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: options?.draftId ?? null,
+        },
+        replay_strategy: 'draft_resume',
+      });
+
+      if (!authenticatedUser) {
+        pushSafely(router, routes.auth.login, routes.auth.login);
+        return 'auth_required';
+      }
+
+      setIsReportingStatus(true);
+
       try {
-        await reportMutation.mutateAsync({
+        const result = await reportBathroomStatus({
+          bathroomId,
           status,
-          note: note ?? null,
+          note: input.note ?? null,
         });
-        return true;
-      } catch {
-        return false;
+
+        if (result.error) {
+          throw result.error;
+        }
+
+        await queryClient.invalidateQueries({
+          queryKey: bathroomLiveStatusQueryKey(bathroomId),
+        });
+
+        showToast({
+          title: 'Status reported',
+          message: 'Thanks for sharing a live update for this bathroom.',
+          variant: 'success',
+        });
+
+        return 'completed';
+      } catch (error) {
+        const errorWithCode = error as Error & { code?: string };
+        const isRateLimited =
+          typeof errorWithCode.code === 'string' && errorWithCode.code.toLowerCase() === 'rate_limited';
+
+        if (!isRateLimited && isTransientNetworkError(error)) {
+          await offlineQueue.enqueue(
+            'status_report',
+            {
+              bathroom_id: bathroomId,
+              status,
+              note: input.note ?? null,
+            },
+            authenticatedUser.id
+          );
+
+          showToast({
+            title: 'Status queued',
+            message: 'You are offline. Your live status update will sync automatically when the network returns.',
+            variant: 'warning',
+          });
+
+          return 'queued_retry';
+        }
+
+        showToast({
+          title: isRateLimited ? 'Status recently reported' : 'Status update failed',
+          message: isRateLimited
+            ? 'You can report this bathroom again after the current cooldown ends.'
+            : getErrorMessage(error, 'We could not save that live status right now.'),
+          variant: isRateLimited ? 'warning' : 'error',
+        });
+        throw error;
+      } finally {
+        setIsReportingStatus(false);
       }
     },
-    [reportMutation]
+    [bathroomId, queryClient, requireAuth, router, showToast]
   );
 
   return {
     currentStatus: currentStatusQuery.data ?? null,
     isLoadingCurrentStatus: currentStatusQuery.isLoading,
     isRefreshingCurrentStatus: currentStatusQuery.isFetching,
-    isReportingStatus: reportMutation.isPending,
+    isReportingStatus,
     reportStatus,
   };
 }

@@ -76,6 +76,29 @@ describe('notifications API', () => {
     });
   });
 
+  it('passes live status notes through the RPC payload', async () => {
+    rpc.mockResolvedValueOnce({
+      data: {
+        success: true,
+      },
+      error: null,
+    });
+
+    const { reportBathroomStatus } = await import('@/api/notifications');
+    const result = await reportBathroomStatus({
+      bathroomId: 'bathroom-2',
+      status: 'long_wait',
+      note: 'Line out the door.',
+    });
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('report_bathroom_status', {
+      p_bathroom_id: 'bathroom-2',
+      p_status: 'long_wait',
+      p_note: 'Line out the door.',
+    });
+  });
+
   it('surfaces RPC failure codes from notification setting updates', async () => {
     rpc.mockResolvedValueOnce({
       data: {
