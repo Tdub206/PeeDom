@@ -578,6 +578,111 @@ export interface Database {
           updated_at?: string
         }
       }
+      business_verification_badges: {
+        Row: {
+          id: string
+          bathroom_id: string
+          claim_id: string
+          verified_at: string
+          verified_by: string | null
+          badge_type: 'standard' | 'premium' | 'featured'
+          expires_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          claim_id: string
+          verified_at?: string
+          verified_by?: string | null
+          badge_type?: 'standard' | 'premium' | 'featured'
+          expires_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          claim_id?: string
+          verified_at?: string
+          verified_by?: string | null
+          badge_type?: 'standard' | 'premium' | 'featured'
+          expires_at?: string | null
+          created_at?: string
+        }
+      }
+      business_featured_placements: {
+        Row: {
+          id: string
+          bathroom_id: string
+          business_user_id: string
+          placement_type: 'search_top' | 'map_priority' | 'nearby_featured'
+          geographic_scope: Json
+          start_date: string
+          end_date: string
+          impressions_count: number
+          clicks_count: number
+          status: 'active' | 'paused' | 'expired' | 'cancelled'
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          business_user_id: string
+          placement_type: 'search_top' | 'map_priority' | 'nearby_featured'
+          geographic_scope: Json
+          start_date: string
+          end_date: string
+          impressions_count?: number
+          clicks_count?: number
+          status?: 'active' | 'paused' | 'expired' | 'cancelled'
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          business_user_id?: string
+          placement_type?: 'search_top' | 'map_priority' | 'nearby_featured'
+          geographic_scope?: Json
+          start_date?: string
+          end_date?: string
+          impressions_count?: number
+          clicks_count?: number
+          status?: 'active' | 'paused' | 'expired' | 'cancelled'
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      business_hours_updates: {
+        Row: {
+          id: string
+          bathroom_id: string
+          updated_by: string
+          old_hours: Json | null
+          new_hours: Json
+          update_source: 'business_dashboard' | 'admin_panel' | 'community_report'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          updated_by: string
+          old_hours?: Json | null
+          new_hours: Json
+          update_source: 'business_dashboard' | 'admin_panel' | 'community_report'
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          updated_by?: string
+          old_hours?: Json | null
+          new_hours?: Json
+          update_source?: 'business_dashboard' | 'admin_panel' | 'community_report'
+          created_at?: string
+        }
+      }
     }
     Views: {
       v_bathrooms_public: {
@@ -923,6 +1028,51 @@ export interface Database {
           premium_expires_at: string
           is_premium: boolean
         }[]
+      }
+      get_business_dashboard_analytics: {
+        Args: {
+          p_user_id: string
+        }
+        Returns: {
+          bathroom_id: string
+          claim_id: string | null
+          place_name: string
+          business_name: string | null
+          total_favorites: number
+          open_reports: number
+          avg_cleanliness: number
+          total_ratings: number
+          weekly_views: number
+          verification_badge_type: 'standard' | 'premium' | 'featured' | null
+          has_verification_badge: boolean
+          has_active_featured_placement: boolean
+          active_featured_placements: number
+          last_updated: string
+        }[]
+      }
+      update_business_bathroom_hours: {
+        Args: {
+          p_bathroom_id: string
+          p_new_hours: Json
+        }
+        Returns: Json
+      }
+      user_can_manage_business_bathroom: {
+        Args: {
+          p_user_id: string
+          p_bathroom_id: string
+        }
+        Returns: boolean
+      }
+      user_has_business_dashboard_access: {
+        Args: {
+          p_user_id: string
+        }
+        Returns: boolean
+      }
+      refresh_business_analytics: {
+        Args: Record<PropertyKey, never>
+        Returns: void
       }
       register_push_token: {
         Args: {

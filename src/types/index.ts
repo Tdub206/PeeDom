@@ -433,6 +433,102 @@ export interface BusinessClaimStatusCounts {
   rejected: number;
 }
 
+export type BusinessVerificationBadgeType =
+  Database['public']['Tables']['business_verification_badges']['Row']['badge_type'];
+
+export type BusinessFeaturedPlacementType =
+  Database['public']['Tables']['business_featured_placements']['Row']['placement_type'];
+
+export type BusinessFeaturedPlacementStatus =
+  Database['public']['Tables']['business_featured_placements']['Row']['status'];
+
+export type BusinessHoursUpdateSource =
+  Database['public']['Tables']['business_hours_updates']['Row']['update_source'];
+
+export interface BusinessFeaturedPlacementScope {
+  city?: string;
+  state?: string;
+  radius_km?: number;
+}
+
+export interface BusinessDashboardBathroom {
+  bathroom_id: string;
+  claim_id: string | null;
+  place_name: string;
+  business_name: string | null;
+  total_favorites: number;
+  open_reports: number;
+  avg_cleanliness: number;
+  total_ratings: number;
+  weekly_views: number;
+  verification_badge_type: BusinessVerificationBadgeType | null;
+  has_verification_badge: boolean;
+  has_active_featured_placement: boolean;
+  active_featured_placements: number;
+  last_updated: string;
+}
+
+export interface BusinessDashboardSummary {
+  total_bathrooms: number;
+  total_favorites_across_all: number;
+  total_open_reports: number;
+  avg_rating_across_all: number;
+  active_featured_placements: number;
+  verified_locations: number;
+}
+
+export interface BusinessDashboardData {
+  bathrooms: BusinessDashboardBathroom[];
+  summary: BusinessDashboardSummary;
+}
+
+export interface BusinessVerificationBadge {
+  id: string;
+  bathroom_id: string;
+  claim_id: string;
+  verified_at: string;
+  verified_by: string | null;
+  badge_type: BusinessVerificationBadgeType;
+  expires_at: string | null;
+  created_at: string;
+}
+
+export interface BusinessFeaturedPlacement {
+  id: string;
+  bathroom_id: string;
+  business_user_id: string;
+  placement_type: BusinessFeaturedPlacementType;
+  geographic_scope: BusinessFeaturedPlacementScope;
+  start_date: string;
+  end_date: string;
+  impressions_count: number;
+  clicks_count: number;
+  status: BusinessFeaturedPlacementStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BusinessHoursUpdateAudit {
+  id: string;
+  bathroom_id: string;
+  updated_by: string;
+  old_hours: HoursData | null;
+  new_hours: HoursData;
+  update_source: BusinessHoursUpdateSource;
+  created_at: string;
+}
+
+export interface UpdateBusinessHoursInput {
+  bathroom_id: string;
+  hours: HoursData;
+}
+
+export interface BusinessHoursUpdateResult {
+  success: boolean;
+  bathroom_id: string;
+  updated_at: string;
+}
+
 // ============================================================================
 // CODE SUBMISSION TYPES
 // ============================================================================
@@ -669,3 +765,6 @@ export type DbPointEvent = Database['public']['Tables']['point_events']['Row'];
 export type DbUserBadge = Database['public']['Tables']['user_badges']['Row'];
 export type DbBathroomStatusEvent = Database['public']['Tables']['bathroom_status_events']['Row'];
 export type DbPremiumArrivalAlert = Database['public']['Tables']['premium_arrival_alerts']['Row'];
+export type DbBusinessVerificationBadge = Database['public']['Tables']['business_verification_badges']['Row'];
+export type DbBusinessFeaturedPlacement = Database['public']['Tables']['business_featured_placements']['Row'];
+export type DbBusinessHoursUpdate = Database['public']['Tables']['business_hours_updates']['Row'];
