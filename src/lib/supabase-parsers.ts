@@ -443,6 +443,14 @@ export const cityBrowseRowSchema = z.object({
   bathroom_count: z.number().int().nonnegative(),
 });
 
+export const searchSuggestionRowSchema = z.object({
+  bathroom_id: rawTextSchema,
+  place_name: rawTextSchema,
+  city: z.string().nullable(),
+  state: z.string().nullable(),
+  distance_meters: z.number().nullable(),
+});
+
 function buildValidationError(
   label: string,
   fallbackMessage: string,

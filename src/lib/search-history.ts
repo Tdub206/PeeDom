@@ -21,9 +21,10 @@ export async function clearStoredSearchHistory(): Promise<void> {
 
 export async function rememberSearchQuery(
   history: SearchHistoryItem[],
-  query: string
+  query: string,
+  resultCount: number | null = null
 ): Promise<SearchHistoryItem[]> {
-  const nextHistory = upsertSearchHistory(history, query);
+  const nextHistory = upsertSearchHistory(history, query, new Date().toISOString(), resultCount);
   await saveSearchHistory(nextHistory);
   return nextHistory;
 }

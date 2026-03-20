@@ -1,6 +1,7 @@
 import { storage } from './storage';
 import {
   AddBathroomDraft,
+  AccessibilityUpdateDraft,
   ClaimBusinessDraft,
   CleanlinessRatingDraft,
   Draft,
@@ -177,4 +178,12 @@ export const liveStatusDrafts = {
   get: (draftId: string) => draftManager.get<LiveStatusDraft>('report_live_status', draftId),
   list: (userId: string) => draftManager.list<LiveStatusDraft>('report_live_status', userId),
   delete: (draftId: string, userId: string) => draftManager.delete('report_live_status', draftId, userId),
+};
+
+export const accessibilityUpdateDrafts = {
+  save: (data: AccessibilityUpdateDraft, userId: string, draftId?: string) =>
+    draftManager.save('update_accessibility', data, userId, draftId),
+  get: (draftId: string) => draftManager.get<AccessibilityUpdateDraft>('update_accessibility', draftId),
+  list: (userId: string) => draftManager.list<AccessibilityUpdateDraft>('update_accessibility', userId),
+  delete: (draftId: string, userId: string) => draftManager.delete('update_accessibility', draftId, userId),
 };

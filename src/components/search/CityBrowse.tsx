@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useCityBrowse } from '@/hooks/useSearch';
 import { colors } from '@/constants/colors';
 
@@ -39,7 +40,7 @@ function CityBrowseComponent({ onSelect }: CityBrowseProps) {
             key={`${cityItem.city}-${cityItem.state}`}
             onPress={() => onSelect(cityItem.city, cityItem.state)}
           >
-            <Text className="text-2xl">🏙️</Text>
+            <Ionicons color={colors.brand[600]} name="business-outline" size={22} />
             <View className="flex-1">
               <Text className="text-base font-black text-ink-900">
                 {cityItem.city}, {cityItem.state}

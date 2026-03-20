@@ -7,10 +7,13 @@ import { colors } from '@/constants/colors';
 interface SearchResultsListProps {
   bathrooms: BathroomListItem[];
   isLoading: boolean;
+  isFetchingNextPage?: boolean;
+  hasNextPage?: boolean;
   query: string;
   error: Error | null;
   isFavorite: (bathroomId: string) => boolean;
   isFavoritePending: (bathroomId: string) => boolean;
+  onEndReached?: () => void;
   onSelect: (bathroom: BathroomListItem) => void;
   onToggleFavorite: (bathroom: BathroomListItem) => void;
 }
@@ -18,10 +21,13 @@ interface SearchResultsListProps {
 function SearchResultsListComponent({
   bathrooms,
   isLoading,
+  isFetchingNextPage = false,
+  hasNextPage = false,
   query,
   error,
   isFavorite,
   isFavoritePending,
+  onEndReached,
   onSelect,
   onToggleFavorite,
 }: SearchResultsListProps) {
@@ -65,6 +71,8 @@ function SearchResultsListComponent({
       data={bathrooms}
       keyExtractor={(item) => item.id}
       keyboardShouldPersistTaps="handled"
+      onEndReached={hasNextPage ? onEndReached : undefined}
+      onEndReachedThreshold={0.4}
       renderItem={({ item }) => (
         <SearchResultItem
           isFavorited={isFavorite(item.id)}
@@ -76,10 +84,12 @@ function SearchResultsListComponent({
       )}
       showsVerticalScrollIndicator={false}
       ListFooterComponent={
-        isLoading && bathrooms.length > 0 ? (
+        (isLoading || isFetchingNextPage) && bathrooms.length > 0 ? (
           <View className="items-center py-4">
             <ActivityIndicator color={colors.brand[600]} size="small" />
-            <Text className="mt-2 text-sm font-medium text-ink-600">Refreshing the latest matches</Text>
+            <Text className="mt-2 text-sm font-medium text-ink-600">
+              {isFetchingNextPage ? 'Loading more matches' : 'Refreshing the latest matches'}
+            </Text>
           </View>
         ) : null
       }

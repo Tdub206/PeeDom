@@ -1,7 +1,7 @@
 import type { Href, Router } from 'expo-router';
 import { routes } from '@/constants/routes';
 
-type SafeRouter = Pick<Router, 'push' | 'replace'>;
+type SafeRouter = Pick<Router, 'push' | 'replace' | 'dismissTo'>;
 type RouteInput = Href | string | null | undefined;
 
 function getRoutePath(route: RouteInput): string | null {
@@ -27,6 +27,10 @@ const STATIC_ROUTES = new Set<string>(
     routes.auth.register,
     routes.modal.addBathroom,
     routes.modal.report,
+    routes.modal.submitCode,
+    routes.modal.rateCleanliness,
+    routes.modal.liveStatus,
+    routes.modal.updateAccessibility,
     routes.modal.claimBusiness,
   ]
     .map((route) => getRoutePath(route))
@@ -66,4 +70,8 @@ export function pushSafely(router: SafeRouter, route: RouteInput, fallbackRoute:
 
 export function replaceSafely(router: SafeRouter, route: RouteInput, fallbackRoute: Href): void {
   router.replace(toSafeRoute(route, fallbackRoute));
+}
+
+export function dismissToSafely(router: SafeRouter, route: RouteInput, fallbackRoute: Href): void {
+  router.dismissTo(toSafeRoute(route, fallbackRoute));
 }

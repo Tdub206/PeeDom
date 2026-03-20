@@ -20,7 +20,7 @@ import { useBathroomSubmissions } from '@/hooks/useBathroomSubmissions';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { addBathroomDrafts } from '@/lib/draft-manager';
-import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { useMapStore } from '@/store/useMapStore';
 import { AddBathroomDraft, BathroomPhotoUploadInput } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -193,7 +193,7 @@ export default function AddBathroomModalScreen() {
   const requestedDraftId = useMemo(() => parseDraftId(draft_id), [draft_id]);
 
   const closeModal = useCallback(() => {
-    replaceSafely(router, routes.tabs.map, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.map, routes.tabs.map);
   }, [router]);
 
   const updateField = useCallback(
@@ -518,7 +518,7 @@ export default function AddBathroomModalScreen() {
       }
 
       await deleteDraft(draftIdForSubmit ?? activeDraftId);
-      replaceSafely(router, routes.bathroomDetail(outcome.bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(outcome.bathroomId), routes.tabs.map);
     } catch (error) {
       setSubmitError(getErrorMessage(error, 'Unable to add this bathroom right now.'));
     }

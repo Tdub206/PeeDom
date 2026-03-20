@@ -1,6 +1,24 @@
 import { CityBrowseItem, SearchHistoryItem } from '@/types';
 
-export const SEARCH_HISTORY_LIMIT = 10;
+export const SEARCH_HISTORY_LIMIT = 20;
+
+export function formatSearchDistance(distanceMeters: number | null | undefined): string | null {
+  if (typeof distanceMeters !== 'number' || Number.isNaN(distanceMeters)) {
+    return null;
+  }
+
+  if (distanceMeters < 160) {
+    return `${Math.max(1, Math.round(distanceMeters))} m away`;
+  }
+
+  const distanceMiles = distanceMeters / 1609.34;
+
+  if (distanceMiles < 10) {
+    return `${distanceMiles.toFixed(1)} mi away`;
+  }
+
+  return `${Math.round(distanceMiles)} mi away`;
+}
 
 export function normalizeSearchQuery(query: string): string {
   return query.trim().replace(/\s+/g, ' ');
@@ -9,7 +27,8 @@ export function normalizeSearchQuery(query: string): string {
 export function upsertSearchHistory(
   history: SearchHistoryItem[],
   query: string,
-  searchedAt = new Date().toISOString()
+  searchedAt = new Date().toISOString(),
+  resultCount: number | null = null
 ): SearchHistoryItem[] {
   const normalizedQuery = normalizeSearchQuery(query);
 
@@ -25,6 +44,7 @@ export function upsertSearchHistory(
     {
       query: normalizedQuery,
       searched_at: searchedAt,
+      result_count: resultCount,
     },
     ...deduplicatedHistory,
   ].slice(0, SEARCH_HISTORY_LIMIT);
@@ -47,7 +67,10 @@ export function sanitizeSearchHistory(value: unknown): SearchHistoryItem[] {
         typeof (historyItem as SearchHistoryItem).query === 'string' &&
         (historyItem as SearchHistoryItem).query.trim().length >= 2 &&
         typeof (historyItem as SearchHistoryItem).searched_at === 'string' &&
-        !Number.isNaN(Date.parse((historyItem as SearchHistoryItem).searched_at))
+        !Number.isNaN(Date.parse((historyItem as SearchHistoryItem).searched_at)) &&
+        (typeof (historyItem as SearchHistoryItem).result_count === 'number' ||
+          typeof (historyItem as SearchHistoryItem).result_count === 'undefined' ||
+          (historyItem as SearchHistoryItem).result_count === null)
     )
     .slice(0, SEARCH_HISTORY_LIMIT);
 }

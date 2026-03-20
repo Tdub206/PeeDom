@@ -10,8 +10,8 @@ import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeSubmission } from '@/hooks/useBathroomCodeSubmission';
 import { useToast } from '@/hooks/useToast';
-import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { submitCodeDrafts } from '@/lib/draft-manager';
+import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import { codeSubmitSchema, CodeSubmitFormValues, FieldErrors, getFieldErrors } from '@/utils/validate';
 
@@ -91,11 +91,11 @@ export default function SubmitCodeModalScreen() {
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
       return;
     }
 
-    replaceSafely(router, routes.tabs.map, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.map, routes.tabs.map);
   }, [bathroomId, router]);
 
   const updateField = useCallback((field: keyof SubmitCodeFormState, value: string) => {
@@ -352,7 +352,7 @@ export default function SubmitCodeModalScreen() {
 
       await deleteDraft(activeDraftId);
       setActiveDraftId(null);
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
     } catch (error) {
       setSubmitError(getErrorMessage(error, 'Unable to submit this access code right now.'));
     }
@@ -412,7 +412,7 @@ export default function SubmitCodeModalScreen() {
         <ScrollView keyboardShouldPersistTaps="handled" contentInsetAdjustmentBehavior="automatic" className="flex-1">
           <View className="px-6 py-8">
             <View className="rounded-[30px] bg-brand-600 px-6 py-7">
-              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Section 10 Contribution Flow</Text>
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Community Code Update</Text>
               <Text className="mt-3 text-4xl font-black tracking-tight text-white">Submit the latest code.</Text>
               <Text className="mt-3 text-base leading-6 text-white/80">
                 Share the code that worked for you most recently. Community verification will adjust confidence over time.

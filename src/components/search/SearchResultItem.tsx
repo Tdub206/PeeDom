@@ -5,6 +5,7 @@ import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
+import { formatSearchDistance } from '@/utils/search';
 
 interface SearchResultItemProps {
   item: BathroomListItem;
@@ -47,15 +48,13 @@ const TONE_COPY: Record<
 };
 
 function formatDistance(distanceMeters?: number): string {
-  if (typeof distanceMeters !== 'number' || Number.isNaN(distanceMeters)) {
+  const formattedDistance = formatSearchDistance(distanceMeters ?? null);
+
+  if (!formattedDistance) {
     return 'Distance unavailable';
   }
 
-  if (distanceMeters < 1000) {
-    return `${distanceMeters} m away`;
-  }
-
-  return `${(distanceMeters / 1000).toFixed(1)} km away`;
+  return formattedDistance;
 }
 
 function SearchResultItemComponent({

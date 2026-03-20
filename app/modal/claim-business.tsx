@@ -11,7 +11,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useBusinessClaimSubmission } from '@/hooks/useBusinessClaimSubmission';
 import { useToast } from '@/hooks/useToast';
 import { claimBusinessDrafts } from '@/lib/draft-manager';
-import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { ClaimBusinessDraft } from '@/types';
 import { formatBusinessClaimAddress } from '@/utils/business-claims';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -106,11 +106,11 @@ export default function ClaimBusinessModalScreen() {
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.business);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.business);
       return;
     }
 
-    replaceSafely(router, routes.tabs.business, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.business, routes.tabs.map);
   }, [bathroomId, router]);
 
   const updateField = useCallback(
@@ -396,7 +396,7 @@ export default function ClaimBusinessModalScreen() {
       if (outcome.status !== 'auth_required') {
         await deleteDraft(activeDraftId);
         setActiveDraftId(null);
-        replaceSafely(router, routes.tabs.business, routes.bathroomDetail(bathroomId));
+        dismissToSafely(router, routes.tabs.business, routes.bathroomDetail(bathroomId));
       }
     } catch (error) {
       setSubmitError(getErrorMessage(error, 'Unable to submit this business claim right now.'));
@@ -419,7 +419,7 @@ export default function ClaimBusinessModalScreen() {
             <Button
               className="mt-6"
               label="Back To Business"
-              onPress={() => replaceSafely(router, routes.tabs.business, routes.tabs.map)}
+              onPress={() => dismissToSafely(router, routes.tabs.business, routes.tabs.map)}
             />
             <Button className="mt-3" label="Back To Map" onPress={closeModal} variant="secondary" />
           </View>

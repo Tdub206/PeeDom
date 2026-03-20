@@ -45,6 +45,7 @@ export type IntentType =
   | 'report_live_status'
   | 'add_bathroom'
   | 'upload_bathroom_photo'
+  | 'update_accessibility'
   | 'claim_business'
   | 'rate_cleanliness';
 
@@ -77,7 +78,8 @@ export type MutationType =
   | 'code_vote'
   | 'report_create'
   | 'rating_create'
-  | 'status_report';
+  | 'status_report'
+  | 'accessibility_update';
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
@@ -105,6 +107,8 @@ export interface BathroomStatusMutationPayload {
   note?: string | null;
 }
 
+export interface BathroomAccessibilityMutationPayload extends BathroomAccessibilityUpdateInput {}
+
 export interface QueuedMutation {
   id: string;
   type: MutationType;
@@ -130,7 +134,8 @@ export type DraftType =
   | 'claim_business'
   | 'submit_code'
   | 'rate_cleanliness'
-  | 'report_live_status';
+  | 'report_live_status'
+  | 'update_accessibility';
 
 export interface Draft<T = Record<string, unknown>> {
   id: string;
@@ -185,6 +190,8 @@ export interface LiveStatusDraft {
   status: BathroomLiveStatus;
   note?: string;
 }
+
+export interface AccessibilityUpdateDraft extends BathroomAccessibilityUpdateInput {}
 
 // ============================================================================
 // BATHROOM TYPES
@@ -483,6 +490,7 @@ export interface DisplayNameUpdateResult {
 export interface SearchHistoryItem {
   query: string;
   searched_at: string;
+  result_count?: number | null;
 }
 
 export interface CityBrowseItem {
@@ -490,6 +498,26 @@ export interface CityBrowseItem {
   state: string;
   bathroom_count: number;
 }
+
+export interface SearchSuggestion {
+  bathroom_id: string;
+  place_name: string;
+  city: string | null;
+  state: string | null;
+  distance_meters: number | null;
+}
+
+export type SearchPhase = 'idle' | 'typing' | 'suggesting' | 'searching' | 'results' | 'empty' | 'error';
+
+export interface SearchDiscoveryFilters {
+  hasCode: boolean | null;
+  radiusMeters: number;
+}
+
+export const DEFAULT_SEARCH_DISCOVERY_FILTERS: SearchDiscoveryFilters = {
+  hasCode: null,
+  radiusMeters: 8047,
+};
 
 // ============================================================================
 // LOCATION TYPES

@@ -17,7 +17,7 @@ import {
   getBathroomStatusLabel,
   getBathroomStatusTone,
 } from '@/lib/bathroom-status';
-import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import type { BathroomLiveStatus } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
@@ -157,11 +157,11 @@ export default function LiveStatusModalScreen() {
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
       return;
     }
 
-    replaceSafely(router, routes.tabs.map, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.map, routes.tabs.map);
   }, [bathroomId, router]);
 
   const updateNote = useCallback((value: string) => {
@@ -440,7 +440,7 @@ export default function LiveStatusModalScreen() {
 
       await deleteDraft(activeDraftId);
       setActiveDraftId(null);
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
     } catch (error) {
       setSubmitError(getErrorMessage(error, 'Unable to save your live status update right now.'));
     }
@@ -511,7 +511,7 @@ export default function LiveStatusModalScreen() {
         <ScrollView keyboardShouldPersistTaps="handled" contentInsetAdjustmentBehavior="automatic" className="flex-1">
           <View className="px-6 py-8">
             <View className="rounded-[30px] bg-brand-600 px-6 py-7">
-              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Section 12 Realtime Reliability</Text>
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Realtime Update</Text>
               <Text className="mt-3 text-4xl font-black tracking-tight text-white">Share the live status.</Text>
               <Text className="mt-3 text-base leading-6 text-white/80">
                 Tell the next person what it is like right now. Updates stay visible for two hours and refresh the live status banner instantly.

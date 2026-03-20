@@ -6,6 +6,7 @@ import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import NetInfo from '@react-native-community/netinfo';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClientProvider } from '@tanstack/react-query';
@@ -18,11 +19,14 @@ import { LocationProvider } from '@/contexts/LocationContext';
 import { useOfflineSync } from '@/hooks/useOfflineSync';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { initializeAnalytics, trackAnalyticsEvent } from '@/lib/analytics';
+import { isNetworkStateOnline } from '@/lib/network-state';
 import { initializeQueryLifecycleManagers } from '@/lib/query-lifecycle';
+import { realtimeManager } from '@/lib/realtime-manager';
 import { ToastProvider } from '@/contexts/ToastContext';
 import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
 import { supabaseConfigState } from '@/lib/supabase';
+import { useRealtimeStore } from '@/store/useRealtimeStore';
 
 initializeSentry();
 initializeQueryLifecycleManagers();
@@ -35,6 +39,8 @@ function RootNavigator() {
   });
   const { loading } = useAuth();
   const hasTrackedBootstrap = useRef(false);
+  const wasOnlineRef = useRef<boolean | null>(null);
+  const setConnectionState = useRealtimeStore((state) => state.setConnectionState);
   useOfflineSync();
   usePushNotifications();
   const isAppReady = !loading && (fontsLoaded || Boolean(fontError));
@@ -68,6 +74,60 @@ function RootNavigator() {
 
     void SplashScreen.hideAsync().catch(() => undefined);
   }, [isAppReady]);
+
+  useEffect(() => {
+    const unsubscribeForeground = realtimeManager.onForeground(() => {
+      void queryClient.invalidateQueries({ refetchType: 'active' }).catch((error) => {
+        Sentry.captureException(error);
+      });
+    });
+
+    const unsubscribeBackground = realtimeManager.onBackground(() => {
+      setConnectionState('CLOSING');
+    });
+
+    const unsubscribeNetwork = NetInfo.addEventListener((state) => {
+      const isOnline = isNetworkStateOnline(state);
+      const wasOnline = wasOnlineRef.current;
+      wasOnlineRef.current = isOnline;
+
+      if (!isOnline) {
+        setConnectionState('CLOSED');
+        return;
+      }
+
+      if (wasOnline === false) {
+        void realtimeManager.handleNetworkReconnect().catch((error) => {
+          Sentry.captureException(error);
+        });
+        void queryClient.invalidateQueries({ refetchType: 'active' }).catch((error) => {
+          Sentry.captureException(error);
+        });
+      }
+    });
+
+    void NetInfo.fetch()
+      .then((state) => {
+        const isOnline = isNetworkStateOnline(state);
+        wasOnlineRef.current = isOnline;
+
+        if (!isOnline) {
+          setConnectionState('CLOSED');
+        }
+      })
+      .catch((error) => {
+        Sentry.captureException(error);
+      });
+
+    return () => {
+      unsubscribeForeground();
+      unsubscribeBackground();
+      unsubscribeNetwork();
+      void realtimeManager.destroy().catch((error) => {
+        Sentry.captureException(error);
+      });
+    };
+  }, [setConnectionState]);
 
   if (!isAppReady) {
     return <LoadingScreen />;
@@ -126,6 +186,14 @@ function RootNavigator() {
             presentation: 'modal',
             headerShown: true,
             headerTitle: 'Live Status',
+          }}
+        />
+        <Stack.Screen
+          name="modal/update-accessibility"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Accessibility Details',
           }}
         />
         <Stack.Screen

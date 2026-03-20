@@ -47,9 +47,9 @@ export function useSearchHistory() {
     };
   }, []);
 
-  const addToHistory = useCallback(async (query: string) => {
+  const addToHistory = useCallback(async (query: string, resultCount: number | null = null) => {
     try {
-      const nextHistory = upsertSearchHistory(historyRef.current, query);
+      const nextHistory = upsertSearchHistory(historyRef.current, query, new Date().toISOString(), resultCount);
       historyRef.current = nextHistory;
       setHistory(nextHistory);
       await saveSearchHistory(nextHistory);

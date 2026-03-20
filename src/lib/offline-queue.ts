@@ -12,6 +12,13 @@ class OfflineQueueManager {
   private queue: QueuedMutation[] = [];
   private isProcessing = false;
 
+  private normalizePayload(payload: object): Record<string, unknown> {
+    return Object.entries(payload).reduce<Record<string, unknown>>((nextPayload, [key, value]) => {
+      nextPayload[key] = value;
+      return nextPayload;
+    }, {});
+  }
+
   /**
    * Initialize queue from storage
    */
@@ -35,13 +42,13 @@ class OfflineQueueManager {
    */
   async enqueue(
     type: MutationType,
-    payload: Record<string, unknown>,
+    payload: object,
     userId: string
   ): Promise<void> {
     const mutation: QueuedMutation = {
       id: this.generateMutationId(),
       type,
-      payload,
+      payload: this.normalizePayload(payload),
       created_at: new Date().toISOString(),
       retry_count: 0,
       last_attempt_at: null,

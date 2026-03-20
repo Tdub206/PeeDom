@@ -6,7 +6,7 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useBathroomReports } from '@/hooks/useBathroomReports';
-import { replaceSafely } from '@/lib/navigation';
+import { dismissToSafely } from '@/lib/navigation';
 import { ReportType } from '@/types';
 import { getFieldErrors, reportCreateSchema, ReportCreateFormValues } from '@/utils/validate';
 
@@ -85,11 +85,11 @@ export default function ReportBathroomModalScreen() {
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
       return;
     }
 
-    replaceSafely(router, routes.tabs.map, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.map, routes.tabs.map);
   }, [bathroomId, router]);
 
   const handleSubmit = useCallback(async () => {

@@ -18,7 +18,10 @@ function SearchBarComponent({
   isLoading = false,
 }: SearchBarProps) {
   return (
-    <View className="rounded-[28px] border border-surface-strong bg-surface-card px-4 py-3">
+    <View
+      accessibilityRole="search"
+      className="rounded-[28px] border border-surface-strong bg-surface-card px-4 py-3"
+    >
       <View className="flex-row items-center gap-3">
         <View className="h-10 w-10 items-center justify-center rounded-2xl bg-brand-50">
           {isLoading ? (
@@ -29,6 +32,8 @@ function SearchBarComponent({
         </View>
 
         <TextInput
+          accessibilityHint="Type a bathroom, address, city, or postal code and submit to search."
+          accessibilityLabel="Search bathrooms"
           autoCapitalize="none"
           autoCorrect={false}
           className="flex-1 py-2 text-base text-ink-900"

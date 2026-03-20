@@ -48,6 +48,7 @@ export const queuedMutationSchema = z.object({
     'report_create',
     'rating_create',
     'status_report',
+    'accessibility_update',
   ]),
   payload: z.record(z.string(), z.unknown()),
   created_at: z.string().datetime(),

@@ -104,7 +104,13 @@ describe('bathrooms search API', () => {
       p_query: 'central',
       p_user_lat: 47.61,
       p_user_lng: -122.33,
-      p_limit: 40,
+      p_radius_meters: 8047,
+      p_is_accessible: null,
+      p_is_locked: null,
+      p_has_code: null,
+      p_is_customer_only: null,
+      p_limit: 25,
+      p_offset: 0,
     });
     expect(result.data[0]?.id).toBe('bathroom-1');
   });
@@ -123,9 +129,13 @@ describe('bathrooms search API', () => {
       error: null,
       select: jest.fn().mockReturnThis(),
       order: jest.fn().mockReturnThis(),
-      limit: jest.fn().mockReturnThis(),
+      range: jest.fn().mockReturnThis(),
       eq: jest.fn().mockReturnThis(),
       or: jest.fn().mockReturnThis(),
+      gte: jest.fn().mockReturnThis(),
+      lte: jest.fn().mockReturnThis(),
+      not: jest.fn().mockReturnThis(),
+      is: jest.fn().mockReturnThis(),
     };
 
     from.mockReturnValueOnce(fallbackQuery);
@@ -140,6 +150,47 @@ describe('bathrooms search API', () => {
     expect(from).toHaveBeenCalledWith('v_bathroom_detail_public');
     expect(fallbackQuery.or).toHaveBeenCalled();
     expect(result.data[0]?.place_name).toBe('Central Station');
+  });
+
+  it('loads search suggestions through the RPC', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          bathroom_id: 'bathroom-1',
+          place_name: 'Central Station',
+          city: 'Seattle',
+          state: 'WA',
+          distance_meters: 220,
+        },
+      ],
+      error: null,
+    });
+
+    const { fetchSearchSuggestions } = await import('@/api/bathrooms');
+    const result = await fetchSearchSuggestions({
+      query: 'cent',
+      origin: {
+        latitude: 47.61,
+        longitude: -122.33,
+      },
+    });
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('get_search_suggestions', {
+      p_query: 'cent',
+      p_user_lat: 47.61,
+      p_user_lng: -122.33,
+      p_limit: 8,
+    });
+    expect(result.data).toEqual([
+      {
+        bathroom_id: 'bathroom-1',
+        place_name: 'Central Station',
+        city: 'Seattle',
+        state: 'WA',
+        distance_meters: 220,
+      },
+    ]);
   });
 
   it('loads city browse entries through the RPC', async () => {

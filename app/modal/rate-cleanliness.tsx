@@ -11,7 +11,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useToast } from '@/hooks/useToast';
 import { cleanlinessRatingDrafts } from '@/lib/draft-manager';
-import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
   cleanlinessRatingSchema,
@@ -116,11 +116,11 @@ export default function RateCleanlinessModalScreen() {
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
       return;
     }
 
-    replaceSafely(router, routes.tabs.map, routes.tabs.map);
+    dismissToSafely(router, routes.tabs.map, routes.tabs.map);
   }, [bathroomId, router]);
 
   const updateNotes = useCallback((value: string) => {
@@ -423,7 +423,7 @@ export default function RateCleanlinessModalScreen() {
 
       await deleteDraft(activeDraftId);
       setActiveDraftId(null);
-      replaceSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+      dismissToSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
     } catch (error) {
       setSubmitError(getErrorMessage(error, 'Unable to save your cleanliness rating right now.'));
     }
@@ -483,7 +483,7 @@ export default function RateCleanlinessModalScreen() {
         <ScrollView keyboardShouldPersistTaps="handled" contentInsetAdjustmentBehavior="automatic" className="flex-1">
           <View className="px-6 py-8">
             <View className="rounded-[30px] bg-brand-600 px-6 py-7">
-              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Section 11 Bathroom Condition</Text>
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Bathroom Condition</Text>
               <Text className="mt-3 text-4xl font-black tracking-tight text-white">Rate cleanliness.</Text>
               <Text className="mt-3 text-base leading-6 text-white/80">
                 Share how clean the bathroom was when you arrived. Your rating updates the community signal used across the map and search results.

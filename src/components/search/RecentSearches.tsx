@@ -1,5 +1,7 @@
 import { memo } from 'react';
 import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { colors } from '@/constants/colors';
 import { SearchHistoryItem } from '@/types';
 
 interface RecentSearchesProps {
@@ -36,8 +38,15 @@ function RecentSearchesComponent({
             key={`${historyItem.query}-${historyItem.searched_at}`}
             onPress={() => onSelect(historyItem.query)}
           >
-            <Text className="text-lg">🕘</Text>
-            <Text className="flex-1 text-sm font-semibold text-ink-800">{historyItem.query}</Text>
+            <Ionicons color={colors.ink[500]} name="time-outline" size={18} />
+            <View className="flex-1">
+              <Text className="text-sm font-semibold text-ink-800">{historyItem.query}</Text>
+              {typeof historyItem.result_count === 'number' ? (
+                <Text className="mt-1 text-xs text-ink-500">
+                  {historyItem.result_count} result{historyItem.result_count === 1 ? '' : 's'}
+                </Text>
+              ) : null}
+            </View>
             <Pressable
               accessibilityLabel={`Remove ${historyItem.query} from recent searches`}
               accessibilityRole="button"
@@ -47,7 +56,7 @@ function RecentSearchesComponent({
                 onRemove(historyItem.query);
               }}
             >
-              <Text className="text-sm font-bold text-ink-600">×</Text>
+              <Ionicons color={colors.ink[600]} name="close-outline" size={16} />
             </Pressable>
           </Pressable>
         ))}

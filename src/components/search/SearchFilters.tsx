@@ -6,6 +6,10 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { useFilterStore } from '@/store/useFilterStore';
+import {
+  selectHasActiveSearchDiscoveryFilters,
+  useSearchStore,
+} from '@/store/useSearchStore';
 import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 import { hasActiveBathroomFilters, mergeAccessibilityFilters } from '@/utils/bathroom';
 
@@ -32,6 +36,13 @@ const FILTER_OPTIONS: Array<{
   { key: 'isFamilyRestroom', label: 'Family room', premiumOnly: true },
 ];
 
+const RADIUS_OPTIONS = [
+  { label: '0.5 mi', value: 804 },
+  { label: '1 mi', value: 1609 },
+  { label: '3 mi', value: 4828 },
+  { label: '5 mi', value: 8047 },
+];
+
 function SearchFiltersComponent() {
   const { profile } = useAuth();
   const { showToast } = useToast();
@@ -43,9 +54,15 @@ function SearchFiltersComponent() {
   const preferences = useAccessibilityStore((state) => state.preferences);
   const setAccessibilityMode = useAccessibilityStore((state) => state.setAccessibilityMode);
   const resetAccessibilityPreferences = useAccessibilityStore((state) => state.resetPreferences);
+  const hasCode = useSearchStore((state) => state.discoveryFilters.hasCode);
+  const radiusMeters = useSearchStore((state) => state.discoveryFilters.radiusMeters);
+  const hasActiveDiscoveryFilters = useSearchStore(selectHasActiveSearchDiscoveryFilters);
+  const resetDiscoveryFilters = useSearchStore((state) => state.resetDiscoveryFilters);
+  const setHasCode = useSearchStore((state) => state.setHasCode);
+  const setRadiusMeters = useSearchStore((state) => state.setRadiusMeters);
   const syncAccessibilityPreferences = useSyncAccessibilityPreferences();
   const resolvedFilters = mergeAccessibilityFilters(filters, isAccessibilityMode, preferences);
-  const hasActiveFilters = hasActiveBathroomFilters(resolvedFilters);
+  const hasActiveFilters = hasActiveBathroomFilters(resolvedFilters) || hasActiveDiscoveryFilters;
   const activeAccessibilityCount = countActiveAccessibilityPreferences(preferences);
   const isPremiumUser = hasActivePremium(profile);
 
@@ -69,6 +86,7 @@ function SearchFiltersComponent() {
     try {
       resetFilters();
       resetAccessibilityPreferences();
+      resetDiscoveryFilters();
       await syncAccessibilityPreferences();
     } catch (error) {
       showToast({
@@ -111,6 +129,20 @@ function SearchFiltersComponent() {
         </Pressable>
       ) : null}
 
+      <Pressable
+        accessibilityLabel={hasCode === true ? 'Disable has code filter' : 'Enable has code filter'}
+        accessibilityRole="button"
+        className={[
+          'rounded-full border px-4 py-2',
+          hasCode === true ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card',
+        ].join(' ')}
+        onPress={() => setHasCode(hasCode === true ? null : true)}
+      >
+        <Text className={['text-sm font-semibold', hasCode === true ? 'text-brand-700' : 'text-ink-700'].join(' ')}>
+          Has code
+        </Text>
+      </Pressable>
+
       {isAccessibilityMode ? (
         <Pressable
           accessibilityLabel="Disable accessibility mode"
@@ -147,6 +179,32 @@ function SearchFiltersComponent() {
           >
               {filterOption.label}
               {filterOption.premiumOnly ? ' Pro' : ''}
+            </Text>
+          </Pressable>
+        );
+      })}
+
+      {RADIUS_OPTIONS.map((radiusOption) => {
+        const isSelected = radiusMeters === radiusOption.value;
+
+        return (
+          <Pressable
+            accessibilityLabel={`Search within ${radiusOption.label}, ${isSelected ? 'selected' : 'inactive'}`}
+            accessibilityRole="button"
+            className={[
+              'rounded-full border px-4 py-2',
+              isSelected ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card',
+            ].join(' ')}
+            key={radiusOption.value}
+            onPress={() => setRadiusMeters(radiusOption.value)}
+          >
+            <Text
+              className={[
+                'text-sm font-semibold',
+                isSelected ? 'text-brand-700' : 'text-ink-700',
+              ].join(' ')}
+            >
+              {radiusOption.label}
             </Text>
           </Pressable>
         );

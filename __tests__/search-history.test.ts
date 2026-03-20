@@ -27,6 +27,7 @@ describe('search history storage', () => {
       {
         query: 'Seattle Center',
         searched_at: '2026-03-16T10:00:00.000Z',
+        result_count: 4,
       },
       {
         query: '',
@@ -41,6 +42,7 @@ describe('search history storage', () => {
       {
         query: 'Seattle Center',
         searched_at: '2026-03-16T10:00:00.000Z',
+        result_count: 4,
       },
     ]);
   });
@@ -52,12 +54,15 @@ describe('search history storage', () => {
         {
           query: 'Ferry Terminal',
           searched_at: '2026-03-16T09:00:00.000Z',
+          result_count: 2,
         },
       ],
-      'Pike Place'
+      'Pike Place',
+      7
     );
 
     expect(history[0]?.query).toBe('Pike Place');
+    expect(history[0]?.result_count).toBe(7);
     expect(set).toHaveBeenCalledWith('@peedom/search_history', history);
   });
 
@@ -68,10 +73,12 @@ describe('search history storage', () => {
         {
           query: 'Ferry Terminal',
           searched_at: '2026-03-16T09:00:00.000Z',
+          result_count: 2,
         },
         {
           query: 'Pike Place',
           searched_at: '2026-03-16T10:00:00.000Z',
+          result_count: 7,
         },
       ],
       'Ferry Terminal'
@@ -81,6 +88,7 @@ describe('search history storage', () => {
       {
         query: 'Pike Place',
         searched_at: '2026-03-16T10:00:00.000Z',
+        result_count: 7,
       },
     ]);
     expect(set).toHaveBeenCalledWith('@peedom/search_history', history);

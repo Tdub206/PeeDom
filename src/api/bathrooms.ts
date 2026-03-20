@@ -7,12 +7,15 @@ import {
   parseSupabaseRows,
   publicBathroomDetailRowSchema,
   searchBathroomRowSchema,
+  searchSuggestionRowSchema,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 import {
   applyBathroomFilters,
+  calculateDistanceMeters,
   computeRegionRadiusMeters,
   getRegionBounds,
+  hasActiveBathroomFilters,
   sortBathroomsByDistance,
   sortBathroomsByFilters,
   type BathroomDirectoryRow,
@@ -24,6 +27,7 @@ export type PublicBathroomDetailRow = z.infer<typeof publicBathroomDetailRowSche
 export type NearbyBathroomRow = z.infer<typeof nearbyBathroomRowSchema>;
 export type SearchBathroomRow = z.infer<typeof searchBathroomRowSchema>;
 export type CityBrowseRow = z.infer<typeof cityBrowseRowSchema>;
+export type SearchSuggestionRow = z.infer<typeof searchSuggestionRowSchema>;
 
 interface NearbyBathroomsOptions {
   region: RegionBounds;
@@ -34,7 +38,10 @@ interface SearchBathroomsOptions {
   query: string;
   filters: BathroomFilters;
   origin?: Coordinates | null;
+  radiusMeters?: number;
+  hasCode?: boolean | null;
   limit?: number;
+  offset?: number;
 }
 
 interface BathroomsByIdOptions {
@@ -43,6 +50,12 @@ interface BathroomsByIdOptions {
 }
 
 interface CityBrowseOptions {
+  limit?: number;
+}
+
+interface SearchSuggestionsOptions {
+  query: string;
+  origin?: Coordinates | null;
   limit?: number;
 }
 
@@ -60,6 +73,19 @@ function toAppError(error: ApiErrorShape | Error, fallbackMessage: string): Erro
 function buildSearchPattern(query: string): string {
   const normalizedQuery = query.trim().replace(/[%_']/g, '').replace(/\s+/g, ' ');
   return `%${normalizedQuery}%`;
+}
+
+function buildApproximateRadiusBounds(origin: Coordinates, radiusMeters: number) {
+  const latitudeDelta = radiusMeters / 111320;
+  const longitudeDivisor = Math.max(Math.cos((origin.latitude * Math.PI) / 180), 0.1);
+  const longitudeDelta = radiusMeters / (111320 * longitudeDivisor);
+
+  return {
+    minLatitude: origin.latitude - latitudeDelta,
+    maxLatitude: origin.latitude + latitudeDelta,
+    minLongitude: origin.longitude - longitudeDelta,
+    maxLongitude: origin.longitude + longitudeDelta,
+  };
 }
 
 async function fetchNearbyBathroomsFallback(
@@ -254,8 +280,21 @@ export async function searchBathrooms(
   options: SearchBathroomsOptions
 ): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
   const trimmedQuery = options.query.trim();
+  const hasOrigin = Boolean(options.origin);
+  const hasFilterDrivenNearbySearch =
+    hasOrigin &&
+    (hasActiveBathroomFilters(options.filters) ||
+      typeof options.hasCode === 'boolean' ||
+      typeof options.radiusMeters === 'number');
 
-  if (trimmedQuery.length < 2) {
+  if (trimmedQuery.length < 2 && !hasFilterDrivenNearbySearch) {
+    if (!hasOrigin) {
+      return {
+        data: [],
+        error: null,
+      };
+    }
+
     return searchBathroomsFallback(options);
   }
 
@@ -263,10 +302,16 @@ export async function searchBathrooms(
     const { data, error } = await getSupabaseClient().rpc(
       'search_bathrooms' as never,
       {
-        p_query: trimmedQuery,
+        p_query: trimmedQuery.length >= 2 ? trimmedQuery : null,
         p_user_lat: options.origin?.latitude ?? null,
         p_user_lng: options.origin?.longitude ?? null,
-        p_limit: options.limit ?? 40,
+        p_radius_meters: options.radiusMeters ?? 8047,
+        p_is_accessible: options.filters.isAccessible,
+        p_is_locked: options.filters.isLocked,
+        p_has_code: options.hasCode ?? null,
+        p_is_customer_only: options.filters.isCustomerOnly,
+        p_limit: options.limit ?? 25,
+        p_offset: options.offset ?? 0,
       } as never
     );
 
@@ -318,7 +363,16 @@ async function searchBathroomsFallback(
       .from('v_bathroom_detail_public')
       .select('*')
       .order('updated_at', { ascending: false })
-      .limit(options.limit ?? 40);
+      .range(options.offset ?? 0, (options.offset ?? 0) + (options.limit ?? 25) - 1);
+
+    if (options.origin) {
+      const radiusBounds = buildApproximateRadiusBounds(options.origin, options.radiusMeters ?? 8047);
+      query = query
+        .gte('latitude', radiusBounds.minLatitude)
+        .lte('latitude', radiusBounds.maxLatitude)
+        .gte('longitude', radiusBounds.minLongitude)
+        .lte('longitude', radiusBounds.maxLongitude);
+    }
 
     if (options.filters.isAccessible) {
       query = query.eq('is_accessible', true);
@@ -330,6 +384,12 @@ async function searchBathroomsFallback(
 
     if (options.filters.isCustomerOnly) {
       query = query.eq('is_customer_only', true);
+    }
+
+    if (options.hasCode === true) {
+      query = query.not('code_id', 'is', null);
+    } else if (options.hasCode === false) {
+      query = query.is('code_id', null);
     }
 
     if (options.query.trim().length >= 2) {
@@ -429,6 +489,166 @@ export async function fetchCityBrowse(
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to load cities right now.'),
         'Unable to load cities right now.'
+      ),
+    };
+  }
+}
+
+export async function fetchSearchSuggestions(
+  options: SearchSuggestionsOptions
+): Promise<{ data: SearchSuggestionRow[]; error: (Error & { code?: string }) | null }> {
+  const trimmedQuery = options.query.trim();
+
+  if (trimmedQuery.length < 2) {
+    return {
+      data: [],
+      error: null,
+    };
+  }
+
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_search_suggestions' as never,
+      {
+        p_query: trimmedQuery,
+        p_user_lat: options.origin?.latitude ?? null,
+        p_user_lng: options.origin?.longitude ?? null,
+        p_limit: options.limit ?? 8,
+      } as never
+    );
+
+    if (error) {
+      if (!isMissingRpcError(error)) {
+        return {
+          data: [],
+          error: toAppError(error, 'Unable to load search suggestions.'),
+        };
+      }
+
+      return fetchSearchSuggestionsFallback(options);
+    }
+
+    const parsedData = parseSupabaseRows(
+      searchSuggestionRowSchema,
+      data,
+      'search suggestions',
+      'Unable to load search suggestions.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data as SearchSuggestionRow[],
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: [],
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load search suggestions.'),
+        'Unable to load search suggestions.'
+      ),
+    };
+  }
+}
+
+async function fetchSearchSuggestionsFallback(
+  options: SearchSuggestionsOptions
+): Promise<{ data: SearchSuggestionRow[]; error: (Error & { code?: string }) | null }> {
+  try {
+    const searchPattern = buildSearchPattern(options.query.trim());
+    let query = getSupabaseClient()
+      .from('v_bathroom_detail_public')
+      .select('id,place_name,city,state,latitude,longitude')
+      .or(
+        `place_name.ilike.${searchPattern},address_line1.ilike.${searchPattern},city.ilike.${searchPattern},state.ilike.${searchPattern},postal_code.ilike.${searchPattern}`
+      )
+      .order('updated_at', { ascending: false })
+      .limit(options.limit ?? 8);
+
+    if (options.origin) {
+      const radiusBounds = buildApproximateRadiusBounds(options.origin, 25000);
+      query = query
+        .gte('latitude', radiusBounds.minLatitude)
+        .lte('latitude', radiusBounds.maxLatitude)
+        .gte('longitude', radiusBounds.minLongitude)
+        .lte('longitude', radiusBounds.maxLongitude);
+    }
+
+    const { data, error } = await query;
+
+    if (error) {
+      return {
+        data: [],
+        error: toAppError(error, 'Unable to load search suggestions.'),
+      };
+    }
+
+    const suggestionRows = (data ?? []) as Array<{
+      id: string;
+      place_name: string;
+      city: string | null;
+      state: string | null;
+      latitude: number | null;
+      longitude: number | null;
+    }>;
+
+    const normalizedRows = suggestionRows.map((row) => ({
+      bathroom_id: row.id,
+      place_name: row.place_name,
+      city: row.city,
+      state: row.state,
+      distance_meters:
+        options.origin &&
+        typeof row.latitude === 'number' &&
+        typeof row.longitude === 'number'
+          ? calculateDistanceMeters(options.origin, {
+              latitude: row.latitude,
+              longitude: row.longitude,
+            })
+          : null,
+    }));
+
+    normalizedRows.sort((leftRow, rightRow) => {
+      const leftDistance = leftRow.distance_meters;
+      const rightDistance = rightRow.distance_meters;
+
+      if (typeof leftDistance === 'number' && typeof rightDistance === 'number') {
+        return leftDistance - rightDistance;
+      }
+
+      return leftRow.place_name.localeCompare(rightRow.place_name);
+    });
+
+    const parsedData = parseSupabaseRows(
+      searchSuggestionRowSchema,
+      normalizedRows.slice(0, options.limit ?? 8),
+      'search suggestions',
+      'Unable to load search suggestions.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: [],
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data as SearchSuggestionRow[],
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: [],
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load search suggestions.'),
+        'Unable to load search suggestions.'
       ),
     };
   }

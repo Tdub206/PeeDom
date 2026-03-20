@@ -8,8 +8,10 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
 import { BathroomMapView } from '@/components/MapView';
+import { RealtimeStatusBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { useRealtimeBathrooms } from '@/hooks/useRealtimeBathrooms';
 import { useBathrooms } from '@/hooks/useBathrooms';
 import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useFavorites } from '@/hooks/useFavorites';
@@ -60,6 +62,11 @@ export default function MapTab() {
   });
   useAccessibilityPreferences();
   const bathrooms = bathroomsQuery.data?.items ?? [];
+  useRealtimeBathrooms({
+    viewport: region,
+    visibleBathrooms: bathrooms,
+    enabled: bathrooms.length > 0 || bathroomsQuery.isSuccess,
+  });
   const activeBathroom = useMemo(
     () => bathrooms.find((bathroom) => bathroom.id === activeBathroomId) ?? null,
     [activeBathroomId, bathrooms]
@@ -260,6 +267,9 @@ export default function MapTab() {
           <Text className="mt-2 text-sm leading-6 text-white/85">
             Browse crowd-sourced bathroom locations, then tap a pin to inspect its latest access summary.
           </Text>
+          <View className="mt-4 self-start">
+            <RealtimeStatusBadge />
+          </View>
           <Pressable
             accessibilityRole="button"
             className="mt-4 self-start rounded-full bg-white/15 px-4 py-2"

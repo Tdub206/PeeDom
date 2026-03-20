@@ -101,6 +101,27 @@ describe('queuedMutationsSchema', () => {
     expect(result.success).toBe(true);
   });
 
+  it('accepts valid queued accessibility update mutations', () => {
+    const result = queuedMutationsSchema.safeParse([
+      {
+        id: 'mutation_6',
+        type: 'accessibility_update',
+        payload: {
+          bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+          has_grab_bars: true,
+          door_width_inches: 34,
+          notes: 'Automatic opener at the main entrance.',
+        },
+        created_at: '2026-03-10T12:00:00.000Z',
+        retry_count: 0,
+        last_attempt_at: null,
+        user_id: 'user-6',
+      },
+    ]);
+
+    expect(result.success).toBe(true);
+  });
+
   it('rejects malformed queued mutations before they enter the offline queue', () => {
     const result = queuedMutationsSchema.safeParse([
       {

@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
 import { fetchBathroomDetailById, PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
@@ -20,7 +20,8 @@ import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
-import { useRealtimeCode } from '@/hooks/useRealtimeCode';
+import { useRealtimeCodeVotes } from '@/hooks/useRealtimeCodeVotes';
+import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
@@ -102,6 +103,7 @@ export default function BathroomDetailScreen() {
   const { id } = useLocalSearchParams<{ id?: string | string[] }>();
   const { profile, user } = useAuth();
   const { showToast } = useToast();
+  const hasLoadedBathroomDetailRef = useRef(false);
   const [bathroomDetail, setBathroomDetail] = useState<PublicBathroomDetailRow | null>(null);
   const [revealedCode, setRevealedCode] = useState<BathroomAccessCodeRow | null>(null);
   const [codeErrorMessage, setCodeErrorMessage] = useState<string | null>(null);
@@ -246,8 +248,10 @@ export default function BathroomDetailScreen() {
     await Promise.all([loadBathroomDetail(false), loadVisibleCode()]);
   }, [loadBathroomDetail, loadVisibleCode]);
 
-  useRealtimeCode({
+  useRealtimeCodeVotes({
     bathroomId: bathroomId || null,
+    codeId: bathroomDetail?.code_id ?? null,
+    currentUserId: user?.id ?? null,
     onChange: refreshTrustSignals,
   });
 
@@ -272,10 +276,21 @@ export default function BathroomDetailScreen() {
     currentRating,
     isLoadingCurrentRating,
   } = useCleanlinessRating(bathroomId || null);
+  const livePresence = useRealtimePresence({
+    bathroomId: bathroomId || null,
+    userId: user?.id ?? null,
+  });
 
-  useEffect(() => {
-    void loadBathroomDetail();
-  }, [loadBathroomDetail]);
+  useFocusEffect(
+    useCallback(() => {
+      const shouldShowLoadingState = !hasLoadedBathroomDetailRef.current;
+
+      hasLoadedBathroomDetailRef.current = true;
+      void loadBathroomDetail(shouldShowLoadingState);
+
+      return undefined;
+    }, [loadBathroomDetail])
+  );
 
   useEffect(() => {
     void loadVisibleCode();
@@ -469,6 +484,20 @@ export default function BathroomDetailScreen() {
 
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />
 
+          {livePresence && livePresence.viewer_count > 0 ? (
+            <View className="mt-4 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5">
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-brand-700">Live Presence</Text>
+              <Text className="mt-2 text-base font-semibold text-brand-900">
+                {livePresence.viewer_count === 1
+                  ? '1 live viewer session is active right now.'
+                  : `${livePresence.viewer_count} live viewer sessions are active right now.`}
+              </Text>
+              <Text className="mt-2 text-sm leading-6 text-brand-700">
+                Guest sessions stay anonymous and disappear automatically when viewers disconnect.
+              </Text>
+            </View>
+          ) : null}
+
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <View className="flex-row items-center justify-between gap-3">
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Access Summary</Text>
@@ -637,7 +666,7 @@ export default function BathroomDetailScreen() {
               <View className="mt-4 rounded-2xl bg-surface-muted px-4 py-4">
                 <Text className="text-sm font-semibold text-ink-700">Your last rating</Text>
                 <Text className="mt-1 text-base text-ink-900">
-                  {'★'.repeat(currentRating.rating)}{'☆'.repeat(5 - currentRating.rating)} {currentRating.rating} / 5
+                  {`${String.fromCharCode(9733).repeat(currentRating.rating)}${String.fromCharCode(9734).repeat(5 - currentRating.rating)} ${currentRating.rating} / 5`}
                 </Text>
                 {currentRating.notes ? (
                   <Text className="mt-2 text-sm leading-5 text-ink-600">{currentRating.notes}</Text>
@@ -663,6 +692,18 @@ export default function BathroomDetailScreen() {
               accessibilityFeatures={bathroomDetail.accessibility_features}
               accessibilityScore={bathroomDetail.accessibility_score ?? 0}
               isAccessible={bathroomDetail.is_accessible}
+            />
+            <Button
+              className="mt-4"
+              label="Update Accessibility Details"
+              onPress={() =>
+                pushSafely(
+                  router,
+                  routes.modal.updateAccessibilityBathroom(bathroomDetail.id),
+                  routes.bathroomDetail(bathroomDetail.id)
+                )
+              }
+              variant="secondary"
             />
           </View>
 

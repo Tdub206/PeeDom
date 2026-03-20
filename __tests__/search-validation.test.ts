@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@jest/globals';
-import { SearchQuerySchema } from '@/lib/validators';
+import { SearchQuerySchema, SearchSuggestionQuerySchema } from '@/lib/validators';
 
 describe('search query validation', () => {
   it('accepts trimmed search queries with default limits', () => {
@@ -9,7 +9,10 @@ describe('search query validation', () => {
 
     expect(parsedQuery).toEqual({
       query: 'Pike Place',
-      limit: 40,
+      limit: 25,
+      offset: 0,
+      radiusMeters: 8047,
+      hasCode: null,
     });
   });
 
@@ -17,6 +20,22 @@ describe('search query validation', () => {
     expect(() =>
       SearchQuerySchema.parse({
         query: 'a',
+      })
+    ).toThrow();
+  });
+
+  it('accepts valid suggestion queries and rejects one-character input', () => {
+    expect(
+      SearchSuggestionQuerySchema.parse({
+        query: '  Pike  ',
+      })
+    ).toEqual({
+      query: 'Pike',
+    });
+
+    expect(() =>
+      SearchSuggestionQuerySchema.parse({
+        query: 'x',
       })
     ).toThrow();
   });

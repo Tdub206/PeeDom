@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 import {
+  formatSearchDistance,
   groupCityBrowseRows,
   normalizeSearchQuery,
   removeSearchHistoryEntry,
@@ -31,6 +32,7 @@ describe('search utilities', () => {
     expect(nextHistory).toHaveLength(2);
     expect(nextHistory[0]?.query).toBe('pike place');
     expect(nextHistory[0]?.searched_at).toBe('2026-03-16T11:00:00.000Z');
+    expect(nextHistory[0]?.result_count).toBeNull();
   });
 
   it('ignores search history entries that are too short', () => {
@@ -61,6 +63,7 @@ describe('search utilities', () => {
       {
         query: 'Union Square',
         searched_at: '2026-03-16T10:00:00.000Z',
+        result_count: 3,
       },
       {
         query: '',
@@ -73,8 +76,16 @@ describe('search utilities', () => {
       {
         query: 'Union Square',
         searched_at: '2026-03-16T10:00:00.000Z',
+        result_count: 3,
       },
     ]);
+  });
+
+  it('formats short distances in meters and longer distances in miles', () => {
+    expect(formatSearchDistance(120)).toBe('120 m away');
+    expect(formatSearchDistance(483)).toBe('0.3 mi away');
+    expect(formatSearchDistance(19312)).toBe('12 mi away');
+    expect(formatSearchDistance(null)).toBeNull();
   });
 
   it('groups city browse rows and sorts by bathroom count', () => {

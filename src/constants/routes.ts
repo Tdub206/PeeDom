@@ -79,6 +79,22 @@ export const routes = {
           draft_id: draftId,
         },
       }) as unknown as Href,
+    updateAccessibility: '/modal/update-accessibility' as Href,
+    updateAccessibilityBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/update-accessibility',
+        params: {
+          bathroom_id: bathroomId,
+        },
+      }) as unknown as Href,
+    updateAccessibilityDraft: (bathroomId: string, draftId: string) =>
+      ({
+        pathname: '/modal/update-accessibility',
+        params: {
+          bathroom_id: bathroomId,
+          draft_id: draftId,
+        },
+      }) as unknown as Href,
     claimBusiness: '/modal/claim-business' as Href,
     claimBusinessBathroom: (bathroomId: string) =>
       ({

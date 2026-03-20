@@ -7,7 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
-import { getSupabaseClient } from '@/lib/supabase';
+import { realtimeManager } from '@/lib/realtime-manager';
 import { Sentry } from '@/lib/sentry';
 import type { BathroomLiveStatus, LiveStatusReportCreate, MutationOutcome } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -67,31 +67,40 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
       return;
     }
 
-    const supabase = getSupabaseClient();
-    const channel = supabase
-      .channel(`bathroom-status:${bathroomId}`)
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'bathroom_status_events',
-          filter: `bathroom_id=eq.${bathroomId}`,
-        },
-        () => {
-          void queryClient.invalidateQueries({
-            queryKey: bathroomLiveStatusQueryKey(bathroomId),
-          });
+    const channelName = `bathroom-status:${bathroomId}`;
+
+    realtimeManager.subscribe(
+      channelName,
+      (channel) =>
+        channel.on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'bathroom_status_events',
+            filter: `bathroom_id=eq.${bathroomId}`,
+          },
+          () => {
+            void queryClient
+              .invalidateQueries({
+                queryKey: bathroomLiveStatusQueryKey(bathroomId),
+              })
+              .catch((error) => {
+                Sentry.captureException(error);
+              });
+          }
+        ),
+      (status) => {
+        if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+          Sentry.captureException(
+            new Error(`Realtime bathroom status subscription failed for bathroom ${bathroomId}.`)
+          );
         }
-      )
-      .subscribe((status) => {
-        if (status === 'CHANNEL_ERROR') {
-          Sentry.captureException(new Error(`Realtime bathroom status subscription failed for bathroom ${bathroomId}.`));
-        }
-      });
+      }
+    );
 
     return () => {
-      void channel.unsubscribe();
+      void realtimeManager.unregister(channelName);
     };
   }, [bathroomId, queryClient]);
 

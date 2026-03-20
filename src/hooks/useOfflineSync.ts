@@ -3,6 +3,7 @@ import { AppState, AppStateStatus } from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import { useQueryClient } from '@tanstack/react-query';
 import { createBathroomAccessCode, upsertCodeVote } from '@/api/access-codes';
+import { submitBathroomAccessibilityUpdate } from '@/api/accessibility';
 import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
 import { reportBathroomStatus } from '@/api/notifications';
@@ -10,9 +11,11 @@ import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
+import { validateBathroomAccessibilityUpdate } from '@/lib/validators';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineQueue } from '@/lib/offline-queue';
 import {
+  BathroomAccessibilityMutationPayload,
   BathroomStatusMutationPayload,
   CleanlinessRatingMutationPayload,
   CodeSubmitMutationPayload,
@@ -102,6 +105,17 @@ function isBathroomStatusMutationPayload(
     ['clean', 'dirty', 'closed', 'out_of_order', 'long_wait'].includes(payload.status) &&
     (typeof payload.note === 'undefined' || payload.note === null || typeof payload.note === 'string')
   );
+}
+
+function isBathroomAccessibilityMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & BathroomAccessibilityMutationPayload {
+  try {
+    validateBathroomAccessibilityUpdate(payload);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function useOfflineSync() {
@@ -199,6 +213,14 @@ export function useOfflineSync() {
           });
           return !statusResult.error;
         }
+        case 'accessibility_update': {
+          if (!isBathroomAccessibilityMutationPayload(mutation.payload)) {
+            return false;
+          }
+
+          const accessibilityResult = await submitBathroomAccessibilityUpdate(mutation.payload);
+          return !accessibilityResult.error;
+        }
         default:
           return true;
       }
@@ -229,6 +251,9 @@ export function useOfflineSync() {
         }),
         queryClient.invalidateQueries({
           queryKey: ['bathroom-live-status'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['accessibility'],
         }),
       ]);
 
