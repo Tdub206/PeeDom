@@ -4,6 +4,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchUserCleanlinessRating, upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
 import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
@@ -91,6 +92,9 @@ export function useCleanlinessRating(bathroomId: string | null) {
         await Promise.all([
           queryClient.invalidateQueries({
             queryKey: cleanlinessRatingQueryKey(ratingInput.bathroom_id, authenticatedUser.id),
+          }),
+          queryClient.invalidateQueries({
+            queryKey: bathroomDetailQueryKey(ratingInput.bathroom_id),
           }),
           queryClient.invalidateQueries({
             queryKey: ['bathrooms'],

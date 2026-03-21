@@ -4,6 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { createBathroomAccessCode } from '@/api/access-codes';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
 import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
@@ -74,11 +75,14 @@ export function useBathroomCodeSubmission() {
           throw result.error;
         }
 
-        if (!result.data?.id) {
+        if (!result.data?.code_id) {
           throw new Error('The code was submitted, but no code identifier was returned.');
         }
 
         await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: bathroomDetailQueryKey(codeInput.bathroom_id),
+          }),
           queryClient.invalidateQueries({
             queryKey: ['bathrooms'],
           }),
@@ -95,7 +99,7 @@ export function useBathroomCodeSubmission() {
 
         return {
           status: 'completed',
-          codeId: result.data.id,
+          codeId: result.data.code_id,
         };
       } catch (error) {
         if (authenticatedUser && isTransientNetworkError(error)) {

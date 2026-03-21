@@ -148,4 +148,29 @@ describe('RealtimeManager', () => {
 
     await manager.destroy();
   });
+
+  it('clears channels without tearing down app-state listeners', async () => {
+    let RealtimeManager:
+      | typeof import('@/lib/realtime-manager').RealtimeManager
+      | undefined;
+
+    jest.isolateModules(() => {
+      ({ RealtimeManager } = require('@/lib/realtime-manager'));
+    });
+
+    if (!RealtimeManager) {
+      throw new Error('RealtimeManager class was not loaded for the test run.');
+    }
+
+    const manager = new RealtimeManager();
+    manager.subscribe('favorites:user:123', (channel) => channel);
+
+    await manager.clearChannels();
+
+    expect(removeChannelMock).toHaveBeenCalledTimes(1);
+    expect(removeEventListenerMock).not.toHaveBeenCalled();
+    expect(manager.getRegistrySnapshot().size).toBe(0);
+
+    await manager.destroy();
+  });
 });

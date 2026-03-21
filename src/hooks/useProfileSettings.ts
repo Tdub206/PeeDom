@@ -9,7 +9,7 @@ export function useProfileDisplayName() {
   const { refreshProfile } = useAuth();
   const { showToast } = useToast();
 
-  return useMutation<DisplayNameUpdateResult, Error, string>({
+  return useMutation<DisplayNameUpdateResult, Error & { code?: string }, string>({
     mutationFn: async (displayName: string) => {
       const result = await updateDisplayName(displayName);
 
@@ -28,9 +28,16 @@ export function useProfileDisplayName() {
       }
     },
     onError: (error) => {
+      const errorMessage =
+        error.code === 'invalid_display_name'
+          ? error.message
+          : error.code === 'rate_limited'
+            ? 'You can change your display name once every 24 hours.'
+            : getErrorMessage(error, 'Unable to update your display name right now.');
+
       showToast({
         title: 'Display name update failed',
-        message: getErrorMessage(error, 'Unable to update your display name right now.'),
+        message: errorMessage,
         variant: 'error',
       });
     },

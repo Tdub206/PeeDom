@@ -8,6 +8,7 @@ import {
   getBathroomMapPinTone,
   isBathroomOpenNow,
   mergeAccessibilityFilters,
+  mapBathroomDetailRowToListItem,
   mapBathroomRowToListItem,
   sortBathroomsByFilters,
 } from '@/utils/bathroom';
@@ -141,6 +142,18 @@ describe('bathroom utilities', () => {
     expect(listItem.primary_code_summary.has_code).toBe(true);
     expect(listItem.distance_meters).toBeGreaterThan(0);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
+  });
+
+  it('maps a bathroom detail row into a favorite-ready list item without extra screen glue', () => {
+    const listItem = mapBathroomDetailRowToListItem(bathroomRow, {
+      cachedAt: '2026-03-20T09:15:00.000Z',
+    });
+
+    expect(listItem.id).toBe('bathroom-1');
+    expect(listItem.place_name).toBe('Central Cafe');
+    expect(listItem.primary_code_summary.has_code).toBe(true);
+    expect(listItem.sync.cached_at).toBe('2026-03-20T09:15:00.000Z');
+    expect(listItem.sync.stale).toBe(false);
   });
 
   it('detects whether a bathroom is open based on hours_json', () => {

@@ -1,24 +1,41 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Alert, FlatList, RefreshControl, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/Button';
-import { FavoriteListItem, FavoritesEmptyState, FavoritesListHeader } from '@/components/favorites';
+import {
+  FavoriteListItem,
+  FavoritesEmptyState,
+  FavoritesListHeader,
+  FavoritesSortBar,
+} from '@/components/favorites';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
-import { useFavorites } from '@/hooks/useFavorites';
+import { useFavoriteDirectory, useFavorites } from '@/hooks/useFavorites';
 import { pushSafely } from '@/lib/navigation';
+import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useMapStore } from '@/store/useMapStore';
-import { FavoriteItem } from '@/types';
+import { FavoriteItem, FavoritesSortOption } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
 export default function FavoritesTab() {
   const router = useRouter();
   const { isGuest } = useAuth();
-  const favorites = useFavorites();
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
   const setRegion = useMapStore((state) => state.setRegion);
+  const userLocation = useMapStore((state) => state.userLocation);
+  const isOptimisticallyRemoved = useFavoritesStore((state) => state.isOptimisticallyRemoved);
+  const setSortBy = useFavoritesStore((state) => state.setSortBy);
+  const favoritesDirectory = useFavoriteDirectory(userLocation);
+  const favorites = useFavorites(favoritesDirectory.items);
+  const visibleFavorites = useMemo(
+    () =>
+      favoritesDirectory.items.filter(
+        (item) => !isOptimisticallyRemoved(item.bathroom_id)
+      ),
+    [favoritesDirectory.items, isOptimisticallyRemoved]
+  );
 
   const handleSelectFavorite = useCallback(
     (favoriteItem: FavoriteItem) => {
@@ -68,6 +85,13 @@ export default function FavoritesTab() {
     [handleRemoveFavorite]
   );
 
+  const handleSortChange = useCallback(
+    (sortBy: FavoritesSortOption) => {
+      setSortBy(sortBy);
+    },
+    [setSortBy]
+  );
+
   if (isGuest) {
     return (
       <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
@@ -91,7 +115,7 @@ export default function FavoritesTab() {
     );
   }
 
-  if (favorites.isLoading && !favorites.favorites.length) {
+  if (favoritesDirectory.isLoading && !visibleFavorites.length) {
     return <LoadingScreen message="Loading the bathrooms you saved to your account." />;
   }
 
@@ -106,22 +130,22 @@ export default function FavoritesTab() {
           </Text>
         </View>
 
-        {favorites.error ? (
+        {favoritesDirectory.error ? (
           <View className="mt-4 rounded-[30px] border border-danger/20 bg-danger/10 px-5 py-6">
             <Text className="text-lg font-bold text-danger">Favorites unavailable</Text>
             <Text className="mt-2 text-sm leading-6 text-danger">
-              {getErrorMessage(favorites.error, 'We could not load your favorites right now.')}
+              {getErrorMessage(favoritesDirectory.error, 'We could not load your favorites right now.')}
             </Text>
             <Button
               className="mt-5"
               label="Try Again"
               onPress={() => {
-                void favorites.refetch();
+                void favoritesDirectory.refetch();
               }}
               variant="secondary"
             />
           </View>
-        ) : favorites.favorites.length === 0 ? (
+        ) : visibleFavorites.length === 0 ? (
           <View className="mt-4">
             <FavoritesEmptyState
               isGuest={false}
@@ -129,29 +153,39 @@ export default function FavoritesTab() {
             />
           </View>
         ) : (
-          <FlatList
-            contentContainerStyle={{ gap: 16, paddingTop: 16, paddingBottom: 8 }}
-            data={favorites.favorites}
-            keyExtractor={(item) => item.bathroom_id}
-            ListHeaderComponent={<FavoritesListHeader count={favorites.favorites.length} />}
-            refreshControl={
-              <RefreshControl
-                onRefresh={() => {
-                  void favorites.refetch();
-                }}
-                refreshing={favorites.isFetching}
-              />
-            }
-            renderItem={({ item }) => (
-              <FavoriteListItem
-                isPending={favorites.isFavoritePending(item.bathroom_id)}
-                item={item}
-                onPress={() => handleSelectFavorite(item)}
-                onRemove={() => confirmRemoval(item)}
-              />
-            )}
-            showsVerticalScrollIndicator={false}
-          />
+          <>
+            <FavoritesSortBar hasLocation={Boolean(userLocation)} onSortChange={handleSortChange} />
+
+            <FlatList
+              contentContainerStyle={{ gap: 16, paddingTop: 16, paddingBottom: 8 }}
+              data={visibleFavorites}
+              keyExtractor={(item) => item.bathroom_id}
+              ListHeaderComponent={<FavoritesListHeader count={visibleFavorites.length} />}
+              onEndReached={() => {
+                if (favoritesDirectory.hasNextPage && !favoritesDirectory.isFetchingNextPage) {
+                  void favoritesDirectory.fetchNextPage();
+                }
+              }}
+              onEndReachedThreshold={0.3}
+              refreshControl={
+                <RefreshControl
+                  onRefresh={() => {
+                    void favoritesDirectory.refetch();
+                  }}
+                  refreshing={favoritesDirectory.isFetching && !favoritesDirectory.isFetchingNextPage}
+                />
+              }
+              renderItem={({ item }) => (
+                <FavoriteListItem
+                  isPending={favorites.isFavoritePending(item.bathroom_id)}
+                  item={item}
+                  onPress={() => handleSelectFavorite(item)}
+                  onRemove={() => confirmRemoval(item)}
+                />
+              )}
+              showsVerticalScrollIndicator={false}
+            />
+          </>
         )}
       </View>
     </SafeAreaView>

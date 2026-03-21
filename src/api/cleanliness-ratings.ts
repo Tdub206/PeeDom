@@ -1,8 +1,13 @@
-import type { CleanlinessRating, CleanlinessRatingCreate, Database, DbCleanlinessRating } from '@/types';
-import { dbCleanlinessRatingSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
+import { z } from 'zod';
+import type { CleanlinessRating, CleanlinessRatingCreate } from '@/types';
+import {
+  cleanlinessRatingMutationResultSchema,
+  dbCleanlinessRatingSchema,
+  parseSupabaseNullableRow,
+} from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
-type CleanlinessRatingInsert = Database['public']['Tables']['cleanliness_ratings']['Insert'];
+type CleanlinessRatingMutationResult = z.infer<typeof cleanlinessRatingMutationResultSchema>;
 
 interface ApiErrorShape {
   code?: string;
@@ -11,7 +16,19 @@ interface ApiErrorShape {
 
 function toAppError(error: ApiErrorShape | Error, fallbackMessage: string): Error & { code?: string } {
   const appError = new Error(error.message || fallbackMessage) as Error & { code?: string };
-  appError.code = 'code' in error ? error.code : undefined;
+  const errorMessage = error.message ?? '';
+
+  if (/AUTH_REQUIRED/i.test(errorMessage)) {
+    appError.code = 'AUTH_REQUIRED';
+  } else if (/BATHROOM_NOT_FOUND/i.test(errorMessage)) {
+    appError.code = 'BATHROOM_NOT_FOUND';
+  } else if (/INVALID_CLEANLINESS_RATING/i.test(errorMessage)) {
+    appError.code = 'INVALID_CLEANLINESS_RATING';
+  } else if (/INVALID_CLEANLINESS_NOTES/i.test(errorMessage)) {
+    appError.code = 'INVALID_CLEANLINESS_NOTES';
+  } else {
+    appError.code = 'code' in error ? error.code : undefined;
+  }
   return appError;
 }
 
@@ -64,24 +81,15 @@ export async function fetchUserCleanlinessRating(
 }
 
 export async function upsertCleanlinessRating(
-  userId: string,
+  _userId: string,
   input: CleanlinessRatingCreate
-): Promise<{ data: DbCleanlinessRating | null; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: CleanlinessRatingMutationResult | null; error: (Error & { code?: string }) | null }> {
   try {
-    const payload: CleanlinessRatingInsert = {
-      bathroom_id: input.bathroom_id,
-      user_id: userId,
-      rating: input.rating,
-      notes: input.notes?.trim() || null,
-    };
-
-    const { data, error } = await getSupabaseClient()
-      .from('cleanliness_ratings')
-      .upsert(payload as never, {
-        onConflict: 'bathroom_id,user_id',
-      })
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc('upsert_cleanliness_rating' as never, {
+      p_bathroom_id: input.bathroom_id,
+      p_rating: input.rating,
+      p_notes: input.notes?.trim() || null,
+    } as never);
 
     if (error) {
       return {
@@ -91,9 +99,9 @@ export async function upsertCleanlinessRating(
     }
 
     const parsedRating = parseSupabaseNullableRow(
-      dbCleanlinessRatingSchema,
+      cleanlinessRatingMutationResultSchema,
       data,
-      'cleanliness rating',
+      'cleanliness rating result',
       'Unable to save your cleanliness rating.'
     );
 
@@ -105,7 +113,7 @@ export async function upsertCleanlinessRating(
     }
 
     return {
-      data: parsedRating.data as DbCleanlinessRating | null,
+      data: parsedRating.data as CleanlinessRatingMutationResult | null,
       error: null,
     };
   } catch (error) {

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
+import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
 import { bathroomLiveStatusQueryKey } from '@/hooks/useBathroomLiveStatus';
 import { realtimeManager } from '@/lib/realtime-manager';
 import { Sentry } from '@/lib/sentry';
@@ -24,6 +25,10 @@ export function useRealtimeCodeVotes({
 
   const handleRealtimeRefresh = useCallback(() => {
     if (bathroomId) {
+      void queryClient.invalidateQueries({
+        queryKey: bathroomDetailQueryKey(bathroomId),
+        refetchType: 'active',
+      });
       void queryClient.invalidateQueries({
         queryKey: ['bathrooms'],
       });

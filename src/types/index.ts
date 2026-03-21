@@ -83,6 +83,8 @@ export type MutationType =
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
+  intended_action?: FavoriteToggleAction;
+  initiated_at?: string;
 }
 
 export interface CodeVoteMutationPayload {
@@ -467,6 +469,9 @@ export interface BathroomPhoto {
 // FAVORITES TYPES
 // ============================================================================
 
+export type FavoriteToggleAction = 'added' | 'removed';
+export type FavoritesSortOption = 'date_added' | 'distance' | 'name';
+
 export interface FavoriteItem extends BathroomListItem {
   bathroom_id: string;
   favorited_at: string;
@@ -480,6 +485,13 @@ export interface FavoritesList {
 
 export interface DisplayNameUpdateResult {
   success: boolean;
+  error?: string;
+}
+
+export interface DeactivateAccountResult {
+  success: boolean;
+  user_id?: string;
+  deactivated_at?: string;
   error?: string;
 }
 
@@ -739,6 +751,7 @@ export interface UserProfile {
   is_premium: boolean;
   premium_expires_at: string | null;
   is_suspended: boolean;
+  is_deactivated: boolean;
   current_streak: number;
   longest_streak: number;
   last_contribution_date: string | null;

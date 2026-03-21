@@ -14,6 +14,7 @@ import { trackAnalyticsEvent } from '@/lib/analytics';
 import { validateBathroomAccessibilityUpdate } from '@/lib/validators';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineQueue } from '@/lib/offline-queue';
+import { useFavoritesStore } from '@/store/useFavoritesStore';
 import {
   BathroomAccessibilityMutationPayload,
   BathroomStatusMutationPayload,
@@ -23,6 +24,7 @@ import {
   FavoriteMutationPayload,
   ReportType,
 } from '@/types';
+import { isTransientNetworkError } from '@/utils/network';
 
 function isFavoriteMutationPayload(
   payload: Record<string, unknown>
@@ -148,7 +150,19 @@ export function useOfflineSync() {
           }
 
           const addResult = await addFavorite(userId, mutation.payload.bathroom_id);
-          return !addResult.error;
+
+          if (!addResult.error) {
+            useFavoritesStore.getState().addFavoritedId(userId, mutation.payload.bathroom_id);
+            useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+            return true;
+          }
+
+          if (isTransientNetworkError(addResult.error)) {
+            return false;
+          }
+
+          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+          return true;
         }
         case 'favorite_remove': {
           if (!isFavoriteMutationPayload(mutation.payload)) {
@@ -156,7 +170,19 @@ export function useOfflineSync() {
           }
 
           const removeResult = await removeFavorite(userId, mutation.payload.bathroom_id);
-          return !removeResult.error;
+
+          if (!removeResult.error) {
+            useFavoritesStore.getState().removeFavoritedId(userId, mutation.payload.bathroom_id);
+            useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+            return true;
+          }
+
+          if (isTransientNetworkError(removeResult.error)) {
+            return false;
+          }
+
+          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+          return true;
         }
         case 'report_create': {
           if (!isReportMutationPayload(mutation.payload)) {
@@ -235,10 +261,13 @@ export function useOfflineSync() {
 
       await Promise.all([
         queryClient.invalidateQueries({
-          queryKey: ['favorites', userId],
+          queryKey: ['favorites'],
         }),
         queryClient.invalidateQueries({
           queryKey: ['code-vote'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathroom-detail'],
         }),
         queryClient.invalidateQueries({
           queryKey: ['bathrooms'],

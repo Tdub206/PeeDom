@@ -65,7 +65,7 @@ describe('profile utilities', () => {
     expect(getBadgeEmoji({ badge_category: 'streak' } as never)).toBe('🔥');
     expect(getPointEventValue({ points_awarded: 15 } as never)).toBe('+15');
     expect(getPointEventValue({ points_awarded: -20 } as never)).toBe('-20');
-    expect(getProfileLevelSummary(250).label).toContain('Level 3');
+    expect(getProfileLevelSummary(250).label).toContain('Level 3 ·');
   });
 
   it('formats point event dates into relative profile labels', async () => {

@@ -98,6 +98,20 @@ export class RealtimeManager {
     return this.reconnectTrackedChannels();
   }
 
+  async clearChannels(): Promise<void> {
+    const channelNames = [...this.channelRegistry.keys()];
+
+    if (channelNames.length === 0) {
+      useRealtimeStore.getState().setPendingResubscriptions([]);
+      useRealtimeStore.getState().setConnectionState(this.isInForeground ? 'CLOSED' : 'CLOSING');
+      return;
+    }
+
+    await Promise.allSettled(channelNames.map((channelName) => this.unregister(channelName)));
+    useRealtimeStore.getState().setPendingResubscriptions([]);
+    useRealtimeStore.getState().setConnectionState(this.isInForeground ? 'CLOSED' : 'CLOSING');
+  }
+
   onForeground(callback: RealtimeCallback): () => void {
     this.foregroundCallbacks.add(callback);
 
@@ -131,8 +145,7 @@ export class RealtimeManager {
   }
 
   async destroy(): Promise<void> {
-    const channelNames = [...this.channelRegistry.keys()];
-    await Promise.allSettled(channelNames.map((channelName) => this.unregister(channelName)));
+    await this.clearChannels();
     this.appStateSubscription?.remove();
     this.appStateSubscription = null;
     this.foregroundCallbacks.clear();

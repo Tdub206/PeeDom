@@ -21,6 +21,9 @@ export interface Database {
           is_premium: boolean
           premium_expires_at: string | null
           is_suspended: boolean
+          is_deactivated: boolean
+          deactivated_at: string | null
+          display_name_updated_at: string | null
           current_streak: number
           longest_streak: number
           last_contribution_date: string | null
@@ -41,6 +44,9 @@ export interface Database {
           is_premium?: boolean
           premium_expires_at?: string | null
           is_suspended?: boolean
+          is_deactivated?: boolean
+          deactivated_at?: string | null
+          display_name_updated_at?: string | null
           current_streak?: number
           longest_streak?: number
           last_contribution_date?: string | null
@@ -61,6 +67,9 @@ export interface Database {
           is_premium?: boolean
           premium_expires_at?: string | null
           is_suspended?: boolean
+          is_deactivated?: boolean
+          deactivated_at?: string | null
+          display_name_updated_at?: string | null
           current_streak?: number
           longest_streak?: number
           last_contribution_date?: string | null
@@ -1034,6 +1043,58 @@ export interface Database {
           favorited_at: string
         }[]
       }
+      get_favorites_with_detail: {
+        Args: {
+          p_user_id: string
+          p_latitude?: number | null
+          p_longitude?: number | null
+          p_sort_by?: string
+          p_limit?: number
+          p_offset?: number
+        }
+        Returns: {
+          id: string
+          place_name: string
+          address_line1: string | null
+          city: string | null
+          state: string | null
+          postal_code: string | null
+          country_code: string
+          latitude: number
+          longitude: number
+          is_locked: boolean | null
+          is_accessible: boolean | null
+          is_customer_only: boolean
+          accessibility_features: Json
+          accessibility_score: number
+          hours_json: Json | null
+          code_id: string | null
+          confidence_score: number | null
+          up_votes: number | null
+          down_votes: number | null
+          last_verified_at: string | null
+          expires_at: string | null
+          cleanliness_avg: number | null
+          updated_at: string
+          distance_meters: number | null
+          favorited_at: string
+        }[]
+      }
+      get_favorite_ids: {
+        Args: {
+          p_user_id: string
+          p_bathroom_ids: string[]
+        }
+        Returns: {
+          bathroom_id: string
+        }[]
+      }
+      toggle_favorite: {
+        Args: {
+          p_bathroom_id: string
+        }
+        Returns: Json
+      }
       upsert_premium_arrival_alert: {
         Args: {
           p_bathroom_id: string
@@ -1150,6 +1211,56 @@ export interface Database {
       update_display_name: {
         Args: {
           p_display_name: string
+        }
+        Returns: Json
+      }
+      deactivate_account: {
+        Args: Record<PropertyKey, never>
+        Returns: Json
+      }
+      create_bathroom_submission: {
+        Args: {
+          p_place_name: string
+          p_address_line1?: string | null
+          p_city?: string | null
+          p_state?: string | null
+          p_postal_code?: string | null
+          p_country_code?: string | null
+          p_latitude: number
+          p_longitude: number
+          p_is_locked?: boolean | null
+          p_is_accessible?: boolean | null
+          p_is_customer_only?: boolean | null
+        }
+        Returns: Json
+      }
+      submit_bathroom_access_code: {
+        Args: {
+          p_bathroom_id: string
+          p_code_value: string
+        }
+        Returns: Json
+      }
+      vote_on_code: {
+        Args: {
+          p_code_id: string
+          p_vote: number
+        }
+        Returns: Json
+      }
+      create_bathroom_report: {
+        Args: {
+          p_bathroom_id: string
+          p_report_type: string
+          p_notes?: string | null
+        }
+        Returns: Json
+      }
+      upsert_cleanliness_rating: {
+        Args: {
+          p_bathroom_id: string
+          p_rating: number
+          p_notes?: string | null
         }
         Returns: Json
       }

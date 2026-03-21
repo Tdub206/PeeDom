@@ -4,6 +4,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { createBathroomReport } from '@/api/reports';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
 import { MutationOutcome, ReportCreate } from '@/types';
@@ -44,6 +45,9 @@ export function useBathroomReports() {
           throw result.error;
         }
 
+        await queryClient.invalidateQueries({
+          queryKey: bathroomDetailQueryKey(reportInput.bathroom_id),
+        });
         await queryClient.invalidateQueries({
           queryKey: ['bathrooms'],
         });

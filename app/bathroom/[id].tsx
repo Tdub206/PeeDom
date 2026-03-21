@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
-import { fetchBathroomDetailById, PublicBathroomDetailRow } from '@/api/bathrooms';
+import type { PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
 import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
@@ -14,11 +15,14 @@ import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
 import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
 import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
+import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
+import { useBathroomDetail } from '@/hooks/useBathroomDetail';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
+import { useFavorites } from '@/hooks/useFavorites';
 import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
 import { useRealtimeCodeVotes } from '@/hooks/useRealtimeCodeVotes';
 import { useRealtimePresence } from '@/hooks/useRealtimePresence';
@@ -28,6 +32,7 @@ import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { mapBathroomDetailRowToListItem } from '@/utils/bathroom';
 import { bathroomPhotoSchema } from '@/utils/validate';
 
 type HoursEntry = { open: string; close: string };
@@ -103,12 +108,9 @@ export default function BathroomDetailScreen() {
   const { id } = useLocalSearchParams<{ id?: string | string[] }>();
   const { profile, user } = useAuth();
   const { showToast } = useToast();
-  const hasLoadedBathroomDetailRef = useRef(false);
-  const [bathroomDetail, setBathroomDetail] = useState<PublicBathroomDetailRow | null>(null);
+  const hasFocusedOnceRef = useRef(false);
   const [revealedCode, setRevealedCode] = useState<BathroomAccessCodeRow | null>(null);
   const [codeErrorMessage, setCodeErrorMessage] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
   const [isLoadingCode, setIsLoadingCode] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
@@ -122,6 +124,12 @@ export default function BathroomDetailScreen() {
 
     return id ?? '';
   }, [id]);
+  const {
+    data: bathroomDetail,
+    error: bathroomDetailError,
+    isLoading: isLoadingBathroomDetail,
+    refetch: refetchBathroomDetail,
+  } = useBathroomDetail(bathroomId || null);
 
   const address = useMemo(
     () => (bathroomDetail ? formatAddress(bathroomDetail) : 'Address unavailable'),
@@ -153,60 +161,29 @@ export default function BathroomDetailScreen() {
   const trustUpVotes = revealedCode?.up_votes ?? bathroomDetail?.up_votes ?? 0;
   const trustDownVotes = revealedCode?.down_votes ?? bathroomDetail?.down_votes ?? 0;
   const trustLastVerifiedAt = revealedCode?.last_verified_at ?? bathroomDetail?.last_verified_at ?? null;
-
-  const loadBathroomDetail = useCallback(async (showLoadingState = true) => {
-    if (!bathroomId) {
-      const message = 'The bathroom identifier was missing from the route.';
-      setErrorMessage(message);
-      setIsLoading(false);
-      return;
-    }
-
-    if (showLoadingState) {
-      setIsLoading(true);
-    }
-
-    setErrorMessage('');
-
-    try {
-      const result = await fetchBathroomDetailById(bathroomId);
-
-      if (result.error || !result.data) {
-        const message = getErrorMessage(result.error, 'Unable to load bathroom details right now.');
-
-        if (showLoadingState) {
-          setBathroomDetail(null);
-        }
-
-        setErrorMessage(message);
-        showToast({
-          title: 'Detail unavailable',
-          message,
-          variant: 'error',
-        });
-        return;
-      }
-
-      setBathroomDetail(result.data);
-    } catch (error) {
-      const message = getErrorMessage(error, 'Unable to load bathroom details right now.');
-
-      if (showLoadingState) {
-        setBathroomDetail(null);
-      }
-
-      setErrorMessage(message);
-      showToast({
-        title: 'Detail unavailable',
-        message,
-        variant: 'error',
-      });
-    } finally {
-      if (showLoadingState) {
-        setIsLoading(false);
-      }
-    }
-  }, [bathroomId, showToast]);
+  const favoriteCandidate = useMemo(
+    () => (bathroomDetail ? mapBathroomDetailRowToListItem(bathroomDetail) : null),
+    [bathroomDetail]
+  );
+  const {
+    isFavorite,
+    isFavoritePending,
+    toggleFavorite,
+  } = useFavorites(favoriteCandidate ? [favoriteCandidate] : []);
+  const isFavorited = favoriteCandidate ? isFavorite(favoriteCandidate.id) : false;
+  const isFavoriteActionPending = favoriteCandidate ? isFavoritePending(favoriteCandidate.id) : false;
+  const favoriteActionTitle = isFavoriteActionPending
+    ? isFavorited
+      ? 'Updating favorite...'
+      : 'Saving to favorites...'
+    : isFavorited
+      ? 'Saved to favorites'
+      : 'Save to favorites';
+  const favoriteActionDescription = isFavoriteActionPending
+    ? 'Syncing this bathroom with your account now.'
+    : isFavorited
+      ? 'This bathroom is already in your synced favorites list.'
+      : 'Keep this bathroom one tap away across map, search, and favorites.';
 
   const loadVisibleCode = useCallback(async () => {
     if (!bathroomId || !bathroomDetail?.code_id || !shouldRevealCode) {
@@ -245,8 +222,8 @@ export default function BathroomDetailScreen() {
   }, [bathroomDetail?.code_id, bathroomId, shouldRevealCode]);
 
   const refreshTrustSignals = useCallback(async () => {
-    await Promise.all([loadBathroomDetail(false), loadVisibleCode()]);
-  }, [loadBathroomDetail, loadVisibleCode]);
+    await Promise.all([refetchBathroomDetail(), loadVisibleCode()]);
+  }, [loadVisibleCode, refetchBathroomDetail]);
 
   useRealtimeCodeVotes({
     bathroomId: bathroomId || null,
@@ -283,13 +260,14 @@ export default function BathroomDetailScreen() {
 
   useFocusEffect(
     useCallback(() => {
-      const shouldShowLoadingState = !hasLoadedBathroomDetailRef.current;
-
-      hasLoadedBathroomDetailRef.current = true;
-      void loadBathroomDetail(shouldShowLoadingState);
+      if (hasFocusedOnceRef.current) {
+        void refetchBathroomDetail();
+      } else {
+        hasFocusedOnceRef.current = true;
+      }
 
       return undefined;
-    }, [loadBathroomDetail])
+    }, [refetchBathroomDetail])
   );
 
   useEffect(() => {
@@ -440,11 +418,30 @@ export default function BathroomDetailScreen() {
     }
   }, [bathroomDetail, showToast]);
 
-  if (isLoading) {
+  const handleToggleFavorite = useCallback(async () => {
+    if (!favoriteCandidate) {
+      return;
+    }
+
+    try {
+      await toggleFavorite(favoriteCandidate);
+    } catch {
+      // useFavorites already shows the user-facing failure state.
+    }
+  }, [favoriteCandidate, toggleFavorite]);
+
+  if (isLoadingBathroomDetail && !bathroomDetail) {
     return <LoadingScreen message="Loading this bathroom and its latest code summary." />;
   }
 
   if (!bathroomDetail) {
+    const errorMessage = getErrorMessage(
+      bathroomDetailError,
+      bathroomId
+        ? 'We could not retrieve this bathroom right now.'
+        : 'The bathroom identifier was missing from the route.'
+    );
+
     return (
       <SafeAreaView className="flex-1 bg-surface-base">
         <View className="flex-1 justify-center px-6 py-10">
@@ -457,7 +454,7 @@ export default function BathroomDetailScreen() {
               className="mt-6"
               label="Try Again"
               onPress={() => {
-                void loadBathroomDetail();
+                void refetchBathroomDetail();
               }}
             />
             <Button
@@ -480,6 +477,40 @@ export default function BathroomDetailScreen() {
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Bathroom Detail</Text>
             <Text className="mt-3 text-4xl font-black tracking-tight text-white">{bathroomDetail.place_name}</Text>
             <Text className="mt-3 text-base leading-6 text-white/80">{address}</Text>
+
+            <Pressable
+              accessibilityLabel={isFavorited ? 'Remove bathroom from favorites' : 'Save bathroom to favorites'}
+              accessibilityHint="Adds this bathroom to your synced favorites list for faster access."
+              accessibilityRole="button"
+              accessibilityState={{ busy: isFavoriteActionPending }}
+              className={[
+                'mt-5 rounded-[24px] border border-white/15 bg-white/10 px-4 py-4',
+                isFavoriteActionPending ? 'opacity-60' : '',
+              ].join(' ')}
+              disabled={isFavoriteActionPending}
+              onPress={() => {
+                void handleToggleFavorite();
+              }}
+            >
+              <View className="flex-row items-center gap-3">
+                <View
+                  className={[
+                    'h-11 w-11 items-center justify-center rounded-2xl',
+                    isFavorited ? 'bg-white' : 'border border-white/15 bg-white/5',
+                  ].join(' ')}
+                >
+                  <Ionicons
+                    color={isFavorited ? colors.brand[600] : colors.surface.card}
+                    name={isFavorited ? 'heart' : 'heart-outline'}
+                    size={20}
+                  />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-sm font-black text-white">{favoriteActionTitle}</Text>
+                  <Text className="mt-1 text-sm leading-5 text-white/75">{favoriteActionDescription}</Text>
+                </View>
+              </View>
+            </Pressable>
           </View>
 
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />

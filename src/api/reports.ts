@@ -1,34 +1,44 @@
-import { DbReport, ReportCreate } from '@/types';
-import { dbReportSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
+import { z } from 'zod';
+import { ReportCreate } from '@/types';
+import { bathroomReportResultSchema, parseSupabaseNullableRow } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
+type BathroomReportResult = z.infer<typeof bathroomReportResultSchema>;
+
 interface ReportMutationResponse {
-  data: DbReport | null;
+  data: BathroomReportResult | null;
   error: (Error & { code?: string }) | null;
 }
 
 function toAppError(error: { message: string; code?: string }, fallbackMessage: string): Error & { code?: string } {
   const appError = new Error(error.message || fallbackMessage) as Error & { code?: string };
-  appError.code = error.code;
+  if (/AUTH_REQUIRED/i.test(error.message)) {
+    appError.code = 'AUTH_REQUIRED';
+  } else if (/BATHROOM_NOT_FOUND/i.test(error.message)) {
+    appError.code = 'BATHROOM_NOT_FOUND';
+  } else if (/INVALID_REPORT_TYPE/i.test(error.message)) {
+    appError.code = 'INVALID_REPORT_TYPE';
+  } else if (/INVALID_REPORT_NOTES/i.test(error.message)) {
+    appError.code = 'INVALID_REPORT_NOTES';
+  } else if (/REPORT_ALREADY_OPEN/i.test(error.message)) {
+    appError.code = 'REPORT_ALREADY_OPEN';
+  } else {
+    appError.code = error.code;
+  }
   return appError;
 }
 
 export async function createBathroomReport(
-  userId: string,
+  _userId: string,
   reportInput: ReportCreate
 ): Promise<ReportMutationResponse> {
   try {
     const notes = reportInput.notes?.trim() || null;
-    const { data, error } = await getSupabaseClient()
-      .from('bathroom_reports')
-      .insert({
-        bathroom_id: reportInput.bathroom_id,
-        reported_by: userId,
-        report_type: reportInput.report_type,
-        notes,
-      } as never)
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc('create_bathroom_report' as never, {
+      p_bathroom_id: reportInput.bathroom_id,
+      p_report_type: reportInput.report_type,
+      p_notes: notes,
+    } as never);
 
     if (error) {
       return {
@@ -38,9 +48,9 @@ export async function createBathroomReport(
     }
 
     const parsedData = parseSupabaseNullableRow(
-      dbReportSchema,
+      bathroomReportResultSchema,
       data,
-      'bathroom report',
+      'bathroom report result',
       'Unable to submit this report.'
     );
 
@@ -52,7 +62,7 @@ export async function createBathroomReport(
     }
 
     return {
-      data: parsedData.data as DbReport | null,
+      data: parsedData.data as BathroomReportResult | null,
       error: null,
     };
   } catch (error) {

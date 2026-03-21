@@ -36,12 +36,14 @@ export type BathroomAccessCodeRealtimeRow = Database['public']['Tables']['bathro
 export type CodeVoteRealtimeRow = Database['public']['Tables']['code_votes']['Row'];
 export type CleanlinessRatingRealtimeRow = Database['public']['Tables']['cleanliness_ratings']['Row'];
 export type BathroomStatusRealtimeRow = Database['public']['Tables']['bathroom_status_events']['Row'];
+export type FavoriteRealtimeRow = Database['public']['Tables']['favorites']['Row'];
 
 export type BathroomChangePayload = PostgresChangePayload<BathroomRealtimeRow>;
 export type CodeChangePayload = PostgresChangePayload<BathroomAccessCodeRealtimeRow>;
 export type CodeVoteChangePayload = PostgresChangePayload<CodeVoteRealtimeRow>;
 export type CleanlinessRatingChangePayload = PostgresChangePayload<CleanlinessRatingRealtimeRow>;
 export type BathroomStatusChangePayload = PostgresChangePayload<BathroomStatusRealtimeRow>;
+export type FavoriteChangePayload = PostgresChangePayload<FavoriteRealtimeRow>;
 
 export interface BathroomPresenceState {
   bathroom_id: string;

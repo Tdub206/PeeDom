@@ -2,13 +2,12 @@ import { File as ExpoFile } from 'expo-file-system';
 import {
   BathroomCreateInput,
   BathroomPhotoUploadInput,
-  DbBathroom,
+  Database,
   DbBathroomPhoto,
-  type Database,
 } from '@/types';
 import {
   dbBathroomPhotoSchema,
-  dbBathroomSchema,
+  bathroomSubmissionResultSchema,
   parseSupabaseNullableRow,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
@@ -17,7 +16,6 @@ const BATHROOM_PHOTO_BUCKET = 'bathroom-photos';
 const MAX_BATHROOM_PHOTO_SIZE_BYTES = 5 * 1024 * 1024;
 const SUPPORTED_PHOTO_MIME_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp']);
 
-type BathroomInsert = Database['public']['Tables']['bathrooms']['Insert'];
 type BathroomPhotoInsert = Database['public']['Tables']['bathroom_photos']['Insert'];
 
 interface AppErrorShape {
@@ -26,7 +24,7 @@ interface AppErrorShape {
 }
 
 interface BathroomSubmissionData {
-  bathroom: DbBathroom;
+  bathroom_id: string;
   photo: DbBathroomPhoto | null;
 }
 
@@ -38,7 +36,23 @@ interface BathroomSubmissionResponse {
 
 function toAppError(error: AppErrorShape | Error, fallbackMessage: string): Error & { code?: string } {
   const appError = new Error(error.message || fallbackMessage) as Error & { code?: string };
-  appError.code = 'code' in error ? error.code : undefined;
+  const errorMessage = error.message ?? '';
+
+  if (/AUTH_REQUIRED/i.test(errorMessage)) {
+    appError.code = 'AUTH_REQUIRED';
+  } else if (/INVALID_BATHROOM_NAME/i.test(errorMessage)) {
+    appError.code = 'INVALID_BATHROOM_NAME';
+  } else if (/BATHROOM_LOCATION_DETAILS_REQUIRED/i.test(errorMessage)) {
+    appError.code = 'BATHROOM_LOCATION_DETAILS_REQUIRED';
+  } else if (/INVALID_BATHROOM_COORDINATES/i.test(errorMessage)) {
+    appError.code = 'INVALID_BATHROOM_COORDINATES';
+  } else if (/BATHROOM_SUBMISSION_LIMIT_REACHED/i.test(errorMessage)) {
+    appError.code = 'BATHROOM_SUBMISSION_LIMIT_REACHED';
+  } else if (/DUPLICATE_BATHROOM_NEARBY/i.test(errorMessage)) {
+    appError.code = 'DUPLICATE_BATHROOM_NEARBY';
+  } else {
+    appError.code = 'code' in error ? error.code : undefined;
+  }
   return appError;
 }
 
@@ -233,28 +247,19 @@ export async function createBathroomSubmission(
   bathroomInput: BathroomCreateInput
 ): Promise<BathroomSubmissionResponse> {
   try {
-    const bathroomInsert: BathroomInsert = {
-      place_name: bathroomInput.place_name.trim(),
-      address_line1: normalizeOptionalText(bathroomInput.address_line1),
-      city: normalizeOptionalText(bathroomInput.city),
-      state: normalizeOptionalText(bathroomInput.state),
-      postal_code: normalizeOptionalText(bathroomInput.postal_code),
-      country_code: 'US',
-      latitude: bathroomInput.latitude,
-      longitude: bathroomInput.longitude,
-      is_locked: bathroomInput.is_locked,
-      is_accessible: bathroomInput.is_accessible,
-      is_customer_only: bathroomInput.is_customer_only,
-      source_type: 'community',
-      moderation_status: 'active',
-      created_by: userId,
-    };
-
-    const { data, error } = await getSupabaseClient()
-      .from('bathrooms')
-      .insert(bathroomInsert as never)
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc('create_bathroom_submission' as never, {
+      p_place_name: bathroomInput.place_name.trim(),
+      p_address_line1: normalizeOptionalText(bathroomInput.address_line1),
+      p_city: normalizeOptionalText(bathroomInput.city),
+      p_state: normalizeOptionalText(bathroomInput.state),
+      p_postal_code: normalizeOptionalText(bathroomInput.postal_code),
+      p_country_code: 'US',
+      p_latitude: bathroomInput.latitude,
+      p_longitude: bathroomInput.longitude,
+      p_is_locked: bathroomInput.is_locked,
+      p_is_accessible: bathroomInput.is_accessible,
+      p_is_customer_only: bathroomInput.is_customer_only,
+    } as never);
 
     if (error) {
       return {
@@ -265,9 +270,9 @@ export async function createBathroomSubmission(
     }
 
     const parsedBathroom = parseSupabaseNullableRow(
-      dbBathroomSchema,
+      bathroomSubmissionResultSchema,
       data,
-      'bathroom',
+      'bathroom submission result',
       'Unable to add this bathroom right now.'
     );
 
@@ -279,16 +284,16 @@ export async function createBathroomSubmission(
       };
     }
 
-    const createdBathroom = parsedBathroom.data as DbBathroom | null;
+    const createdBathroom = parsedBathroom.data as { bathroom_id: string; created_at: string } | null;
 
-    if (!createdBathroom) {
+    if (!createdBathroom?.bathroom_id) {
       return {
         data: null,
         error: toAppError(
           {
-            message: 'The bathroom was saved, but no bathroom record was returned.',
+            message: 'The bathroom was saved, but no bathroom identifier was returned.',
           },
-          'The bathroom was saved, but no bathroom record was returned.'
+          'The bathroom was saved, but no bathroom identifier was returned.'
         ),
         warning: null,
       };
@@ -297,7 +302,7 @@ export async function createBathroomSubmission(
     if (!bathroomInput.photo) {
       return {
         data: {
-          bathroom: createdBathroom,
+          bathroom_id: createdBathroom.bathroom_id,
           photo: null,
         },
         error: null,
@@ -305,11 +310,11 @@ export async function createBathroomSubmission(
       };
     }
 
-    const photoResult = await uploadBathroomPhoto(userId, createdBathroom.id, bathroomInput.photo);
+    const photoResult = await uploadBathroomPhoto(userId, createdBathroom.bathroom_id, bathroomInput.photo);
 
     return {
       data: {
-        bathroom: createdBathroom,
+        bathroom_id: createdBathroom.bathroom_id,
         photo: photoResult.data,
       },
       error: null,

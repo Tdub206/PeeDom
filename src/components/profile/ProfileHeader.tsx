@@ -17,9 +17,14 @@ interface ProfileHeaderProps {
 function getDisplayNameErrorMessage(errorCode?: string): string {
   switch (errorCode) {
     case 'name_too_short':
+    case 'invalid_display_name':
       return 'Display name must be at least 2 characters.';
     case 'name_too_long':
       return 'Display name must be 50 characters or fewer.';
+    case 'rate_limited':
+      return 'You can change your display name once every 24 hours.';
+    case 'account_deactivated':
+      return 'This account has already been deactivated.';
     case 'not_authenticated':
       return 'Sign in again before updating your display name.';
     default:
@@ -35,6 +40,11 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
   const [inputError, setInputError] = useState<string | undefined>();
   const initials = useMemo(() => getProfileInitials(profile), [profile]);
   const levelSummary = useMemo(() => getProfileLevelSummary(profile.points_balance), [profile.points_balance]);
+  const trimmedDraftName = draftName.trim();
+  const canSaveName =
+    trimmedDraftName.length >= 2 &&
+    trimmedDraftName.length <= 50 &&
+    trimmedDraftName !== (profile.display_name ?? '').trim();
   const premiumActive = hasActivePremium(profile);
   const streakMultiplierActive = Boolean(
     profile.streak_multiplier > 1 &&
@@ -50,20 +60,24 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
   }, [isEditing, profile.display_name]);
 
   const handleSaveName = useCallback(async () => {
-    const trimmedName = draftName.trim();
-
-    if (trimmedName.length < 2) {
+    if (trimmedDraftName.length < 2) {
       setInputError('Display name must be at least 2 characters.');
       return;
     }
 
-    if (trimmedName.length > 50) {
+    if (trimmedDraftName.length > 50) {
       setInputError('Display name must be 50 characters or fewer.');
       return;
     }
 
+    if (trimmedDraftName === (profile.display_name ?? '').trim()) {
+      setInputError(undefined);
+      setIsEditing(false);
+      return;
+    }
+
     try {
-      const result = await updateDisplayName.mutateAsync(trimmedName);
+      const result = await updateDisplayName.mutateAsync(trimmedDraftName);
 
       if (!result.success) {
         const errorMessage = getDisplayNameErrorMessage(result.error);
@@ -86,7 +100,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
     } catch {
       // The mutation hook already provides the failure toast.
     }
-  }, [draftName, showToast, updateDisplayName]);
+  }, [profile.display_name, showToast, trimmedDraftName, updateDisplayName]);
 
   return (
     <View className="rounded-[32px] border border-surface-strong bg-surface-card px-5 py-6">
@@ -128,6 +142,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
               />
               <View className="mt-3 flex-row gap-3">
                 <Button
+                  disabled={!canSaveName}
                   fullWidth={false}
                   label="Save"
                   loading={updateDisplayName.isPending}

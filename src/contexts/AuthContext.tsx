@@ -71,6 +71,7 @@ async function readCachedProfile(userId: string): Promise<UserProfile | null> {
     is_premium: Boolean(cachedProfile.is_premium),
     premium_expires_at: typeof cachedProfile.premium_expires_at === 'string' ? cachedProfile.premium_expires_at : null,
     is_suspended: Boolean(cachedProfile.is_suspended),
+    is_deactivated: Boolean(cachedProfile.is_deactivated),
     current_streak: typeof cachedProfile.current_streak === 'number' ? cachedProfile.current_streak : 0,
     longest_streak: typeof cachedProfile.longest_streak === 'number' ? cachedProfile.longest_streak : 0,
     last_contribution_date:
@@ -189,6 +190,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [setAuthIssue, showToast]
   );
 
+  const reportExplicitAuthIssue = useCallback(
+    (title: string, message: string, variant: 'error' | 'warning' = 'error') => {
+      setAuthIssue(message);
+
+      if (lastReportedIssue.current === message) {
+        return;
+      }
+
+      lastReportedIssue.current = message;
+      showToast({
+        title,
+        message,
+        variant,
+      });
+    },
+    [setAuthIssue, showToast]
+  );
+
   const clearReportedIssue = useCallback(() => {
     lastReportedIssue.current = null;
     setAuthIssue(null);
@@ -212,6 +231,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         await storage.remove(storage.keys.RETURN_INTENT);
       } catch (error) {
         console.error('Unable to clear the legacy persisted return intent:', error);
+      }
+
+      try {
+        const storageKeys = await storage.getAllKeys();
+        const cachedFavoriteKeys = storageKeys.filter((key) => key.startsWith(`${storage.keys.CACHED_FAVORITES}:`));
+
+        await Promise.all(cachedFavoriteKeys.map((key) => storage.remove(key)));
+      } catch (error) {
+        console.error('Unable to clear cached favorite artifacts:', error);
       }
 
       await clearCachedProfile(userId);
@@ -286,6 +314,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
       const normalizedProfile: UserProfile = {
         ...parsedProfile.data,
+        is_deactivated: parsedProfile.data.is_deactivated ?? false,
         notification_prefs: {
           ...DEFAULT_NOTIFICATION_PREFS,
           ...parsedProfile.data.notification_prefs,
@@ -322,6 +351,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  const handleDeactivatedProfile = useCallback(
+    async (userId: string) => {
+      await clearSessionArtifacts(userId);
+      await clearPersistedSession();
+      clearAuthState('GUEST');
+      reportExplicitAuthIssue(
+        'Account deactivated',
+        'This account has been deactivated. Contact support if you need help restoring access.',
+        'warning'
+      );
+    },
+    [clearAuthState, clearPersistedSession, clearSessionArtifacts, reportExplicitAuthIssue]
+  );
+
   const applyAuthenticatedSession = useCallback(
     async (
       currentSession: Session,
@@ -337,6 +380,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const result = await loadProfile(currentSession.user.id);
 
       if (result.profile) {
+        if (result.profile.is_deactivated) {
+          await handleDeactivatedProfile(currentSession.user.id);
+          return false;
+        }
+
         setSnapshot({
           loading: false,
           profile: result.profile,
@@ -392,6 +440,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       clearReportedIssue,
       clearSessionArtifacts,
       determineSessionStatus,
+      handleDeactivatedProfile,
       loadProfile,
       reportAuthIssue,
       setSnapshot,
@@ -530,20 +579,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const signOut = useCallback(async () => {
-    try {
-      const currentUserId = user?.id;
-      clearReturnIntent();
-      if (currentUserId) {
-        await clearPushToken();
+    const currentUserId = user?.id;
+
+    clearReturnIntent();
+
+    if (currentUserId) {
+      try {
+        const clearTokenResult = await clearPushToken();
+
+        if (clearTokenResult.error) {
+          console.error('Unable to clear the push token during sign out:', clearTokenResult.error);
+        }
+      } catch (error) {
+        console.error('Unable to clear the push token during sign out:', error);
       }
+    }
+
+    try {
       await getSupabaseClient().auth.signOut();
-      await clearSessionArtifacts(currentUserId);
-      clearReportedIssue();
     } catch (error) {
       console.error('Sign out error:', error);
-      throw error;
     }
-  }, [clearReportedIssue, clearReturnIntent, clearSessionArtifacts, user?.id]);
+
+    await clearSessionArtifacts(currentUserId);
+    clearReportedIssue();
+    clearAuthState('GUEST');
+  }, [clearAuthState, clearReportedIssue, clearReturnIntent, clearSessionArtifacts, user?.id]);
 
   const refreshProfile = useCallback(async () => {
     try {
@@ -554,6 +615,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const result = await loadProfile(user.id);
 
       if (result.profile) {
+        if (result.profile.is_deactivated) {
+          await handleDeactivatedProfile(user.id);
+          return;
+        }
+
         setProfile(result.profile);
 
         if (result.usedCache && result.errorDetails) {
@@ -571,7 +637,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('Refresh profile error:', error);
     }
-  }, [clearReportedIssue, loadProfile, reportAuthIssue, setProfile, user]);
+  }, [clearReportedIssue, handleDeactivatedProfile, loadProfile, reportAuthIssue, setProfile, user]);
 
   const refreshUser = useCallback(async () => {
     setLoading(true);

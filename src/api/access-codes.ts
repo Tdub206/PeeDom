@@ -1,6 +1,9 @@
-import type { Database, DbCode, DbCodeRevealGrant, DbCodeVote } from '@/types';
+import { z } from 'zod';
+import type { Database, DbCodeRevealGrant, DbCodeVote } from '@/types';
 import {
+  bathroomCodeSubmissionResultSchema,
   bathroomAccessCodeSchema,
+  codeVoteMutationResultSchema,
   dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
   parseSupabaseNullableRow,
@@ -17,8 +20,16 @@ interface AccessCodeResponse {
   error: (Error & { code?: string }) | null;
 }
 
+type BathroomCodeSubmissionResult = z.infer<typeof bathroomCodeSubmissionResultSchema>;
+type CodeVoteMutationResult = z.infer<typeof codeVoteMutationResultSchema>;
+
 interface AccessCodeMutationResponse {
-  data: DbCode | null;
+  data: BathroomCodeSubmissionResult | null;
+  error: (Error & { code?: string }) | null;
+}
+
+interface CodeVoteMutationResponse {
+  data: CodeVoteMutationResult | null;
   error: (Error & { code?: string }) | null;
 }
 
@@ -39,6 +50,22 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
 
   if (/SELF_CODE_VOTE/i.test(errorMessage)) {
     return 'SELF_CODE_VOTE';
+  }
+
+  if (/BATHROOM_NOT_FOUND/i.test(errorMessage)) {
+    return 'BATHROOM_NOT_FOUND';
+  }
+
+  if (/INVALID_CODE_VALUE/i.test(errorMessage)) {
+    return 'INVALID_CODE_VALUE';
+  }
+
+  if (/CODE_SUBMISSION_COOLDOWN/i.test(errorMessage)) {
+    return 'CODE_SUBMISSION_COOLDOWN';
+  }
+
+  if (/INVALID_CODE_VOTE/i.test(errorMessage)) {
+    return 'INVALID_CODE_VOTE';
   }
 
   return 'code' in error ? error.code : undefined;
@@ -93,22 +120,17 @@ export async function fetchLatestVisibleBathroomCode(bathroomId: string): Promis
 }
 
 export async function createBathroomAccessCode(
-  userId: string,
+  _userId: string,
   submission: {
     bathroom_id: string;
     code_value: string;
   }
 ): Promise<AccessCodeMutationResponse> {
   try {
-    const { data, error } = await getSupabaseClient()
-      .from('bathroom_access_codes')
-      .insert({
-        bathroom_id: submission.bathroom_id,
-        submitted_by: userId,
-        code_value: submission.code_value.trim(),
-      } as never)
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc('submit_bathroom_access_code' as never, {
+      p_bathroom_id: submission.bathroom_id,
+      p_code_value: submission.code_value.trim(),
+    } as never);
 
     if (error) {
       return {
@@ -118,9 +140,9 @@ export async function createBathroomAccessCode(
     }
 
     const parsedCode = parseSupabaseNullableRow(
-      bathroomAccessCodeSchema,
+      bathroomCodeSubmissionResultSchema,
       data,
-      'bathroom access code',
+      'bathroom access code submission',
       'Unable to submit this bathroom code.'
     );
 
@@ -132,7 +154,7 @@ export async function createBathroomAccessCode(
     }
 
     return {
-      data: parsedCode.data as DbCode | null,
+      data: parsedCode.data as BathroomCodeSubmissionResult | null,
       error: null,
     };
   } catch (error) {
@@ -269,25 +291,15 @@ export async function fetchUserCodeVote(
 }
 
 export async function upsertCodeVote(
-  userId: string,
+  _userId: string,
   codeId: string,
   vote: -1 | 1
-): Promise<{ data: DbCodeVote | null; error: (Error & { code?: string }) | null }> {
+): Promise<CodeVoteMutationResponse> {
   try {
-    const { data, error } = await getSupabaseClient()
-      .from('code_votes')
-      .upsert(
-        {
-          code_id: codeId,
-          user_id: userId,
-          vote,
-        } as never,
-        {
-          onConflict: 'code_id,user_id',
-        }
-      )
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc('vote_on_code' as never, {
+      p_code_id: codeId,
+      p_vote: vote,
+    } as never);
 
     if (error) {
       return {
@@ -297,9 +309,9 @@ export async function upsertCodeVote(
     }
 
     const parsedVote = parseSupabaseNullableRow(
-      dbCodeVoteSchema,
+      codeVoteMutationResultSchema,
       data,
-      'code vote',
+      'code vote mutation',
       'Unable to record your code verification right now.'
     );
 
@@ -311,7 +323,7 @@ export async function upsertCodeVote(
     }
 
     return {
-      data: parsedVote.data as DbCodeVote | null,
+      data: parsedVote.data as CodeVoteMutationResult | null,
       error: null,
     };
   } catch (error) {

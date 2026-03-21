@@ -6,6 +6,7 @@ import {
   dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
   bathroomAccessibilityUpdateResultSchema,
+  deactivateAccountResultSchema,
   dbProfileSchema,
   dbUserBadgeSchema,
   gamificationSummarySchema,
@@ -31,6 +32,7 @@ describe('parseSupabaseNullableRow', () => {
         is_premium: false,
         premium_expires_at: null,
         is_suspended: false,
+        is_deactivated: false,
         current_streak: 3,
         longest_streak: 7,
         last_contribution_date: '2026-03-15',
@@ -67,6 +69,7 @@ describe('parseSupabaseNullableRow', () => {
         is_premium: false,
         premium_expires_at: null,
         is_suspended: false,
+        is_deactivated: false,
         current_streak: 0,
         longest_streak: 0,
         last_contribution_date: null,
@@ -132,6 +135,25 @@ describe('notification and realtime parser schemas', () => {
 
     expect(result.error).toBeNull();
     expect(result.data?.lead_minutes).toBe(30);
+  });
+});
+
+describe('profile action parser schemas', () => {
+  it('parses account deactivation results', () => {
+    const result = parseSupabaseNullableRow(
+      deactivateAccountResultSchema,
+      {
+        success: true,
+        user_id: 'user-123',
+        deactivated_at: '2026-03-20T12:00:00.000Z',
+      },
+      'deactivate account result',
+      'Unable to parse account deactivation.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.success).toBe(true);
+    expect(result.data?.user_id).toBe('user-123');
   });
 });
 

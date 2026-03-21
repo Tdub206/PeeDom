@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo } from 'react';
 import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -7,6 +7,7 @@ import { BadgesGrid, NotificationPrefsCard, PointsHistoryList, ProfileHeader, St
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useGamificationDashboard } from '@/hooks/useGamificationDashboard';
+import { useAccountSignOut, useDeactivateAccount } from '@/hooks/useProfileAccount';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
@@ -101,9 +102,10 @@ function LeaderboardSection({
 
 export default function ProfileTab() {
   const router = useRouter();
-  const { authIssue, isAuthenticated, isGuest, profile, signOut, user } = useAuth();
+  const { authIssue, isAuthenticated, isGuest, profile, user } = useAuth();
   const { showToast } = useToast();
-  const [isSigningOut, setIsSigningOut] = useState(false);
+  const { isSigningOut, signOut } = useAccountSignOut();
+  const { deactivateAccount, isDeactivating } = useDeactivateAccount();
   const {
     badges,
     badgesError,
@@ -145,7 +147,7 @@ export default function ProfileTab() {
   }, [redeemPremium]);
 
   const handleConfirmSignOut = useCallback(() => {
-    if (isSigningOut) {
+    if (isSigningOut || isDeactivating) {
       return;
     }
 
@@ -162,30 +164,61 @@ export default function ProfileTab() {
           style: 'destructive',
           onPress: () => {
             void (async () => {
-              setIsSigningOut(true);
-
               try {
                 await signOut();
-                showToast({
-                  title: 'Signed out',
-                  message: 'You are back in guest mode.',
-                  variant: 'info',
-                });
               } catch (error) {
                 showToast({
                   title: 'Unable to sign out',
                   message: getErrorMessage(error, 'Try again in a moment.'),
                   variant: 'error',
                 });
-              } finally {
-                setIsSigningOut(false);
               }
             })();
           },
         },
       ]
     );
-  }, [isSigningOut, showToast, signOut]);
+  }, [isDeactivating, isSigningOut, showToast, signOut]);
+
+  const handleConfirmDeactivate = useCallback(() => {
+    if (isSigningOut || isDeactivating) {
+      return;
+    }
+
+    Alert.alert(
+      'Deactivate account?',
+      'This disables your PeeDom account and clears the current device session.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Continue',
+          style: 'destructive',
+          onPress: () => {
+            Alert.alert(
+              'Final confirmation',
+              'Are you sure you want to deactivate your account?',
+              [
+                {
+                  text: 'Go Back',
+                  style: 'cancel',
+                },
+                {
+                  text: 'Deactivate',
+                  style: 'destructive',
+                  onPress: () => {
+                    void deactivateAccount();
+                  },
+                },
+              ]
+            );
+          },
+        },
+      ]
+    );
+  }, [deactivateAccount, isDeactivating, isSigningOut]);
 
   if (isAuthenticated && !profile) {
     return (
@@ -276,7 +309,7 @@ export default function ProfileTab() {
         <Pressable
           accessibilityRole="button"
           className="rounded-full border border-danger/20 bg-danger/10 px-4 py-2"
-          disabled={isSigningOut}
+          disabled={isSigningOut || isDeactivating}
           onPress={handleConfirmSignOut}
         >
           <Text className="text-sm font-semibold text-danger">{isSigningOut ? 'Signing out...' : 'Sign Out'}</Text>
@@ -341,6 +374,23 @@ export default function ProfileTab() {
           <BadgesGrid badges={badges} error={badgesError} isLoading={isLoadingBadges} />
 
           <NotificationPrefsCard />
+
+          <View className="rounded-[32px] border border-danger/20 bg-danger/5 px-5 py-6">
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-danger">Account controls</Text>
+            <Text className="mt-3 text-2xl font-black text-ink-900">Deactivate this account</Text>
+            <Text className="mt-2 text-sm leading-6 text-ink-600">
+              Deactivation signs you out, clears the current device state, and prevents this profile from restoring in
+              future app sessions.
+            </Text>
+            <Button
+              className="mt-5"
+              disabled={isSigningOut || isDeactivating}
+              label={isDeactivating ? 'Deactivating Account...' : 'Deactivate Account'}
+              loading={isDeactivating}
+              onPress={handleConfirmDeactivate}
+              variant="destructive"
+            />
+          </View>
 
           <View className="rounded-[32px] border border-surface-strong bg-surface-card px-5 py-6">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Leaderboards</Text>

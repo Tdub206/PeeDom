@@ -1,77 +1,116 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { usePathname, useRouter } from 'expo-router';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { addFavorite, fetchFavoriteBathrooms, removeFavorite } from '@/api/favorites';
-import { useAuth } from '@/contexts/AuthContext';
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
+import {
+  fetchFavoriteBathroomsPage,
+  fetchFavoriteIds,
+  toggleFavorite as toggleFavoriteRpc,
+} from '@/api/favorites';
 import { routes } from '@/constants/routes';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRealtimeFavorites } from '@/hooks/useRealtimeFavorites';
+import { favoritesKeys } from '@/lib/favorites-query-keys';
+import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
-import { useMapStore } from '@/store/useMapStore';
+import { useFavoritesStore } from '@/store/useFavoritesStore';
 import {
   BathroomListItem,
+  FavoriteToggleAction,
   FavoriteItem,
-  FavoritesList,
   MutationOutcome,
+  type Coordinates,
 } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import { isTransientNetworkError } from '@/utils/network';
-import { useToast } from '@/hooks/useToast';
 
-function getEmptyFavorites(userId: string): FavoritesList {
-  return {
-    user_id: userId,
-    items: [],
-    sync: {
-      cached_at: new Date().toISOString(),
-      stale: false,
-    },
-  };
+interface FavoritesPage {
+  items: FavoriteItem[];
+  offset: number;
+  hasMore: boolean;
 }
 
-function toFavoriteItem(item: BathroomListItem | FavoriteItem, favoritedAt: string): FavoriteItem {
-  return 'bathroom_id' in item
-    ? {
-        ...item,
-        favorited_at: favoritedAt,
+const FAVORITES_PAGE_SIZE = 50;
+
+function buildScopedBathroomIds(items: BathroomListItem[]): string[] {
+  return [...new Set(items.map((item) => item.id).filter((id) => id.length > 0))];
+}
+
+export function useFavoriteDirectory(origin?: Coordinates | null) {
+  const { isAuthenticated, user } = useAuth();
+  const sortBy = useFavoritesStore((state) => state.sortBy);
+  const replaceFavoritedIds = useFavoritesStore((state) => state.replaceFavoritedIds);
+  const syncFavoritedIds = useFavoritesStore((state) => state.syncFavoritedIds);
+
+  const directoryQuery = useInfiniteQuery<FavoritesPage, Error>({
+    queryKey: favoritesKeys.directory(user?.id ?? 'guest', sortBy, origin),
+    enabled: isAuthenticated && Boolean(user?.id),
+    initialPageParam: 0,
+    placeholderData: keepPreviousData,
+    queryFn: async ({ pageParam }) => {
+      const offset = typeof pageParam === 'number' ? pageParam : 0;
+      const favoritesResult = await fetchFavoriteBathroomsPage({
+        userId: user!.id,
+        origin,
+        sortBy,
+        limit: FAVORITES_PAGE_SIZE,
+        offset,
+      });
+
+      if (favoritesResult.error) {
+        throw favoritesResult.error;
       }
-    : {
-        ...item,
-        bathroom_id: item.id,
-        favorited_at: favoritedAt,
-      };
-}
 
-function applyOptimisticFavoriteChange(
-  currentFavorites: FavoritesList,
-  bathroomId: string,
-  shouldFavorite: boolean,
-  optimisticItem?: BathroomListItem | FavoriteItem | null
-): FavoritesList {
-  const nextItems = shouldFavorite
-    ? optimisticItem && !currentFavorites.items.some((favoriteItem) => favoriteItem.bathroom_id === bathroomId)
-      ? [toFavoriteItem(optimisticItem, new Date().toISOString()), ...currentFavorites.items]
-      : currentFavorites.items
-    : currentFavorites.items.filter((favoriteItem) => favoriteItem.bathroom_id !== bathroomId);
+      return {
+        items: favoritesResult.data,
+        offset,
+        hasMore: favoritesResult.hasMore,
+      };
+    },
+    getNextPageParam: (lastPage) =>
+      lastPage.hasMore ? lastPage.offset + FAVORITES_PAGE_SIZE : undefined,
+  });
+
+  useEffect(() => {
+    if (!user?.id || !directoryQuery.data) {
+      return;
+    }
+
+    const loadedItems = directoryQuery.data.pages.flatMap((page) => page.items);
+    const loadedIds = loadedItems.map((item) => item.bathroom_id);
+
+    if (!directoryQuery.hasNextPage) {
+      replaceFavoritedIds(user.id, loadedIds);
+      return;
+    }
+
+    syncFavoritedIds(user.id, loadedIds, loadedIds);
+  }, [
+    directoryQuery.data,
+    directoryQuery.hasNextPage,
+    replaceFavoritedIds,
+    syncFavoritedIds,
+    user?.id,
+  ]);
 
   return {
-    ...currentFavorites,
-    items: nextItems,
-    sync: {
-      ...currentFavorites.sync,
-      cached_at: new Date().toISOString(),
-      stale: false,
-    },
+    ...directoryQuery,
+    items: directoryQuery.data?.pages.flatMap((page) => page.items) ?? [],
+    sortBy,
   };
 }
 
 export function useFavorites(replayCandidates: BathroomListItem[] = []) {
-  const router = useRouter();
   const pathname = usePathname();
   const queryClient = useQueryClient();
+  const router = useRouter();
   const { showToast } = useToast();
-  const userLocation = useMapStore((state) => state.userLocation);
   const replayedIntentIdsRef = useRef<Record<string, boolean>>({});
-  const [pendingFavoriteIds, setPendingFavoriteIds] = useState<Record<string, boolean>>({});
   const {
     clearReturnIntent,
     isAuthenticated,
@@ -79,70 +118,70 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
     requireAuth,
     user,
   } = useAuth();
+  const ownerUserId = useFavoritesStore((state) => state.ownerUserId);
+  const addFavoritedId = useFavoritesStore((state) => state.addFavoritedId);
+  const clearFavoritedIds = useFavoritesStore((state) => state.clearFavoritedIds);
+  const clearOptimisticToggle = useFavoritesStore((state) => state.clearOptimisticToggle);
+  const isFavorited = useFavoritesStore((state) => state.isFavorited);
+  const isFavoriteResolved = useFavoritesStore((state) => state.isFavoriteResolved);
+  const isPending = useFavoritesStore((state) => state.isPending);
+  const markOptimisticToggleQueued = useFavoritesStore((state) => state.markOptimisticToggleQueued);
+  const removeFavoritedId = useFavoritesStore((state) => state.removeFavoritedId);
+  const replaceFavoritedIds = useFavoritesStore((state) => state.replaceFavoritedIds);
+  const setOptimisticToggle = useFavoritesStore((state) => state.setOptimisticToggle);
+  const syncFavoritedIds = useFavoritesStore((state) => state.syncFavoritedIds);
+  const scopedBathroomIds = useMemo(() => buildScopedBathroomIds(replayCandidates), [replayCandidates]);
+  const scopedBathroomKey = useMemo(() => scopedBathroomIds.join(':'), [scopedBathroomIds]);
 
-  const favoriteQueryKey = useMemo(() => ['favorites', user?.id ?? 'guest'], [user?.id]);
+  useRealtimeFavorites(user?.id ?? null);
 
-  const favoritesQuery = useQuery<FavoritesList, Error>({
-    queryKey: favoriteQueryKey,
+  useEffect(() => {
+    if (!user?.id) {
+      clearFavoritedIds();
+      return;
+    }
+
+    if (ownerUserId && ownerUserId !== user.id) {
+      replaceFavoritedIds(user.id, []);
+    }
+  }, [clearFavoritedIds, ownerUserId, replaceFavoritedIds, user?.id]);
+
+  const favoriteIdsQuery = useQuery<string[], Error>({
+    queryKey: favoritesKeys.ids(user?.id ?? 'guest', scopedBathroomKey),
+    enabled: isAuthenticated && Boolean(user?.id) && scopedBathroomIds.length > 0,
+    staleTime: 60 * 1000,
     queryFn: async () => {
-      if (!user) {
-        return getEmptyFavorites('guest');
-      }
-
-      const favoritesResult = await fetchFavoriteBathrooms({
-        userId: user.id,
-        origin: userLocation,
+      const favoriteIdsResult = await fetchFavoriteIds({
+        userId: user!.id,
+        bathroomIds: scopedBathroomIds,
       });
 
-      if (favoritesResult.error) {
-        throw favoritesResult.error;
+      if (favoriteIdsResult.error) {
+        throw favoriteIdsResult.error;
       }
 
-      const cachedAt = new Date().toISOString();
-
-      return {
-        user_id: user.id,
-        items: favoritesResult.data.map((favoriteItem) => ({
-          ...favoriteItem,
-          sync: {
-            ...favoriteItem.sync,
-            cached_at: cachedAt,
-          },
-        })),
-        sync: {
-          cached_at: cachedAt,
-          stale: false,
-        },
-      };
+      return favoriteIdsResult.data;
     },
-    enabled: true,
   });
 
-  const favoriteIdSet = useMemo(
-    () => new Set((favoritesQuery.data?.items ?? []).map((favoriteItem) => favoriteItem.bathroom_id)),
-    [favoritesQuery.data?.items]
-  );
+  useEffect(() => {
+    if (!user?.id) {
+      return;
+    }
 
-  const setFavoritePendingState = useCallback((bathroomId: string, isPending: boolean) => {
-    setPendingFavoriteIds((currentPendingIds) => {
-      if (!isPending) {
-        const nextPendingIds = { ...currentPendingIds };
-        delete nextPendingIds[bathroomId];
-        return nextPendingIds;
-      }
+    if (scopedBathroomIds.length === 0) {
+      return;
+    }
 
-      return {
-        ...currentPendingIds,
-        [bathroomId]: true,
-      };
-    });
-  }, []);
+    if (!favoriteIdsQuery.data) {
+      return;
+    }
+
+    syncFavoritedIds(user.id, scopedBathroomIds, favoriteIdsQuery.data);
+  }, [favoriteIdsQuery.data, scopedBathroomIds, syncFavoritedIds, user?.id]);
 
   const commitFavoriteChange = useCallback(
-    async (
-      bathroomId: string,
-      optimisticItem?: BathroomListItem | FavoriteItem | null
-    ): Promise<MutationOutcome> => {
+    async (bathroomId: string): Promise<MutationOutcome> => {
       const authenticatedUser = requireAuth({
         type: 'favorite_toggle',
         route: pathname,
@@ -156,49 +195,81 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
         return 'auth_required';
       }
 
-      const shouldFavorite = !favoriteIdSet.has(bathroomId);
-      const previousFavorites =
-        queryClient.getQueryData<FavoritesList>(favoriteQueryKey) ?? getEmptyFavorites(authenticatedUser.id);
+      let intendedAction: FavoriteToggleAction | null = null;
+      const initiatedAt = new Date().toISOString();
 
-      setFavoritePendingState(bathroomId, true);
-      queryClient.setQueryData<FavoritesList>(
-        favoriteQueryKey,
-        applyOptimisticFavoriteChange(previousFavorites, bathroomId, shouldFavorite, optimisticItem)
-      );
+      if (!isFavoriteResolved(bathroomId)) {
+        const favoriteIdsResult = await fetchFavoriteIds({
+          userId: authenticatedUser.id,
+          bathroomIds: [bathroomId],
+        });
+
+        if (favoriteIdsResult.error) {
+          if (isTransientNetworkError(favoriteIdsResult.error)) {
+            throw new Error(
+              'Reconnect once so we can confirm whether this bathroom is already in your favorites.'
+            );
+          }
+
+          throw favoriteIdsResult.error;
+        }
+
+        syncFavoritedIds(authenticatedUser.id, [bathroomId], favoriteIdsResult.data);
+      }
+
+      intendedAction = isFavorited(bathroomId) ? 'removed' : 'added';
+
+      await queryClient.cancelQueries({
+        queryKey: favoritesKeys.all,
+      });
+      setOptimisticToggle(bathroomId, intendedAction, {
+        initiatedAt,
+      });
 
       try {
-        const mutationResult = shouldFavorite
-          ? await addFavorite(authenticatedUser.id, bathroomId)
-          : await removeFavorite(authenticatedUser.id, bathroomId);
+        const mutationResult = await toggleFavoriteRpc(authenticatedUser.id, bathroomId);
 
-        if (mutationResult.error) {
-          throw mutationResult.error;
+        if (mutationResult.error || !mutationResult.data) {
+          throw mutationResult.error ?? new Error('We could not update this favorite.');
+        }
+
+        clearOptimisticToggle(bathroomId);
+
+        if (mutationResult.data.action === 'added') {
+          addFavoritedId(authenticatedUser.id, bathroomId);
+        } else {
+          removeFavoritedId(authenticatedUser.id, bathroomId);
         }
 
         await queryClient.invalidateQueries({
-          queryKey: favoriteQueryKey,
+          queryKey: favoritesKeys.all,
+          refetchType: 'active',
         });
 
         showToast({
-          title: shouldFavorite ? 'Favorite saved' : 'Favorite removed',
-          message: shouldFavorite
-            ? 'This bathroom is now saved to your account.'
-            : 'This bathroom has been removed from your favorites.',
+          title: mutationResult.data.action === 'added' ? 'Favorite saved' : 'Favorite removed',
+          message:
+            mutationResult.data.action === 'added'
+              ? 'This bathroom is now saved to your account.'
+              : 'This bathroom has been removed from your favorites.',
           variant: 'success',
         });
 
         return 'completed';
       } catch (error) {
-        if (isTransientNetworkError(error)) {
+        if (isTransientNetworkError(error) && intendedAction) {
           try {
             await offlineQueue.enqueue(
-              shouldFavorite ? 'favorite_add' : 'favorite_remove',
+              intendedAction === 'added' ? 'favorite_add' : 'favorite_remove',
               {
                 bathroom_id: bathroomId,
+                intended_action: intendedAction,
+                initiated_at: initiatedAt,
               },
               authenticatedUser.id
             );
 
+            markOptimisticToggleQueued(bathroomId);
             showToast({
               title: 'Saved for sync',
               message: 'Your favorite change will sync automatically once you are back online.',
@@ -207,7 +278,7 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
 
             return 'queued_retry';
           } catch (queueError) {
-            queryClient.setQueryData(favoriteQueryKey, previousFavorites);
+            clearOptimisticToggle(bathroomId);
             showToast({
               title: 'Favorite update failed',
               message: getErrorMessage(queueError, 'We could not queue this favorite change.'),
@@ -217,23 +288,39 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
           }
         }
 
-        queryClient.setQueryData(favoriteQueryKey, previousFavorites);
+        clearOptimisticToggle(bathroomId);
+        await queryClient.invalidateQueries({
+          queryKey: favoritesKeys.all,
+          refetchType: 'active',
+        });
         showToast({
           title: 'Favorite update failed',
           message: getErrorMessage(error, 'We could not update this favorite.'),
           variant: 'error',
         });
         throw error;
-      } finally {
-        setFavoritePendingState(bathroomId, false);
       }
     },
-    [favoriteIdSet, favoriteQueryKey, pathname, queryClient, requireAuth, router, setFavoritePendingState, showToast]
+    [
+      addFavoritedId,
+      clearOptimisticToggle,
+      isFavorited,
+      isFavoriteResolved,
+      markOptimisticToggleQueued,
+      pathname,
+      queryClient,
+      removeFavoritedId,
+      requireAuth,
+      router,
+      setOptimisticToggle,
+      showToast,
+      syncFavoritedIds,
+    ]
   );
 
   const toggleFavorite = useCallback(
-    async (item: BathroomListItem | FavoriteItem): Promise<MutationOutcome> => {
-      return commitFavoriteChange(item.id, item);
+    async (item: BathroomListItem): Promise<MutationOutcome> => {
+      return commitFavoriteChange(item.id);
     },
     [commitFavoriteChange]
   );
@@ -263,42 +350,25 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
 
     replayedIntentIdsRef.current[intent.intent_id] = true;
 
-    const optimisticItem =
-      replayCandidates.find((candidate) => candidate.id === bathroomId) ??
-      favoritesQuery.data?.items.find((favoriteItem) => favoriteItem.id === bathroomId) ??
-      null;
-
     void (async () => {
       try {
-        const outcome = await commitFavoriteChange(bathroomId, optimisticItem);
+        const outcome = await commitFavoriteChange(bathroomId);
 
         if (outcome !== 'auth_required') {
           clearReturnIntent();
         }
-      } catch (error) {
+      } catch {
         clearReturnIntent();
       } finally {
         delete replayedIntentIdsRef.current[intent.intent_id];
       }
     })();
-  }, [
-    clearReturnIntent,
-    commitFavoriteChange,
-    favoritesQuery.data?.items,
-    isAuthenticated,
-    pathname,
-    peekReturnIntent,
-    replayCandidates,
-  ]);
+  }, [clearReturnIntent, commitFavoriteChange, isAuthenticated, pathname, peekReturnIntent]);
 
   return {
-    favorites: favoritesQuery.data?.items ?? [],
-    isFavorite: (bathroomId: string) => favoriteIdSet.has(bathroomId),
-    isFavoritePending: (bathroomId: string) => Boolean(pendingFavoriteIds[bathroomId]),
-    isLoading: favoritesQuery.isLoading,
-    isFetching: favoritesQuery.isFetching,
-    error: favoritesQuery.error,
-    refetch: favoritesQuery.refetch,
+    isFavorite: useCallback((bathroomId: string) => isFavorited(bathroomId), [isFavorited]),
+    isFavoritePending: useCallback((bathroomId: string) => isPending(bathroomId), [isPending]),
+    isHydrating: favoriteIdsQuery.isFetching,
     toggleFavorite,
   };
 }

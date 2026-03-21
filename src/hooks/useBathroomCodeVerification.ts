@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchUserCodeVote, upsertCodeVote } from '@/api/access-codes';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
 import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
@@ -77,6 +78,9 @@ export function useBathroomCodeVerification({
 
         await queryClient.invalidateQueries({
           queryKey: ['code-vote', codeId, authenticatedUser.id],
+        });
+        await queryClient.invalidateQueries({
+          queryKey: bathroomDetailQueryKey(bathroomId),
         });
         await queryClient.invalidateQueries({
           queryKey: ['bathrooms'],

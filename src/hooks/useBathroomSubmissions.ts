@@ -74,7 +74,7 @@ export function useBathroomSubmissions() {
         ]);
 
         const photoWarning = result.warning ? getErrorMessage(result.warning, 'The photo could not be uploaded.') : null;
-        const bathroomId = result.data?.bathroom.id;
+        const bathroomId = result.data?.bathroom_id;
 
         if (!bathroomId) {
           throw new Error('The bathroom was created, but no bathroom identifier was returned.');

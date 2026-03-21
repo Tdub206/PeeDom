@@ -72,6 +72,7 @@ export const dbProfileSchema = z.object({
   is_premium: z.boolean(),
   premium_expires_at: dateTimeStringSchema.nullable(),
   is_suspended: z.boolean(),
+  is_deactivated: z.boolean().optional().default(false),
   current_streak: z.number().int().nonnegative(),
   longest_streak: z.number().int().nonnegative(),
   last_contribution_date: z.string().nullable(),
@@ -264,6 +265,46 @@ export const notificationSettingsResultSchema = z.object({
   key: z.string().optional(),
 });
 
+export const bathroomSubmissionResultSchema = z.object({
+  bathroom_id: rawTextSchema,
+  created_at: dateTimeStringSchema,
+});
+
+export const bathroomCodeSubmissionResultSchema = z.object({
+  code_id: rawTextSchema,
+  created_at: dateTimeStringSchema,
+});
+
+export const bathroomReportResultSchema = z.object({
+  report_id: rawTextSchema,
+  created_at: dateTimeStringSchema,
+});
+
+export const cleanlinessRatingMutationResultSchema = z.object({
+  bathroom_id: rawTextSchema,
+  rating: z.number().int().min(1).max(5),
+  rated_at: dateTimeStringSchema,
+});
+
+export const codeVoteMutationResultSchema = z.object({
+  action: z.enum(['cast', 'changed', 'retracted', 'no_change']),
+  code_id: rawTextSchema,
+  vote: z.union([z.literal(-1), z.literal(0), z.literal(1)]),
+  voted_at: dateTimeStringSchema,
+});
+
+export const profileMutationResultSchema = z.object({
+  success: z.boolean(),
+  error: z.string().optional(),
+});
+
+export const deactivateAccountResultSchema = z.object({
+  success: z.boolean(),
+  user_id: rawTextSchema.optional(),
+  deactivated_at: dateTimeStringSchema.optional(),
+  error: z.string().optional(),
+});
+
 export const dbPremiumArrivalAlertSchema = z.object({
   id: rawTextSchema,
   user_id: rawTextSchema,
@@ -435,6 +476,17 @@ export const searchBathroomRowSchema = publicBathroomDetailRowSchema.extend({
 export const favoriteBathroomRowSchema = publicBathroomDetailRowSchema.extend({
   distance_meters: z.number().nullable(),
   favorited_at: dateTimeStringSchema,
+});
+
+export const favoriteIdRowSchema = z.object({
+  bathroom_id: rawTextSchema,
+});
+
+export const toggleFavoriteResultSchema = z.object({
+  action: z.enum(['added', 'removed']),
+  bathroom_id: rawTextSchema,
+  user_id: rawTextSchema,
+  toggled_at: dateTimeStringSchema,
 });
 
 export const cityBrowseRowSchema = z.object({

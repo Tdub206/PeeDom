@@ -18,7 +18,7 @@ export interface ProfileStat {
 const BADGE_CATEGORY_EMOJIS: Record<UserBadge['badge_category'], string> = {
   accessibility: '♿',
   city: '🗺️',
-  milestone: '🏅',
+  milestone: '🏆',
   streak: '🔥',
   time: '⏱️',
 };
@@ -92,7 +92,7 @@ export function buildProfileStats(summary: GamificationSummary | null, profile: 
 }
 
 export function getBadgeEmoji(badge: Pick<UserBadge, 'badge_category'>): string {
-  return BADGE_CATEGORY_EMOJIS[badge.badge_category] ?? '🏅';
+  return BADGE_CATEGORY_EMOJIS[badge.badge_category] ?? '🏆';
 }
 
 export function getBadgeCountLabel(count: number): string {

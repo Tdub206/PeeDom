@@ -413,6 +413,17 @@ export function mapBathroomRowToListItem(
   };
 }
 
+export function mapBathroomDetailRowToListItem(
+  bathroom: BathroomDirectoryRow,
+  options?: { cachedAt?: string; origin?: Coordinates | null }
+): BathroomListItem {
+  return mapBathroomRowToListItem(bathroom, {
+    cachedAt: options?.cachedAt ?? new Date().toISOString(),
+    stale: false,
+    origin: options?.origin,
+  });
+}
+
 export function mapBathroomRowToFavoriteItem(
   bathroom: BathroomDirectoryRow,
   favoritedAt: string,
