@@ -50,12 +50,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           'Pee-Dom uses your location to show nearby bathrooms when you tap "Use My Location".',
       },
     ],
-    [
-      'react-native-maps',
-      {
-        androidGoogleMapsApiKey: process.env.ANDROID_GOOGLE_MAPS_API_KEY || '',
-      },
-    ],
   ],
   experiments: {
     typedRoutes: true,
