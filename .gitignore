@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+
+# Build logs and artifacts
+*.log
+*.orig.*
+
+# Environment files
+.env.local
+.env.staging
+.env.production
+.env*.local
+
+# Keep example env checked in
+!.env.example
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Android
+*.apk
+*.aab
+android/app/build/
+
+# iOS
+ios/Pods/
+*.pbxuser
+*.xcuserstate
+ios/build/
+
+# Testing
+coverage/

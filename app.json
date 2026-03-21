@@ -21,9 +21,6 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience.",
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience."
-      },
-      "config": {
-        "googleMapsApiKey": ""
       }
     },
     "android": {
@@ -54,13 +51,6 @@
         "expo-location",
         {
           "locationAlwaysAndWhenInUsePermission": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience."
-        }
-      ],
-      [
-        "react-native-maps",
-        {
-          "androidGoogleMapsApiKey": "",
-          "iosGoogleMapsApiKey": ""
         }
       ]
     ],
