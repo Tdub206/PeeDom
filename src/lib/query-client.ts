@@ -5,7 +5,7 @@ import { Sentry } from '@/lib/sentry';
 function serializeKey(key: readonly unknown[] | undefined): string {
   try {
     return JSON.stringify(key ?? []);
-  } catch {
+  } catch (_e) {
     return '[unserializable-query-key]';
   }
 }

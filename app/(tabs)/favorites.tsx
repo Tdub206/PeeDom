@@ -55,7 +55,7 @@ export default function FavoritesTab() {
     async (favoriteItem: FavoriteItem) => {
       try {
         await favorites.toggleFavorite(favoriteItem);
-      } catch {
+      } catch (_e) {
         // The hook already handles the failure toast.
       }
     },

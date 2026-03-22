@@ -60,7 +60,7 @@ export const storage = {
         if (jsonValue != null) {
           try {
             results.set(key, JSON.parse(jsonValue) as T);
-          } catch {
+          } catch (_e) {
             // Skip malformed entries silently
           }
         }

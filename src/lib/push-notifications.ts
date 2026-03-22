@@ -95,7 +95,7 @@ export async function requestPushToken(): Promise<PushRegistrationResult> {
 export async function clearBadgeCount(): Promise<void> {
   try {
     await Notifications.setBadgeCountAsync(0);
-  } catch {
+  } catch (_e) {
     // Badge support varies by platform. Ignore failures.
   }
 }

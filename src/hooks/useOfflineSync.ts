@@ -115,7 +115,7 @@ function isBathroomAccessibilityMutationPayload(
   try {
     validateBathroomAccessibilityUpdate(payload);
     return true;
-  } catch {
+  } catch (_e) {
     return false;
   }
 }
