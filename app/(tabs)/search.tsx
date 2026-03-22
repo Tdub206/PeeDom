@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { Keyboard, KeyboardAvoidingView, Pressable, ScrollView, Text, View, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { CityBrowse, RecentSearches, SearchBar, SearchFilters, SearchResultsList } from '@/components/search';
+import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
+import { useGeocodeFallback, useGeocodeTypeahead } from '@/hooks/useGeocodeFallback';
 import { useSearch, useSearchSuggestions } from '@/hooks/useSearch';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
 import { pushSafely } from '@/lib/navigation';
@@ -52,6 +55,8 @@ export default function SearchTab() {
     },
   });
   const suggestionsQuery = useSearchSuggestions(userLocation);
+  const { geocoded } = useGeocodeFallback(committedQuery);
+  const { geocoded: typeaheadLocation } = useGeocodeTypeahead(activeQuery);
   useAccessibilityPreferences();
   const bathrooms = searchResults.items;
   const suggestions = suggestionsQuery.data ?? [];
@@ -173,8 +178,32 @@ export default function SearchTab() {
     [commitQuery, setActiveQuery]
   );
 
+  const handleJumpToLocation = useCallback(
+    (coordinates: { latitude: number; longitude: number }) => {
+      Keyboard.dismiss();
+      setRegion({
+        latitude: coordinates.latitude,
+        longitude: coordinates.longitude,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      });
+      pushSafely(router, routes.tabs.map, routes.tabs.search);
+    },
+    [router, setRegion]
+  );
+
+  const handleJumpToGeocodedLocation = useCallback(() => {
+    if (!geocoded) {
+      return;
+    }
+
+    handleJumpToLocation(geocoded.coordinates);
+  }, [geocoded, handleJumpToLocation]);
+
   const showIdleState = phase === 'idle';
-  const showSuggestions = (phase === 'typing' || phase === 'suggesting') && suggestions.length > 0;
+  const isTypingPhase = phase === 'typing' || phase === 'suggesting';
+  const showSuggestions = isTypingPhase && suggestions.length > 0;
+  const showTypeaheadGeocode = isTypingPhase && suggestions.length === 0 && typeaheadLocation !== null;
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
       <KeyboardAvoidingView
@@ -236,7 +265,31 @@ export default function SearchTab() {
             </ScrollView>
           ) : null}
 
-          {!showSuggestions && showIdleState ? (
+          {showTypeaheadGeocode ? (
+            <View className="mt-4">
+              <Pressable
+                accessibilityLabel={`Search ${typeaheadLocation.name} on the map`}
+                accessibilityRole="button"
+                className="flex-row items-center gap-3 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5"
+                onPress={() => handleJumpToLocation(typeaheadLocation.coordinates)}
+              >
+                <View className="h-10 w-10 items-center justify-center rounded-2xl bg-brand-600">
+                  <Ionicons color="#fff" name="location-outline" size={20} />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-base font-bold text-brand-700">
+                    {typeaheadLocation.name}
+                  </Text>
+                  <Text className="mt-1 text-sm text-brand-600">
+                    Tap to explore this area on the map
+                  </Text>
+                </View>
+                <Ionicons color={colors.brand[600]} name="chevron-forward" size={20} />
+              </Pressable>
+            </View>
+          ) : null}
+
+          {!showSuggestions && !showTypeaheadGeocode && showIdleState ? (
             <ScrollView className="mt-4 flex-1" keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
               <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-6">
                 <Text className="text-lg font-bold text-ink-900">Start with a place, address, or city.</Text>
@@ -269,26 +322,52 @@ export default function SearchTab() {
             </ScrollView>
           ) : null}
 
-          {!showSuggestions && !showIdleState ? (
-            <SearchResultsList
-              bathrooms={bathrooms}
-              error={searchResults.error}
-              hasNextPage={Boolean(searchResults.hasNextPage)}
-              isFavorite={isFavorite}
-              isFavoritePending={isFavoritePending}
-              isFetchingNextPage={searchResults.isFetchingNextPage}
-              isLoading={searchResults.isLoading || searchResults.isFetching}
-              onEndReached={() => {
-                if (searchResults.hasNextPage && !searchResults.isFetchingNextPage) {
-                  void searchResults.fetchNextPage();
-                }
-              }}
-              onSelect={handleSelectBathroom}
-              onToggleFavorite={(bathroom) => {
-                void handleToggleFavorite(bathroom);
-              }}
-              query={committedQuery}
-            />
+          {!showSuggestions && !showTypeaheadGeocode && !showIdleState ? (
+            <>
+              <SearchResultsList
+                bathrooms={bathrooms}
+                error={searchResults.error}
+                hasNextPage={Boolean(searchResults.hasNextPage)}
+                isFavorite={isFavorite}
+                isFavoritePending={isFavoritePending}
+                isFetchingNextPage={searchResults.isFetchingNextPage}
+                isLoading={searchResults.isLoading || searchResults.isFetching}
+                onEndReached={() => {
+                  if (searchResults.hasNextPage && !searchResults.isFetchingNextPage) {
+                    void searchResults.fetchNextPage();
+                  }
+                }}
+                onSelect={handleSelectBathroom}
+                onToggleFavorite={(bathroom) => {
+                  void handleToggleFavorite(bathroom);
+                }}
+                query={committedQuery}
+              />
+              {bathrooms.length === 0 &&
+                !searchResults.isLoading &&
+                !searchResults.isFetching &&
+                geocoded ? (
+                <Pressable
+                  accessibilityLabel={`View ${geocoded.name} on the map`}
+                  accessibilityRole="button"
+                  className="mt-4 flex-row items-center gap-3 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5"
+                  onPress={handleJumpToGeocodedLocation}
+                >
+                  <View className="h-10 w-10 items-center justify-center rounded-2xl bg-brand-600">
+                    <Ionicons color="#fff" name="map-outline" size={20} />
+                  </View>
+                  <View className="flex-1">
+                    <Text className="text-base font-bold text-brand-700">
+                      Jump to {geocoded.name}
+                    </Text>
+                    <Text className="mt-1 text-sm leading-5 text-brand-600">
+                      No bathrooms listed yet — be the first to add one!
+                    </Text>
+                  </View>
+                  <Ionicons color={colors.brand[600]} name="chevron-forward" size={20} />
+                </Pressable>
+              ) : null}
+            </>
           ) : null}
         </View>
       </KeyboardAvoidingView>
