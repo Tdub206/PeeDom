@@ -11,6 +11,7 @@ web-build/
 *.orig.*
 
 # Environment files
+.env
 .env.local
 .env.staging
 .env.production

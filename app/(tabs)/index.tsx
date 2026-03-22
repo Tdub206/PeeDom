@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Linking, Platform, Pressable, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BottomSheet } from '@/components/BottomSheet';
+import { EmergencyButton } from '@/components/EmergencyButton';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
@@ -11,6 +13,7 @@ import { BathroomMapView } from '@/components/MapView';
 import { RealtimeStatusBadge } from '@/components/realtime';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { useEmergencyMode } from '@/hooks/useEmergencyMode';
 import { useRealtimeBathrooms } from '@/hooks/useRealtimeBathrooms';
 import { useBathrooms } from '@/hooks/useBathrooms';
 import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
@@ -95,6 +98,7 @@ export default function MapTab() {
     return count;
   }, [accessibilityPreferences, isAccessibilityMode, resolvedFilters]);
   const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(bathrooms);
+  const emergency = useEmergencyMode();
 
   useEffect(() => {
     if (coordinates && !hasCenteredOnUser) {
@@ -261,29 +265,26 @@ export default function MapTab() {
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
       <View className="flex-1 px-4 pb-4 pt-3">
-        <View className="rounded-[30px] bg-brand-600 px-5 py-5">
-          <Text className="text-xs font-semibold uppercase tracking-[1px] text-white/80">Map</Text>
-          <Text className="mt-2 text-3xl font-black tracking-tight text-white">Bathrooms nearby.</Text>
-          <Text className="mt-2 text-sm leading-6 text-white/85">
-            Browse crowd-sourced bathroom locations, then tap a pin to inspect its latest access summary.
-          </Text>
-          <View className="mt-4 self-start">
-            <RealtimeStatusBadge />
-          </View>
+        <View className="flex-row items-center gap-2">
           <Pressable
-            accessibilityRole="button"
-            className="mt-4 self-start rounded-full bg-white/15 px-4 py-2"
+            accessibilityRole="search"
+            className="flex-1 flex-row items-center gap-2 rounded-full bg-surface-card border border-surface-strong px-4 py-3"
             onPress={() => router.push(routes.tabs.search)}
           >
-            <Text className="text-sm font-semibold text-white">Open search</Text>
+            <Ionicons color="#6b7280" name="search" size={18} />
+            <Text className="text-sm text-ink-500">Search bathrooms...</Text>
           </Pressable>
           <Pressable
+            accessibilityLabel="Add a bathroom"
             accessibilityRole="button"
-            className="mt-3 self-start rounded-full border border-white/20 bg-white px-4 py-2"
+            className="h-11 w-11 items-center justify-center rounded-full bg-brand-600"
             onPress={handleOpenAddBathroom}
           >
-            <Text className="text-sm font-semibold text-brand-700">Add a spot</Text>
+            <Ionicons color="#ffffff" name="add" size={22} />
           </Pressable>
+          <View className="self-center">
+            <RealtimeStatusBadge />
+          </View>
         </View>
 
         {error_message ? (
@@ -327,7 +328,14 @@ export default function MapTab() {
             userLocation={coordinates}
           />
 
-          <BottomSheet isOpen={Boolean(activeBathroom)} onClose={() => setActiveBathroomId(null)} snapPoints={['44%', '76%']}>
+          <EmergencyButton
+            isActive={emergency.isActive}
+            onPress={() => {
+              void emergency.activate();
+            }}
+          />
+
+          <BottomSheet isOpen={Boolean(activeBathroom)} onClose={() => setActiveBathroomId(null)} snapPoints={['52%', '88%']}>
             <View className="flex-1 px-4 pb-6 pt-2">
               {activeBathroom ? (
                 <MapDetailSheetCard

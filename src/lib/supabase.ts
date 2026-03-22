@@ -8,6 +8,25 @@ let supabaseClient: SupabaseClient<Database> | null = null;
 
 export const supabaseConfigState = supabaseRuntimeConfig;
 
+const REQUEST_TIMEOUT_MS = 15_000;
+
+function resilientFetch(
+  input: RequestInfo | URL,
+  init?: RequestInit
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  const mergedInit: RequestInit = {
+    ...init,
+    signal: controller.signal,
+  };
+
+  return fetch(input, mergedInit).finally(() => {
+    clearTimeout(timeoutId);
+  });
+}
+
 function createSupabaseClient(): SupabaseClient<Database> {
   return createClient<Database>(supabaseRuntimeConfig.supabaseUrl, supabaseRuntimeConfig.supabaseAnonKey, {
     auth: {
@@ -15,6 +34,14 @@ function createSupabaseClient(): SupabaseClient<Database> {
       autoRefreshToken: true,
       persistSession: true,
       detectSessionInUrl: false,
+    },
+    global: {
+      fetch: resilientFetch,
+    },
+    realtime: {
+      params: {
+        heartbeat_interval: 25,
+      },
     },
   });
 }

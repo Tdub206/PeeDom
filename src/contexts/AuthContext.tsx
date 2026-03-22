@@ -234,10 +234,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
 
       try {
-        const storageKeys = await storage.getAllKeys();
-        const cachedFavoriteKeys = storageKeys.filter((key) => key.startsWith(`${storage.keys.CACHED_FAVORITES}:`));
-
-        await Promise.all(cachedFavoriteKeys.map((key) => storage.remove(key)));
+        // Use removeByPrefix instead of getAllKeys() to avoid O(n) scan of all device keys
+        await storage.removeByPrefix(`${storage.keys.CACHED_FAVORITES}:`);
       } catch (error) {
         console.error('Unable to clear cached favorite artifacts:', error);
       }

@@ -1,5 +1,8 @@
-import React, { memo } from 'react';
-import { Text, View } from 'react-native';
+import React, { memo, useCallback, useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
+import * as Clipboard from 'expo-clipboard';
+import * as Haptics from 'expo-haptics';
+import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
 
 interface CodeRevealCardProps {
@@ -49,6 +52,20 @@ function CodeRevealCardComponent({
   issueMessage,
   onUnlockWithAd,
 }: CodeRevealCardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCode = useCallback(async () => {
+    if (!codeValue) return;
+    try {
+      await Clipboard.setStringAsync(codeValue);
+      await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Silently fail — clipboard may be unavailable on some devices
+    }
+  }, [codeValue]);
+
   const confidenceLabel =
     typeof confidenceScore === 'number' ? `${Math.max(0, Math.min(100, Math.round(confidenceScore)))}% confidence` : 'Confidence unavailable';
   const verificationLabel = formatTimestamp('Last verified', lastVerifiedAt);
@@ -69,8 +86,18 @@ function CodeRevealCardComponent({
       ) : codeValue ? (
         <>
           <Text className="mt-3 text-2xl font-bold text-ink-900">Community code</Text>
-          <View className="mt-4 rounded-3xl bg-ink-900 px-5 py-5">
-            <Text className="text-center text-4xl font-black tracking-[6px] text-white">{codeValue}</Text>
+          <View className="mt-4 flex-row items-center rounded-3xl bg-ink-900 px-5 py-5">
+            <Text className="flex-1 text-center text-4xl font-black tracking-[6px] text-white">{codeValue}</Text>
+            <Pressable
+              accessibilityLabel={copied ? 'Code copied' : 'Copy code to clipboard'}
+              accessibilityRole="button"
+              hitSlop={12}
+              onPress={handleCopyCode}
+              className="ml-3 items-center justify-center rounded-2xl bg-white/15 px-3 py-3"
+            >
+              <Ionicons color="#ffffff" name={copied ? 'checkmark-circle' : 'copy-outline'} size={22} />
+              {copied ? <Text className="mt-1 text-[10px] font-semibold text-white">Copied!</Text> : null}
+            </Pressable>
           </View>
           <Text className="mt-3 text-sm leading-5 text-ink-600">
             {isPremiumUser

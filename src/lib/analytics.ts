@@ -15,6 +15,7 @@ export type AnalyticsEventName =
   | 'auth_sign_in_succeeded'
   | 'auth_sign_up_failed'
   | 'auth_sign_up_succeeded'
+  | 'emergency_mode_activated'
   | 'offline_queue_dropped'
   | 'offline_queue_synced';
 
@@ -27,6 +28,7 @@ const analyticsEventSchema = z.object({
     'auth_sign_in_succeeded',
     'auth_sign_up_failed',
     'auth_sign_up_succeeded',
+    'emergency_mode_activated',
     'offline_queue_dropped',
     'offline_queue_synced',
   ]),

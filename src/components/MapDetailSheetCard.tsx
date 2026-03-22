@@ -68,6 +68,28 @@ function formatDistance(distanceMeters?: number): string {
   return `${(distanceMeters / 1000).toFixed(1)} km away`;
 }
 
+const AVG_WALK_SPEED_M_PER_MIN = 80;
+
+function formatWalkTime(distanceMeters?: number): string | null {
+  if (typeof distanceMeters !== 'number' || Number.isNaN(distanceMeters) || distanceMeters <= 0) {
+    return null;
+  }
+
+  const minutes = Math.ceil(distanceMeters / AVG_WALK_SPEED_M_PER_MIN);
+
+  if (minutes <= 1) {
+    return '~1 min walk';
+  }
+
+  if (minutes >= 60) {
+    const hours = Math.floor(minutes / 60);
+    const remaining = minutes % 60;
+    return remaining > 0 ? `~${hours}h ${remaining}m walk` : `~${hours}h walk`;
+  }
+
+  return `~${minutes} min walk`;
+}
+
 function formatCleanliness(cleanlinessAverage: number | null): string {
   if (typeof cleanlinessAverage !== 'number') {
     return 'No cleanliness ratings yet';
@@ -141,7 +163,16 @@ function MapDetailSheetCardComponent({
 
           <Text className="mt-4 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroom.address}</Text>
-          <Text className="mt-3 text-sm font-semibold text-brand-700">{formatDistance(bathroom.distance_meters)}</Text>
+          <View className="mt-3 flex-row items-center gap-2">
+            <Text className="text-sm font-semibold text-brand-700">{formatDistance(bathroom.distance_meters)}</Text>
+            {formatWalkTime(bathroom.distance_meters) ? (
+              <>
+                <Text className="text-sm text-ink-400">·</Text>
+                <Ionicons color={colors.brand[600]} name="walk-outline" size={14} />
+                <Text className="text-sm font-bold text-brand-700">{formatWalkTime(bathroom.distance_meters)}</Text>
+              </>
+            ) : null}
+          </View>
         </View>
 
         <Pressable

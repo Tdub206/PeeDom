@@ -18,12 +18,27 @@ function isChannelErrorStatus(status: ChannelStatus): boolean {
   return status === 'CHANNEL_ERROR' || status === 'TIMED_OUT';
 }
 
+const BASE_RECONNECT_DELAY_MS = 1_000;
+const MAX_RECONNECT_DELAY_MS = 30_000;
+const RECONNECT_JITTER_MS = 500;
+
+function computeReconnectDelay(attempt: number): number {
+  const exponentialDelay = Math.min(
+    BASE_RECONNECT_DELAY_MS * Math.pow(2, attempt),
+    MAX_RECONNECT_DELAY_MS
+  );
+  const jitter = Math.random() * RECONNECT_JITTER_MS;
+  return exponentialDelay + jitter;
+}
+
 export class RealtimeManager {
   private channelRegistry = new Map<string, ChannelEntry>();
   private appStateSubscription: ReturnType<typeof AppState.addEventListener> | null = null;
   private isInForeground = AppState.currentState === 'active';
   private foregroundCallbacks = new Set<RealtimeCallback>();
   private backgroundCallbacks = new Set<RealtimeCallback>();
+  private reconnectAttempt = 0;
+  private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor() {
     useRealtimeStore.getState().setAppInForeground(this.isInForeground);
@@ -81,6 +96,11 @@ export class RealtimeManager {
       return;
     }
 
+    if (this.reconnectTimer) {
+      clearTimeout(this.reconnectTimer);
+      this.reconnectTimer = null;
+    }
+
     const channelNames = [...this.channelRegistry.keys()];
     const realtimeStore = useRealtimeStore.getState();
     realtimeStore.incrementReconnectAttempts();
@@ -88,14 +108,36 @@ export class RealtimeManager {
     realtimeStore.setConnectionState('CONNECTING');
 
     try {
-      await Promise.allSettled(channelNames.map((channelName) => this.reconnectChannel(channelName)));
+      const results = await Promise.allSettled(channelNames.map((channelName) => this.reconnectChannel(channelName)));
+      const allSucceeded = results.every((r) => r.status === 'fulfilled');
+
+      if (allSucceeded) {
+        this.reconnectAttempt = 0;
+      } else {
+        this.scheduleReconnect();
+      }
     } finally {
       useRealtimeStore.getState().setPendingResubscriptions([]);
     }
   }
 
   handleNetworkReconnect(): Promise<void> {
+    this.reconnectAttempt = 0;
     return this.reconnectTrackedChannels();
+  }
+
+  private scheduleReconnect(): void {
+    if (this.reconnectTimer || !this.isInForeground) {
+      return;
+    }
+
+    const delay = computeReconnectDelay(this.reconnectAttempt);
+    this.reconnectAttempt += 1;
+
+    this.reconnectTimer = setTimeout(() => {
+      this.reconnectTimer = null;
+      void this.reconnectTrackedChannels();
+    }, delay);
   }
 
   async clearChannels(): Promise<void> {
@@ -145,6 +187,12 @@ export class RealtimeManager {
   }
 
   async destroy(): Promise<void> {
+    if (this.reconnectTimer) {
+      clearTimeout(this.reconnectTimer);
+      this.reconnectTimer = null;
+    }
+
+    this.reconnectAttempt = 0;
     await this.clearChannels();
     this.appStateSubscription?.remove();
     this.appStateSubscription = null;
@@ -226,10 +274,12 @@ export class RealtimeManager {
     realtimeStore.setChannelStatus(channelName, status, nextEntry.refCount);
 
     if (status === 'SUBSCRIBED') {
+      this.reconnectAttempt = 0;
       realtimeStore.resetReconnectAttempts();
       realtimeStore.setConnectionState('OPEN');
     } else if (isChannelErrorStatus(status)) {
       realtimeStore.setConnectionState('CONNECTING');
+      this.scheduleReconnect();
     } else if (status === 'CLOSED' && this.channelRegistry.size === 0) {
       realtimeStore.setConnectionState(this.isInForeground ? 'CLOSED' : 'CLOSING');
     }

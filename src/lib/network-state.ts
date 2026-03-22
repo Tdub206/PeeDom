@@ -4,8 +4,13 @@ export interface NetworkStateSnapshot {
 }
 
 export function isNetworkStateOnline(state: NetworkStateSnapshot | null | undefined): boolean {
+  // Conservative default: treat null/undefined state as offline.
+  // During cold start, NetInfo hasn't initialized yet and state is null.
+  // Returning true here would cause mutations to fire and fail before
+  // connectivity is confirmed. Returning false holds them until NetInfo
+  // reports a definitive state.
   if (!state) {
-    return true;
+    return false;
   }
 
   if (state.isConnected === false) {
@@ -24,5 +29,7 @@ export function isNetworkStateOnline(state: NetworkStateSnapshot | null | undefi
     return state.isInternetReachable;
   }
 
-  return true;
+  // All fields are null -- NetInfo hasn't determined connectivity yet.
+  // Stay conservative and assume offline until proven otherwise.
+  return false;
 }

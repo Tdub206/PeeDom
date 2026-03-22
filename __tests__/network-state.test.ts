@@ -20,13 +20,13 @@ describe('isNetworkStateOnline', () => {
     ).toBe(false);
   });
 
-  it('treats unknown states as online so bootstrap can continue', () => {
-    expect(isNetworkStateOnline(undefined)).toBe(true);
+  it('treats unknown states as offline to prevent premature mutations during cold start', () => {
+    expect(isNetworkStateOnline(undefined)).toBe(false);
     expect(
       isNetworkStateOnline({
         isConnected: null,
         isInternetReachable: null,
       })
-    ).toBe(true);
+    ).toBe(false);
   });
 });
