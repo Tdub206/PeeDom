@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash agent/task.sh \"Audit Pee-Dom for mobile launch blockers\" 2>&1)",
+      "Bash(bash agent/plan.sh \"Audit Pee-Dom for mobile launch blockers\" 2>&1)",
+      "Bash(bash agent/launch-check.sh 2>&1)"
+    ]
+  }
+}

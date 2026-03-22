@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Expo Dev Server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/start-dev-client.cjs"],
+      "port": 8081
+    },
+    {
+      "name": "Supabase Local",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/.bin/supabase", "start"],
+      "port": 54321
+    },
+    {
+      "name": "Supabase Edge Functions",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/.bin/supabase", "functions", "serve"],
+      "port": 54321
+    }
+  ]
+}

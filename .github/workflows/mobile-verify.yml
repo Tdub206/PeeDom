@@ -1,0 +1,73 @@
+name: Mobile Verify
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: mobile-verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      CI: "1"
+      EXPO_PUBLIC_ENV: ci
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify Expo dependency alignment
+        run: npm run check-deps
+
+      - name: Verify Expo config
+        run: npx expo config --type public > /dev/null
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Run tests
+        run: npm test -- --runInBand
+
+      - name: Regenerate Android project
+        run: npm run android:prebuild
+
+      - name: Verify committed Android project is up to date
+        run: git diff --exit-code -- android
+
+      - name: Write Android local.properties
+        run: printf "sdk.dir=%s\n" "$ANDROID_SDK_ROOT" > android/local.properties
+
+      - name: Assemble Android debug build
+        run: npm run android:assembleDebug:emulator

@@ -84,18 +84,7 @@ class CacheManager {
    * Clear all cache entries matching a prefix
    */
   async clearPrefix(prefix: string): Promise<void> {
-    // Note: This is a simple implementation
-    // In production, you might want to maintain an index of cache keys
-    const commonPrefixes = [
-      `${prefix}:bathrooms:list`,
-      `${prefix}:bathroom:detail`,
-      `${prefix}:favorites`,
-      `${prefix}:profile`,
-    ];
-
-    for (const key of commonPrefixes) {
-      await this.delete(key);
-    }
+    await storage.removeByPrefix(prefix);
   }
 
   /**
@@ -103,11 +92,11 @@ class CacheManager {
    */
   async invalidate(resource: 'bathrooms' | 'favorites' | 'profile', id?: string): Promise<void> {
     if (resource === 'bathrooms') {
-      await this.clearPrefix('cache');
+      await this.clearPrefix(storage.keys.CACHED_BATHROOMS);
     } else if (resource === 'favorites' && id) {
       await this.delete(`${storage.keys.CACHED_FAVORITES}:${id}`);
     } else if (resource === 'profile' && id) {
-      await this.delete(`cache:profile:${id}`);
+      await this.delete(`${storage.keys.CACHED_PROFILE}:${id}`);
     }
   }
 }
