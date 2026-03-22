@@ -206,9 +206,15 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
 
         if (favoriteIdsResult.error) {
           if (isTransientNetworkError(favoriteIdsResult.error)) {
-            throw new Error(
-              'Reconnect once so we can confirm whether this bathroom is already in your favorites.'
-            );
+            // We're offline and can't confirm server state for this bathroom.
+            // Derive intent from local (persisted + optimistic) state, apply
+            // optimistic UI now, then re-throw so the catch block queues the
+            // mutation. The server's toggle_favorite RPC is atomic and will
+            // correct any local-state skew when the queue replays.
+            intendedAction = isFavorited(bathroomId) ? 'removed' : 'added';
+            await queryClient.cancelQueries({ queryKey: favoritesKeys.all });
+            setOptimisticToggle(bathroomId, intendedAction, { initiatedAt });
+            throw favoriteIdsResult.error;
           }
 
           throw favoriteIdsResult.error;

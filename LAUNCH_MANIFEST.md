@@ -229,10 +229,10 @@ The following old assumptions are now false and must not be copied back into sta
 
 These are safe to do next without forcing a stack upgrade:
 
-1. Add authenticated EAS build and submit automation once Expo GitHub App / `EXPO_TOKEN` / project linkage are configured
-2. Add screen-level integration coverage for auth replay and offline sync
-3. Verify [002_functions.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/002_functions.sql) is applied in the target Supabase project
-4. Device-test the existing Phase 4 flows now that Android local tooling is available again
+1. ~~Add authenticated EAS build and submit automation~~ — **DONE** (March 22, 2026). `eas-release.yml` now validates all required secrets including Maps API keys for production and store-submission secrets for release-tag auto-submit. `eas.json submit.production` is wired for both Android (service account key) and iOS (Apple ID env vars). **Remaining user action:** register GitHub Secrets — see §6.3.
+2. ~~Add screen-level integration coverage for auth replay and offline sync~~ — **DONE** (March 22, 2026). `__tests__/offline-queue-integration.test.ts` (17 tests covering enqueue, retry cap, user scoping, storage persistence, concurrency guard) and `__tests__/auth-replay-contracts.test.ts` (14 tests covering return-intent shape, route safety, drop policy, and session status invariants) added. All 222 tests pass.
+3. Verify all 20 migrations are applied in the target Supabase project — **Script created** at `supabase/scripts/verify-migrations.sql`. Run it against the project using the Supabase SQL Editor or `supabase db execute`.
+4. Device-test the existing Phase 4 flows now that Android local tooling is available
 5. Replace temporary app art with final branded assets before store submission
 
 ## **6.2 Work That Needs Explicit Approval**
@@ -248,11 +248,34 @@ These are not safe "background fixes" and should be treated as deliberate tracks
 | Area | Status |
 | :---- | :---- |
 | Android local build | Verified locally through Android Studio / emulator ABI debug build |
-| Device validation | Pending |
-| CI/CD | Baseline GitHub verification added; authenticated EAS build and submit automation pending |
+| Device validation | Pending — physical Android device test required |
+| CI/CD | `mobile-verify.yml` + `eas-release.yml` complete. **Pending: register GitHub Secrets** (see below) |
+| Screen integration tests | Done — 43 suites / 222 tests passing as of March 22, 2026 |
+| Supabase migrations | Script ready at `supabase/scripts/verify-migrations.sql`. **Pending: run against project** |
 | Store metadata | Pending |
-| Final art | Pending |
-| Screen integration tests | Pending |
+| Final art | Pending — replace `assets/icon.png`, `assets/adaptive-icon.png`, `assets/splash.png` |
+
+### GitHub Secrets Required Before First EAS Release
+
+Register the following in **GitHub → Settings → Secrets and variables → Actions**:
+
+| Secret | Required for | Notes |
+| :---- | :---- | :---- |
+| `EXPO_TOKEN` | All EAS builds | Generate at expo.dev → Account Settings → Access Tokens |
+| `EAS_PROJECT_ID` | All EAS builds | Found in `app.json` or Expo dashboard after linking project |
+| `EXPO_PUBLIC_SUPABASE_URL` | All builds | From Supabase project Settings → API |
+| `EXPO_PUBLIC_SUPABASE_ANON_KEY` | All builds | From Supabase project Settings → API |
+| `EXPO_PUBLIC_API_BASE_URL` | All builds | Register as a **variable** (not secret) if not sensitive |
+| `ANDROID_GOOGLE_MAPS_API_KEY` | Production builds | From Google Cloud Console → Maps SDK for Android |
+| `IOS_GOOGLE_MAPS_API_KEY` | Production builds | From Google Cloud Console → Maps SDK for iOS |
+| `EXPO_PUBLIC_SENTRY_DSN` | All builds | From Sentry project Settings → Client Keys |
+| `ANDROID_ADMOB_APP_ID` | Builds with ads | Real AdMob app ID from AdMob console (optional — test IDs used if absent) |
+| `IOS_ADMOB_APP_ID` | Builds with ads | Real AdMob app ID from AdMob console (optional — test IDs used if absent) |
+| `APPLE_ID` | Release tag auto-submit | Apple ID email for App Store Connect |
+| `ASC_APP_ID` | Release tag auto-submit | App Store Connect App ID (numeric) |
+| `APPLE_TEAM_ID` | Release tag auto-submit | Apple Team ID from developer.apple.com |
+| `EXPO_APPLE_APP_SPECIFIC_PASSWORD` | Release tag auto-submit | App-specific password from appleid.apple.com |
+| `GOOGLE_SERVICE_ACCOUNT_KEY_JSON` | Release tag auto-submit | Base64-encoded Google Play service account key JSON |
 
 # **7. Builder Directive**
 
@@ -264,9 +287,9 @@ Repo: Tdub206/Pee-Dom
 Stack: React 19.1.0, React Native 0.81.5, Expo SDK 54, Expo Router v6, TypeScript strict, NativeWind v4, Supabase (PostgreSQL + PostGIS + Auth), TanStack Query v5, AsyncStorage
 STATUS:
 - Phase 1/2/3: complete.
-- Phase 4 repo implementation exists for map, search, favorites, and location.
-- March 11, 2026 verification in this workspace: `npm.cmd run check-deps`, `npx.cmd expo config --type public`, `npm.cmd run lint`, `npm.cmd run type-check`, and `npm.cmd test` all pass.
-- Active blockers: local Android SDK/adb missing, device-level verification still pending, authenticated EAS build or submit automation pending, final store metadata and art still pending.
+- Phase 4 repo implementation complete: map, search, favorites, location, all modals, profile, gamification, realtime, business dashboard, offline sync.
+- March 22, 2026 verification: `tsc --noEmit` clean, `eslint` clean, `jest` 43 suites / 222 tests passing.
+- EAS release workflow complete. Active blockers: GitHub Secrets registration pending (see §6.3), device-level validation pending, Supabase migration verification pending, final store metadata and art pending.
 THE 3 LAWS:
 1. Pre-Flight: simulate the full dependency graph before writing.
 2. Native Purity: banned web primitives stay banned. Use React Native primitives and `Alert.alert()`.

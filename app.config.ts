@@ -6,6 +6,18 @@ const androidVersionCode =
   Number.isFinite(androidVersionCodeFromEnv) && androidVersionCodeFromEnv > 0 ? androidVersionCodeFromEnv : 1;
 const environment = process.env.EXPO_PUBLIC_ENV?.trim() || 'local';
 const isProduction = environment === 'production';
+
+if (isProduction) {
+  if (!process.env.ANDROID_GOOGLE_MAPS_API_KEY?.trim()) {
+    throw new Error('[app.config.ts] ANDROID_GOOGLE_MAPS_API_KEY is required for production builds.');
+  }
+  if (!process.env.IOS_GOOGLE_MAPS_API_KEY?.trim()) {
+    throw new Error('[app.config.ts] IOS_GOOGLE_MAPS_API_KEY is required for production builds.');
+  }
+  if (!process.env.EAS_PROJECT_ID?.trim()) {
+    throw new Error('[app.config.ts] EAS_PROJECT_ID is required for production builds.');
+  }
+}
 const testAndroidAdMobAppId = 'ca-app-pub-3940256099942544~3347511713';
 const testIosAdMobAppId = 'ca-app-pub-3940256099942544~1458002511';
 const androidAdMobAppId = process.env.ANDROID_ADMOB_APP_ID?.trim() || (isProduction ? '' : testAndroidAdMobAppId);
@@ -29,6 +41,7 @@ const buildPlugins: ExpoConfig['plugins'] = [
       },
     },
   ],
+  '@sentry/react-native',
 ];
 
 if (googleMobileAdsConfig) {
@@ -41,7 +54,7 @@ if (googleMobileAdsConfig) {
       optimizeInitialization: googleMobileAdsConfig.optimize_initialization,
       optimizeAdLoading: googleMobileAdsConfig.optimize_ad_loading,
       userTrackingUsageDescription:
-        'Pee-Dom uses your device identifier to show rewarded ads that unlock community bathroom codes.',
+        'StallPass uses your device identifier to show rewarded ads that unlock community bathroom codes.',
     },
   ]);
 }
@@ -51,13 +64,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     'react-native-google-mobile-ads'?: typeof googleMobileAdsConfig;
   } = {
     ...config,
-    name: 'Pee-Dom',
-    slug: 'peedom-mobile',
+    name: 'StallPass',
+    slug: 'stallpass',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'automatic',
-    scheme: 'peedom',
+    scheme: 'stallpass',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
@@ -66,11 +79,11 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: false,
-      bundleIdentifier: 'com.peedom.mobile',
+      bundleIdentifier: 'com.stallpass.mobile',
       buildNumber: iosBuildNumber,
       infoPlist: {
         NSLocationWhenInUseUsageDescription:
-          'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+          'StallPass uses your location to find nearby bathrooms and improve search relevance.',
       },
       config: {
         googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
@@ -81,7 +94,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#ffffff',
       },
-      package: 'com.peedom.mobile',
+      package: 'com.stallpass.mobile',
       versionCode: androidVersionCode,
       permissions: [
         'ACCESS_COARSE_LOCATION',
@@ -108,14 +121,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-image-picker',
         {
-          photosPermission: 'Pee-Dom lets you attach a bathroom photo to improve listing trust.',
+          photosPermission: 'StallPass lets you attach a bathroom photo to improve listing trust.',
         },
       ],
       [
         'expo-location',
         {
           locationWhenInUsePermission:
-            'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+            'StallPass uses your location to find nearby bathrooms and improve search relevance.',
         },
       ],
       [

@@ -55,6 +55,7 @@ const DATABASE_CODE_MESSAGE_MAP: Record<string, string> = {
   REPORT_ALREADY_OPEN: "You've already filed that type of report for this bathroom.",
   INVALID_CLEANLINESS_RATING: 'Choose a cleanliness rating between 1 and 5.',
   INVALID_CLEANLINESS_NOTES: 'Cleanliness notes must be 300 characters or fewer.',
+  ACCOUNT_DEACTIVATED: 'Your account has been deactivated. Contact support if you think this is a mistake.',
 };
 
 interface ErrorLike {

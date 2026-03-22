@@ -1,4 +1,4 @@
-package com.peedom.mobile
+package com.stallpass.mobile
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

@@ -8,7 +8,7 @@ export const favoriteBathroomIdSchema = z.object({
 
 export const favoriteIdsQuerySchema = z.object({
   userId: z.string().uuid('User identifier must be a valid UUID.'),
-  bathroomIds: z.array(z.string().uuid('Bathroom identifier must be a valid UUID.')).min(1).max(200),
+  bathroomIds: z.array(z.string().uuid('Bathroom identifier must be a valid UUID.')).min(1),
 });
 
 export const favoriteDirectoryQuerySchema = z.object({

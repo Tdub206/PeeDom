@@ -54,12 +54,20 @@ jobs:
       EXPO_PUBLIC_ENV: ${{ github.event_name == 'pull_request' && 'preview' || github.event_name == 'push' && 'production' || inputs.profile }}
       ANDROID_GOOGLE_MAPS_API_KEY: ${{ secrets.ANDROID_GOOGLE_MAPS_API_KEY }}
       IOS_GOOGLE_MAPS_API_KEY: ${{ secrets.IOS_GOOGLE_MAPS_API_KEY }}
+      ANDROID_ADMOB_APP_ID: ${{ secrets.ANDROID_ADMOB_APP_ID }}
+      IOS_ADMOB_APP_ID: ${{ secrets.IOS_ADMOB_APP_ID }}
+      # Store submission secrets — only consumed during auto-submit (release tag builds)
+      EXPO_APPLE_ID: ${{ secrets.EXPO_APPLE_ID }}
+      ASC_APP_ID: ${{ secrets.ASC_APP_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      EXPO_APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.EXPO_APPLE_APP_SPECIFIC_PASSWORD }}
+      GOOGLE_SERVICE_ACCOUNT_KEY_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY_JSON }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -70,20 +78,6 @@ jobs:
           expo-version: latest
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-
-      - name: Validate release secrets
-        shell: bash
-        run: |
-          set -euo pipefail
-          missing=0
-          required_vars=("EXPO_TOKEN" "EAS_PROJECT_ID" "EXPO_PUBLIC_SUPABASE_URL" "EXPO_PUBLIC_SUPABASE_ANON_KEY" "EXPO_PUBLIC_API_BASE_URL")
-          for var in "${required_vars[@]}"; do
-            if [[ -z "${!var}" ]]; then
-              echo "::error::$var is required for EAS releases."
-              missing=1
-            fi
-          done
-          exit "$missing"
 
       - name: Install dependencies
         run: npm ci
@@ -124,6 +118,52 @@ jobs:
             echo "profile=${{ inputs.profile }}" >> "$GITHUB_OUTPUT"
             echo "auto_submit=${{ inputs.auto_submit }}" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Validate release secrets
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+
+          # Always required
+          required_vars=("EXPO_TOKEN" "EAS_PROJECT_ID" "EXPO_PUBLIC_SUPABASE_URL" "EXPO_PUBLIC_SUPABASE_ANON_KEY" "EXPO_PUBLIC_API_BASE_URL")
+          for var in "${required_vars[@]}"; do
+            if [[ -z "${!var}" ]]; then
+              echo "::error::$var is required for EAS releases."
+              missing=1
+            fi
+          done
+
+          # Required for production builds (Maps API keys are injected into the native binary)
+          if [[ "${{ steps.release_args.outputs.profile }}" == "production" ]]; then
+            prod_vars=("ANDROID_GOOGLE_MAPS_API_KEY" "IOS_GOOGLE_MAPS_API_KEY")
+            for var in "${prod_vars[@]}"; do
+              if [[ -z "${!var}" ]]; then
+                echo "::error::$var is required for production EAS builds."
+                missing=1
+              fi
+            done
+          fi
+
+          # Required only when auto-submitting to stores (release tag builds)
+          if [[ "${{ steps.release_args.outputs.auto_submit }}" == "true" ]]; then
+            submit_vars=("EXPO_APPLE_ID" "ASC_APP_ID" "APPLE_TEAM_ID" "EXPO_APPLE_APP_SPECIFIC_PASSWORD" "GOOGLE_SERVICE_ACCOUNT_KEY_JSON")
+            for var in "${submit_vars[@]}"; do
+              if [[ -z "${!var}" ]]; then
+                echo "::error::$var is required for store auto-submission."
+                missing=1
+              fi
+            done
+          fi
+
+          exit "$missing"
+
+      - name: Write Google Play service account key
+        if: steps.release_args.outputs.auto_submit == 'true'
+        shell: bash
+        run: |
+          echo "$GOOGLE_SERVICE_ACCOUNT_KEY_JSON" | base64 --decode > /tmp/google-service-account.json
+          echo "GOOGLE_SERVICE_ACCOUNT_KEY_PATH=/tmp/google-service-account.json" >> "$GITHUB_ENV"
 
       - name: Build with EAS
         shell: bash

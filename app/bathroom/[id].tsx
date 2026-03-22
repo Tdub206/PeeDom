@@ -19,7 +19,8 @@ import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
-import { useBathroomDetail } from '@/hooks/useBathroomDetail';
+import { useBathroomDetail, bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
+import { useQueryClient } from '@tanstack/react-query';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { useFavorites } from '@/hooks/useFavorites';
@@ -108,6 +109,7 @@ export default function BathroomDetailScreen() {
   const { id } = useLocalSearchParams<{ id?: string | string[] }>();
   const { profile, user } = useAuth();
   const { showToast } = useToast();
+  const queryClient = useQueryClient();
   const hasFocusedOnceRef = useRef(false);
   const [revealedCode, setRevealedCode] = useState<BathroomAccessCodeRow | null>(null);
   const [codeErrorMessage, setCodeErrorMessage] = useState<string | null>(null);
@@ -261,13 +263,18 @@ export default function BathroomDetailScreen() {
   useFocusEffect(
     useCallback(() => {
       if (hasFocusedOnceRef.current) {
-        void refetchBathroomDetail();
+        const queryState = queryClient.getQueryState(bathroomDetailQueryKey(bathroomId || null));
+        const ageMs = queryState?.dataUpdatedAt ? Date.now() - queryState.dataUpdatedAt : Infinity;
+
+        if (ageMs > 60_000) {
+          void refetchBathroomDetail();
+        }
       } else {
         hasFocusedOnceRef.current = true;
       }
 
       return undefined;
-    }, [refetchBathroomDetail])
+    }, [bathroomId, queryClient, refetchBathroomDetail])
   );
 
   useEffect(() => {

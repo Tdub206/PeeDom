@@ -161,8 +161,12 @@ export function useOfflineSync() {
             return false;
           }
 
-          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
-          return true;
+          // Non-transient error (auth failure, server error, etc.).
+          // Return false to keep the mutation in the queue rather than
+          // silently discarding it.  Optimistic state is preserved so
+          // the UI continues showing the intended add until a retry
+          // succeeds or the item is dropped after MAX_QUEUE_RETRY_COUNT.
+          return false;
         }
         case 'favorite_remove': {
           if (!isFavoriteMutationPayload(mutation.payload)) {
@@ -181,8 +185,8 @@ export function useOfflineSync() {
             return false;
           }
 
-          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
-          return true;
+          // Non-transient error: keep in queue, preserve optimistic state.
+          return false;
         }
         case 'report_create': {
           if (!isReportMutationPayload(mutation.payload)) {

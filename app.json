@@ -1,7 +1,17 @@
 {
   "expo": {
-    "name": "Pee-Dom",
-    "slug": "peedom-mobile"
+    "name": "StallPass",
+    "slug": "stallpass",
+    "plugins": [
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "react-native",
+          "organization": "stallpass-organization"
+        }
+      ]
+    ]
   },
   "react-native-google-mobile-ads": {
     "android_app_id": "ca-app-pub-3940256099942544~3347511713",

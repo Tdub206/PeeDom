@@ -207,7 +207,12 @@ export const useFavoritesStore = create<FavoritesStoreState>()(
         return state.favoritedIds.includes(bathroomId);
       },
 
-      isFavoriteResolved: (bathroomId) => get().resolvedBathroomIds.includes(bathroomId),
+      isFavoriteResolved: (bathroomId) =>
+        get().resolvedBathroomIds.includes(bathroomId) ||
+        // A bathroom in favoritedIds has confirmed state (it's favorited).
+        // This persists across restarts without needing resolvedBathroomIds,
+        // which is not persisted, to be re-populated.
+        get().favoritedIds.includes(bathroomId),
 
       isOptimisticallyRemoved: (bathroomId) =>
         get().optimisticToggles[bathroomId]?.pendingAction === 'removed',
@@ -221,6 +226,13 @@ export const useFavoritesStore = create<FavoritesStoreState>()(
         ownerUserId: state.ownerUserId,
         sortBy: state.sortBy,
         favoritedIds: state.favoritedIds,
+        // Persist only queued toggles (queuedForSync: true) so the pending
+        // heart state survives app restart while offline queue mutations exist.
+        // In-flight (not-yet-queued) toggles are intentionally dropped on
+        // restart because their network requests are also dropped.
+        optimisticToggles: Object.fromEntries(
+          Object.entries(state.optimisticToggles).filter(([, t]) => t.queuedForSync)
+        ),
       }),
     }
   )
