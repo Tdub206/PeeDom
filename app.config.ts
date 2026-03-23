@@ -41,17 +41,15 @@ if (googleMobileAdsConfig) {
       optimizeInitialization: googleMobileAdsConfig.optimize_initialization,
       optimizeAdLoading: googleMobileAdsConfig.optimize_ad_loading,
       userTrackingUsageDescription:
-        'Pee-Dom uses your device identifier to show rewarded ads that unlock community bathroom codes.',
+        'StallPass uses your device identifier to show rewarded ads that unlock community bathroom codes.',
     },
   ]);
 }
 
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const expoConfig: ExpoConfig & {
-    'react-native-google-mobile-ads'?: typeof googleMobileAdsConfig;
-  } = {
+  const expoConfig: ExpoConfig = {
     ...config,
-    name: 'Pee-Dom',
+    name: 'StallPass',
     slug: 'peedom-mobile',
     version: '1.0.0',
     orientation: 'portrait',
@@ -70,7 +68,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       buildNumber: iosBuildNumber,
       infoPlist: {
         NSLocationWhenInUseUsageDescription:
-          'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+          'StallPass uses your location to find nearby bathrooms and improve search relevance.',
       },
       config: {
         googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
@@ -108,14 +106,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-image-picker',
         {
-          photosPermission: 'Pee-Dom lets you attach a bathroom photo to improve listing trust.',
+          photosPermission: 'StallPass lets you attach a bathroom photo to improve listing trust.',
         },
       ],
       [
         'expo-location',
         {
           locationWhenInUsePermission:
-            'Pee-Dom uses your location to find nearby bathrooms and improve search relevance.',
+            'StallPass uses your location to find nearby bathrooms and improve search relevance.',
         },
       ],
       [
@@ -134,7 +132,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         origin: false,
       },
       eas: {
-        projectId: process.env.EAS_PROJECT_ID || '',
+        projectId: process.env.EAS_PROJECT_ID || 'd9ec08ec-330b-46e5-84c2-55e6db9db195',
       },
       // These are still available via Constants.expoConfig.extra if needed
       // but primary access should be via process.env.EXPO_PUBLIC_*
@@ -147,10 +145,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID,
     },
   };
-
-  if (googleMobileAdsConfig) {
-    expoConfig['react-native-google-mobile-ads'] = googleMobileAdsConfig;
-  }
 
   return expoConfig;
 };

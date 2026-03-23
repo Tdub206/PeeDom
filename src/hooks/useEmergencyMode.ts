@@ -111,7 +111,7 @@ export function useEmergencyMode() {
             latitude: freshLocation.coords.latitude,
             longitude: freshLocation.coords.longitude,
           };
-        } catch {
+        } catch (_e) {
           showToast({
             title: 'Location unavailable',
             message: 'We could not determine your location. Please try again.',

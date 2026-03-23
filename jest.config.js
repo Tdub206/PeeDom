@@ -4,5 +4,13 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/_preflight/'],
+  testMatch: ['<rootDir>/__tests__/**/*.test.ts'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/dist/',
+    '/_preflight/',
+    '/\\.claude/',
+    '/StallPass/',
+    '/StallPass\\.git/',
+  ],
 };

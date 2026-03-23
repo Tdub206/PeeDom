@@ -357,7 +357,7 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
         if (outcome !== 'auth_required') {
           clearReturnIntent();
         }
-      } catch {
+      } catch (_e) {
         clearReturnIntent();
       } finally {
         delete replayedIntentIdsRef.current[intent.intent_id];

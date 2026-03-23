@@ -262,7 +262,7 @@ export const claimBusinessSchema = z
     try {
       // eslint-disable-next-line no-new
       new URL(evidenceUrl);
-    } catch {
+    } catch (_e) {
       context.addIssue({
         code: z.ZodIssueCode.custom,
         path: ['evidence_url'],

@@ -425,7 +425,7 @@ export default function BathroomDetailScreen() {
 
     try {
       await toggleFavorite(favoriteCandidate);
-    } catch {
+    } catch (_e) {
       // useFavorites already shows the user-facing failure state.
     }
   }, [favoriteCandidate, toggleFavorite]);

@@ -97,7 +97,7 @@ export function ProfileHeader({ profile }: ProfileHeaderProps) {
         message: 'Your profile name is now up to date.',
         variant: 'success',
       });
-    } catch {
+    } catch (_e) {
       // The mutation hook already provides the failure toast.
     }
   }, [profile.display_name, showToast, trimmedDraftName, updateDisplayName]);

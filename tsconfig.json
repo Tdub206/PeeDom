@@ -32,6 +32,9 @@
   ],
   "exclude": [
     "node_modules",
+    ".claude",
+    "StallPass",
+    "StallPass.git",
     "_preflight",
     "supabase/functions"
   ]

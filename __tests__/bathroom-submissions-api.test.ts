@@ -5,7 +5,9 @@ const from: jest.MockedFunction<(table: string) => unknown> = jest.fn();
 
 jest.mock('expo-file-system', () => ({
   File: class MockExpoFile {
-    constructor(_uri: string) {}
+    constructor(_uri: string) {
+      void _uri;
+    }
 
     async arrayBuffer() {
       throw new Error('arrayBuffer should not be called in this test');

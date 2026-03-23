@@ -61,7 +61,7 @@ function CodeRevealCardComponent({
       await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } catch (_e) {
       // Silently fail — clipboard may be unavailable on some devices
     }
   }, [codeValue]);
