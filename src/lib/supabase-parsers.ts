@@ -305,6 +305,13 @@ export const deactivateAccountResultSchema = z.object({
   error: z.string().optional(),
 });
 
+export const deleteAccountResultSchema = z.object({
+  success: z.boolean(),
+  user_id: rawTextSchema.optional(),
+  deleted_at: dateTimeStringSchema.optional(),
+  error: z.string().optional(),
+});
+
 export const dbPremiumArrivalAlertSchema = z.object({
   id: rawTextSchema,
   user_id: rawTextSchema,
@@ -462,6 +469,7 @@ export const publicBathroomDetailRowSchema = z.object({
   expires_at: dateTimeStringSchema.nullable(),
   cleanliness_avg: z.number().nullable(),
   updated_at: dateTimeStringSchema,
+  verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable().default(null),
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({

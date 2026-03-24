@@ -18,6 +18,10 @@ import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 import { LocationProvider } from '@/contexts/LocationContext';
 import { useOfflineSync } from '@/hooks/useOfflineSync';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
+import { useAppUpdate } from '@/hooks/useAppUpdate';
+import { ForceUpdateScreen } from '@/components/ForceUpdateScreen';
+import { useOnboarding } from '@/hooks/useOnboarding';
+import { OnboardingScreen } from '@/components/OnboardingScreen';
 import { initializeAnalytics, trackAnalyticsEvent } from '@/lib/analytics';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { initializeQueryLifecycleManagers } from '@/lib/query-lifecycle';
@@ -43,7 +47,10 @@ function RootNavigator() {
   const setConnectionState = useRealtimeStore((state) => state.setConnectionState);
   useOfflineSync();
   usePushNotifications();
-  const isAppReady = !loading && (fontsLoaded || Boolean(fontError));
+  const { forceUpdateRequired, message: updateMessage, storeUrl, applyOtaUpdate, isApplyingUpdate } =
+    useAppUpdate();
+  const { hasOnboarded, completeOnboarding } = useOnboarding();
+  const isAppReady = !loading && (fontsLoaded || Boolean(fontError)) && hasOnboarded !== null;
 
   useEffect(() => {
     if (fontError) {
@@ -133,6 +140,21 @@ function RootNavigator() {
     return <LoadingScreen />;
   }
 
+  if (forceUpdateRequired) {
+    return (
+      <ForceUpdateScreen
+        message={updateMessage}
+        storeUrl={storeUrl}
+        onTryOta={applyOtaUpdate}
+        isApplyingOta={isApplyingUpdate}
+      />
+    );
+  }
+
+  if (!hasOnboarded) {
+    return <OnboardingScreen onComplete={completeOnboarding} />;
+  }
+
   return (
     <>
       <StatusBar style="dark" />
@@ -202,6 +224,46 @@ function RootNavigator() {
             presentation: 'modal',
             headerShown: true,
             headerTitle: 'Claim A Business',
+          }}
+        />
+        <Stack.Screen
+          name="modal/report-user"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Report User',
+          }}
+        />
+        <Stack.Screen
+          name="modal/legal"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Legal',
+          }}
+        />
+        <Stack.Screen
+          name="modal/route-bathrooms"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Route Bathrooms',
+          }}
+        />
+        <Stack.Screen
+          name="modal/request-featured"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Request Featured',
+          }}
+        />
+        <Stack.Screen
+          name="modal/city-packs"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Offline City Packs',
           }}
         />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />

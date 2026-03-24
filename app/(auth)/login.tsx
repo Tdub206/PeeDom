@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
-import { signInWithEmail } from '@/api/auth';
+import { resetPassword, signInWithEmail } from '@/api/auth';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
@@ -24,6 +24,7 @@ export default function LoginScreen() {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<LoginFormValues>>({});
   const [submitError, setSubmitError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isResettingPassword, setIsResettingPassword] = useState(false);
 
   const updateField = useCallback((field: keyof LoginFormValues, value: string) => {
     setFormValues((currentValues) => ({
@@ -109,6 +110,48 @@ export default function LoginScreen() {
     }
   }, [consumeReturnIntent, formValues, isSubmitting, router, showToast]);
 
+  const handleForgotPassword = useCallback(async () => {
+    const email = formValues.email.trim();
+
+    if (!email) {
+      showToast({
+        title: 'Enter your email first',
+        message: 'Type the email address associated with your account, then tap "Forgot Password?" again.',
+        variant: 'warning',
+      });
+      return;
+    }
+
+    setIsResettingPassword(true);
+
+    try {
+      const { error } = await resetPassword(email);
+
+      if (error) {
+        showToast({
+          title: 'Reset email failed',
+          message: getErrorMessage(error, 'Unable to send a password reset email right now.'),
+          variant: 'error',
+        });
+        return;
+      }
+
+      showToast({
+        title: 'Check your inbox',
+        message: 'If an account exists for that email, you will receive a password reset link shortly.',
+        variant: 'success',
+      });
+    } catch (error) {
+      showToast({
+        title: 'Reset email failed',
+        message: getErrorMessage(error, 'Unable to send a password reset email right now.'),
+        variant: 'error',
+      });
+    } finally {
+      setIsResettingPassword(false);
+    }
+  }, [formValues.email, showToast]);
+
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['bottom']}>
       <KeyboardAvoidingView
@@ -155,6 +198,19 @@ export default function LoginScreen() {
                 error={fieldErrors.password}
                 containerClassName="mt-5"
               />
+
+              <Pressable
+                accessibilityRole="button"
+                className="mt-3 self-end"
+                disabled={isResettingPassword}
+                onPress={() => {
+                  void handleForgotPassword();
+                }}
+              >
+                <Text className="text-sm font-semibold text-brand-700">
+                  {isResettingPassword ? 'Sending reset email...' : 'Forgot Password?'}
+                </Text>
+              </Pressable>
 
               {submitError ? (
                 <Text className="mt-4 rounded-2xl bg-danger/10 px-4 py-3 text-sm text-danger">

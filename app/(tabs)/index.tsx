@@ -6,6 +6,7 @@ import { useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BottomSheet } from '@/components/BottomSheet';
 import { EmergencyButton } from '@/components/EmergencyButton';
+import { UrgencyPickerSheet } from '@/components/UrgencyPickerSheet';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
@@ -328,10 +329,39 @@ export default function MapTab() {
             userLocation={coordinates}
           />
 
+          <View className="absolute bottom-5 left-4" style={{ zIndex: 10 }}>
+            <Pressable
+              accessibilityLabel="Find bathrooms along your route"
+              accessibilityRole="button"
+              className="h-14 w-14 items-center justify-center rounded-full bg-brand-600 shadow-lg"
+              onPress={() =>
+                pushSafely(router, routes.modal.routeBathrooms, routes.tabs.map)
+              }
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.85 : 1,
+                elevation: 6,
+              })}
+            >
+              <Ionicons color="#ffffff" name="git-branch-outline" size={24} />
+            </Pressable>
+            <Text className="mt-1 text-center text-[10px] font-bold uppercase tracking-wide text-brand-600">
+              Route
+            </Text>
+          </View>
+
           <EmergencyButton
             isActive={emergency.isActive}
             onPress={() => {
               void emergency.activate();
+            }}
+          />
+
+          <UrgencyPickerSheet
+            candidates={emergency.candidates}
+            isSearching={emergency.isSearching}
+            onDismiss={emergency.dismiss}
+            onSelect={(bathroom) => {
+              void emergency.selectAndNavigate(bathroom);
             }}
           />
 

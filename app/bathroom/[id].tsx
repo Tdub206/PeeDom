@@ -14,6 +14,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
 import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
+import { VerificationBadge } from '@/components/business/VerificationBadge';
 import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
 import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
@@ -33,6 +34,8 @@ import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import { mapBathroomDetailRowToListItem } from '@/utils/bathroom';
+import { useBathroomView } from '@/hooks/useBathroomView';
+import { useKudosCount, useSendKudos } from '@/hooks/useKudos';
 import { bathroomPhotoSchema } from '@/utils/validate';
 
 type HoursEntry = { open: string; close: string };
@@ -124,6 +127,10 @@ export default function BathroomDetailScreen() {
 
     return id ?? '';
   }, [id]);
+  useBathroomView(bathroomId || null);
+  const { data: kudosCount } = useKudosCount(bathroomId || null);
+  const sendKudosMutation = useSendKudos(bathroomId || null);
+
   const {
     data: bathroomDetail,
     error: bathroomDetailError,
@@ -474,7 +481,12 @@ export default function BathroomDetailScreen() {
       <ScrollView className="flex-1" contentInsetAdjustmentBehavior="automatic">
         <View className="px-6 py-8">
           <View className="rounded-[32px] bg-brand-600 px-6 py-8">
-            <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Bathroom Detail</Text>
+            <View className="flex-row items-center gap-3">
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Bathroom Detail</Text>
+              {bathroomDetail.verification_badge_type ? (
+                <VerificationBadge badgeType={bathroomDetail.verification_badge_type} />
+              ) : null}
+            </View>
             <Text className="mt-3 text-4xl font-black tracking-tight text-white">{bathroomDetail.place_name}</Text>
             <Text className="mt-3 text-base leading-6 text-white/80">{address}</Text>
 
@@ -809,6 +821,21 @@ export default function BathroomDetailScreen() {
               }
               variant="secondary"
             />
+            <Pressable
+              className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl border border-surface-strong bg-surface-card px-4 py-4"
+              onPress={() => sendKudosMutation.mutate(undefined)}
+              disabled={sendKudosMutation.isPending}
+            >
+              <Ionicons name="heart" size={18} color={colors.brand[600]} />
+              <Text className="text-sm font-bold text-brand-600">
+                {sendKudosMutation.isPending ? 'Sending…' : 'Thank This Business'}
+              </Text>
+              {typeof kudosCount === 'number' && kudosCount > 0 ? (
+                <View className="rounded-full bg-brand-50 px-2 py-0.5">
+                  <Text className="text-xs font-black text-brand-600">{kudosCount}</Text>
+                </View>
+              ) : null}
+            </Pressable>
             <Button
               className="mt-3"
               label="Report An Issue"

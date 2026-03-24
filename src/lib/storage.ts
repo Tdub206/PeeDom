@@ -22,6 +22,8 @@ const STORAGE_KEYS = {
   SEARCH_HISTORY: '@peedom/search_history',
   PREMIUM_CITY_PACK_INDEX: '@peedom/premium_city_pack_index',
   PREMIUM_CITY_PACK_PREFIX: '@peedom/premium_city_pack',
+  TERMS_ACCEPTED_AT: '@peedom/terms_accepted_at',
+  HAS_COMPLETED_ONBOARDING: '@peedom/has_completed_onboarding',
 } as const;
 
 export const storage = {

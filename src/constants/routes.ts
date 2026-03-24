@@ -8,6 +8,7 @@ export const routes = {
     favorites: '/favorites' as Href,
     profile: '/profile' as Href,
     business: '/business' as Href,
+    admin: '/admin' as Href,
   },
   auth: {
     login: '/login' as Href,
@@ -111,6 +112,32 @@ export const routes = {
           draft_id: draftId,
         },
       }) as Href,
+    reportUser: '/modal/report-user' as Href,
+    reportUserTarget: (userId: string, displayName?: string) =>
+      ({
+        pathname: '/modal/report-user',
+        params: {
+          user_id: userId,
+          ...(displayName ? { display_name: displayName } : {}),
+        },
+      }) as Href,
+    legal: '/modal/legal' as Href,
+    legalPrivacy: {
+      pathname: '/modal/legal',
+      params: { tab: 'privacy' },
+    } as Href,
+    legalTerms: {
+      pathname: '/modal/legal',
+      params: { tab: 'terms' },
+    } as Href,
+    routeBathrooms: '/modal/route-bathrooms' as Href,
+    cityPacks: '/modal/city-packs' as Href,
+    requestFeatured: '/modal/request-featured' as Href,
+    requestFeaturedBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/request-featured',
+        params: { bathroom_id: bathroomId },
+      }) as unknown as Href,
   },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;

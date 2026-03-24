@@ -6,6 +6,7 @@ import { CodeBadge } from '@/components/CodeBadge';
 import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
+import { VerificationBadge } from '@/components/business/VerificationBadge';
 import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
 
 interface MapDetailSheetCardProps {
@@ -161,7 +162,12 @@ function MapDetailSheetCardComponent({
             </View>
           </View>
 
-          <Text className="mt-4 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
+          <View className="mt-4 flex-row items-center gap-2">
+            <Text className="flex-1 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
+            {bathroom.verification_badge_type ? (
+              <VerificationBadge badgeType={bathroom.verification_badge_type} />
+            ) : null}
+          </View>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroom.address}</Text>
           <View className="mt-3 flex-row items-center gap-2">
             <Text className="text-sm font-semibold text-brand-700">{formatDistance(bathroom.distance_meters)}</Text>

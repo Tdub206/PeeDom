@@ -199,6 +199,13 @@ export default function BusinessTab() {
     ]);
   }, [dashboardQuery, featuredPlacementsQuery, hasDashboardAccess, refetchClaims]);
 
+  const handleRequestFeatured = useCallback(
+    (bathroomId: string) => {
+      pushSafely(router, routes.modal.requestFeaturedBathroom(bathroomId), routes.tabs.business);
+    },
+    [router],
+  );
+
   const handleOpenBathroom = useCallback(
     (bathroomId: string) => {
       pushSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.business);
@@ -321,6 +328,7 @@ export default function BusinessTab() {
                         key={bathroom.bathroom_id}
                         onManageHours={openHoursEditor}
                         onOpenBathroom={handleOpenBathroom}
+                        onRequestFeatured={handleRequestFeatured}
                       />
                     ))}
                   </View>

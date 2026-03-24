@@ -8,6 +8,7 @@ interface ClaimedBathroomCardProps {
   bathroom: BusinessDashboardBathroom;
   onOpenBathroom: (bathroomId: string) => void;
   onManageHours: (bathroomId: string) => void;
+  onRequestFeatured?: (bathroomId: string) => void;
 }
 
 function formatRelativeTime(isoString: string): string {
@@ -71,6 +72,7 @@ function ClaimedBathroomCardComponent({
   bathroom,
   onOpenBathroom,
   onManageHours,
+  onRequestFeatured,
 }: ClaimedBathroomCardProps) {
   return (
     <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
@@ -117,6 +119,13 @@ function ClaimedBathroomCardComponent({
           label="Manage Hours"
           onPress={() => onManageHours(bathroom.bathroom_id)}
         />
+        {onRequestFeatured && !bathroom.has_active_featured_placement ? (
+          <Button
+            label="Request Featured Placement"
+            onPress={() => onRequestFeatured(bathroom.bathroom_id)}
+            variant="secondary"
+          />
+        ) : null}
         <Button
           label="Open Bathroom"
           onPress={() => onOpenBathroom(bathroom.bathroom_id)}

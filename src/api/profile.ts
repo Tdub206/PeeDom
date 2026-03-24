@@ -2,11 +2,12 @@ import { z } from 'zod';
 import { displayNameSchema } from '@/lib/validators';
 import {
   deactivateAccountResultSchema,
+  deleteAccountResultSchema,
   parseSupabaseNullableRow,
   profileMutationResultSchema,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
-import { DeactivateAccountResult, DisplayNameUpdateResult } from '@/types';
+import { DeactivateAccountResult, DeleteAccountResult, DisplayNameUpdateResult } from '@/types';
 
 interface AppErrorShape {
   code?: string;
@@ -164,6 +165,63 @@ export async function deactivateAccount(): Promise<{
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to deactivate your account right now.'),
         'Unable to deactivate your account right now.'
+      ),
+    };
+  }
+}
+
+export async function deleteAccount(): Promise<{
+  data: DeleteAccountResult | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('delete_account' as never);
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to delete your account right now.'),
+      };
+    }
+
+    const parsedResult = parseSupabaseNullableRow(
+      deleteAccountResultSchema,
+      data,
+      'delete account result',
+      'Unable to delete your account right now.'
+    );
+
+    if (parsedResult.error) {
+      return {
+        data: null,
+        error: parsedResult.error,
+      };
+    }
+
+    if (!parsedResult.data) {
+      return {
+        data: null,
+        error: buildProfileMutationError('unknown_error', 'Unable to delete your account right now.'),
+      };
+    }
+
+    if (!parsedResult.data.success) {
+      return {
+        data: null,
+        error: buildProfileMutationError(parsedResult.data.error, 'Unable to delete your account right now.'),
+      };
+    }
+
+    return {
+      data: parsedResult.data as DeleteAccountResult,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to delete your account right now.'),
+        'Unable to delete your account right now.'
       ),
     };
   }

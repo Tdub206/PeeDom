@@ -14,6 +14,8 @@ import { claimBusinessDrafts } from '@/lib/draft-manager';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { ClaimBusinessDraft } from '@/types';
 import { formatBusinessClaimAddress } from '@/utils/business-claims';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
   claimBusinessSchema,
@@ -89,6 +91,7 @@ export default function ClaimBusinessModalScreen() {
   const { requireAuth, user } = useAuth();
   const { showToast } = useToast();
   const { isSubmitting, submitClaim } = useBusinessClaimSubmission();
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
   const [bathroomDetail, setBathroomDetail] = useState<PublicBathroomDetailRow | null>(null);
   const [isLoadingBathroom, setIsLoadingBathroom] = useState(true);
   const [bathroomError, setBathroomError] = useState('');
@@ -550,8 +553,15 @@ export default function ClaimBusinessModalScreen() {
               />
             </View>
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/claim-business"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Submit Claim"
                 loading={isSubmitting}
                 onPress={() => {

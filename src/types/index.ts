@@ -356,6 +356,7 @@ export interface BathroomListItem {
   cleanliness_avg: number | null;
   distance_meters?: number;
   primary_code_summary: CodeSummary;
+  verification_badge_type: BusinessVerificationBadgeType | null;
   sync: SyncMetadata;
 }
 
@@ -492,6 +493,13 @@ export interface DeactivateAccountResult {
   success: boolean;
   user_id?: string;
   deactivated_at?: string;
+  error?: string;
+}
+
+export interface DeleteAccountResult {
+  success: boolean;
+  user_id?: string;
+  deleted_at?: string;
   error?: string;
 }
 

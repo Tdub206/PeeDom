@@ -97,6 +97,10 @@ function MapLegend() {
           <Text className="text-xs font-medium text-ink-700">{palette.label}</Text>
         </View>
       ))}
+      <View className="mt-2 flex-row items-center gap-2">
+        <Ionicons name="shield-checkmark" size={14} color={colors.brand[600]} />
+        <Text className="text-xs font-medium text-ink-700">StallPass Verified</Text>
+      </View>
     </View>
   );
 }
@@ -254,6 +258,7 @@ function BathroomMapViewComponent({
           const tone = getBathroomMapPinTone(bathroom);
           const palette = PIN_PALETTES[tone];
           const isSelected = selectedBathroomId === bathroom.id;
+          const isVerified = Boolean(bathroom.verification_badge_type);
 
           return (
             <Marker
@@ -267,27 +272,33 @@ function BathroomMapViewComponent({
               title={bathroom.place_name}
               tracksViewChanges={false}
             >
-              <View
-                className="items-center justify-center rounded-full border-4 bg-white"
-                style={{
-                  borderColor: palette.borderColor,
-                  height: isSelected ? 34 : 28,
-                  width: isSelected ? 34 : 28,
-                  shadowColor: colors.ink[900],
-                  shadowOffset: { width: 0, height: 6 },
-                  shadowOpacity: 0.18,
-                  shadowRadius: 10,
-                  elevation: 4,
-                }}
-              >
+              <View style={{ alignItems: 'center' }}>
                 <View
-                  className="rounded-full"
+                  className="items-center justify-center rounded-full border-4 bg-white"
                   style={{
-                    backgroundColor: palette.backgroundColor,
-                    height: isSelected ? 18 : 14,
-                    width: isSelected ? 18 : 14,
+                    borderColor: isVerified ? colors.brand[600] : palette.borderColor,
+                    height: isSelected ? 34 : 28,
+                    width: isSelected ? 34 : 28,
+                    shadowColor: colors.ink[900],
+                    shadowOffset: { width: 0, height: 6 },
+                    shadowOpacity: 0.18,
+                    shadowRadius: 10,
+                    elevation: 4,
                   }}
-                />
+                >
+                  {isVerified ? (
+                    <Ionicons name="shield-checkmark" size={isSelected ? 16 : 12} color={colors.brand[600]} />
+                  ) : (
+                    <View
+                      className="rounded-full"
+                      style={{
+                        backgroundColor: palette.backgroundColor,
+                        height: isSelected ? 18 : 14,
+                        width: isSelected ? 18 : 14,
+                      }}
+                    />
+                  )}
+                </View>
               </View>
             </Marker>
           );

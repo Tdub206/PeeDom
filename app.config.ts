@@ -123,7 +123,17 @@ export default ({ config }: ConfigContext): ExpoConfig => {
           defaultChannel: 'default',
         },
       ],
+      'expo-updates',
     ],
+    updates: {
+      enabled: true,
+      fallbackToCacheTimeout: 0,
+      url: `https://u.expo.dev/${process.env.EAS_PROJECT_ID || 'd9ec08ec-330b-46e5-84c2-55e6db9db195'}`,
+      checkAutomatically: 'ON_LOAD',
+    },
+    runtimeVersion: {
+      policy: 'appVersion',
+    },
     experiments: {
       typedRoutes: true,
     },

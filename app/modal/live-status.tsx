@@ -17,6 +17,8 @@ import {
   getBathroomStatusLabel,
   getBathroomStatusTone,
 } from '@/lib/bathroom-status';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import type { BathroomLiveStatus } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -149,6 +151,7 @@ export default function LiveStatusModalScreen() {
     isReportingStatus,
     reportStatus,
   } = useBathroomLiveStatus(bathroomId || null);
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
 
   const currentTone = useMemo(
     () => (currentStatus ? getBathroomStatusTone(currentStatus.status) : null),
@@ -608,8 +611,15 @@ export default function LiveStatusModalScreen() {
               />
             </View>
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/live-status"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Share Live Status"
                 loading={isReportingStatus}
                 onPress={() => {

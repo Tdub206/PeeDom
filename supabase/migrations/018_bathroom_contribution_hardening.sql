@@ -6,17 +6,18 @@
 
 create or replace function public.create_bathroom_submission(
   p_place_name text,
+  p_latitude double precision,
+  p_longitude double precision,
   p_address_line1 text default null,
   p_city text default null,
   p_state text default null,
   p_postal_code text default null,
   p_country_code text default 'US',
-  p_latitude double precision,
-  p_longitude double precision,
   p_is_locked boolean default false,
   p_is_accessible boolean default false,
   p_is_customer_only boolean default false
 )
+
 returns jsonb
 language plpgsql
 security definer
@@ -425,17 +426,11 @@ $$;
 
 grant execute on function public.create_bathroom_submission(
   text,
-  text,
-  text,
-  text,
-  text,
-  text,
-  double precision,
-  double precision,
-  boolean,
-  boolean,
-  boolean
+  double precision, double precision,
+  text, text, text, text, text,
+  boolean, boolean, boolean
 ) to authenticated;
+
 
 grant execute on function public.submit_bathroom_access_code(uuid, text) to authenticated;
 grant execute on function public.vote_on_code(uuid, smallint) to authenticated;

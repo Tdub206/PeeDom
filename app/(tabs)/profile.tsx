@@ -1,13 +1,16 @@
 import { useCallback, useMemo } from 'react';
 import { ActivityIndicator, Alert, Pressable, RefreshControl, ScrollView, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { colors } from '@/constants/colors';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button } from '@/components/Button';
 import { BadgesGrid, NotificationPrefsCard, PointsHistoryList, ProfileHeader, StatsGrid } from '@/components/profile';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useGamificationDashboard } from '@/hooks/useGamificationDashboard';
-import { useAccountSignOut, useDeactivateAccount } from '@/hooks/useProfileAccount';
+import { useDataExport } from '@/hooks/useDataExport';
+import { useAccountSignOut, useDeactivateAccount, useDeleteAccount } from '@/hooks/useProfileAccount';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
@@ -106,6 +109,8 @@ export default function ProfileTab() {
   const { showToast } = useToast();
   const { isSigningOut, signOut } = useAccountSignOut();
   const { deactivateAccount, isDeactivating } = useDeactivateAccount();
+  const { deleteAccount, isDeleting } = useDeleteAccount();
+  const { exportData, isExporting } = useDataExport();
   const {
     badges,
     badgesError,
@@ -219,6 +224,46 @@ export default function ProfileTab() {
       ]
     );
   }, [deactivateAccount, isDeactivating, isSigningOut]);
+
+  const handleConfirmDelete = useCallback(() => {
+    if (isSigningOut || isDeleting) {
+      return;
+    }
+
+    Alert.alert(
+      'Delete your account?',
+      'This permanently removes your personal data, profile, favorites, badges, points, and business claims. Anonymized contributions (bathroom entries, ratings) will remain. This cannot be undone.',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Continue',
+          style: 'destructive',
+          onPress: () => {
+            Alert.alert(
+              'Final confirmation',
+              'Are you absolutely sure? All personal data will be permanently deleted.',
+              [
+                {
+                  text: 'Go Back',
+                  style: 'cancel',
+                },
+                {
+                  text: 'Delete Permanently',
+                  style: 'destructive',
+                  onPress: () => {
+                    void deleteAccount();
+                  },
+                },
+              ]
+            );
+          },
+        },
+      ]
+    );
+  }, [deleteAccount, isDeleting, isSigningOut]);
 
   if (isAuthenticated && !profile) {
     return (
@@ -373,23 +418,86 @@ export default function ProfileTab() {
 
           <BadgesGrid badges={badges} error={badgesError} isLoading={isLoadingBadges} />
 
+          <View className="rounded-[32px] border border-surface-strong bg-surface-card px-5 py-6">
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Offline access</Text>
+            <Pressable
+              accessibilityRole="button"
+              className="mt-4 flex-row items-center gap-3 rounded-2xl bg-surface-base px-4 py-3"
+              onPress={() => pushSafely(router, routes.modal.cityPacks, routes.tabs.profile)}
+            >
+              <Ionicons name="cloud-download-outline" size={20} color={colors.brand[600]} />
+              <View className="flex-1">
+                <Text className="text-sm font-semibold text-brand-700">City Packs</Text>
+                <Text className="text-xs text-ink-500">Download bathrooms for offline use</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color={colors.ink[400]} />
+            </Pressable>
+          </View>
+
           <NotificationPrefsCard />
+
+          <View className="rounded-[32px] border border-surface-strong bg-surface-card px-5 py-6">
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Legal</Text>
+            <View className="mt-4 gap-3">
+              <Pressable
+                accessibilityRole="link"
+                className="rounded-2xl bg-surface-base px-4 py-3"
+                onPress={() => pushSafely(router, routes.modal.legalPrivacy, routes.tabs.profile)}
+              >
+                <Text className="text-sm font-semibold text-brand-700">Privacy Policy</Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="link"
+                className="rounded-2xl bg-surface-base px-4 py-3"
+                onPress={() => pushSafely(router, routes.modal.legalTerms, routes.tabs.profile)}
+              >
+                <Text className="text-sm font-semibold text-brand-700">Terms of Service</Text>
+              </Pressable>
+              <Pressable
+                accessibilityRole="button"
+                className="rounded-2xl bg-surface-base px-4 py-3"
+                disabled={isExporting}
+                onPress={() => void exportData()}
+              >
+                <Text className="text-sm font-semibold text-brand-700">
+                  {isExporting ? 'Preparing export...' : 'Export My Data'}
+                </Text>
+              </Pressable>
+            </View>
+          </View>
 
           <View className="rounded-[32px] border border-danger/20 bg-danger/5 px-5 py-6">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-danger">Account controls</Text>
-            <Text className="mt-3 text-2xl font-black text-ink-900">Deactivate this account</Text>
-            <Text className="mt-2 text-sm leading-6 text-ink-600">
+
+            <Text className="mt-3 text-lg font-bold text-ink-900">Deactivate account</Text>
+            <Text className="mt-1 text-sm leading-6 text-ink-600">
               Deactivation signs you out, clears the current device state, and prevents this profile from restoring in
-              future app sessions.
+              future app sessions. Your data is preserved.
             </Text>
             <Button
-              className="mt-5"
-              disabled={isSigningOut || isDeactivating}
-              label={isDeactivating ? 'Deactivating Account...' : 'Deactivate Account'}
+              className="mt-4"
+              disabled={isSigningOut || isDeactivating || isDeleting}
+              label={isDeactivating ? 'Deactivating...' : 'Deactivate Account'}
               loading={isDeactivating}
               onPress={handleConfirmDeactivate}
               variant="destructive"
             />
+
+            <View className="mt-5 border-t border-danger/20 pt-5">
+              <Text className="text-lg font-bold text-ink-900">Delete account permanently</Text>
+              <Text className="mt-1 text-sm leading-6 text-ink-600">
+                Permanently removes your profile, favorites, badges, points, and business claims. Anonymized
+                contributions will remain. This cannot be undone.
+              </Text>
+              <Button
+                className="mt-4"
+                disabled={isSigningOut || isDeactivating || isDeleting}
+                label={isDeleting ? 'Deleting Account...' : 'Delete Account'}
+                loading={isDeleting}
+                onPress={handleConfirmDelete}
+                variant="destructive"
+              />
+            </View>
           </View>
 
           <View className="rounded-[32px] border border-surface-strong bg-surface-card px-5 py-6">

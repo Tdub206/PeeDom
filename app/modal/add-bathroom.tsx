@@ -23,6 +23,8 @@ import { addBathroomDrafts } from '@/lib/draft-manager';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { useMapStore } from '@/store/useMapStore';
 import { AddBathroomDraft, BathroomPhotoUploadInput } from '@/types';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
   AddBathroomFormValues,
@@ -179,6 +181,7 @@ export default function AddBathroomModalScreen() {
   const { coordinates, is_refreshing, permission_status, refreshLocation, requestPermission } = useLocation();
   const mapUserLocation = useMapStore((state) => state.userLocation);
   const { isSubmitting, submitBathroom } = useBathroomSubmissions();
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
   const [formState, setFormState] = useState<AddBathroomFormState>(INITIAL_FORM_STATE);
   const [selectedPhoto, setSelectedPhoto] = useState<BathroomPhotoUploadInput | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<AddBathroomFormValues>>({});
@@ -781,8 +784,15 @@ export default function AddBathroomModalScreen() {
               <Text className="mt-6 rounded-2xl bg-danger/10 px-4 py-3 text-sm text-danger">{submitError}</Text>
             ) : null}
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/add-bathroom"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Submit Bathroom"
                 loading={isSubmitting}
                 onPress={() => {

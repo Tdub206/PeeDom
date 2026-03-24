@@ -3,8 +3,9 @@ import { Platform, StyleSheet } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
+import { useAuth } from '@/contexts/AuthContext';
 
-type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business';
+type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business' | 'admin';
 
 const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   index: 'map-outline',
@@ -12,9 +13,13 @@ const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   favorites: 'heart-outline',
   profile: 'person-circle-outline',
   business: 'briefcase-outline',
+  admin: 'shield-checkmark-outline',
 };
 
 export default function TabLayout() {
+  const { profile } = useAuth();
+  const isAdmin = profile?.role === 'admin';
+
   return (
     <Tabs
       screenOptions={{
@@ -61,6 +66,14 @@ export default function TabLayout() {
         options={{
           title: 'Business',
           tabBarIcon: ({ color }) => <TabBarIcon routeName="business" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="admin"
+        options={{
+          title: 'Admin',
+          tabBarIcon: ({ color }) => <TabBarIcon routeName="admin" color={color} />,
+          href: isAdmin ? ('/admin' as never) : null,
         }}
       />
     </Tabs>

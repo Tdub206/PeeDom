@@ -45,6 +45,7 @@ interface BathroomDirectoryRowBase {
   distance_meters?: number | null;
   rank?: number;
   favorited_at?: string;
+  verification_badge_type?: string | null;
 }
 
 export type BathroomRow = BathroomDirectoryRowBase;
@@ -409,6 +410,7 @@ export function mapBathroomRowToListItem(
       confidence_score: bathroom.confidence_score ?? null,
       last_verified_at: bathroom.last_verified_at ?? null,
     },
+    verification_badge_type: (bathroom.verification_badge_type as BathroomListItem['verification_badge_type']) ?? null,
     sync: buildSyncMetadata(options),
   };
 }
