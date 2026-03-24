@@ -95,6 +95,21 @@ function getRewardedCodeRevealUnitId(): string | null {
   return adMobRuntimeConfig.rewardedCodeRevealUnitId || null;
 }
 
+function getRewardedEarnPointsUnitId(): string | null {
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
+
+  if (!adMobRuntimeConfig.isEnabled || !googleMobileAdsModule) {
+    return null;
+  }
+
+  if (adMobRuntimeConfig.usesTestIds) {
+    return googleMobileAdsModule.TestIds.REWARDED;
+  }
+
+  // Fall back to the code reveal unit id if no dedicated earn-points unit is configured.
+  return adMobRuntimeConfig.rewardedEarnPointsUnitId || adMobRuntimeConfig.rewardedCodeRevealUnitId || null;
+}
+
 async function ensureMobileAdsReady(): Promise<void> {
   const googleMobileAdsModule = googleMobileAdsModuleState.module;
 
@@ -205,6 +220,98 @@ export async function showRewardedCodeRevealAd(
         return;
       }
 
+      hasResolved = true;
+      cleanup();
+      reject(error);
+    };
+
+    const unsubscribeLoaded = rewardedAd.addAdEventListener(googleMobileAdsModule.RewardedAdEventType.LOADED, () => {
+      rewardedAd.show().catch((error) => {
+        fail(error instanceof Error ? error : new Error('Unable to show the rewarded ad.'));
+      });
+    });
+    const unsubscribeClosed = rewardedAd.addAdEventListener(googleMobileAdsModule.AdEventType.CLOSED, () => {
+      finish({
+        outcome: earnedReward ? 'earned' : 'dismissed',
+        message: earnedReward ? null : 'The ad was closed before the reward completed.',
+      });
+    });
+    const unsubscribeEarned = rewardedAd.addAdEventListener(
+      googleMobileAdsModule.RewardedAdEventType.EARNED_REWARD,
+      () => {
+        earnedReward = true;
+      }
+    );
+    const unsubscribeError = rewardedAd.addAdEventListener(googleMobileAdsModule.AdEventType.ERROR, (error) => {
+      fail(new Error(error.message || 'Unable to load a rewarded ad right now.'));
+    });
+    const loadTimeout = setTimeout(() => {
+      fail(new Error('Timed out while loading a rewarded ad.'));
+    }, 45000);
+
+    rewardedAd.load();
+  });
+}
+
+export interface RewardedEarnPointsResult {
+  outcome: 'earned' | 'dismissed' | 'unavailable';
+  message: string | null;
+}
+
+/**
+ * Shows a rewarded ad for the "earn points" flow (voluntary, user-initiated).
+ * Uses the dedicated earn-points ad unit, falling back to the code reveal unit.
+ */
+export async function showRewardedEarnPointsAd(
+  userId?: string | null
+): Promise<RewardedEarnPointsResult> {
+  const availability = getAdMobAvailability();
+  const adUnitId = getRewardedEarnPointsUnitId();
+
+  if (!availability.isAvailable || !adUnitId) {
+    return {
+      outcome: 'unavailable',
+      message: availability.errorMessage ?? 'Rewarded ads are unavailable in this build.',
+    };
+  }
+
+  await ensureMobileAdsReady();
+
+  const requestOptions = await buildRequestOptions({
+    bathroomId: 'earn_points',
+    userId,
+  });
+  const googleMobileAdsModule = googleMobileAdsModuleState.module;
+
+  if (!googleMobileAdsModule) {
+    return {
+      outcome: 'unavailable',
+      message: availability.errorMessage ?? MISSING_NATIVE_MODULE_MESSAGE,
+    };
+  }
+
+  return new Promise((resolve, reject) => {
+    const rewardedAd = googleMobileAdsModule.RewardedAd.createForAdRequest(adUnitId, requestOptions);
+    let hasResolved = false;
+    let earnedReward = false;
+
+    const cleanup = () => {
+      unsubscribeLoaded();
+      unsubscribeClosed();
+      unsubscribeEarned();
+      unsubscribeError();
+      clearTimeout(loadTimeout);
+    };
+
+    const finish = (result: RewardedEarnPointsResult) => {
+      if (hasResolved) return;
+      hasResolved = true;
+      cleanup();
+      resolve(result);
+    };
+
+    const fail = (error: Error) => {
+      if (hasResolved) return;
       hasResolved = true;
       cleanup();
       reject(error);

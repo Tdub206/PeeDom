@@ -26,11 +26,13 @@ import { ToastProvider } from '@/contexts/ToastContext';
 import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
 import { supabaseConfigState } from '@/lib/supabase';
+import { initializeFirstInstallCredits } from '@/lib/first-install-credits';
 import { useRealtimeStore } from '@/store/useRealtimeStore';
 
 initializeSentry();
 initializeQueryLifecycleManagers();
 void initializeAnalytics().catch(() => undefined);
+void initializeFirstInstallCredits().catch(() => undefined);
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function RootNavigator() {
