@@ -12,7 +12,7 @@ import { consumeEmergencyFindCredit, getFirstInstallCredits } from '@/lib/first-
 import { BathroomListItem, Coordinates } from '@/types';
 import { calculateDistanceMeters, mapBathroomRowToListItem } from '@/utils/bathroom';
 
-export const EMERGENCY_FIND_POINTS_COST = 10;
+export const EMERGENCY_FIND_POINTS_COST = 25;
 
 type EmergencyPhase = 'idle' | 'locating' | 'searching' | 'navigating' | 'error';
 

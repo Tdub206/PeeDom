@@ -11,7 +11,7 @@ import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
-export const CODE_REVEAL_POINTS_COST = 10;
+export const CODE_REVEAL_POINTS_COST = 25;
 
 /** How the next unlock will be paid for. */
 export type UnlockPath = 'premium' | 'free_credit' | 'points' | 'ad' | 'unavailable';

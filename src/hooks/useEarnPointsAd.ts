@@ -5,7 +5,7 @@ import { recordAdWatchedPoints } from '@/api/gamification';
 import { getAdMobAvailability, showRewardedEarnPointsAd } from '@/lib/admob';
 import { getErrorMessage } from '@/utils/errorMap';
 
-export const AD_POINTS_REWARD = 10;
+export const AD_POINTS_REWARD = 25;
 
 export interface UseEarnPointsAdResult {
   isAdAvailable: boolean;
