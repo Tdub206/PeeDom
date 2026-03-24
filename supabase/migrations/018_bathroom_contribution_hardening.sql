@@ -425,13 +425,13 @@ $$;
 
 grant execute on function public.create_bathroom_submission(
   text,
-  text,
-  text,
-  text,
-  text,
-  text,
   double precision,
   double precision,
+  text,
+  text,
+  text,
+  text,
+  text,
   boolean,
   boolean,
   boolean
