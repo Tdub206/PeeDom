@@ -1,0 +1,20 @@
+# pack-refs with: peeled fully-peeled sorted 
+89fbfd3ff8ade485cef8ecdcde2550c8fe895991 refs/heads/claude/unruffled-goldberg
+5f20c47f74e7e5f5deead0707a3e0c16ff4cecee refs/heads/claude/unruffled-kepler
+82a6e31d9f03444dc1f2bfef692a60c440c01b06 refs/heads/codex/perform-code-review-for-peedom-repo
+44cfd2115c0c4454e5b81018aea28c2ad888cfb5 refs/heads/codex/review-android-production-readiness
+5d85db9f8011d7984c09d2936f2ed1849568587f refs/heads/codex/review-branches-and-merge-code
+97fe865c3e688b45f8eb2441e2f53281a8e30bce refs/heads/codex/verify-working-agreements
+e48c38ee541212681a1f7d01207a69bb0de9c223 refs/heads/feature/full-build
+cdfb547a50922f1a222904498605c2633557e4f0 refs/heads/main
+11dc4becccf3d9bc36582a224a40779a7a5b2eb4 refs/heads/master
+15829a203f5c7387b17a8d38f9672320258d9e33 refs/heads/merge-master-into-main
+6d542ba84e0bab38f93709c59bdfc90da86b808a refs/heads/remote
+82a6e31d9f03444dc1f2bfef692a60c440c01b06 refs/pull/1/head
+0508f82ef78fc28a6678ca3d46bab93199b46700 refs/pull/2/head
+dea31a3a349a20363b4c9139115019006e169283 refs/pull/3/head
+e48c38ee541212681a1f7d01207a69bb0de9c223 refs/pull/4/head
+e486c481a5086d7a84965573e8748338d01564a1 refs/pull/4/merge
+5f20c47f74e7e5f5deead0707a3e0c16ff4cecee refs/pull/5/head
+3cb9fe4b4c75816bfba5594a63b3df4d5fefd484 refs/pull/5/merge
+5d85db9f8011d7984c09d2936f2ed1849568587f refs/pull/6/head

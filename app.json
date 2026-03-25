@@ -1,68 +1,16 @@
 {
   "expo": {
-    "name": "Pee-Dom",
-    "slug": "peedom-mobile",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
-    "scheme": "peedom",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.peedom.mobile",
-      "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience.",
-        "NSLocationAlwaysAndWhenInUseUsageDescription": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience."
-      }
-    },
+    "name": "StallPass",
+    "slug": "StallPass",
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.peedom.mobile",
-      "permissions": [
-        "ACCESS_FINE_LOCATION",
-        "ACCESS_COARSE_LOCATION"
-      ],
-      "config": {
-        "googleMaps": {
-          "apiKey": ""
-        }
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/favicon.png"
-    },
-    "plugins": [
-      "expo-router",
-      "expo-secure-store",
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Pee-Dom uses your location to show nearby bathrooms and improve your search experience."
-        }
-      ]
-    ],
-    "experiments": {
-      "typedRoutes": true
+      "package": "com.peedom.mobile"
     },
     "extra": {
-      "router": {
-        "origin": false
+      "react-native-google-mobile-ads": {
+        "android_app_id": "ca-app-pub-3940256099942544~3347511713"
       },
       "eas": {
-        "projectId": "your-eas-project-id-here"
+        "projectId": "d9ec08ec-330b-46e5-84c2-55e6db9db195"
       }
     }
   }

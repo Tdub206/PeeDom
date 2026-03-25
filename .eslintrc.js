@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react-native'],
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  ignorePatterns: ['node_modules/', '.expo/', 'dist/', 'web-build/'],
+  ignorePatterns: ['node_modules/', '.expo/', 'dist/', 'web-build/', '_preflight/'],
   rules: {
     'react-native/no-inline-styles': 'off',
     '@typescript-eslint/no-var-requires': 'off',
