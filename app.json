@@ -2,16 +2,111 @@
   "expo": {
     "name": "StallPass",
     "slug": "StallPass",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "stallpass",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "com.peedom.mobile",
+      "buildNumber": "1",
+      "supportsTablet": false,
+      "requireFullScreen": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "StallPass uses your location to find nearby bathrooms.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "StallPass uses your location in the background to surface nearby bathrooms while you're on the move.",
+        "NSCameraUsageDescription": "StallPass uses your camera to let you add photos of bathroom facilities.",
+        "NSPhotoLibraryUsageDescription": "StallPass accesses your photo library so you can upload bathroom photos.",
+        "NSPhotoLibraryAddUsageDescription": "StallPass saves bathroom photos to your library.",
+        "NSUserNotificationsUsageDescription": "StallPass sends notifications about nearby bathrooms and community updates."
+      },
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
+      }
+    },
     "android": {
-      "package": "com.peedom.mobile"
+      "package": "com.peedom.mobile",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "StallPass uses your location to find nearby bathrooms.",
+          "locationAlwaysPermission": "StallPass uses your location in the background to surface nearby bathrooms while you're on the move.",
+          "locationWhenInUsePermission": "StallPass uses your location to find nearby bathrooms."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "StallPass accesses your photo library so you can upload bathroom photos.",
+          "cameraPermission": "StallPass uses your camera to let you add photos of bathroom facilities."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#ffffff",
+          "sounds": []
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "15.1",
+            "useFrameworks": "static"
+          },
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24
+          }
+        }
+      ],
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3940256099942544~3347511713",
+          "iosAppId": "ca-app-pub-3940256099942544~3347511713"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
     },
     "extra": {
-      "react-native-google-mobile-ads": {
-        "android_app_id": "ca-app-pub-3940256099942544~3347511713"
-      },
       "eas": {
         "projectId": "d9ec08ec-330b-46e5-84c2-55e6db9db195"
       }
+    },
+    "updates": {
+      "url": "https://u.expo.dev/d9ec08ec-330b-46e5-84c2-55e6db9db195"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
