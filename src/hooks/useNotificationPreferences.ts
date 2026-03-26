@@ -81,7 +81,7 @@ export function useNotificationPreferences() {
           title: enabled ? 'Push enabled' : 'Push disabled',
           message: enabled
             ? 'This device will receive saved bathroom updates.'
-            : 'Pee-Dom will stop sending push notifications to this device.',
+            : 'StallPass will stop sending push notifications to this device.',
           variant: 'success',
         });
 

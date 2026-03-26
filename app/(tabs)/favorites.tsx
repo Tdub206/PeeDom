@@ -100,7 +100,7 @@ export default function FavoritesTab() {
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-white/70">Favorites</Text>
             <Text className="mt-2 text-3xl font-black tracking-tight text-white">Save reliable stops.</Text>
             <Text className="mt-2 text-sm leading-6 text-white/80">
-              Sign in to build a synced favorites list that follows you across Pee-Dom sessions.
+              Sign in to build a synced favorites list that follows you across StallPass sessions.
             </Text>
           </View>
 

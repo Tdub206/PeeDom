@@ -51,7 +51,7 @@ export function usePremiumArrivalAlert(bathroomId: string | null) {
       }
 
       if (!profile?.push_enabled) {
-        throw new Error('Enable push notifications first so Pee-Dom can warn you before you arrive.');
+        throw new Error('Enable push notifications first so StallPass can warn you before you arrive.');
       }
 
       const targetArrivalAt = new Date(Date.now() + leadMinutes * 60 * 1000).toISOString();
@@ -74,7 +74,7 @@ export function usePremiumArrivalAlert(bathroomId: string | null) {
 
       showToast({
         title: 'Arrival alert armed',
-        message: `Pee-Dom will watch this bathroom for code changes while you are on the way for the next ${alert.lead_minutes} minutes.`,
+        message: `StallPass will watch this bathroom for code changes while you are on the way for the next ${alert.lead_minutes} minutes.`,
         variant: 'success',
       });
     },
@@ -106,7 +106,7 @@ export function usePremiumArrivalAlert(bathroomId: string | null) {
 
       showToast({
         title: 'Arrival alert removed',
-        message: 'Pee-Dom will stop monitoring this bathroom for your trip.',
+        message: 'StallPass will stop monitoring this bathroom for your trip.',
         variant: 'info',
       });
     },

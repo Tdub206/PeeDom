@@ -1,3 +1,5 @@
+/* global document, window, HTMLInputElement */
+
 const BUSINESS_STORAGE_KEY = "stallpass-business-dashboard-v1";
 
 const DEFAULT_DASHBOARD_STATE = {

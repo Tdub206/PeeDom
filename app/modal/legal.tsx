@@ -31,7 +31,7 @@ function PrivacyPolicyContent() {
       <Text className="text-xs text-ink-500">Last updated: {PRIVACY_LAST_UPDATED}</Text>
 
       <Paragraph>
-        Pee-Dom ("we", "us", "our") operates the Pee-Dom mobile application. This Privacy Policy
+        StallPass ("we", "us", "our") operates the StallPass mobile application. This Privacy Policy
         explains how we collect, use, disclose, and safeguard your information when you use our app.
       </Paragraph>
 
@@ -83,12 +83,12 @@ function PrivacyPolicyContent() {
       <BulletItem>Withdraw consent for personalized advertising.</BulletItem>
       <Paragraph>
         You can exercise these rights from the Profile tab in the app or by contacting us at
-        privacy@pee-dom.app.
+        privacy@stallpass.app.
       </Paragraph>
 
       <SectionHeading>7. Children's Privacy</SectionHeading>
       <Paragraph>
-        Pee-Dom is not directed at children under 13. We do not knowingly collect personal
+        StallPass is not directed at children under 13. We do not knowingly collect personal
         information from children under 13. If you believe a child has provided us data, contact us
         and we will delete it promptly.
       </Paragraph>
@@ -109,7 +109,7 @@ function PrivacyPolicyContent() {
 
       <SectionHeading>10. Contact Us</SectionHeading>
       <Paragraph>
-        If you have questions about this Privacy Policy, contact us at privacy@pee-dom.app.
+        If you have questions about this Privacy Policy, contact us at privacy@stallpass.app.
       </Paragraph>
     </>
   );
@@ -121,14 +121,14 @@ function TermsOfServiceContent() {
       <Text className="text-xs text-ink-500">Last updated: {TERMS_LAST_UPDATED}</Text>
 
       <Paragraph>
-        These Terms of Service ("Terms") govern your use of the Pee-Dom mobile application ("App")
-        operated by Pee-Dom ("we", "us", "our"). By creating an account or using the App, you agree
+        These Terms of Service ("Terms") govern your use of the StallPass mobile application ("App")
+        operated by StallPass ("we", "us", "our"). By creating an account or using the App, you agree
         to these Terms.
       </Paragraph>
 
       <SectionHeading>1. Eligibility</SectionHeading>
       <Paragraph>
-        You must be at least 13 years old to use Pee-Dom. By using the App, you represent that you
+        You must be at least 13 years old to use StallPass. By using the App, you represent that you
         meet this age requirement.
       </Paragraph>
 
@@ -142,7 +142,7 @@ function TermsOfServiceContent() {
       <SectionHeading>3. User-Generated Content</SectionHeading>
       <Paragraph>
         By submitting content (bathroom locations, access codes, ratings, photos, live status
-        updates, or reports), you grant Pee-Dom a worldwide, non-exclusive, royalty-free license to
+        updates, or reports), you grant StallPass a worldwide, non-exclusive, royalty-free license to
         use, display, and distribute that content within the App. You represent that:
       </Paragraph>
       <BulletItem>You have the right to submit the content.</BulletItem>
@@ -182,14 +182,14 @@ function TermsOfServiceContent() {
 
       <SectionHeading>8. Disclaimer of Warranties</SectionHeading>
       <Paragraph>
-        Pee-Dom is provided "as is" without warranties of any kind. We do not guarantee the
+        StallPass is provided "as is" without warranties of any kind. We do not guarantee the
         accuracy, availability, or safety of any bathroom listed in the App. Always exercise
         personal judgment when visiting locations found through the App.
       </Paragraph>
 
       <SectionHeading>9. Limitation of Liability</SectionHeading>
       <Paragraph>
-        To the fullest extent permitted by law, Pee-Dom shall not be liable for any indirect,
+        To the fullest extent permitted by law, StallPass shall not be liable for any indirect,
         incidental, special, or consequential damages arising from your use of the App, including
         but not limited to reliance on bathroom information, access codes, or safety ratings.
       </Paragraph>
@@ -210,7 +210,7 @@ function TermsOfServiceContent() {
 
       <SectionHeading>12. Contact</SectionHeading>
       <Paragraph>
-        Questions about these Terms? Contact us at support@pee-dom.app.
+        Questions about these Terms? Contact us at support@stallpass.app.
       </Paragraph>
     </>
   );

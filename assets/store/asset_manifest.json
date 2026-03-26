@@ -1,0 +1,59 @@
+{
+  "brand_direction": {
+    "positioning": "urban / modern / utility-first with trust signals",
+    "primary_color": "#4d73ff",
+    "secondary_text": "#374151",
+    "accent_success": "#1f8a5b",
+    "accent_warning": "#b7791f",
+    "accent_danger": "#c24141"
+  },
+  "screenshots": [
+    {
+      "file": "01_find_unlock_fast.png",
+      "message": "Map discovery + code access"
+    },
+    {
+      "file": "02_emergency_mode.png",
+      "message": "Urgent nearest-bathroom flow"
+    },
+    {
+      "file": "03_accessibility_details.png",
+      "message": "Accessible decision support"
+    },
+    {
+      "file": "04_live_status_ratings.png",
+      "message": "Live status + trust signals"
+    },
+    {
+      "file": "05_favorites_rewards.png",
+      "message": "Favorites + perks + profile"
+    },
+    {
+      "file": "06_offline_route_mode.png",
+      "message": "Offline city packs + route planning"
+    },
+    {
+      "file": "07_community_contributions.png",
+      "message": "Contribution loop + current data"
+    },
+    {
+      "file": "08_business_verified.png",
+      "message": "Business verification + managed trust"
+    }
+  ],
+  "exports": {
+    "ios_iphone_6_7": "1290x2796 PNG",
+    "ios_iphone_6_5": "1284x2778 PNG",
+    "android_screenshots": "1080x1920 PNG",
+    "feature_graphic": "1024x500 PNG",
+    "promo_banner": "1024x500 PNG",
+    "notification_icon": "96x96 transparent PNG",
+    "pwa_icons": [
+      "192x192 PNG",
+      "512x512 PNG"
+    ],
+    "open_graph": "1200x630 PNG",
+    "adaptive_icon_background": "1024x1024 PNG",
+    "app_icon": "1024x1024 PNG"
+  }
+}

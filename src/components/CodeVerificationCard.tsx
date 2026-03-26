@@ -28,7 +28,7 @@ function CodeVerificationCardComponent({
       <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Verification Loop</Text>
       <Text className="mt-3 text-2xl font-bold text-ink-900">Did this code work?</Text>
       <Text className="mt-2 text-base leading-6 text-ink-600">
-        A quick yes or no keeps Pee-Dom trustworthy. A successful verification can award trust points.
+        A quick yes or no keeps StallPass trustworthy. A successful verification can award trust points.
       </Text>
 
       <View className="mt-5 flex-row gap-3">

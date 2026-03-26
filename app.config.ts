@@ -77,7 +77,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#ffffff',
+        backgroundImage: './assets/adaptive-icon-background.png',
       },
       package: 'com.peedom.mobile',
       versionCode: androidVersionCode,
@@ -119,6 +119,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       [
         'expo-notifications',
         {
+          icon: './assets/notification-icon.png',
           color: '#2563eb',
           defaultChannel: 'default',
         },

@@ -10,7 +10,7 @@ const analyticsRuntimeConfig = readAnalyticsRuntimeConfig({
 const sentryDsn = process.env.EXPO_PUBLIC_SENTRY_DSN?.trim() || '';
 
 export const config = {
-  appName: 'Pee-Dom',
+  appName: 'StallPass',
   env: environment,
   apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? '',
   supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? '',

@@ -91,7 +91,7 @@ export default function RegisterScreen() {
       if (result.data.session) {
         showToast({
           title: 'Account created',
-          message: 'You are signed in and ready to start using Pee-Dom.',
+          message: 'You are signed in and ready to start using StallPass.',
           variant: 'success',
         });
         const nextIntent = consumeReturnIntent();

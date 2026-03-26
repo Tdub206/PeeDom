@@ -167,7 +167,7 @@ export default function LoginScreen() {
               </Text>
               <Text className="mt-3 text-4xl font-black tracking-tight text-white">Sign in fast.</Text>
               <Text className="mt-3 text-base leading-6 text-white/80">
-                Restore your Pee-Dom session to save favorites, submit codes, and manage reports.
+                Restore your StallPass session to save favorites, submit codes, and manage reports.
               </Text>
             </View>
 

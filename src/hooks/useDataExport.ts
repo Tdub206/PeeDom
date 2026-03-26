@@ -27,7 +27,7 @@ export function useDataExport() {
 
       await Share.share({
         message: jsonString,
-        title: 'Pee-Dom Data Export',
+        title: 'StallPass Data Export',
       });
 
       showToast({

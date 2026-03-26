@@ -82,7 +82,7 @@ export function useBathroomSubmissions() {
 
         showToast({
           title: photoWarning ? 'Bathroom added with a photo warning' : 'Bathroom added',
-          message: photoWarning ?? 'The new bathroom is now available in Pee-Dom.',
+          message: photoWarning ?? 'The new bathroom is now available in StallPass.',
           variant: photoWarning ? 'warning' : 'success',
         });
 

@@ -1,4 +1,4 @@
-# Pee-Dom Launch Checklist
+# StallPass Launch Checklist
 
 Target: Top 100 Utility on iOS App Store & Google Play
 
@@ -7,7 +7,7 @@ Target: Top 100 Utility on iOS App Store & Google Play
 ## 1. App Store Assets
 
 ### iOS (App Store Connect)
-- [ ] App name: "Pee-Dom: Find Bathrooms Fast"
+- [ ] App name: "StallPass: Find Bathrooms Fast"
 - [ ] Subtitle (30 chars): "Crowd-Sourced Restroom Finder"
 - [ ] Keywords (100 chars): bathroom,restroom,finder,nearby,accessible,code,public,emergency,clean,toilet
 - [ ] App icon (1024x1024 PNG, no alpha, no rounded corners)
@@ -33,7 +33,8 @@ Target: Top 100 Utility on iOS App Store & Google Play
 - [ ] Full description (4000 chars max)
 - [ ] Content rating questionnaire
 - [ ] Data safety form completed
-- [ ] Target API level >= 34 (Android 14)
+- [ ] Target API level >= 35 (Android 15)
+  - [ ] Repo verification note: current Android debug manifest resolves to targetSdkVersion 36
 - [ ] Privacy policy URL
 
 ---
@@ -137,8 +138,9 @@ Target: Top 100 Utility on iOS App Store & Google Play
 - [ ] Terms of service published
 - [ ] GDPR: account deactivation deletes push subscriptions (verified in migration 017)
 - [ ] CCPA: no personal data sold to third parties
-- [ ] COPPA: age gate if app targets under 13 (not applicable for PeeDom)
+- [ ] COPPA: age gate if app targets under 13 (not applicable for StallPass)
 - [ ] AdMob GDPR consent (UMP SDK) integrated for EU users
+- [ ] If iOS personalized ads or tracking are enabled, ATT prompt implemented before requesting ad tracking
 - [ ] Location usage description strings set in `app.config.ts`:
   - iOS: `NSLocationWhenInUseUsageDescription`
   - Android: `ACCESS_FINE_LOCATION` + `ACCESS_COARSE_LOCATION`
@@ -156,16 +158,16 @@ Target: Top 100 Utility on iOS App Store & Google Play
 - [ ] Android Go device (1-2 GB RAM) - stress test
 
 ### Test Scenarios
-- [ ] Fresh install → onboarding → map loads
-- [ ] Sign up → submit bathroom → earn points → see badge
-- [ ] Emergency "Go Now" → navigation launches
-- [ ] Offline → queue mutations → reconnect → mutations process
-- [ ] Background → foreground → realtime channels reconnect
-- [ ] Search → filter → select result → view detail → favorite
-- [ ] Code submit → code vote → code reveal via rewarded ad
-- [ ] Business claim → verification badge appears
-- [ ] Push notification received → tap → navigates to bathroom detail
-- [ ] Rotate device → layout remains correct
+- [ ] Fresh install -> onboarding -> map loads
+- [ ] Sign up -> submit bathroom -> earn points -> see badge
+- [ ] Emergency "Go Now" -> navigation launches
+- [ ] Offline -> queue mutations -> reconnect -> mutations process
+- [ ] Background -> foreground -> realtime channels reconnect
+- [ ] Search -> filter -> select result -> view detail -> favorite
+- [ ] Code submit -> code vote -> code reveal via rewarded ad
+- [ ] Business claim -> verification badge appears
+- [ ] Push notification received -> tap -> navigates to bathroom detail
+- [ ] Rotate device -> layout remains correct
 
 ---
 

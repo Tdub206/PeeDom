@@ -292,7 +292,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         dbProfileSchema,
         data,
         'profile',
-        'We could not restore your Pee-Dom profile.'
+        'We could not restore your StallPass profile.'
       );
 
       if (parsedProfile.error) {
@@ -304,7 +304,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           profile: null,
           errorDetails: classifySupabaseError(
             new Error('We could not find a profile for this authenticated user.'),
-            'We could not restore your Pee-Dom profile.'
+            'We could not restore your StallPass profile.'
           ),
           usedCache: false,
         };
@@ -327,7 +327,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         usedCache: false,
       };
     } catch (error) {
-      const errorDetails = classifySupabaseError(error, 'We could not restore your Pee-Dom profile.');
+      const errorDetails = classifySupabaseError(error, 'We could not restore your StallPass profile.');
 
       if (errorDetails.kind === 'offline') {
         const cachedProfile = await readCachedProfile(userId);
