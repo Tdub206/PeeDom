@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="StallPass Business is a configurable browser dashboard for launch tasks, support links, listing controls, and business operations."
+  >
+  <title>StallPass Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/business.css">
+  <script src="/assets/site.js" defer></script>
+  <script src="/assets/business.js" defer></script>
+</head>
+<body class="business-body" data-theme="signal" data-density="comfortable">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-mark" href="/" aria-label="StallPass home">
+        <span class="brand-kicker">SP</span>
+        <span class="brand-copy">
+          <strong>StallPass Business</strong>
+          <span>Configurable dashboard for claimed locations</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="business-menu">
+        Menu
+      </button>
+
+      <nav class="site-nav" id="business-menu" data-menu>
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="business-shell shell">
+    <aside class="business-rail">
+      <div class="rail-card">
+        <p class="eyebrow">Surface modes</p>
+        <h2>Shape the dashboard around the role in front of it.</h2>
+        <div class="preset-stack">
+          <button class="preset-button is-selected" type="button" data-theme-choice="signal">Signal</button>
+          <button class="preset-button" type="button" data-theme-choice="stone">Stone</button>
+          <button class="preset-button" type="button" data-theme-choice="verdant">Verdant</button>
+        </div>
+        <div class="density-toggle">
+          <button class="density-button is-selected" type="button" data-density-choice="comfortable">Comfortable</button>
+          <button class="density-button" type="button" data-density-choice="compact">Compact</button>
+        </div>
+      </div>
+
+      <div class="rail-card">
+        <p class="eyebrow">Widgets</p>
+        <div class="toggle-list">
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="checklist" checked>
+            <span>Launch checklist</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="operations" checked>
+            <span>Location operations</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="support" checked>
+            <span>Support surfaces</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="playbook" checked>
+            <span>Reputation playbook</span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="notes" checked>
+            <span>Team notes</span>
+          </label>
+        </div>
+        <button class="button button-secondary rail-reset" type="button" data-reset-dashboard>
+          Reset local dashboard state
+        </button>
+      </div>
+    </aside>
+
+    <section class="business-main">
+      <div class="business-hero">
+        <div>
+          <p class="eyebrow">Browser control surface</p>
+          <h1>Manage launch readiness before analytics are wired in.</h1>
+          <p class="lede">
+            This dashboard is intentionally useful without fabricated numbers. Setup score, pending tasks,
+            support-link readiness, widget visibility, and operating notes are all derived from real inputs.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-secondary" href="/support/">Support Center</a>
+          <a class="button button-primary" href="/privacy/">Privacy Policy</a>
+        </div>
+      </div>
+
+      <section class="metric-grid" aria-label="Business dashboard summary">
+        <article class="metric-card">
+          <span class="metric-label">Setup score</span>
+          <strong class="metric-value" data-metric-setup>0%</strong>
+          <p class="metric-copy">Derived from the launch checklist below.</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Claimed locations</span>
+          <strong class="metric-value" data-metric-locations>0</strong>
+          <p class="metric-copy">Counted from the checklist, not invented traffic numbers.</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Live support surfaces</span>
+          <strong class="metric-value" data-metric-links>0</strong>
+          <p class="metric-copy">Email and public URLs currently configured in this browser.</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Pending tasks</span>
+          <strong class="metric-value" data-metric-tasks>0</strong>
+          <p class="metric-copy">Outstanding work before a location can look fully managed.</p>
+        </article>
+      </section>
+
+      <section class="widget-grid">
+        <article class="widget-card" data-widget="checklist">
+          <div class="widget-head">
+            <div>
+              <span class="widget-label">Launch checklist</span>
+              <h2>Get one location to a review-safe operational baseline.</h2>
+            </div>
+            <span class="widget-badge" data-progress-text>0 of 5 complete</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" data-progress-bar></div>
+          </div>
+          <div class="checklist-grid">
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="claimLocation">
+              <span>Claim at least one bathroom listing</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="setHours">
+              <span>Publish verified operating hours</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="publishAmenities">
+              <span>Confirm amenities and accessibility metadata</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="uploadHero">
+              <span>Prepare imagery and business-facing listing copy</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="reviewPolicy">
+              <span>Publish support, privacy, and terms surfaces</span>
+            </label>
+          </div>
+        </article>
+
+        <article class="widget-card" data-widget="operations">
+          <div class="widget-head">
+            <div>
+              <span class="widget-label">Location operations</span>
+              <h2>Turn listing details into clear business controls.</h2>
+            </div>
+          </div>
+          <div class="operations-grid">
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="changingTable">
+              <span class="control-title">Changing table availability</span>
+              <span class="control-copy">Expose family-friendly signals with confidence.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="accessibleRouting">
+              <span class="control-title">Accessibility routing notes</span>
+              <span class="control-copy">Track whether door width and route details are published.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="customerOnly">
+              <span class="control-title">Customer-only access policy</span>
+              <span class="control-copy">Document whether access requires a staff interaction or code.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="featuredPlacement">
+              <span class="control-title">Featured placement intent</span>
+              <span class="control-copy">Mark whether you plan to run a featured campaign after launch.</span>
+            </label>
+          </div>
+          <div class="status-grid" data-operation-summary></div>
+        </article>
+
+        <article class="widget-card" data-widget="support">
+          <div class="widget-head">
+            <div>
+              <span class="widget-label">Support surfaces</span>
+              <h2>Control the public URLs businesses and stores rely on.</h2>
+            </div>
+          </div>
+          <form class="input-grid" data-support-form>
+            <label>
+              <span>Support email</span>
+              <input type="email" name="supportEmail" autocomplete="email">
+            </label>
+            <label>
+              <span>Privacy URL</span>
+              <input type="url" name="privacyUrl" autocomplete="url">
+            </label>
+            <label>
+              <span>Terms URL</span>
+              <input type="url" name="termsUrl" autocomplete="url">
+            </label>
+            <label>
+              <span>Support URL</span>
+              <input type="url" name="supportUrl" autocomplete="url">
+            </label>
+            <label>
+              <span>App Store URL</span>
+              <input type="url" name="appStoreUrl" autocomplete="url">
+            </label>
+            <label>
+              <span>Google Play URL</span>
+              <input type="url" name="playStoreUrl" autocomplete="url">
+            </label>
+          </form>
+        </article>
+
+        <article class="widget-card" data-widget="playbook">
+          <div class="widget-head">
+            <div>
+              <span class="widget-label">Reputation playbook</span>
+              <h2>Give the team a response posture before feedback starts arriving.</h2>
+            </div>
+          </div>
+          <div class="input-grid">
+            <label>
+              <span>Customer promise</span>
+              <textarea rows="4" data-customer-promise></textarea>
+            </label>
+            <label>
+              <span>Default reply template</span>
+              <textarea rows="6" data-reply-template></textarea>
+            </label>
+          </div>
+        </article>
+
+        <article class="widget-card" data-widget="notes">
+          <div class="widget-head">
+            <div>
+              <span class="widget-label">Team notes</span>
+              <h2>Keep local launch notes visible without opening another tool.</h2>
+            </div>
+          </div>
+          <label class="notes-field">
+            <span>Launch notes</span>
+            <textarea rows="10" data-team-notes></textarea>
+          </label>
+        </article>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
