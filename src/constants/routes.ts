@@ -138,6 +138,14 @@ export const routes = {
         pathname: '/modal/request-featured',
         params: { bathroom_id: bathroomId },
       }) as unknown as Href,
+    createCoupon: '/modal/create-coupon' as Href,
+    createCouponBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/create-coupon',
+        params: { bathroom_id: bathroomId },
+      }) as unknown as Href,
+    earlyAdopterInvite: '/modal/early-adopter-invite' as Href,
+    redeemInvite: '/modal/redeem-invite' as Href,
   },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;
