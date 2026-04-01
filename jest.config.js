@@ -10,7 +10,12 @@ module.exports = {
     '/dist/',
     '/_preflight/',
     '/\\.claude/',
-    '/StallPass/',
-    '/StallPass\\.git/',
+  ],
+  // Exclude nested package.json files from haste module map to prevent naming
+  // collisions (e.g. _preflight/ shares the same "peedom-mobile" package name).
+  modulePathIgnorePatterns: [
+    '<rootDir>/_preflight/',
+    '<rootDir>/StallPass/',
+    '<rootDir>/StallPass\\.git/',
   ],
 };
