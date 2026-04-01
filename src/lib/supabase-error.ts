@@ -9,7 +9,7 @@ export interface SupabaseErrorDetails {
   title: string;
 }
 
-const OFFLINE_PATTERN = /network request failed|network error|failed to fetch|offline|timed out|connection|aborted/i;
+const OFFLINE_PATTERN = /network request failed|network error|failed to fetch|offline|timed out|connection/i;
 const TOKEN_PATTERN =
   /jwt|token|refresh token|session expired|invalid refresh token|invalid claim|unauthorized|auth session missing/i;
 const RLS_PATTERN = /permission denied|violates row-level security|row-level security|forbidden|not allowed/i;
@@ -18,14 +18,12 @@ const NOT_FOUND_PATTERN = /no rows|not found/i;
 /**
  * Returns true when the error is a request-abort signal (e.g. the 15 s
  * resilientFetch timeout in supabase.ts fires an AbortController.abort()).
- * AbortError is a DOMException whose message "The operation was aborted."
- * does not match OFFLINE_PATTERN, so we detect it explicitly first.
+ * React Native's fetch polyfill throws a plain Error with name 'AbortError'
+ * whose message "The operation was aborted." does not match OFFLINE_PATTERN,
+ * so we detect it explicitly before the pattern checks.
  */
 function isAbortError(error: unknown): boolean {
-  return (
-    (typeof DOMException !== 'undefined' && error instanceof DOMException && error.name === 'AbortError') ||
-    (error instanceof Error && error.name === 'AbortError')
-  );
+  return error instanceof Error && error.name === 'AbortError';
 }
 
 export function classifySupabaseError(
