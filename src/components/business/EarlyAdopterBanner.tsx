@@ -1,5 +1,5 @@
 import { memo, useCallback, useState } from 'react';
-import { Alert, Pressable, Share, Text, TextInput, View } from 'react-native';
+import { Pressable, Share, Text, TextInput, View } from 'react-native';
 import { Button } from '@/components/Button';
 import type { EarlyAdopterInvite, GenerateInviteInput } from '@/types';
 
