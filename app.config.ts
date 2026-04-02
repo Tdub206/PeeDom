@@ -31,6 +31,49 @@ const buildPlugins: ExpoConfig['plugins'] = [
   ],
 ];
 
+function readRequiredEnv(name: keyof NodeJS.ProcessEnv): string {
+  const value = process.env[name]?.trim() ?? '';
+
+  if (!value) {
+    throw new Error(`Missing required environment variable for production build: ${name}`);
+  }
+
+  return value;
+}
+
+function readStaticEasProjectId(config: Partial<ExpoConfig>): string {
+  if (!config.extra || typeof config.extra !== 'object') {
+    return '';
+  }
+
+  const extra = config.extra as { eas?: { projectId?: string } };
+  return typeof extra.eas?.projectId === 'string' ? extra.eas.projectId.trim() : '';
+}
+
+function assertProductionBuildEnv(easProjectId: string): void {
+  if (!isProduction) {
+    return;
+  }
+
+  readRequiredEnv('EXPO_PUBLIC_SUPABASE_URL');
+  readRequiredEnv('EXPO_PUBLIC_SUPABASE_ANON_KEY');
+  readRequiredEnv('EXPO_PUBLIC_SENTRY_DSN');
+  readRequiredEnv('ANDROID_GOOGLE_MAPS_API_KEY');
+  readRequiredEnv('IOS_GOOGLE_MAPS_API_KEY');
+
+  if (!easProjectId) {
+    throw new Error('Missing required EAS project ID for production build. Link the project with EAS or set EAS_PROJECT_ID.');
+  }
+
+  const rewardedAdsEnabled = (process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED?.trim() ?? 'true') !== 'false';
+
+  if (rewardedAdsEnabled) {
+    readRequiredEnv('ANDROID_ADMOB_APP_ID');
+    readRequiredEnv('IOS_ADMOB_APP_ID');
+    readRequiredEnv('EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID');
+  }
+}
+
 if (googleMobileAdsConfig) {
   buildPlugins.push([
     'react-native-google-mobile-ads',
@@ -40,22 +83,23 @@ if (googleMobileAdsConfig) {
       delayAppMeasurementInit: googleMobileAdsConfig.delay_app_measurement_init,
       optimizeInitialization: googleMobileAdsConfig.optimize_initialization,
       optimizeAdLoading: googleMobileAdsConfig.optimize_ad_loading,
-      userTrackingUsageDescription:
-        'StallPass uses your device identifier to show rewarded ads that unlock community bathroom codes.',
     },
   ]);
 }
 
 export default ({ config }: ConfigContext): ExpoConfig => {
+  const easProjectId = process.env.EAS_PROJECT_ID?.trim() || readStaticEasProjectId(config);
+  assertProductionBuildEnv(easProjectId);
+
   const expoConfig: ExpoConfig = {
     ...config,
     name: 'StallPass',
-    slug: 'peedom-mobile',
+    slug: 'stallpass',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'automatic',
-    scheme: 'peedom',
+    scheme: 'stallpass',
     splash: {
       image: './assets/splash.png',
       resizeMode: 'contain',
@@ -64,7 +108,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: false,
-      bundleIdentifier: 'com.peedom.mobile',
+      bundleIdentifier: 'com.stallpass.app',
       buildNumber: iosBuildNumber,
       infoPlist: {
         NSLocationWhenInUseUsageDescription:
@@ -79,7 +123,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundImage: './assets/adaptive-icon-background.png',
       },
-      package: 'com.peedom.mobile',
+      package: 'com.stallpass.app',
       versionCode: androidVersionCode,
       permissions: [
         'ACCESS_COARSE_LOCATION',
@@ -129,7 +173,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     updates: {
       enabled: true,
       fallbackToCacheTimeout: 0,
-      url: `https://u.expo.dev/${process.env.EAS_PROJECT_ID || 'd9ec08ec-330b-46e5-84c2-55e6db9db195'}`,
+      url: easProjectId ? `https://u.expo.dev/${easProjectId}` : undefined,
       checkAutomatically: 'ON_LOAD',
     },
     experiments: {
@@ -140,7 +184,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         origin: false,
       },
       eas: {
-        projectId: process.env.EAS_PROJECT_ID || 'd9ec08ec-330b-46e5-84c2-55e6db9db195',
+        projectId: easProjectId,
       },
       // These are still available via Constants.expoConfig.extra if needed
       // but primary access should be via process.env.EXPO_PUBLIC_*
@@ -148,7 +192,6 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       EXPO_PUBLIC_SUPABASE_ANON_KEY: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
       EXPO_PUBLIC_SENTRY_DSN: process.env.EXPO_PUBLIC_SENTRY_DSN,
       EXPO_PUBLIC_ENV: environment,
-      EXPO_PUBLIC_API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID,
     },

@@ -74,7 +74,7 @@ Join the community helping millions never wonder where to go again.
 
 | Field | Value |
 |-------|-------|
-| **Email** | support@stallpass.app |
+| **Email** | support@stallpass.org |
 | **Phone** | [Your support number] |
 | **Website** | https://stallpass.app |
 | **Address** | [Your business address] |
@@ -431,4 +431,3 @@ Budget recommendation: Start with $5-10/day to test messaging.
 - Facebook Creator Studio: https://creators.facebook.com
 - Meta Brand Guidelines: https://www.facebookbrand.com
 - Canva (Design tool): https://www.canva.com
-

@@ -743,3 +743,33 @@ export async function fetchBathroomsByIds(
     };
   }
 }
+
+export async function recordBathroomNavigationOpen(
+  bathroomId: string
+): Promise<{ error: (Error & { code?: string }) | null }> {
+  try {
+    const { error } = await getSupabaseClient().rpc(
+      'record_bathroom_navigation' as never,
+      {
+        p_bathroom_id: bathroomId,
+      } as never
+    );
+
+    if (error) {
+      return {
+        error: toAppError(error, 'Unable to record the navigation event right now.'),
+      };
+    }
+
+    return {
+      error: null,
+    };
+  } catch (error) {
+    return {
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to record the navigation event right now.'),
+        'Unable to record the navigation event right now.'
+      ),
+    };
+  }
+}

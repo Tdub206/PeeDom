@@ -126,18 +126,17 @@ export async function createBusinessClaim(
       };
     }
 
-    const { data, error } = await getSupabaseClient()
-      .from('business_claims')
-      .insert({
-        bathroom_id: claimInput.bathroom_id,
-        claimant_user_id: userId,
-        business_name: claimInput.business_name.trim(),
-        contact_email: claimInput.contact_email.trim().toLowerCase(),
-        contact_phone: normalizeOptionalText(claimInput.contact_phone),
-        evidence_url: normalizeOptionalText(claimInput.evidence_url),
-      } as never)
-      .select('*')
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc(
+      'submit_business_claim' as never,
+      {
+        p_bathroom_id: claimInput.bathroom_id,
+        p_business_name: claimInput.business_name.trim(),
+        p_contact_email: claimInput.contact_email.trim().toLowerCase(),
+        p_contact_phone: normalizeOptionalText(claimInput.contact_phone),
+        p_evidence_url: normalizeOptionalText(claimInput.evidence_url),
+        p_growth_invite_code: normalizeOptionalText(claimInput.growth_invite_code),
+      } as never
+    );
 
     if (error) {
       return {
@@ -147,7 +146,7 @@ export async function createBusinessClaim(
     }
 
     return {
-      data: (data as DbClaim | null) ?? null,
+      data: ((data as DbClaim[] | null) ?? [])[0] ?? null,
       error: null,
     };
   } catch (error) {

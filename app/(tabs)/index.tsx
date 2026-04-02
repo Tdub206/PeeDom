@@ -12,6 +12,7 @@ import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
 import { BathroomMapView } from '@/components/MapView';
 import { RealtimeStatusBadge } from '@/components/realtime';
+import { recordBathroomNavigationOpen } from '@/api/bathrooms';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useEmergencyMode } from '@/hooks/useEmergencyMode';
@@ -21,19 +22,20 @@ import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
+import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useFilterStore } from '@/store/useFilterStore';
 import { useMapStore } from '@/store/useMapStore';
 import { BathroomListItem } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
-import { mergeAccessibilityFilters, hasActiveBathroomFilters } from '@/utils/bathroom';
+import { hasActiveBathroomFilters, isBathroomVisibleOnMap, mergeAccessibilityFilters } from '@/utils/bathroom';
 import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 
 export default function MapTab() {
   const router = useRouter();
   const { showToast } = useToast();
-  const { requireAuth } = useAuth();
+  const { profile, requireAuth } = useAuth();
   const filters = useFilterStore((state) => state.filters);
   const resetFilters = useFilterStore((state) => state.resetFilters);
   const setMinCleanlinessRating = useFilterStore((state) => state.setMinCleanlinessRating);
@@ -66,14 +68,20 @@ export default function MapTab() {
   });
   useAccessibilityPreferences();
   const bathrooms = bathroomsQuery.data?.items ?? [];
+  const isPremiumUser = hasActivePremium(profile);
+  const visibleBathrooms = useMemo(
+    () => bathrooms.filter((bathroom) => isBathroomVisibleOnMap(bathroom, isPremiumUser)),
+    [bathrooms, isPremiumUser]
+  );
+  const hiddenPremiumCount = bathrooms.length - visibleBathrooms.length;
   useRealtimeBathrooms({
     viewport: region,
-    visibleBathrooms: bathrooms,
-    enabled: bathrooms.length > 0 || bathroomsQuery.isSuccess,
+    visibleBathrooms,
+    enabled: visibleBathrooms.length > 0 || bathroomsQuery.isSuccess,
   });
   const activeBathroom = useMemo(
-    () => bathrooms.find((bathroom) => bathroom.id === activeBathroomId) ?? null,
-    [activeBathroomId, bathrooms]
+    () => visibleBathrooms.find((bathroom) => bathroom.id === activeBathroomId) ?? null,
+    [activeBathroomId, visibleBathrooms]
   );
   const activeFilterCount = useMemo(() => {
     if (!hasActiveBathroomFilters(resolvedFilters)) {
@@ -98,7 +106,7 @@ export default function MapTab() {
 
     return count;
   }, [accessibilityPreferences, isAccessibilityMode, resolvedFilters]);
-  const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(bathrooms);
+  const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(visibleBathrooms);
   const emergency = useEmergencyMode();
 
   useEffect(() => {
@@ -199,6 +207,8 @@ export default function MapTab() {
       setIsOpeningDirections(true);
 
       try {
+        void recordBathroomNavigationOpen(bathroom.id);
+
         if (Platform.OS === 'ios') {
           const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
 
@@ -259,7 +269,7 @@ export default function MapTab() {
     pushSafely(router, routes.modal.addBathroom, routes.tabs.map);
   }, [requireAuth, router]);
 
-  if (bathroomsQuery.isLoading && !bathrooms.length) {
+  if (bathroomsQuery.isLoading && !visibleBathrooms.length) {
     return <LoadingScreen message="Finding bathrooms around the current map region." />;
   }
 
@@ -313,10 +323,19 @@ export default function MapTab() {
           </View>
         ) : null}
 
+        {!isPremiumUser && hiddenPremiumCount > 0 ? (
+          <View className="mt-4 rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
+            <Text className="text-sm font-semibold text-brand-700">Premium-only StallPass partners hidden</Text>
+            <Text className="mt-1 text-sm leading-5 text-brand-700">
+              {hiddenPremiumCount} premium-only business {hiddenPremiumCount === 1 ? 'listing is' : 'listings are'} currently hidden from the free map.
+            </Text>
+          </View>
+        ) : null}
+
         <View className="mt-4 flex-1">
           <BathroomMapView
             activeFilterCount={activeFilterCount}
-            bathrooms={bathrooms}
+            bathrooms={visibleBathrooms}
             isRefreshingLocation={is_refreshing}
             onFilterPress={handleOpenFilterDrawer}
             onLocateMe={() => {

@@ -4,37 +4,42 @@ Date: 2026-03-26
 
 ## Assumptions
 
-- Branding should ship as `StallPass` for store-facing and public-facing surfaces, even though the internal Expo slug, deep-link scheme, and package IDs still use `peedom`.
+- Branding, package identifiers, and deep-link scheme ship as `StallPass`.
+- iOS launch uses non-personalized rewarded ads and does not rely on an App Tracking Transparency prompt.
 - Testing constraints for emulators and device matrices are intentionally excluded for now.
 - The imported asset bundle in `assets/store/` is the approved source of truth for current store graphics.
 
 ## Status
 
-StallPass is materially closer to submission, but it is not fully ready for App Store Connect or Google Play release today.
+StallPass is materially closer to submission, but store-console work and production credentials still block final release.
 
 ### Repo-verified strengths
 
-- Guest access exists and is enforced in the auth layer and gated screens, which aligns with Apple guidance not to require login when significant account-based features are not required.
+- Guest access exists and is enforced in the auth layer and gated screens.
 - In-app account deactivation and permanent deletion are implemented from the profile flow.
-- Rewarded AdMob code unlocks, offline sync behavior, Sentry wiring, and public support/privacy/terms surfaces all exist in the codebase.
+- Rewarded AdMob code unlocks, offline sync behavior, Sentry wiring, and public support, privacy, and terms surfaces all exist in the codebase.
 - The website now includes a real business-facing dashboard instead of only a marketing landing page.
 - The current Android debug merged manifest resolves to `targetSdkVersion 36`, which is above Google Play's current minimum target SDK requirement.
+- `app.config.ts` now uses the final `stallpass` slug and scheme plus `com.stallpass.app` identifiers for both iOS and Android.
+- Production EAS configuration is explicit about store distribution, and Android release signing now fails closed if release credentials are missing.
 
-### Launch blockers
+### Current launch blockers
 
-1. iOS tracking and ad consent flow is incomplete.
-   The app config declares AdMob and a tracking usage description in `app.config.ts`, and rewarded ads are implemented in `src/lib/admob.ts`, but no App Tracking Transparency request flow was found in `app/` or `src/`. If you intend to track users or use identifiers for advertising on iOS, this needs a real ATT decision path before submission.
-2. Store disclosure work is still manual.
-   Apple App Privacy answers and Google Play Data safety and app access forms still need to be completed from actual production behavior, not inferred from code alone.
-3. Brand and package identity is still mixed.
-   Public copy now says `StallPass`, but internal identifiers still use `peedom-mobile`, `scheme: 'peedom'`, `com.peedom.mobile`, and related package naming. That is not an automatic rejection, but it should be intentional before launch.
-4. Production operational details are not verified from the repo.
-   Support mailboxes, production env vars, release signing, store console metadata, and reviewer credentials are not confirmable from source control and remain required launch tasks.
+1. Store disclosure work is still manual.
+   Apple App Privacy answers and Google Play Data safety, ads, app access, and content declarations still need to be completed in the store consoles from actual production behavior.
+2. Production build credentials are not present in the repo.
+   The build now requires production Supabase, Sentry, Maps, AdMob, EAS, and Android signing inputs before a production artifact can be generated.
+3. Production operational details are not verified from source control.
+   The hosted `stallpass.org` domain, reachable support mailbox, reviewer notes, and console-side release setup still need human verification.
+4. Signed release artifact verification is still pending.
+   A signed Android app bundle and final release manifest still need to be built and checked before submission.
 
-### Medium-risk items
+### Resolved repo-side issues
 
-- Release-build Android permission verification is still advisable even though `app.config.ts` blocks `SYSTEM_ALERT_WINDOW`. The inspected merged manifest was from a debug build, not a signed store artifact.
-- The website now references `privacy@stallpass.app` and `support@stallpass.app`; those addresses and the hosting domain need to exist before store review.
+- iOS ATT risk was reduced by removing the tracking-usage path from app config and forcing rewarded ads on iOS into a non-personalized request path.
+- The previously mixed `Pee-Dom` and `StallPass` public branding has been normalized to `StallPass`.
+- Store-facing contact details now use `support@stallpass.org`.
+- Android release signing no longer defaults silently to the debug keystore for release tasks.
 
 ## Files Added Or Updated
 
@@ -52,38 +57,26 @@ StallPass is materially closer to submission, but it is not fully ready for App 
 - `web/assets/business.js`
 - `web/site.webmanifest`
 
-These files close the missing public surfaces for privacy policy, terms, support, and a browser-based business dashboard with persistent preferences and setup-state controls.
-
 ### Store asset placement
 
 - `assets/store/`
-  Full imported archive for App Store Connect and Google Play uploads.
 - `assets/icon.png`
-  Replaced with the supplied 1024px StallPass app icon.
 - `assets/notification-icon.png`
-  Added from the supplied Android notification icon export.
 - `assets/adaptive-icon-background.png`
-  Added from the supplied adaptive icon background export.
 - `web/assets/pwa-icon-192.png`
 - `web/assets/pwa-icon-512.png`
 - `web/assets/open-graph-social-preview.png`
 
-### Runtime and public asset wiring
+### Release-hardening updates
 
 - `app.config.ts`
-  Updated to use the imported notification icon and adaptive icon background.
-- `web/index.html`
-- `web/business/index.html`
-- `web/privacy/index.html`
-- `web/terms/index.html`
-- `web/support/index.html`
-- `web/404.html`
-
-These pages now reference the imported Open Graph image, PWA icons, and web manifest.
-
-### Brand cleanup
-
-User-facing naming was normalized from `Pee-Dom` to `StallPass` across auth, favorites, legal, error, loading, notifications, and profile-related app copy.
+  Enforces required production build inputs and removes the ATT-shaped tracking usage string for the launch strategy.
+- `src/lib/admob.ts`
+  Forces iOS rewarded ads to request non-personalized ads only.
+- `android/app/build.gradle`
+  Requires real Android release signing credentials for release tasks instead of silently shipping the debug keystore.
+- `eas.json`
+  Marks the production profile as `distribution: "store"`.
 
 ## Asset Upload Map
 
@@ -127,23 +120,23 @@ User-facing naming was normalized from `Pee-Dom` to `StallPass` across auth, fav
 
 ## Required Next Actions Before Submission
 
-1. Decide whether iOS ads are contextual-only or require ATT, then implement the correct path before requesting ad-driven tracking.
-2. Finish App Privacy and Play Data safety answers from actual production data flow and third-party SDK behavior.
-3. Decide whether `peedom` identifiers stay internal for v1 or whether bundle/package/scheme renaming is worth doing before launch.
-4. Verify the hosted website domain, support mailbox, and privacy mailbox are live and reachable.
-5. Build a signed Android release artifact and verify final manifest permissions from the release output, not debug output.
+1. Complete App Store Connect and Play Console declarations using the real production configuration.
+2. Set production environment variables and Android release signing credentials in your build system.
+3. Verify that `https://stallpass.org/privacy/`, `https://stallpass.org/terms/`, and `https://stallpass.org/support/` are live and reachable.
+4. Build a signed Android app bundle and verify final manifest permissions from the release output.
+5. Prepare reviewer notes and any optional reviewer account details for restricted flows.
 
 ## External Requirements Checked
 
 - Google Play target API policy:
   https://developer.android.com/google/play/requirements/target-sdk
   As of the currently published policy, new apps and updates must target Android 15 (API level 35) or higher by August 31, 2025.
+- Google Play review preparation:
+  https://support.google.com/googleplay/android-developer/answer/9859455?hl=en
+  Apps with ads must declare ads, apps with restricted content must provide app-access instructions, and privacy policies must be linked from an active URL.
 - Apple App Review Guidelines:
   https://developer.apple.com/app-store/review/guidelines/
   Guideline 5.1.1(v) requires account deletion within the app when account creation is supported.
 - Apple App Privacy details:
   https://developer.apple.com/app-store/app-privacy-details/
   Privacy Nutrition Labels and third-party SDK/privacy-manifest disclosures still need store-console completion.
-- Apple App Tracking Transparency:
-  https://developer.apple.com/documentation/apptrackingtransparency
-  If tracking is used for advertising or measurement across apps or websites, the app needs the proper ATT flow and disclosures.

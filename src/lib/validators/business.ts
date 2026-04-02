@@ -114,6 +114,78 @@ export function validateBusinessHoursUpdate(data: unknown) {
   return updateBusinessHoursSchema.parse(data);
 }
 
+export const updateBusinessBathroomSettingsSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid bathroom before saving settings.'),
+  requires_premium_access: z.boolean(),
+  show_on_free_map: z.boolean(),
+  is_location_verified: z.boolean(),
+});
+
+export const upsertBusinessPromotionSchema = z
+  .object({
+    id: z.string().uuid().nullable().optional(),
+    bathroom_id: z.string().uuid('Select a valid bathroom before saving an offer.'),
+    title: z.string().trim().min(2, 'Offer title must be at least 2 characters long.').max(120),
+    description: z.string().trim().min(8, 'Offer description must be at least 8 characters long.').max(280),
+    offer_type: z.enum(['percentage', 'amount_off', 'freebie', 'custom']),
+    offer_value: z.number().positive().nullable().optional(),
+    promo_code: z
+      .string()
+      .trim()
+      .max(40, 'Promo code must be 40 characters or fewer.')
+      .nullable()
+      .optional(),
+    redemption_instructions: z
+      .string()
+      .trim()
+      .min(8, 'Add clear redemption instructions for your staff.')
+      .max(280),
+    starts_at: z.string().datetime().nullable().optional(),
+    ends_at: z.string().datetime().nullable().optional(),
+    is_active: z.boolean(),
+  })
+  .superRefine((value, context) => {
+    if ((value.offer_type === 'percentage' || value.offer_type === 'amount_off') && typeof value.offer_value !== 'number') {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['offer_value'],
+        message: 'Enter a numeric discount value.',
+      });
+    }
+
+    if ((value.offer_type === 'freebie' || value.offer_type === 'custom') && typeof value.offer_value === 'number') {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['offer_value'],
+        message: 'This offer type should not include a numeric value.',
+      });
+    }
+
+    if (value.offer_type === 'percentage' && typeof value.offer_value === 'number' && value.offer_value > 100) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['offer_value'],
+        message: 'Percentage discounts must stay at or below 100.',
+      });
+    }
+
+    if (value.starts_at && value.ends_at && new Date(value.ends_at).getTime() <= new Date(value.starts_at).getTime()) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['ends_at'],
+        message: 'Offer end time must be after the start time.',
+      });
+    }
+  });
+
+export function validateBusinessBathroomSettings(data: unknown) {
+  return updateBusinessBathroomSettingsSchema.parse(data);
+}
+
 export function validateBusinessFeaturedPlacement(data: unknown) {
   return createBusinessFeaturedPlacementSchema.parse(data);
+}
+
+export function validateBusinessPromotion(data: unknown) {
+  return upsertBusinessPromotionSchema.parse(data);
 }

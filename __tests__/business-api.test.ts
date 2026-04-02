@@ -20,10 +20,19 @@ const analyticsRow = {
   avg_cleanliness: 4.25,
   total_ratings: 8,
   weekly_views: 0,
+  weekly_unique_visitors: 6,
+  monthly_unique_visitors: 14,
+  weekly_navigation_count: 4,
   verification_badge_type: 'featured',
   has_verification_badge: true,
   has_active_featured_placement: true,
   active_featured_placements: 1,
+  active_offer_count: 2,
+  requires_premium_access: true,
+  show_on_free_map: false,
+  is_location_verified: true,
+  location_verified_at: '2026-03-18T08:00:00.000Z',
+  pricing_plan: 'lifetime',
   last_updated: '2026-03-19T10:00:00.000Z',
 };
 
@@ -53,6 +62,12 @@ describe('business API', () => {
       avg_rating_across_all: 4.25,
       active_featured_placements: 1,
       verified_locations: 1,
+      total_weekly_unique_visitors: 6,
+      total_monthly_unique_visitors: 14,
+      total_weekly_navigation_count: 4,
+      active_offers: 2,
+      premium_only_locations: 1,
+      lifetime_locations: 1,
     });
   });
 
@@ -118,6 +133,125 @@ describe('business API', () => {
       p_new_hours: {
         monday: [{ open: '09:00', close: '17:00' }],
       },
+    });
+  });
+
+  it('loads business bathroom settings for a managed location', async () => {
+    const settingsQuery = {
+      select: jest.fn().mockReturnThis(),
+      eq: jest.fn().mockReturnThis(),
+      maybeSingle: jest.fn<() => Promise<{ data: unknown; error: unknown }>>().mockResolvedValueOnce({
+        data: {
+          bathroom_id: 'bathroom-1',
+          requires_premium_access: true,
+          show_on_free_map: false,
+          is_location_verified: true,
+          location_verified_at: '2026-03-18T08:00:00.000Z',
+          pricing_plan: 'lifetime',
+          pricing_plan_granted_at: '2026-03-18T08:00:00.000Z',
+          updated_by: 'user-1',
+          created_at: '2026-03-18T08:00:00.000Z',
+          updated_at: '2026-03-19T08:00:00.000Z',
+        },
+        error: null,
+      }),
+    };
+
+    from.mockReturnValueOnce(settingsQuery);
+
+    const { fetchBusinessBathroomSettings } = await import('@/api/business');
+    const result = await fetchBusinessBathroomSettings('bathroom-1');
+
+    expect(result.error).toBeNull();
+    expect(result.data?.pricing_plan).toBe('lifetime');
+    expect(from).toHaveBeenCalledWith('business_bathroom_settings');
+  });
+
+  it('submits StallPass map visibility settings through the RPC', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+          requires_premium_access: true,
+          show_on_free_map: false,
+          is_location_verified: true,
+          location_verified_at: '2026-03-19T12:00:00.000Z',
+          pricing_plan: 'standard',
+          pricing_plan_granted_at: null,
+          updated_by: 'user-1',
+          created_at: '2026-03-19T12:00:00.000Z',
+          updated_at: '2026-03-19T12:00:00.000Z',
+        },
+      ],
+      error: null,
+    });
+
+    const { upsertBusinessBathroomSettings } = await import('@/api/business');
+    const result = await upsertBusinessBathroomSettings({
+      bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      requires_premium_access: true,
+      show_on_free_map: false,
+      is_location_verified: true,
+    });
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('upsert_business_bathroom_settings', {
+      p_bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      p_requires_premium_access: true,
+      p_show_on_free_map: false,
+      p_is_location_verified: true,
+    });
+  });
+
+  it('creates or updates a StallPass business promotion through the RPC', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'offer-1',
+          bathroom_id: 'bathroom-1',
+          business_user_id: 'user-1',
+          title: '10% off coffee',
+          description: 'Premium members can claim a discount after using the restroom.',
+          offer_type: 'percentage',
+          offer_value: 10,
+          promo_code: 'STALLPASS10',
+          redemption_instructions: 'Show the cashier your StallPass screen.',
+          starts_at: null,
+          ends_at: null,
+          is_active: true,
+          redemptions_count: 0,
+          created_at: '2026-03-19T12:00:00.000Z',
+          updated_at: '2026-03-19T12:00:00.000Z',
+        },
+      ],
+      error: null,
+    });
+
+    const { upsertBusinessPromotion } = await import('@/api/business');
+    const result = await upsertBusinessPromotion({
+      bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      title: '10% off coffee',
+      description: 'Premium members can claim a discount after using the restroom.',
+      offer_type: 'percentage',
+      offer_value: 10,
+      promo_code: 'STALLPASS10',
+      redemption_instructions: 'Show the cashier your StallPass screen.',
+      is_active: true,
+    });
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('upsert_business_promotion', {
+      p_promotion_id: null,
+      p_bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      p_title: '10% off coffee',
+      p_description: 'Premium members can claim a discount after using the restroom.',
+      p_offer_type: 'percentage',
+      p_offer_value: 10,
+      p_promo_code: 'STALLPASS10',
+      p_redemption_instructions: 'Show the cashier your StallPass screen.',
+      p_starts_at: null,
+      p_ends_at: null,
+      p_is_active: true,
     });
   });
 

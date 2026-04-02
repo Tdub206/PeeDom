@@ -1,16 +1,14 @@
 {
   "expo": {
     "name": "StallPass",
-    "slug": "StallPass",
+    "slug": "stallpass",
+    "owner": "stallpass",
     "android": {
-      "package": "com.peedom.mobile"
+      "package": "com.stallpass.app"
     },
     "extra": {
-      "react-native-google-mobile-ads": {
-        "android_app_id": "ca-app-pub-3940256099942544~3347511713"
-      },
       "eas": {
-        "projectId": "d9ec08ec-330b-46e5-84c2-55e6db9db195"
+        "projectId": "9277c80b-8194-4229-8054-f5c6f70a8cbe"
       }
     }
   }

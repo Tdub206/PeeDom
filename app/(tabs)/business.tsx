@@ -5,9 +5,9 @@ import { useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
 import {
   BusinessHoursEditorSheet,
-  ClaimedBathroomCard,
   DashboardStats,
   FeaturedPlacementCard,
+  ManagedBathroomSection,
 } from '@/components/business';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
@@ -172,7 +172,7 @@ export default function BusinessTab() {
       return {
         eyebrow: 'Business Dashboard',
         title: 'Run your claimed bathrooms with live analytics.',
-        body: 'Verified locations surface favorites, reports, featured placement inventory, and public hours from one operational view.',
+        body: 'Verified locations surface map visibility rules, launch-plan status, offers, reports, featured placement inventory, and public hours from one operational view.',
       };
     }
 
@@ -323,7 +323,7 @@ export default function BusinessTab() {
                 {managedBathrooms.length ? (
                   <View className="mt-4 gap-4">
                     {managedBathrooms.map((bathroom) => (
-                      <ClaimedBathroomCard
+                      <ManagedBathroomSection
                         bathroom={bathroom}
                         key={bathroom.bathroom_id}
                         onManageHours={openHoursEditor}

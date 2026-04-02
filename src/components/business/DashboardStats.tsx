@@ -55,6 +55,14 @@ function DashboardStatsComponent({ summary }: DashboardStatsProps) {
         <StatTile label="Verified" value={summary.verified_locations.toString()} />
         <StatTile label="Featured" value={summary.active_featured_placements.toString()} />
       </View>
+      <View className="mt-3 flex-row gap-3">
+        <StatTile label="Weekly Visitors" value={summary.total_weekly_unique_visitors.toString()} />
+        <StatTile label="Route Opens" value={summary.total_weekly_navigation_count.toString()} />
+      </View>
+      <View className="mt-3 flex-row gap-3">
+        <StatTile label="Offers" value={summary.active_offers.toString()} />
+        <StatTile label="Lifetime" value={summary.lifetime_locations.toString()} />
+      </View>
     </View>
   );
 }
