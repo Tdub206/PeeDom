@@ -720,6 +720,7 @@ export interface BusinessDashboardBathroom {
   location_verified_at: string | null;
   pricing_plan: BusinessPricingPlan;
   last_updated: string;
+  show_on_free_map: boolean;
 }
 
 export interface BusinessDashboardSummary {
@@ -787,6 +788,161 @@ export interface BusinessHoursUpdateResult {
   success: boolean;
   bathroom_id: string;
   updated_at: string;
+}
+
+export type HoursSourceType = 'manual' | 'google' | 'preset_offset';
+
+export interface UpdateBusinessHoursV2Input {
+  bathroom_id: string;
+  hours: HoursData;
+  hours_source: HoursSourceType;
+  offset_minutes?: number | null;
+  google_place_id?: string | null;
+}
+
+// ============================================================================
+// STALLPASS VISIT TYPES
+// ============================================================================
+
+export type StallPassVisitSource = 'map_navigation' | 'search' | 'favorite' | 'coupon_redeem' | 'deep_link';
+
+export interface StallPassVisit {
+  id: string;
+  bathroom_id: string;
+  user_id: string;
+  visited_at: string;
+  source: StallPassVisitSource;
+  created_at: string;
+}
+
+export interface BusinessVisitStats {
+  bathroom_id: string;
+  total_visits: number;
+  visits_this_week: number;
+  visits_this_month: number;
+  unique_visitors: number;
+  top_source: StallPassVisitSource | null;
+}
+
+// ============================================================================
+// COUPON TYPES
+// ============================================================================
+
+export type CouponType = 'percent_off' | 'dollar_off' | 'bogo' | 'free_item' | 'custom';
+
+export interface BusinessCoupon {
+  id: string;
+  bathroom_id: string;
+  business_user_id: string;
+  title: string;
+  description: string | null;
+  coupon_type: CouponType;
+  value: number | null;
+  min_purchase: number | null;
+  coupon_code: string;
+  max_redemptions: number | null;
+  current_redemptions: number;
+  starts_at: string;
+  expires_at: string | null;
+  is_active: boolean;
+  premium_only: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreateCouponInput {
+  bathroom_id: string;
+  title: string;
+  description?: string | null;
+  coupon_type: CouponType;
+  value?: number | null;
+  min_purchase?: number | null;
+  coupon_code?: string | null;
+  max_redemptions?: number | null;
+  starts_at?: string;
+  expires_at?: string | null;
+  premium_only?: boolean;
+}
+
+export interface UpdateCouponInput {
+  coupon_id: string;
+  title?: string;
+  description?: string | null;
+  value?: number | null;
+  min_purchase?: number | null;
+  max_redemptions?: number | null;
+  expires_at?: string | null;
+  is_active?: boolean;
+  premium_only?: boolean;
+}
+
+export interface BathroomCouponPublic {
+  id: string;
+  title: string;
+  description: string | null;
+  coupon_type: CouponType;
+  value: number | null;
+  min_purchase: number | null;
+  coupon_code: string;
+  starts_at: string;
+  expires_at: string | null;
+  premium_only: boolean;
+  already_redeemed: boolean;
+}
+
+export interface CouponRedemption {
+  id: string;
+  coupon_id: string;
+  user_id: string;
+  redeemed_at: string;
+}
+
+export interface CouponRedemptionResult {
+  success: boolean;
+  redemption_id: string;
+  coupon_code: string;
+  title: string;
+}
+
+// ============================================================================
+// EARLY ADOPTER INVITE TYPES
+// ============================================================================
+
+export type EarlyAdopterInviteStatus = 'pending' | 'redeemed' | 'expired' | 'revoked';
+
+export interface EarlyAdopterInvite {
+  id: string;
+  invite_token: string;
+  target_business_name: string | null;
+  target_email: string | null;
+  notes: string | null;
+  expires_at: string;
+  status: EarlyAdopterInviteStatus;
+  redeemed_by: string | null;
+  redeemed_at: string | null;
+  created_at: string;
+  redeemer_display_name: string | null;
+}
+
+export interface GenerateInviteInput {
+  target_business_name?: string | null;
+  target_email?: string | null;
+  notes?: string | null;
+  expiry_days?: number;
+}
+
+export interface GenerateInviteResult {
+  success: boolean;
+  invite_id: string;
+  invite_token: string;
+  expires_at: string;
+}
+
+export interface RedeemInviteResult {
+  success: boolean;
+  invite_id: string;
+  is_lifetime_free: boolean;
+  message: string;
 }
 
 // ============================================================================
@@ -1052,3 +1208,7 @@ export type DbBusinessVerificationBadge = Database['public']['Tables']['business
 export type DbBusinessFeaturedPlacement = Database['public']['Tables']['business_featured_placements']['Row'];
 export type DbBusinessHoursUpdate = Database['public']['Tables']['business_hours_updates']['Row'];
 export type DbUserAccessibilityPreferences = Database['public']['Tables']['user_accessibility_preferences']['Row'];
+export type DbBathroomStallPassVisit = Database['public']['Tables']['bathroom_stallpass_visits']['Row'];
+export type DbBusinessCoupon = Database['public']['Tables']['business_coupons']['Row'];
+export type DbCouponRedemption = Database['public']['Tables']['coupon_redemptions']['Row'];
+export type DbEarlyAdopterInvite = Database['public']['Tables']['early_adopter_invites']['Row'];

@@ -215,6 +215,10 @@ export interface Database {
           search_vector: unknown | null
           source_type: 'community' | 'business' | 'imported' | 'admin'
           moderation_status: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
+          show_on_free_map: boolean
+          hours_source: 'manual' | 'google' | 'preset_offset'
+          hours_offset_minutes: number | null
+          google_place_id: string | null
           created_by: string | null
           created_at: string
           updated_at: string
@@ -237,6 +241,10 @@ export interface Database {
           search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
+          show_on_free_map?: boolean
+          hours_source?: 'manual' | 'google' | 'preset_offset'
+          hours_offset_minutes?: number | null
+          google_place_id?: string | null
           created_by?: string | null
           created_at?: string
           updated_at?: string
@@ -259,6 +267,10 @@ export interface Database {
           search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
+          show_on_free_map?: boolean
+          hours_source?: 'manual' | 'google' | 'preset_offset'
+          hours_offset_minutes?: number | null
+          google_place_id?: string | null
           created_by?: string | null
           created_at?: string
           updated_at?: string
@@ -555,6 +567,8 @@ export interface Database {
           review_status: 'pending' | 'approved' | 'rejected'
           reviewed_by: string | null
           reviewed_at: string | null
+          is_lifetime_free: boolean
+          invite_id: string | null
           created_at: string
           updated_at: string
         }
@@ -569,6 +583,8 @@ export interface Database {
           review_status?: 'pending' | 'approved' | 'rejected'
           reviewed_by?: string | null
           reviewed_at?: string | null
+          is_lifetime_free?: boolean
+          invite_id?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -583,6 +599,8 @@ export interface Database {
           review_status?: 'pending' | 'approved' | 'rejected'
           reviewed_by?: string | null
           reviewed_at?: string | null
+          is_lifetime_free?: boolean
+          invite_id?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -740,6 +758,155 @@ export interface Database {
           hide_non_accessible?: boolean
           created_at?: string
           updated_at?: string
+        }
+      }
+      bathroom_stallpass_visits: {
+        Row: {
+          id: string
+          bathroom_id: string
+          user_id: string
+          visited_at: string
+          source: 'map_navigation' | 'search' | 'favorite' | 'coupon_redeem' | 'deep_link'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          user_id: string
+          visited_at?: string
+          source?: 'map_navigation' | 'search' | 'favorite' | 'coupon_redeem' | 'deep_link'
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          user_id?: string
+          visited_at?: string
+          source?: 'map_navigation' | 'search' | 'favorite' | 'coupon_redeem' | 'deep_link'
+          created_at?: string
+        }
+      }
+      business_coupons: {
+        Row: {
+          id: string
+          bathroom_id: string
+          business_user_id: string
+          title: string
+          description: string | null
+          coupon_type: 'percent_off' | 'dollar_off' | 'bogo' | 'free_item' | 'custom'
+          value: number | null
+          min_purchase: number | null
+          coupon_code: string
+          max_redemptions: number | null
+          current_redemptions: number
+          starts_at: string
+          expires_at: string | null
+          is_active: boolean
+          premium_only: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          bathroom_id: string
+          business_user_id: string
+          title: string
+          description?: string | null
+          coupon_type: 'percent_off' | 'dollar_off' | 'bogo' | 'free_item' | 'custom'
+          value?: number | null
+          min_purchase?: number | null
+          coupon_code: string
+          max_redemptions?: number | null
+          current_redemptions?: number
+          starts_at?: string
+          expires_at?: string | null
+          is_active?: boolean
+          premium_only?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          bathroom_id?: string
+          business_user_id?: string
+          title?: string
+          description?: string | null
+          coupon_type?: 'percent_off' | 'dollar_off' | 'bogo' | 'free_item' | 'custom'
+          value?: number | null
+          min_purchase?: number | null
+          coupon_code?: string
+          max_redemptions?: number | null
+          current_redemptions?: number
+          starts_at?: string
+          expires_at?: string | null
+          is_active?: boolean
+          premium_only?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      coupon_redemptions: {
+        Row: {
+          id: string
+          coupon_id: string
+          user_id: string
+          redeemed_at: string
+        }
+        Insert: {
+          id?: string
+          coupon_id: string
+          user_id: string
+          redeemed_at?: string
+        }
+        Update: {
+          id?: string
+          coupon_id?: string
+          user_id?: string
+          redeemed_at?: string
+        }
+      }
+      early_adopter_invites: {
+        Row: {
+          id: string
+          invite_token: string
+          invited_by: string
+          target_email: string | null
+          target_business_name: string | null
+          notes: string | null
+          expires_at: string
+          redeemed_by: string | null
+          redeemed_at: string | null
+          grants_lifetime: boolean
+          status: 'pending' | 'redeemed' | 'expired' | 'revoked'
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          invite_token: string
+          invited_by: string
+          target_email?: string | null
+          target_business_name?: string | null
+          notes?: string | null
+          expires_at: string
+          redeemed_by?: string | null
+          redeemed_at?: string | null
+          grants_lifetime?: boolean
+          status?: 'pending' | 'redeemed' | 'expired' | 'revoked'
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          invite_token?: string
+          invited_by?: string
+          target_email?: string | null
+          target_business_name?: string | null
+          notes?: string | null
+          expires_at?: string
+          redeemed_by?: string | null
+          redeemed_at?: string | null
+          grants_lifetime?: boolean
+          status?: 'pending' | 'redeemed' | 'expired' | 'revoked'
+          created_at?: string
         }
       }
     }
@@ -1165,6 +1332,7 @@ export interface Database {
           has_active_featured_placement: boolean
           active_featured_placements: number
           last_updated: string
+          show_on_free_map: boolean
         }[]
       }
       update_business_bathroom_hours: {

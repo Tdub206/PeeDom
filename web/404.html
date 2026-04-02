@@ -3,6 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Page not found. Return to StallPass, the community bathroom discovery platform."
+  >
+  <meta name="theme-color" content="#10233c">
+  <meta property="og:title" content="Not Found | StallPass">
+  <meta property="og:image" content="/assets/open-graph-social-preview.png">
+  <meta property="og:type" content="website">
   <title>Not Found | StallPass</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +19,33 @@
     rel="stylesheet"
   >
   <link rel="icon" type="image/png" href="/assets/pwa-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/pwa-icon-512.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-mark" href="/" aria-label="StallPass home">
+        <span class="brand-kicker">SP</span>
+        <span class="brand-copy">
+          <strong>StallPass</strong>
+          <span>Page not found</span>
+        </span>
+      </a>
+      <button class="menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="notfound-menu">
+        Menu
+      </button>
+      <nav class="site-nav" id="notfound-menu" data-menu>
+        <a href="/">Home</a>
+        <a href="/business/">Business</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
   <main class="doc-page">
     <div class="shell doc-shell">
       <article class="doc-card doc-hero is-visible">

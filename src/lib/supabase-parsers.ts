@@ -445,12 +445,112 @@ export const businessDashboardAnalyticsRowSchema = z.object({
   location_verified_at: dateTimeStringSchema.nullable(),
   pricing_plan: z.enum(['standard', 'lifetime']),
   last_updated: dateTimeStringSchema,
+  show_on_free_map: z.boolean(),
 });
 
 export const businessHoursUpdateResultSchema = z.object({
   success: z.boolean(),
   bathroom_id: rawTextSchema,
   updated_at: dateTimeStringSchema,
+});
+
+// ============================================================================
+// StallPass Visit Schemas
+// ============================================================================
+
+export const stallPassVisitSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  user_id: rawTextSchema,
+  visited_at: dateTimeStringSchema,
+  source: z.enum(['map_navigation', 'search', 'favorite', 'coupon_redeem', 'deep_link']),
+  created_at: dateTimeStringSchema,
+});
+
+export const businessVisitStatsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  total_visits: z.number().int().nonnegative(),
+  visits_this_week: z.number().int().nonnegative(),
+  visits_this_month: z.number().int().nonnegative(),
+  unique_visitors: z.number().int().nonnegative(),
+  top_source: z.enum(['map_navigation', 'search', 'favorite', 'coupon_redeem', 'deep_link']).nullable(),
+});
+
+// ============================================================================
+// Coupon Schemas
+// ============================================================================
+
+export const businessCouponSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  business_user_id: rawTextSchema,
+  title: rawTextSchema,
+  description: z.string().nullable(),
+  coupon_type: z.enum(['percent_off', 'dollar_off', 'bogo', 'free_item', 'custom']),
+  value: z.number().positive().nullable(),
+  min_purchase: z.number().nonnegative().nullable(),
+  coupon_code: rawTextSchema,
+  max_redemptions: z.number().int().positive().nullable(),
+  current_redemptions: z.number().int().nonnegative(),
+  starts_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema.nullable(),
+  is_active: z.boolean(),
+  premium_only: z.boolean(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomCouponPublicSchema = z.object({
+  id: rawTextSchema,
+  title: rawTextSchema,
+  description: z.string().nullable(),
+  coupon_type: z.enum(['percent_off', 'dollar_off', 'bogo', 'free_item', 'custom']),
+  value: z.number().positive().nullable(),
+  min_purchase: z.number().nonnegative().nullable(),
+  coupon_code: rawTextSchema,
+  starts_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema.nullable(),
+  premium_only: z.boolean(),
+  already_redeemed: z.boolean(),
+});
+
+export const couponRedemptionResultSchema = z.object({
+  success: z.boolean(),
+  redemption_id: rawTextSchema,
+  coupon_code: rawTextSchema,
+  title: rawTextSchema,
+});
+
+// ============================================================================
+// Early Adopter Invite Schemas
+// ============================================================================
+
+export const earlyAdopterInviteSchema = z.object({
+  id: rawTextSchema,
+  invite_token: rawTextSchema,
+  target_business_name: z.string().nullable(),
+  target_email: z.string().nullable(),
+  notes: z.string().nullable(),
+  expires_at: dateTimeStringSchema,
+  status: z.enum(['pending', 'redeemed', 'expired', 'revoked']),
+  redeemed_by: z.string().nullable(),
+  redeemed_at: dateTimeStringSchema.nullable(),
+  created_at: dateTimeStringSchema,
+  redeemer_display_name: z.string().nullable(),
+});
+
+export const generateInviteResultSchema = z.object({
+  success: z.boolean(),
+  invite_id: rawTextSchema,
+  invite_token: rawTextSchema,
+  expires_at: dateTimeStringSchema,
+});
+
+export const redeemInviteResultSchema = z.object({
+  success: z.boolean(),
+  invite_id: rawTextSchema,
+  is_lifetime_free: z.boolean(),
+  message: z.string(),
 });
 
 export const bathroomAccessCodeSchema = z.object({

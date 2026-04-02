@@ -5,18 +5,27 @@ import { useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
 import {
   BusinessHoursEditorSheet,
+  ClaimedBathroomCard,
+  CouponCard,
+  CouponEditorSheet,
   DashboardStats,
+  EarlyAdopterBanner,
   FeaturedPlacementCard,
+  FreeMapToggle,
   ManagedBathroomSection,
+  VisitAnalyticsCard,
 } from '@/components/business';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBusinessDashboard, useBusinessFeaturedPlacements } from '@/hooks/useBusiness';
 import { useBusinessClaims } from '@/hooks/useBusinessClaims';
+import { useBusinessCoupons, useCreateCoupon, useDeactivateCoupon } from '@/hooks/useBusinessCoupons';
+import { useEarlyAdopterInvites, useGenerateInvite } from '@/hooks/useEarlyAdopterInvite';
+import { useBusinessVisitStats, useToggleFreeMapVisibility } from '@/hooks/useStallPassVisits';
 import { pushSafely } from '@/lib/navigation';
 import { useBusinessStore } from '@/store/useBusinessStore';
-import { BusinessClaimListItem, BusinessClaimStatus } from '@/types';
+import type { BusinessClaimListItem, BusinessClaimStatus, CreateCouponInput } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
 const STATUS_META: Record<
@@ -106,6 +115,12 @@ function ClaimStatusCard({
 
       <Text className="mt-4 text-sm leading-6 text-ink-600">{statusMeta.body}</Text>
 
+      {claim.is_lifetime_free ? (
+        <View className="mt-3 rounded-full bg-success/10 px-3 py-2 self-start">
+          <Text className="text-xs font-bold uppercase text-success">Lifetime Free</Text>
+        </View>
+      ) : null}
+
       <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
         <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Bathroom</Text>
         <Text className="mt-2 text-base font-semibold text-ink-900">
@@ -147,19 +162,39 @@ export default function BusinessTab() {
   } = useBusinessClaims();
   const {
     isHoursEditorOpen,
+    isCouponEditorOpen,
     selectedBathroomId,
+    couponEditorBathroomId,
     openHoursEditor,
     closeHoursEditor,
+    openCouponEditor,
+    closeCouponEditor,
     reset: resetBusinessStore,
   } = useBusinessStore();
 
-  const hasDashboardAccess = profile?.role === 'business' || profile?.role === 'admin' || counts.approved > 0;
+  const isAdmin = profile?.role === 'admin';
+  const hasDashboardAccess = profile?.role === 'business' || isAdmin || counts.approved > 0;
+
   const dashboardQuery = useBusinessDashboard({
     enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
   });
   const featuredPlacementsQuery = useBusinessFeaturedPlacements({
     enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
   });
+  const visitStatsQuery = useBusinessVisitStats({
+    enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
+  });
+  const couponsQuery = useBusinessCoupons({
+    enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
+  });
+  const invitesQuery = useEarlyAdopterInvites(undefined, {
+    enabled: !isGuest && isAdmin,
+  });
+
+  const createCouponMutation = useCreateCoupon();
+  const deactivateCouponMutation = useDeactivateCoupon();
+  const generateInviteMutation = useGenerateInvite();
+  const toggleFreeMapMutation = useToggleFreeMapVisibility();
 
   useEffect(() => {
     if (isGuest) {
@@ -172,7 +207,7 @@ export default function BusinessTab() {
       return {
         eyebrow: 'Business Dashboard',
         title: 'Run your claimed bathrooms with live analytics.',
-        body: 'Verified locations surface map visibility rules, launch-plan status, offers, reports, featured placement inventory, and public hours from one operational view.',
+        body: 'Manage hours, coupons, map visibility, and track how many customers StallPass sends your way.',
       };
     }
 
@@ -196,8 +231,14 @@ export default function BusinessTab() {
       refetchClaims(),
       hasDashboardAccess ? dashboardQuery.refetch() : Promise.resolve(),
       hasDashboardAccess ? featuredPlacementsQuery.refetch() : Promise.resolve(),
+      hasDashboardAccess ? visitStatsQuery.refetch() : Promise.resolve(),
+      hasDashboardAccess ? couponsQuery.refetch() : Promise.resolve(),
+      isAdmin ? invitesQuery.refetch() : Promise.resolve(),
     ]);
-  }, [dashboardQuery, featuredPlacementsQuery, hasDashboardAccess, refetchClaims]);
+  }, [
+    couponsQuery, dashboardQuery, featuredPlacementsQuery, hasDashboardAccess,
+    invitesQuery, isAdmin, refetchClaims, visitStatsQuery,
+  ]);
 
   const handleRequestFeatured = useCallback(
     (bathroomId: string) => {
@@ -220,11 +261,52 @@ export default function BusinessTab() {
     [router]
   );
 
+  const handleCreateCoupon = useCallback(
+    (input: CreateCouponInput) => {
+      createCouponMutation.mutate(input, {
+        onSuccess: () => {
+          closeCouponEditor();
+        },
+      });
+    },
+    [closeCouponEditor, createCouponMutation]
+  );
+
+  const handleDeactivateCoupon = useCallback(
+    (couponId: string) => {
+      deactivateCouponMutation.mutate(couponId);
+    },
+    [deactivateCouponMutation]
+  );
+
+  const handleEditCoupon = useCallback(
+    (_couponId: string) => {
+      // Future: open edit sheet with coupon data pre-filled
+    },
+    []
+  );
+
+  const handleToggleFreeMap = useCallback(
+    (bathroomId: string, showOnFreeMap: boolean) => {
+      toggleFreeMapMutation.mutate({ bathroomId, showOnFreeMap });
+    },
+    [toggleFreeMapMutation]
+  );
+
   const managedBathrooms = dashboardQuery.data?.bathrooms ?? [];
   const placements = featuredPlacementsQuery.data ?? [];
+  const visitStats = visitStatsQuery.data ?? [];
+  const coupons = couponsQuery.data ?? [];
+  const invites = invitesQuery.data ?? [];
+  const activeCoupons = coupons.filter((c) => c.is_active);
   const dashboardError = dashboardQuery.error;
   const featuredPlacementsError = featuredPlacementsQuery.error;
-  const isRefreshing = isClaimsFetching || dashboardQuery.isFetching || featuredPlacementsQuery.isFetching;
+  const isRefreshing =
+    isClaimsFetching ||
+    dashboardQuery.isFetching ||
+    featuredPlacementsQuery.isFetching ||
+    visitStatsQuery.isFetching ||
+    couponsQuery.isFetching;
 
   if (isGuest) {
     return (
@@ -277,18 +359,21 @@ export default function BusinessTab() {
         refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => void handleRefresh()} />}
       >
         <View className="px-6 py-8">
+          {/* Header */}
           <View className="rounded-[32px] bg-brand-600 px-6 py-8">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">{headerCopy.eyebrow}</Text>
             <Text className="mt-3 text-4xl font-black tracking-tight text-white">{headerCopy.title}</Text>
             <Text className="mt-3 text-base leading-6 text-white/80">{headerCopy.body}</Text>
           </View>
 
+          {/* Claim Summary */}
           <View className="mt-6 flex-row gap-3">
             <SummaryCard label="Pending" value={counts.pending} />
             <SummaryCard label="Approved" value={counts.approved} />
             <SummaryCard label="Needs Changes" value={counts.rejected} />
           </View>
 
+          {/* Error State */}
           {claimsError ? (
             <View className="mt-6 rounded-[28px] border border-danger/20 bg-danger/10 p-5">
               <Text className="text-xl font-bold text-danger">Business portal unavailable</Text>
@@ -299,6 +384,7 @@ export default function BusinessTab() {
             </View>
           ) : null}
 
+          {/* Dashboard Content */}
           {hasDashboardAccess ? (
             <View className="mt-6 gap-4">
               {dashboardError ? (
@@ -316,20 +402,51 @@ export default function BusinessTab() {
                 </View>
               ) : null}
 
+              {/* Dashboard Stats */}
               {dashboardQuery.data ? <DashboardStats summary={dashboardQuery.data.summary} /> : null}
 
+              {/* StallPass Visit Analytics */}
+              {visitStats.length > 0 ? (
+                <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
+                  <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">
+                    StallPass Visit Analytics
+                  </Text>
+                  <Text className="mt-2 text-sm leading-5 text-ink-600">
+                    How many customers StallPass is sending to your business.
+                  </Text>
+                  <View className="mt-4 gap-3">
+                    {visitStats.map((stats) => (
+                      <VisitAnalyticsCard key={stats.bathroom_id} stats={stats} />
+                    ))}
+                  </View>
+                </View>
+              ) : null}
+
+              {/* Managed Locations with Free Map Toggle */}
               <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
                 <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Managed Locations</Text>
                 {managedBathrooms.length ? (
                   <View className="mt-4 gap-4">
                     {managedBathrooms.map((bathroom) => (
-                      <ManagedBathroomSection
-                        bathroom={bathroom}
-                        key={bathroom.bathroom_id}
-                        onManageHours={openHoursEditor}
-                        onOpenBathroom={handleOpenBathroom}
-                        onRequestFeatured={handleRequestFeatured}
-                      />
+                      <View key={bathroom.bathroom_id} className="gap-3">
+                        <ClaimedBathroomCard
+                          bathroom={bathroom}
+                          onManageHours={openHoursEditor}
+                          onOpenBathroom={handleOpenBathroom}
+                          onRequestFeatured={handleRequestFeatured}
+                        />
+                        <FreeMapToggle
+                          bathroomId={bathroom.bathroom_id}
+                          initialValue={bathroom.show_on_free_map}
+                          isLoading={toggleFreeMapMutation.isPending}
+                          onToggle={handleToggleFreeMap}
+                        />
+                        <Button
+                          label="Create Coupon"
+                          onPress={() => openCouponEditor(bathroom.bathroom_id)}
+                          variant="secondary"
+                        />
+                      </View>
                     ))}
                   </View>
                 ) : (
@@ -342,6 +459,36 @@ export default function BusinessTab() {
                 )}
               </View>
 
+              {/* Coupons & Discounts */}
+              <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
+                <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">
+                  Coupons & Discounts
+                </Text>
+                <Text className="mt-2 text-sm leading-5 text-ink-600">
+                  Create coupons for StallPass users to incentivize visits. Premium users see these on your bathroom detail screen.
+                </Text>
+                {activeCoupons.length > 0 ? (
+                  <View className="mt-4 gap-3">
+                    {activeCoupons.map((coupon) => (
+                      <CouponCard
+                        coupon={coupon}
+                        key={coupon.id}
+                        onDeactivate={handleDeactivateCoupon}
+                        onEdit={handleEditCoupon}
+                      />
+                    ))}
+                  </View>
+                ) : (
+                  <View className="mt-4 rounded-2xl bg-surface-base px-4 py-5">
+                    <Text className="text-base font-semibold text-ink-900">No active coupons</Text>
+                    <Text className="mt-2 text-sm leading-6 text-ink-600">
+                      Create your first coupon from a managed location above. Popular ideas: 10% off when showing StallPass, free drink with purchase, or BOGO deals.
+                    </Text>
+                  </View>
+                )}
+              </View>
+
+              {/* Featured Placements */}
               <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
                 <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Featured Placements</Text>
                 {featuredPlacementsError ? (
@@ -363,9 +510,19 @@ export default function BusinessTab() {
                   </View>
                 )}
               </View>
+
+              {/* Early Adopter Program (Admin only) */}
+              {isAdmin ? (
+                <EarlyAdopterBanner
+                  invites={invites}
+                  isGenerating={generateInviteMutation.isPending}
+                  onGenerate={(input) => generateInviteMutation.mutate(input)}
+                />
+              ) : null}
             </View>
           ) : null}
 
+          {/* Empty State */}
           {!claimsError && !claims.length ? (
             <View className="mt-6 rounded-[28px] border border-surface-strong bg-surface-card p-6">
               <Text className="text-2xl font-bold text-ink-900">No ownership claims yet</Text>
@@ -386,6 +543,7 @@ export default function BusinessTab() {
             </View>
           ) : null}
 
+          {/* Claim History */}
           {!claimsError && claims.length ? (
             <View className="mt-6 gap-4">
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Claim History</Text>
@@ -402,10 +560,20 @@ export default function BusinessTab() {
         </View>
       </ScrollView>
 
+      {/* Hours Editor Sheet */}
       <BusinessHoursEditorSheet
         bathroomId={selectedBathroomId}
         onClose={closeHoursEditor}
         visible={isHoursEditorOpen}
+      />
+
+      {/* Coupon Editor Sheet */}
+      <CouponEditorSheet
+        bathroomId={couponEditorBathroomId}
+        isSubmitting={createCouponMutation.isPending}
+        onClose={closeCouponEditor}
+        onSubmit={handleCreateCoupon}
+        visible={isCouponEditorOpen}
       />
     </SafeAreaView>
   );

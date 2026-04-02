@@ -136,6 +136,15 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
+            // Fail the build if the Maps API key is not set for release builds.
+            def mapsKey = findProperty('ANDROID_GOOGLE_MAPS_API_KEY') ?: ""
+            if (mapsKey.isEmpty()) {
+                throw new GradleException(
+                    "ANDROID_GOOGLE_MAPS_API_KEY is not set. " +
+                    "Release builds require a valid Google Maps API key. " +
+                    "Set it via a local.properties entry or CI environment variable."
+                )
+            }
             if (hasReleaseSigningConfig) {
                 signingConfig signingConfigs.release
             } else if (isReleaseTask) {
