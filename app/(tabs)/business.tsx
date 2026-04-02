@@ -436,7 +436,7 @@ export default function BusinessTab() {
                         />
                         <FreeMapToggle
                           bathroomId={bathroom.bathroom_id}
-                          initialValue={true}
+                          initialValue={bathroom.show_on_free_map}
                           isLoading={toggleFreeMapMutation.isPending}
                           onToggle={handleToggleFreeMap}
                         />

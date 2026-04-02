@@ -25,6 +25,7 @@ const analyticsRow = {
   has_active_featured_placement: true,
   active_featured_placements: 1,
   last_updated: '2026-03-19T10:00:00.000Z',
+  show_on_free_map: true,
 };
 
 describe('business API', () => {

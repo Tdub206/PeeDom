@@ -405,6 +405,7 @@ export const businessDashboardAnalyticsRowSchema = z.object({
   has_active_featured_placement: z.boolean(),
   active_featured_placements: z.number().int().nonnegative(),
   last_updated: dateTimeStringSchema,
+  show_on_free_map: z.boolean(),
 });
 
 export const businessHoursUpdateResultSchema = z.object({

@@ -648,6 +648,7 @@ export interface BusinessDashboardBathroom {
   has_active_featured_placement: boolean;
   active_featured_placements: number;
   last_updated: string;
+  show_on_free_map: boolean;
 }
 
 export interface BusinessDashboardSummary {
