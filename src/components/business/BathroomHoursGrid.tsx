@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Pressable, Switch, Text, TextInput, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { colors } from '@/constants/colors';

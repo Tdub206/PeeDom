@@ -192,7 +192,7 @@ export default function ProfileTab() {
 
     Alert.alert(
       'Deactivate account?',
-      'This disables your PeeDom account and clears the current device session.',
+      'This disables your StallPass account and clears the current device session.',
       [
         {
           text: 'Cancel',

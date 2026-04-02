@@ -5,13 +5,12 @@ import { useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
 import {
   BusinessHoursEditorSheet,
-  ClaimedBathroomCard,
   CouponCard,
   CouponEditorSheet,
   DashboardStats,
   EarlyAdopterBanner,
   FeaturedPlacementCard,
-  FreeMapToggle,
+  ManagedBathroomSection,
   VisitAnalyticsCard,
 } from '@/components/business';
 import { LoadingScreen } from '@/components/LoadingScreen';
@@ -21,7 +20,7 @@ import { useBusinessDashboard, useBusinessFeaturedPlacements } from '@/hooks/use
 import { useBusinessClaims } from '@/hooks/useBusinessClaims';
 import { useBusinessCoupons, useCreateCoupon, useDeactivateCoupon } from '@/hooks/useBusinessCoupons';
 import { useEarlyAdopterInvites, useGenerateInvite } from '@/hooks/useEarlyAdopterInvite';
-import { useBusinessVisitStats, useToggleFreeMapVisibility } from '@/hooks/useStallPassVisits';
+import { useBusinessVisitStats } from '@/hooks/useStallPassVisits';
 import { pushSafely } from '@/lib/navigation';
 import { useBusinessStore } from '@/store/useBusinessStore';
 import type { BusinessClaimListItem, BusinessClaimStatus, CreateCouponInput } from '@/types';
@@ -193,7 +192,6 @@ export default function BusinessTab() {
   const createCouponMutation = useCreateCoupon();
   const deactivateCouponMutation = useDeactivateCoupon();
   const generateInviteMutation = useGenerateInvite();
-  const toggleFreeMapMutation = useToggleFreeMapVisibility();
 
   useEffect(() => {
     if (isGuest) {
@@ -206,7 +204,7 @@ export default function BusinessTab() {
       return {
         eyebrow: 'Business Dashboard',
         title: 'Run your claimed bathrooms with live analytics.',
-        body: 'Manage hours, coupons, map visibility, and track how many customers StallPass sends your way.',
+        body: 'Manage hours, map visibility, promotions, and coupons while tracking how many customers StallPass sends your way.',
       };
     }
 
@@ -279,17 +277,10 @@ export default function BusinessTab() {
   );
 
   const handleEditCoupon = useCallback(
-    (_couponId: string) => {
+    () => {
       // Future: open edit sheet with coupon data pre-filled
     },
     []
-  );
-
-  const handleToggleFreeMap = useCallback(
-    (bathroomId: string, showOnFreeMap: boolean) => {
-      toggleFreeMapMutation.mutate({ bathroomId, showOnFreeMap });
-    },
-    [toggleFreeMapMutation]
   );
 
   const managedBathrooms = dashboardQuery.data?.bathrooms ?? [];
@@ -427,18 +418,12 @@ export default function BusinessTab() {
                 {managedBathrooms.length ? (
                   <View className="mt-4 gap-4">
                     {managedBathrooms.map((bathroom) => (
-                      <View key={bathroom.bathroom_id} className="gap-3">
-                        <ClaimedBathroomCard
+                      <View className="gap-3" key={bathroom.bathroom_id}>
+                        <ManagedBathroomSection
                           bathroom={bathroom}
                           onManageHours={openHoursEditor}
                           onOpenBathroom={handleOpenBathroom}
                           onRequestFeatured={handleRequestFeatured}
-                        />
-                        <FreeMapToggle
-                          bathroomId={bathroom.bathroom_id}
-                          initialValue={bathroom.show_on_free_map}
-                          isLoading={toggleFreeMapMutation.isPending}
-                          onToggle={handleToggleFreeMap}
                         />
                         <Button
                           label="Create Coupon"

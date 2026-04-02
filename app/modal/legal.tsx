@@ -5,8 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 type LegalTab = 'privacy' | 'terms';
 
-const PRIVACY_LAST_UPDATED = 'March 23, 2026';
-const TERMS_LAST_UPDATED = 'March 23, 2026';
+const PRIVACY_LAST_UPDATED = 'March 26, 2026';
+const TERMS_LAST_UPDATED = 'March 26, 2026';
 
 function SectionHeading({ children }: { children: string }) {
   return <Text className="mt-6 text-lg font-bold text-ink-900">{children}</Text>;
@@ -49,20 +49,21 @@ function PrivacyPolicyContent() {
       <BulletItem>Power the gamification system (points, badges, leaderboards).</BulletItem>
       <BulletItem>Moderate content and enforce community guidelines.</BulletItem>
       <BulletItem>Diagnose crashes and improve app performance via Sentry.</BulletItem>
-      <BulletItem>Show ads through Google AdMob with your consent where required.</BulletItem>
+      <BulletItem>Show non-personalized rewarded ads through Google AdMob with your consent where required.</BulletItem>
 
       <SectionHeading>3. Information Sharing</SectionHeading>
       <Paragraph>
         We do not sell your personal information. We share data only with service providers that help
         us operate the app: Supabase (database and authentication), Sentry (error monitoring),
-        Google AdMob (advertising), and Google Maps (map rendering). Each provider processes data
+        Google AdMob (non-personalized rewarded advertising), and Google Maps (map rendering). Each provider processes data
         under their own privacy policies.
       </Paragraph>
 
       <SectionHeading>4. Ad Consent (GDPR/EEA)</SectionHeading>
       <Paragraph>
         If you are located in the European Economic Area, we request your consent before showing
-        personalized ads through Google's User Messaging Platform (UMP). You can change your ad
+        rewarded ads through Google's User Messaging Platform (UMP). StallPass launches on iOS with
+        non-personalized rewarded ads. You can change your ad and privacy
         preferences at any time in your device settings.
       </Paragraph>
 
@@ -80,10 +81,10 @@ function PrivacyPolicyContent() {
       <BulletItem>Request correction of inaccurate data.</BulletItem>
       <BulletItem>Request deletion of your account and personal data.</BulletItem>
       <BulletItem>Export your data in a portable format.</BulletItem>
-      <BulletItem>Withdraw consent for personalized advertising.</BulletItem>
+      <BulletItem>Manage ad consent where advertising consent is required.</BulletItem>
       <Paragraph>
         You can exercise these rights from the Profile tab in the app or by contacting us at
-        privacy@stallpass.app.
+        support@stallpass.org.
       </Paragraph>
 
       <SectionHeading>7. Children's Privacy</SectionHeading>
@@ -109,7 +110,7 @@ function PrivacyPolicyContent() {
 
       <SectionHeading>10. Contact Us</SectionHeading>
       <Paragraph>
-        If you have questions about this Privacy Policy, contact us at privacy@stallpass.app.
+        If you have questions about this Privacy Policy, contact us at support@stallpass.org.
       </Paragraph>
     </>
   );
@@ -210,7 +211,7 @@ function TermsOfServiceContent() {
 
       <SectionHeading>12. Contact</SectionHeading>
       <Paragraph>
-        Questions about these Terms? Contact us at support@stallpass.app.
+        Questions about these Terms? Contact us at support@stallpass.org.
       </Paragraph>
     </>
   );

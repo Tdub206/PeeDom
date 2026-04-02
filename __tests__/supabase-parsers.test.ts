@@ -1,5 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 import {
+  businessBathroomSettingsSchema,
+  businessPromotionSchema,
   dbBathroomStatusEventSchema,
   dbPremiumArrivalAlertSchema,
   dbPointEventSchema,
@@ -212,6 +214,8 @@ describe('parseSupabaseRows', () => {
     expect(result.data).toHaveLength(1);
     expect(result.data[0]?.place_name).toBe('Pike Place Bathroom');
     expect(result.data[0]?.accessibility_score).toBe(72);
+    expect(result.data[0]?.stallpass_access_tier).toBe('public');
+    expect(result.data[0]?.active_offer_count).toBe(0);
   });
 
   it('parses server-backed code reveal grants', () => {
@@ -327,6 +331,60 @@ describe('accessibility parser schemas', () => {
     expect(result.error).toBeNull();
     expect(result.data?.accessibility_score).toBe(68);
     expect(result.data?.accessibility_features.has_braille_signage).toBe(true);
+  });
+});
+
+describe('business parser schemas', () => {
+  it('parses business bathroom settings rows', () => {
+    const result = parseSupabaseNullableRow(
+      businessBathroomSettingsSchema,
+      {
+        bathroom_id: 'bathroom-123',
+        requires_premium_access: true,
+        show_on_free_map: false,
+        is_location_verified: true,
+        location_verified_at: '2026-03-18T12:05:00.000Z',
+        pricing_plan: 'lifetime',
+        pricing_plan_granted_at: '2026-03-18T12:05:00.000Z',
+        updated_by: 'user-123',
+        created_at: '2026-03-18T12:05:00.000Z',
+        updated_at: '2026-03-18T12:05:00.000Z',
+      },
+      'business bathroom settings',
+      'Unable to parse business bathroom settings.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.pricing_plan).toBe('lifetime');
+  });
+
+  it('parses StallPass business promotions', () => {
+    const result = parseSupabaseNullableRow(
+      businessPromotionSchema,
+      {
+        id: 'promotion-123',
+        bathroom_id: 'bathroom-123',
+        business_user_id: 'user-123',
+        title: '10% off coffee',
+        description: 'Premium members get a discount after using the restroom.',
+        offer_type: 'percentage',
+        offer_value: 10,
+        promo_code: 'STALLPASS10',
+        redemption_instructions: 'Show the cashier your StallPass screen.',
+        starts_at: null,
+        ends_at: null,
+        is_active: true,
+        redemptions_count: 0,
+        created_at: '2026-03-18T12:05:00.000Z',
+        updated_at: '2026-03-18T12:05:00.000Z',
+      },
+      'business promotion',
+      'Unable to parse business promotion.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.offer_type).toBe('percentage');
+    expect(result.data?.promo_code).toBe('STALLPASS10');
   });
 });
 

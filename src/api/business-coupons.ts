@@ -13,11 +13,14 @@ import {
   parseSupabaseNullableRow,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
+import type { Database } from '@/types';
 
 interface ApiErrorShape {
   code?: string;
   message: string;
 }
+
+type BusinessCouponUpdate = Database['public']['Tables']['business_coupons']['Update'];
 
 function toAppError(error: ApiErrorShape | Error, fallbackMessage: string): Error & { code?: string } {
   const appError = new Error(error.message || fallbackMessage) as Error & { code?: string };
@@ -148,7 +151,7 @@ export async function updateBusinessCoupon(input: UpdateCouponInput): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const updates: Record<string, unknown> = { updated_at: new Date().toISOString() };
+    const updates: BusinessCouponUpdate = { updated_at: new Date().toISOString() };
 
     if (input.title !== undefined) updates.title = input.title;
     if (input.description !== undefined) updates.description = input.description;
@@ -160,8 +163,8 @@ export async function updateBusinessCoupon(input: UpdateCouponInput): Promise<{
     if (input.premium_only !== undefined) updates.premium_only = input.premium_only;
 
     const { error } = await getSupabaseClient()
-      .from('business_coupons')
-      .update(updates)
+      .from('business_coupons' as never)
+      .update(updates as never)
       .eq('id', input.coupon_id);
 
     if (error) {
@@ -185,9 +188,14 @@ export async function deactivateBusinessCoupon(couponId: string): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
+    const deactivationUpdate: BusinessCouponUpdate = {
+      is_active: false,
+      updated_at: new Date().toISOString(),
+    };
+
     const { error } = await getSupabaseClient()
-      .from('business_coupons')
-      .update({ is_active: false, updated_at: new Date().toISOString() })
+      .from('business_coupons' as never)
+      .update(deactivationUpdate as never)
       .eq('id', couponId);
 
     if (error) {

@@ -6,6 +6,7 @@ import {
   calculateDistanceMeters,
   calculateAccessibilityScore,
   getBathroomMapPinTone,
+  isBathroomVisibleOnMap,
   isBathroomOpenNow,
   mergeAccessibilityFilters,
   mapBathroomDetailRowToListItem,
@@ -141,6 +142,8 @@ describe('bathroom utilities', () => {
     expect(listItem.accessibility_score).toBe(55);
     expect(listItem.primary_code_summary.has_code).toBe(true);
     expect(listItem.distance_meters).toBeGreaterThan(0);
+    expect(listItem.stallpass_access_tier).toBe('public');
+    expect(listItem.show_on_free_map).toBe(true);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
   });
 
@@ -194,6 +197,28 @@ describe('bathroom utilities', () => {
 
     expect(getBathroomMapPinTone(lockedWithoutCode)).toBe('locked_without_code');
     expect(getBathroomMapPinTone(unlockedBathroom)).toBe('open_unlocked');
+  });
+
+  it('hides premium-only StallPass partners from the free map', () => {
+    expect(
+      isBathroomVisibleOnMap(
+        {
+          stallpass_access_tier: 'premium',
+          show_on_free_map: false,
+        },
+        false
+      )
+    ).toBe(false);
+
+    expect(
+      isBathroomVisibleOnMap(
+        {
+          stallpass_access_tier: 'premium',
+          show_on_free_map: false,
+        },
+        true
+      )
+    ).toBe(true);
   });
 
   it('filters bathrooms by openNow, noCodeRequired, and cleanliness', () => {

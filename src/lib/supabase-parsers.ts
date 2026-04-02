@@ -346,6 +346,37 @@ const hoursEntrySchema = z.object({
 
 const hoursDataSchema = z.record(z.string(), z.array(hoursEntrySchema));
 
+export const businessBathroomSettingsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  requires_premium_access: z.boolean(),
+  show_on_free_map: z.boolean(),
+  is_location_verified: z.boolean(),
+  location_verified_at: dateTimeStringSchema.nullable(),
+  pricing_plan: z.enum(['standard', 'lifetime']),
+  pricing_plan_granted_at: dateTimeStringSchema.nullable().optional().default(null),
+  updated_by: z.string().nullable().optional().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const businessPromotionSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  business_user_id: rawTextSchema,
+  title: rawTextSchema,
+  description: rawTextSchema,
+  offer_type: z.enum(['percentage', 'amount_off', 'freebie', 'custom']),
+  offer_value: z.number().nullable(),
+  promo_code: z.string().nullable(),
+  redemption_instructions: rawTextSchema,
+  starts_at: dateTimeStringSchema.nullable(),
+  ends_at: dateTimeStringSchema.nullable(),
+  is_active: z.boolean(),
+  redemptions_count: z.number().int().nonnegative(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
 export const businessVerificationBadgeSchema = z.object({
   id: rawTextSchema,
   bathroom_id: rawTextSchema,
@@ -400,12 +431,20 @@ export const businessDashboardAnalyticsRowSchema = z.object({
   avg_cleanliness: z.number().nonnegative(),
   total_ratings: z.number().int().nonnegative(),
   weekly_views: z.number().int().nonnegative(),
+  weekly_unique_visitors: z.number().int().nonnegative(),
+  monthly_unique_visitors: z.number().int().nonnegative(),
+  weekly_navigation_count: z.number().int().nonnegative(),
   verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable(),
   has_verification_badge: z.boolean(),
   has_active_featured_placement: z.boolean(),
   active_featured_placements: z.number().int().nonnegative(),
-  last_updated: dateTimeStringSchema,
+  active_offer_count: z.number().int().nonnegative(),
+  requires_premium_access: z.boolean(),
   show_on_free_map: z.boolean(),
+  is_location_verified: z.boolean(),
+  location_verified_at: dateTimeStringSchema.nullable(),
+  pricing_plan: z.enum(['standard', 'lifetime']),
+  last_updated: dateTimeStringSchema,
 });
 
 export const businessHoursUpdateResultSchema = z.object({
@@ -570,6 +609,11 @@ export const publicBathroomDetailRowSchema = z.object({
   cleanliness_avg: z.number().nullable(),
   updated_at: dateTimeStringSchema,
   verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable().default(null),
+  stallpass_access_tier: z.enum(['public', 'premium']).default('public'),
+  show_on_free_map: z.boolean().default(true),
+  is_business_location_verified: z.boolean().default(false),
+  location_verified_at: dateTimeStringSchema.nullable().default(null),
+  active_offer_count: z.number().int().nonnegative().default(0),
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({

@@ -6,7 +6,7 @@
 
 1. **Download Instagram** or go to instagram.com
 2. **Create Account**
-   - Use email: support@stallpass.app (or business email)
+- Use email: support@stallpass.org
    - Create strong password
    - Username: **@stallpass** (primary choice)
    - Alternative: **@stallpassapp**
@@ -728,4 +728,3 @@ Download the app that 10,000+ people already trust
 8. **Remember Your Mission**: Every post should reinforce that StallPass solves a real problem
 
 **StallPass Isn't Just an App—It's a Community Movement.** Show up for that community, and they'll show up for your app.
-

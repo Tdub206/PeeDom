@@ -1,11 +1,15 @@
 {
   "cli": {
-    "version": ">= 7.0.0"
+    "version": ">= 7.0.0",
+    "appVersionSource": "local"
   },
   "build": {
     "development": {
       "developmentClient": true,
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "local"
+      },
       "ios": {
         "resourceClass": "m-medium"
       },
@@ -15,6 +19,9 @@
     },
     "preview": {
       "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_ENV": "staging"
+      },
       "ios": {
         "simulator": false,
         "resourceClass": "m-medium"
@@ -24,6 +31,10 @@
       }
     },
     "production": {
+      "distribution": "store",
+      "env": {
+        "EXPO_PUBLIC_ENV": "production"
+      },
       "ios": {
         "resourceClass": "m-medium"
       },

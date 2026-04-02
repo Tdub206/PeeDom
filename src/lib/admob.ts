@@ -35,6 +35,15 @@ function getUnknownErrorMessage(error: unknown): string {
   return 'Unknown error';
 }
 
+function getPlatformOs(): string {
+  try {
+    const reactNativeModule = require('react-native') as { Platform?: { OS?: string } };
+    return reactNativeModule.Platform?.OS ?? 'unknown';
+  } catch (_error) {
+    return 'unknown';
+  }
+}
+
 function loadGoogleMobileAdsModule(): GoogleMobileAdsModuleState {
   if (!adMobRuntimeConfig.isEnabled) {
     return {
@@ -132,9 +141,9 @@ async function ensureMobileAdsReady(): Promise<void> {
 
 async function buildRequestOptions({ bathroomId, userId }: RewardedCodeRevealOptions) {
   const googleMobileAdsModule = googleMobileAdsModuleState.module;
-  let requestNonPersonalizedAdsOnly = false;
+  let requestNonPersonalizedAdsOnly = getPlatformOs() === 'ios';
 
-  if (googleMobileAdsModule) {
+  if (!requestNonPersonalizedAdsOnly && googleMobileAdsModule) {
     try {
       const userChoices = await googleMobileAdsModule.AdsConsent.getUserChoices();
       requestNonPersonalizedAdsOnly = userChoices.selectPersonalisedAds === false;

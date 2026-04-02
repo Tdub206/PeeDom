@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
-import type { PublicBathroomDetailRow } from '@/api/bathrooms';
+import { recordBathroomNavigationOpen, type PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
 import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
@@ -397,6 +397,8 @@ export default function BathroomDetailScreen() {
     setIsOpeningDirections(true);
 
     try {
+      void recordBathroomNavigationOpen(bathroomDetail.id);
+
       if (Platform.OS === 'ios') {
         const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
 

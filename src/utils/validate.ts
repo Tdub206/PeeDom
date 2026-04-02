@@ -241,6 +241,11 @@ export const claimBusinessSchema = z
       .trim()
       .max(500, 'Evidence link must be 500 characters or fewer.')
       .optional(),
+    growth_invite_code: z
+      .string()
+      .trim()
+      .max(24, 'Invite code must be 24 characters or fewer.')
+      .optional(),
   })
   .superRefine((value, context) => {
     const contactPhone = value.contact_phone?.trim();
@@ -267,6 +272,16 @@ export const claimBusinessSchema = z
         code: z.ZodIssueCode.custom,
         path: ['evidence_url'],
         message: 'Enter a valid URL.',
+      });
+    }
+
+    const growthInviteCode = value.growth_invite_code?.trim();
+
+    if (growthInviteCode && !/^[A-Za-z0-9-]{6,24}$/.test(growthInviteCode)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['growth_invite_code'],
+        message: 'Enter the invite code exactly as it was shared with the business.',
       });
     }
   });

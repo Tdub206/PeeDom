@@ -8,7 +8,6 @@ import {
   updateBusinessCoupon,
 } from '@/api/business-coupons';
 import { useAuth } from '@/contexts/AuthContext';
-import { businessQueryKeys } from '@/hooks/useBusiness';
 import type {
   BathroomCouponPublic,
   BusinessCoupon,

@@ -100,6 +100,40 @@ function ClaimedBathroomCardComponent({
         </View>
       ) : null}
 
+      <View className="mt-4 flex-row flex-wrap gap-2">
+        <View className="rounded-full bg-brand-50 px-3 py-2">
+          <Text className="text-xs font-black uppercase tracking-[1px] text-brand-700">
+            {bathroom.requires_premium_access && !bathroom.show_on_free_map
+              ? 'Premium map only'
+              : bathroom.requires_premium_access
+                ? 'Premium + free map'
+                : 'Public map'}
+          </Text>
+        </View>
+        <View
+          className={[
+            'rounded-full px-3 py-2',
+            bathroom.is_location_verified ? 'bg-success/10' : 'bg-surface-base',
+          ].join(' ')}
+        >
+          <Text
+            className={[
+              'text-xs font-black uppercase tracking-[1px]',
+              bathroom.is_location_verified ? 'text-success' : 'text-ink-600',
+            ].join(' ')}
+          >
+            {bathroom.is_location_verified ? 'Location verified' : 'Location pending'}
+          </Text>
+        </View>
+        {bathroom.pricing_plan === 'lifetime' ? (
+          <View className="rounded-full bg-ink-900 px-3 py-2">
+            <Text className="text-xs font-black uppercase tracking-[1px] text-white">
+              Lifetime access
+            </Text>
+          </View>
+        ) : null}
+      </View>
+
       <View className="mt-5 flex-row gap-3">
         <Metric label="Favorites" value={bathroom.total_favorites.toString()} />
         <Metric label="Cleanliness" value={bathroom.avg_cleanliness.toFixed(1)} />
@@ -111,7 +145,12 @@ function ClaimedBathroomCardComponent({
           tone={bathroom.open_reports > 0 ? 'warning' : 'default'}
           value={bathroom.open_reports.toString()}
         />
-        <Metric label="Views" value={bathroom.weekly_views.toString()} />
+        <Metric label="Weekly Visitors" value={bathroom.weekly_unique_visitors.toString()} />
+      </View>
+
+      <View className="mt-3 flex-row gap-3">
+        <Metric label="Route Opens" value={bathroom.weekly_navigation_count.toString()} />
+        <Metric label="Offers" value={bathroom.active_offer_count.toString()} />
       </View>
 
       <View className="mt-5 gap-3">

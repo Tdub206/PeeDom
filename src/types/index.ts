@@ -174,6 +174,7 @@ export interface ClaimBusinessDraft {
   contact_email: string;
   contact_phone?: string;
   evidence_url?: string;
+  growth_invite_code?: string;
 }
 
 export interface SubmitCodeDraft {
@@ -357,6 +358,11 @@ export interface BathroomListItem {
   distance_meters?: number;
   primary_code_summary: CodeSummary;
   verification_badge_type: BusinessVerificationBadgeType | null;
+  stallpass_access_tier: StallPassAccessTier;
+  show_on_free_map: boolean;
+  is_business_location_verified: boolean;
+  location_verified_at: string | null;
+  active_offer_count: number;
   sync: SyncMetadata;
 }
 
@@ -594,6 +600,7 @@ export interface BusinessClaimCreate {
   contact_email: string;
   contact_phone?: string;
   evidence_url?: string;
+  growth_invite_code?: string;
 }
 
 export interface BusinessClaimBathroomSummary {
@@ -627,10 +634,66 @@ export type BusinessFeaturedPlacementStatus =
 export type BusinessHoursUpdateSource =
   Database['public']['Tables']['business_hours_updates']['Row']['update_source'];
 
+export type StallPassAccessTier = 'public' | 'premium';
+export type BusinessPricingPlan = 'standard' | 'lifetime';
+export type BusinessPromotionType = 'percentage' | 'amount_off' | 'freebie' | 'custom';
+
 export interface BusinessFeaturedPlacementScope {
   city?: string;
   state?: string;
   radius_km?: number;
+}
+
+export interface BusinessBathroomSettings {
+  bathroom_id: string;
+  requires_premium_access: boolean;
+  show_on_free_map: boolean;
+  is_location_verified: boolean;
+  location_verified_at: string | null;
+  pricing_plan: BusinessPricingPlan;
+  pricing_plan_granted_at: string | null;
+  updated_by: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UpdateBusinessBathroomSettingsInput {
+  bathroom_id: string;
+  requires_premium_access: boolean;
+  show_on_free_map: boolean;
+  is_location_verified: boolean;
+}
+
+export interface BusinessPromotion {
+  id: string;
+  bathroom_id: string;
+  business_user_id: string;
+  title: string;
+  description: string;
+  offer_type: BusinessPromotionType;
+  offer_value: number | null;
+  promo_code: string | null;
+  redemption_instructions: string;
+  starts_at: string | null;
+  ends_at: string | null;
+  is_active: boolean;
+  redemptions_count: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface UpsertBusinessPromotionInput {
+  id?: string | null;
+  bathroom_id: string;
+  title: string;
+  description: string;
+  offer_type: BusinessPromotionType;
+  offer_value?: number | null;
+  promo_code?: string | null;
+  redemption_instructions: string;
+  starts_at?: string | null;
+  ends_at?: string | null;
+  is_active: boolean;
 }
 
 export interface BusinessDashboardBathroom {
@@ -643,12 +706,20 @@ export interface BusinessDashboardBathroom {
   avg_cleanliness: number;
   total_ratings: number;
   weekly_views: number;
+  weekly_unique_visitors: number;
+  monthly_unique_visitors: number;
+  weekly_navigation_count: number;
   verification_badge_type: BusinessVerificationBadgeType | null;
   has_verification_badge: boolean;
   has_active_featured_placement: boolean;
   active_featured_placements: number;
-  last_updated: string;
+  active_offer_count: number;
+  requires_premium_access: boolean;
   show_on_free_map: boolean;
+  is_location_verified: boolean;
+  location_verified_at: string | null;
+  pricing_plan: BusinessPricingPlan;
+  last_updated: string;
 }
 
 export interface BusinessDashboardSummary {
@@ -658,6 +729,12 @@ export interface BusinessDashboardSummary {
   avg_rating_across_all: number;
   active_featured_placements: number;
   verified_locations: number;
+  total_weekly_unique_visitors: number;
+  total_monthly_unique_visitors: number;
+  total_weekly_navigation_count: number;
+  active_offers: number;
+  premium_only_locations: number;
+  lifetime_locations: number;
 }
 
 export interface BusinessDashboardData {

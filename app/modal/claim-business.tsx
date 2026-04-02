@@ -29,6 +29,7 @@ interface ClaimBusinessFormState {
   contact_email: string;
   contact_phone: string;
   evidence_url: string;
+  growth_invite_code: string;
 }
 
 function parseRouteParam(value?: string | string[]): string {
@@ -45,6 +46,7 @@ function createInitialFormState(contactEmail?: string | null): ClaimBusinessForm
     contact_email: contactEmail?.trim() ?? '',
     contact_phone: '',
     evidence_url: '',
+    growth_invite_code: '',
   };
 }
 
@@ -55,6 +57,7 @@ function buildClaimDraft(formState: ClaimBusinessFormState, bathroomId: string):
     contact_email: formState.contact_email.trim(),
     contact_phone: formState.contact_phone.trim() || undefined,
     evidence_url: formState.evidence_url.trim() || undefined,
+    growth_invite_code: formState.growth_invite_code.trim() || undefined,
   };
 }
 
@@ -67,6 +70,7 @@ function hydrateFormStateFromDraft(
     contact_email: draft.contact_email ?? fallbackContactEmail?.trim() ?? '',
     contact_phone: draft.contact_phone ?? '',
     evidence_url: draft.evidence_url ?? '',
+    growth_invite_code: draft.growth_invite_code ?? '',
   };
 }
 
@@ -373,6 +377,7 @@ export default function ClaimBusinessModalScreen() {
       contact_email: formState.contact_email,
       contact_phone: formState.contact_phone,
       evidence_url: formState.evidence_url,
+      growth_invite_code: formState.growth_invite_code,
     });
 
     if (!validationResult.success) {
@@ -476,7 +481,7 @@ export default function ClaimBusinessModalScreen() {
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">Phase 5 Claim Flow</Text>
               <Text className="mt-3 text-4xl font-black tracking-tight text-white">Claim this location.</Text>
               <Text className="mt-3 text-base leading-6 text-white/80">
-                Submit ownership details for moderator review. Approved claims will appear in your business portal.
+                Submit ownership details for moderator review. Approved claims will appear in your business portal, and contacted partners can lock in the lifetime launch offer with an invite code.
               </Text>
             </View>
 
@@ -549,6 +554,19 @@ export default function ClaimBusinessModalScreen() {
                 textContentType="URL"
                 value={formState.evidence_url}
                 error={fieldErrors.evidence_url}
+                containerClassName="mt-5"
+              />
+
+              <Input
+                autoCapitalize="characters"
+                autoCorrect={false}
+                label="Lifetime Invite Code (optional)"
+                helperText="Use this only if StallPass contacted your business and shared a 30-day launch invite code."
+                onChangeText={(value) => updateField('growth_invite_code', value)}
+                placeholder="ABC123DEF456"
+                returnKeyType="done"
+                value={formState.growth_invite_code}
+                error={fieldErrors.growth_invite_code}
                 containerClassName="mt-5"
               />
             </View>

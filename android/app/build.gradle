@@ -67,6 +67,20 @@ react {
  * Set this to true in release builds to optimize the app using [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization).
  */
 def enableMinifyInReleaseBuilds = (findProperty('android.enableMinifyInReleaseBuilds') ?: false).toBoolean()
+def isReleaseTask = gradle.startParameter.taskNames.any { taskName ->
+    def normalizedTaskName = taskName.toLowerCase()
+    normalizedTaskName.contains('release') || normalizedTaskName.contains('bundle')
+}
+def readSigningConfigValue = { propertyName ->
+    return (findProperty(propertyName) ?: System.getenv(propertyName))?.toString()?.trim()
+}
+def releaseStoreFile = readSigningConfigValue('ANDROID_RELEASE_STORE_FILE')
+def releaseStorePassword = readSigningConfigValue('ANDROID_RELEASE_STORE_PASSWORD')
+def releaseKeyAlias = readSigningConfigValue('ANDROID_RELEASE_KEY_ALIAS')
+def releaseKeyPassword = readSigningConfigValue('ANDROID_RELEASE_KEY_PASSWORD')
+def hasReleaseSigningConfig = [releaseStoreFile, releaseStorePassword, releaseKeyAlias, releaseKeyPassword].every { value ->
+    value != null && value.length() > 0
+}
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -87,9 +101,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.peedom.mobile'
+    namespace 'com.stallpass.app'
     defaultConfig {
-        applicationId 'com.peedom.mobile'
+        applicationId 'com.stallpass.app'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -108,6 +122,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        if (hasReleaseSigningConfig) {
+            release {
+                storeFile file(releaseStoreFile)
+                storePassword releaseStorePassword
+                keyAlias releaseKeyAlias
+                keyPassword releaseKeyPassword
+            }
+        }
     }
     buildTypes {
         debug {
@@ -123,9 +145,13 @@ android {
                     "Set it via a local.properties entry or CI environment variable."
                 )
             }
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            if (hasReleaseSigningConfig) {
+                signingConfig signingConfigs.release
+            } else if (isReleaseTask) {
+                throw new GradleException('Missing Android release signing configuration. Set ANDROID_RELEASE_STORE_FILE, ANDROID_RELEASE_STORE_PASSWORD, ANDROID_RELEASE_KEY_ALIAS, and ANDROID_RELEASE_KEY_PASSWORD before building a release artifact.')
+            } else {
+                signingConfig signingConfigs.debug
+            }
             def enableShrinkResources = findProperty('android.enableShrinkResourcesInReleaseBuilds') ?: 'false'
             shrinkResources enableShrinkResources.toBoolean()
             minifyEnabled enableMinifyInReleaseBuilds

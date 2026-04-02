@@ -9,6 +9,7 @@ import {
   FavoriteItem,
   HoursData,
   RegionBounds,
+  StallPassAccessTier,
   SyncMetadata,
   type Database,
 } from '@/types';
@@ -46,6 +47,11 @@ interface BathroomDirectoryRowBase {
   rank?: number;
   favorited_at?: string;
   verification_badge_type?: string | null;
+  stallpass_access_tier?: StallPassAccessTier;
+  show_on_free_map?: boolean;
+  is_business_location_verified?: boolean;
+  location_verified_at?: string | null;
+  active_offer_count?: number;
 }
 
 export type BathroomRow = BathroomDirectoryRowBase;
@@ -367,6 +373,13 @@ export function getBathroomMapPinTone(bathroom: Pick<BathroomListItem, 'flags' |
   return 'unknown_hours';
 }
 
+export function isBathroomVisibleOnMap(
+  bathroom: Pick<BathroomListItem, 'stallpass_access_tier' | 'show_on_free_map'>,
+  isPremiumViewer: boolean
+): boolean {
+  return bathroom.stallpass_access_tier !== 'premium' || bathroom.show_on_free_map || isPremiumViewer;
+}
+
 export function mapBathroomRowToListItem(
   bathroom: BathroomDirectoryRow,
   options: MappingOptions
@@ -411,6 +424,11 @@ export function mapBathroomRowToListItem(
       last_verified_at: bathroom.last_verified_at ?? null,
     },
     verification_badge_type: (bathroom.verification_badge_type as BathroomListItem['verification_badge_type']) ?? null,
+    stallpass_access_tier: bathroom.stallpass_access_tier ?? 'public',
+    show_on_free_map: bathroom.show_on_free_map ?? true,
+    is_business_location_verified: bathroom.is_business_location_verified ?? false,
+    location_verified_at: bathroom.location_verified_at ?? null,
+    active_offer_count: bathroom.active_offer_count ?? 0,
     sync: buildSyncMetadata(options),
   };
 }

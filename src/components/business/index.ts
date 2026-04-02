@@ -8,5 +8,6 @@ export * from './EarlyAdopterBanner';
 export * from './FeaturedPlacementCard';
 export * from './FreeMapToggle';
 export * from './HoursPresetPicker';
+export * from './ManagedBathroomSection';
 export * from './VerificationBadge';
 export * from './VisitAnalyticsCard';
