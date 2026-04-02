@@ -445,7 +445,6 @@ export const businessDashboardAnalyticsRowSchema = z.object({
   location_verified_at: dateTimeStringSchema.nullable(),
   pricing_plan: z.enum(['standard', 'lifetime']),
   last_updated: dateTimeStringSchema,
-  show_on_free_map: z.boolean(),
 });
 
 export const businessHoursUpdateResultSchema = z.object({

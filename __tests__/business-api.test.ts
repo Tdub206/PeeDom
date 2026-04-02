@@ -34,7 +34,6 @@ const analyticsRow = {
   location_verified_at: '2026-03-18T08:00:00.000Z',
   pricing_plan: 'lifetime',
   last_updated: '2026-03-19T10:00:00.000Z',
-  show_on_free_map: true,
 };
 
 describe('business API', () => {

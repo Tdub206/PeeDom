@@ -720,7 +720,6 @@ export interface BusinessDashboardBathroom {
   location_verified_at: string | null;
   pricing_plan: BusinessPricingPlan;
   last_updated: string;
-  show_on_free_map: boolean;
 }
 
 export interface BusinessDashboardSummary {
