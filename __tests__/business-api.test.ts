@@ -66,7 +66,7 @@ describe('business API', () => {
       total_monthly_unique_visitors: 14,
       total_weekly_navigation_count: 4,
       active_offers: 2,
-      premium_only_locations: 1,
+      premium_only_locations: 0,
       lifetime_locations: 1,
     });
   });
