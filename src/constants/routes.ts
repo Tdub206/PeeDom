@@ -147,5 +147,9 @@ export const routes = {
     earlyAdopterInvite: '/modal/early-adopter-invite' as Href,
     redeemInvite: '/modal/redeem-invite' as Href,
   },
+  legal: {
+    privacy: '/legal/privacy' as Href,
+    accountDeletion: '/legal/account-deletion' as Href,
+  },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;

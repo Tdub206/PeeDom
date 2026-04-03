@@ -123,6 +123,55 @@ export async function signOutUser(): Promise<{ error: AuthError | null }> {
   }
 }
 
+export interface DeleteAccountResult {
+  error: AuthError | null;
+  warning: string | null;
+}
+
+export async function deleteCurrentAccount(): Promise<DeleteAccountResult> {
+  try {
+    const { data: { session } } = await getSupabaseClient().auth.getSession();
+
+    if (!session) {
+      return {
+        error: new AuthError('You must be signed in to delete your account.'),
+        warning: null,
+      };
+    }
+
+    const response = await fetch(
+      `${getSupabaseClient().supabaseUrl}/functions/v1/delete-account`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${session.access_token}`,
+          apikey: getSupabaseClient().supabaseKey,
+        },
+      }
+    );
+
+    const body = await response.json();
+
+    if (!response.ok || body.error) {
+      return {
+        error: new AuthError(body.error ?? 'Unable to delete your account right now.'),
+        warning: null,
+      };
+    }
+
+    return {
+      error: null,
+      warning: body.warning ?? null,
+    };
+  } catch (error) {
+    return {
+      error: error instanceof AuthError ? error : new AuthError('Unable to delete your account right now.'),
+      warning: null,
+    };
+  }
+}
+
 export async function resetPassword(email: string): Promise<{ error: AuthError | null }> {
   try {
     const { error } = await getSupabaseClient().auth.resetPasswordForEmail(email);

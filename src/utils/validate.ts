@@ -286,6 +286,16 @@ export const claimBusinessSchema = z
     }
   });
 
+export const accountDeletionSchema = z.object({
+  confirmation: z
+    .string()
+    .trim()
+    .refine((value) => value.toUpperCase() === 'DELETE', {
+      message: 'Type DELETE to confirm account deletion.',
+    }),
+});
+
+export type AccountDeletionFormValues = z.infer<typeof accountDeletionSchema>;
 export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
 export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
