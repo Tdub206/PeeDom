@@ -497,6 +497,15 @@ export default function ProfileTab() {
                 onPress={handleConfirmDelete}
                 variant="destructive"
               />
+              <Pressable
+                accessibilityRole="link"
+                className="mt-3"
+                onPress={() => pushSafely(router, routes.legal.accountDeletion, routes.tabs.profile)}
+              >
+                <Text className="text-center text-xs text-ink-500 underline">
+                  Extended account deletion instructions
+                </Text>
+              </Pressable>
             </View>
           </View>
 

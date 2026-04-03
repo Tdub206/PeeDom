@@ -266,6 +266,22 @@ function RootNavigator() {
             headerTitle: 'Offline City Packs',
           }}
         />
+        <Stack.Screen
+          name="legal/account-deletion"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Delete Account',
+          }}
+        />
+        <Stack.Screen
+          name="legal/privacy"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Privacy Policy',
+          }}
+        />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />
       </Stack>
     </>
