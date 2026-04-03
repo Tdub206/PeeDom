@@ -71,12 +71,47 @@ export const updateBusinessHoursSchema = z
     hours: z
       .record(dayKeySchema, z.array(businessHoursSlotSchema).max(3, 'Add up to three time ranges per day.'))
       .default({}),
+    hours_source: z.enum(['manual', 'google', 'preset_offset']).default('manual'),
+    offset_minutes: z.number().int().nullable().optional(),
+    google_place_id: z.string().trim().min(1).nullable().optional(),
   })
   .superRefine((value, context) => {
     Object.entries(value.hours).forEach(([day, slots]) => {
       validateDaySlots(day, slots, context);
     });
+
+    if (value.hours_source === 'preset_offset') {
+      if (typeof value.offset_minutes !== 'number' || value.offset_minutes >= 0) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['offset_minutes'],
+          message: 'Preset offsets must be a negative number of minutes before closing.',
+        });
+      }
+    } else if (value.offset_minutes !== null && typeof value.offset_minutes !== 'undefined') {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['offset_minutes'],
+        message: 'Offset minutes can only be used with preset restroom hours.',
+      });
+    }
+
+    if (value.hours_source === 'google' && !value.google_place_id?.trim()) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['google_place_id'],
+        message: 'Add a valid Google Place ID before syncing Google hours.',
+      });
+    }
   });
+
+export const syncBusinessBathroomGoogleHoursSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid bathroom before syncing Google hours.'),
+  google_place_id: z
+    .string()
+    .trim()
+    .min(6, 'Add a valid Google Place ID before syncing Google hours.'),
+});
 
 export const createBusinessFeaturedPlacementSchema = z
   .object({
@@ -112,6 +147,10 @@ export const createBusinessFeaturedPlacementSchema = z
 
 export function validateBusinessHoursUpdate(data: unknown) {
   return updateBusinessHoursSchema.parse(data);
+}
+
+export function validateBusinessGoogleHoursSync(data: unknown) {
+  return syncBusinessBathroomGoogleHoursSchema.parse(data);
 }
 
 export const updateBusinessBathroomSettingsSchema = z.object({

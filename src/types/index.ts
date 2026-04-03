@@ -205,6 +205,53 @@ export interface Coordinates {
   longitude: number;
 }
 
+export interface GooglePlaceViewportPoint {
+  latitude: number;
+  longitude: number;
+}
+
+export interface GooglePlaceViewport {
+  low: GooglePlaceViewportPoint;
+  high: GooglePlaceViewportPoint;
+}
+
+export interface GooglePlaceAutocompleteSuggestion {
+  place_id: string;
+  text: string;
+  primary_text: string;
+  secondary_text: string | null;
+  distance_meters: number | null;
+}
+
+export interface GooglePlaceAutocompleteInput {
+  query: string;
+  session_token: string;
+  origin?: Coordinates | null;
+  region?: RegionBounds | null;
+}
+
+export interface GooglePlaceAddressResolutionInput {
+  place_id: string;
+  session_token: string;
+}
+
+export interface GooglePlaceAddressResolutionResult {
+  place_id: string;
+  formatted_address: string | null;
+  location: Coordinates;
+  viewport: GooglePlaceViewport | null;
+}
+
+export type MapSearchTargetSource = 'google_maps_address' | 'device_geocoder';
+
+export interface MapSearchTarget {
+  label: string;
+  address: string | null;
+  coordinates: Coordinates;
+  source: MapSearchTargetSource;
+  place_id: string | null;
+}
+
 export interface BathroomFilters {
   isAccessible: boolean | null;
   isLocked: boolean | null;
@@ -632,7 +679,12 @@ export type BusinessFeaturedPlacementStatus =
   Database['public']['Tables']['business_featured_placements']['Row']['status'];
 
 export type BusinessHoursUpdateSource =
-  Database['public']['Tables']['business_hours_updates']['Row']['update_source'];
+  | 'business_dashboard'
+  | 'admin_panel'
+  | 'community_report'
+  | 'manual'
+  | 'google'
+  | 'preset_offset';
 
 export type StallPassAccessTier = 'public' | 'premium';
 export type BusinessPricingPlan = 'standard' | 'lifetime';
@@ -778,25 +830,47 @@ export interface BusinessHoursUpdateAudit {
   created_at: string;
 }
 
+export type HoursSourceType = 'manual' | 'google' | 'preset_offset';
+
+export interface BusinessBathroomHoursConfig {
+  bathroom_id: string;
+  place_name: string;
+  hours: HoursData | null;
+  hours_source: HoursSourceType;
+  hours_offset_minutes: number | null;
+  google_place_id: string | null;
+  updated_at: string;
+}
+
 export interface UpdateBusinessHoursInput {
   bathroom_id: string;
   hours: HoursData;
+  hours_source?: HoursSourceType;
+  offset_minutes?: number | null;
+  google_place_id?: string | null;
 }
 
 export interface BusinessHoursUpdateResult {
   success: boolean;
   bathroom_id: string;
+  hours_source: HoursSourceType;
   updated_at: string;
 }
 
-export type HoursSourceType = 'manual' | 'google' | 'preset_offset';
+export type UpdateBusinessHoursV2Input = UpdateBusinessHoursInput;
 
-export interface UpdateBusinessHoursV2Input {
+export interface SyncBusinessBathroomGoogleHoursInput {
   bathroom_id: string;
+  google_place_id: string;
+}
+
+export interface BusinessGoogleHoursSyncResult {
+  bathroom_id: string;
+  google_place_id: string;
+  place_name: string | null;
   hours: HoursData;
   hours_source: HoursSourceType;
-  offset_minutes?: number | null;
-  google_place_id?: string | null;
+  updated_at: string;
 }
 
 // ============================================================================

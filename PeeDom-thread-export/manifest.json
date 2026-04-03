@@ -1,0 +1,335 @@
+﻿{
+    "exported_at":  "2026-04-01T23:27:35.6461074-07:00",
+    "workspace":  "C:\\Users\\T\\Desktop\\PeeDom",
+    "filters":  [
+                    "session_meta.payload.cwd matches \\\\PeeDom(\\\\|$)",
+                    "transcript content contains StallPass",
+                    "session_meta.payload.cwd matches \\\\StallPass(\\\\|$)"
+                ],
+    "transcript_count":  26,
+    "active_count":  23,
+    "archived_count":  3,
+    "peedom_cwd_match_count":  26,
+    "stallpass_cwd_match_count":  0,
+    "stallpass_content_match_count":  6,
+    "transcripts":  [
+                        {
+                            "session_id":  "019cda57-bed6-7da0-9349-4c0629d76ff7",
+                            "thread_name":  "Verify working agreements",
+                            "updated_at":  "2026-03-11T00:42:00.6674956Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  true,
+                            "source_path":  "C:\\Users\\T\\.codex\\archived_sessions\\rollout-2026-03-10T17-41-49-019cda57-bed6-7da0-9349-4c0629d76ff7.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\archived\\rollout-2026-03-10T17-41-49-019cda57-bed6-7da0-9349-4c0629d76ff7.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdaa8-d1c0-7591-8875-f5525740395f",
+                            "thread_name":  "Verify working agreements",
+                            "updated_at":  "2026-03-11T02:10:31.007509Z",
+                            "cwd":  "C:\\Users\\T\\.codex\\worktrees\\e8ab\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-10-25-019cdaa8-d1c0-7591-8875-f5525740395f.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-10-25-019cdaa8-d1c0-7591-8875-f5525740395f.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdaa9-69e7-7f90-8665-34f2f68593e9",
+                            "thread_name":  "Add repository test script",
+                            "updated_at":  "2026-03-11T02:11:56.0941592Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-11-01-019cdaa9-69e7-7f90-8665-34f2f68593e9.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-11-01-019cdaa9-69e7-7f90-8665-34f2f68593e9.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdac4-4b1e-7cd3-97c6-004b47027c81",
+                            "thread_name":  "Apply skill-creator instructions",
+                            "updated_at":  "2026-03-11T02:44:26.4308532Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-40-28-019cdac4-4b1e-7cd3-97c6-004b47027c81.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-40-28-019cdac4-4b1e-7cd3-97c6-004b47027c81.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdacf-e9f8-7121-b7e3-74973e198d80",
+                            "thread_name":  "Activate Builder Prime mode",
+                            "updated_at":  "2026-03-11T02:53:18.3447618Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-53-04-019cdacf-e9f8-7121-b7e3-74973e198d80.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\10\\rollout-2026-03-10T19-53-04-019cdacf-e9f8-7121-b7e3-74973e198d80.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a",
+                            "thread_name":  "Fix Expo install and run errors",
+                            "updated_at":  "2026-03-11T13:19:34.6833761Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  true,
+                            "source_path":  "C:\\Users\\T\\.codex\\archived_sessions\\rollout-2026-03-11T06-19-24-019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\archived\\rollout-2026-03-11T06-19-24-019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdd22-21ef-7770-85a4-2c4cfbf55dc5",
+                            "thread_name":  "Provide Expo dependency commands",
+                            "updated_at":  "2026-03-11T13:45:25.1324247Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\11\\rollout-2026-03-11T06-42-07-019cdd22-21ef-7770-85a4-2c4cfbf55dc5.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\11\\rollout-2026-03-11T06-42-07-019cdd22-21ef-7770-85a4-2c4cfbf55dc5.jsonl"
+                        },
+                        {
+                            "session_id":  "019cdffc-1ae4-7722-812b-49624cdd202e",
+                            "thread_name":  "Draft auth decomposition spec",
+                            "updated_at":  "2026-03-12T02:59:37.936836Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\11\\rollout-2026-03-11T19-59-27-019cdffc-1ae4-7722-812b-49624cdd202e.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\11\\rollout-2026-03-11T19-59-27-019cdffc-1ae4-7722-812b-49624cdd202e.jsonl"
+                        },
+                        {
+                            "session_id":  "019ce001-cf09-73e0-b5f9-7cf8d791c157",
+                            "thread_name":  "Draft auth refactor spec",
+                            "updated_at":  "2026-03-12T03:05:50.8891981Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\11\\rollout-2026-03-11T20-05-46-019ce001-cf09-73e0-b5f9-7cf8d791c157.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\11\\rollout-2026-03-11T20-05-46-019ce001-cf09-73e0-b5f9-7cf8d791c157.jsonl"
+                        },
+                        {
+                            "session_id":  "019ce17a-f623-7631-b24f-9139031768b1",
+                            "thread_name":  "Describe Android Studio prep",
+                            "updated_at":  "2026-03-12T09:57:43.9082526Z",
+                            "cwd":  "C:\\Users\\T\\.codex\\worktrees\\4ba7\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\12\\rollout-2026-03-12T02-57-38-019ce17a-f623-7631-b24f-9139031768b1.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\12\\rollout-2026-03-12T02-57-38-019ce17a-f623-7631-b24f-9139031768b1.jsonl"
+                        },
+                        {
+                            "session_id":  "019ce18a-11e8-7291-a220-ceadd4c575f1",
+                            "thread_name":  "Plan Android Studio migration",
+                            "updated_at":  "2026-03-12T10:14:18.8394945Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\12\\rollout-2026-03-12T03-14-08-019ce18a-11e8-7291-a220-ceadd4c575f1.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\12\\rollout-2026-03-12T03-14-08-019ce18a-11e8-7291-a220-ceadd4c575f1.jsonl"
+                        },
+                        {
+                            "session_id":  "019ce6c2-2bcc-79e0-b97c-cd6bed2bc748",
+                            "thread_name":  "Understand Android Studio migration",
+                            "updated_at":  "2026-03-13T10:34:25.7090429Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\13\\rollout-2026-03-13T03-33-30-019ce6c2-2bcc-79e0-b97c-cd6bed2bc748.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\13\\rollout-2026-03-13T03-33-30-019ce6c2-2bcc-79e0-b97c-cd6bed2bc748.jsonl"
+                        },
+                        {
+                            "session_id":  "019cef3d-aaad-7a93-b5e1-93da547de48f",
+                            "thread_name":  "Review Android production readiness",
+                            "updated_at":  "2026-03-15T02:06:47.7364283Z",
+                            "cwd":  "C:\\Users\\T\\.codex\\worktrees\\08ee\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\14\\rollout-2026-03-14T19-05-23-019cef3d-aaad-7a93-b5e1-93da547de48f.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\14\\rollout-2026-03-14T19-05-23-019cef3d-aaad-7a93-b5e1-93da547de48f.jsonl"
+                        },
+                        {
+                            "session_id":  "019cf000-8dbf-7822-9844-c414eee4e76b",
+                            "thread_name":  "Analyze Android Studio compatibility",
+                            "updated_at":  "2026-03-15T05:38:44.0030654Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\14\\rollout-2026-03-14T22-38-14-019cf000-8dbf-7822-9844-c414eee4e76b.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\14\\rollout-2026-03-14T22-38-14-019cf000-8dbf-7822-9844-c414eee4e76b.jsonl"
+                        },
+                        {
+                            "session_id":  "019cf51a-d897-7fc1-ad55-ef3b4d04fc85",
+                            "thread_name":  "Add nearby bathrooms feature",
+                            "updated_at":  "2026-03-16T05:25:39.0342808Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-25-05-019cf51a-d897-7fc1-ad55-ef3b4d04fc85.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-25-05-019cf51a-d897-7fc1-ad55-ef3b4d04fc85.jsonl"
+                        },
+                        {
+                            "session_id":  "019cf51b-caeb-7af3-9559-b07cc8e3195b",
+                            "thread_name":  "Define PeeDom core architect skill",
+                            "updated_at":  "2026-03-16T05:27:39.5135193Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-26-06-019cf51b-caeb-7af3-9559-b07cc8e3195b.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-26-06-019cf51b-caeb-7af3-9559-b07cc8e3195b.jsonl"
+                        },
+                        {
+                            "session_id":  "019cf50b-c99e-7bf2-af1e-5e54fc7402ad",
+                            "thread_name":  "Begin phase 5 and phase 6",
+                            "updated_at":  "2026-03-16T06:52:11.2194182Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-08-36-019cf50b-c99e-7bf2-af1e-5e54fc7402ad.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\15\\rollout-2026-03-15T22-08-36-019cf50b-c99e-7bf2-af1e-5e54fc7402ad.jsonl"
+                        },
+                        {
+                            "session_id":  "019d04ed-61c0-7873-98e6-111151e2f5db",
+                            "thread_name":  "Confirm 15.5 upgrade details",
+                            "updated_at":  "2026-03-19T07:09:55.8098827Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\19\\rollout-2026-03-19T00-09-19-019d04ed-61c0-7873-98e6-111151e2f5db.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\19\\rollout-2026-03-19T00-09-19-019d04ed-61c0-7873-98e6-111151e2f5db.jsonl"
+                        },
+                        {
+                            "session_id":  "019d0579-792c-7b70-97cf-2d58d8ed7cbe",
+                            "thread_name":  "Configure Supabase MCP access",
+                            "updated_at":  "2026-03-19T09:42:24.436289Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  true,
+                            "source_path":  "C:\\Users\\T\\.codex\\archived_sessions\\rollout-2026-03-19T02-42-20-019d0579-792c-7b70-97cf-2d58d8ed7cbe.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\archived\\rollout-2026-03-19T02-42-20-019d0579-792c-7b70-97cf-2d58d8ed7cbe.jsonl"
+                        },
+                        {
+                            "session_id":  "019d0979-c62b-7702-afe9-9f0c9f8741fd",
+                            "thread_name":  "Find when to minify and obfuscate",
+                            "updated_at":  "2026-03-20T04:21:40.8605292Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\19\\rollout-2026-03-19T21-21-08-019d0979-c62b-7702-afe9-9f0c9f8741fd.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\19\\rollout-2026-03-19T21-21-08-019d0979-c62b-7702-afe9-9f0c9f8741fd.jsonl"
+                        },
+                        {
+                            "session_id":  "019d192c-938b-7871-bcd6-2151f5a6d121",
+                            "thread_name":  "Review codebase for Android Studio",
+                            "updated_at":  "2026-03-23T05:32:23.8223431Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\22\\rollout-2026-03-22T22-30-45-019d192c-938b-7871-bcd6-2151f5a6d121.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\22\\rollout-2026-03-22T22-30-45-019d192c-938b-7871-bcd6-2151f5a6d121.jsonl"
+                        },
+                        {
+                            "session_id":  "019d28b9-5f8d-7743-bd2b-7499b66a6afd",
+                            "thread_name":  "Define StallPass coding prompt",
+                            "updated_at":  "2026-03-26T06:02:06.7906052Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\25\\rollout-2026-03-25T22-58-50-019d28b9-5f8d-7743-bd2b-7499b66a6afd.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\25\\rollout-2026-03-25T22-58-50-019d28b9-5f8d-7743-bd2b-7499b66a6afd.jsonl"
+                        },
+                        {
+                            "session_id":  "019d2915-93f0-70a0-84b3-687784b2b7e7",
+                            "thread_name":  "Assess launch readiness and business",
+                            "updated_at":  "2026-03-26T07:45:26.8833769Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\26\\rollout-2026-03-26T00-39-33-019d2915-93f0-70a0-84b3-687784b2b7e7.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\26\\rollout-2026-03-26T00-39-33-019d2915-93f0-70a0-84b3-687784b2b7e7.jsonl"
+                        },
+                        {
+                            "session_id":  "019d391c-f171-77e2-b20d-86fb02a175b5",
+                            "thread_name":  "Add stallPass business controls",
+                            "updated_at":  "2026-03-29T10:21:37.8310046Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\03\\29\\rollout-2026-03-29T03-21-31-019d391c-f171-77e2-b20d-86fb02a175b5.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\03\\29\\rollout-2026-03-29T03-21-31-019d391c-f171-77e2-b20d-86fb02a175b5.jsonl"
+                        },
+                        {
+                            "session_id":  "019d4cc6-b9da-7702-900f-63291d692bed",
+                            "thread_name":  "Sync GitHub with local files",
+                            "updated_at":  "2026-04-02T06:01:14.339603Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\04\\01\\rollout-2026-04-01T22-59-45-019d4cc6-b9da-7702-900f-63291d692bed.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\04\\01\\rollout-2026-04-01T22-59-45-019d4cc6-b9da-7702-900f-63291d692bed.jsonl"
+                        },
+                        {
+                            "session_id":  "019d4cda-10f1-7ba3-be82-ee06105bd872",
+                            "thread_name":  "Export PeeDom threads to zip",
+                            "updated_at":  "2026-04-02T06:22:17.6179773Z",
+                            "cwd":  "C:\\Users\\T\\Desktop\\PeeDom",
+                            "match_reasons":  [
+                                                  "PeeDomCwd",
+                                                  "StallPassContent"
+                                              ],
+                            "archived":  false,
+                            "source_path":  "C:\\Users\\T\\.codex\\sessions\\2026\\04\\01\\rollout-2026-04-01T23-20-53-019d4cda-10f1-7ba3-be82-ee06105bd872.jsonl",
+                            "export_path":  "C:\\Users\\T\\AppData\\Local\\Temp\\peedom-stallpass-query-export-20260401-232734\\peedom-stallpass-query-threads\\transcripts\\sessions\\2026\\04\\01\\rollout-2026-04-01T23-20-53-019d4cda-10f1-7ba3-be82-ee06105bd872.jsonl"
+                        }
+                    ]
+}

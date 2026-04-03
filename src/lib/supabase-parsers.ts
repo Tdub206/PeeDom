@@ -345,6 +345,15 @@ const hoursEntrySchema = z.object({
 });
 
 const hoursDataSchema = z.record(z.string(), z.array(hoursEntrySchema));
+const businessHoursSourceSchema = z.enum([
+  'business_dashboard',
+  'admin_panel',
+  'community_report',
+  'manual',
+  'google',
+  'preset_offset',
+]);
+const hoursSourceTypeSchema = z.enum(['manual', 'google', 'preset_offset']);
 
 export const businessBathroomSettingsSchema = z.object({
   bathroom_id: rawTextSchema,
@@ -417,8 +426,18 @@ export const businessHoursUpdateSchema = z.object({
   updated_by: rawTextSchema,
   old_hours: hoursDataSchema.nullable(),
   new_hours: hoursDataSchema,
-  update_source: z.enum(['business_dashboard', 'admin_panel', 'community_report']),
+  update_source: businessHoursSourceSchema,
   created_at: dateTimeStringSchema,
+});
+
+export const businessBathroomHoursConfigSchema = z.object({
+  bathroom_id: rawTextSchema,
+  place_name: rawTextSchema,
+  hours_json: hoursDataSchema.nullable(),
+  hours_source: hoursSourceTypeSchema,
+  hours_offset_minutes: z.number().int().nullable(),
+  google_place_id: z.string().nullable(),
+  updated_at: dateTimeStringSchema,
 });
 
 export const businessDashboardAnalyticsRowSchema = z.object({
@@ -450,7 +469,44 @@ export const businessDashboardAnalyticsRowSchema = z.object({
 export const businessHoursUpdateResultSchema = z.object({
   success: z.boolean(),
   bathroom_id: rawTextSchema,
+  hours_source: hoursSourceTypeSchema.optional().default('manual'),
   updated_at: dateTimeStringSchema,
+});
+
+export const businessGoogleHoursSyncSchema = z.object({
+  provider: z.literal('google_places').optional().default('google_places'),
+  place_name: z.string().nullable().optional().default(null),
+  google_place_id: rawTextSchema,
+  time_zone: z.string().nullable().optional().default(null),
+  utc_offset_minutes: z.number().int().nullable().optional().default(null),
+  open_now: z.boolean().optional().default(false),
+  hours: hoursDataSchema,
+});
+
+export const googlePlaceAutocompleteSuggestionSchema = z.object({
+  place_id: rawTextSchema,
+  text: rawTextSchema,
+  primary_text: rawTextSchema,
+  secondary_text: z.union([z.string(), z.null()]).default(null),
+  distance_meters: z.union([z.number(), z.null()]).default(null),
+});
+
+const googlePlaceViewportPointSchema = z.object({
+  latitude: z.number(),
+  longitude: z.number(),
+});
+
+export const googlePlaceAddressResolutionSchema = z.object({
+  place_id: rawTextSchema,
+  formatted_address: z.union([z.string(), z.null()]).default(null),
+  location: googlePlaceViewportPointSchema,
+  viewport: z
+    .object({
+      low: googlePlaceViewportPointSchema,
+      high: googlePlaceViewportPointSchema,
+    })
+    .nullable()
+    .default(null),
 });
 
 // ============================================================================

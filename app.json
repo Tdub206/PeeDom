@@ -1,15 +1,13 @@
 {
-  "expo": {
-    "name": "StallPass",
-    "slug": "stallpass",
-    "owner": "stallpass",
-    "android": {
-      "package": "com.stallpass.app"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "9277c80b-8194-4229-8054-f5c6f70a8cbe"
-      }
+  "name": "StallPass",
+  "slug": "stallpass",
+  "owner": "stallpass",
+  "android": {
+    "package": "com.stallpass.app"
+  },
+  "extra": {
+    "eas": {
+      "projectId": "9277c80b-8194-4229-8054-f5c6f70a8cbe"
     }
   }
 }

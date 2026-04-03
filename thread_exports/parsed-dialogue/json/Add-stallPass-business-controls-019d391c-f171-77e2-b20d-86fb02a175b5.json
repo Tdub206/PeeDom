@@ -1,0 +1,351 @@
+{
+  "session_id": "019d391c-f171-77e2-b20d-86fb02a175b5",
+  "thread_name": "Add stallPass business controls",
+  "source_path": "transcripts/sessions/2026/03/29/rollout-2026-03-29T03-21-31-019d391c-f171-77e2-b20d-86fb02a175b5.jsonl",
+  "archived": false,
+  "message_count": 57,
+  "messages": [
+    {
+      "timestamp": "2026-03-29T10:21:37.871Z",
+      "role": "user",
+      "phase": "",
+      "text": "# AGENTS.md instructions for C:\\Users\\T\\Desktop\\PeeDom\n\n<INSTRUCTIONS>\n# ~/.codex/AGENTS.md\r\n\r\n## General Working Agreements\r\n- **Zero Placeholder Policy:** Never use `// TODO`, `// implementation goes here`, or dummy data. If a function is called, it must be fully implemented with production-grade logic.\r\n- **Defensive Programming:** Every async operation must include a `try/catch` block, a loading state, and a user-friendly error handler.\r\n- **Strict Typing:** Use TypeScript for everything. Avoid `any` at all costs. Interfaces must be descriptive and exhaustive.\r\n- **Performance First:** Use `React.memo`, `useMemo`, and `useCallback` strategically to prevent unnecessary re-renders in mobile environments.\r\n- **Tooling:** Prefer `pnpm` for all dependency management. Always run `npm run lint` and `npm test` after modifying logic.\r\n- **Security:** Never hardcode API keys or secrets. Always use `.env` files and validated environment variables.\n\n--- project-doc ---\n\n# Pee-Dom Agent Operating Contract\r\n\r\nThis repository is a mobile-first application named Pee-Dom.\r\n\r\n## Product Scope\r\nPee-Dom is a restroom-finder mobile application for iOS and Android users. It is built for launch readiness, reliability, offline tolerance, and app-store compliant mobile UX.\r\n\r\n## Platform Priorities\r\n1. Mobile-first behavior\r\n2. Expo / React Native compatibility\r\n3. TypeScript correctness\r\n4. Supabase schema and RLS correctness\r\n5. Offline-first behavior\r\n6. Safe-area, navigation, permissions, and degraded-network handling\r\n7. Production debugging, telemetry readiness, and launch hardening\r\n\r\n## Engineering Constraints\r\n- Prefer React Native primitives, Expo-compatible solutions, and TypeScript-safe patterns\r\n- Do not introduce web-only assumptions into mobile flows\r\n- Protect auth/session, location access, and user-submitted data\r\n- Any change touching data flow must consider:\r\n  - offline queue behavior\r\n  - optimistic updates\r\n  - retry semantics\r\n  - idempotency\r\n  - RLS implications\r\n- Any change touching navigation must consider:\r\n  - Expo Router route behavior\r\n  - back-stack behavior\r\n  - deep-link viability\r\n  - modal interaction\r\n- Any change touching maps/location must consider:\r\n  - permission denial states\r\n  - stale location\r\n  - background/foreground transitions\r\n  - battery and performance costs\r\n\r\n## Review Standard\r\nAll agent reviews should evaluate:\r\n- correctness\r\n- edge cases\r\n- race conditions\r\n- offline behavior\r\n- mobile UX regressions\r\n- security/privacy issues\r\n- Supabase/RLS impact\r\n- launch risk\r\n\r\n## Output Standard\r\nAgents must produce:\r\n- explicit assumptions\r\n- concrete file targets\r\n- exact code changes or diffs\r\n- risks\r\n- test checklist\n</INSTRUCTIONS>\n\n<environment_context>\n  <cwd>C:\\Users\\T\\Desktop\\PeeDom</cwd>\n  <shell>powershell</shell>\n  <current_date>2026-03-29</current_date>\n  <timezone>America/Los_Angeles</timezone>\n</environment_context>"
+    },
+    {
+      "timestamp": "2026-03-29T10:21:37.873Z",
+      "role": "user",
+      "phase": "",
+      "text": "Stall Pass Musts/Ideas: I want \"stallPass\" verified business to only show up on the map for premuim users. I will need to explain to businesses that \r\nthat is the catch to becoming \"stallpass\" verified. They must allow premium users to use restroom. I also want a toggle on the business UI to toggle\r\nif they show up on the free tiered map as well. In the business ui I want to have all the features businesses would like. Such as statistiacs like \r\nhow many people have visited their business because of StallPass. Location verified within the database or do whatever you need to do to wire in whatever\r\nuseful analytics and metrics. I want there to be a way for businesses to create coupons and discounts for stallpass users such as 10% off when you show \r\nus you used stallpass to come here. Or any other coupon ideas i want it in the business UI. I want business to be able to customize bathroom hours. They can \r\neither autofill with their current hours listed on Google, or have options to open/close 30 mins before closing hours or hour before so on and so forth\r\nAS WELL AS be able to custom input any time on a table for each day of the week. So create SMTWTHFS with blank to blank boxes. Autofill the first blank with\r\nAM and second blank with PM unless specified by business owner. So it needs to be able to be edited. I want to offer businesses an opportunity while StallPass\r\nis still in its development phases, if they agree to contribute their bathroom and be a part of growing the initial database within 30 days of me contacting them,\r\nI want to make StallPass free for them for lifetime. If a business does not choose to register (after and only after I have contaced them) then they of course\r\nlose this and will have to pay for StallPass or not at all. Their choice. Im not sure how to implement that though. Maybe 30 day expiring QR codes that tag\r\ndatabase to label a business as Lifetime once they create their account. Just so down the road when this app becomes MASSIVE they wont get kicked off when \r\nI make businesses have to pay to become and remain verified."
+    },
+    {
+      "timestamp": "2026-03-29T10:21:46.751Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m treating this as a product-and-implementation pass across the map gate, business dashboard, and database policy surface. I\u2019m using `peedom-core-architect` first for repo-specific architecture, then `staff-mobile-engineer` for the mobile/business UI implementation details, and I\u2019ll inspect the current schema and app structure before editing anything."
+    },
+    {
+      "timestamp": "2026-03-29T10:21:57.016Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve verified this is an Expo/React Native repo with `app/`, `src/`, `android/`, `supabase/`, and tests in place. Next I\u2019m reading the active config, data client, and any business/map surfaces so I can wire this into the patterns already checked in instead of inventing a parallel system."
+    },
+    {
+      "timestamp": "2026-03-29T10:22:05.178Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The next pass is narrowing this to the actual surfaces: map filtering, premium gating, business claim/dashboard, and any existing offer or analytics hooks. Once I see those seams I can decide whether this lands as a focused feature slice or needs supporting schema additions in `supabase/`."
+    },
+    {
+      "timestamp": "2026-03-29T10:22:22.511Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve confirmed there\u2019s already a business dashboard, a premium system, and Supabase RPCs/views for map/search. The gap is that the existing schema only supports generic business verification and hours updates, not StallPass-premium visibility, promo offers, bathroom-hours templates, or a \u201ccontacted within 30 days\u201d lifetime enrollment path."
+    },
+    {
+      "timestamp": "2026-03-29T10:23:02.830Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The existing repo already records bathroom views for weekly analytics, so that part is usable. What\u2019s missing is the business-facing data model: business settings, offers/coupons, restroom-hours presets, and a claim-to-lifetime conversion token after outreach."
+    },
+    {
+      "timestamp": "2026-03-29T10:23:11.031Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m at the point where the implementation boundary is clear: this needs a new migration plus UI/API updates, not just a front-end toggle. I\u2019m now checking the existing tests and parser structure so I can land this without breaking the business dashboard or the public bathroom feed."
+    },
+    {
+      "timestamp": "2026-03-29T10:25:34.011Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve finished the repo pass. I\u2019m moving into edits now: first a migration and type surface for StallPass business settings, offers, navigation analytics, and lifetime invite redemption, then I\u2019ll wire the business tab and map gating to those new fields."
+    },
+    {
+      "timestamp": "2026-03-29T10:28:01.653Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m applying the schema layer first. This adds the persisted knobs the UI needs: premium-only StallPass visibility, free-map override, location verification, lifetime invite redemption, business promotions, and attributable navigation analytics."
+    },
+    {
+      "timestamp": "2026-03-29T10:29:49.909Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The first patch hit a Windows command-length limit, so I\u2019m splitting the migration into smaller safe patches and continuing the same schema change."
+    },
+    {
+      "timestamp": "2026-03-29T10:32:07.877Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The migration is in. I\u2019m wiring the TypeScript surface now so the app can actually consume those fields without weakening types: bathroom discovery metadata, richer business analytics, promotion models, and the optional lifetime invite code during claim submission."
+    },
+    {
+      "timestamp": "2026-03-29T10:33:18.782Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m on the API layer now. The new backend fields are being exposed as typed queries/mutations so the UI can save listing rules and promotions cleanly instead of mutating raw objects inside screens."
+    },
+    {
+      "timestamp": "2026-03-29T10:34:13.944Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m wiring the claim flow too so a business can lock in the lifetime offer at signup instead of handling it manually later. That gives you a clean \u201ccontacted within 30 days\u201d path that persists at the data layer."
+    },
+    {
+      "timestamp": "2026-03-29T10:34:56.932Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m expanding the business tab with per-location management panels rather than a separate pseudo-admin area. That keeps the controls tied to the claimed bathroom, which matches how the existing dashboard is structured."
+    },
+    {
+      "timestamp": "2026-03-29T10:36:14.414Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The map gate is next. I\u2019m filtering the discovery feed against the new StallPass visibility metadata and using the user\u2019s actual premium state, so premium-only partners disappear from the free map but still remain manageable in the business portal."
+    },
+    {
+      "timestamp": "2026-03-29T10:37:06.579Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m refreshing the hours editor now. The current implementation only supports raw `HH:MM` entry; I\u2019m changing it to a business-friendly sheet with AM/PM defaults, quick \u201cclose 30 or 60 minutes early\u201d presets, and a true day-by-day table."
+    },
+    {
+      "timestamp": "2026-03-29T10:38:32.173Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve got the UI and hooks connected far enough to start hardening with tests. I\u2019m updating the existing business, parser, and bathroom utility tests instead of adding an isolated \u201cfeature demo\u201d test file so the coverage stays aligned with the repo\u2019s current style."
+    },
+    {
+      "timestamp": "2026-03-29T10:40:19.096Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The code path is wired end to end enough to validate. I\u2019m running type-check, lint, and the Jest suite now so I can catch any fallout from the new business types, the hours editor rewrite, and the map gating."
+    },
+    {
+      "timestamp": "2026-03-29T10:41:53.736Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve wired the premium-map gating, business settings, offers, invite-code claim path, and the new hours editor into the app. Next I\u2019m validating the whole change set with type-check, lint, and tests, then I\u2019ll fix whatever breaks and call out any remaining risks."
+    },
+    {
+      "timestamp": "2026-03-29T10:42:02.504Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I verified the repo is still dirty outside this feature, so I\u2019m isolating my work and not touching unrelated changes. I\u2019m checking the package scripts now, then I\u2019ll run the validation passes against the current implementation."
+    },
+    {
+      "timestamp": "2026-03-29T10:42:11.822Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The repo has `lint`, `test`, and `type-check` scripts, so I\u2019m running all three now. After that I\u2019ll patch only the failures that are actually caused by this feature set."
+    },
+    {
+      "timestamp": "2026-03-29T10:42:47.380Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The code path is clean: `tsc`, `eslint`, and the Jest suite all pass with the new behavior in place. I\u2019m doing one last pass over the schema and the business/map surfaces so I can close with exact outcomes and the remaining product assumptions."
+    },
+    {
+      "timestamp": "2026-03-29T10:42:58.020Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve confirmed the app-level code is stable. I\u2019m checking whether the Supabase CLI is available so I can validate the new migration directly instead of leaving the database side purely to static review."
+    },
+    {
+      "timestamp": "2026-03-29T10:43:13.223Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The CLI is installed, but the local Postgres container isn\u2019t running, so `supabase db lint` can\u2019t connect yet. I\u2019m checking whether Docker is available; if it is, I\u2019ll try bringing the local stack up and validate the migration properly."
+    },
+    {
+      "timestamp": "2026-03-29T10:43:30.293Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The implementation itself is done. I\u2019m pulling exact line references from the main files now so the closeout can point you straight to the map gating, business controls, invite flow, and schema surfaces without dumping a changelog."
+    },
+    {
+      "timestamp": "2026-03-29T10:44:06.121Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve finished the verification pass. One database check is still environment-blocked: the Supabase CLI is present, but local Postgres/Docker isn\u2019t running here, so migration linting can\u2019t execute in this session. I\u2019m pulling the last couple of file references and then I\u2019ll close with the shipped behavior plus the one product assumption I made around hours import."
+    },
+    {
+      "timestamp": "2026-03-29T10:44:49.080Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "Implemented the StallPass business tiering and portal flow end to end. Premium-only verified bathrooms are now hidden from free users on the main map through [app/(tabs)/index.tsx](C:/Users/T/Desktop/PeeDom/app/%28tabs%29/index.tsx#L72) and [src/utils/bathroom.ts](C:/Users/T/Desktop/PeeDom/src/utils/bathroom.ts#L376), with route-open attribution recorded from both the map and bathroom detail flows in [src/api/bathrooms.ts](C:/Users/T/Desktop/PeeDom/src/api/bathrooms.ts#L747) and [app/bathroom/[id].tsx](C:/Users/T/Desktop/PeeDom/app/bathroom/%5Bid%5D.tsx#L400). Businesses now get per-location controls for `StallPass Verified`, `Also Show On Free Map`, location verification, and offers/coupons in [src/components/business/ManagedBathroomSection.tsx](C:/Users/T/Desktop/PeeDom/src/components/business/ManagedBathroomSection.tsx#L286) and the dashboard surface in [app/(tabs)/business.tsx](C:/Users/T/Desktop/PeeDom/app/%28tabs%29/business.tsx#L326).\n\nThe backend now supports bathroom business settings, promotions, navigation analytics, and 30-day lifetime launch invites in [supabase/migrations/031_stallpass_business_portal.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/031_stallpass_business_portal.sql#L8). Claiming a contacted business can redeem a lifetime invite code through [app/modal/claim-business.tsx](C:/Users/T/Desktop/PeeDom/app/modal/claim-business.tsx#L563) and [src/api/business-claims.ts](C:/Users/T/Desktop/PeeDom/src/api/business-claims.ts#L130). The hours editor was rebuilt in [src/components/business/BusinessHoursEditorSheet.tsx](C:/Users/T/Desktop/PeeDom/src/components/business/BusinessHoursEditorSheet.tsx#L278) with Sunday-first day rows, editable open/close slots, AM/PM defaults, and quick presets for listed hours, 30-minute early close, and 60-minute early close.\n\nValidation passed: `npm run type-check`, `npm run lint`, and `npm test -- --runInBand`. Two important notes: the analytics now track attributed app behavior like unique visitors and route opens, not confirmed in-store foot traffic, and the \u201cUse Listed Hours\u201d preset currently uses StallPass\u2019s stored hours rather than live Google Business hours. I also implemented the lifetime program as expiring invite codes at the database/claim layer instead of QR issuance, which keeps the pricing-plan model stable if you want QR delivery later. `supabase db lint` could not run here because local Docker/Postgres is not running."
+    },
+    {
+      "timestamp": "2026-03-29T12:08:48.734Z",
+      "role": "user",
+      "phase": "",
+      "text": "how do we get live google maps hours implemented and autofilled? would you like me to open docker so you can do some further verification? claude made a branch want to compare to what you have and keep whats useful or better than your code? its the claude/busy-leavitt branch"
+    },
+    {
+      "timestamp": "2026-03-29T12:09:05.546Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m checking the local Claude branch and the current Google Places hours docs in parallel. Then I\u2019ll give you a concrete implementation path for live hours autofill, tell you whether Docker is worth opening, and call out anything on `claude/busy-leavitt` that\u2019s worth keeping."
+    },
+    {
+      "timestamp": "2026-03-29T12:09:53.170Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I found the Claude branch locally and it\u2019s focused on the same surface: business UI, coupons, early-adopter invites, visits, and hours presets. I\u2019m reading the key files now so I can tell you what\u2019s actually additive versus what overlaps with the implementation already on your current branch."
+    },
+    {
+      "timestamp": "2026-03-29T12:10:25.302Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I have enough to answer the product question and I\u2019ve got a good read on the Claude branch shape. I\u2019m doing one quick repo search for existing Google Place ID plumbing so I can tell you whether this should be layered onto the current claim/hours flow or added as a new admin/business step."
+    },
+    {
+      "timestamp": "2026-03-29T12:11:01.541Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "Yes. Open Docker if you can. That will let me run the Supabase side properly instead of stopping at TypeScript/Jest verification: `supabase db lint`, local migration application, and conflict checks against `claude/busy-leavitt`.\n\nFor live Google hours, the right implementation is:\n\n1. Add Google linkage to the business-managed bathroom record.\n   Put `google_place_id`, `hours_source`, `hours_offset_minutes`, and `last_google_sync_at` into the business settings layer. I would keep that in our current settings model, not directly on `bathrooms`, because it\u2019s operator metadata.\n\n2. Fetch hours server-side, not from the app.\n   Use a Supabase Edge Function or backend endpoint that calls Google Place Details (New) with a field mask for `regularOpeningHours,currentOpeningHours,utcOffsetMinutes`. Google requires a field mask on Place Details, and the opening-hours fields are billed on the Enterprise tier, so this should stay off-device and behind a server-controlled API key. Sources: [Place Details (New)](https://developers.google.com/maps/documentation/places/web-service/place-details), [Place Data Fields (New)](https://developers.google.com/maps/documentation/places/web-service/data-fields).\n\n3. Save the Google place ID once, then sync from it.\n   Best flow: in the business hours editor, add `Link Google Listing` or `Import From Google`. Business picks the correct place, we save the `google_place_id`, then we normalize Google\u2019s opening-hours payload into our existing `hours_json` format.\n\n4. Keep Google sync as a baseline, not the only truth.\n   The editor should support:\n   - `Use Google Hours`\n   - `Close 30m Early`\n   - `Close 60m Early`\n   - `Custom Manual Override`\n   That way businesses can start from live Google hours and still adjust restroom-specific availability.\n\n5. Track source and allow refresh.\n   Show `Last synced from Google` and a `Refresh from Google` action. If the Google listing changes later, business can re-import.\n\n6. If you want true autofill at scale, backfill place IDs first.\n   Since the repo currently has no Google Place ID plumbing, we either:\n   - add a business-facing place picker now, or\n   - run an admin backfill job that matches existing bathrooms to Google listings by name/address/lat-lng.\n\nOn the Claude branch: I would not merge `claude/busy-leavitt` wholesale. It has useful ideas, but it duplicates the same surface with a different data model.\n\nWhat I would keep:\n- The coupon redemption concept. Claude\u2019s branch has a fuller public coupon system with redemption tracking and premium-only redemption logic.\n- The `google_place_id` / `hours_source` / offset-tracking idea from its hours migration.\n- The admin-facing early-adopter invite generation UI.\n\nWhat I would not keep as-is:\n- Its free-map toggle implementation. It writes visibility directly onto `bathrooms`, while the code I added keeps this in a richer business-settings model tied to premium gating and verification state.\n- Its early-adopter redemption backend. It marks lifetime status at the claim/user level; my version is safer because it grants lifetime pricing at the bathroom/settings level, which matches how you\u2019ll bill later.\n- Its visit tracking as the primary analytics source. Some of it is useful, but it overlaps with the navigation analytics already wired in.\n\nSo the right move is: open Docker, and I\u2019ll do two things next:\n1. run the Supabase verification locally\n2. diff `claude/busy-leavitt` against the current work and selectively pull the good parts instead of merging the whole branch\n\nIf you start Docker now, I can continue from there."
+    },
+    {
+      "timestamp": "2026-03-29T12:32:28.088Z",
+      "role": "user",
+      "phase": "",
+      "text": "docker is started"
+    },
+    {
+      "timestamp": "2026-03-29T12:32:39.152Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "Docker is up, so I\u2019m validating the Supabase migration path now. In parallel I\u2019m comparing `claude/busy-leavitt` against the current implementation at the file level so I can tell you exactly what is worth pulling over and what should stay separate."
+    },
+    {
+      "timestamp": "2026-03-29T12:33:10.433Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "Docker itself is running, but the local Supabase stack still is not reachable. The current failures point to one of two things: the Supabase containers are not started yet, or the installed CLI is too old for this Docker API. I\u2019m checking that path next before I touch any database state."
+    },
+    {
+      "timestamp": "2026-03-29T12:34:15.716Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve confirmed the current repo has no existing Google Place ID plumbing, so live-hours autofill would be a net-new integration rather than a small toggle. I\u2019m checking the existing env/config surface now to see whether there\u2019s already a safe server-side spot for a Google Maps key or whether that also needs to be added."
+    },
+    {
+      "timestamp": "2026-03-29T12:34:41.617Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "**Verification**\nI tried the DB pass immediately after Docker came up: `supabase status`, `supabase db lint`, and `supabase start --debug`. The blocker is still the local Docker/Supabase bridge, not your code. Docker is returning HTTP 500 on API calls, and the local Postgres port `127.0.0.1:54322` is not accepting connections. The fastest fix is usually:\n1. restart Docker Desktop fully\n2. update Supabase CLI from `2.78.1` to the current `2.84.2`\n3. rerun the local stack\n\nUntil that is fixed, app-level verification is still green, but DB lint/apply stays blocked.\n\n**Google Hours**\nAs of March 29, 2026, Google\u2019s Place Details (New) API requires a field mask, and `regularOpeningHours` / `currentOpeningHours` are available on the Enterprise Places SKU. Sources: [Place Details (New)](https://developers.google.com/maps/documentation/places/web-service/place-details), [Place Data Fields (New)](https://developers.google.com/maps/documentation/places/web-service/data-fields).\n\nFor this repo, the clean implementation is:\n\n1. Add `google_place_id`, `hours_source`, `hours_offset_minutes`, and `last_google_sync_at` to the business settings layer, not directly onto `bathrooms`.\n2. Add a Supabase Edge Function that calls Google server-side with a restricted Places key and requests `regularOpeningHours,currentOpeningHours,utcOffsetMinutes`.\n3. Add a business UI action in the hours editor: `Link Google Listing` and `Refresh From Google`.\n4. Normalize Google hours into the existing `hours_json`, then let the business apply `-30 min`, `-60 min`, or full manual override on top.\n5. Persist the source so the UI can show whether hours are manual, Google-synced, or Google-plus-offset.\n\nThe current repo has only native map keys in [src/types/env.d.ts](C:/Users/T/Desktop/PeeDom/src/types/env.d.ts#L9) and [`.env.example`](C:/Users/T/Desktop/PeeDom/.env.example#L11). It does not yet have a server-side Places key or any `google_place_id` plumbing, so this is a real new feature, not a small toggle.\n\n**Claude Branch**\nI compared `claude/busy-leavitt` to the current work. It has useful ideas, but I would not merge it whole.\n\nWorth keeping:\n- its coupon redemption/public coupon concept\n- its `google_place_id` / `hours_source` / offset-tracking idea\n- its admin-facing early-adopter invite UI\n\nNot worth taking as-is:\n- its free-map toggle backend, because it writes directly to `bathrooms` instead of using the richer business-settings model already in place\n- its lifetime-invite backend, because it grants lifetime at the claim/user level instead of the bathroom/pricing-plan level\n- its overlapping visit-tracking backend as the primary source, since the current branch already wires navigation analytics into the business dashboard\n\nIf you want, I\u2019ll do the next pass in this order:\n1. add the Google-hours plumbing\n2. selectively port the good coupon and early-adopter pieces from `claude/busy-leavitt`\n3. rerun DB validation once Docker/Supabase is actually responding locally"
+    },
+    {
+      "timestamp": "2026-03-29T13:04:59.863Z",
+      "role": "user",
+      "phase": "",
+      "text": "sounds good. tell me how to get docker and supabase to respond locally"
+    },
+    {
+      "timestamp": "2026-03-29T13:05:17.376Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m checking whether your shell has a stale Docker client override like `DOCKER_API_VERSION` or `DOCKER_HOST`. That\u2019s a common reason the daemon is up but every CLI call still 500s or points at the wrong socket."
+    },
+    {
+      "timestamp": "2026-03-29T13:05:30.166Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m checking how `supabase` is installed on this machine so I can give you the exact Windows update command instead of guessing between `npm`, `scoop`, or a standalone binary."
+    },
+    {
+      "timestamp": "2026-03-29T13:05:44.267Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve got enough to give you a clean recovery sequence, but I\u2019m checking whether your Docker Desktop install supports `docker desktop restart` so I can hand you a one-command restart instead of sending you into the UI if it\u2019s not necessary."
+    },
+    {
+      "timestamp": "2026-03-29T13:05:50.602Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "Docker Desktop itself reports `running`, so the failure is lower: the Linux engine API behind it is unhealthy. I\u2019m checking whether switching contexts or restarting the engine is enough before I send you into a heavier Docker reset."
+    },
+    {
+      "timestamp": "2026-03-29T13:05:59.249Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The main Docker issue was the active context. `desktop-linux` was broken; switching to `default` immediately restored a healthy engine response. I\u2019m retrying Supabase on the working context now to see whether that alone is enough or whether the older CLI still needs an upgrade."
+    },
+    {
+      "timestamp": "2026-03-29T13:12:33.739Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The Docker context fix worked. `docker version` is healthy now and `supabase start` is at least able to talk to Docker and pull images, which means the engine issue is resolved. I\u2019m checking whether the local Supabase stack actually finished booting or whether it stalled during image pulls."
+    },
+    {
+      "timestamp": "2026-03-29T13:12:41.293Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The images are all present now, so the expensive first-time pull is done. There are still no running containers, which means the first `supabase start` didn\u2019t finish booting the stack. I\u2019m rerunning it once with the pulls out of the way, then I\u2019ll give you the exact minimal recovery steps based on the result."
+    },
+    {
+      "timestamp": "2026-03-29T13:13:24.295Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The local environment is responding now. The actual remaining blocker is in our SQL: Postgres refuses `CREATE OR REPLACE FUNCTION` when the table-return signature changes. I\u2019m patching the migration to drop `get_business_dashboard_analytics(uuid)` before recreating it, then I\u2019ll rerun the local Supabase boot so you have the exact working sequence."
+    },
+    {
+      "timestamp": "2026-03-29T13:13:31.195Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve patched the migration-level issue that the local Postgres boot exposed. I\u2019m restarting the local Supabase stack now to confirm the environment path is actually healthy and to catch the next real database error, if there is one."
+    },
+    {
+      "timestamp": "2026-03-29T13:14:37.577Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The local stack is up now. I\u2019m running one last `supabase db lint` pass on the live local database so the recovery steps I send you aren\u2019t just \u201cit boots\u201d, but actually \u201cit responds cleanly enough for DB verification\u201d."
+    },
+    {
+      "timestamp": "2026-03-29T13:14:55.438Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "`supabase db lint` is running now, and it surfaced one real issue from my new migration: `gen_random_bytes()` isn\u2019t available in this local schema. I\u2019m replacing that invite-code generation with a `gen_random_uuid()`-based approach so the new feature doesn\u2019t depend on an extra extension."
+    },
+    {
+      "timestamp": "2026-03-29T13:15:00.761Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I patched the invite-code function. To validate the updated migration, I\u2019m resetting the local Supabase DB so the schema is rebuilt from migrations instead of the already-booted copy."
+    },
+    {
+      "timestamp": "2026-03-29T13:15:48.611Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The local DB now rebuilds cleanly from migrations. I\u2019m rerunning lint once more just to separate \u201cenvironment is fixed\u201d from \u201crepo has pre-existing SQL lint debt.\u201d"
+    },
+    {
+      "timestamp": "2026-03-29T13:15:57.642Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve got the local stack healthy now. I\u2019m grabbing the exact line references for the two SQL fixes I made so the closeout can point you straight to them rather than just saying \u201cI changed the migration.\u201d"
+    },
+    {
+      "timestamp": "2026-03-29T13:16:11.097Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "It\u2019s responding now.\n\nThe fix on this machine was to stop using the broken `desktop-linux` context and switch Docker back to `default`:\n\n```powershell\ndocker context ls\ndocker context use default\ndocker version\nsupabase start\nsupabase status\n```\n\nAfter that, Supabase came up locally on:\n- `http://127.0.0.1:54321`\n- `postgresql://postgres:postgres@127.0.0.1:54322/postgres`\n- Studio at `http://127.0.0.1:54323`\n\nI also fixed two migration issues exposed by the local boot in [031_stallpass_business_portal.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/031_stallpass_business_portal.sql#L567) and [031_stallpass_business_portal.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/031_stallpass_business_portal.sql#L882), then rebuilt the DB with:\n\n```powershell\nsupabase db reset\nsupabase db lint\n```\n\nWhat to use going forward:\n- `docker context use default`\n- `supabase start`\n- `supabase status`\n- `supabase db reset` when you change migrations\n- `supabase db lint` for SQL verification\n\nTwo optional cleanups:\n- Update the CLI, since you installed it with Scoop:\n```powershell\nscoop update supabase\n```\n- If you want the Windows analytics warning to disappear, enable Docker Desktop\u2019s `Expose daemon on tcp://localhost:2375 without TLS` setting. That warning is from Supabase\u2019s Windows local-dev guidance.\n\nOne important note: `supabase db lint` now runs, but it still reports older repo SQL issues unrelated to this feature set, mostly around existing PostGIS/helper functions and a few older app functions. The local environment itself is fixed.\n\nSources: [Supabase local CLI docs](https://supabase.com/docs/guides/local-development/cli/getting-started?platform=windows&queryGroups=platform), [Docker Desktop CLI docs](https://docs.docker.com/desktop/features/desktop-cli/)."
+    },
+    {
+      "timestamp": "2026-04-01T08:51:35.734Z",
+      "role": "user",
+      "phase": "",
+      "text": "<environment_context>\n  <shell>powershell</shell>\n  <current_date>2026-04-01</current_date>\n  <timezone>America/Los_Angeles</timezone>\n</environment_context>"
+    },
+    {
+      "timestamp": "2026-04-01T08:51:35.738Z",
+      "role": "user",
+      "phase": "",
+      "text": "okay whats next"
+    },
+    {
+      "timestamp": "2026-04-01T08:51:55.139Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "Next is to finish the two pieces that still matter most:\n\n1. Implement live Google-hours sync\n   File targets:\n   - `supabase/functions/...` for a server-side Google Places fetch\n   - `supabase/migrations/...` to store `google_place_id`, `hours_source`, `hours_offset_minutes`, `last_google_sync_at`\n   - [src/components/business/BusinessHoursEditorSheet.tsx](C:/Users/T/Desktop/PeeDom/src/components/business/BusinessHoursEditorSheet.tsx)\n   - [src/api/business.ts](C:/Users/T/Desktop/PeeDom/src/api/business.ts)\n   - [src/hooks/useBusiness.ts](C:/Users/T/Desktop/PeeDom/src/hooks/useBusiness.ts)\n\n   Outcome:\n   - business can link a Google listing\n   - import live hours\n   - apply `close 30m early` / `close 60m early`\n   - still manually override per day\n\n2. Selectively pull the useful parts from `claude/busy-leavitt`\n   Keep:\n   - coupon redemption/public coupon flow\n   - admin early-adopter invite generation UI\n   - hours source metadata ideas\n   Skip:\n   - direct `bathrooms.show_on_free_map` model\n   - claim-level lifetime billing model\n   - overlapping visit tracking that duplicates the current analytics path\n\nAssumptions:\n- we should keep the current business-settings model as the source of truth\n- Google Places must stay server-side, not in the mobile client\n- you want selective merge, not a full branch merge\n\nRisks:\n- Google Places hours require a proper server-side API key and enabled billing\n- Claude\u2019s branch overlaps enough that a straight merge will create schema and UI conflicts\n\nTest checklist after that work:\n- `npm run type-check`\n- `npm run lint`\n- `npm test -- --runInBand`\n- `supabase db reset`\n- `supabase db lint`\n\nMy recommendation is to do the Google-hours integration first, then fold in the useful Claude branch pieces on top of the stabilized schema. If you want, I\u2019ll start with that now."
+    }
+  ]
+}

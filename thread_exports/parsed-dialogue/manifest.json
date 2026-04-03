@@ -1,0 +1,240 @@
+{
+  "transcript_count": 26,
+  "message_count": 1784,
+  "transcripts": [
+    {
+      "session_id": "019cdacf-e9f8-7121-b7e3-74973e198d80",
+      "thread_name": "Activate Builder Prime mode",
+      "archived": false,
+      "message_count": 43,
+      "source_path": "transcripts/sessions/2026/03/10/rollout-2026-03-10T19-53-04-019cdacf-e9f8-7121-b7e3-74973e198d80.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Activate-Builder-Prime-mode-019cdacf-e9f8-7121-b7e3-74973e198d80.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Activate-Builder-Prime-mode-019cdacf-e9f8-7121-b7e3-74973e198d80.md"
+    },
+    {
+      "session_id": "019cf51a-d897-7fc1-ad55-ef3b4d04fc85",
+      "thread_name": "Add nearby bathrooms feature",
+      "archived": false,
+      "message_count": 17,
+      "source_path": "transcripts/sessions/2026/03/15/rollout-2026-03-15T22-25-05-019cf51a-d897-7fc1-ad55-ef3b4d04fc85.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Add-nearby-bathrooms-feature-019cf51a-d897-7fc1-ad55-ef3b4d04fc85.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Add-nearby-bathrooms-feature-019cf51a-d897-7fc1-ad55-ef3b4d04fc85.md"
+    },
+    {
+      "session_id": "019cdaa9-69e7-7f90-8665-34f2f68593e9",
+      "thread_name": "Add repository test script",
+      "archived": false,
+      "message_count": 76,
+      "source_path": "transcripts/sessions/2026/03/10/rollout-2026-03-10T19-11-01-019cdaa9-69e7-7f90-8665-34f2f68593e9.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Add-repository-test-script-019cdaa9-69e7-7f90-8665-34f2f68593e9.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Add-repository-test-script-019cdaa9-69e7-7f90-8665-34f2f68593e9.md"
+    },
+    {
+      "session_id": "019d391c-f171-77e2-b20d-86fb02a175b5",
+      "thread_name": "Add stallPass business controls",
+      "archived": false,
+      "message_count": 57,
+      "source_path": "transcripts/sessions/2026/03/29/rollout-2026-03-29T03-21-31-019d391c-f171-77e2-b20d-86fb02a175b5.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Add-stallPass-business-controls-019d391c-f171-77e2-b20d-86fb02a175b5.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Add-stallPass-business-controls-019d391c-f171-77e2-b20d-86fb02a175b5.md"
+    },
+    {
+      "session_id": "019cf000-8dbf-7822-9844-c414eee4e76b",
+      "thread_name": "Analyze Android Studio compatibility",
+      "archived": false,
+      "message_count": 75,
+      "source_path": "transcripts/sessions/2026/03/14/rollout-2026-03-14T22-38-14-019cf000-8dbf-7822-9844-c414eee4e76b.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Analyze-Android-Studio-compatibility-019cf000-8dbf-7822-9844-c414eee4e76b.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Analyze-Android-Studio-compatibility-019cf000-8dbf-7822-9844-c414eee4e76b.md"
+    },
+    {
+      "session_id": "019cdac4-4b1e-7cd3-97c6-004b47027c81",
+      "thread_name": "Apply skill-creator instructions",
+      "archived": false,
+      "message_count": 49,
+      "source_path": "transcripts/sessions/2026/03/10/rollout-2026-03-10T19-40-28-019cdac4-4b1e-7cd3-97c6-004b47027c81.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Apply-skill-creator-instructions-019cdac4-4b1e-7cd3-97c6-004b47027c81.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Apply-skill-creator-instructions-019cdac4-4b1e-7cd3-97c6-004b47027c81.md"
+    },
+    {
+      "session_id": "019d2915-93f0-70a0-84b3-687784b2b7e7",
+      "thread_name": "Assess launch readiness and business",
+      "archived": false,
+      "message_count": 79,
+      "source_path": "transcripts/sessions/2026/03/26/rollout-2026-03-26T00-39-33-019d2915-93f0-70a0-84b3-687784b2b7e7.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Assess-launch-readiness-and-business-019d2915-93f0-70a0-84b3-687784b2b7e7.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Assess-launch-readiness-and-business-019d2915-93f0-70a0-84b3-687784b2b7e7.md"
+    },
+    {
+      "session_id": "019cf50b-c99e-7bf2-af1e-5e54fc7402ad",
+      "thread_name": "Begin phase 5 and phase 6",
+      "archived": false,
+      "message_count": 23,
+      "source_path": "transcripts/sessions/2026/03/15/rollout-2026-03-15T22-08-36-019cf50b-c99e-7bf2-af1e-5e54fc7402ad.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Begin-phase-5-and-phase-6-019cf50b-c99e-7bf2-af1e-5e54fc7402ad.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Begin-phase-5-and-phase-6-019cf50b-c99e-7bf2-af1e-5e54fc7402ad.md"
+    },
+    {
+      "session_id": "019d0579-792c-7b70-97cf-2d58d8ed7cbe",
+      "thread_name": "Configure Supabase MCP access",
+      "archived": true,
+      "message_count": 50,
+      "source_path": "transcripts/archived/rollout-2026-03-19T02-42-20-019d0579-792c-7b70-97cf-2d58d8ed7cbe.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Configure-Supabase-MCP-access-019d0579-792c-7b70-97cf-2d58d8ed7cbe.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Configure-Supabase-MCP-access-019d0579-792c-7b70-97cf-2d58d8ed7cbe.md"
+    },
+    {
+      "session_id": "019d04ed-61c0-7873-98e6-111151e2f5db",
+      "thread_name": "Confirm 15.5 upgrade details",
+      "archived": false,
+      "message_count": 352,
+      "source_path": "transcripts/sessions/2026/03/19/rollout-2026-03-19T00-09-19-019d04ed-61c0-7873-98e6-111151e2f5db.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Confirm-15.5-upgrade-details-019d04ed-61c0-7873-98e6-111151e2f5db.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Confirm-15.5-upgrade-details-019d04ed-61c0-7873-98e6-111151e2f5db.md"
+    },
+    {
+      "session_id": "019cf51b-caeb-7af3-9559-b07cc8e3195b",
+      "thread_name": "Define PeeDom core architect skill",
+      "archived": false,
+      "message_count": 164,
+      "source_path": "transcripts/sessions/2026/03/15/rollout-2026-03-15T22-26-06-019cf51b-caeb-7af3-9559-b07cc8e3195b.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Define-PeeDom-core-architect-skill-019cf51b-caeb-7af3-9559-b07cc8e3195b.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Define-PeeDom-core-architect-skill-019cf51b-caeb-7af3-9559-b07cc8e3195b.md"
+    },
+    {
+      "session_id": "019d28b9-5f8d-7743-bd2b-7499b66a6afd",
+      "thread_name": "Define StallPass coding prompt",
+      "archived": false,
+      "message_count": 4,
+      "source_path": "transcripts/sessions/2026/03/25/rollout-2026-03-25T22-58-50-019d28b9-5f8d-7743-bd2b-7499b66a6afd.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Define-StallPass-coding-prompt-019d28b9-5f8d-7743-bd2b-7499b66a6afd.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Define-StallPass-coding-prompt-019d28b9-5f8d-7743-bd2b-7499b66a6afd.md"
+    },
+    {
+      "session_id": "019ce17a-f623-7631-b24f-9139031768b1",
+      "thread_name": "Describe Android Studio prep",
+      "archived": false,
+      "message_count": 18,
+      "source_path": "transcripts/sessions/2026/03/12/rollout-2026-03-12T02-57-38-019ce17a-f623-7631-b24f-9139031768b1.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Describe-Android-Studio-prep-019ce17a-f623-7631-b24f-9139031768b1.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Describe-Android-Studio-prep-019ce17a-f623-7631-b24f-9139031768b1.md"
+    },
+    {
+      "session_id": "019cdffc-1ae4-7722-812b-49624cdd202e",
+      "thread_name": "Draft auth decomposition spec",
+      "archived": false,
+      "message_count": 36,
+      "source_path": "transcripts/sessions/2026/03/11/rollout-2026-03-11T19-59-27-019cdffc-1ae4-7722-812b-49624cdd202e.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Draft-auth-decomposition-spec-019cdffc-1ae4-7722-812b-49624cdd202e.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Draft-auth-decomposition-spec-019cdffc-1ae4-7722-812b-49624cdd202e.md"
+    },
+    {
+      "session_id": "019ce001-cf09-73e0-b5f9-7cf8d791c157",
+      "thread_name": "Draft auth refactor spec",
+      "archived": false,
+      "message_count": 13,
+      "source_path": "transcripts/sessions/2026/03/11/rollout-2026-03-11T20-05-46-019ce001-cf09-73e0-b5f9-7cf8d791c157.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Draft-auth-refactor-spec-019ce001-cf09-73e0-b5f9-7cf8d791c157.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Draft-auth-refactor-spec-019ce001-cf09-73e0-b5f9-7cf8d791c157.md"
+    },
+    {
+      "session_id": "019d4cda-10f1-7ba3-be82-ee06105bd872",
+      "thread_name": "Export PeeDom threads to zip",
+      "archived": false,
+      "message_count": 19,
+      "source_path": "transcripts/sessions/2026/04/01/rollout-2026-04-01T23-20-53-019d4cda-10f1-7ba3-be82-ee06105bd872.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Export-PeeDom-threads-to-zip-019d4cda-10f1-7ba3-be82-ee06105bd872.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Export-PeeDom-threads-to-zip-019d4cda-10f1-7ba3-be82-ee06105bd872.md"
+    },
+    {
+      "session_id": "019d0979-c62b-7702-afe9-9f0c9f8741fd",
+      "thread_name": "Find when to minify and obfuscate",
+      "archived": false,
+      "message_count": 15,
+      "source_path": "transcripts/sessions/2026/03/19/rollout-2026-03-19T21-21-08-019d0979-c62b-7702-afe9-9f0c9f8741fd.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Find-when-to-minify-and-obfuscate-019d0979-c62b-7702-afe9-9f0c9f8741fd.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Find-when-to-minify-and-obfuscate-019d0979-c62b-7702-afe9-9f0c9f8741fd.md"
+    },
+    {
+      "session_id": "019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a",
+      "thread_name": "Fix Expo install and run errors",
+      "archived": true,
+      "message_count": 16,
+      "source_path": "transcripts/archived/rollout-2026-03-11T06-19-24-019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Fix-Expo-install-and-run-errors-019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Fix-Expo-install-and-run-errors-019cdd0d-3dc5-7591-8b5b-5cd06ca12c8a.md"
+    },
+    {
+      "session_id": "019ce18a-11e8-7291-a220-ceadd4c575f1",
+      "thread_name": "Plan Android Studio migration",
+      "archived": false,
+      "message_count": 51,
+      "source_path": "transcripts/sessions/2026/03/12/rollout-2026-03-12T03-14-08-019ce18a-11e8-7291-a220-ceadd4c575f1.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Plan-Android-Studio-migration-019ce18a-11e8-7291-a220-ceadd4c575f1.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Plan-Android-Studio-migration-019ce18a-11e8-7291-a220-ceadd4c575f1.md"
+    },
+    {
+      "session_id": "019cdd22-21ef-7770-85a4-2c4cfbf55dc5",
+      "thread_name": "Provide Expo dependency commands",
+      "archived": false,
+      "message_count": 100,
+      "source_path": "transcripts/sessions/2026/03/11/rollout-2026-03-11T06-42-07-019cdd22-21ef-7770-85a4-2c4cfbf55dc5.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Provide-Expo-dependency-commands-019cdd22-21ef-7770-85a4-2c4cfbf55dc5.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Provide-Expo-dependency-commands-019cdd22-21ef-7770-85a4-2c4cfbf55dc5.md"
+    },
+    {
+      "session_id": "019cef3d-aaad-7a93-b5e1-93da547de48f",
+      "thread_name": "Review Android production readiness",
+      "archived": false,
+      "message_count": 206,
+      "source_path": "transcripts/sessions/2026/03/14/rollout-2026-03-14T19-05-23-019cef3d-aaad-7a93-b5e1-93da547de48f.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Review-Android-production-readiness-019cef3d-aaad-7a93-b5e1-93da547de48f.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Review-Android-production-readiness-019cef3d-aaad-7a93-b5e1-93da547de48f.md"
+    },
+    {
+      "session_id": "019d192c-938b-7871-bcd6-2151f5a6d121",
+      "thread_name": "Review codebase for Android Studio",
+      "archived": false,
+      "message_count": 64,
+      "source_path": "transcripts/sessions/2026/03/22/rollout-2026-03-22T22-30-45-019d192c-938b-7871-bcd6-2151f5a6d121.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Review-codebase-for-Android-Studio-019d192c-938b-7871-bcd6-2151f5a6d121.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Review-codebase-for-Android-Studio-019d192c-938b-7871-bcd6-2151f5a6d121.md"
+    },
+    {
+      "session_id": "019d4cc6-b9da-7702-900f-63291d692bed",
+      "thread_name": "Sync GitHub with local files",
+      "archived": false,
+      "message_count": 56,
+      "source_path": "transcripts/sessions/2026/04/01/rollout-2026-04-01T22-59-45-019d4cc6-b9da-7702-900f-63291d692bed.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Sync-GitHub-with-local-files-019d4cc6-b9da-7702-900f-63291d692bed.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Sync-GitHub-with-local-files-019d4cc6-b9da-7702-900f-63291d692bed.md"
+    },
+    {
+      "session_id": "019ce6c2-2bcc-79e0-b97c-cd6bed2bc748",
+      "thread_name": "Understand Android Studio migration",
+      "archived": false,
+      "message_count": 45,
+      "source_path": "transcripts/sessions/2026/03/13/rollout-2026-03-13T03-33-30-019ce6c2-2bcc-79e0-b97c-cd6bed2bc748.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Understand-Android-Studio-migration-019ce6c2-2bcc-79e0-b97c-cd6bed2bc748.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Understand-Android-Studio-migration-019ce6c2-2bcc-79e0-b97c-cd6bed2bc748.md"
+    },
+    {
+      "session_id": "019cda57-bed6-7da0-9349-4c0629d76ff7",
+      "thread_name": "Verify working agreements",
+      "archived": true,
+      "message_count": 73,
+      "source_path": "transcripts/archived/rollout-2026-03-10T17-41-49-019cda57-bed6-7da0-9349-4c0629d76ff7.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Verify-working-agreements-019cda57-bed6-7da0-9349-4c0629d76ff7.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Verify-working-agreements-019cda57-bed6-7da0-9349-4c0629d76ff7.md"
+    },
+    {
+      "session_id": "019cda57-bed6-7da0-9349-4c0629d76ff7",
+      "thread_name": "Verify working agreements",
+      "archived": true,
+      "message_count": 83,
+      "source_path": "transcripts/sessions/2026/03/10/rollout-2026-03-10T19-10-25-019cdaa8-d1c0-7591-8875-f5525740395f.jsonl",
+      "json_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\json\\Verify-working-agreements-019cda57-bed6-7da0-9349-4c0629d76ff7.json",
+      "markdown_path": "C:\\Users\\T\\Desktop\\PeeDom\\thread_exports\\parsed-dialogue\\markdown\\Verify-working-agreements-019cda57-bed6-7da0-9349-4c0629d76ff7.md"
+    }
+  ]
+}

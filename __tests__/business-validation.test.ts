@@ -16,6 +16,7 @@ describe('business validators', () => {
           { open: '13:00', close: '17:00' },
         ],
       },
+      hours_source: 'manual',
     });
 
     expect(result.hours.monday).toHaveLength(2);
@@ -59,6 +60,45 @@ describe('business validators', () => {
 
     expect(result.requires_premium_access).toBe(true);
     expect(result.show_on_free_map).toBe(false);
+  });
+
+  it('accepts Google-backed business hours when a place id is provided', () => {
+    const result = updateBusinessHoursSchema.parse({
+      bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      hours: {
+        monday: [{ open: '09:00', close: '17:00' }],
+      },
+      hours_source: 'google',
+      google_place_id: 'ChIJ1234567890',
+    });
+
+    expect(result.hours_source).toBe('google');
+    expect(result.google_place_id).toBe('ChIJ1234567890');
+  });
+
+  it('rejects Google hours without a place id', () => {
+    expect(() =>
+      updateBusinessHoursSchema.parse({
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        hours: {
+          monday: [{ open: '09:00', close: '17:00' }],
+        },
+        hours_source: 'google',
+      })
+    ).toThrow('Add a valid Google Place ID before syncing Google hours.');
+  });
+
+  it('rejects preset offset hours without a negative offset', () => {
+    expect(() =>
+      updateBusinessHoursSchema.parse({
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        hours: {
+          monday: [{ open: '09:00', close: '17:00' }],
+        },
+        hours_source: 'preset_offset',
+        offset_minutes: 30,
+      })
+    ).toThrow('Preset offsets must be a negative number of minutes before closing.');
   });
 
   it('rejects percentage offers above 100 percent', () => {

@@ -1,22 +1,27 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
+  fetchBusinessBathroomHoursConfig,
   fetchBusinessBathroomSettings,
   fetchBusinessDashboard,
   fetchBusinessFeaturedPlacements,
   fetchBusinessHoursUpdateHistory,
   fetchBusinessPromotions,
+  refreshBusinessBathroomHoursFromGoogle,
   upsertBusinessBathroomSettings,
   upsertBusinessPromotion,
   updateBusinessBathroomHours,
 } from '@/api/business';
 import { useAuth } from '@/contexts/AuthContext';
 import type {
+  BusinessBathroomHoursConfig,
   BusinessBathroomSettings,
   BusinessDashboardData,
   BusinessFeaturedPlacement,
+  BusinessGoogleHoursSyncResult,
   BusinessHoursUpdateAudit,
   BusinessHoursUpdateResult,
   BusinessPromotion,
+  SyncBusinessBathroomGoogleHoursInput,
   UpdateBusinessBathroomSettingsInput,
   UpdateBusinessHoursInput,
   UpsertBusinessPromotionInput,
@@ -27,6 +32,7 @@ export const businessQueryKeys = {
   dashboard: (userId: string) => [...businessQueryKeys.all, 'dashboard', userId] as const,
   featuredPlacements: (userId: string) => [...businessQueryKeys.all, 'featured-placements', userId] as const,
   hoursHistory: (bathroomId: string) => [...businessQueryKeys.all, 'hours-history', bathroomId] as const,
+  hoursConfig: (bathroomId: string) => [...businessQueryKeys.all, 'hours-config', bathroomId] as const,
   settings: (bathroomId: string) => [...businessQueryKeys.all, 'settings', bathroomId] as const,
   promotions: (bathroomId: string) => [...businessQueryKeys.all, 'promotions', bathroomId] as const,
 };
@@ -119,6 +125,27 @@ export function useBusinessBathroomSettings(bathroomId: string | null) {
   });
 }
 
+export function useBusinessBathroomHoursConfig(bathroomId: string | null) {
+  return useQuery<BusinessBathroomHoursConfig | null, Error>({
+    queryKey: businessQueryKeys.hoursConfig(bathroomId ?? 'none'),
+    enabled: Boolean(bathroomId),
+    staleTime: 60 * 1000,
+    queryFn: async () => {
+      if (!bathroomId) {
+        return null;
+      }
+
+      const result = await fetchBusinessBathroomHoursConfig(bathroomId);
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      return result.data;
+    },
+  });
+}
+
 export function useBusinessPromotions(bathroomId: string | null) {
   return useQuery<BusinessPromotion[], Error>({
     queryKey: businessQueryKeys.promotions(bathroomId ?? 'none'),
@@ -169,6 +196,50 @@ export function useUpdateBusinessBathroomHours() {
       await Promise.all([
         queryClient.invalidateQueries({
           queryKey: businessQueryKeys.hoursHistory(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursConfig(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathrooms'],
+        }),
+      ]);
+    },
+  });
+}
+
+export function useRefreshBusinessBathroomHoursFromGoogle() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation<BusinessGoogleHoursSyncResult, Error, SyncBusinessBathroomGoogleHoursInput>({
+    mutationFn: async (input) => {
+      const result = await refreshBusinessBathroomHoursFromGoogle(input);
+
+      if (result.error || !result.data) {
+        throw result.error ?? new Error('Unable to sync Google hours right now.');
+      }
+
+      return result.data;
+    },
+    onSuccess: async (result) => {
+      if (user?.id) {
+        await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: businessQueryKeys.dashboard(user.id),
+          }),
+          queryClient.invalidateQueries({
+            queryKey: businessQueryKeys.featuredPlacements(user.id),
+          }),
+        ]);
+      }
+
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursHistory(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursConfig(result.bathroom_id),
         }),
         queryClient.invalidateQueries({
           queryKey: ['bathrooms'],

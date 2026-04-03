@@ -11,6 +11,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
 import { BathroomMapView } from '@/components/MapView';
+import { NearbyBathroomsPanel } from '@/components/NearbyBathroomsPanel';
 import { RealtimeStatusBadge } from '@/components/realtime';
 import { recordBathroomNavigationOpen } from '@/api/bathrooms';
 import { routes } from '@/constants/routes';
@@ -21,6 +22,7 @@ import { useBathrooms } from '@/hooks/useBathrooms';
 import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useLocation } from '@/hooks/useLocation';
+import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
@@ -35,17 +37,19 @@ import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 export default function MapTab() {
   const router = useRouter();
   const { showToast } = useToast();
-  const { profile, requireAuth } = useAuth();
+  const { profile, requireAuth, user } = useAuth();
   const filters = useFilterStore((state) => state.filters);
   const resetFilters = useFilterStore((state) => state.resetFilters);
   const setMinCleanlinessRating = useFilterStore((state) => state.setMinCleanlinessRating);
   const toggleFilter = useFilterStore((state) => state.toggleFilter);
   const activeBathroomId = useMapStore((state) => state.activeBathroomId);
+  const clearSearchTarget = useMapStore((state) => state.clearSearchTarget);
   const centerOnUser = useMapStore((state) => state.centerOnUser);
   const hasCenteredOnUser = useMapStore((state) => state.hasCenteredOnUser);
   const region = useMapStore((state) => state.region);
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
   const setRegion = useMapStore((state) => state.setRegion);
+  const searchTarget = useMapStore((state) => state.searchTarget);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
@@ -107,6 +111,7 @@ export default function MapTab() {
     return count;
   }, [accessibilityPreferences, isAccessibilityMode, resolvedFilters]);
   const { isFavorite, isFavoritePending, toggleFavorite } = useFavorites(visibleBathrooms);
+  const recordVisitMutation = useRecordVisit();
   const emergency = useEmergencyMode();
 
   useEffect(() => {
@@ -117,6 +122,8 @@ export default function MapTab() {
 
   const handleLocateMe = useCallback(async () => {
     try {
+      clearSearchTarget();
+
       if (permission_status !== 'granted') {
         const granted = await requestPermission();
 
@@ -136,7 +143,7 @@ export default function MapTab() {
         variant: 'error',
       });
     }
-  }, [centerOnUser, permission_status, refreshLocation, requestPermission, showToast]);
+  }, [centerOnUser, clearSearchTarget, permission_status, refreshLocation, requestPermission, showToast]);
 
   const handleToggleFavorite = useCallback(
     async (bathroom: BathroomListItem) => {
@@ -208,6 +215,12 @@ export default function MapTab() {
 
       try {
         void recordBathroomNavigationOpen(bathroom.id);
+        if (user?.id) {
+          recordVisitMutation.mutate({
+            bathroomId: bathroom.id,
+            source: 'map_navigation',
+          });
+        }
 
         if (Platform.OS === 'ios') {
           const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
@@ -236,7 +249,7 @@ export default function MapTab() {
         setIsOpeningDirections(false);
       }
     },
-    [showToast]
+    [recordVisitMutation, showToast, user?.id]
   );
 
   const handleOpenBathroomDetail = useCallback(
@@ -283,7 +296,7 @@ export default function MapTab() {
             onPress={() => router.push(routes.tabs.search)}
           >
             <Ionicons color="#6b7280" name="search" size={18} />
-            <Text className="text-sm text-ink-500">Search bathrooms...</Text>
+            <Text className="text-sm text-ink-500">Search bathrooms or addresses...</Text>
           </Pressable>
           <Pressable
             accessibilityLabel="Add a bathroom"
@@ -332,6 +345,23 @@ export default function MapTab() {
           </View>
         ) : null}
 
+        {searchTarget && visibleBathrooms.length === 0 ? (
+          <View className="mt-4 rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
+            <Text className="text-sm font-semibold text-brand-700">Exploring {searchTarget.label}</Text>
+            <Text className="mt-1 text-sm leading-5 text-brand-700">
+              No bathrooms are listed here yet. You can still inspect the area on the map or add a new location.
+            </Text>
+          </View>
+        ) : null}
+
+        <NearbyBathroomsPanel
+          filters={resolvedFilters}
+          onNavigate={(bathroom) => {
+            void handleNavigateToBathroom(bathroom);
+          }}
+          onOpenBathroomDetail={handleOpenBathroomDetail}
+        />
+
         <View className="mt-4 flex-1">
           <BathroomMapView
             activeFilterCount={activeFilterCount}
@@ -345,6 +375,7 @@ export default function MapTab() {
             onRegionChangeComplete={setRegion}
             region={region}
             selectedBathroomId={activeBathroomId}
+            searchTarget={searchTarget}
             userLocation={coordinates}
           />
 

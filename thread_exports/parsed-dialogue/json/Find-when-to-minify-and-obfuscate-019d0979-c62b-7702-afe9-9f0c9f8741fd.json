@@ -1,0 +1,99 @@
+{
+  "session_id": "019d0979-c62b-7702-afe9-9f0c9f8741fd",
+  "thread_name": "Find when to minify and obfuscate",
+  "source_path": "transcripts/sessions/2026/03/19/rollout-2026-03-19T21-21-08-019d0979-c62b-7702-afe9-9f0c9f8741fd.jsonl",
+  "archived": false,
+  "message_count": 15,
+  "messages": [
+    {
+      "timestamp": "2026-03-20T04:21:43.133Z",
+      "role": "user",
+      "phase": "",
+      "text": "# AGENTS.md instructions for C:\\Users\\T\\Desktop\\PeeDom\n\n<INSTRUCTIONS>\n# ~/.codex/AGENTS.md\r\n\r\n## General Working Agreements\r\n- **Zero Placeholder Policy:** Never use `// TODO`, `// implementation goes here`, or dummy data. If a function is called, it must be fully implemented with production-grade logic.\r\n- **Defensive Programming:** Every async operation must include a `try/catch` block, a loading state, and a user-friendly error handler.\r\n- **Strict Typing:** Use TypeScript for everything. Avoid `any` at all costs. Interfaces must be descriptive and exhaustive.\r\n- **Performance First:** Use `React.memo`, `useMemo`, and `useCallback` strategically to prevent unnecessary re-renders in mobile environments.\r\n- **Tooling:** Prefer `pnpm` for all dependency management. Always run `npm run lint` and `npm test` after modifying logic.\r\n- **Security:** Never hardcode API keys or secrets. Always use `.env` files and validated environment variables.\n\n--- project-doc ---\n\n# AGENTS.md (PeeDom Root)\r\n\r\n## Repository Expectations & Tech Stack\r\n- **Framework:** React Native via Expo (Managed Workflow) using Expo Router for navigation.\r\n- **Backend:** Supabase. All data fetching must respect Row Level Security (RLS) and use the Supabase generated types.\r\n- **Styling:** Use NativeWind (Tailwind CSS) for all UI components. Maintain a central `theme.js` or `tailwind.config.js`.\r\n- **State Management:** Use Zustand for global client-side state and React Query for server-side caching.\r\n\r\n## Production Due Diligence\r\n- **Android/iOS Parity:** Use `Platform.OS` and `SafeAreaView` to ensure UI consistency. Handle the Android back button and keyboard offsets explicitly.\r\n- **Validation:** Use `Zod` for all form validations and API response parsing.\r\n- **Launch Readiness:** - Ensure `app.json` is updated with correct versioning and permissions.\r\n    - Every new feature must include a corresponding test in `__tests__`.\r\n    - Use Fastlane patterns for automated deployment preparation.\n\n## Skills\nA skill is a set of local instructions to follow that is stored in a `SKILL.md` file. Below is the list of skills that can be used. Each entry includes a name, description, and file path so you can open the source for full instructions when using a specific skill.\n### Available skills\n- gh-address-comments: Help address review/issue comments on the open GitHub PR for the current branch using gh CLI; verify gh auth first and prompt the user to authenticate if not logged in. (file: C:/Users/T/.codex/skills/gh-address-comments/SKILL.md)\n- gh-fix-ci: Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treat external providers (for example Buildkite) as out of scope and report only the details URL. (file: C:/Users/T/.codex/skills/gh-fix-ci/SKILL.md)\n- peedom-core-architect: Use when Codex must act as the PeeDom lead engineer for feature work, refactors, Android-specific checks, or deployment readiness while preserving the repository's verified architecture. (file: C:/Users/T/.codex/skills/peedom-core-architect/SKILL.md)\n- playwright: Use when the task requires automating a real browser from the terminal (navigation, form filling, snapshots, screenshots, data extraction, UI-flow debugging) via `playwright-cli` or the bundled wrapper script. (file: C:/Users/T/.codex/skills/playwright/SKILL.md)\n- staff-mobile-engineer: Use when Codex must operate as a staff-level mobile engineer for production mobile work: feature delivery, architecture decisions, refactors, launch readiness, performance tuning, test hardening, or deployment automation in React Native/Expo or native Android codebases. Apply this skill when the task needs zero-placeholder implementation, strict typing, defensive async handling, Supabase-aware data access, or mobile-specific release discipline. (file: C:/Users/T/.codex/skills/staff-mobile-engineer/SKILL.md)\n- openai-docs: Use when the user asks how to build with OpenAI products or APIs and needs up-to-date official documentation with citations, help choosing the latest model for a use case, or explicit GPT-5.4 upgrade and prompt-upgrade guidance; prioritize OpenAI docs MCP tools, use bundled references only as helper context, and restrict any fallback browsing to official OpenAI domains. (file: C:/Users/T/.codex/skills/.system/openai-docs/SKILL.md)\n- skill-creator: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specialized knowledge, workflows, or tool integrations. (file: C:/Users/T/.codex/skills/.system/skill-creator/SKILL.md)\n- skill-installer: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos). (file: C:/Users/T/.codex/skills/.system/skill-installer/SKILL.md)\n### How to use skills\n- Discovery: The list above is the skills available in this session (name + description + file path). Skill bodies live on disk at the listed paths.\n- Trigger rules: If the user names a skill (with `$SkillName` or plain text) OR the task clearly matches a skill's description shown above, you must use that skill for that turn. Multiple mentions mean use them all. Do not carry skills across turns unless re-mentioned.\n- Missing/blocked: If a named skill isn't in the list or the path can't be read, say so briefly and continue with the best fallback.\n- How to use a skill (progressive disclosure):\n  1) After deciding to use a skill, open its `SKILL.md`. Read only enough to follow the workflow.\n  2) When `SKILL.md` references relative paths (e.g., `scripts/foo.py`), resolve them relative to the skill directory listed above first, and only consider other paths if needed.\n  3) If `SKILL.md` points to extra folders such as `references/`, load only the specific files needed for the request; don't bulk-load everything.\n  4) If `scripts/` exist, prefer running or patching them instead of retyping large code blocks.\n  5) If `assets/` or templates exist, reuse them instead of recreating from scratch.\n- Coordination and sequencing:\n  - If multiple skills apply, choose the minimal set that covers the request and state the order you'll use them.\n  - Announce which skill(s) you're using and why (one short line). If you skip an obvious skill, say why.\n- Context hygiene:\n  - Keep context small: summarize long sections instead of pasting them; only load extra files when needed.\n  - Avoid deep reference-chasing: prefer opening only files directly linked from `SKILL.md` unless you're blocked.\n  - When variants exist (frameworks, providers, domains), pick only the relevant reference file(s) and note that choice.\n- Safety and fallback: If a skill can't be applied cleanly (missing files, unclear instructions), state the issue, pick the next-best approach, and continue.\n</INSTRUCTIONS>\n\n<environment_context>\n  <cwd>C:\\Users\\T\\Desktop\\PeeDom</cwd>\n  <shell>powershell</shell>\n  <current_date>2026-03-19</current_date>\n  <timezone>America/Los_Angeles</timezone>\n</environment_context>"
+    },
+    {
+      "timestamp": "2026-03-20T04:21:43.134Z",
+      "role": "user",
+      "phase": "",
+      "text": "when, in my projects timeline, would i use minify and obfscate"
+    },
+    {
+      "timestamp": "2026-03-20T04:21:52.749Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "This is a release-timing question for a React Native/Expo app, so I\u2019m using `staff-mobile-engineer` to answer it in the right mobile-production context. I\u2019m checking that skill\u2019s guidance first, then I\u2019ll map minification vs obfuscation to your project timeline."
+    },
+    {
+      "timestamp": "2026-03-20T04:22:13.038Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "Use them at different points.\n\n`Minify`\n- Start using it in `staging / pre-release QA`, then keep it on for every `production` build.\n- In practice: don\u2019t minify your normal local debug builds, but do test at least one production-like build before launch because minification can expose real issues.\n- For an Expo/React Native app, minification is a normal release-step optimization, not a special hardening phase.\n\n`Obfuscation`\n- Use it only in `release hardening`, after the app is functionally stable and crash reporting / sourcemaps are already working.\n- It is optional, not default. Add it when you have a real threat model: protecting native business logic, making reverse engineering more expensive, or meeting a security requirement.\n- For mobile, native Android obfuscation via `R8/ProGuard` in release builds is reasonable. JavaScript obfuscation in Expo/React Native is usually low-value and makes debugging worse.\n\nRecommended timeline for your project:\n1. `Prototype / active development`: no obfuscation, usually no production minification in daily local work.\n2. `Feature complete / internal QA`: test production minification.\n3. `Release candidate`: minification on by default.\n4. `Security hardening before ship`: decide whether obfuscation is worth the debugging cost.\n5. `Post-launch`: keep minification; only keep obfuscation if it\u2019s proven useful and doesn\u2019t hurt supportability.\n\nOne important correction: obfuscation is not security for secrets. API keys, auth rules, and Supabase access control still need to be handled properly on the backend with RLS and safe env usage."
+    },
+    {
+      "timestamp": "2026-03-20T04:25:10.544Z",
+      "role": "user",
+      "phase": "",
+      "text": "can you read this entire page, all the comments, and tell me what i need to do for peedom with all these things considered: https://www.reddit.com/r/androiddev/comments/132vq6k/what_is_a_less_known_must_do_while_launching_an/"
+    },
+    {
+      "timestamp": "2026-03-20T04:25:30.275Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019m pulling the Reddit thread as JSON so I can inspect the full comment tree instead of relying on the rendered page. After that I\u2019ll separate Reddit advice from what\u2019s actually worth doing in a production Expo/Supabase launch checklist for PeeDom."
+    },
+    {
+      "timestamp": "2026-03-20T04:25:39.298Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The JSON endpoint is available; I\u2019m switching to a direct PowerShell parse so I can flatten the comment tree and spot repeated launch themes instead of skimming manually."
+    },
+    {
+      "timestamp": "2026-03-20T04:25:58.329Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "This is launch-readiness for PeeDom, so I\u2019m using `peedom-core-architect` and `staff-mobile-engineer` in that order. I\u2019m checking the repo\u2019s current release surface now so I can turn the Reddit thread into a PeeDom-specific action list instead of a generic one."
+    },
+    {
+      "timestamp": "2026-03-20T04:26:05.408Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve confirmed PeeDom is an Expo-managed React Native app with Sentry and AdMob already in the dependency graph. Now I\u2019m checking the actual config and launch docs to see which Reddit recommendations are already covered and which are still missing."
+    },
+    {
+      "timestamp": "2026-03-20T04:26:16.608Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The repo already has a launch manifest, but I still need the actual implementation signals that matter here: force updates, accessibility, Play Store compliance, logging, ads/privacy, and release-only behavior. I\u2019m grepping those surfaces now."
+    },
+    {
+      "timestamp": "2026-03-20T04:26:27.468Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "`rg` is blocked in this shell, so I\u2019m falling back to PowerShell search. I\u2019m looking for concrete launch controls already present in the repo versus gaps the Reddit thread would add."
+    },
+    {
+      "timestamp": "2026-03-20T04:27:00.413Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I\u2019ve confirmed two big points already: PeeDom has real Sentry/analytics instrumentation, and it has much more accessibility labeling than a typical 1.0 app. I\u2019m narrowing the rest to the missing launch-critical items: forced upgrade, staged rollout, Play disclosures, release-build validation, and large-font/process-death testing."
+    },
+    {
+      "timestamp": "2026-03-20T04:27:07.942Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "The repo-level gap pattern is getting clear: there\u2019s good instrumentation and decent accessibility mechanics, but I\u2019m not finding a version gate, rollout runbook, or store-policy/disclosure artifacts. I\u2019m checking the Android release config directly now to verify minification/obfuscation behavior instead of assuming Expo defaults."
+    },
+    {
+      "timestamp": "2026-03-20T04:29:48.939Z",
+      "role": "assistant",
+      "phase": "commentary",
+      "text": "I have enough context to turn this into a concrete PeeDom launch triage. I\u2019m grabbing precise file references for the highest-impact gaps so the answer can be actionable instead of abstract."
+    },
+    {
+      "timestamp": "2026-03-20T04:31:39.439Z",
+      "role": "assistant",
+      "phase": "final_answer",
+      "text": "I read the Reddit thread through its JSON comment tree, including nested replies; the repeated themes were accessibility, forced upgrades, release-build-only failures, logging, staged rollout, data safety, AdMob settings, and process-death testing. For PeeDom, this is the launch order I\u2019d use.\n\n**Do Next**\n- `P0`: add a real privacy-policy + account-deletion path. PeeDom has account creation plus location, notifications, photos, ads, and analytics surfaces in [app.config.ts](/Users/T/Desktop/PeeDom/app.config.ts#L87), but I did not find a privacy-policy flow or delete-account flow in the app; profile currently exposes sign-out only in [profile.tsx](/Users/T/Desktop/PeeDom/app/(tabs)/profile.tsx#L147). This is a Play-policy issue, not just polish.\n- `P0`: add a version gate / forced-upgrade mechanism. I didn\u2019t find a minimum-version check or update flow in the repo. Inference: for PeeDom, a server-driven `minimum_supported_version` check is the safest cross-platform first move; on Android you can also use Play\u2019s recovery/update tools later.\n- `P0`: test the exact Android artifact users will install. Your `preview` profile is an internal `apk`, while `production` is an `aab` in [eas.json](/Users/T/Desktop/PeeDom/eas.json#L16). Do final QA through Play Internal Testing, not only EAS internal builds.\n- `P0`: run manual large-font and TalkBack sweeps on core flows. PeeDom already has good accessibility groundwork, including screen-reader detection/announcements in [useAccessibilityInfo.ts](/Users/T/Desktop/PeeDom/src/hooks/useAccessibilityInfo.ts#L19), but I did not find font-scale-specific tests. Focus on auth, map, search, bathroom detail, code reveal, and all modals.\n- `P1`: add Play pre-launch report review to the release checklist. This matters for PeeDom because Google will flag accessibility/touch-target/contrast issues you won\u2019t catch from unit tests.\n- `P1`: finish production crash debugging hygiene before enabling Android obfuscation. Sentry is initialized in [sentry.ts](/Users/T/Desktop/PeeDom/src/lib/sentry.ts#L26), but I did not find a source-map upload step in the release workflow; without that, Hermes/minified release crashes will be harder to debug.\n- `P1`: only then enable Android R8 minify/obfuscation in staging/release-candidate. Native minify is currently off in [build.gradle](/Users/T/Desktop/PeeDom/android/app/build.gradle#L69) and there is no enabling property in [gradle.properties](/Users/T/Desktop/PeeDom/android/gradle.properties#L38). Do not flip this on the night before launch.\n- `P1`: use staged rollout and monitor. The repo already has release CI in [eas-release.yml](/Users/T/Desktop/PeeDom/.github/workflows/eas-release.yml#L92); what\u2019s missing is the rollout playbook. Start small, watch Sentry + Play vitals, then widen.\n- `P1`: do device-state testing around map/location/realtime/offline reconnect. Your own manifest already calls out open device gaps in [LAUNCH_MANIFEST.md](/Users/T/Desktop/PeeDom/LAUNCH_MANIFEST.md#L146). The Reddit process-death comments matter a lot more for PeeDom than for a simple CRUD app.\n- `P1`: verify AdMob console settings, blocked categories, and Data safety answers. Code-level consent exists in [admob.ts](/Users/T/Desktop/PeeDom/src/lib/admob.ts#L111), but ad-category safety and store disclosures live outside the repo.\n\n**Already Covered**\n- You already have Sentry, analytics, AdMob consent gating, and screen-reader-aware behavior.\n- Your production Android artifact is already an app bundle, which satisfies one of the Reddit thread\u2019s easier items.\n- CI already runs dependency checks, lint, tests, and EAS build steps.\n\n**Minify / Obfuscate For PeeDom**\n- Treat it as `release hardening`, not `pre-launch day-zero`.\n- For this repo, the blocker is not \u201cturn on obfuscation now\u201d; it is \u201cget privacy/account deletion, version gating, Play-internal QA, and source-map-ready crash reporting done first.\u201d\n\nSources: [Reddit thread JSON](https://www.reddit.com/r/androiddev/comments/132vq6k/what_is_a_less_known_must_do_while_launching_an/.json), [Android accessibility testing](https://developer.android.com/guide/topics/ui/accessibility/testing), [Android R8 optimization testing](https://developer.android.com/topic/performance/app-optimization/test-the-optimization), [Play update prompts](https://android-developers.googleblog.com/2024/01/prompt-users-to-update-to-your-latest-app-version-google-play.html), [Google Play User Data policy](https://support.google.com/googleplay/android-developer/answer/10144311).\n\nIf you want, I can turn this into a ranked PeeDom launch checklist or implement the first missing item."
+    }
+  ]
+}

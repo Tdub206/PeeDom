@@ -2,11 +2,17 @@ import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 const from: jest.MockedFunction<(table: string) => unknown> = jest.fn();
 const rpc: jest.MockedFunction<(fn: string, args?: unknown) => Promise<{ data: unknown; error: unknown }>> = jest.fn();
+const functionsInvoke: jest.MockedFunction<
+  (fn: string, options?: unknown) => Promise<{ data: unknown; error: unknown }>
+> = jest.fn();
 
 jest.mock('@/lib/supabase', () => ({
   getSupabaseClient: () => ({
     from,
     rpc,
+    functions: {
+      invoke: functionsInvoke,
+    },
   }),
 }));
 
@@ -40,6 +46,7 @@ describe('business API', () => {
   beforeEach(() => {
     from.mockReset();
     rpc.mockReset();
+    functionsInvoke.mockReset();
   });
 
   it('builds business dashboard summary data from analytics rows', async () => {
@@ -114,6 +121,7 @@ describe('business API', () => {
       data: {
         success: true,
         bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        hours_source: 'manual',
         updated_at: '2026-03-19T12:00:00.000Z',
       },
       error: null,
@@ -128,12 +136,91 @@ describe('business API', () => {
     });
 
     expect(result.error).toBeNull();
-    expect(rpc).toHaveBeenCalledWith('update_business_bathroom_hours', {
+    expect(rpc).toHaveBeenCalledWith('update_business_bathroom_hours_v2', {
       p_bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
       p_new_hours: {
         monday: [{ open: '09:00', close: '17:00' }],
       },
+      p_hours_source: 'manual',
+      p_offset_minutes: null,
+      p_google_place_id: null,
     });
+  });
+
+  it('loads managed bathroom hours configuration through the business RPC', async () => {
+    rpc.mockResolvedValueOnce({
+      data: {
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        place_name: 'Central Station Restroom',
+        hours_json: {
+          monday: [{ open: '09:00', close: '17:00' }],
+        },
+        hours_source: 'google',
+        hours_offset_minutes: null,
+        google_place_id: 'ChIJ1234567890',
+        updated_at: '2026-03-19T12:00:00.000Z',
+      },
+      error: null,
+    });
+
+    const { fetchBusinessBathroomHoursConfig } = await import('@/api/business');
+    const result = await fetchBusinessBathroomHoursConfig('550e8400-e29b-41d4-a716-446655440000');
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('get_business_bathroom_hours_config', {
+      p_bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+    });
+    expect(result.data?.hours_source).toBe('google');
+    expect(result.data?.google_place_id).toBe('ChIJ1234567890');
+  });
+
+  it('fetches Google hours and saves them through the v2 hours RPC', async () => {
+    functionsInvoke.mockResolvedValueOnce({
+      data: {
+        provider: 'google_places',
+        place_name: 'Central Station Restroom',
+        google_place_id: 'ChIJ1234567890',
+        time_zone: 'America/Los_Angeles',
+        utc_offset_minutes: -420,
+        open_now: true,
+        hours: {
+          monday: [{ open: '09:00', close: '17:00' }],
+        },
+      },
+      error: null,
+    });
+    rpc.mockResolvedValueOnce({
+      data: {
+        success: true,
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        hours_source: 'google',
+        updated_at: '2026-03-19T12:00:00.000Z',
+      },
+      error: null,
+    });
+
+    const { refreshBusinessBathroomHoursFromGoogle } = await import('@/api/business');
+    const result = await refreshBusinessBathroomHoursFromGoogle({
+      bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      google_place_id: 'ChIJ1234567890',
+    });
+
+    expect(result.error).toBeNull();
+    expect(functionsInvoke).toHaveBeenCalledWith('google-place-hours', {
+      body: {
+        placeId: 'ChIJ1234567890',
+      },
+    });
+    expect(rpc).toHaveBeenCalledWith('update_business_bathroom_hours_v2', {
+      p_bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      p_new_hours: {
+        monday: [{ open: '09:00', close: '17:00' }],
+      },
+      p_hours_source: 'google',
+      p_offset_minutes: null,
+      p_google_place_id: 'ChIJ1234567890',
+    });
+    expect(result.data?.hours_source).toBe('google');
   });
 
   it('loads business bathroom settings for a managed location', async () => {

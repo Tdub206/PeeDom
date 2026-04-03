@@ -74,6 +74,8 @@ def isReleaseTask = gradle.startParameter.taskNames.any { taskName ->
 def readSigningConfigValue = { propertyName ->
     return (findProperty(propertyName) ?: System.getenv(propertyName))?.toString()?.trim()
 }
+def easCredentialsJson = rootProject.file("../credentials.json")
+def isEasManagedBuild = (System.getenv("EAS_BUILD")?.toString()?.trim()?.length() ?: 0) > 0 || easCredentialsJson.exists()
 def releaseStoreFile = readSigningConfigValue('ANDROID_RELEASE_STORE_FILE')
 def releaseStorePassword = readSigningConfigValue('ANDROID_RELEASE_STORE_PASSWORD')
 def releaseKeyAlias = readSigningConfigValue('ANDROID_RELEASE_KEY_ALIAS')
@@ -102,6 +104,9 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace 'com.stallpass.app'
+
+    def googleMapsApiKey = (findProperty('ANDROID_GOOGLE_MAPS_API_KEY') ?: System.getenv('ANDROID_GOOGLE_MAPS_API_KEY') ?: "").toString().trim()
+
     defaultConfig {
         applicationId 'com.stallpass.app'
         minSdkVersion rootProject.ext.minSdkVersion
@@ -112,7 +117,7 @@ android {
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
         
         manifestPlaceholders = [
-            googleMapsApiKey: findProperty('ANDROID_GOOGLE_MAPS_API_KEY') ?: ""
+            googleMapsApiKey: googleMapsApiKey
         ]
     }
     signingConfigs {
@@ -122,8 +127,8 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        if (hasReleaseSigningConfig) {
-            release {
+        release {
+            if (hasReleaseSigningConfig) {
                 storeFile file(releaseStoreFile)
                 storePassword releaseStorePassword
                 keyAlias releaseKeyAlias
@@ -137,18 +142,18 @@ android {
         }
         release {
             // Fail the build if the Maps API key is not set for release builds.
-            def mapsKey = findProperty('ANDROID_GOOGLE_MAPS_API_KEY') ?: ""
-            if (mapsKey.isEmpty()) {
+            def mapsKey = googleMapsApiKey
+            if (isReleaseTask && mapsKey.isEmpty()) {
                 throw new GradleException(
                     "ANDROID_GOOGLE_MAPS_API_KEY is not set. " +
                     "Release builds require a valid Google Maps API key. " +
                     "Set it via a local.properties entry or CI environment variable."
                 )
             }
-            if (hasReleaseSigningConfig) {
+            if (hasReleaseSigningConfig || isEasManagedBuild) {
                 signingConfig signingConfigs.release
             } else if (isReleaseTask) {
-                throw new GradleException('Missing Android release signing configuration. Set ANDROID_RELEASE_STORE_FILE, ANDROID_RELEASE_STORE_PASSWORD, ANDROID_RELEASE_KEY_ALIAS, and ANDROID_RELEASE_KEY_PASSWORD before building a release artifact.')
+                throw new GradleException('Missing Android release signing configuration. Provide ANDROID_RELEASE_STORE_FILE, ANDROID_RELEASE_STORE_PASSWORD, ANDROID_RELEASE_KEY_ALIAS, and ANDROID_RELEASE_KEY_PASSWORD for local release builds, or use EAS-managed Android credentials.')
             } else {
                 signingConfig signingConfigs.debug
             }
@@ -170,6 +175,7 @@ android {
         ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:!CVS:!thumbs.db:!picasa.ini:!*~'
     }
 }
+
 
 // Apply static values from `gradle.properties` to the `android.packagingOptions`
 // Accepts values in comma delimited lists, example:

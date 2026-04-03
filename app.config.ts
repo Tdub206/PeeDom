@@ -6,6 +6,9 @@ const androidVersionCode =
   Number.isFinite(androidVersionCodeFromEnv) && androidVersionCodeFromEnv > 0 ? androidVersionCodeFromEnv : 1;
 const environment = process.env.EXPO_PUBLIC_ENV?.trim() || 'local';
 const isProduction = environment === 'production';
+const isEasBuilder =
+  (process.env.EAS_BUILD?.trim() ?? '').length > 0 ||
+  (process.env.CI?.trim() ?? '').toLowerCase() === 'true';
 const testAndroidAdMobAppId = 'ca-app-pub-3940256099942544~3347511713';
 const testIosAdMobAppId = 'ca-app-pub-3940256099942544~1458002511';
 const androidAdMobAppId = process.env.ANDROID_ADMOB_APP_ID?.trim() || (isProduction ? '' : testAndroidAdMobAppId);
@@ -51,7 +54,9 @@ function readStaticEasProjectId(config: Partial<ExpoConfig>): string {
 }
 
 function assertProductionBuildEnv(easProjectId: string): void {
-  if (!isProduction) {
+  // EAS CLI may parse app.config.ts locally before uploading the job.
+  // Only enforce required production env on the actual builder/CI environment.
+  if (!isProduction || !isEasBuilder) {
     return;
   }
 
@@ -90,12 +95,15 @@ if (googleMobileAdsConfig) {
 export default ({ config }: ConfigContext): ExpoConfig => {
   const easProjectId = process.env.EAS_PROJECT_ID?.trim() || readStaticEasProjectId(config);
   assertProductionBuildEnv(easProjectId);
+  const appVersion = '1.0.0';
 
   const expoConfig: ExpoConfig = {
     ...config,
     name: 'StallPass',
     slug: 'stallpass',
-    version: '1.0.0',
+    version: appVersion,
+    // Bare/native workflow builds require an explicit runtime version string.
+    runtimeVersion: appVersion,
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'automatic',

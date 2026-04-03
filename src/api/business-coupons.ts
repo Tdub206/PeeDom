@@ -5,6 +5,7 @@ import type {
   UpdateCouponInput,
   CouponRedemptionResult,
 } from '@/types';
+import type { Database } from '@/types/database';
 import {
   businessCouponSchema,
   bathroomCouponPublicSchema,
@@ -148,7 +149,9 @@ export async function updateBusinessCoupon(input: UpdateCouponInput): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const updates: Record<string, unknown> = { updated_at: new Date().toISOString() };
+    const updates: Database['public']['Tables']['business_coupons']['Update'] = {
+      updated_at: new Date().toISOString(),
+    };
 
     if (input.title !== undefined) updates.title = input.title;
     if (input.description !== undefined) updates.description = input.description;
@@ -160,8 +163,8 @@ export async function updateBusinessCoupon(input: UpdateCouponInput): Promise<{
     if (input.premium_only !== undefined) updates.premium_only = input.premium_only;
 
     const { error } = await getSupabaseClient()
-      .from('business_coupons')
-      .update(updates)
+      .from('business_coupons' as never)
+      .update(updates as never)
       .eq('id', input.coupon_id);
 
     if (error) {
@@ -185,9 +188,14 @@ export async function deactivateBusinessCoupon(couponId: string): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
+    const updates: Database['public']['Tables']['business_coupons']['Update'] = {
+      is_active: false,
+      updated_at: new Date().toISOString(),
+    };
+
     const { error } = await getSupabaseClient()
-      .from('business_coupons')
-      .update({ is_active: false, updated_at: new Date().toISOString() })
+      .from('business_coupons' as never)
+      .update(updates as never)
       .eq('id', couponId);
 
     if (error) {

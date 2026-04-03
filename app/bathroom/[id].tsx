@@ -28,6 +28,7 @@ import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
 import { useRealtimeCodeVotes } from '@/hooks/useRealtimeCodeVotes';
 import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
+import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
@@ -137,6 +138,7 @@ export default function BathroomDetailScreen() {
     isLoading: isLoadingBathroomDetail,
     refetch: refetchBathroomDetail,
   } = useBathroomDetail(bathroomId || null);
+  const recordVisitMutation = useRecordVisit();
 
   const address = useMemo(
     () => (bathroomDetail ? formatAddress(bathroomDetail) : 'Address unavailable'),
@@ -398,6 +400,12 @@ export default function BathroomDetailScreen() {
 
     try {
       void recordBathroomNavigationOpen(bathroomDetail.id);
+      if (user?.id) {
+        recordVisitMutation.mutate({
+          bathroomId: bathroomDetail.id,
+          source: 'map_navigation',
+        });
+      }
 
       if (Platform.OS === 'ios') {
         const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
@@ -425,7 +433,7 @@ export default function BathroomDetailScreen() {
     } finally {
       setIsOpeningDirections(false);
     }
-  }, [bathroomDetail, showToast]);
+  }, [bathroomDetail, recordVisitMutation, showToast, user?.id]);
 
   const handleToggleFavorite = useCallback(async () => {
     if (!favoriteCandidate) {

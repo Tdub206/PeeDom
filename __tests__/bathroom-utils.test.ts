@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 
 import {
   applyBathroomFilters,
+  buildNearbyBathroomHighlights,
   buildBathroomAddress,
   calculateDistanceMeters,
   calculateAccessibilityScore,
@@ -219,6 +220,65 @@ describe('bathroom utilities', () => {
         true
       )
     ).toBe(true);
+  });
+
+  it('builds nearby highlights from the closest open unlocked bathroom and nearest locked options', () => {
+    const baseItem = mapBathroomRowToListItem(
+      {
+        ...bathroomRow,
+        id: 'base-bathroom',
+        is_locked: false,
+      },
+      {
+        cachedAt: '2026-03-16T12:00:00.000Z',
+        stale: false,
+      }
+    );
+    const nearbyHighlights = buildNearbyBathroomHighlights(
+      [
+        {
+          ...baseItem,
+          id: 'closed-nearest',
+          distance_meters: 40,
+          hours: {
+            monday: [{ open: '20:00', close: '21:00' }],
+          },
+        },
+        {
+          ...baseItem,
+          id: 'locked-nearest',
+          distance_meters: 60,
+          flags: {
+            ...baseItem.flags,
+            is_locked: true,
+          },
+        },
+        {
+          ...baseItem,
+          id: 'open-next',
+          distance_meters: 110,
+          hours: {
+            monday: [{ open: '08:00', close: '18:00' }],
+          },
+        },
+        {
+          ...baseItem,
+          id: 'locked-second',
+          distance_meters: 150,
+          flags: {
+            ...baseItem.flags,
+            is_locked: true,
+          },
+        },
+      ],
+      {
+        lockedLimit: 1,
+        targetDate: new Date(2026, 2, 16, 12, 0, 0),
+      }
+    );
+
+    expect(nearbyHighlights.nearestOpenUnlocked?.id).toBe('open-next');
+    expect(nearbyHighlights.lockedBathrooms.map((bathroom) => bathroom.id)).toEqual(['locked-nearest']);
   });
 
   it('filters bathrooms by openNow, noCodeRequired, and cleanliness', () => {

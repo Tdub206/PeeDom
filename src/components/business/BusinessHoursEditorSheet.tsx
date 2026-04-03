@@ -8,12 +8,16 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
-import { fetchBathroomDetailById, type PublicBathroomDetailRow } from '@/api/bathrooms';
 import { Button } from '@/components/Button';
-import { useBusinessHoursHistory, useUpdateBusinessBathroomHours } from '@/hooks/useBusiness';
+import { HoursPresetPicker } from '@/components/business/HoursPresetPicker';
+import {
+  useBusinessBathroomHoursConfig,
+  useBusinessHoursHistory,
+  useRefreshBusinessBathroomHoursFromGoogle,
+  useUpdateBusinessBathroomHours,
+} from '@/hooks/useBusiness';
 import { useToast } from '@/hooks/useToast';
-import type { HoursData } from '@/types';
+import type { BusinessHoursUpdateSource, HoursData, HoursSourceType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
 const BUSINESS_DAYS = [
@@ -151,7 +155,7 @@ function shiftSlotClose(slot: EditableHoursSlot, deltaMinutes: number): Editable
   };
 }
 
-function normalizeEditableHours(hoursJson: PublicBathroomDetailRow['hours_json']): EditableHours {
+function normalizeEditableHours(hoursJson: HoursData | null): EditableHours {
   const normalized = createEmptyEditableHours();
 
   if (!hoursJson || typeof hoursJson !== 'object' || Array.isArray(hoursJson)) {
@@ -222,7 +226,7 @@ function serializeEditableHours(hours: EditableHours): HoursData {
 }
 
 function buildListedHoursTemplate(
-  hoursJson: PublicBathroomDetailRow['hours_json'],
+  hoursJson: HoursData | null,
   closeOffsetMinutes: number
 ): EditableHours {
   const normalizedHours = normalizeEditableHours(hoursJson);
@@ -235,6 +239,35 @@ function buildListedHoursTemplate(
     hours[day.key] = normalizedHours[day.key].map((slot) => shiftSlotClose(slot, closeOffsetMinutes));
     return hours;
   }, createEmptyEditableHours());
+}
+
+function normalizeOffsetMinutes(offsetMinutes: number | null | undefined): number | null {
+  if (typeof offsetMinutes !== 'number' || !Number.isFinite(offsetMinutes) || offsetMinutes === 0) {
+    return null;
+  }
+
+  return offsetMinutes > 0 ? -offsetMinutes : offsetMinutes;
+}
+
+function formatSourceLabel(source: BusinessHoursUpdateSource, offsetMinutes?: number | null): string {
+  switch (source) {
+    case 'google':
+      return 'Google sync';
+    case 'preset_offset':
+      return typeof offsetMinutes === 'number'
+        ? `${Math.abs(offsetMinutes)} minutes before close`
+        : 'Preset offset';
+    case 'manual':
+      return 'Manual';
+    case 'business_dashboard':
+      return 'Business dashboard';
+    case 'admin_panel':
+      return 'Admin panel';
+    case 'community_report':
+      return 'Community report';
+    default:
+      return source;
+  }
 }
 
 function MeridiemToggle({
@@ -282,39 +315,56 @@ export function BusinessHoursEditorSheet({
 }: BusinessHoursEditorSheetProps) {
   const { showToast } = useToast();
   const hoursMutation = useUpdateBusinessBathroomHours();
+  const googleHoursMutation = useRefreshBusinessBathroomHoursFromGoogle();
+  const hoursConfigQuery = useBusinessBathroomHoursConfig(visible ? bathroomId : null);
   const hoursHistoryQuery = useBusinessHoursHistory(visible ? bathroomId : null);
   const [editableHours, setEditableHours] = useState<EditableHours>(createEmptyEditableHours());
-
-  const bathroomQuery = useQuery<PublicBathroomDetailRow, Error>({
-    queryKey: ['business', 'bathroom-detail', bathroomId ?? 'none'],
-    enabled: visible && Boolean(bathroomId),
-    queryFn: async () => {
-      if (!bathroomId) {
-        throw new Error('Choose a bathroom before editing business hours.');
-      }
-
-      const result = await fetchBathroomDetailById(bathroomId);
-
-      if (result.error || !result.data) {
-        throw result.error ?? new Error('Unable to load this bathroom right now.');
-      }
-
-      return result.data;
-    },
-  });
+  const [selectedSource, setSelectedSource] = useState<HoursSourceType>('manual');
+  const [selectedOffsetMinutes, setSelectedOffsetMinutes] = useState<number | null>(null);
+  const [googlePlaceId, setGooglePlaceId] = useState('');
 
   useEffect(() => {
-    if (!visible || !bathroomQuery.data) {
+    if (!visible || !hoursConfigQuery.data) {
       return;
     }
 
-    setEditableHours(normalizeEditableHours(bathroomQuery.data.hours_json));
-  }, [bathroomQuery.data, visible]);
+    const normalizedOffset = normalizeOffsetMinutes(hoursConfigQuery.data.hours_offset_minutes);
+    const nextSource = hoursConfigQuery.data.hours_source;
+
+    setSelectedSource(nextSource);
+    setSelectedOffsetMinutes(nextSource === 'preset_offset' ? normalizedOffset : null);
+    setGooglePlaceId(hoursConfigQuery.data.google_place_id ?? '');
+    setEditableHours(
+      buildListedHoursTemplate(
+        hoursConfigQuery.data.hours,
+        nextSource === 'preset_offset' ? Math.abs(normalizedOffset ?? 0) : 0
+      )
+    );
+  }, [hoursConfigQuery.data, visible]);
 
   const recentHistory = useMemo(
     () => hoursHistoryQuery.data?.slice(0, 5) ?? [],
     [hoursHistoryQuery.data]
   );
+
+  const savedGooglePlaceId = hoursConfigQuery.data?.google_place_id?.trim() ?? '';
+  const normalizedGooglePlaceId = googlePlaceId.trim();
+  const googleSyncLabel =
+    normalizedGooglePlaceId.length > 0 && normalizedGooglePlaceId !== savedGooglePlaceId
+      ? 'Link Google Listing'
+      : savedGooglePlaceId
+        ? 'Refresh From Google'
+        : 'Link Google Listing';
+  const currentSourceLabel = formatSourceLabel(selectedSource, selectedOffsetMinutes);
+
+  const setManualOverride = () => {
+    if (selectedSource === 'manual') {
+      return;
+    }
+
+    setSelectedSource('manual');
+    setSelectedOffsetMinutes(null);
+  };
 
   const updateSlot = (
     day: BusinessDayKey,
@@ -322,6 +372,7 @@ export function BusinessHoursEditorSheet({
     field: keyof EditableHoursSlot,
     value: string
   ) => {
+    setManualOverride();
     setEditableHours((currentHours) => ({
       ...currentHours,
       [day]: currentHours[day].map((slot, index) =>
@@ -339,6 +390,7 @@ export function BusinessHoursEditorSheet({
   };
 
   const addSlot = (day: BusinessDayKey) => {
+    setManualOverride();
     setEditableHours((currentHours) => {
       if (currentHours[day].length >= 3) {
         return currentHours;
@@ -352,18 +404,63 @@ export function BusinessHoursEditorSheet({
   };
 
   const removeSlot = (day: BusinessDayKey, slotIndex: number) => {
+    setManualOverride();
     setEditableHours((currentHours) => ({
       ...currentHours,
       [day]: currentHours[day].filter((_, index) => index !== slotIndex),
     }));
   };
 
-  const applyTemplate = (closeOffsetMinutes: number) => {
-    if (!bathroomQuery.data) {
+  const applyHoursMode = (source: HoursSourceType, offsetMinutes: number | null) => {
+    const normalizedOffset = normalizeOffsetMinutes(offsetMinutes);
+
+    setSelectedSource(source);
+    setSelectedOffsetMinutes(source === 'preset_offset' ? normalizedOffset : null);
+
+    if (!hoursConfigQuery.data) {
       return;
     }
 
-    setEditableHours(buildListedHoursTemplate(bathroomQuery.data.hours_json, closeOffsetMinutes));
+    if (source === 'google') {
+      return;
+    }
+
+    setEditableHours(
+      buildListedHoursTemplate(
+        hoursConfigQuery.data.hours,
+        source === 'preset_offset' ? Math.abs(normalizedOffset ?? 0) : 0
+      )
+    );
+  };
+
+  const handleSyncGoogleHours = async () => {
+    if (!bathroomId) {
+      return;
+    }
+
+    try {
+      const result = await googleHoursMutation.mutateAsync({
+        bathroom_id: bathroomId,
+        google_place_id: normalizedGooglePlaceId,
+      });
+
+      setSelectedSource('google');
+      setSelectedOffsetMinutes(null);
+      setGooglePlaceId(result.google_place_id);
+      setEditableHours(normalizeEditableHours(result.hours));
+
+      showToast({
+        title: savedGooglePlaceId ? 'Google hours refreshed' : 'Google listing linked',
+        message: `Imported Google hours for ${result.place_name ?? hoursConfigQuery.data?.place_name ?? 'this bathroom'}.`,
+        variant: 'success',
+      });
+    } catch (error) {
+      showToast({
+        title: 'Google sync failed',
+        message: getErrorMessage(error, 'Unable to sync Google hours right now.'),
+        variant: 'error',
+      });
+    }
   };
 
   const handleSave = async () => {
@@ -375,11 +472,14 @@ export function BusinessHoursEditorSheet({
       const result = await hoursMutation.mutateAsync({
         bathroom_id: bathroomId,
         hours: serializeEditableHours(editableHours),
+        hours_source: selectedSource,
+        offset_minutes: selectedSource === 'preset_offset' ? selectedOffsetMinutes : null,
+        google_place_id: normalizedGooglePlaceId.length > 0 ? normalizedGooglePlaceId : null,
       });
 
       showToast({
         title: 'Hours updated',
-        message: `Saved restroom hours for ${bathroomQuery.data?.place_name ?? 'this bathroom'}.`,
+        message: `Saved restroom hours for ${hoursConfigQuery.data?.place_name ?? 'this bathroom'}.`,
         variant: 'success',
       });
 
@@ -407,7 +507,7 @@ export function BusinessHoursEditorSheet({
           <View className="flex-1 pr-4">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Restroom Hours</Text>
             <Text className="mt-2 text-2xl font-black tracking-tight text-ink-900">
-              {bathroomQuery.data?.place_name ?? 'Manage Hours'}
+              {hoursConfigQuery.data?.place_name ?? 'Manage Hours'}
             </Text>
           </View>
           <Pressable accessibilityRole="button" onPress={onClose}>
@@ -415,16 +515,16 @@ export function BusinessHoursEditorSheet({
           </Pressable>
         </View>
 
-        {bathroomQuery.isLoading ? (
+        {hoursConfigQuery.isLoading ? (
           <View className="flex-1 items-center justify-center px-6">
             <ActivityIndicator />
             <Text className="mt-4 text-base text-ink-600">Loading current hours...</Text>
           </View>
-        ) : bathroomQuery.error ? (
+        ) : hoursConfigQuery.error ? (
           <View className="flex-1 items-center justify-center px-6">
             <Text className="text-xl font-bold text-danger">Hours unavailable</Text>
             <Text className="mt-3 text-center text-base leading-6 text-ink-600">
-              {getErrorMessage(bathroomQuery.error, 'Unable to load this bathroom right now.')}
+              {getErrorMessage(hoursConfigQuery.error, 'Unable to load this bathroom right now.')}
             </Text>
             <Button className="mt-6" label="Close" onPress={onClose} />
           </View>
@@ -433,32 +533,80 @@ export function BusinessHoursEditorSheet({
             <View className="px-6 py-6">
               <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
                 <Text className="text-base leading-6 text-ink-600">
-                  Use your current listed business hours as a starting point, shorten restroom access before closing, or edit each day manually. New rows default to AM opening and PM closing.
+                  Choose how this restroom should inherit hours, link a Google Place when needed, then fine-tune the weekly schedule below. Manual edits always override preset or Google templates before saving.
                 </Text>
 
-                <View className="mt-4 flex-row flex-wrap gap-3">
-                  <Button
-                    fullWidth={false}
-                    label="Use Listed Hours"
-                    onPress={() => applyTemplate(0)}
-                    variant="secondary"
+                <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
+                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">
+                    Current Mode
+                  </Text>
+                  <Text className="mt-2 text-lg font-bold text-ink-900">{currentSourceLabel}</Text>
+                  {selectedSource === 'google' && normalizedGooglePlaceId.length > 0 ? (
+                    <Text className="mt-2 text-sm leading-6 text-ink-600">
+                      Linked Google Place ID: {normalizedGooglePlaceId}
+                    </Text>
+                  ) : null}
+                </View>
+
+                <View className="mt-5">
+                  <HoursPresetPicker
+                    selectedOffset={selectedOffsetMinutes}
+                    selectedSource={selectedSource}
+                    onSelectSource={applyHoursMode}
                   />
+                </View>
+
+                {selectedSource === 'google' ? (
+                  <View className="mt-5 rounded-2xl bg-surface-base px-4 py-4">
+                    <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">
+                      Google Listing
+                    </Text>
+                    <Text className="mt-2 text-sm leading-6 text-ink-600">
+                      Paste the Google Place ID for this business listing, then import the latest weekly hours into StallPass.
+                    </Text>
+                    <TextInput
+                      autoCapitalize="none"
+                      autoCorrect={false}
+                      className="mt-4 rounded-2xl border border-surface-strong bg-surface-card px-4 py-3 text-base text-ink-900"
+                      onChangeText={setGooglePlaceId}
+                      placeholder="ChIJ..."
+                      placeholderTextColor="#94a3b8"
+                      value={googlePlaceId}
+                    />
+                    <View className="mt-4 flex-row flex-wrap gap-3">
+                      <Button
+                        fullWidth={false}
+                        label={googleSyncLabel}
+                        loading={googleHoursMutation.isPending}
+                        onPress={() => {
+                          void handleSyncGoogleHours();
+                        }}
+                        variant="secondary"
+                      />
+                      <Button
+                        fullWidth={false}
+                        label="Switch To Manual"
+                        onPress={() => applyHoursMode('manual', null)}
+                        variant="ghost"
+                      />
+                    </View>
+                  </View>
+                ) : null}
+
+                <View className="mt-5 flex-row flex-wrap gap-3">
                   <Button
                     fullWidth={false}
-                    label="Close 30m Early"
-                    onPress={() => applyTemplate(30)}
-                    variant="secondary"
-                  />
-                  <Button
-                    fullWidth={false}
-                    label="Close 60m Early"
-                    onPress={() => applyTemplate(60)}
+                    label="Reset To Saved Hours"
+                    onPress={() => applyHoursMode('manual', null)}
                     variant="secondary"
                   />
                   <Button
                     fullWidth={false}
                     label="Clear"
-                    onPress={() => setEditableHours(createEmptyEditableHours())}
+                    onPress={() => {
+                      setManualOverride();
+                      setEditableHours(createEmptyEditableHours());
+                    }}
                     variant="ghost"
                   />
                 </View>
@@ -595,7 +743,7 @@ export function BusinessHoursEditorSheet({
                           {formatHistoryDate(historyEntry.created_at)}
                         </Text>
                         <Text className="mt-1 text-sm leading-6 text-ink-600">
-                          Source: {historyEntry.update_source.replace('_', ' ')}
+                          Source: {formatSourceLabel(historyEntry.update_source)}
                         </Text>
                       </View>
                     ))}

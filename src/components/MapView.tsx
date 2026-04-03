@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Animated, Easing, Pressable, Text, View } from 'react-native';
 import MapView from 'react-native-map-clustering';
-import { Circle, Marker, Polyline, Region } from 'react-native-maps';
+import { Circle, Marker, Polyline, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
-import { BathroomListItem, Coordinates, RegionBounds } from '@/types';
+import { BathroomListItem, Coordinates, MapSearchTarget, RegionBounds } from '@/types';
 import { buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { calculateDistanceMeters, getBathroomMapPinTone } from '@/utils/bathroom';
 
@@ -12,6 +12,7 @@ interface BathroomMapViewProps {
   bathrooms: BathroomListItem[];
   region: RegionBounds;
   selectedBathroomId: string | null;
+  searchTarget: MapSearchTarget | null;
   userLocation: Coordinates | null;
   isRefreshingLocation: boolean;
   activeFilterCount: number;
@@ -109,6 +110,7 @@ function BathroomMapViewComponent({
   bathrooms,
   region,
   selectedBathroomId,
+  searchTarget,
   userLocation,
   isRefreshingLocation,
   activeFilterCount,
@@ -218,6 +220,7 @@ function BathroomMapViewComponent({
         edgePadding={{ top: 80, right: 80, bottom: 120, left: 80 }}
         onRegionChangeComplete={handleRegionChange}
         preserveClusterPressBehavior={false}
+        provider={PROVIDER_GOOGLE}
         radius={42}
         region={region}
         renderCluster={renderCluster}
@@ -252,6 +255,37 @@ function BathroomMapViewComponent({
             strokeColor={toRgba(colors.brand[700], 0.6)}
             strokeWidth={3}
           />
+        ) : null}
+
+        {searchTarget ? (
+          <Marker
+            accessibilityHint="Double tap to keep exploring this searched address on the map."
+            accessibilityLabel={`Searched address ${searchTarget.label}`}
+            accessibilityRole="image"
+            coordinate={searchTarget.coordinates}
+            description={searchTarget.address ?? undefined}
+            key={`search-target-${searchTarget.place_id ?? searchTarget.label}`}
+            title={searchTarget.label}
+            tracksViewChanges={false}
+          >
+            <View style={{ alignItems: 'center' }}>
+              <View
+                className="items-center justify-center rounded-full border-4 bg-white"
+                style={{
+                  borderColor: colors.brand[600],
+                  height: 34,
+                  width: 34,
+                  shadowColor: colors.ink[900],
+                  shadowOffset: { width: 0, height: 6 },
+                  shadowOpacity: 0.18,
+                  shadowRadius: 10,
+                  elevation: 4,
+                }}
+              >
+                <Ionicons color={colors.brand[600]} name="location" size={18} />
+              </View>
+            </View>
+          </Marker>
         ) : null}
 
         {bathrooms.map((bathroom) => {
@@ -309,7 +343,9 @@ function BathroomMapViewComponent({
         <View className="rounded-2xl bg-surface-card/95 px-4 py-3">
           <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Nearby pins</Text>
           <Text className="mt-1 text-lg font-black text-ink-900">{bathrooms.length} bathrooms</Text>
-          {nearestHighlightedBathroom ? (
+          {searchTarget ? (
+            <Text className="mt-1 text-xs text-brand-700">Search target: {searchTarget.label}</Text>
+          ) : nearestHighlightedBathroom ? (
             <Text className="mt-1 text-xs text-brand-700">Closest live match: {nearestHighlightedBathroom.place_name}</Text>
           ) : null}
         </View>

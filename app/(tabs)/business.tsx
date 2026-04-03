@@ -5,13 +5,11 @@ import { useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
 import {
   BusinessHoursEditorSheet,
-  ClaimedBathroomCard,
   CouponCard,
   CouponEditorSheet,
   DashboardStats,
   EarlyAdopterBanner,
   FeaturedPlacementCard,
-  FreeMapToggle,
   ManagedBathroomSection,
   VisitAnalyticsCard,
 } from '@/components/business';
@@ -22,7 +20,7 @@ import { useBusinessDashboard, useBusinessFeaturedPlacements } from '@/hooks/use
 import { useBusinessClaims } from '@/hooks/useBusinessClaims';
 import { useBusinessCoupons, useCreateCoupon, useDeactivateCoupon } from '@/hooks/useBusinessCoupons';
 import { useEarlyAdopterInvites, useGenerateInvite } from '@/hooks/useEarlyAdopterInvite';
-import { useBusinessVisitStats, useToggleFreeMapVisibility } from '@/hooks/useStallPassVisits';
+import { useBusinessVisitStats } from '@/hooks/useStallPassVisits';
 import { pushSafely } from '@/lib/navigation';
 import { useBusinessStore } from '@/store/useBusinessStore';
 import type { BusinessClaimListItem, BusinessClaimStatus, CreateCouponInput } from '@/types';
@@ -194,7 +192,6 @@ export default function BusinessTab() {
   const createCouponMutation = useCreateCoupon();
   const deactivateCouponMutation = useDeactivateCoupon();
   const generateInviteMutation = useGenerateInvite();
-  const toggleFreeMapMutation = useToggleFreeMapVisibility();
 
   useEffect(() => {
     if (isGuest) {
@@ -279,26 +276,18 @@ export default function BusinessTab() {
     [deactivateCouponMutation]
   );
 
-  const handleEditCoupon = useCallback(
-    (_couponId: string) => {
-      // Future: open edit sheet with coupon data pre-filled
-    },
-    []
-  );
-
-  const handleToggleFreeMap = useCallback(
-    (bathroomId: string, showOnFreeMap: boolean) => {
-      toggleFreeMapMutation.mutate({ bathroomId, showOnFreeMap });
-    },
-    [toggleFreeMapMutation]
-  );
-
   const managedBathrooms = dashboardQuery.data?.bathrooms ?? [];
   const placements = featuredPlacementsQuery.data ?? [];
   const visitStats = visitStatsQuery.data ?? [];
   const coupons = couponsQuery.data ?? [];
   const invites = invitesQuery.data ?? [];
   const activeCoupons = coupons.filter((c) => c.is_active);
+  const activeCouponCountsByBathroom = useMemo(() => {
+    return activeCoupons.reduce<Record<string, number>>((counts, coupon) => {
+      counts[coupon.bathroom_id] = (counts[coupon.bathroom_id] ?? 0) + 1;
+      return counts;
+    }, {});
+  }, [activeCoupons]);
   const dashboardError = dashboardQuery.error;
   const featuredPlacementsError = featuredPlacementsQuery.error;
   const isRefreshing =
@@ -428,25 +417,15 @@ export default function BusinessTab() {
                 {managedBathrooms.length ? (
                   <View className="mt-4 gap-4">
                     {managedBathrooms.map((bathroom) => (
-                      <View key={bathroom.bathroom_id} className="gap-3">
-                        <ClaimedBathroomCard
-                          bathroom={bathroom}
-                          onManageHours={openHoursEditor}
-                          onOpenBathroom={handleOpenBathroom}
-                          onRequestFeatured={handleRequestFeatured}
-                        />
-                        <FreeMapToggle
-                          bathroomId={bathroom.bathroom_id}
-                          initialValue={bathroom.show_on_free_map}
-                          isLoading={toggleFreeMapMutation.isPending}
-                          onToggle={handleToggleFreeMap}
-                        />
-                        <Button
-                          label="Create Coupon"
-                          onPress={() => openCouponEditor(bathroom.bathroom_id)}
-                          variant="secondary"
-                        />
-                      </View>
+                      <ManagedBathroomSection
+                        activeCouponCount={activeCouponCountsByBathroom[bathroom.bathroom_id] ?? 0}
+                        bathroom={bathroom}
+                        key={bathroom.bathroom_id}
+                        onOpenCouponEditor={openCouponEditor}
+                        onManageHours={openHoursEditor}
+                        onOpenBathroom={handleOpenBathroom}
+                        onRequestFeatured={handleRequestFeatured}
+                      />
                     ))}
                   </View>
                 ) : (
@@ -474,7 +453,6 @@ export default function BusinessTab() {
                         coupon={coupon}
                         key={coupon.id}
                         onDeactivate={handleDeactivateCoupon}
-                        onEdit={handleEditCoupon}
                       />
                     ))}
                   </View>

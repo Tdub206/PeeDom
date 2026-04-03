@@ -380,6 +380,45 @@ export function isBathroomVisibleOnMap(
   return bathroom.stallpass_access_tier !== 'premium' || bathroom.show_on_free_map || isPremiumViewer;
 }
 
+export function buildNearbyBathroomHighlights<
+  T extends Pick<BathroomListItem, 'distance_meters' | 'flags' | 'hours'>
+>(
+  bathrooms: T[],
+  options?: {
+    lockedLimit?: number;
+    targetDate?: Date;
+  }
+): {
+  nearestOpenUnlocked: T | null;
+  lockedBathrooms: T[];
+} {
+  const targetDate = options?.targetDate ?? new Date();
+  const lockedLimit = options?.lockedLimit ?? 3;
+  const sortedBathrooms = [...bathrooms].sort((leftBathroom, rightBathroom) => {
+    const leftDistance =
+      typeof leftBathroom.distance_meters === 'number' ? leftBathroom.distance_meters : Number.MAX_SAFE_INTEGER;
+    const rightDistance =
+      typeof rightBathroom.distance_meters === 'number' ? rightBathroom.distance_meters : Number.MAX_SAFE_INTEGER;
+
+    return leftDistance - rightDistance;
+  });
+
+  const nearestOpenUnlocked =
+    sortedBathrooms.find(
+      (bathroom) =>
+        bathroom.flags.is_locked !== true && isBathroomOpenNow(bathroom.hours, targetDate) === true
+    ) ?? null;
+
+  const lockedBathrooms = sortedBathrooms
+    .filter((bathroom) => bathroom.flags.is_locked === true)
+    .slice(0, lockedLimit);
+
+  return {
+    nearestOpenUnlocked,
+    lockedBathrooms,
+  };
+}
+
 export function mapBathroomRowToListItem(
   bathroom: BathroomDirectoryRow,
   options: MappingOptions
