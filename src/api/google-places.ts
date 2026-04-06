@@ -118,12 +118,29 @@ export async function resolveGooglePlaceAddressSelection(
 
     return {
       data: parsedPlace.data
-        ? {
-            place_id: parsedPlace.data.place_id,
-            formatted_address: parsedPlace.data.formatted_address ?? null,
-            location: parsedPlace.data.location,
-            viewport: parsedPlace.data.viewport ?? null,
-          }
+        ? (() => {
+            const addressComponents = parsedPlace.data.address_components ?? {
+              address_line1: null,
+              city: null,
+              state: null,
+              postal_code: null,
+              country_code: null,
+            };
+
+            return {
+              place_id: parsedPlace.data.place_id,
+              formatted_address: parsedPlace.data.formatted_address ?? null,
+              location: parsedPlace.data.location,
+              viewport: parsedPlace.data.viewport ?? null,
+              address_components: {
+                address_line1: addressComponents.address_line1 ?? null,
+                city: addressComponents.city ?? null,
+                state: addressComponents.state ?? null,
+                postal_code: addressComponents.postal_code ?? null,
+                country_code: addressComponents.country_code ?? null,
+              },
+            };
+          })()
         : null,
       error: null,
     };

@@ -2,6 +2,7 @@ import { describe, expect, it } from '@jest/globals';
 import {
   createBusinessFeaturedPlacementSchema,
   updateBusinessBathroomSettingsSchema,
+  updateBusinessBathroomSettingsV2Schema,
   updateBusinessHoursSchema,
   upsertBusinessPromotionSchema,
 } from '@/lib/validators';
@@ -60,6 +61,49 @@ describe('business validators', () => {
 
     expect(result.requires_premium_access).toBe(true);
     expect(result.show_on_free_map).toBe(false);
+  });
+
+  it('accepts valid owner-managed code policy settings', () => {
+    const result = updateBusinessBathroomSettingsV2Schema.parse({
+      bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+      requires_premium_access: false,
+      show_on_free_map: true,
+      is_location_verified: true,
+      code_policy: 'owner_shared',
+      allow_user_code_submissions: true,
+      owner_supplied_code: '2468',
+      official_access_instructions: 'Ask the cashier if the keypad is rotated.',
+    });
+
+    expect(result.code_policy).toBe('owner_shared');
+    expect(result.owner_supplied_code).toBe('2468');
+  });
+
+  it('rejects official codes when the policy stays community-managed', () => {
+    expect(() =>
+      updateBusinessBathroomSettingsV2Schema.parse({
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        requires_premium_access: false,
+        show_on_free_map: true,
+        is_location_verified: true,
+        code_policy: 'community',
+        allow_user_code_submissions: true,
+        owner_supplied_code: '2468',
+      })
+    ).toThrow('Choose an owner-managed code policy before storing an official code.');
+  });
+
+  it('rejects community submissions for staff-only code policies', () => {
+    expect(() =>
+      updateBusinessBathroomSettingsV2Schema.parse({
+        bathroom_id: '550e8400-e29b-41d4-a716-446655440000',
+        requires_premium_access: true,
+        show_on_free_map: false,
+        is_location_verified: true,
+        code_policy: 'staff_only',
+        allow_user_code_submissions: true,
+      })
+    ).toThrow('Private or staff-only code policies must disable community code submissions.');
   });
 
   it('accepts Google-backed business hours when a place id is provided', () => {

@@ -7,9 +7,11 @@ import type {
   BusinessGoogleHoursSyncResult,
   BusinessHoursUpdateAudit,
   BusinessHoursUpdateResult,
+  BusinessManagedCodeDetails,
   BusinessPromotion,
   SyncBusinessBathroomGoogleHoursInput,
   UpdateBusinessBathroomSettingsInput,
+  UpdateBusinessBathroomSettingsV2Input,
   UpdateBusinessHoursInput,
   UpsertBusinessPromotionInput,
 } from '@/types';
@@ -17,6 +19,7 @@ import {
   businessBathroomHoursConfigSchema,
   businessBathroomSettingsSchema,
   businessDashboardAnalyticsRowSchema,
+  businessManagedCodeDetailsSchema,
   businessGoogleHoursSyncSchema,
   businessFeaturedPlacementSchema,
   businessHoursUpdateResultSchema,
@@ -27,6 +30,7 @@ import {
 } from '@/lib/supabase-parsers';
 import {
   validateBusinessBathroomSettings,
+  validateBusinessBathroomSettingsV2,
   validateBusinessGoogleHoursSync,
   validateBusinessHoursUpdate,
   validateBusinessPromotion,
@@ -268,6 +272,112 @@ export async function upsertBusinessBathroomSettings(input: UpdateBusinessBathro
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to save these StallPass settings right now.'),
         'Unable to save these StallPass settings right now.'
+      ),
+    };
+  }
+}
+
+export async function upsertBusinessBathroomSettingsV2(input: UpdateBusinessBathroomSettingsV2Input): Promise<{
+  data: BusinessBathroomSettings | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const validatedInput = validateBusinessBathroomSettingsV2(input);
+    const { data, error } = await getSupabaseClient().rpc(
+      'upsert_business_bathroom_settings_v2' as never,
+      {
+        p_bathroom_id: validatedInput.bathroom_id,
+        p_requires_premium_access: validatedInput.requires_premium_access,
+        p_show_on_free_map: validatedInput.show_on_free_map,
+        p_is_location_verified: validatedInput.is_location_verified,
+        p_code_policy: validatedInput.code_policy,
+        p_allow_user_code_submissions: validatedInput.allow_user_code_submissions,
+        p_owner_supplied_code: validatedInput.owner_supplied_code ?? null,
+        p_owner_code_notes: validatedInput.owner_code_notes ?? null,
+        p_official_access_instructions: validatedInput.official_access_instructions ?? null,
+        p_owner_code_last_verified_at: validatedInput.owner_code_last_verified_at ?? null,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to save these advanced StallPass settings right now.'),
+      };
+    }
+
+    const parsedRows = parseSupabaseRows(
+      businessBathroomSettingsSchema,
+      data,
+      'advanced business bathroom settings update',
+      'Unable to save these advanced StallPass settings right now.'
+    );
+
+    if (parsedRows.error) {
+      return {
+        data: null,
+        error: parsedRows.error,
+      };
+    }
+
+    return {
+      data: (parsedRows.data[0] as BusinessBathroomSettings | undefined) ?? null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to save these advanced StallPass settings right now.'),
+        'Unable to save these advanced StallPass settings right now.'
+      ),
+    };
+  }
+}
+
+export async function fetchBusinessManagedCode(bathroomId: string): Promise<{
+  data: BusinessManagedCodeDetails | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_business_managed_code' as never,
+      {
+        p_bathroom_id: bathroomId,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to load the managed code details right now.'),
+      };
+    }
+
+    const parsedRow = parseSupabaseNullableRow(
+      businessManagedCodeDetailsSchema,
+      Array.isArray(data) ? data[0] ?? null : data,
+      'business managed code',
+      'Unable to load the managed code details right now.'
+    );
+
+    if (parsedRow.error) {
+      return {
+        data: null,
+        error: parsedRow.error,
+      };
+    }
+
+    return {
+      data: parsedRow.data as BusinessManagedCodeDetails | null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load the managed code details right now.'),
+        'Unable to load the managed code details right now.'
       ),
     };
   }

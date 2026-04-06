@@ -59,11 +59,6 @@ export function getBathroomStatusTone(status: BathroomLiveStatus): {
         textClassName: 'text-danger',
       };
     case 'out_of_order':
-      return {
-        backgroundClassName: 'bg-brand-50',
-        borderClassName: 'border-brand-200',
-        textClassName: 'text-brand-700',
-      };
     case 'long_wait':
       return {
         backgroundClassName: 'bg-brand-50',

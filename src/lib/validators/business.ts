@@ -18,6 +18,7 @@ const dayKeySchema = z.enum([
   'saturday',
   'sunday',
 ]);
+const businessCodePolicySchema = z.enum(['community', 'owner_shared', 'owner_private', 'staff_only']);
 
 function toMinutes(value: string): number {
   const [hoursSegment, minutesSegment] = value.split(':');
@@ -160,6 +161,49 @@ export const updateBusinessBathroomSettingsSchema = z.object({
   is_location_verified: z.boolean(),
 });
 
+export const updateBusinessBathroomSettingsV2Schema = updateBusinessBathroomSettingsSchema
+  .extend({
+    code_policy: businessCodePolicySchema,
+    allow_user_code_submissions: z.boolean(),
+    owner_supplied_code: z
+      .string()
+      .trim()
+      .min(2, 'Official codes must be at least 2 characters long.')
+      .max(32, 'Official codes must stay within 32 characters.')
+      .nullable()
+      .optional(),
+    owner_code_notes: z
+      .string()
+      .trim()
+      .max(280, 'Official code notes must stay within 280 characters.')
+      .nullable()
+      .optional(),
+    official_access_instructions: z
+      .string()
+      .trim()
+      .max(500, 'Access instructions must stay within 500 characters.')
+      .nullable()
+      .optional(),
+    owner_code_last_verified_at: z.string().datetime().nullable().optional(),
+  })
+  .superRefine((value, context) => {
+    if (value.code_policy === 'community' && value.owner_supplied_code?.trim()) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['code_policy'],
+        message: 'Choose an owner-managed code policy before storing an official code.',
+      });
+    }
+
+    if ((value.code_policy === 'owner_private' || value.code_policy === 'staff_only') && value.allow_user_code_submissions) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['allow_user_code_submissions'],
+        message: 'Private or staff-only code policies must disable community code submissions.',
+      });
+    }
+  });
+
 export const upsertBusinessPromotionSchema = z
   .object({
     id: z.string().uuid().nullable().optional(),
@@ -219,6 +263,10 @@ export const upsertBusinessPromotionSchema = z
 
 export function validateBusinessBathroomSettings(data: unknown) {
   return updateBusinessBathroomSettingsSchema.parse(data);
+}
+
+export function validateBusinessBathroomSettingsV2(data: unknown) {
+  return updateBusinessBathroomSettingsV2Schema.parse(data);
 }
 
 export function validateBusinessFeaturedPlacement(data: unknown) {

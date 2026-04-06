@@ -7,24 +7,28 @@ import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
+import { useAccountSignOut } from '@/hooks/useProfileAccount';
 import { useToast } from '@/hooks/useToast';
 import { replaceSafely } from '@/lib/navigation';
-import { getSupabaseClient } from '@/lib/supabase';
 import { getErrorMessage } from '@/utils/errorMap';
-import { accountDeletionSchema, getFieldErrors, type FieldErrors } from '@/utils/validate';
-
-interface AccountDeletionFormState {
-  confirmation: string;
-}
+import {
+  accountDeletionSchema,
+  type AccountDeletionFormValues,
+  getFieldErrors,
+  type FieldErrors,
+} from '@/utils/validate';
 
 export default function AccountDeletionScreen() {
   const router = useRouter();
-  const { refreshUser, user } = useAuth();
+  const { user } = useAuth();
+  const { signOut } = useAccountSignOut({
+    showSuccessToast: false,
+  });
   const { showToast } = useToast();
-  const [formValues, setFormValues] = useState<AccountDeletionFormState>({
+  const [formValues, setFormValues] = useState<AccountDeletionFormValues>({
     confirmation: '',
   });
-  const [fieldErrors, setFieldErrors] = useState<FieldErrors<AccountDeletionFormState>>({});
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors<AccountDeletionFormValues>>({});
   const [submitError, setSubmitError] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -52,15 +56,7 @@ export default function AccountDeletionScreen() {
         throw deletionResult.error;
       }
 
-      const { error: localSignOutError } = await getSupabaseClient().auth.signOut({
-        scope: 'local',
-      });
-
-      if (localSignOutError) {
-        console.error('Unable to clear the local session after deleting the account:', localSignOutError);
-      }
-
-      await refreshUser();
+      await signOut();
 
       showToast({
         title: 'Account deleted',
@@ -81,7 +77,7 @@ export default function AccountDeletionScreen() {
     } finally {
       setIsDeleting(false);
     }
-  }, [refreshUser, router, showToast, user]);
+  }, [router, showToast, signOut, user]);
 
   const handleDeleteAccount = useCallback(async () => {
     const validationResult = accountDeletionSchema.safeParse(formValues);

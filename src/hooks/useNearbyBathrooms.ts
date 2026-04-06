@@ -4,8 +4,9 @@ import { fetchBathroomsNearRegion } from '@/api/bathrooms';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from '@/hooks/useLocation';
 import { hasActivePremium } from '@/lib/gamification';
-import type { BathroomFilters, BathroomListItem, Coordinates, RegionBounds } from '@/types';
+import type { BathroomFilters, BathroomListItem, BathroomRecommendation, Coordinates, RegionBounds } from '@/types';
 import {
+  buildBathroomRecommendations,
   buildNearbyBathroomHighlights,
   isBathroomVisibleOnMap,
   mapBathroomRowToListItem,
@@ -31,6 +32,7 @@ export interface NearbyBathroomsResult {
   items: BathroomListItem[];
   nearestOpenUnlocked: BathroomListItem | null;
   lockedBathrooms: BathroomListItem[];
+  recommendations: BathroomRecommendation[];
 }
 
 interface UseNearbyBathroomsOptions {
@@ -106,6 +108,7 @@ export function useNearbyBathrooms({
         items,
         nearestOpenUnlocked: highlights.nearestOpenUnlocked,
         lockedBathrooms: highlights.lockedBathrooms,
+        recommendations: buildBathroomRecommendations(items),
       };
     },
   });

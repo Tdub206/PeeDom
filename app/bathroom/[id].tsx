@@ -6,6 +6,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
 import { recordBathroomNavigationOpen, type PublicBathroomDetailRow } from '@/api/bathrooms';
+import { BathroomConfidenceCard } from '@/components/BathroomConfidenceCard';
 import { Button } from '@/components/Button';
 import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
@@ -13,6 +14,7 @@ import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
+import { QuickVisitActionsCard } from '@/components/QuickVisitActionsCard';
 import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
 import { BathroomStatusBanner, LiveCodeBadge } from '@/components/realtime';
@@ -20,7 +22,8 @@ import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
-import { useBathroomDetail } from '@/hooks/useBathroomDetail';
+import { shouldRefreshBathroomDetailOnFocus, useBathroomDetail } from '@/hooks/useBathroomDetail';
+import { useBathroomLiveStatus } from '@/hooks/useBathroomLiveStatus';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { useFavorites } from '@/hooks/useFavorites';
@@ -30,11 +33,12 @@ import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
+import { getBathroomStatusLabel } from '@/lib/bathroom-status';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
-import { BathroomPhotoType } from '@/types';
+import { BathroomLiveStatus, BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
-import { mapBathroomDetailRowToListItem } from '@/utils/bathroom';
+import { buildBathroomConfidenceProfile, mapBathroomDetailRowToListItem } from '@/utils/bathroom';
 import { useBathroomView } from '@/hooks/useBathroomView';
 import { useKudosCount, useSendKudos } from '@/hooks/useKudos';
 import { bathroomPhotoSchema } from '@/utils/validate';
@@ -119,6 +123,7 @@ export default function BathroomDetailScreen() {
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
   const [pendingVerificationVote, setPendingVerificationVote] = useState<-1 | 1 | null>(null);
+  const [pendingQuickStatus, setPendingQuickStatus] = useState<BathroomLiveStatus | null>(null);
   const [selectedPhotoType, setSelectedPhotoType] = useState<BathroomPhotoType>('interior');
 
   const bathroomId = useMemo(() => {
@@ -134,6 +139,7 @@ export default function BathroomDetailScreen() {
 
   const {
     data: bathroomDetail,
+    dataUpdatedAt,
     error: bathroomDetailError,
     isLoading: isLoadingBathroomDetail,
     refetch: refetchBathroomDetail,
@@ -262,6 +268,35 @@ export default function BathroomDetailScreen() {
     currentRating,
     isLoadingCurrentRating,
   } = useCleanlinessRating(bathroomId || null);
+  const {
+    currentStatus: currentQuickStatus,
+    isReportingStatus: isReportingQuickStatus,
+    reportStatus,
+  } = useBathroomLiveStatus(bathroomId || null);
+  const latestPhotoCreatedAt = useMemo(() => {
+    if (!photos.length) {
+      return null;
+    }
+
+    return photos.reduce<string | null>((latestTimestamp, photo) => {
+      if (!latestTimestamp) {
+        return photo.created_at;
+      }
+
+      return new Date(photo.created_at).getTime() > new Date(latestTimestamp).getTime()
+        ? photo.created_at
+        : latestTimestamp;
+    }, null);
+  }, [photos]);
+  const bathroomTrustProfile = useMemo(() => {
+    if (!favoriteCandidate) {
+      return null;
+    }
+
+    return buildBathroomConfidenceProfile(favoriteCandidate, {
+      latestPhotoCreatedAt,
+    });
+  }, [favoriteCandidate, latestPhotoCreatedAt]);
   const livePresence = useRealtimePresence({
     bathroomId: bathroomId || null,
     userId: user?.id ?? null,
@@ -269,14 +304,14 @@ export default function BathroomDetailScreen() {
 
   useFocusEffect(
     useCallback(() => {
-      if (hasFocusedOnceRef.current) {
+      if (hasFocusedOnceRef.current && shouldRefreshBathroomDetailOnFocus(bathroomDetail, dataUpdatedAt)) {
         void refetchBathroomDetail();
       } else {
         hasFocusedOnceRef.current = true;
       }
 
       return undefined;
-    }, [refetchBathroomDetail])
+    }, [bathroomDetail, dataUpdatedAt, refetchBathroomDetail])
   );
 
   useEffect(() => {
@@ -318,6 +353,19 @@ export default function BathroomDetailScreen() {
       setPendingVerificationVote(null);
     }
   }, [bathroomDetail, router, submitVerificationVote]);
+
+  const handleQuickStatusUpdate = useCallback(
+    async (status: BathroomLiveStatus) => {
+      setPendingQuickStatus(status);
+
+      try {
+        await reportStatus(status);
+      } finally {
+        setPendingQuickStatus(null);
+      }
+    },
+    [reportStatus]
+  );
 
   const handleUploadPhotoProof = useCallback(async () => {
     if (!bathroomId) {
@@ -537,6 +585,8 @@ export default function BathroomDetailScreen() {
 
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />
 
+          {bathroomTrustProfile ? <BathroomConfidenceCard profile={bathroomTrustProfile} /> : null}
+
           {livePresence && livePresence.viewer_count > 0 ? (
             <View className="mt-4 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5">
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-brand-700">Live Presence</Text>
@@ -617,6 +667,28 @@ export default function BathroomDetailScreen() {
             pendingVote={pendingVerificationVote}
           />
 
+          <QuickVisitActionsCard
+            currentStatusLabel={currentQuickStatus ? getBathroomStatusLabel(currentQuickStatus.status) : null}
+            isSubmitting={isReportingQuickStatus}
+            onConfirmClean={() => {
+              void handleQuickStatusUpdate('clean');
+            }}
+            onRateCleanliness={() =>
+              pushSafely(
+                router,
+                routes.modal.rateCleanlinessBathroom(bathroomDetail.id),
+                routes.bathroomDetail(bathroomDetail.id)
+              )
+            }
+            onReportClosed={() => {
+              void handleQuickStatusUpdate('closed');
+            }}
+            onReportDirty={() => {
+              void handleQuickStatusUpdate('dirty');
+            }}
+            pendingStatus={pendingQuickStatus}
+          />
+
           <PhotoProofGallery isCodeVisible={Boolean(visibleCodeValue)} photos={photos} />
 
           {isLoadingPhotos ? (
@@ -631,6 +703,9 @@ export default function BathroomDetailScreen() {
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Add Photo Proof</Text>
             <Text className="mt-3 text-base leading-6 text-ink-600">
               Upload the entrance, interior, keypad, or sign so the next person can trust what they are seeing.
+            </Text>
+            <Text className="mt-3 text-sm leading-6 text-ink-600">
+              New uploads go through a quick moderation review before they become public in StallPass.
             </Text>
 
             <View className="mt-4 gap-3">

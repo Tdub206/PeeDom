@@ -2,10 +2,10 @@ import { z } from 'zod';
 import { displayNameSchema } from '@/lib/validators';
 import {
   deactivateAccountResultSchema,
-  deleteAccountResultSchema,
   parseSupabaseNullableRow,
   profileMutationResultSchema,
 } from '@/lib/supabase-parsers';
+import { invokeEdgeFunction } from '@/lib/edge-functions';
 import { getSupabaseClient } from '@/lib/supabase';
 import { DeactivateAccountResult, DeleteAccountResult, DisplayNameUpdateResult } from '@/types';
 
@@ -51,6 +51,11 @@ function buildProfileMutationError(errorCode: string | undefined, fallbackMessag
   appError.code = errorCode;
   return appError;
 }
+
+const deleteAccountEdgeFunctionResultSchema = z.object({
+  success: z.literal(true),
+  warning: z.string().nullable().optional(),
+});
 
 export async function updateDisplayName(
   displayName: string
@@ -175,45 +180,44 @@ export async function deleteAccount(): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const { data, error } = await getSupabaseClient().rpc('delete_account' as never);
+    const {
+      data: { session },
+    } = await getSupabaseClient().auth.getSession();
 
-    if (error) {
+    if (!session) {
       return {
         data: null,
-        error: toAppError(error, 'Unable to delete your account right now.'),
+        error: buildProfileMutationError('not_authenticated', 'You must be signed in to delete your account.'),
       };
     }
 
-    const parsedResult = parseSupabaseNullableRow(
-      deleteAccountResultSchema,
-      data,
-      'delete account result',
-      'Unable to delete your account right now.'
-    );
+    const response = await invokeEdgeFunction<unknown>({
+      functionName: 'delete-account',
+      accessToken: session.access_token,
+      method: 'POST',
+    });
 
-    if (parsedResult.error) {
+    if (response.error) {
       return {
         data: null,
-        error: parsedResult.error,
+        error: toAppError(response.error, 'Unable to delete your account right now.'),
       };
     }
 
-    if (!parsedResult.data) {
-      return {
-        data: null,
-        error: buildProfileMutationError('unknown_error', 'Unable to delete your account right now.'),
-      };
-    }
+    const parsedResult = deleteAccountEdgeFunctionResultSchema.safeParse(response.data);
 
-    if (!parsedResult.data.success) {
+    if (!parsedResult.success) {
       return {
         data: null,
-        error: buildProfileMutationError(parsedResult.data.error, 'Unable to delete your account right now.'),
+        error: buildProfileMutationError('invalid_response', 'Unable to delete your account right now.'),
       };
     }
 
     return {
-      data: parsedResult.data as DeleteAccountResult,
+      data: {
+        success: true,
+        warning: parsedResult.data.warning ?? null,
+      },
       error: null,
     };
   } catch (error) {

@@ -1,7 +1,9 @@
+import { useMemo } from 'react';
 import { Tabs } from 'expo-router';
 import { Platform, StyleSheet } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/constants/colors';
 import { useAuth } from '@/contexts/AuthContext';
 
@@ -19,6 +21,16 @@ const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
 export default function TabLayout() {
   const { profile } = useAuth();
   const isAdmin = profile?.role === 'admin';
+  const insets = useSafeAreaInsets();
+  const tabBarStyle = useMemo(
+    () => ({
+      ...styles.tabBar,
+      height: (Platform.OS === 'ios' ? 54 : 56) + insets.bottom,
+      paddingBottom: insets.bottom,
+      paddingTop: Platform.OS === 'ios' ? 8 : 6,
+    }),
+    [insets.bottom]
+  );
 
   return (
     <Tabs
@@ -26,7 +38,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarActiveTintColor: colors.brand[600],
         tabBarInactiveTintColor: colors.ink[500],
-        tabBarStyle: styles.tabBar,
+        tabBarStyle,
         tabBarLabelStyle: styles.tabLabel,
         tabBarHideOnKeyboard: true,
         tabBarBackground: () =>
@@ -90,7 +102,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     elevation: 0,
     backgroundColor: Platform.OS === 'android' ? colors.surface.card : 'transparent',
-    height: Platform.OS === 'ios' ? 88 : 60,
   },
   tabLabel: {
     fontSize: 12,

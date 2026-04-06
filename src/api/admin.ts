@@ -1,4 +1,6 @@
 import { getSupabaseClient } from '@/lib/supabase';
+import type { DuplicateCase } from '@/types';
+import { duplicateCaseSchema, parseSupabaseRows } from '@/lib/supabase-parsers';
 
 export interface AdminClaimListItem {
   claim_id: string;
@@ -30,6 +32,13 @@ export interface FeaturedRequestListItem {
   place_name?: string;
   business_name?: string;
   requester_display_name?: string;
+}
+
+export interface DuplicateCaseResolutionResult {
+  case_id: string;
+  action: 'under_review' | 'dismiss' | 'merge' | 'quarantine';
+  target_bathroom_id: string | null;
+  resolved_at: string;
 }
 
 export async function fetchPendingClaims(): Promise<{
@@ -118,5 +127,73 @@ export async function moderateFeaturedRequest(
     return { success: true, error: null };
   } catch (err) {
     return { success: false, error: err instanceof Error ? err : new Error('Moderation failed') };
+  }
+}
+
+export async function fetchDuplicateCases(status?: DuplicateCase['status'] | null): Promise<{
+  data: DuplicateCase[];
+  error: Error | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('list_duplicate_cases' as never, {
+      p_status: status ?? null,
+      p_limit: 100,
+    } as never);
+
+    if (error) {
+      return { data: [], error: new Error(error.message) };
+    }
+
+    const parsedRows = parseSupabaseRows(
+      duplicateCaseSchema,
+      data,
+      'duplicate cases',
+      'Unable to load duplicate moderation cases.'
+    );
+
+    if (parsedRows.error) {
+      return {
+        data: [],
+        error: parsedRows.error,
+      };
+    }
+
+    return {
+      data: parsedRows.data as DuplicateCase[],
+      error: null,
+    };
+  } catch (err) {
+    return { data: [], error: err instanceof Error ? err : new Error('Failed to fetch duplicate cases') };
+  }
+}
+
+export async function resolveDuplicateCase(
+  caseId: string,
+  action: DuplicateCaseResolutionResult['action'],
+  targetBathroomId?: string | null,
+  notes?: string
+): Promise<{ data: DuplicateCaseResolutionResult | null; error: Error | null }> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('resolve_duplicate_case' as never, {
+      p_case_id: caseId,
+      p_action: action,
+      p_target_bathroom_id: targetBathroomId ?? null,
+      p_notes: notes ?? null,
+    } as never);
+
+    if (error) {
+      return { data: null, error: new Error(error.message) };
+    }
+
+    if (!data || Array.isArray(data)) {
+      return { data: null, error: null };
+    }
+
+    return {
+      data: data as DuplicateCaseResolutionResult,
+      error: null,
+    };
+  } catch (err) {
+    return { data: null, error: err instanceof Error ? err : new Error('Failed to resolve duplicate case') };
   }
 }

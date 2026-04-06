@@ -7,6 +7,7 @@ import {
   type AdminClaimListItem,
   type FeaturedRequestListItem,
 } from '@/api/admin';
+import { fetchBathroomsByIds } from '@/api/bathrooms';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 
@@ -43,7 +44,29 @@ export function useAdminFeaturedRequests() {
     queryFn: async () => {
       const result = await fetchPendingFeaturedRequests();
       if (result.error) throw result.error;
-      return result.data;
+
+      const bathroomIds = [...new Set(result.data.map((request) => request.bathroom_id))];
+
+      if (!bathroomIds.length) {
+        return result.data;
+      }
+
+      const bathroomsResult = await fetchBathroomsByIds({
+        bathroomIds,
+      });
+
+      if (bathroomsResult.error) {
+        throw bathroomsResult.error;
+      }
+
+      const bathroomLookup = new Map(
+        bathroomsResult.data.map((bathroom) => [bathroom.id, bathroom] as const)
+      );
+
+      return result.data.map((request) => ({
+        ...request,
+        place_name: bathroomLookup.get(request.bathroom_id)?.place_name ?? request.place_name,
+      }));
     },
   });
 }

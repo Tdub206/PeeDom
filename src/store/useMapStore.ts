@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { config } from '@/constants/config';
 import { Coordinates, MapSearchTarget, RegionBounds } from '@/types';
+import { areRegionBoundsEqual } from '@/utils/map';
 
 interface MapStoreState {
   region: RegionBounds;
@@ -28,7 +29,13 @@ export const useMapStore = create<MapStoreState>((set, get) => ({
   searchTarget: null,
   userLocation: null,
   hasCenteredOnUser: false,
-  setRegion: (region) => set({ region }),
+  setRegion: (region) => {
+    if (areRegionBoundsEqual(get().region, region)) {
+      return;
+    }
+
+    set({ region });
+  },
   setActiveBathroomId: (activeBathroomId) => set({ activeBathroomId }),
   setSearchTarget: (searchTarget) => set({ searchTarget, activeBathroomId: null }),
   clearSearchTarget: () => set({ searchTarget: null }),

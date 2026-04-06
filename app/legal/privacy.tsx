@@ -12,6 +12,7 @@ export default function PrivacyPolicyScreen() {
             <Text className="mt-3 text-base leading-6 text-white/80">
               This policy describes the data processed by the StallPass mobile app and its connected Supabase backend.
             </Text>
+            <Text className="mt-3 text-sm font-medium text-white/70">Last updated: April 5, 2026</Text>
           </View>
 
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
@@ -27,6 +28,9 @@ export default function PrivacyPolicyScreen() {
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               Diagnostics: if Sentry is configured for a production build, crash and error telemetry may be sent to help diagnose failures.
+            </Text>
+            <Text className="mt-3 text-base leading-7 text-ink-700">
+              Current launch posture: the April 5, 2026 production build keeps paid premium purchases, rewarded ads, and the separate analytics ingestion endpoint disabled.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               Local device storage: cached bathrooms, favorites, drafts, and offline queue items are stored on-device to improve reliability and offline recovery.
@@ -46,6 +50,9 @@ export default function PrivacyPolicyScreen() {
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               We use local storage so your drafts, caches, and queued actions survive app restarts and temporary network loss.
+            </Text>
+            <Text className="mt-3 text-base leading-7 text-ink-700">
+              If a future release enables ads, a paid premium tier, or a separate analytics endpoint, StallPass will update this policy and the store privacy disclosures before rollout.
             </Text>
           </View>
 
@@ -69,6 +76,9 @@ export default function PrivacyPolicyScreen() {
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               You can sign out from the Profile screen whenever you want to stop syncing account data on the device.
+            </Text>
+            <Text className="mt-3 text-base leading-7 text-ink-700">
+              You can export your data from the Profile screen and contact support@stallpass.org for privacy-related support requests.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               You can delete your account from the in-app Account Deletion screen, which is also designed to be published on the web for external account deletion access.

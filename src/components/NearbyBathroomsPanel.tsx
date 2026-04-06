@@ -6,7 +6,7 @@ import { Button } from '@/components/Button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNearbyBathrooms } from '@/hooks/useNearbyBathrooms';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
-import type { BathroomFilters, BathroomListItem } from '@/types';
+import type { BathroomFilters, BathroomListItem, BathroomRecommendation } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
 interface NearbyBathroomsPanelProps {
@@ -179,6 +179,42 @@ function LockedBathroomCard({
   );
 }
 
+function RecommendationCard({
+  recommendation,
+  onNavigate,
+  onOpenBathroomDetail,
+}: {
+  recommendation: BathroomRecommendation;
+  onNavigate: (bathroom: BathroomListItem) => void;
+  onOpenBathroomDetail: (bathroomId: string) => void;
+}) {
+  if (!recommendation.bathroom) {
+    return (
+      <View className="rounded-3xl bg-surface-base px-4 py-4">
+        <Text className="text-sm font-semibold text-ink-900">{recommendation.title}</Text>
+        <Text className="mt-2 text-sm leading-5 text-ink-600">{recommendation.rationale}</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View className="rounded-3xl border border-brand-100 bg-brand-50 px-4 py-4">
+      <Text className="text-xs font-semibold uppercase tracking-[1px] text-brand-700">{recommendation.title}</Text>
+      <Text className="mt-2 text-base font-bold text-ink-900">{recommendation.bathroom.place_name}</Text>
+      <Text className="mt-1 text-sm text-ink-600">{formatDistance(recommendation.bathroom.distance_meters)}</Text>
+      <Text className="mt-2 text-sm leading-5 text-brand-700">{recommendation.rationale}</Text>
+      <View className="mt-4 gap-3">
+        <Button label="Navigate" onPress={() => onNavigate(recommendation.bathroom as BathroomListItem)} />
+        <Button
+          label="Open Details"
+          onPress={() => onOpenBathroomDetail((recommendation.bathroom as BathroomListItem).id)}
+          variant="secondary"
+        />
+      </View>
+    </View>
+  );
+}
+
 function NearbyBathroomsPanelComponent({
   filters,
   onNavigate,
@@ -200,6 +236,7 @@ function NearbyBathroomsPanelComponent({
 
   const lockedCount = data?.lockedBathrooms.length ?? 0;
   const nearestBathroom = data?.nearestOpenUnlocked ?? null;
+  const recommendations = data?.recommendations ?? [];
   const headerSummary = nearestBathroom
     ? `${nearestBathroom.place_name} is the closest open restroom right now.`
     : lockedCount > 0
@@ -270,6 +307,20 @@ function NearbyBathroomsPanelComponent({
             </View>
           ) : (
             <>
+              {recommendations.length > 0 ? (
+                <View className="gap-3">
+                  <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Best options right now</Text>
+                  {recommendations.map((recommendation) => (
+                    <RecommendationCard
+                      key={recommendation.scenario}
+                      onNavigate={onNavigate}
+                      onOpenBathroomDetail={onOpenBathroomDetail}
+                      recommendation={recommendation}
+                    />
+                  ))}
+                </View>
+              ) : null}
+
               {nearestBathroom ? (
                 <View className="rounded-3xl border border-success/20 bg-success/10 px-4 py-4">
                   <View className="flex-row items-start justify-between gap-3">

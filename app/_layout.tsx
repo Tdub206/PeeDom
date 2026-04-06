@@ -267,6 +267,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="modal/sync-center"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Sync Center',
+          }}
+        />
+        <Stack.Screen
           name="legal/account-deletion"
           options={{
             presentation: 'modal',

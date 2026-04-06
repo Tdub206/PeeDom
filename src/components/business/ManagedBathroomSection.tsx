@@ -10,6 +10,7 @@ import type {
   BusinessDashboardBathroom,
   UpdateBusinessBathroomSettingsInput,
 } from '@/types';
+import { buildManagedBathroomChecklist } from '@/utils/business-dashboard';
 import { getErrorMessage } from '@/utils/errorMap';
 import { ClaimedBathroomCard } from './ClaimedBathroomCard';
 
@@ -138,6 +139,10 @@ function ManagedBathroomSectionComponent({
     activeCouponCount > 0
       ? `${activeCouponCount} active coupon${activeCouponCount === 1 ? '' : 's'} visible in StallPass.`
       : 'No active coupons yet. Add one to give StallPass users a reason to stop in.';
+  const verificationChecklist = useMemo(
+    () => buildManagedBathroomChecklist(bathroom, activeCouponCount),
+    [activeCouponCount, bathroom]
+  );
 
   return (
     <View className="gap-4">
@@ -151,7 +156,7 @@ function ManagedBathroomSectionComponent({
       <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
         <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">StallPass Listing</Text>
         <Text className="mt-2 text-base leading-6 text-ink-600">
-          Premium-only StallPass verification means premium members can discover this restroom even when it is hidden from the free map. Use the free-map toggle when you want broader visibility without removing the premium promise.
+          Verified businesses win when discovery, trust, and control move together. Set how this restroom appears on the map, confirm the saved pin, and decide whether premium discovery is part of the offer.
         </Text>
 
         <View className="mt-4 gap-3">
@@ -201,6 +206,20 @@ function ManagedBathroomSectionComponent({
               ? `Location was last verified on ${locationVerifiedLabel}.`
               : 'Location verification has not been saved for this business yet.'}
           </Text>
+        </View>
+
+        <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
+          <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Verified program checklist</Text>
+          <View className="mt-3 gap-3">
+            {verificationChecklist.map((item) => (
+              <View className="rounded-2xl bg-surface-card px-4 py-4" key={item.label}>
+                <Text className={['text-sm font-bold', item.complete ? 'text-success' : 'text-ink-900'].join(' ')}>
+                  {item.complete ? 'Ready' : 'Needs work'}: {item.label}
+                </Text>
+                <Text className="mt-1 text-sm leading-5 text-ink-600">{item.detail}</Text>
+              </View>
+            ))}
+          </View>
         </View>
 
         {settingsQuery.error ? (

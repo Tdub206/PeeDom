@@ -354,6 +354,30 @@ const businessHoursSourceSchema = z.enum([
   'preset_offset',
 ]);
 const hoursSourceTypeSchema = z.enum(['manual', 'google', 'preset_offset']);
+const bathroomLocationArchetypeSchema = z.enum([
+  'general',
+  'park',
+  'store',
+  'restaurant',
+  'transit',
+  'event_portable',
+  'medical',
+  'campus',
+  'library',
+  'mall',
+  'airport',
+  'hotel',
+]);
+const businessCodePolicySchema = z.enum(['community', 'owner_shared', 'owner_private', 'staff_only']);
+const contributorTrustTierSchema = z.enum([
+  'brand_new',
+  'lightly_trusted',
+  'verified_contributor',
+  'highly_reliable_local',
+  'business_verified_manager',
+  'flagged_low_trust',
+]);
+const duplicateCaseStatusSchema = z.enum(['open', 'under_review', 'merged', 'dismissed', 'quarantined']);
 
 export const businessBathroomSettingsSchema = z.object({
   bathroom_id: rawTextSchema,
@@ -361,9 +385,82 @@ export const businessBathroomSettingsSchema = z.object({
   show_on_free_map: z.boolean(),
   is_location_verified: z.boolean(),
   location_verified_at: dateTimeStringSchema.nullable(),
+  code_policy: businessCodePolicySchema.default('community'),
+  allow_user_code_submissions: z.boolean().default(true),
+  owner_supplied_code: z.string().nullable().optional().default(null),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable().optional().default(null),
+  owner_code_notes: z.string().nullable().optional().default(null),
+  official_access_instructions: z.string().nullable().optional().default(null),
   pricing_plan: z.enum(['standard', 'lifetime']),
   pricing_plan_granted_at: dateTimeStringSchema.nullable().optional().default(null),
   updated_by: z.string().nullable().optional().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomCodePolicySummarySchema = z.object({
+  bathroom_id: rawTextSchema,
+  code_policy: businessCodePolicySchema,
+  allow_user_code_submissions: z.boolean(),
+  has_official_code: z.boolean(),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable(),
+  owner_code_notes: z.string().nullable(),
+  official_access_instructions: z.string().nullable(),
+  can_manager_view_official_code: z.boolean(),
+});
+
+export const businessManagedCodeDetailsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  code_policy: businessCodePolicySchema,
+  owner_supplied_code: z.string().nullable(),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable(),
+  owner_code_notes: z.string().nullable(),
+  official_access_instructions: z.string().nullable(),
+  allow_user_code_submissions: z.boolean(),
+  updated_at: dateTimeStringSchema,
+});
+
+export const contributorReputationProfileSchema = z.object({
+  user_id: rawTextSchema,
+  trust_tier: contributorTrustTierSchema,
+  trust_score: z.number(),
+  trust_weight: z.number(),
+  accepted_contributions: z.number().int().nonnegative(),
+  rejected_contributions: z.number().int().nonnegative(),
+  reports_resolved: z.number().int().nonnegative(),
+  reports_dismissed: z.number().int().nonnegative(),
+  approved_photos: z.number().int().nonnegative(),
+  rejected_photos: z.number().int().nonnegative(),
+  active_codes: z.number().int().nonnegative(),
+  removed_codes: z.number().int().nonnegative(),
+  bathrooms_added: z.number().int().nonnegative(),
+  approved_claims: z.number().int().nonnegative(),
+  moderation_flag_count: z.number().int().nonnegative(),
+  code_success_ratio: z.number(),
+  primary_city: z.string().nullable(),
+  primary_state: z.string().nullable(),
+  last_contribution_at: dateTimeStringSchema.nullable(),
+  last_calculated_at: dateTimeStringSchema,
+});
+
+export const duplicateCaseSchema = z.object({
+  id: rawTextSchema,
+  bathroom_a_id: rawTextSchema,
+  bathroom_a_name: rawTextSchema,
+  bathroom_a_address: z.string(),
+  bathroom_b_id: rawTextSchema,
+  bathroom_b_name: rawTextSchema,
+  bathroom_b_address: z.string(),
+  status: duplicateCaseStatusSchema,
+  similarity_score: z.number(),
+  distance_meters: z.number().nullable(),
+  suggested_merge_target_id: z.string().nullable(),
+  merge_into_bathroom_id: z.string().nullable(),
+  reason: z.string().nullable(),
+  auto_flagged: z.boolean(),
+  notes: z.string().nullable(),
+  reviewed_by: z.string().nullable(),
+  reviewed_at: dateTimeStringSchema.nullable(),
   created_at: dateTimeStringSchema,
   updated_at: dateTimeStringSchema,
 });
@@ -496,6 +593,14 @@ const googlePlaceViewportPointSchema = z.object({
   longitude: z.number(),
 });
 
+const googlePlaceAddressComponentsSchema = z.object({
+  address_line1: z.union([z.string(), z.null()]).default(null),
+  city: z.union([z.string(), z.null()]).default(null),
+  state: z.union([z.string(), z.null()]).default(null),
+  postal_code: z.union([z.string(), z.null()]).default(null),
+  country_code: z.union([z.string(), z.null()]).default(null),
+});
+
 export const googlePlaceAddressResolutionSchema = z.object({
   place_id: rawTextSchema,
   formatted_address: z.union([z.string(), z.null()]).default(null),
@@ -507,6 +612,13 @@ export const googlePlaceAddressResolutionSchema = z.object({
     })
     .nullable()
     .default(null),
+  address_components: googlePlaceAddressComponentsSchema.default({
+    address_line1: null,
+    city: null,
+    state: null,
+    postal_code: null,
+    country_code: null,
+  }),
 });
 
 // ============================================================================
@@ -670,6 +782,13 @@ export const publicBathroomDetailRowSchema = z.object({
   is_business_location_verified: z.boolean().default(false),
   location_verified_at: dateTimeStringSchema.nullable().default(null),
   active_offer_count: z.number().int().nonnegative().default(0),
+  location_archetype: bathroomLocationArchetypeSchema.default('general'),
+  archetype_metadata: z.record(z.string(), jsonValueSchema).default({}),
+  code_policy: businessCodePolicySchema.default('community'),
+  allow_user_code_submissions: z.boolean().default(true),
+  has_official_code: z.boolean().default(false),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  official_access_instructions: z.string().nullable().default(null),
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({

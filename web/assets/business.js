@@ -1,4 +1,4 @@
-/* global document, window, HTMLInputElement */
+/* global document, window, HTMLInputElement, requestAnimationFrame, IntersectionObserver */
 
 const BUSINESS_STORAGE_KEY = "stallpass-business-dashboard-v1";
 
@@ -113,24 +113,69 @@ function applyVisualState() {
   });
 }
 
+// --- Animated counter helper ---
+let prevMetrics = { setup: 0, locations: 0, links: 0, tasks: 0 };
+
+function animateValue(element, start, end, suffix, duration) {
+  if (!element) return;
+  const startTime = performance.now();
+  const diff = end - start;
+
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(start + diff * eased);
+    element.textContent = current + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
 function renderMetrics() {
   const checklistComplete = countCompletedChecklist();
   const checklistTotal = Object.keys(state.checklist).length;
   const setupScore = Math.round((checklistComplete / checklistTotal) * 100);
   const pendingTasks = checklistTotal - checklistComplete;
+  const liveLinks = countLiveSupportSurfaces();
+  const locations = state.checklist.claimLocation ? 1 : 0;
 
-  document.querySelector("[data-metric-setup]").textContent = `${setupScore}%`;
-  document.querySelector("[data-metric-locations]").textContent = state.checklist.claimLocation ? "1" : "0";
-  document.querySelector("[data-metric-links]").textContent = String(countLiveSupportSurfaces());
-  document.querySelector("[data-metric-tasks]").textContent = String(pendingTasks);
-  document.querySelector("[data-progress-text]").textContent = `${checklistComplete} of ${checklistTotal} complete`;
-  document.querySelector("[data-progress-bar]").style.width = `${setupScore}%`;
+  animateValue(document.querySelector("[data-metric-setup]"), prevMetrics.setup, setupScore, "%", 600);
+  animateValue(document.querySelector("[data-metric-locations]"), prevMetrics.locations, locations, "", 400);
+  animateValue(document.querySelector("[data-metric-links]"), prevMetrics.links, liveLinks, "", 400);
+  animateValue(document.querySelector("[data-metric-tasks]"), prevMetrics.tasks, pendingTasks, "", 400);
+
+  prevMetrics = { setup: setupScore, locations, links: liveLinks, tasks: pendingTasks };
+
+  document.querySelector("[data-progress-text]").textContent = checklistComplete + " of " + checklistTotal + " complete";
+  document.querySelector("[data-progress-bar]").style.width = setupScore + "%";
 }
 
+// --- Smooth widget toggle with hiding animation ---
 function renderWidgets() {
   document.querySelectorAll("[data-widget]").forEach((widget) => {
     const key = widget.getAttribute("data-widget");
-    widget.classList.toggle("is-hidden", !state.widgets[key]);
+    const shouldShow = Boolean(state.widgets[key]);
+    const isCurrentlyHidden = widget.classList.contains("is-hidden");
+
+    if (shouldShow && isCurrentlyHidden) {
+      widget.classList.remove("is-hidden");
+      widget.classList.remove("is-hiding");
+      // Trigger reflow for animation
+      void widget.offsetHeight;
+      widget.classList.add("is-visible");
+    } else if (!shouldShow && !isCurrentlyHidden) {
+      widget.classList.add("is-hiding");
+      setTimeout(() => {
+        widget.classList.add("is-hidden");
+        widget.classList.remove("is-hiding");
+      }, 350);
+    }
   });
 
   document.querySelectorAll("[data-widget-toggle]").forEach((checkbox) => {
@@ -139,11 +184,32 @@ function renderWidgets() {
   });
 }
 
+// --- Checklist completion celebration ---
+function updateCompletionBanner() {
+  const banner = document.querySelector("[data-checklist-banner]");
+  if (!banner) return;
+
+  const allComplete = Object.values(state.checklist).every(Boolean);
+
+  if (allComplete) {
+    banner.classList.remove("is-hidden");
+    // Add a brief scale-pulse to all metric cards
+    document.querySelectorAll(".metric-card").forEach((card) => {
+      card.style.animation = "scaleIn 400ms ease";
+      setTimeout(() => { card.style.animation = ""; }, 400);
+    });
+  } else {
+    banner.classList.add("is-hidden");
+  }
+}
+
 function renderChecklist() {
   document.querySelectorAll("[data-checklist-item]").forEach((checkbox) => {
     const key = checkbox.getAttribute("data-checklist-item");
     checkbox.checked = Boolean(state.checklist[key]);
   });
+
+  updateCompletionBanner();
 }
 
 function renderOperations() {
@@ -219,7 +285,10 @@ function render() {
   renderOperations();
   renderSupport();
   renderTextAreas();
+  updateCompletionBanner();
 }
+
+// --- Event listeners ---
 
 document.querySelectorAll("[data-theme-choice]").forEach((button) => {
   button.addEventListener("click", () => {
@@ -237,11 +306,23 @@ document.querySelectorAll("[data-density-choice]").forEach((button) => {
   });
 });
 
+// Widget toggle with scroll-to-widget on enable
 document.querySelectorAll("[data-widget-toggle]").forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
-    state.widgets[checkbox.getAttribute("data-widget-toggle")] = checkbox.checked;
+    const key = checkbox.getAttribute("data-widget-toggle");
+    state.widgets[key] = checkbox.checked;
     persistState();
     render();
+
+    // If toggling on, scroll to the widget
+    if (checkbox.checked) {
+      const widget = document.querySelector('[data-widget="' + key + '"]');
+      if (widget) {
+        setTimeout(() => {
+          widget.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      }
+    }
   });
 });
 
@@ -288,10 +369,62 @@ document.querySelector("[data-team-notes]").addEventListener("input", (event) =>
   persistState();
 });
 
+// Reset with confirmation dialog
 document.querySelector("[data-reset-dashboard]").addEventListener("click", () => {
+  const confirmed = window.confirm("Reset all dashboard state? This will clear your checklist, operations, notes, and support settings.");
+  if (!confirmed) return;
+
   state = clone(DEFAULT_DASHBOARD_STATE);
+  prevMetrics = { setup: 0, locations: 0, links: 0, tasks: 0 };
   persistState();
   render();
 });
 
+// Keyboard accessibility for checklist items and control cards
+document.querySelectorAll(".checklist-item, .control-card").forEach((label) => {
+  label.setAttribute("tabindex", "0");
+  label.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      const checkbox = label.querySelector("input[type='checkbox']");
+      if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    }
+  });
+});
+
+// Initial render
 render();
+
+// Add contextual tooltips to metric values
+function applyMetricTooltips() {
+  const setupEl = document.querySelector("[data-metric-setup]");
+  const locEl = document.querySelector("[data-metric-locations]");
+  const linksEl = document.querySelector("[data-metric-links]");
+  const tasksEl = document.querySelector("[data-metric-tasks]");
+
+  if (setupEl) setupEl.title = "Percentage of launch checklist items completed";
+  if (locEl) locEl.title = "Number of claimed locations in your checklist";
+  if (linksEl) linksEl.title = "Number of support URLs and emails configured";
+  if (tasksEl) tasksEl.title = "Remaining checklist items before launch readiness";
+}
+applyMetricTooltips();
+
+// Scroll-reveal observer
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+);
+
+document.querySelectorAll("[data-reveal]").forEach((el) => {
+  revealObserver.observe(el);
+});

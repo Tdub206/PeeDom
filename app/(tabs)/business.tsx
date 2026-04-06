@@ -392,7 +392,9 @@ export default function BusinessTab() {
               ) : null}
 
               {/* Dashboard Stats */}
-              {dashboardQuery.data ? <DashboardStats summary={dashboardQuery.data.summary} /> : null}
+              {dashboardQuery.data ? (
+                <DashboardStats bathrooms={dashboardQuery.data.bathrooms} summary={dashboardQuery.data.summary} />
+              ) : null}
 
               {/* StallPass Visit Analytics */}
               {visitStats.length > 0 ? (

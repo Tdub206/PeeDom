@@ -130,6 +130,7 @@ export const routes = {
       pathname: '/modal/legal',
       params: { tab: 'terms' },
     } as Href,
+    syncCenter: '/modal/sync-center' as Href,
     routeBathrooms: '/modal/route-bathrooms' as Href,
     cityPacks: '/modal/city-packs' as Href,
     requestFeatured: '/modal/request-featured' as Href,

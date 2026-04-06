@@ -1,14 +1,21 @@
 import { ExpoConfig, ConfigContext } from 'expo/config';
 
-const iosBuildNumber = process.env.IOS_BUILD_NUMBER?.trim() || '1';
-const androidVersionCodeFromEnv = Number.parseInt(process.env.ANDROID_VERSION_CODE ?? '1', 10);
-const androidVersionCode =
-  Number.isFinite(androidVersionCodeFromEnv) && androidVersionCodeFromEnv > 0 ? androidVersionCodeFromEnv : 1;
+const {
+  readBuildVersionConfig,
+  readSentryBuildConfig,
+  shouldRequireSentryBuildSecrets,
+} = require('./build-config') as typeof import('./build-config');
+
+const { iosBuildNumber, androidVersionCode } = readBuildVersionConfig(process.env);
+const STATIC_EAS_PROJECT_ID = '9277c80b-8194-4229-8054-f5c6f70a8cbe';
 const environment = process.env.EXPO_PUBLIC_ENV?.trim() || 'local';
 const isProduction = environment === 'production';
 const isEasBuilder =
   (process.env.EAS_BUILD?.trim() ?? '').length > 0 ||
   (process.env.CI?.trim() ?? '').toLowerCase() === 'true';
+const sentryBuildConfig = readSentryBuildConfig(process.env, {
+  requireSecrets: shouldRequireSentryBuildSecrets(process.env),
+});
 const testAndroidAdMobAppId = 'ca-app-pub-3940256099942544~3347511713';
 const testIosAdMobAppId = 'ca-app-pub-3940256099942544~1458002511';
 const androidAdMobAppId = process.env.ANDROID_ADMOB_APP_ID?.trim() || (isProduction ? '' : testAndroidAdMobAppId);
@@ -92,8 +99,25 @@ if (googleMobileAdsConfig) {
   ]);
 }
 
+if (sentryBuildConfig.enabled) {
+  buildPlugins.push([
+    '@sentry/react-native/expo',
+    {
+      organization: sentryBuildConfig.organization || undefined,
+      project: sentryBuildConfig.project || undefined,
+      url: sentryBuildConfig.url || undefined,
+    },
+  ]);
+}
+
 export default ({ config }: ConfigContext): ExpoConfig => {
-  const easProjectId = process.env.EAS_PROJECT_ID?.trim() || readStaticEasProjectId(config);
+  const easProjectId =
+    process.env.EAS_PROJECT_ID?.trim() || readStaticEasProjectId(config) || STATIC_EAS_PROJECT_ID;
+
+  if (sentryBuildConfig.errorMessage) {
+    throw new Error(sentryBuildConfig.errorMessage);
+  }
+
   assertProductionBuildEnv(easProjectId);
   const appVersion = '1.0.0';
 
@@ -101,6 +125,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     ...config,
     name: 'StallPass',
     slug: 'stallpass',
+    owner: 'stallpass',
     version: appVersion,
     // Bare/native workflow builds require an explicit runtime version string.
     runtimeVersion: appVersion,

@@ -18,6 +18,21 @@ interface GooglePlaceAddressResponse {
   formattedAddress?: string;
   location?: GooglePlaceCoordinates;
   viewport?: GooglePlaceViewport;
+  addressComponents?: GooglePlaceAddressComponent[];
+}
+
+interface GooglePlaceAddressComponent {
+  longText?: string;
+  shortText?: string;
+  types?: string[];
+}
+
+interface NormalizedGooglePlaceAddressComponents {
+  address_line1: string | null;
+  city: string | null;
+  state: string | null;
+  postal_code: string | null;
+  country_code: string | null;
 }
 
 function jsonResponse(status: number, body: unknown): Response {
@@ -37,6 +52,54 @@ function getRequiredEnv(name: string): string {
   }
 
   return value;
+}
+
+function getAddressComponent(
+  components: GooglePlaceAddressComponent[] | undefined,
+  type: string
+): GooglePlaceAddressComponent | null {
+  return components?.find((component) => component.types?.includes(type)) ?? null;
+}
+
+function getAddressComponentText(
+  components: GooglePlaceAddressComponent[] | undefined,
+  type: string,
+  format: 'long' | 'short' = 'long'
+): string | null {
+  const component = getAddressComponent(components, type);
+  const value = format === 'short' ? component?.shortText : component?.longText;
+  const trimmedValue = value?.trim() ?? '';
+  return trimmedValue || null;
+}
+
+function buildAddressLine1(components: GooglePlaceAddressComponent[] | undefined): string | null {
+  const streetNumber = getAddressComponentText(components, 'street_number', 'short');
+  const route = getAddressComponentText(components, 'route');
+  const premise = getAddressComponentText(components, 'premise');
+  const subpremise = getAddressComponentText(components, 'subpremise', 'short');
+  const streetLine = [streetNumber, route].filter(Boolean).join(' ').trim();
+
+  if (streetLine) {
+    return [streetLine, subpremise].filter(Boolean).join(' ').trim();
+  }
+
+  return premise ?? null;
+}
+
+function normalizeAddressComponents(
+  components: GooglePlaceAddressComponent[] | undefined
+): NormalizedGooglePlaceAddressComponents {
+  return {
+    address_line1: buildAddressLine1(components),
+    city:
+      getAddressComponentText(components, 'locality') ??
+      getAddressComponentText(components, 'postal_town') ??
+      getAddressComponentText(components, 'sublocality_level_1') ??
+      getAddressComponentText(components, 'administrative_area_level_3'),
+    state: getAddressComponentText(components, 'administrative_area_level_1', 'short'),
+    postal_code: getAddressComponentText(components, 'postal_code'),
+    country_code: getAddressComponentText(components, 'country', 'short'),
+  };
 }
 
 Deno.serve(async (request) => {
@@ -71,7 +134,7 @@ Deno.serve(async (request) => {
       headers: {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': googlePlacesApiKey,
-        'X-Goog-FieldMask': 'id,formattedAddress,location,viewport',
+        'X-Goog-FieldMask': 'id,formattedAddress,location,viewport,addressComponents',
       },
     });
 
@@ -90,6 +153,8 @@ Deno.serve(async (request) => {
         error: 'Google did not return a valid location for this address.',
       });
     }
+
+    const normalizedAddressComponents = normalizeAddressComponents(place.addressComponents);
 
     return jsonResponse(200, {
       place_id: place.id ?? placeId,
@@ -111,6 +176,7 @@ Deno.serve(async (request) => {
               },
             }
           : null,
+      address_components: normalizedAddressComponents,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to load that Google address.';

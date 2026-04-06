@@ -19,12 +19,14 @@ interface UseGoogleAddressAutocompleteOptions {
   query: string;
   origin?: Coordinates | null;
   region?: RegionBounds | null;
+  enabled?: boolean;
 }
 
 export function useGoogleAddressAutocomplete({
   query,
   origin,
   region,
+  enabled = true,
 }: UseGoogleAddressAutocompleteOptions) {
   const [suggestions, setSuggestions] = useState<GooglePlaceAutocompleteSuggestion[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +44,7 @@ export function useGoogleAddressAutocomplete({
 
   useEffect(() => {
     const trimmedQuery = query.trim();
-    const shouldSearchGoogle = isAddressLikeSearchQuery(trimmedQuery);
+    const shouldSearchGoogle = enabled && isAddressLikeSearchQuery(trimmedQuery);
 
     if (!shouldSearchGoogle) {
       resetSession();
@@ -98,7 +100,7 @@ export function useGoogleAddressAutocomplete({
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [origin, query, region, resetSession]);
+  }, [enabled, origin, query, region, resetSession]);
 
   const resolveSelection = useCallback(
     async (suggestion: GooglePlaceAutocompleteSuggestion): Promise<GooglePlaceAddressResolutionResult> => {
@@ -125,7 +127,7 @@ export function useGoogleAddressAutocomplete({
     suggestions,
     isLoading,
     error,
-    isEnabled: isAddressLikeSearchQuery(query),
+    isEnabled: enabled && isAddressLikeSearchQuery(query),
     resetSession,
     resolveSelection,
   };

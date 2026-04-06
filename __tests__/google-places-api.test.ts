@@ -76,6 +76,13 @@ describe('google places API', () => {
             longitude: -122.335,
           },
         },
+        address_components: {
+          address_line1: '123 Main St',
+          city: 'Seattle',
+          state: 'WA',
+          postal_code: '98101',
+          country_code: 'US',
+        },
       },
       error: null,
     });
@@ -94,5 +101,12 @@ describe('google places API', () => {
       },
     });
     expect(result.data?.location.latitude).toBe(47.609);
+    expect(result.data?.address_components).toEqual({
+      address_line1: '123 Main St',
+      city: 'Seattle',
+      state: 'WA',
+      postal_code: '98101',
+      country_code: 'US',
+    });
   });
 });

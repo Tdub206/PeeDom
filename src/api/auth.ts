@@ -1,5 +1,6 @@
 import { AuthError, Session, User } from '@supabase/supabase-js';
 import { z } from 'zod';
+import { invokeEdgeFunction } from '@/lib/edge-functions';
 import { getSupabaseClient } from '@/lib/supabase';
 
 interface AuthSuccess {
@@ -33,6 +34,12 @@ const signInPayloadSchema = z.object({
 
 const signUpPayloadSchema = signInPayloadSchema.extend({
   displayName: z.string().trim().min(2).max(50),
+});
+
+const deleteAccountResponseSchema = z.object({
+  error: z.string().optional(),
+  success: z.boolean().optional(),
+  warning: z.string().nullable().optional(),
 });
 
 function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
@@ -130,7 +137,9 @@ export interface DeleteAccountResult {
 
 export async function deleteCurrentAccount(): Promise<DeleteAccountResult> {
   try {
-    const { data: { session } } = await getSupabaseClient().auth.getSession();
+    const {
+      data: { session },
+    } = await getSupabaseClient().auth.getSession();
 
     if (!session) {
       return {
@@ -139,30 +148,38 @@ export async function deleteCurrentAccount(): Promise<DeleteAccountResult> {
       };
     }
 
-    const response = await fetch(
-      `${getSupabaseClient().supabaseUrl}/functions/v1/delete-account`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${session.access_token}`,
-          apikey: getSupabaseClient().supabaseKey,
-        },
-      }
-    );
+    const response = await invokeEdgeFunction<unknown>({
+      functionName: 'delete-account',
+      accessToken: session.access_token,
+      method: 'POST',
+    });
 
-    const body = await response.json();
-
-    if (!response.ok || body.error) {
+    if (response.error) {
       return {
-        error: new AuthError(body.error ?? 'Unable to delete your account right now.'),
+        error: new AuthError(response.error.message),
+        warning: null,
+      };
+    }
+
+    const parsedResponse = deleteAccountResponseSchema.safeParse(response.data);
+
+    if (!parsedResponse.success) {
+      return {
+        error: new AuthError('The account deletion response from StallPass was invalid.'),
+        warning: null,
+      };
+    }
+
+    if (parsedResponse.data.error || parsedResponse.data.success !== true) {
+      return {
+        error: new AuthError(parsedResponse.data.error ?? 'Unable to delete your account right now.'),
         warning: null,
       };
     }
 
     return {
       error: null,
-      warning: body.warning ?? null,
+      warning: parsedResponse.data.warning ?? null,
     };
   } catch (error) {
     return {
