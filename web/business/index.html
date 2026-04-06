@@ -53,6 +53,24 @@
     </div>
   </header>
 
+  <nav class="section-jumper" data-section-jumper aria-label="Dashboard sections">
+    <div class="shell jumper-inner">
+      <div class="jumper-links">
+        <a href="#pitch" data-jump>Why join</a>
+        <a href="#metrics" data-jump>Metrics</a>
+        <a href="#checklist" data-jump>Checklist</a>
+        <a href="#operations" data-jump>Operations</a>
+        <a href="#support" data-jump>Support links</a>
+        <a href="#playbook" data-jump>Playbook</a>
+        <a href="#notes" data-jump>Notes</a>
+      </div>
+      <button type="button" class="cmdk-trigger" data-open-cmdk aria-label="Open command palette">
+        <span class="cmdk-kbd">Ctrl</span><span class="cmdk-kbd">K</span>
+        <span class="cmdk-text">Command palette</span>
+      </button>
+    </div>
+  </nav>
+
   <main class="business-shell shell">
     <aside class="business-rail">
       <div class="rail-card" data-reveal>
@@ -106,6 +124,11 @@
 
     <section class="business-main">
       <div class="business-hero" data-reveal>
+        <div class="aurora" aria-hidden="true">
+          <span class="aurora-blob aurora-1"></span>
+          <span class="aurora-blob aurora-2"></span>
+          <span class="aurora-blob aurora-3"></span>
+        </div>
         <div class="hero-text">
           <p class="eyebrow">Browser control surface</p>
           <h1>Manage launch readiness before analytics are wired in.</h1>
@@ -121,7 +144,36 @@
         </div>
       </div>
 
-      <section class="metric-grid" aria-label="Business dashboard summary">
+      <section class="pitch-strip" id="pitch" data-reveal aria-label="Why businesses join">
+        <header class="pitch-head">
+          <p class="eyebrow">Why businesses join</p>
+          <h2>A listing that works as hard as your storefront.</h2>
+        </header>
+        <div class="pitch-grid">
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">◆</span>
+            <h3>Own your listing</h3>
+            <p>Claim once. Control hours, amenities, accessibility, and access policy from a single surface.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">▲</span>
+            <h3>Feature when it matters</h3>
+            <p>Mark featured placement intent, prep campaign copy, and stay store-review ready.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">●</span>
+            <h3>No fake numbers</h3>
+            <p>Every metric is derived from real input. No invented impressions, no vanity dashboards.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">✦</span>
+            <h3>Built for teams</h3>
+            <p>Launch notes, reply templates, customer promises, and support URLs — all in one place.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="metric-grid" id="metrics" aria-label="Business dashboard summary">
         <article class="metric-card" data-reveal>
           <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
             <circle cx="16" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -174,7 +226,7 @@
       <hr class="widget-divider" aria-hidden="true">
 
       <section class="widget-grid">
-        <article class="widget-card" data-widget="checklist" data-reveal>
+        <article class="widget-card" id="checklist" data-widget="checklist" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -220,7 +272,7 @@
           </div>
         </article>
 
-        <article class="widget-card" data-widget="operations" data-reveal>
+        <article class="widget-card" id="operations" data-widget="operations" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -256,7 +308,7 @@
           <div class="status-grid" data-operation-summary></div>
         </article>
 
-        <article class="widget-card" data-widget="support" data-reveal>
+        <article class="widget-card" id="support" data-widget="support" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -296,7 +348,7 @@
           </form>
         </article>
 
-        <article class="widget-card" data-widget="playbook" data-reveal>
+        <article class="widget-card" id="playbook" data-widget="playbook" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -318,7 +370,7 @@
           </div>
         </article>
 
-        <article class="widget-card" data-widget="notes" data-reveal>
+        <article class="widget-card" id="notes" data-widget="notes" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -339,6 +391,25 @@
       </section>
     </section>
   </main>
+
+  <div class="cmdk-overlay" data-cmdk-overlay hidden role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="cmdk-panel" role="document">
+      <div class="cmdk-search">
+        <span class="cmdk-search-icon" aria-hidden="true">⌕</span>
+        <input type="text" data-cmdk-input placeholder="Type a command: jump to, set theme, export, reset…" aria-label="Search commands">
+        <kbd class="cmdk-esc">Esc</kbd>
+      </div>
+      <ul class="cmdk-list" data-cmdk-list role="listbox"></ul>
+      <div class="cmdk-footer">
+        <span><kbd>↑↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> run</span>
+        <span><kbd>Esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
+  <canvas class="confetti-canvas" data-confetti aria-hidden="true"></canvas>
 
   <footer class="footer">
     <div class="shell footer-grid">
