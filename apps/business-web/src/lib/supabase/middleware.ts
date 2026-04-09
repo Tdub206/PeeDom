@@ -1,4 +1,4 @@
-import { createServerClient } from '@supabase/ssr';
+import { createServerClient, type SetAllCookies } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
 import { getPublicEnv } from '@/lib/env';
 
@@ -20,7 +20,7 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
       getAll() {
         return request.cookies.getAll();
       },
-      setAll(cookiesToSet) {
+      setAll(cookiesToSet: Parameters<SetAllCookies>[0]) {
         cookiesToSet.forEach(({ name, value }) => {
           request.cookies.set(name, value);
         });
@@ -56,8 +56,8 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
   if (isProtected && !user) {
     const loginUrl = request.nextUrl.clone();
     loginUrl.pathname = '/login';
-    loginUrl.searchParams.set('next', pathname);
-    return NextResponse.redirect(loginUrl);
+    loginUrl.searchParams.set('next', `${pathname}${request.nextUrl.search}`);
+    return copyResponseCookies(response, NextResponse.redirect(loginUrl));
   }
 
   // If a signed-in user hits /login, bounce them to the hub.
@@ -65,8 +65,16 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
     const hubUrl = request.nextUrl.clone();
     hubUrl.pathname = '/hub';
     hubUrl.search = '';
-    return NextResponse.redirect(hubUrl);
+    return copyResponseCookies(response, NextResponse.redirect(hubUrl));
   }
 
   return response;
+}
+
+function copyResponseCookies(source: NextResponse, target: NextResponse): NextResponse {
+  source.cookies.getAll().forEach((cookie) => {
+    target.cookies.set(cookie);
+  });
+
+  return target;
 }

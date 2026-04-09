@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import { createServerClient, type CookieOptions, type SetAllCookies } from '@supabase/ssr';
 import { getPublicEnv } from '@/lib/env';
 
 // Server-side Supabase client for Server Components, Route Handlers,
@@ -18,7 +18,7 @@ export async function createSupabaseServerClient() {
       getAll() {
         return cookieStore.getAll();
       },
-      setAll(cookiesToSet) {
+      setAll(cookiesToSet: Parameters<SetAllCookies>[0]) {
         try {
           cookiesToSet.forEach(({ name, value, options }: { name: string; value: string; options: CookieOptions }) => {
             cookieStore.set(name, value, options);
