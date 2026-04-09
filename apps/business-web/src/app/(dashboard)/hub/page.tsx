@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import {
   BarChart3,
   Building2,
@@ -9,6 +10,7 @@ import {
   Tag,
   TrendingUp,
 } from 'lucide-react';
+import { getApprovedLocations } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
@@ -18,10 +20,6 @@ export const metadata: Metadata = {
 // Business Hub landing page. Mirrors the mobile (tabs)/business.tsx
 // structure: hero, top stats, quick actions, section nav. Data is
 // fetched server-side so the first paint already shows real numbers.
-//
-// TODO(codex): swap the inline queries here for a typed
-// `loadBusinessDashboard(supabase, userId)` helper in
-// src/lib/business/queries.ts so we can unit-test it in isolation.
 export default async function BusinessHubPage() {
   const supabase = await createSupabaseServerClient();
 
@@ -29,20 +27,22 @@ export default async function BusinessHubPage() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  if (!user) return null;
+  if (!user) {
+    redirect('/login');
+  }
 
   // Approved claims — identical shape to mobile `useBusinessClaims`.
-  const { data: approvedClaims } = await supabase
-    .from('business_claims')
-    .select('id, bathroom_id, business_name, review_status')
-    .eq('submitted_by', user.id)
-    .eq('review_status', 'approved');
-
-  const locationCount = approvedClaims?.length ?? 0;
+  const { locations, error } = await getApprovedLocations(supabase, user.id);
+  const locationCount = locations.length;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-10 py-10">
       <Hero name={user.email ?? 'there'} locationCount={locationCount} />
+      {error ? (
+        <div className="mt-6 rounded-4xl border border-danger/20 bg-danger/10 px-5 py-4 text-sm text-danger">
+          {error}
+        </div>
+      ) : null}
 
       <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Locations" value={locationCount} tone="brand" icon={<Building2 size={18} />} />
