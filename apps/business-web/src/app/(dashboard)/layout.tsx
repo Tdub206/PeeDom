@@ -10,6 +10,7 @@ import {
   Sparkles,
   Tag,
 } from 'lucide-react';
+import { getCurrentUserProfile } from '@/lib/auth/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { SignOutButton } from './sign-out-button';
 
@@ -27,21 +28,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect('/login');
   }
 
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('*')
-    .eq('id', user.id)
-    .maybeSingle()
-    .overrideTypes<
-      {
-        id: string;
-        display_name: string | null;
-        role: 'user' | 'business' | 'admin';
-      },
-      { merge: false }
-    >();
-
-  const displayName = profile?.display_name || user.email || 'Business owner';
+  const profile = await getCurrentUserProfile(supabase);
+  const displayName = profile?.full_name || user.email || 'Business owner';
   const initials = getInitials(displayName);
 
   return (
