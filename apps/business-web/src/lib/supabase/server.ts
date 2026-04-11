@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { createServerClient, type CookieOptions, type SetAllCookies } from '@supabase/ssr';
 import { getPublicEnv } from '@/lib/env';
+import type { BusinessWebDatabase } from './database';
 
 // Server-side Supabase client for Server Components, Route Handlers,
 // and Server Actions. Reads the session cookie written by the
@@ -13,7 +14,7 @@ export async function createSupabaseServerClient() {
   const env = getPublicEnv();
   const cookieStore = await cookies();
 
-  return createServerClient(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
+  return createServerClient<BusinessWebDatabase>(env.NEXT_PUBLIC_SUPABASE_URL, env.NEXT_PUBLIC_SUPABASE_ANON_KEY, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -32,3 +33,5 @@ export async function createSupabaseServerClient() {
     },
   });
 }
+
+export type BusinessSupabaseClient = Awaited<ReturnType<typeof createSupabaseServerClient>>;

@@ -27,15 +27,21 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect('/login');
   }
 
-  // Fetch the profile row so we can show the user's display name /
-  // role. The mobile app stores this in `public.profiles`.
   const { data: profile } = await supabase
     .from('profiles')
-    .select('id, full_name, role, avatar_url')
+    .select('*')
     .eq('id', user.id)
-    .maybeSingle();
+    .maybeSingle()
+    .overrideTypes<
+      {
+        id: string;
+        display_name: string | null;
+        role: 'user' | 'business' | 'admin';
+      },
+      { merge: false }
+    >();
 
-  const displayName = profile?.full_name || user.email || 'Business owner';
+  const displayName = profile?.display_name || user.email || 'Business owner';
   const initials = getInitials(displayName);
 
   return (

@@ -1,13 +1,15 @@
-import type { SupabaseClient } from '@supabase/supabase-js';
-import type { BusinessDashboardBathroom, Database } from '@mobile/types/index';
+import type { BusinessDashboardBathroom } from '@mobile/types/index';
+import { businessDashboardAnalyticsRowsSchema } from '@/lib/business/schemas';
+import type { BusinessWebDatabase } from '@/lib/supabase/database';
+import type { BusinessSupabaseClient } from '@/lib/supabase/server';
 
 type ApprovedClaimRow = Pick<
-  Database['public']['Tables']['business_claims']['Row'],
+  BusinessWebDatabase['public']['Tables']['business_claims']['Row'],
   'id' | 'bathroom_id' | 'business_name' | 'is_lifetime_free'
 >;
 
 type BathroomRow = Pick<
-  Database['public']['Tables']['bathrooms']['Row'],
+  BusinessWebDatabase['public']['Tables']['bathrooms']['Row'],
   'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at'
 >;
 
@@ -25,8 +27,18 @@ export interface ApprovedLocationByIdResult {
   error: string | null;
 }
 
+interface AnalyticsRpcClient {
+  rpc(
+    fn: 'get_business_dashboard_analytics',
+    args: BusinessWebDatabase['public']['Functions']['get_business_dashboard_analytics']['Args']
+  ): PromiseLike<{
+    data: unknown;
+    error: { message: string } | null;
+  }>;
+}
+
 export async function getApprovedLocations(
-  supabase: SupabaseClient<Database>,
+  supabase: BusinessSupabaseClient,
   userId: string
 ): Promise<ApprovedLocationQueryResult> {
   const { data: claimsData, error: claimsError } = await supabase
@@ -63,14 +75,9 @@ export async function getApprovedLocations(
       .select('id, place_name, address_line1, city, state, postal_code, show_on_free_map, updated_at')
       .in('id', bathroomIds)
       .overrideTypes<BathroomRow[]>(),
-    supabase
-      .rpc(
-        'get_business_dashboard_analytics' as never,
-        {
-          p_user_id: userId,
-        } as never
-      )
-      .overrideTypes<BusinessDashboardBathroom[]>(),
+    (supabase as unknown as AnalyticsRpcClient).rpc('get_business_dashboard_analytics', {
+      p_user_id: userId,
+    }),
   ]);
 
   if (bathroomsError) {
@@ -88,7 +95,16 @@ export async function getApprovedLocations(
   }
 
   const bathroomsById = new Map((bathroomsData ?? []).map((bathroom) => [bathroom.id, bathroom] as const));
-  const analyticsRows: BusinessDashboardBathroom[] = analyticsData ?? [];
+  const parsedAnalytics = businessDashboardAnalyticsRowsSchema.safeParse(analyticsData ?? []);
+
+  if (!parsedAnalytics.success) {
+    return {
+      locations: [],
+      error: 'Unable to load your managed locations right now.',
+    };
+  }
+
+  const analyticsRows: BusinessDashboardBathroom[] = parsedAnalytics.data;
   const analyticsByBathroomId = new Map(
     analyticsRows.map((location) => [location.bathroom_id, location] as const)
   );
@@ -115,7 +131,7 @@ export async function getApprovedLocations(
 // return null and the page renders "not found". There is no branch
 // that can skip the claim check.
 export async function getApprovedLocationById(
-  supabase: SupabaseClient<Database>,
+  supabase: BusinessSupabaseClient,
   userId: string,
   bathroomId: string
 ): Promise<ApprovedLocationByIdResult> {

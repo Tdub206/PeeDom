@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -5,7 +7,7 @@ const nextConfig = {
   typedRoutes: true,
   // The mobile Expo app lives in the repo root; we don't want Next
   // trying to trace node_modules up there.
-  outputFileTracingRoot: new URL('.', import.meta.url).pathname,
+  outputFileTracingRoot: fileURLToPath(new URL('.', import.meta.url)),
   images: {
     remotePatterns: [
       {
