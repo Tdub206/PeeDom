@@ -39,7 +39,7 @@ const DEFAULT_DASHBOARD_STATE = {
       "Thanks for the report. We reviewed the location details, updated the listing where needed, and logged the issue for the location team.",
   },
   notes:
-    "Use this space for launch notes, reviewer talking points, featured-placement timing, or staff handoff instructions.",
+    "Use this space for operations notes, featured-placement timing, or staff handoff instructions.",
 };
 
 function clone(value) {
@@ -225,13 +225,13 @@ function renderOperations() {
       pill: state.operations.changingTable ? "Published" : "Missing",
       copy: state.operations.changingTable
         ? "Changing table availability has been marked for the location."
-        : "Family-friendly amenity details are still missing from this dashboard state.",
+        : "Family-friendly amenity details have not been confirmed for this location.",
     },
     {
       title: "Accessibility",
       pill: state.operations.accessibleRouting ? "Ready" : "Review",
       copy: state.operations.accessibleRouting
-        ? "Accessibility route notes are accounted for before launch."
+        ? "Accessibility route notes are published on this listing."
         : "Door width, route notes, or accessibility details still need a pass.",
     },
     {
@@ -245,7 +245,7 @@ function renderOperations() {
       title: "Featured intent",
       pill: state.operations.featuredPlacement ? "Planned" : "Off",
       copy: state.operations.featuredPlacement
-        ? "The team intends to request a featured placement after launch."
+        ? "The team intends to run a featured placement campaign for this location."
         : "No featured placement has been marked in this dashboard yet.",
     },
   ]
@@ -405,10 +405,10 @@ function applyMetricTooltips() {
   const linksEl = document.querySelector("[data-metric-links]");
   const tasksEl = document.querySelector("[data-metric-tasks]");
 
-  if (setupEl) setupEl.title = "Percentage of launch checklist items completed";
+  if (setupEl) setupEl.title = "Percentage of listing checklist items completed";
   if (locEl) locEl.title = "Number of claimed locations in your checklist";
   if (linksEl) linksEl.title = "Number of support URLs and emails configured";
-  if (tasksEl) tasksEl.title = "Remaining checklist items before launch readiness";
+  if (tasksEl) tasksEl.title = "Remaining checklist items for this location";
 }
 applyMetricTooltips();
 
