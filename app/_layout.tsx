@@ -171,6 +171,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="business"
+          options={{
+            presentation: 'card',
+            headerShown: false,
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
           name="modal/report"
           options={{
             presentation: 'modal',
