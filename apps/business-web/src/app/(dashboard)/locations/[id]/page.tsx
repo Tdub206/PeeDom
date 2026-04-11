@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { getApprovedLocationById, type ApprovedLocation } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { VisibilitySettingsForm } from './visibility-settings-form';
 
 type PageParams = { id: string };
 
@@ -35,12 +36,14 @@ export async function generateMetadata({
   }
 
   const { location } = await getApprovedLocationById(supabase, user.id, id);
+
   if (!location) {
     return { title: 'Location not found' };
   }
+
   return {
     title: location.business_name
-      ? `${location.business_name} · ${location.place_name}`
+      ? `${location.business_name} - ${location.place_name}`
       : location.place_name,
   };
 }
@@ -51,13 +54,11 @@ export default async function LocationDetailPage({
   params: Promise<PageParams>;
 }) {
   const { id } = await params;
-
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Belt-and-braces. Middleware should have handled this already.
   if (!user) {
     redirect('/login');
   }
@@ -69,17 +70,16 @@ export default async function LocationDetailPage({
       <div className="mx-auto w-full max-w-6xl px-10 py-10">
         <BackLink />
         <div className="mt-6 rounded-4xl border border-danger/20 bg-danger/10 px-6 py-5 text-sm text-danger shadow-card">
-          {error}
+          We could not load this location right now. Try again in a moment.
         </div>
       </div>
     );
   }
 
   // Ownership guard: `getApprovedLocationById` only returns a row if
-  // the caller has an APPROVED claim for this bathroom. A `null`
-  // result here means either the bathroom doesn't exist OR the user
-  // doesn't own it — in both cases we show the standard not-found
-  // page rather than leaking the distinction.
+  // the caller has an approved claim for this bathroom. A `null`
+  // result here means either the bathroom does not exist or the user
+  // does not own it, so we always render the same not-found surface.
   if (!location) {
     notFound();
   }
@@ -148,27 +148,14 @@ export default async function LocationDetailPage({
         <SectionHeader
           eyebrow="StallPass parameters"
           title="Visibility & verification"
-          description="Current configuration. Editing lands in Round 3 — stay tuned."
+          description="Manage how this location appears across the StallPass map and business dashboard."
         />
-        <div className="grid grid-cols-1 gap-3">
-          <ParameterRow
-            label="Premium-only listing"
-            description="When on, this bathroom is hidden from the free map and reserved for premium members."
-            value={location.requires_premium_access}
-          />
-          <ParameterRow
-            label="Also show on free map"
-            description="Only relevant when Premium-only is on. When off, the location disappears from the free tier."
-            value={location.show_on_free_map}
-            disabled={!location.requires_premium_access}
-          />
-          <ParameterRow
-            label="Location verified"
-            description="Confirms the saved address and pin coordinates are accurate."
-            value={location.is_location_verified}
-            tone="success"
-          />
-        </div>
+        <VisibilitySettingsForm
+          bathroomId={location.bathroom_id}
+          requiresPremiumAccess={location.requires_premium_access}
+          showOnFreeMap={location.show_on_free_map}
+          isLocationVerified={location.is_location_verified}
+        />
       </section>
 
       <section className="mt-10">
@@ -209,7 +196,7 @@ function BackLink() {
       href="/locations"
       className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[1.5px] text-brand-600 hover:text-brand-700"
     >
-      ← All locations
+      {'<-'} All locations
     </Link>
   );
 }
@@ -290,6 +277,7 @@ function StatCard({
     danger: 'bg-danger/10 text-danger',
     neutral: 'bg-surface-muted text-ink-600',
   };
+
   return (
     <div className="rounded-4xl border border-surface-strong bg-surface-card p-5 shadow-card">
       <div
@@ -300,45 +288,6 @@ function StatCard({
       <div className="text-[11px] font-bold uppercase tracking-[1.5px] text-ink-500">{label}</div>
       <div className="mt-1 text-3xl font-black tracking-tight text-ink-900">{value}</div>
       {helper ? <div className="mt-1 text-xs text-ink-500">{helper}</div> : null}
-    </div>
-  );
-}
-
-function ParameterRow({
-  label,
-  description,
-  value,
-  disabled = false,
-  tone = 'brand',
-}: {
-  label: string;
-  description: string;
-  value: boolean;
-  disabled?: boolean;
-  tone?: 'brand' | 'success';
-}) {
-  const onColor = tone === 'success' ? 'bg-success text-white' : 'bg-brand-600 text-white';
-  return (
-    <div
-      className={`flex items-start gap-4 rounded-4xl border p-5 shadow-card ${
-        value ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-card'
-      } ${disabled ? 'opacity-60' : ''}`}
-    >
-      <div className="flex-1">
-        <div
-          className={`text-base font-bold ${value ? 'text-brand-900' : 'text-ink-900'}`}
-        >
-          {label}
-        </div>
-        <div className="mt-1 text-xs leading-5 text-ink-600">{description}</div>
-      </div>
-      <div
-        className={`rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[1px] ${
-          value ? onColor : 'bg-surface-muted text-ink-600'
-        }`}
-      >
-        {value ? 'On' : 'Off'}
-      </div>
     </div>
   );
 }
@@ -357,6 +306,7 @@ function Badge({
     success: 'bg-success/10 text-success',
     warning: 'bg-warning/10 text-warning',
   };
+
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-[1px] ${toneClasses[tone]}`}
@@ -366,4 +316,3 @@ function Badge({
     </span>
   );
 }
-
