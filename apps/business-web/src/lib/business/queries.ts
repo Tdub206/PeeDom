@@ -20,6 +20,11 @@ export interface ApprovedLocationQueryResult {
   error: string | null;
 }
 
+export interface ApprovedLocationByIdResult {
+  location: ApprovedLocation | null;
+  error: string | null;
+}
+
 export async function getApprovedLocations(
   supabase: SupabaseClient<Database>,
   userId: string
@@ -102,6 +107,27 @@ export async function getApprovedLocations(
     locations,
     error: null,
   };
+}
+
+// Ownership-safe single-location lookup. Reuses getApprovedLocations
+// so the ownership check is the SAME code path as the list page —
+// if the caller's approved set doesn't include `bathroomId`, we
+// return null and the page renders "not found". There is no branch
+// that can skip the claim check.
+export async function getApprovedLocationById(
+  supabase: SupabaseClient<Database>,
+  userId: string,
+  bathroomId: string
+): Promise<ApprovedLocationByIdResult> {
+  const { locations, error } = await getApprovedLocations(supabase, userId);
+
+  if (error) {
+    return { location: null, error };
+  }
+
+  const location = locations.find((candidate) => candidate.bathroom_id === bathroomId) ?? null;
+
+  return { location, error: null };
 }
 
 function hydrateApprovedLocation(
