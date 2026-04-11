@@ -74,11 +74,9 @@ function EmptyState() {
 }
 
 function LocationCard({ location }: { location: ApprovedLocation }) {
-  const locationHref = `/locations/${location.bathroom_id}`;
-
   return (
-    <a
-      href={locationHref}
+    <Link
+      href={`/locations/${location.bathroom_id}`}
       className="group rounded-4xl border border-surface-strong bg-surface-card p-6 shadow-card transition hover:-translate-y-0.5 hover:border-brand-500 hover:shadow-pop"
     >
       <div className="flex items-start gap-4">
@@ -111,7 +109,7 @@ function LocationCard({ location }: { location: ApprovedLocation }) {
       </div>
 
       <div className="mt-5 text-sm font-semibold text-brand-600">Open location settings →</div>
-    </a>
+    </Link>
   );
 }
 
