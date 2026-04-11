@@ -39,7 +39,7 @@ const DATABASE_CODE_MESSAGE_MAP: Record<string, string> = {
   INSUFFICIENT_POINTS: 'You need more contribution points before redeeming premium access.',
   INVALID_REDEMPTION_PERIOD: 'Choose a valid premium redemption period.',
   NETWORK_ERROR: 'No connection. Your action has been saved for later.',
-  PROFILE_NOT_FOUND: 'Your Pee-Dom profile could not be loaded right now.',
+  PROFILE_NOT_FOUND: 'Your StallPass profile could not be loaded right now.',
   SELF_CODE_VOTE: "You can't verify a bathroom code that you submitted yourself.",
   INVALID_BATHROOM_NAME: 'Add a bathroom name that is at least 2 characters long.',
   BATHROOM_LOCATION_DETAILS_REQUIRED: 'Add at least a street address or city details before submitting this bathroom.',

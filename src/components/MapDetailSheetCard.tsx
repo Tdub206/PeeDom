@@ -6,7 +6,8 @@ import { CodeBadge } from '@/components/CodeBadge';
 import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
-import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
+import { VerificationBadge } from '@/components/business/VerificationBadge';
+import { buildBathroomConfidenceProfile, getBathroomMapPinTone } from '@/utils/bathroom';
 
 interface MapDetailSheetCardProps {
   bathroom: BathroomListItem;
@@ -90,28 +91,6 @@ function formatWalkTime(distanceMeters?: number): string | null {
   return `~${minutes} min walk`;
 }
 
-function formatCleanliness(cleanlinessAverage: number | null): string {
-  if (typeof cleanlinessAverage !== 'number') {
-    return 'No cleanliness ratings yet';
-  }
-
-  return `${cleanlinessAverage.toFixed(1)} / 5 cleanliness`;
-}
-
-function formatHoursLabel(bathroom: BathroomListItem): string {
-  const openNow = isBathroomOpenNow(bathroom.hours);
-
-  if (openNow === true) {
-    return 'Open now according to posted hours';
-  }
-
-  if (openNow === false) {
-    return 'Closed right now according to posted hours';
-  }
-
-  return 'Hours unavailable';
-}
-
 function MapDetailSheetCardComponent({
   bathroom,
   isFavorited,
@@ -124,6 +103,7 @@ function MapDetailSheetCardComponent({
 }: MapDetailSheetCardProps) {
   const statusTone = getBathroomMapPinTone(bathroom);
   const statusCopy = STATUS_COPY[statusTone];
+  const confidenceProfile = useMemo(() => buildBathroomConfidenceProfile(bathroom), [bathroom]);
   const metadataChips = useMemo(() => {
     const chips: string[] = [];
 
@@ -161,7 +141,12 @@ function MapDetailSheetCardComponent({
             </View>
           </View>
 
-          <Text className="mt-4 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
+          <View className="mt-4 flex-row items-center gap-2">
+            <Text className="flex-1 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
+            {bathroom.verification_badge_type ? (
+              <VerificationBadge badgeType={bathroom.verification_badge_type} />
+            ) : null}
+          </View>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroom.address}</Text>
           <View className="mt-3 flex-row items-center gap-2">
             <Text className="text-sm font-semibold text-brand-700">{formatDistance(bathroom.distance_meters)}</Text>
@@ -208,13 +193,15 @@ function MapDetailSheetCardComponent({
         <View className="flex-row items-center justify-between gap-3">
           <View className="flex-1">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Live access pulse</Text>
-            <Text className="mt-1 text-base font-bold text-ink-900">{formatHoursLabel(bathroom)}</Text>
+            <Text className="mt-1 text-base font-bold text-ink-900">{confidenceProfile.open_state_label}</Text>
+            <Text className="mt-1 text-xs leading-5 text-ink-600">{confidenceProfile.info_freshness_label}</Text>
           </View>
           <View className="items-end">
-            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Community</Text>
-            <Text className="mt-1 text-sm font-bold text-ink-900">{formatCleanliness(bathroom.cleanliness_avg)}</Text>
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Trust</Text>
+            <Text className="mt-1 text-sm font-bold text-ink-900">{confidenceProfile.trust_score}% ready</Text>
           </View>
         </View>
+        <Text className="mt-3 text-sm leading-5 text-ink-600">{confidenceProfile.code_reliability_label}</Text>
       </View>
 
       <View className="mt-4">

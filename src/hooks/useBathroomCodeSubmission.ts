@@ -93,7 +93,7 @@ export function useBathroomCodeSubmission() {
 
         showToast({
           title: 'Code submitted',
-          message: 'Your access code is now in Pee-Dom and will strengthen community trust as it is verified.',
+          message: 'Your access code is now in StallPass and will strengthen community trust as it is verified.',
           variant: 'success',
         });
 

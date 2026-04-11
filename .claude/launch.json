@@ -4,20 +4,26 @@
     {
       "name": "Expo Dev Server",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["scripts/start-dev-client.cjs"],
+      "runtimeArgs": ["scripts/start-dev-client.cjs", "--clear"],
       "port": 8081
     },
     {
       "name": "Supabase Local",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/.bin/supabase", "start"],
+      "runtimeExecutable": "supabase",
+      "runtimeArgs": ["start"],
       "port": 54321
     },
     {
       "name": "Supabase Edge Functions",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/.bin/supabase", "functions", "serve"],
+      "runtimeExecutable": "supabase",
+      "runtimeArgs": ["functions", "serve"],
       "port": 54321
+    },
+    {
+      "name": "Web Preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "web", "-l", "3000", "--no-clipboard"],
+      "port": 3000
     }
   ]
 }

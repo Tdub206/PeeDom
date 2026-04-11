@@ -13,8 +13,10 @@ import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { validateBathroomAccessibilityUpdate } from '@/lib/validators';
 import { isNetworkStateOnline } from '@/lib/network-state';
+import { offlineSyncController } from '@/lib/offline-sync-controller';
 import { offlineQueue } from '@/lib/offline-queue';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
+import { useOfflineSyncStore } from '@/store/useOfflineSyncStore';
 import {
   BathroomAccessibilityMutationPayload,
   BathroomStatusMutationPayload,
@@ -135,178 +137,203 @@ export function useOfflineSync() {
     const networkState = await NetInfo.fetch();
 
     if (!isNetworkStateOnline(networkState)) {
+      useOfflineSyncStore.getState().setOnline(false);
       return;
     }
 
-    const result = await offlineQueue.process(async (mutation) => {
-      if (mutation.user_id !== userId) {
-        return false;
-      }
+    useOfflineSyncStore.getState().markSyncStarted();
 
-      switch (mutation.type) {
-        case 'favorite_add': {
-          if (!isFavoriteMutationPayload(mutation.payload)) {
-            return false;
-          }
+    try {
+      const result = await offlineQueue.process(async (mutation) => {
+        if (mutation.user_id !== userId) {
+          return false;
+        }
 
-          const addResult = await addFavorite(userId, mutation.payload.bathroom_id);
+        switch (mutation.type) {
+          case 'favorite_add': {
+            if (!isFavoriteMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          if (!addResult.error) {
-            useFavoritesStore.getState().addFavoritedId(userId, mutation.payload.bathroom_id);
+            const addResult = await addFavorite(userId, mutation.payload.bathroom_id);
+
+            if (!addResult.error) {
+              useFavoritesStore.getState().addFavoritedId(userId, mutation.payload.bathroom_id);
+              useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+              return true;
+            }
+
+            if (isTransientNetworkError(addResult.error)) {
+              return false;
+            }
+
             useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
             return true;
           }
+          case 'favorite_remove': {
+            if (!isFavoriteMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          if (isTransientNetworkError(addResult.error)) {
-            return false;
-          }
+            const removeResult = await removeFavorite(userId, mutation.payload.bathroom_id);
 
-          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
-          return true;
-        }
-        case 'favorite_remove': {
-          if (!isFavoriteMutationPayload(mutation.payload)) {
-            return false;
-          }
+            if (!removeResult.error) {
+              useFavoritesStore.getState().removeFavoritedId(userId, mutation.payload.bathroom_id);
+              useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
+              return true;
+            }
 
-          const removeResult = await removeFavorite(userId, mutation.payload.bathroom_id);
+            if (isTransientNetworkError(removeResult.error)) {
+              return false;
+            }
 
-          if (!removeResult.error) {
-            useFavoritesStore.getState().removeFavoritedId(userId, mutation.payload.bathroom_id);
             useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
             return true;
           }
+          case 'report_create': {
+            if (!isReportMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          if (isTransientNetworkError(removeResult.error)) {
-            return false;
+            const reportResult = await createBathroomReport(userId, {
+              bathroom_id: mutation.payload.bathroom_id,
+              report_type: mutation.payload.report_type,
+              notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
+            });
+            return !reportResult.error;
           }
+          case 'code_submit': {
+            if (!isCodeSubmitMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          useFavoritesStore.getState().clearOptimisticToggle(mutation.payload.bathroom_id);
-          return true;
-        }
-        case 'report_create': {
-          if (!isReportMutationPayload(mutation.payload)) {
-            return false;
+            const submissionResult = await createBathroomAccessCode(userId, {
+              bathroom_id: mutation.payload.bathroom_id,
+              code_value: mutation.payload.code_value,
+            });
+            return !submissionResult.error;
           }
+          case 'code_vote': {
+            if (!isCodeVoteMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          const reportResult = await createBathroomReport(userId, {
-            bathroom_id: mutation.payload.bathroom_id,
-            report_type: mutation.payload.report_type,
-            notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
-          });
-          return !reportResult.error;
-        }
-        case 'code_submit': {
-          if (!isCodeSubmitMutationPayload(mutation.payload)) {
-            return false;
+            const voteResult = await upsertCodeVote(userId, mutation.payload.code_id, mutation.payload.vote);
+            return !voteResult.error;
           }
+          case 'rating_create': {
+            if (!isCleanlinessRatingMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          const submissionResult = await createBathroomAccessCode(userId, {
-            bathroom_id: mutation.payload.bathroom_id,
-            code_value: mutation.payload.code_value,
-          });
-          return !submissionResult.error;
-        }
-        case 'code_vote': {
-          if (!isCodeVoteMutationPayload(mutation.payload)) {
-            return false;
+            const ratingResult = await upsertCleanlinessRating(userId, {
+              bathroom_id: mutation.payload.bathroom_id,
+              rating: mutation.payload.rating,
+              notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
+            });
+            return !ratingResult.error;
           }
+          case 'status_report': {
+            if (!isBathroomStatusMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          const voteResult = await upsertCodeVote(userId, mutation.payload.code_id, mutation.payload.vote);
-          return !voteResult.error;
-        }
-        case 'rating_create': {
-          if (!isCleanlinessRatingMutationPayload(mutation.payload)) {
-            return false;
+            const statusResult = await reportBathroomStatus({
+              bathroomId: mutation.payload.bathroom_id,
+              status: mutation.payload.status,
+              note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
+            });
+            return !statusResult.error;
           }
+          case 'accessibility_update': {
+            if (!isBathroomAccessibilityMutationPayload(mutation.payload)) {
+              return false;
+            }
 
-          const ratingResult = await upsertCleanlinessRating(userId, {
-            bathroom_id: mutation.payload.bathroom_id,
-            rating: mutation.payload.rating,
-            notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
-          });
-          return !ratingResult.error;
-        }
-        case 'status_report': {
-          if (!isBathroomStatusMutationPayload(mutation.payload)) {
-            return false;
+            const accessibilityResult = await submitBathroomAccessibilityUpdate(mutation.payload);
+            return !accessibilityResult.error;
           }
-
-          const statusResult = await reportBathroomStatus({
-            bathroomId: mutation.payload.bathroom_id,
-            status: mutation.payload.status,
-            note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
-          });
-          return !statusResult.error;
+          default:
+            return true;
         }
-        case 'accessibility_update': {
-          if (!isBathroomAccessibilityMutationPayload(mutation.payload)) {
-            return false;
-          }
+      });
 
-          const accessibilityResult = await submitBathroomAccessibilityUpdate(mutation.payload);
-          return !accessibilityResult.error;
-        }
-        default:
-          return true;
+      if (result.processed_count > 0) {
+        void trackAnalyticsEvent('offline_queue_synced', {
+          dropped_count: result.dropped_count,
+          pending_count: result.pending_count,
+          processed_count: result.processed_count,
+        });
+
+        await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: ['favorites'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['code-vote'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['bathroom-detail'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['bathrooms'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['search'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['cleanliness-rating'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['bathroom-live-status'],
+          }),
+          queryClient.invalidateQueries({
+            queryKey: ['accessibility'],
+          }),
+        ]);
+
+        showToast({
+          title: 'Offline changes synced',
+          message: 'Queued updates are now synced with your account.',
+          variant: 'success',
+        });
       }
-    });
 
-    if (result.processed_count > 0) {
-      void trackAnalyticsEvent('offline_queue_synced', {
-        dropped_count: result.dropped_count,
-        pending_count: result.pending_count,
-        processed_count: result.processed_count,
-      });
+      if (result.dropped_count > 0) {
+        void trackAnalyticsEvent('offline_queue_dropped', {
+          dropped_count: result.dropped_count,
+          pending_count: result.pending_count,
+          processed_count: result.processed_count,
+        });
 
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: ['favorites'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['code-vote'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['bathroom-detail'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['bathrooms'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['search'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['cleanliness-rating'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['bathroom-live-status'],
-        }),
-        queryClient.invalidateQueries({
-          queryKey: ['accessibility'],
-        }),
-      ]);
+        showToast({
+          title: 'Some changes were dropped',
+          message: 'A few queued updates could not be synced. Please retry those actions manually.',
+          variant: 'warning',
+        });
+      }
 
-      showToast({
-        title: 'Offline changes synced',
-        message: 'Queued updates are now synced with your account.',
-        variant: 'success',
-      });
-    }
-
-    if (result.dropped_count > 0) {
-      void trackAnalyticsEvent('offline_queue_dropped', {
-        dropped_count: result.dropped_count,
-        pending_count: result.pending_count,
-        processed_count: result.processed_count,
-      });
-
-      showToast({
-        title: 'Some changes were dropped',
-        message: 'A few queued updates could not be synced. Please retry those actions manually.',
-        variant: 'warning',
-      });
+      useOfflineSyncStore.getState().markSyncResult(result);
+    } catch (error) {
+      useOfflineSyncStore
+        .getState()
+        .markWarning(error instanceof Error ? error.message : 'Unable to process the offline queue right now.');
+      throw error;
     }
   }, [queryClient, showToast, userId]);
+
+  useEffect(() => {
+    if (!userId) {
+      useOfflineSyncStore.getState().reset();
+      return;
+    }
+
+    const unsubscribe = offlineQueue.subscribe((snapshot) => {
+      useOfflineSyncStore.getState().setQueueSnapshot(snapshot);
+    });
+
+    return unsubscribe;
+  }, [userId]);
 
   useEffect(() => {
     if (!userId) {
@@ -319,6 +346,7 @@ export function useOfflineSync() {
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       const isConnected = isNetworkStateOnline(state);
+      useOfflineSyncStore.getState().setOnline(isConnected);
 
       if (isConnectedRef.current === false && isConnected) {
         void processQueue();
@@ -340,5 +368,9 @@ export function useOfflineSync() {
     return () => {
       subscription.remove();
     };
+  }, [processQueue]);
+
+  useEffect(() => {
+    return offlineSyncController.registerProcessor(processQueue);
   }, [processQueue]);
 }

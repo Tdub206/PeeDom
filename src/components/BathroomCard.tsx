@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
 import { BathroomListItem, FavoriteItem } from '@/types';
 import { CodeBadge } from '@/components/CodeBadge';
+import { VerificationBadge } from '@/components/business';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 
 interface BathroomCardProps {
@@ -65,7 +66,12 @@ function BathroomCardComponent({
     >
       <View className="flex-row items-start gap-4">
         <View className="flex-1">
-          <Text className="text-xl font-black text-ink-900">{item.place_name}</Text>
+          <View className="flex-row items-center gap-2">
+            <Text className="flex-1 text-xl font-black text-ink-900">{item.place_name}</Text>
+            {item.verification_badge_type ? (
+              <VerificationBadge badgeType={item.verification_badge_type} />
+            ) : null}
+          </View>
           <Text className="mt-2 text-sm leading-5 text-ink-600">{item.address}</Text>
           <Text className="mt-3 text-sm font-medium text-brand-700">{formatDistance(item.distance_meters)}</Text>
         </View>

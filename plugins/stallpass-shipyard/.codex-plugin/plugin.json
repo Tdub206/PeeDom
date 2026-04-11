@@ -1,0 +1,38 @@
+{
+  "name": "stallpass-shipyard",
+  "version": "0.1.0",
+  "description": "Codex-native StallPass release workflow plugin for planning, implementation, review, launch audits, and Google Play preparation.",
+  "author": {
+    "name": "T"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "stallpass",
+    "peedom",
+    "expo",
+    "react-native",
+    "codex",
+    "claude",
+    "google-play",
+    "release"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "StallPass Shipyard",
+    "shortDescription": "Dual-agent release workflows for StallPass",
+    "longDescription": "Repo-local Codex plugin for StallPass that packages planning, implementation, adversarial review, debugging, launch auditing, and Google Play submission workflows around the existing Claude and Codex CLI orchestration scripts.",
+    "developerName": "T",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Use Shipyard to harden StallPass for Google Play release",
+      "Plan and implement a StallPass feature with dual-agent review",
+      "Audit launch blockers and missing Play Store requirements"
+    ],
+    "brandColor": "#0F766E"
+  }
+}

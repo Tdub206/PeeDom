@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import * as Location from 'expo-location';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Button } from '@/components/Button';
@@ -17,13 +18,23 @@ import { Input } from '@/components/Input';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomSubmissions } from '@/hooks/useBathroomSubmissions';
+import { useBathroomDuplicateSuggestions } from '@/hooks/useBathroomDuplicateSuggestions';
+import { useGoogleAddressAutocomplete } from '@/hooks/useGooglePlaces';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { addBathroomDrafts } from '@/lib/draft-manager';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
 import { useMapStore } from '@/store/useMapStore';
-import { AddBathroomDraft, BathroomPhotoUploadInput } from '@/types';
+import { AddBathroomDraft, BathroomPhotoUploadInput, GooglePlaceAutocompleteSuggestion } from '@/types';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { getErrorMessage } from '@/utils/errorMap';
+import {
+  buildBathroomLocationFormPatchFromGoogleSelection,
+  buildBathroomLocationFormPatchFromReverseGeocode,
+  buildBathroomLocationSummary,
+  formatCoordinateValue,
+} from '@/utils/location-details';
 import {
   AddBathroomFormValues,
   FieldErrors,
@@ -79,14 +90,6 @@ const TOGGLE_OPTIONS: Array<{
     description: 'Mark if staff usually restrict access to customers.',
   },
 ];
-
-function formatCoordinateValue(value?: number): string {
-  if (typeof value !== 'number' || Number.isNaN(value)) {
-    return '';
-  }
-
-  return value.toFixed(6);
-}
 
 function parseDraftId(rawDraftId?: string | string[]): string | null {
   if (!rawDraftId) {
@@ -178,7 +181,9 @@ export default function AddBathroomModalScreen() {
   const { showToast } = useToast();
   const { coordinates, is_refreshing, permission_status, refreshLocation, requestPermission } = useLocation();
   const mapUserLocation = useMapStore((state) => state.userLocation);
+  const mapRegion = useMapStore((state) => state.region);
   const { isSubmitting, submitBathroom } = useBathroomSubmissions();
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
   const [formState, setFormState] = useState<AddBathroomFormState>(INITIAL_FORM_STATE);
   const [selectedPhoto, setSelectedPhoto] = useState<BathroomPhotoUploadInput | null>(null);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<AddBathroomFormValues>>({});
@@ -189,8 +194,22 @@ export default function AddBathroomModalScreen() {
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
   const [isResettingDraft, setIsResettingDraft] = useState(false);
   const [restoredDraftMessage, setRestoredDraftMessage] = useState<string | null>(null);
+  const [isAddressAutocompleteEnabled, setIsAddressAutocompleteEnabled] = useState(false);
+  const [isApplyingCurrentLocation, setIsApplyingCurrentLocation] = useState(false);
 
   const requestedDraftId = useMemo(() => parseDraftId(draft_id), [draft_id]);
+  const autocompleteOrigin = mapUserLocation ?? coordinates;
+  const {
+    suggestions: addressSuggestions,
+    isLoading: isAddressAutocompleteLoading,
+    resetSession: resetAddressAutocompleteSession,
+    resolveSelection: resolveAddressSelection,
+  } = useGoogleAddressAutocomplete({
+    query: formState.address_line1,
+    origin: autocompleteOrigin,
+    region: mapRegion,
+    enabled: isAddressAutocompleteEnabled,
+  });
 
   const closeModal = useCallback(() => {
     dismissToSafely(router, routes.tabs.map, routes.tabs.map);
@@ -213,6 +232,27 @@ export default function AddBathroomModalScreen() {
       setSubmitError('');
     },
     []
+  );
+
+  const clearLocationFieldErrors = useCallback(() => {
+    setFieldErrors((currentErrors) => ({
+      ...currentErrors,
+      address_line1: undefined,
+      city: undefined,
+      state: undefined,
+      postal_code: undefined,
+      latitude: undefined,
+      longitude: undefined,
+    }));
+  }, []);
+
+  const handleAddressLine1Change = useCallback(
+    (value: string) => {
+      setIsAddressAutocompleteEnabled(true);
+      clearLocationFieldErrors();
+      updateField('address_line1', value);
+    },
+    [clearLocationFieldErrors, updateField]
   );
 
   const persistDraft = useCallback(
@@ -288,6 +328,8 @@ export default function AddBathroomModalScreen() {
       setRestoredDraftMessage(null);
       setFieldErrors({});
       setSubmitError('');
+      setIsAddressAutocompleteEnabled(false);
+      resetAddressAutocompleteSession();
     } catch (error) {
       const message = getErrorMessage(error, 'Unable to clear the current draft right now.');
       showToast({
@@ -298,7 +340,7 @@ export default function AddBathroomModalScreen() {
     } finally {
       setIsResettingDraft(false);
     }
-  }, [activeDraftId, deleteDraft, showToast]);
+  }, [activeDraftId, deleteDraft, resetAddressAutocompleteSession, showToast]);
 
   useEffect(() => {
     let isMounted = true;
@@ -358,25 +400,9 @@ export default function AddBathroomModalScreen() {
     };
   }, [requestedDraftId, showToast, user?.id]);
 
-  useEffect(() => {
-    if (isHydratingDraft) {
-      return;
-    }
-
-    const preferredCoordinates = mapUserLocation ?? coordinates;
-
-    if (!preferredCoordinates || formState.latitude || formState.longitude) {
-      return;
-    }
-
-    setFormState((currentState) => ({
-      ...currentState,
-      latitude: formatCoordinateValue(preferredCoordinates.latitude),
-      longitude: formatCoordinateValue(preferredCoordinates.longitude),
-    }));
-  }, [coordinates, formState.latitude, formState.longitude, isHydratingDraft, mapUserLocation]);
-
   const handleUseCurrentLocation = useCallback(async () => {
+    setIsApplyingCurrentLocation(true);
+
     try {
       if (permission_status !== 'granted') {
         const granted = await requestPermission();
@@ -393,30 +419,111 @@ export default function AddBathroomModalScreen() {
       if (!latestCoordinates) {
         showToast({
           title: 'Location unavailable',
-          message: 'We could not read your current location. Enter coordinates manually instead.',
+          message: 'We could not read your current location. Search for the address or try again.',
           variant: 'warning',
         });
         return;
       }
 
+      const reverseGeocoded = await Location.reverseGeocodeAsync(latestCoordinates);
+      const nextLocationPatch = buildBathroomLocationFormPatchFromReverseGeocode(
+        latestCoordinates,
+        reverseGeocoded[0] ?? null
+      );
+
       setFormState((currentState) => ({
         ...currentState,
-        latitude: formatCoordinateValue(latestCoordinates.latitude),
-        longitude: formatCoordinateValue(latestCoordinates.longitude),
+        ...nextLocationPatch,
       }));
-      setFieldErrors((currentErrors) => ({
-        ...currentErrors,
-        latitude: undefined,
-        longitude: undefined,
-      }));
+      clearLocationFieldErrors();
+      setIsAddressAutocompleteEnabled(false);
+      resetAddressAutocompleteSession();
+
+      const hasResolvedAddress = Boolean(
+        nextLocationPatch.address_line1 || nextLocationPatch.city || nextLocationPatch.state
+      );
+
+      if (!hasResolvedAddress) {
+        showToast({
+          title: 'Location attached',
+          message:
+            'We captured your coordinates, but could not fill the address automatically. You can still edit the address fields below.',
+          variant: 'warning',
+        });
+      }
     } catch (error) {
       showToast({
         title: 'Location unavailable',
-        message: getErrorMessage(error, 'We could not fill your current coordinates right now.'),
+        message: getErrorMessage(error, 'We could not attach your current location right now.'),
         variant: 'error',
       });
+    } finally {
+      setIsApplyingCurrentLocation(false);
     }
-  }, [coordinates, mapUserLocation, permission_status, refreshLocation, requestPermission, showToast]);
+  }, [
+    clearLocationFieldErrors,
+    coordinates,
+    mapUserLocation,
+    permission_status,
+    refreshLocation,
+    requestPermission,
+    resetAddressAutocompleteSession,
+    showToast,
+  ]);
+
+  const handleSelectAddressSuggestion = useCallback(
+    async (suggestion: GooglePlaceAutocompleteSuggestion) => {
+      try {
+        const selection = await resolveAddressSelection(suggestion);
+        const nextLocationPatch = buildBathroomLocationFormPatchFromGoogleSelection(
+          selection,
+          suggestion.primary_text
+        );
+
+        setFormState((currentState) => ({
+          ...currentState,
+          ...nextLocationPatch,
+        }));
+        clearLocationFieldErrors();
+        setIsAddressAutocompleteEnabled(false);
+        setSubmitError('');
+      } catch (error) {
+        showToast({
+          title: 'Address unavailable',
+          message: getErrorMessage(error, 'We could not load that address right now.'),
+          variant: 'error',
+        });
+      }
+    },
+    [clearLocationFieldErrors, resolveAddressSelection, showToast]
+  );
+
+  const locationSummary = useMemo(
+    () =>
+      buildBathroomLocationSummary({
+        address_line1: formState.address_line1,
+        city: formState.city,
+        state: formState.state,
+        postal_code: formState.postal_code,
+        latitude: formState.latitude,
+        longitude: formState.longitude,
+      }),
+    [formState.address_line1, formState.city, formState.latitude, formState.longitude, formState.postal_code, formState.state]
+  );
+  const duplicateSuggestionsQuery = useBathroomDuplicateSuggestions({
+    placeName: formState.place_name,
+    addressLine1: formState.address_line1,
+    city: formState.city,
+    state: formState.state,
+    latitude: parseOptionalNumber(formState.latitude) ?? null,
+    longitude: parseOptionalNumber(formState.longitude) ?? null,
+  });
+
+  const locationErrorMessage =
+    fieldErrors.latitude || fieldErrors.longitude
+      ? 'Choose an address suggestion or tap "Use my location" to attach the map pin.'
+      : undefined;
+  const isUsingCurrentLocation = is_refreshing || isApplyingCurrentLocation;
 
   const handlePickPhoto = useCallback(async () => {
     setIsPickingPhoto(true);
@@ -613,13 +720,43 @@ export default function AddBathroomModalScreen() {
               <Input
                 autoCapitalize="words"
                 containerClassName="mt-5"
+                helperText="Start typing a street address to see Google suggestions."
                 label="Street address"
-                onChangeText={(value) => updateField('address_line1', value)}
+                onChangeText={handleAddressLine1Change}
+                onFocus={() => setIsAddressAutocompleteEnabled(true)}
                 placeholder="123 Main St"
                 returnKeyType="next"
                 value={formState.address_line1}
                 error={fieldErrors.address_line1}
               />
+
+              {isAddressAutocompleteLoading && isAddressAutocompleteEnabled ? (
+                <Text className="mt-3 text-sm text-ink-500">Looking up matching addresses...</Text>
+              ) : null}
+
+              {addressSuggestions.length > 0 ? (
+                <View className="mt-3 gap-3 rounded-[24px] border border-brand-100 bg-brand-50 p-3">
+                  <Text className="px-1 text-xs font-semibold uppercase tracking-[1px] text-brand-700">
+                    Address Autocomplete
+                  </Text>
+                  {addressSuggestions.map((suggestion) => (
+                    <Pressable
+                      accessibilityLabel={`Address suggestion ${suggestion.text}`}
+                      accessibilityRole="button"
+                      className="rounded-2xl border border-brand-100 bg-white px-4 py-4"
+                      key={suggestion.place_id}
+                      onPress={() => {
+                        void handleSelectAddressSuggestion(suggestion);
+                      }}
+                    >
+                      <Text className="text-base font-semibold text-brand-700">{suggestion.primary_text}</Text>
+                      {suggestion.secondary_text ? (
+                        <Text className="mt-1 text-sm leading-5 text-brand-700">{suggestion.secondary_text}</Text>
+                      ) : null}
+                    </Pressable>
+                  ))}
+                </View>
+              ) : null}
 
               <View className="mt-5 flex-row gap-3">
                 <View className="flex-1">
@@ -661,9 +798,9 @@ export default function AddBathroomModalScreen() {
             <View className="mt-6 rounded-[30px] border border-surface-strong bg-surface-card p-5">
               <View className="flex-row items-center justify-between">
                 <View className="flex-1 pr-4">
-                  <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Coordinates</Text>
+                  <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Location Pin</Text>
                   <Text className="mt-2 text-sm leading-6 text-ink-600">
-                    Use your current device location or enter latitude and longitude manually.
+                    Choose an address suggestion above or use your current device location to attach the map coordinates for this bathroom.
                   </Text>
                 </View>
                 <Pressable
@@ -674,36 +811,58 @@ export default function AddBathroomModalScreen() {
                   }}
                 >
                   <Text className="text-sm font-semibold text-brand-700">
-                    {is_refreshing ? 'Locating...' : 'Use my location'}
+                    {isUsingCurrentLocation ? 'Locating...' : 'Use my location'}
                   </Text>
                 </Pressable>
               </View>
 
-              <View className="mt-5 flex-row gap-3">
-                <View className="flex-1">
-                  <Input
-                    keyboardType="decimal-pad"
-                    label="Latitude"
-                    onChangeText={(value) => updateField('latitude', value)}
-                    placeholder="47.606200"
-                    returnKeyType="next"
-                    value={formState.latitude}
-                    error={fieldErrors.latitude}
-                  />
+              {locationSummary ? (
+                <View className="mt-5 rounded-[24px] border border-brand-100 bg-brand-50 px-4 py-4">
+                  <Text className="text-sm font-semibold text-brand-700">Pin ready</Text>
+                  <Text className="mt-1 text-sm leading-6 text-brand-700">{locationSummary}</Text>
                 </View>
-                <View className="flex-1">
-                  <Input
-                    keyboardType="decimal-pad"
-                    label="Longitude"
-                    onChangeText={(value) => updateField('longitude', value)}
-                    placeholder="-122.332100"
-                    returnKeyType="done"
-                    value={formState.longitude}
-                    error={fieldErrors.longitude}
-                  />
+              ) : (
+                <View className="mt-5 rounded-[24px] border border-dashed border-surface-strong bg-surface-base px-4 py-4">
+                  <Text className="text-sm leading-6 text-ink-600">
+                    No map pin is attached yet. Search for the address or tap the button to use your current location.
+                  </Text>
+                </View>
+              )}
+
+              {locationErrorMessage ? <Text className="mt-3 text-sm text-danger">{locationErrorMessage}</Text> : null}
+            </View>
+
+            {duplicateSuggestionsQuery.data && duplicateSuggestionsQuery.data.length > 0 ? (
+              <View className="mt-6 rounded-[30px] border border-warning/20 bg-warning/10 p-5">
+                <Text className="text-sm font-semibold uppercase tracking-[1px] text-warning">Possible duplicates</Text>
+                <Text className="mt-2 text-sm leading-6 text-warning">
+                  Review these nearby matches before adding a new listing. This is the first defense against duplicate bathrooms.
+                </Text>
+                <View className="mt-4 gap-3">
+                  {duplicateSuggestionsQuery.data.map((suggestion) => (
+                    <View className="rounded-2xl bg-white px-4 py-4" key={suggestion.bathroom.id}>
+                      <Text className="text-base font-bold text-ink-900">{suggestion.bathroom.place_name}</Text>
+                      <Text className="mt-1 text-sm leading-5 text-ink-600">{suggestion.bathroom.address}</Text>
+                      <Text className="mt-2 text-sm text-warning">
+                        Match score {Math.round(suggestion.score * 100)}% · {suggestion.reason}
+                      </Text>
+                      <Button
+                        className="mt-4"
+                        label="Open Existing Bathroom"
+                        onPress={() =>
+                          pushSafely(
+                            router,
+                            routes.bathroomDetail(suggestion.bathroom.id),
+                            routes.modal.addBathroom
+                          )
+                        }
+                        variant="secondary"
+                      />
+                    </View>
+                  ))}
                 </View>
               </View>
-            </View>
+            ) : null}
 
             <View className="mt-6 rounded-[30px] border border-surface-strong bg-surface-card p-5">
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Attributes</Text>
@@ -781,8 +940,15 @@ export default function AddBathroomModalScreen() {
               <Text className="mt-6 rounded-2xl bg-danger/10 px-4 py-3 text-sm text-danger">{submitError}</Text>
             ) : null}
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/add-bathroom"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Submit Bathroom"
                 loading={isSubmitting}
                 onPress={() => {

@@ -79,7 +79,7 @@ export async function flushOfflineQueue(options: FlushOptions): Promise<FlushRes
       for (const key of keys) {
         batchInvalidationKeys.add(JSON.stringify(key));
       }
-    } catch {
+    } catch (_e) {
       // Unknown mutation type — skip key collection, executor will handle
     }
   }

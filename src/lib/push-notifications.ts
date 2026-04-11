@@ -36,7 +36,7 @@ async function ensureAndroidChannel(): Promise<void> {
   }
 
   await Notifications.setNotificationChannelAsync('default', {
-    name: 'Pee-Dom Alerts',
+    name: 'StallPass Alerts',
     importance: Notifications.AndroidImportance.HIGH,
     vibrationPattern: [0, 250, 250, 250],
     lightColor: '#2563eb',

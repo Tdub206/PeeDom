@@ -9,7 +9,7 @@ import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { useToast } from '@/hooks/useToast';
-import { replaceSafely } from '@/lib/navigation';
+import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 import { FieldErrors, RegisterFormValues, getFieldErrors, registerSchema } from '@/utils/validate';
 
@@ -91,7 +91,7 @@ export default function RegisterScreen() {
       if (result.data.session) {
         showToast({
           title: 'Account created',
-          message: 'You are signed in and ready to start using Pee-Dom.',
+          message: 'You are signed in and ready to start using StallPass.',
           variant: 'success',
         });
         const nextIntent = consumeReturnIntent();
@@ -227,6 +227,27 @@ export default function RegisterScreen() {
                   Already registered? <Text className="text-brand-700">Sign in instead</Text>
                 </Text>
               </Pressable>
+
+              <View className="mt-4 items-center">
+                <Text className="text-xs leading-5 text-ink-500">
+                  By creating an account, you agree to our
+                </Text>
+                <View className="flex-row items-center gap-1">
+                  <Pressable
+                    accessibilityRole="link"
+                    onPress={() => pushSafely(router, routes.modal.legalTerms, routes.auth.register)}
+                  >
+                    <Text className="text-xs font-semibold text-brand-700">Terms of Service</Text>
+                  </Pressable>
+                  <Text className="text-xs text-ink-500">and</Text>
+                  <Pressable
+                    accessibilityRole="link"
+                    onPress={() => pushSafely(router, routes.modal.legalPrivacy, routes.auth.register)}
+                  >
+                    <Text className="text-xs font-semibold text-brand-700">Privacy Policy</Text>
+                  </Pressable>
+                </View>
+              </View>
             </View>
           </View>
         </ScrollView>

@@ -2,10 +2,12 @@ import React, { memo } from 'react';
 import { Text, View } from 'react-native';
 import { useNetInfo } from '@react-native-community/netinfo';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useOfflineSyncStore } from '@/store/useOfflineSyncStore';
 
 function OfflineBannerComponent() {
   const insets = useSafeAreaInsets();
   const netInfo = useNetInfo();
+  const pendingCount = useOfflineSyncStore((state) => state.queueSnapshot.pending_count);
 
   if (netInfo.isConnected !== false) {
     return null;
@@ -19,7 +21,7 @@ function OfflineBannerComponent() {
     >
       <Text className="text-sm font-semibold text-white">Offline mode</Text>
       <Text className="mt-1 text-sm leading-5 text-white/90">
-        Showing cached bathrooms and keeping favorite changes queued until the connection returns.
+        Showing cached bathrooms and keeping {pendingCount > 0 ? `${pendingCount} queued change${pendingCount === 1 ? '' : 's'}` : 'your changes'} ready to sync when the connection returns.
       </Text>
     </View>
   );

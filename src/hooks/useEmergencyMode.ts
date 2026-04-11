@@ -9,41 +9,75 @@ import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { consumeEmergencyFindCredit, getFirstInstallCredits } from '@/lib/first-install-credits';
+import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { BathroomListItem, Coordinates } from '@/types';
-import { calculateDistanceMeters, mapBathroomRowToListItem } from '@/utils/bathroom';
+import {
+  calculateBathroomRecommendationScore,
+  calculateDistanceMeters,
+  mapBathroomRowToListItem,
+  mergeAccessibilityFilters,
+} from '@/utils/bathroom';
 
 export const EMERGENCY_FIND_POINTS_COST = 25;
 
-type EmergencyPhase = 'idle' | 'locating' | 'searching' | 'navigating' | 'error';
+type EmergencyPhase = 'idle' | 'locating' | 'searching' | 'picking' | 'navigating' | 'error';
 
 interface EmergencyState {
   phase: EmergencyPhase;
   nearestBathroom: BathroomListItem | null;
+  /** Top candidates for the urgency picker (sorted by distance) */
+  candidates: BathroomListItem[];
 }
 
 const EMERGENCY_SEARCH_RADIUS_DELTA = 0.045; // ~5 km viewport
+const MAX_CANDIDATES = 3;
 
-function findNearestBathroom(
+/**
+ * Find top candidates sorted by distance, with an accessibility score boost
+ * when accessibility mode is active. Accessible bathrooms within a similar
+ * distance range are ranked higher.
+ */
+function findTopCandidates(
   bathrooms: BathroomListItem[],
-  origin: Coordinates
-): BathroomListItem | null {
-  if (bathrooms.length === 0) {
-    return null;
-  }
+  origin: Coordinates,
+  limit: number,
+  boostAccessible: boolean = false,
+): BathroomListItem[] {
+  return bathrooms
+    .map((bathroom) => ({
+      bathroom,
+      distance: calculateDistanceMeters(origin, bathroom.coordinates),
+      recommendationScore: calculateBathroomRecommendationScore(bathroom, {
+        scenario: boostAccessible ? 'accessible' : 'best_overall',
+      }),
+    }))
+    .sort((a, b) => {
+      if (!boostAccessible) {
+        if (b.recommendationScore !== a.recommendationScore) {
+          return b.recommendationScore - a.recommendationScore;
+        }
 
-  let nearest = bathrooms[0];
-  let nearestDistance = calculateDistanceMeters(origin, nearest.coordinates);
-
-  for (let i = 1; i < bathrooms.length; i++) {
-    const distance = calculateDistanceMeters(origin, bathrooms[i].coordinates);
-
-    if (distance < nearestDistance) {
-      nearest = bathrooms[i];
-      nearestDistance = distance;
-    }
-  }
-
-  return nearest;
+        return a.distance - b.distance;
+      }
+      // When accessibility mode is on, prefer accessible bathrooms
+      // that are within 50% additional distance of the nearest option.
+      const aAccessible = (a.bathroom.accessibility_score ?? 0) > 30;
+      const bAccessible = (b.bathroom.accessibility_score ?? 0) > 30;
+      if (aAccessible !== bAccessible) {
+        const closer = Math.min(a.distance, b.distance);
+        const farther = Math.max(a.distance, b.distance);
+        // Only boost if the accessible one isn't drastically farther
+        if (farther <= closer * 1.5) {
+          return aAccessible ? -1 : 1;
+        }
+      }
+      if (b.recommendationScore !== a.recommendationScore) {
+        return b.recommendationScore - a.recommendationScore;
+      }
+      return a.distance - b.distance;
+    })
+    .slice(0, limit)
+    .map((entry) => entry.bathroom);
 }
 
 async function launchNavigation(bathroom: BathroomListItem): Promise<boolean> {
@@ -75,9 +109,12 @@ export function useEmergencyMode() {
   const { coordinates, permission_status, requestPermission } = useLocation();
   const { profile } = useAuth();
   const { showToast } = useToast();
+  const isAccessibilityMode = useAccessibilityStore((s) => s.isAccessibilityMode);
+  const accessibilityPreferences = useAccessibilityStore((s) => s.preferences);
   const [state, setState] = useState<EmergencyState>({
     phase: 'idle',
     nearestBathroom: null,
+    candidates: [],
   });
   const [emergencyFreeCredits, setEmergencyFreeCredits] = useState(0);
   const isRunningRef = useRef(false);
@@ -134,7 +171,7 @@ export function useEmergencyMode() {
       }
 
       // Step 1: Get location
-      setState({ phase: 'locating', nearestBathroom: null });
+      setState({ phase: 'locating', nearestBathroom: null, candidates: [] });
       let userCoordinates = coordinates;
 
       if (!userCoordinates) {
@@ -147,7 +184,7 @@ export function useEmergencyMode() {
               message: 'Emergency mode needs your location to find the nearest bathroom.',
               variant: 'warning',
             });
-            setState({ phase: 'idle', nearestBathroom: null });
+            setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
             return;
           }
         }
@@ -166,13 +203,13 @@ export function useEmergencyMode() {
             message: 'We could not determine your location. Please try again.',
             variant: 'error',
           });
-          setState({ phase: 'error', nearestBathroom: null });
+          setState({ phase: 'error', nearestBathroom: null, candidates: [] });
           return;
         }
       }
 
-      // Step 2: Find nearest bathroom
-      setState({ phase: 'searching', nearestBathroom: null });
+      // Step 2: Find nearest bathrooms
+      setState({ phase: 'searching', nearestBathroom: null, candidates: [] });
 
       const region = {
         latitude: userCoordinates.latitude,
@@ -181,7 +218,7 @@ export function useEmergencyMode() {
         longitudeDelta: EMERGENCY_SEARCH_RADIUS_DELTA,
       };
 
-      const noFilters = {
+      const baseFilters = {
         isAccessible: null,
         isLocked: null,
         isCustomerOnly: null,
@@ -200,7 +237,14 @@ export function useEmergencyMode() {
         minCleanlinessRating: null,
       };
 
-      const result = await fetchBathroomsNearRegion({ region, filters: noFilters });
+      // Apply accessibility preferences when accessibility mode is active
+      const emergencyFilters = mergeAccessibilityFilters(
+        baseFilters,
+        isAccessibilityMode,
+        accessibilityPreferences,
+      );
+
+      const result = await fetchBathroomsNearRegion({ region, filters: emergencyFilters });
       let bathrooms: BathroomListItem[] = [];
 
       if (result.data.length > 0) {
@@ -214,41 +258,25 @@ export function useEmergencyMode() {
         );
       }
 
-      const nearest = findNearestBathroom(bathrooms, userCoordinates);
+      const topCandidates = findTopCandidates(bathrooms, userCoordinates, MAX_CANDIDATES, isAccessibilityMode);
 
-      if (!nearest) {
+      if (topCandidates.length === 0) {
         showToast({
           title: 'No bathrooms found',
           message: 'We could not find any bathrooms near you. Try zooming out on the map.',
           variant: 'warning',
         });
-        setState({ phase: 'idle', nearestBathroom: null });
+        setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
         return;
       }
 
-      // Step 3: Navigate
-      setState({ phase: 'navigating', nearestBathroom: nearest });
+      // Step 3: Show picker with top candidates
       void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
-
-      const distanceText = nearest.distance_meters
-        ? nearest.distance_meters < 1000
-          ? `${nearest.distance_meters}m away`
-          : `${(nearest.distance_meters / 1609.34).toFixed(1)} mi away`
-        : '';
-
-      showToast({
-        title: `Routing to ${nearest.place_name}`,
-        message: distanceText || 'Opening navigation...',
-        variant: 'success',
+      setState({
+        phase: 'picking',
+        nearestBathroom: topCandidates[0],
+        candidates: topCandidates,
       });
-
-      void trackAnalyticsEvent('emergency_mode_activated', {
-        bathroom_id: nearest.id,
-        distance_meters: nearest.distance_meters,
-      });
-
-      await launchNavigation(nearest);
-      setState({ phase: 'idle', nearestBathroom: nearest });
     } catch (error) {
       console.error('Emergency mode error:', error);
       showToast({
@@ -256,16 +284,56 @@ export function useEmergencyMode() {
         message: 'Something went wrong. Please try again or use the map.',
         variant: 'error',
       });
-      setState({ phase: 'error', nearestBathroom: null });
+      setState({ phase: 'error', nearestBathroom: null, candidates: [] });
     } finally {
       isRunningRef.current = false;
     }
-  }, [coordinates, permission_status, requestPermission, showToast]);
+  }, [accessibilityPreferences, coordinates, isAccessibilityMode, permission_status, requestPermission, showToast]);
+
+  const selectAndNavigate = useCallback(
+    async (bathroom: BathroomListItem) => {
+      setState((prev) => ({ ...prev, phase: 'navigating', nearestBathroom: bathroom }));
+
+      const distanceText = bathroom.distance_meters
+        ? bathroom.distance_meters < 1000
+          ? `${bathroom.distance_meters}m away`
+          : `${(bathroom.distance_meters / 1609.34).toFixed(1)} mi away`
+        : '';
+
+      showToast({
+        title: `Routing to ${bathroom.place_name}`,
+        message: distanceText || 'Opening navigation...',
+        variant: 'success',
+      });
+
+      void trackAnalyticsEvent('emergency_mode_activated', {
+        bathroom_id: bathroom.id,
+        distance_meters: bathroom.distance_meters,
+      });
+
+      try {
+        await launchNavigation(bathroom);
+      } catch (_e) {
+        // Navigation launch failed silently
+      }
+
+      setState((prev) => ({ ...prev, phase: 'idle' }));
+    },
+    [showToast],
+  );
+
+  const dismiss = useCallback(() => {
+    setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+  }, []);
 
   return {
     ...state,
     isActive: state.phase !== 'idle' && state.phase !== 'error',
     emergencyFreeCredits,
+    isSearching: state.phase === 'locating' || state.phase === 'searching',
+    isPicking: state.phase === 'picking',
     activate,
+    selectAndNavigate,
+    dismiss,
   };
 }

@@ -140,7 +140,10 @@ describe('RealtimeManager', () => {
     const firstChannel = manager.subscribe('bathroom-detail:test-id', (channel) => channel);
     createdChannels[0]?.emitStatus('SUBSCRIBED');
 
-    await manager.reconnectTrackedChannels();
+    const reconnectPromise = manager.reconnectTrackedChannels();
+    await Promise.resolve();
+    createdChannels[1]?.emitStatus('SUBSCRIBED');
+    await reconnectPromise;
 
     expect(channelFactoryMock).toHaveBeenCalledTimes(2);
     expect(removeChannelMock).toHaveBeenCalledWith(firstChannel);

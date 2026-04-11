@@ -305,6 +305,13 @@ export const deactivateAccountResultSchema = z.object({
   error: z.string().optional(),
 });
 
+export const deleteAccountResultSchema = z.object({
+  success: z.boolean(),
+  user_id: rawTextSchema.optional(),
+  deleted_at: dateTimeStringSchema.optional(),
+  error: z.string().optional(),
+});
+
 export const dbPremiumArrivalAlertSchema = z.object({
   id: rawTextSchema,
   user_id: rawTextSchema,
@@ -338,6 +345,143 @@ const hoursEntrySchema = z.object({
 });
 
 const hoursDataSchema = z.record(z.string(), z.array(hoursEntrySchema));
+const businessHoursSourceSchema = z.enum([
+  'business_dashboard',
+  'admin_panel',
+  'community_report',
+  'manual',
+  'google',
+  'preset_offset',
+]);
+const hoursSourceTypeSchema = z.enum(['manual', 'google', 'preset_offset']);
+const bathroomLocationArchetypeSchema = z.enum([
+  'general',
+  'park',
+  'store',
+  'restaurant',
+  'transit',
+  'event_portable',
+  'medical',
+  'campus',
+  'library',
+  'mall',
+  'airport',
+  'hotel',
+]);
+const businessCodePolicySchema = z.enum(['community', 'owner_shared', 'owner_private', 'staff_only']);
+const contributorTrustTierSchema = z.enum([
+  'brand_new',
+  'lightly_trusted',
+  'verified_contributor',
+  'highly_reliable_local',
+  'business_verified_manager',
+  'flagged_low_trust',
+]);
+const duplicateCaseStatusSchema = z.enum(['open', 'under_review', 'merged', 'dismissed', 'quarantined']);
+
+export const businessBathroomSettingsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  requires_premium_access: z.boolean(),
+  show_on_free_map: z.boolean(),
+  is_location_verified: z.boolean(),
+  location_verified_at: dateTimeStringSchema.nullable(),
+  code_policy: businessCodePolicySchema.default('community'),
+  allow_user_code_submissions: z.boolean().default(true),
+  owner_supplied_code: z.string().nullable().optional().default(null),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable().optional().default(null),
+  owner_code_notes: z.string().nullable().optional().default(null),
+  official_access_instructions: z.string().nullable().optional().default(null),
+  pricing_plan: z.enum(['standard', 'lifetime']),
+  pricing_plan_granted_at: dateTimeStringSchema.nullable().optional().default(null),
+  updated_by: z.string().nullable().optional().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomCodePolicySummarySchema = z.object({
+  bathroom_id: rawTextSchema,
+  code_policy: businessCodePolicySchema,
+  allow_user_code_submissions: z.boolean(),
+  has_official_code: z.boolean(),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable(),
+  owner_code_notes: z.string().nullable(),
+  official_access_instructions: z.string().nullable(),
+  can_manager_view_official_code: z.boolean(),
+});
+
+export const businessManagedCodeDetailsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  code_policy: businessCodePolicySchema,
+  owner_supplied_code: z.string().nullable(),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable(),
+  owner_code_notes: z.string().nullable(),
+  official_access_instructions: z.string().nullable(),
+  allow_user_code_submissions: z.boolean(),
+  updated_at: dateTimeStringSchema,
+});
+
+export const contributorReputationProfileSchema = z.object({
+  user_id: rawTextSchema,
+  trust_tier: contributorTrustTierSchema,
+  trust_score: z.number(),
+  trust_weight: z.number(),
+  accepted_contributions: z.number().int().nonnegative(),
+  rejected_contributions: z.number().int().nonnegative(),
+  reports_resolved: z.number().int().nonnegative(),
+  reports_dismissed: z.number().int().nonnegative(),
+  approved_photos: z.number().int().nonnegative(),
+  rejected_photos: z.number().int().nonnegative(),
+  active_codes: z.number().int().nonnegative(),
+  removed_codes: z.number().int().nonnegative(),
+  bathrooms_added: z.number().int().nonnegative(),
+  approved_claims: z.number().int().nonnegative(),
+  moderation_flag_count: z.number().int().nonnegative(),
+  code_success_ratio: z.number(),
+  primary_city: z.string().nullable(),
+  primary_state: z.string().nullable(),
+  last_contribution_at: dateTimeStringSchema.nullable(),
+  last_calculated_at: dateTimeStringSchema,
+});
+
+export const duplicateCaseSchema = z.object({
+  id: rawTextSchema,
+  bathroom_a_id: rawTextSchema,
+  bathroom_a_name: rawTextSchema,
+  bathroom_a_address: z.string(),
+  bathroom_b_id: rawTextSchema,
+  bathroom_b_name: rawTextSchema,
+  bathroom_b_address: z.string(),
+  status: duplicateCaseStatusSchema,
+  similarity_score: z.number(),
+  distance_meters: z.number().nullable(),
+  suggested_merge_target_id: z.string().nullable(),
+  merge_into_bathroom_id: z.string().nullable(),
+  reason: z.string().nullable(),
+  auto_flagged: z.boolean(),
+  notes: z.string().nullable(),
+  reviewed_by: z.string().nullable(),
+  reviewed_at: dateTimeStringSchema.nullable(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const businessPromotionSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  business_user_id: rawTextSchema,
+  title: rawTextSchema,
+  description: rawTextSchema,
+  offer_type: z.enum(['percentage', 'amount_off', 'freebie', 'custom']),
+  offer_value: z.number().nullable(),
+  promo_code: z.string().nullable(),
+  redemption_instructions: rawTextSchema,
+  starts_at: dateTimeStringSchema.nullable(),
+  ends_at: dateTimeStringSchema.nullable(),
+  is_active: z.boolean(),
+  redemptions_count: z.number().int().nonnegative(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
 
 export const businessVerificationBadgeSchema = z.object({
   id: rawTextSchema,
@@ -379,8 +523,18 @@ export const businessHoursUpdateSchema = z.object({
   updated_by: rawTextSchema,
   old_hours: hoursDataSchema.nullable(),
   new_hours: hoursDataSchema,
-  update_source: z.enum(['business_dashboard', 'admin_panel', 'community_report']),
+  update_source: businessHoursSourceSchema,
   created_at: dateTimeStringSchema,
+});
+
+export const businessBathroomHoursConfigSchema = z.object({
+  bathroom_id: rawTextSchema,
+  place_name: rawTextSchema,
+  hours_json: hoursDataSchema.nullable(),
+  hours_source: hoursSourceTypeSchema,
+  hours_offset_minutes: z.number().int().nullable(),
+  google_place_id: z.string().nullable(),
+  updated_at: dateTimeStringSchema,
 });
 
 export const businessDashboardAnalyticsRowSchema = z.object({
@@ -393,17 +547,177 @@ export const businessDashboardAnalyticsRowSchema = z.object({
   avg_cleanliness: z.number().nonnegative(),
   total_ratings: z.number().int().nonnegative(),
   weekly_views: z.number().int().nonnegative(),
+  weekly_unique_visitors: z.number().int().nonnegative(),
+  monthly_unique_visitors: z.number().int().nonnegative(),
+  weekly_navigation_count: z.number().int().nonnegative(),
   verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable(),
   has_verification_badge: z.boolean(),
   has_active_featured_placement: z.boolean(),
   active_featured_placements: z.number().int().nonnegative(),
+  active_offer_count: z.number().int().nonnegative(),
+  requires_premium_access: z.boolean(),
+  show_on_free_map: z.boolean(),
+  is_location_verified: z.boolean(),
+  location_verified_at: dateTimeStringSchema.nullable(),
+  pricing_plan: z.enum(['standard', 'lifetime']),
   last_updated: dateTimeStringSchema,
 });
 
 export const businessHoursUpdateResultSchema = z.object({
   success: z.boolean(),
   bathroom_id: rawTextSchema,
+  hours_source: hoursSourceTypeSchema.optional().default('manual'),
   updated_at: dateTimeStringSchema,
+});
+
+export const businessGoogleHoursSyncSchema = z.object({
+  provider: z.literal('google_places').optional().default('google_places'),
+  place_name: z.string().nullable().optional().default(null),
+  google_place_id: rawTextSchema,
+  time_zone: z.string().nullable().optional().default(null),
+  utc_offset_minutes: z.number().int().nullable().optional().default(null),
+  open_now: z.boolean().optional().default(false),
+  hours: hoursDataSchema,
+});
+
+export const googlePlaceAutocompleteSuggestionSchema = z.object({
+  place_id: rawTextSchema,
+  text: rawTextSchema,
+  primary_text: rawTextSchema,
+  secondary_text: z.union([z.string(), z.null()]).default(null),
+  distance_meters: z.union([z.number(), z.null()]).default(null),
+});
+
+const googlePlaceViewportPointSchema = z.object({
+  latitude: z.number(),
+  longitude: z.number(),
+});
+
+const googlePlaceAddressComponentsSchema = z.object({
+  address_line1: z.union([z.string(), z.null()]).default(null),
+  city: z.union([z.string(), z.null()]).default(null),
+  state: z.union([z.string(), z.null()]).default(null),
+  postal_code: z.union([z.string(), z.null()]).default(null),
+  country_code: z.union([z.string(), z.null()]).default(null),
+});
+
+export const googlePlaceAddressResolutionSchema = z.object({
+  place_id: rawTextSchema,
+  formatted_address: z.union([z.string(), z.null()]).default(null),
+  location: googlePlaceViewportPointSchema,
+  viewport: z
+    .object({
+      low: googlePlaceViewportPointSchema,
+      high: googlePlaceViewportPointSchema,
+    })
+    .nullable()
+    .default(null),
+  address_components: googlePlaceAddressComponentsSchema.default({
+    address_line1: null,
+    city: null,
+    state: null,
+    postal_code: null,
+    country_code: null,
+  }),
+});
+
+// ============================================================================
+// StallPass Visit Schemas
+// ============================================================================
+
+export const stallPassVisitSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  user_id: rawTextSchema,
+  visited_at: dateTimeStringSchema,
+  source: z.enum(['map_navigation', 'search', 'favorite', 'coupon_redeem', 'deep_link']),
+  created_at: dateTimeStringSchema,
+});
+
+export const businessVisitStatsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  total_visits: z.number().int().nonnegative(),
+  visits_this_week: z.number().int().nonnegative(),
+  visits_this_month: z.number().int().nonnegative(),
+  unique_visitors: z.number().int().nonnegative(),
+  top_source: z.enum(['map_navigation', 'search', 'favorite', 'coupon_redeem', 'deep_link']).nullable(),
+});
+
+// ============================================================================
+// Coupon Schemas
+// ============================================================================
+
+export const businessCouponSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  business_user_id: rawTextSchema,
+  title: rawTextSchema,
+  description: z.string().nullable(),
+  coupon_type: z.enum(['percent_off', 'dollar_off', 'bogo', 'free_item', 'custom']),
+  value: z.number().positive().nullable(),
+  min_purchase: z.number().nonnegative().nullable(),
+  coupon_code: rawTextSchema,
+  max_redemptions: z.number().int().positive().nullable(),
+  current_redemptions: z.number().int().nonnegative(),
+  starts_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema.nullable(),
+  is_active: z.boolean(),
+  premium_only: z.boolean(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomCouponPublicSchema = z.object({
+  id: rawTextSchema,
+  title: rawTextSchema,
+  description: z.string().nullable(),
+  coupon_type: z.enum(['percent_off', 'dollar_off', 'bogo', 'free_item', 'custom']),
+  value: z.number().positive().nullable(),
+  min_purchase: z.number().nonnegative().nullable(),
+  coupon_code: rawTextSchema,
+  starts_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema.nullable(),
+  premium_only: z.boolean(),
+  already_redeemed: z.boolean(),
+});
+
+export const couponRedemptionResultSchema = z.object({
+  success: z.boolean(),
+  redemption_id: rawTextSchema,
+  coupon_code: rawTextSchema,
+  title: rawTextSchema,
+});
+
+// ============================================================================
+// Early Adopter Invite Schemas
+// ============================================================================
+
+export const earlyAdopterInviteSchema = z.object({
+  id: rawTextSchema,
+  invite_token: rawTextSchema,
+  target_business_name: z.string().nullable(),
+  target_email: z.string().nullable(),
+  notes: z.string().nullable(),
+  expires_at: dateTimeStringSchema,
+  status: z.enum(['pending', 'redeemed', 'expired', 'revoked']),
+  redeemed_by: z.string().nullable(),
+  redeemed_at: dateTimeStringSchema.nullable(),
+  created_at: dateTimeStringSchema,
+  redeemer_display_name: z.string().nullable(),
+});
+
+export const generateInviteResultSchema = z.object({
+  success: z.boolean(),
+  invite_id: rawTextSchema,
+  invite_token: rawTextSchema,
+  expires_at: dateTimeStringSchema,
+});
+
+export const redeemInviteResultSchema = z.object({
+  success: z.boolean(),
+  invite_id: rawTextSchema,
+  is_lifetime_free: z.boolean(),
+  message: z.string(),
 });
 
 export const bathroomAccessCodeSchema = z.object({
@@ -462,6 +776,19 @@ export const publicBathroomDetailRowSchema = z.object({
   expires_at: dateTimeStringSchema.nullable(),
   cleanliness_avg: z.number().nullable(),
   updated_at: dateTimeStringSchema,
+  verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable().default(null),
+  stallpass_access_tier: z.enum(['public', 'premium']).default('public'),
+  show_on_free_map: z.boolean().default(true),
+  is_business_location_verified: z.boolean().default(false),
+  location_verified_at: dateTimeStringSchema.nullable().default(null),
+  active_offer_count: z.number().int().nonnegative().default(0),
+  location_archetype: bathroomLocationArchetypeSchema.default('general'),
+  archetype_metadata: z.record(z.string(), jsonValueSchema).default({}),
+  code_policy: businessCodePolicySchema.default('community'),
+  allow_user_code_submissions: z.boolean().default(true),
+  has_official_code: z.boolean().default(false),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  official_access_instructions: z.string().nullable().default(null),
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({

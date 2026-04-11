@@ -14,7 +14,7 @@ export default function NotFoundScreen() {
         <View className="rounded-[28px] border border-surface-strong bg-surface-card p-6">
           <Text className="text-4xl font-black tracking-tight text-ink-900">Wrong Turn</Text>
           <Text className="mt-3 text-base leading-6 text-ink-600">
-            That route does not exist in Pee-Dom. Return to the tab shell and continue from there.
+            That route does not exist in StallPass. Return to the tab shell and continue from there.
           </Text>
           <Button
             className="mt-6"

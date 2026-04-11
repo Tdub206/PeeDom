@@ -241,6 +241,11 @@ export const claimBusinessSchema = z
       .trim()
       .max(500, 'Evidence link must be 500 characters or fewer.')
       .optional(),
+    growth_invite_code: z
+      .string()
+      .trim()
+      .max(24, 'Invite code must be 24 characters or fewer.')
+      .optional(),
   })
   .superRefine((value, context) => {
     const contactPhone = value.contact_phone?.trim();
@@ -269,9 +274,29 @@ export const claimBusinessSchema = z
         message: 'Enter a valid URL.',
       });
     }
+
+    const growthInviteCode = value.growth_invite_code?.trim();
+
+    if (growthInviteCode && !/^[A-Za-z0-9-]{6,24}$/.test(growthInviteCode)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['growth_invite_code'],
+        message: 'Enter the invite code exactly as it was shared with the business.',
+      });
+    }
   });
 
-export type FieldErrors<T extends Record<string, unknown>> = Partial<Record<keyof T, string>>;
+export const accountDeletionSchema = z.object({
+  confirmation: z
+    .string()
+    .trim()
+    .refine((value) => value.toUpperCase() === 'DELETE', {
+      message: 'Type DELETE to confirm account deletion.',
+    }),
+});
+
+export type AccountDeletionFormValues = z.infer<typeof accountDeletionSchema>;
+export type FieldErrors<T extends object> = Partial<Record<Extract<keyof T, string>, string>>;
 export type AddBathroomFormValues = z.infer<typeof addBathroomSchema>;
 export type BathroomPhotoFormValues = z.infer<typeof bathroomPhotoSchema>;
 export type BathroomPhotoProofFormValues = z.infer<typeof bathroomPhotoProofSchema>;
@@ -282,7 +307,7 @@ export type LiveStatusReportFormValues = z.infer<typeof liveStatusReportSchema>;
 export type QueuedMutationShape = z.infer<typeof queuedMutationSchema>;
 export type ReportCreateFormValues = z.infer<typeof reportCreateSchema>;
 
-export function getFieldErrors<T extends Record<string, unknown>>(error: z.ZodError<T>): FieldErrors<T> {
+export function getFieldErrors<T extends object>(error: z.ZodError<T>): FieldErrors<T> {
   const flattened = error.flatten().fieldErrors as Record<string, string[] | undefined>;
   const entries = Object.entries(flattened).map(([key, messages]) => [key, messages?.[0] ?? '']);
   return Object.fromEntries(entries) as FieldErrors<T>;

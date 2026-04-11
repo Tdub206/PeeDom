@@ -7,6 +7,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { pushSafely } from '@/lib/navigation';
 import { BathroomPhotoProofCreateInput } from '@/types';
+import { getBathroomPhotoUploadToastCopy } from '@/utils/bathroom-photo-moderation';
 import { getErrorMessage } from '@/utils/errorMap';
 
 interface UseBathroomPhotosOptions {
@@ -66,14 +67,16 @@ export function useBathroomPhotos({ bathroomId, includeProtectedTypes = false }:
         throw result.error;
       }
 
+      const successToast = getBathroomPhotoUploadToastCopy(result.data?.moderation_status ?? 'pending');
+
       await queryClient.invalidateQueries({
         queryKey: ['bathroom-photos', bathroomId],
       });
 
       showToast({
-        title: 'Photo proof uploaded',
-        message: 'Thanks. Your photo proof is now attached to this bathroom.',
-        variant: 'success',
+        title: successToast.title,
+        message: successToast.message,
+        variant: successToast.variant,
       });
 
       return 'completed';

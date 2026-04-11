@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { deactivateAccount as deactivateAccountRequest } from '@/api/profile';
+import { deactivateAccount as deactivateAccountRequest, deleteAccount as deleteAccountRequest } from '@/api/profile';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { performUserSignOut } from '@/lib/account-session';
@@ -111,5 +111,57 @@ export function useDeactivateAccount() {
   return {
     deactivateAccount,
     isDeactivating: isDeactivating || isSigningOut,
+  };
+}
+
+export function useDeleteAccount() {
+  const { showToast } = useToast();
+  const { isSigningOut, signOut } = useAccountSignOut({
+    showSuccessToast: false,
+  });
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const deleteAccount = useCallback(async () => {
+    if (isDeleting || isSigningOut) {
+      return false;
+    }
+
+    setIsDeleting(true);
+
+    try {
+      const result = await deleteAccountRequest();
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      if (!result.data?.success) {
+        throw new Error('Unable to delete your account right now.');
+      }
+
+      await signOut();
+      showToast({
+        title: 'Account deleted',
+        message:
+          result.data?.warning ??
+          'Your account and personal data have been permanently removed.',
+        variant: result.data?.warning ? 'warning' : 'info',
+      });
+      return true;
+    } catch (error) {
+      showToast({
+        title: 'Unable to delete account',
+        message: getErrorMessage(error, 'Try again in a moment.'),
+        variant: 'error',
+      });
+      return false;
+    } finally {
+      setIsDeleting(false);
+    }
+  }, [isDeleting, isSigningOut, showToast, signOut]);
+
+  return {
+    deleteAccount,
+    isDeleting: isDeleting || isSigningOut,
   };
 }

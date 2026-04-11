@@ -8,6 +8,20 @@ export const routes = {
     favorites: '/favorites' as Href,
     profile: '/profile' as Href,
     business: '/business' as Href,
+    admin: '/admin' as Href,
+  },
+  business: {
+    hub: '/business' as Href,
+    locations: '/business/locations' as Href,
+    analytics: '/business/analytics' as Href,
+    coupons: '/business/coupons' as Href,
+    claims: '/business/claims' as Href,
+    featured: '/business/featured' as Href,
+    location: (bathroomId: string) =>
+      ({
+        pathname: '/business/location/[id]',
+        params: { id: bathroomId },
+      }) as unknown as Href,
   },
   auth: {
     login: '/login' as Href,
@@ -111,6 +125,45 @@ export const routes = {
           draft_id: draftId,
         },
       }) as Href,
+    reportUser: '/modal/report-user' as Href,
+    reportUserTarget: (userId: string, displayName?: string) =>
+      ({
+        pathname: '/modal/report-user',
+        params: {
+          user_id: userId,
+          ...(displayName ? { display_name: displayName } : {}),
+        },
+      }) as Href,
+    legal: '/modal/legal' as Href,
+    legalPrivacy: {
+      pathname: '/modal/legal',
+      params: { tab: 'privacy' },
+    } as Href,
+    legalTerms: {
+      pathname: '/modal/legal',
+      params: { tab: 'terms' },
+    } as Href,
+    syncCenter: '/modal/sync-center' as Href,
+    routeBathrooms: '/modal/route-bathrooms' as Href,
+    cityPacks: '/modal/city-packs' as Href,
+    requestFeatured: '/modal/request-featured' as Href,
+    requestFeaturedBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/request-featured',
+        params: { bathroom_id: bathroomId },
+      }) as unknown as Href,
+    createCoupon: '/modal/create-coupon' as Href,
+    createCouponBathroom: (bathroomId: string) =>
+      ({
+        pathname: '/modal/create-coupon',
+        params: { bathroom_id: bathroomId },
+      }) as unknown as Href,
+    earlyAdopterInvite: '/modal/early-adopter-invite' as Href,
+    redeemInvite: '/modal/redeem-invite' as Href,
+  },
+  legal: {
+    privacy: '/legal/privacy' as Href,
+    accountDeletion: '/legal/account-deletion' as Href,
   },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
 } as const;

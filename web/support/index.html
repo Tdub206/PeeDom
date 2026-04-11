@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="StallPass support center for users, businesses, and app-store review preparation."
+  >
+  <meta property="og:title" content="Support Center | StallPass">
+  <meta
+    property="og:description"
+    content="StallPass support center for users, businesses, and app-store review preparation."
+  >
+  <meta property="og:image" content="/assets/open-graph-social-preview.png">
+  <meta property="og:type" content="website">
+  <title>Support Center | StallPass</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" type="image/png" href="/assets/pwa-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/pwa-icon-512.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-mark" href="/">
+        <span class="brand-kicker">SP</span>
+        <span class="brand-copy">
+          <strong>StallPass</strong>
+          <span>Support center</span>
+        </span>
+      </a>
+      <button class="menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="support-menu">
+        Menu
+      </button>
+      <nav class="site-nav" id="support-menu" data-menu>
+        <a href="/">Home</a>
+        <a href="/business/">Business</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="doc-page">
+    <div class="shell doc-shell">
+      <article class="doc-card doc-hero" data-reveal>
+        <p class="eyebrow">Support center</p>
+        <h1>Public help surface for users, businesses, and launch operations.</h1>
+        <p class="doc-meta">
+          Use this page as the support URL in store metadata, the business onboarding URL, and the public help center.
+        </p>
+      </article>
+
+      <section class="support-card-grid">
+        <article class="support-card" data-reveal>
+          <strong>Consumer support</strong>
+          <p>Use StallPass in guest mode, save favorites after sign-in, and manage deletion or export from the in-app profile surface.</p>
+          <div class="support-link-list">
+            <a href="mailto:support@stallpass.org">support@stallpass.org</a>
+            <a href="/privacy/">Privacy policy</a>
+            <a href="/privacy-choices/">Privacy choices</a>
+            <a href="/terms/">Terms of service</a>
+          </div>
+        </article>
+
+        <article class="support-card" data-reveal>
+          <strong>Business support</strong>
+          <p>Claim review, listing readiness, amenities, hours, and featured placement workflows should route through the business portal and moderation queue.</p>
+          <div class="support-link-list">
+            <a href="/business/">Open business dashboard</a>
+            <a href="mailto:support@stallpass.org">support@stallpass.org</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="faq-grid">
+        <article class="faq-card" data-reveal>
+          <h3>Can users browse without an account?</h3>
+          <p>
+            Yes. Guest browsing remains available for the core map and search experience. Sign-in is required only
+            for account-bound features such as favorites, submissions, moderation, and business claims.
+          </p>
+        </article>
+        <article class="faq-card" data-reveal>
+          <h3>How does account deletion work?</h3>
+          <p>
+            The app exposes both deactivation and permanent deletion from the profile surface. Deletion removes
+            personal account data while anonymized community contributions may remain.
+          </p>
+        </article>
+        <article class="faq-card" data-reveal>
+          <h3>Where should stores and reviewers be sent?</h3>
+          <p>
+            Use this support page as the public support URL, the privacy page for privacy-policy metadata, the
+            privacy-choices page for deletion/export/privacy-controls instructions, and the terms page for public
+            product rules. If reviewer credentials are required for a future gated web surface, provide them in store
+            review notes.
+          </p>
+        </article>
+        <article class="faq-card" data-reveal>
+          <h3>What if a business dashboard needs backend analytics later?</h3>
+          <p>
+            The current browser dashboard is intentionally useful without fabricated metrics. It can accept real data
+            later without changing the interaction model or public URL structure.
+          </p>
+        </article>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

@@ -12,6 +12,8 @@ import { useBathroomCodeSubmission } from '@/hooks/useBathroomCodeSubmission';
 import { useToast } from '@/hooks/useToast';
 import { submitCodeDrafts } from '@/lib/draft-manager';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { getErrorMessage } from '@/utils/errorMap';
 import { codeSubmitSchema, CodeSubmitFormValues, FieldErrors, getFieldErrors } from '@/utils/validate';
 
@@ -74,6 +76,7 @@ export default function SubmitCodeModalScreen() {
   const { requireAuth, user } = useAuth();
   const { showToast } = useToast();
   const { isSubmitting, submitCode } = useBathroomCodeSubmission();
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
   const [bathroomDetail, setBathroomDetail] = useState<PublicBathroomDetailRow | null>(null);
   const [isLoadingBathroom, setIsLoadingBathroom] = useState(true);
   const [bathroomError, setBathroomError] = useState('');
@@ -462,8 +465,15 @@ export default function SubmitCodeModalScreen() {
               />
             </View>
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/submit-code"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Submit Code"
                 loading={isSubmitting}
                 onPress={() => {
