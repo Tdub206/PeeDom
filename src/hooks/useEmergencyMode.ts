@@ -148,7 +148,7 @@ export function useEmergencyMode() {
           message: `You need ${EMERGENCY_FIND_POINTS_COST} points to use emergency mode. Watch an ad on your profile to earn points.`,
           variant: 'warning',
         });
-        setState({ phase: 'idle', nearestBathroom: null });
+        setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
         isRunningRef.current = false;
         return;
       }
@@ -164,7 +164,7 @@ export function useEmergencyMode() {
             message: 'Unable to deduct points right now. Please try again.',
             variant: 'error',
           });
-          setState({ phase: 'idle', nearestBathroom: null });
+          setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
           isRunningRef.current = false;
           return;
         }
