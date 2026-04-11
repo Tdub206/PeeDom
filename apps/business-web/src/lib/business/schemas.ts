@@ -41,3 +41,106 @@ export const updateBusinessBathroomSettingsSchema = z.object({
   show_on_free_map: z.boolean(),
   is_location_verified: z.boolean(),
 });
+
+// Matches the mobile `business_coupons` table + `create_business_coupon`
+// RPC shape so both surfaces stay wire-compatible. The DB constraints
+// come from supabase/migrations/033_coupon_system.sql.
+export const couponTypeSchema = z.enum([
+  'percent_off',
+  'dollar_off',
+  'bogo',
+  'free_item',
+  'custom',
+]);
+
+export const businessCouponRowSchema = z.object({
+  id: z.string(),
+  bathroom_id: z.string(),
+  business_user_id: z.string(),
+  title: z.string().min(1),
+  description: z.string().nullable(),
+  coupon_type: couponTypeSchema,
+  value: z.number().positive().nullable(),
+  min_purchase: z.number().nonnegative().nullable(),
+  coupon_code: z.string().min(1),
+  max_redemptions: z.number().int().positive().nullable(),
+  current_redemptions: z.number().int().nonnegative(),
+  starts_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema.nullable(),
+  is_active: z.boolean(),
+  premium_only: z.boolean(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const businessCouponRowsSchema = z.array(businessCouponRowSchema);
+
+export type BusinessCouponRow = z.infer<typeof businessCouponRowSchema>;
+
+// Input schema for the create-coupon server action. We normalize to
+// the same shape the RPC expects, so the action can hand it straight
+// through after the ownership check.
+export const createBusinessCouponSchema = z
+  .object({
+    bathroom_id: z.string().uuid('Pick a location before saving the coupon.'),
+    title: z
+      .string()
+      .trim()
+      .min(1, 'Give the coupon a short title.')
+      .max(100, 'Keep the title under 100 characters.'),
+    description: z
+      .string()
+      .trim()
+      .max(500, 'Keep the description under 500 characters.')
+      .optional()
+      .transform((value) => (value && value.length > 0 ? value : null)),
+    coupon_type: couponTypeSchema,
+    value: z
+      .number({ invalid_type_error: 'Enter the discount value as a number.' })
+      .positive('Discount value must be greater than 0.')
+      .nullable(),
+    min_purchase: z
+      .number({ invalid_type_error: 'Enter the minimum purchase as a number.' })
+      .nonnegative('Minimum purchase must be zero or more.')
+      .nullable(),
+    coupon_code: z
+      .string()
+      .trim()
+      .max(30, 'Coupon codes are capped at 30 characters.')
+      .optional()
+      .transform((value) => (value && value.length > 0 ? value.toUpperCase() : null)),
+    max_redemptions: z
+      .number({ invalid_type_error: 'Enter redemption limit as a whole number.' })
+      .int('Redemption limit must be a whole number.')
+      .positive('Redemption limit must be greater than 0.')
+      .nullable(),
+    expires_at: dateTimeStringSchema.nullable(),
+    premium_only: z.boolean(),
+  })
+  .superRefine((input, ctx) => {
+    const typesNeedingValue: Array<z.infer<typeof couponTypeSchema>> = [
+      'percent_off',
+      'dollar_off',
+    ];
+
+    if (typesNeedingValue.includes(input.coupon_type) && input.value === null) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['value'],
+        message:
+          input.coupon_type === 'percent_off'
+            ? 'Enter a percent-off value between 1 and 100.'
+            : 'Enter a dollar-off amount greater than 0.',
+      });
+    }
+
+    if (input.coupon_type === 'percent_off' && input.value !== null && input.value > 100) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['value'],
+        message: 'Percent-off value cannot exceed 100.',
+      });
+    }
+  });
+
+export type CreateBusinessCouponInput = z.infer<typeof createBusinessCouponSchema>;

@@ -23,6 +23,26 @@ type BusinessWebFunctions = Omit<
     };
     Returns: BusinessBathroomSettings[];
   };
+  create_business_coupon: {
+    Args: {
+      p_bathroom_id: string;
+      p_title: string;
+      p_description: string | null;
+      p_coupon_type: 'percent_off' | 'dollar_off' | 'bogo' | 'free_item' | 'custom';
+      p_value: number | null;
+      p_min_purchase: number | null;
+      p_coupon_code: string | null;
+      p_max_redemptions: number | null;
+      p_starts_at: string;
+      p_expires_at: string | null;
+      p_premium_only: boolean;
+    };
+    Returns: {
+      success: boolean;
+      coupon_id: string;
+      coupon_code: string;
+    };
+  };
 };
 
 export type BusinessWebDatabase = Omit<MobileDatabase, 'public'> & {

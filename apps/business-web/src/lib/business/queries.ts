@@ -1,5 +1,9 @@
 import type { BusinessDashboardBathroom } from '@mobile/types/index';
-import { businessDashboardAnalyticsRowsSchema } from '@/lib/business/schemas';
+import {
+  businessCouponRowsSchema,
+  businessDashboardAnalyticsRowsSchema,
+  type BusinessCouponRow,
+} from '@/lib/business/schemas';
 import type { BusinessWebDatabase } from '@/lib/supabase/database';
 import type { BusinessSupabaseClient } from '@/lib/supabase/server';
 
@@ -12,6 +16,13 @@ type BathroomRow = Pick<
   BusinessWebDatabase['public']['Tables']['bathrooms']['Row'],
   'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at'
 >;
+
+export type { BusinessCouponRow } from '@/lib/business/schemas';
+
+export interface BusinessCouponsQueryResult {
+  coupons: BusinessCouponRow[];
+  error: string | null;
+}
 
 export type ApprovedLocation = BusinessDashboardBathroom & {
   address: string;
@@ -201,4 +212,35 @@ function formatBathroomAddress(bathroom: BathroomRow): string {
 
 function isDefined(value: string | null): value is string {
   return Boolean(value);
+}
+
+// Loads every coupon owned by the caller. Mirrors the mobile
+// `fetchBusinessCoupons` path: RLS policy `coupons_select_own` makes
+// sure only `business_user_id = auth.uid()` rows come back. We still
+// validate the result with zod so schema drift surfaces as a
+// user-facing error instead of a silent cast.
+export async function getBusinessCoupons(
+  supabase: BusinessSupabaseClient,
+  userId: string
+): Promise<BusinessCouponsQueryResult> {
+  const { data, error } = await supabase
+    .from('business_coupons')
+    .select('*')
+    .eq('business_user_id', userId)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    return { coupons: [], error: error.message };
+  }
+
+  const parsed = businessCouponRowsSchema.safeParse(data ?? []);
+
+  if (!parsed.success) {
+    return {
+      coupons: [],
+      error: 'Unable to load your coupons right now.',
+    };
+  }
+
+  return { coupons: parsed.data, error: null };
 }
