@@ -1,5 +1,5 @@
 {
-  "name": "peedom-mobile",
+  "name": "stallpass",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,10 @@
     "android:assembleDebug": "node scripts/android-tooling.cjs gradle assembleDebug",
     "android:assembleDebug:emulator": "node scripts/android-tooling.cjs gradle -PreactNativeArchitectures=x86_64 assembleDebug",
     "android:studio": "node scripts/android-tooling.cjs studio",
+    "ai:loop": "node scripts/stallpass-ai-orchestrator.cjs loop",
+    "ai:plan": "node scripts/stallpass-ai-orchestrator.cjs plan",
+    "ai:review": "node scripts/stallpass-ai-orchestrator.cjs review",
+    "ai:launch": "node scripts/stallpass-ai-orchestrator.cjs launch",
     "lint": "eslint .",
     "test": "jest",
     "type-check": "tsc --noEmit",
@@ -25,6 +29,7 @@
     "@sentry/react-native": "~7.2.0",
     "@supabase/supabase-js": "^2.39.7",
     "@tanstack/react-query": "^5.28.4",
+    "adb": "^0.2.0",
     "expo": "~54.0.0",
     "expo-blur": "~15.0.8",
     "expo-build-properties": "~1.0.10",
@@ -44,6 +49,7 @@
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
     "expo-system-ui": "~6.0.9",
+    "expo-updates": "~29.0.16",
     "nativewind": "^4.0.1",
     "react": "^19.1.0",
     "react-native": "^0.81.5",
@@ -73,6 +79,13 @@
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.4.6",
     "typescript": "^5.8.2"
+  },
+  "expo": {
+    "doctor": {
+      "appConfigFieldsNotSyncedCheck": {
+        "enabled": false
+      }
+    }
   },
   "private": true
 }

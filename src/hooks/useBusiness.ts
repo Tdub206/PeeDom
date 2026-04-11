@@ -1,17 +1,30 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
+  fetchBusinessBathroomHoursConfig,
+  fetchBusinessBathroomSettings,
   fetchBusinessDashboard,
   fetchBusinessFeaturedPlacements,
   fetchBusinessHoursUpdateHistory,
+  fetchBusinessPromotions,
+  refreshBusinessBathroomHoursFromGoogle,
+  upsertBusinessBathroomSettings,
+  upsertBusinessPromotion,
   updateBusinessBathroomHours,
 } from '@/api/business';
 import { useAuth } from '@/contexts/AuthContext';
 import type {
+  BusinessBathroomHoursConfig,
+  BusinessBathroomSettings,
   BusinessDashboardData,
   BusinessFeaturedPlacement,
+  BusinessGoogleHoursSyncResult,
   BusinessHoursUpdateAudit,
   BusinessHoursUpdateResult,
+  BusinessPromotion,
+  SyncBusinessBathroomGoogleHoursInput,
+  UpdateBusinessBathroomSettingsInput,
   UpdateBusinessHoursInput,
+  UpsertBusinessPromotionInput,
 } from '@/types';
 
 export const businessQueryKeys = {
@@ -19,6 +32,9 @@ export const businessQueryKeys = {
   dashboard: (userId: string) => [...businessQueryKeys.all, 'dashboard', userId] as const,
   featuredPlacements: (userId: string) => [...businessQueryKeys.all, 'featured-placements', userId] as const,
   hoursHistory: (bathroomId: string) => [...businessQueryKeys.all, 'hours-history', bathroomId] as const,
+  hoursConfig: (bathroomId: string) => [...businessQueryKeys.all, 'hours-config', bathroomId] as const,
+  settings: (bathroomId: string) => [...businessQueryKeys.all, 'settings', bathroomId] as const,
+  promotions: (bathroomId: string) => [...businessQueryKeys.all, 'promotions', bathroomId] as const,
 };
 
 export function useBusinessDashboard(options?: { enabled?: boolean }) {
@@ -88,6 +104,69 @@ export function useBusinessHoursHistory(bathroomId: string | null) {
   });
 }
 
+export function useBusinessBathroomSettings(bathroomId: string | null) {
+  return useQuery<BusinessBathroomSettings | null, Error>({
+    queryKey: businessQueryKeys.settings(bathroomId ?? 'none'),
+    enabled: Boolean(bathroomId),
+    staleTime: 60 * 1000,
+    queryFn: async () => {
+      if (!bathroomId) {
+        return null;
+      }
+
+      const result = await fetchBusinessBathroomSettings(bathroomId);
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      return result.data;
+    },
+  });
+}
+
+export function useBusinessBathroomHoursConfig(bathroomId: string | null) {
+  return useQuery<BusinessBathroomHoursConfig | null, Error>({
+    queryKey: businessQueryKeys.hoursConfig(bathroomId ?? 'none'),
+    enabled: Boolean(bathroomId),
+    staleTime: 60 * 1000,
+    queryFn: async () => {
+      if (!bathroomId) {
+        return null;
+      }
+
+      const result = await fetchBusinessBathroomHoursConfig(bathroomId);
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      return result.data;
+    },
+  });
+}
+
+export function useBusinessPromotions(bathroomId: string | null) {
+  return useQuery<BusinessPromotion[], Error>({
+    queryKey: businessQueryKeys.promotions(bathroomId ?? 'none'),
+    enabled: Boolean(bathroomId),
+    staleTime: 60 * 1000,
+    queryFn: async () => {
+      if (!bathroomId) {
+        return [];
+      }
+
+      const result = await fetchBusinessPromotions(bathroomId);
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      return result.data;
+    },
+  });
+}
+
 export function useUpdateBusinessBathroomHours() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -119,9 +198,122 @@ export function useUpdateBusinessBathroomHours() {
           queryKey: businessQueryKeys.hoursHistory(result.bathroom_id),
         }),
         queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursConfig(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
           queryKey: ['bathrooms'],
         }),
       ]);
+    },
+  });
+}
+
+export function useRefreshBusinessBathroomHoursFromGoogle() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation<BusinessGoogleHoursSyncResult, Error, SyncBusinessBathroomGoogleHoursInput>({
+    mutationFn: async (input) => {
+      const result = await refreshBusinessBathroomHoursFromGoogle(input);
+
+      if (result.error || !result.data) {
+        throw result.error ?? new Error('Unable to sync Google hours right now.');
+      }
+
+      return result.data;
+    },
+    onSuccess: async (result) => {
+      if (user?.id) {
+        await Promise.all([
+          queryClient.invalidateQueries({
+            queryKey: businessQueryKeys.dashboard(user.id),
+          }),
+          queryClient.invalidateQueries({
+            queryKey: businessQueryKeys.featuredPlacements(user.id),
+          }),
+        ]);
+      }
+
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursHistory(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.hoursConfig(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathrooms'],
+        }),
+      ]);
+    },
+  });
+}
+
+export function useUpdateBusinessBathroomSettings() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation<BusinessBathroomSettings, Error, UpdateBusinessBathroomSettingsInput>({
+    mutationFn: async (input) => {
+      const result = await upsertBusinessBathroomSettings(input);
+
+      if (result.error || !result.data) {
+        throw result.error ?? new Error('Unable to save these StallPass settings right now.');
+      }
+
+      return result.data;
+    },
+    onSuccess: async (result) => {
+      if (user?.id) {
+        await queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.dashboard(user.id),
+        });
+      }
+
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.settings(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathrooms'],
+        }),
+      ]);
+    },
+  });
+}
+
+export function useUpsertBusinessPromotion() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+
+  return useMutation<BusinessPromotion, Error, UpsertBusinessPromotionInput>({
+    mutationFn: async (input) => {
+      const result = await upsertBusinessPromotion(input);
+
+      if (result.error || !result.data) {
+        throw result.error ?? new Error('Unable to save this StallPass offer right now.');
+      }
+
+      return result.data;
+    },
+    onSuccess: async (result) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.promotions(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.settings(result.bathroom_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['bathrooms'],
+        }),
+      ]);
+
+      if (user?.id) {
+        await queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.dashboard(user.id),
+        });
+      }
     },
   });
 }

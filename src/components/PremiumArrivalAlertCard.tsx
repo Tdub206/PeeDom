@@ -41,7 +41,7 @@ function PremiumArrivalAlertCardComponent({
       </Text>
       <Text className="mt-2 text-base leading-6 text-ink-600">
         {isPremiumUser
-          ? 'Arm a premium alert when you are on the way and Pee-Dom will push a warning if the code changes before you arrive.'
+          ? 'Arm a premium alert when you are on the way and StallPass will push a warning if the code changes before you arrive.'
           : 'Premium unlocks pre-arrival code alerts while you are on the way to a bathroom.'}
       </Text>
 

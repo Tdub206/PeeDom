@@ -82,7 +82,7 @@ export function useBathroomSubmissions() {
 
         showToast({
           title: photoWarning ? 'Bathroom added with a photo warning' : 'Bathroom added',
-          message: photoWarning ?? 'The new bathroom is now available in Pee-Dom.',
+          message: photoWarning ?? 'The new bathroom is now available in StallPass.',
           variant: photoWarning ? 'warning' : 'success',
         });
 
@@ -92,17 +92,27 @@ export function useBathroomSubmissions() {
           photoWarning,
         };
       } catch (error) {
+        const isDuplicateBathroomError =
+          error instanceof Error &&
+          'code' in error &&
+          (error as Error & { code?: string }).code === 'DUPLICATE_BATHROOM_NEARBY';
         const message = getErrorMessage(
           error,
-          isTransientNetworkError(error)
+          isDuplicateBathroomError
+            ? 'A similar bathroom is already pinned nearby. Review the duplicate suggestions before creating a new listing.'
+            : isTransientNetworkError(error)
             ? 'We could not reach Supabase. Save your draft and try again when you are back online.'
             : 'Unable to add this bathroom right now.'
         );
 
         showToast({
-          title: isTransientNetworkError(error) ? 'Connection required' : 'Submission failed',
+          title: isDuplicateBathroomError
+            ? 'Possible duplicate detected'
+            : isTransientNetworkError(error)
+              ? 'Connection required'
+              : 'Submission failed',
           message,
-          variant: isTransientNetworkError(error) ? 'warning' : 'error',
+          variant: isDuplicateBathroomError || isTransientNetworkError(error) ? 'warning' : 'error',
         });
 
         throw error;

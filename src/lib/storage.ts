@@ -23,6 +23,8 @@ const STORAGE_KEYS = {
   PREMIUM_CITY_PACK_INDEX: '@peedom/premium_city_pack_index',
   PREMIUM_CITY_PACK_PREFIX: '@peedom/premium_city_pack',
   FIRST_INSTALL_CREDITS: '@peedom/first_install_credits',
+  TERMS_ACCEPTED_AT: '@peedom/terms_accepted_at',
+  HAS_COMPLETED_ONBOARDING: '@peedom/has_completed_onboarding',
 } as const;
 
 export const storage = {
@@ -98,7 +100,13 @@ export const storage = {
 
   async clear(): Promise<void> {
     try {
-      await AsyncStorage.clear();
+      const namespacedKeys = await this.getAllKeys();
+
+      if (namespacedKeys.length === 0) {
+        return;
+      }
+
+      await AsyncStorage.multiRemove([...namespacedKeys]);
     } catch (error) {
       console.error('Error clearing storage:', error);
       throw error;

@@ -17,6 +17,7 @@ create or replace function public.create_bathroom_submission(
   p_is_accessible boolean default false,
   p_is_customer_only boolean default false
 )
+
 returns jsonb
 language plpgsql
 security definer
@@ -436,6 +437,7 @@ grant execute on function public.create_bathroom_submission(
   boolean,
   boolean
 ) to authenticated;
+
 
 grant execute on function public.submit_bathroom_access_code(uuid, text) to authenticated;
 grant execute on function public.vote_on_code(uuid, smallint) to authenticated;

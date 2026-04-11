@@ -1,7 +1,8 @@
 import { z } from 'zod';
-import type { Database, DbCodeRevealGrant, DbCodeVote } from '@/types';
+import type { BathroomCodePolicySummary, Database, DbCodeRevealGrant, DbCodeVote } from '@/types';
 import {
   bathroomCodeSubmissionResultSchema,
+  bathroomCodePolicySummarySchema,
   bathroomAccessCodeSchema,
   codeVoteMutationResultSchema,
   dbCodeRevealGrantSchema,
@@ -62,6 +63,14 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
 
   if (/CODE_SUBMISSION_COOLDOWN/i.test(errorMessage)) {
     return 'CODE_SUBMISSION_COOLDOWN';
+  }
+
+  if (/CODE_SUBMISSION_DISABLED/i.test(errorMessage)) {
+    return 'CODE_SUBMISSION_DISABLED';
+  }
+
+  if (/INVALID_CODE_POLICY/i.test(errorMessage)) {
+    return 'INVALID_CODE_POLICY';
   }
 
   if (/INVALID_CODE_VOTE/i.test(errorMessage)) {
@@ -193,6 +202,50 @@ export async function fetchBathroomCodeRevealAccess(
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to check whether this code is unlocked.'),
         'Unable to check whether this code is unlocked.'
+      ),
+    };
+  }
+}
+
+export async function fetchBathroomCodePolicySummary(
+  bathroomId: string
+): Promise<{ data: BathroomCodePolicySummary | null; error: (Error & { code?: string }) | null }> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('get_bathroom_code_policy' as never, {
+      p_bathroom_id: bathroomId,
+    } as never);
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to load this restroom access policy right now.'),
+      };
+    }
+
+    const parsedRow = parseSupabaseNullableRow(
+      bathroomCodePolicySummarySchema,
+      Array.isArray(data) ? data[0] ?? null : data,
+      'bathroom code policy summary',
+      'Unable to load this restroom access policy right now.'
+    );
+
+    if (parsedRow.error) {
+      return {
+        data: null,
+        error: parsedRow.error,
+      };
+    }
+
+    return {
+      data: parsedRow.data as BathroomCodePolicySummary | null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load this restroom access policy right now.'),
+        'Unable to load this restroom access policy right now.'
       ),
     };
   }

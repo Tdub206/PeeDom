@@ -12,6 +12,8 @@ import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useToast } from '@/hooks/useToast';
 import { cleanlinessRatingDrafts } from '@/lib/draft-manager';
 import { dismissToSafely, pushSafely } from '@/lib/navigation';
+import { TermsGate } from '@/components/TermsGate';
+import { useTermsAcceptance } from '@/hooks/useTermsAcceptance';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
   cleanlinessRatingSchema,
@@ -113,6 +115,7 @@ export default function RateCleanlinessModalScreen() {
   const bathroomId = useMemo(() => parseRouteParam(bathroom_id), [bathroom_id]);
   const requestedDraftId = useMemo(() => parseRouteParam(draft_id), [draft_id]);
   const { currentRating, isLoadingCurrentRating, isSubmitting, submitRating } = useCleanlinessRating(bathroomId || null);
+  const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
 
   const closeModal = useCallback(() => {
     if (bathroomId) {
@@ -568,8 +571,15 @@ export default function RateCleanlinessModalScreen() {
               />
             </View>
 
+            <TermsGate
+              hasAccepted={hasAcceptedTerms}
+              onAccept={() => void acceptTerms()}
+              fallbackRoute="/modal/rate-cleanliness"
+            />
+
             <View className="mt-6 gap-3">
               <Button
+                disabled={hasAcceptedTerms === false}
                 label="Save Rating"
                 loading={isSubmitting}
                 onPress={() => {

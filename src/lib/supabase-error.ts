@@ -51,7 +51,7 @@ export function classifySupabaseError(
   if (OFFLINE_PATTERN.test(rawMessage)) {
     return {
       kind: 'offline',
-      message: 'You appear to be offline. Pee-Dom will keep your last known session and retry when the network returns.',
+      message: 'You appear to be offline. StallPass will keep your last known session and retry when the network returns.',
       shouldClearSession: false,
       title: 'Offline mode',
     };

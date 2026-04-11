@@ -1,10 +1,13 @@
+import { useMemo } from 'react';
 import { Tabs } from 'expo-router';
 import { Platform, StyleSheet } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/constants/colors';
+import { useAuth } from '@/contexts/AuthContext';
 
-type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business';
+type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business' | 'admin';
 
 const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   index: 'map-outline',
@@ -12,16 +15,30 @@ const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   favorites: 'heart-outline',
   profile: 'person-circle-outline',
   business: 'briefcase-outline',
+  admin: 'shield-checkmark-outline',
 };
 
 export default function TabLayout() {
+  const { profile } = useAuth();
+  const isAdmin = profile?.role === 'admin';
+  const insets = useSafeAreaInsets();
+  const tabBarStyle = useMemo(
+    () => ({
+      ...styles.tabBar,
+      height: (Platform.OS === 'ios' ? 54 : 56) + insets.bottom,
+      paddingBottom: insets.bottom,
+      paddingTop: Platform.OS === 'ios' ? 8 : 6,
+    }),
+    [insets.bottom]
+  );
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: colors.brand[600],
         tabBarInactiveTintColor: colors.ink[500],
-        tabBarStyle: styles.tabBar,
+        tabBarStyle,
         tabBarLabelStyle: styles.tabLabel,
         tabBarHideOnKeyboard: true,
         tabBarBackground: () =>
@@ -63,6 +80,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <TabBarIcon routeName="business" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="admin"
+        options={{
+          title: 'Admin',
+          tabBarIcon: ({ color }) => <TabBarIcon routeName="admin" color={color} />,
+          href: isAdmin ? ('/admin' as never) : null,
+        }}
+      />
     </Tabs>
   );
 }
@@ -77,7 +102,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     elevation: 0,
     backgroundColor: Platform.OS === 'android' ? colors.surface.card : 'transparent',
-    height: Platform.OS === 'ios' ? 88 : 60,
   },
   tabLabel: {
     fontSize: 12,

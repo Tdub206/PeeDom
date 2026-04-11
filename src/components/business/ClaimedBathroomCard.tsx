@@ -3,11 +3,13 @@ import { Text, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
 import type { BusinessDashboardBathroom } from '@/types';
+import { getBathroomAttentionSummary, getBathroomRouteConversionPercent } from '@/utils/business-dashboard';
 
 interface ClaimedBathroomCardProps {
   bathroom: BusinessDashboardBathroom;
   onOpenBathroom: (bathroomId: string) => void;
   onManageHours: (bathroomId: string) => void;
+  onRequestFeatured?: (bathroomId: string) => void;
 }
 
 function formatRelativeTime(isoString: string): string {
@@ -71,7 +73,11 @@ function ClaimedBathroomCardComponent({
   bathroom,
   onOpenBathroom,
   onManageHours,
+  onRequestFeatured,
 }: ClaimedBathroomCardProps) {
+  const routeConversionPercent = getBathroomRouteConversionPercent(bathroom);
+  const attentionSummary = getBathroomAttentionSummary(bathroom);
+
   return (
     <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
       <View className="flex-row items-start justify-between gap-3">
@@ -98,9 +104,43 @@ function ClaimedBathroomCardComponent({
         </View>
       ) : null}
 
+      <View className="mt-4 flex-row flex-wrap gap-2">
+        <View className="rounded-full bg-brand-50 px-3 py-2">
+          <Text className="text-xs font-black uppercase tracking-[1px] text-brand-700">
+            {bathroom.requires_premium_access && !bathroom.show_on_free_map
+              ? 'Premium map only'
+              : bathroom.requires_premium_access
+                ? 'Premium + free map'
+                : 'Public map'}
+          </Text>
+        </View>
+        <View
+          className={[
+            'rounded-full px-3 py-2',
+            bathroom.is_location_verified ? 'bg-success/10' : 'bg-surface-base',
+          ].join(' ')}
+        >
+          <Text
+            className={[
+              'text-xs font-black uppercase tracking-[1px]',
+              bathroom.is_location_verified ? 'text-success' : 'text-ink-600',
+            ].join(' ')}
+          >
+            {bathroom.is_location_verified ? 'Location verified' : 'Location pending'}
+          </Text>
+        </View>
+        {bathroom.pricing_plan === 'lifetime' ? (
+          <View className="rounded-full bg-ink-900 px-3 py-2">
+            <Text className="text-xs font-black uppercase tracking-[1px] text-white">
+              Lifetime access
+            </Text>
+          </View>
+        ) : null}
+      </View>
+
       <View className="mt-5 flex-row gap-3">
-        <Metric label="Favorites" value={bathroom.total_favorites.toString()} />
-        <Metric label="Cleanliness" value={bathroom.avg_cleanliness.toFixed(1)} />
+        <Metric label="Weekly Views" value={bathroom.weekly_views.toString()} />
+        <Metric label="Route Rate" value={`${routeConversionPercent}%`} />
       </View>
 
       <View className="mt-3 flex-row gap-3">
@@ -109,7 +149,26 @@ function ClaimedBathroomCardComponent({
           tone={bathroom.open_reports > 0 ? 'warning' : 'default'}
           value={bathroom.open_reports.toString()}
         />
-        <Metric label="Views" value={bathroom.weekly_views.toString()} />
+        <Metric label="Weekly Visitors" value={bathroom.weekly_unique_visitors.toString()} />
+      </View>
+
+      <View className="mt-3 flex-row gap-3">
+        <Metric label="Route Opens" value={bathroom.weekly_navigation_count.toString()} />
+        <Metric label="Cleanliness" value={bathroom.avg_cleanliness.toFixed(1)} />
+      </View>
+
+      <View className="mt-3 flex-row gap-3">
+        <Metric label="Map Saves" value={bathroom.total_favorites.toString()} />
+        <Metric label="Offers" value={bathroom.active_offer_count.toString()} />
+      </View>
+
+      <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
+        <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Trust posture</Text>
+        <Text className="mt-2 text-sm leading-6 text-ink-600">
+          {attentionSummary.length
+            ? attentionSummary.join(', ')
+            : 'Verification, discovery, and complaint signals look healthy for this location.'}
+        </Text>
       </View>
 
       <View className="mt-5 gap-3">
@@ -117,6 +176,13 @@ function ClaimedBathroomCardComponent({
           label="Manage Hours"
           onPress={() => onManageHours(bathroom.bathroom_id)}
         />
+        {onRequestFeatured && !bathroom.has_active_featured_placement ? (
+          <Button
+            label="Request Featured Placement"
+            onPress={() => onRequestFeatured(bathroom.bathroom_id)}
+            variant="secondary"
+          />
+        ) : null}
         <Button
           label="Open Bathroom"
           onPress={() => onOpenBathroom(bathroom.bathroom_id)}

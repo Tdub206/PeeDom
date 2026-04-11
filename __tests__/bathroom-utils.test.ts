@@ -2,10 +2,15 @@ import { describe, expect, it } from '@jest/globals';
 
 import {
   applyBathroomFilters,
+  buildBathroomConfidenceProfile,
+  buildBathroomRecommendations,
+  buildNearbyBathroomHighlights,
   buildBathroomAddress,
   calculateDistanceMeters,
   calculateAccessibilityScore,
+  calculateBathroomRecommendationScore,
   getBathroomMapPinTone,
+  isBathroomVisibleOnMap,
   isBathroomOpenNow,
   mergeAccessibilityFilters,
   mapBathroomDetailRowToListItem,
@@ -141,6 +146,9 @@ describe('bathroom utilities', () => {
     expect(listItem.accessibility_score).toBe(55);
     expect(listItem.primary_code_summary.has_code).toBe(true);
     expect(listItem.distance_meters).toBeGreaterThan(0);
+    expect(listItem.stallpass_access_tier).toBe('public');
+    expect(listItem.show_on_free_map).toBe(true);
+    expect(listItem.last_updated_at).toBe(bathroomRow.updated_at);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
   });
 
@@ -194,6 +202,161 @@ describe('bathroom utilities', () => {
 
     expect(getBathroomMapPinTone(lockedWithoutCode)).toBe('locked_without_code');
     expect(getBathroomMapPinTone(unlockedBathroom)).toBe('open_unlocked');
+  });
+
+  it('hides premium-only StallPass partners from the free map', () => {
+    expect(
+      isBathroomVisibleOnMap(
+        {
+          stallpass_access_tier: 'premium',
+          show_on_free_map: false,
+        },
+        false
+      )
+    ).toBe(false);
+
+    expect(
+      isBathroomVisibleOnMap(
+        {
+          stallpass_access_tier: 'premium',
+          show_on_free_map: false,
+        },
+        true
+      )
+    ).toBe(true);
+  });
+
+  it('builds nearby highlights from the closest open unlocked bathroom and nearest locked options', () => {
+    const baseItem = mapBathroomRowToListItem(
+      {
+        ...bathroomRow,
+        id: 'base-bathroom',
+        is_locked: false,
+      },
+      {
+        cachedAt: '2026-03-16T12:00:00.000Z',
+        stale: false,
+      }
+    );
+    const nearbyHighlights = buildNearbyBathroomHighlights(
+      [
+        {
+          ...baseItem,
+          id: 'closed-nearest',
+          distance_meters: 40,
+          hours: {
+            monday: [{ open: '20:00', close: '21:00' }],
+          },
+        },
+        {
+          ...baseItem,
+          id: 'locked-nearest',
+          distance_meters: 60,
+          flags: {
+            ...baseItem.flags,
+            is_locked: true,
+          },
+        },
+        {
+          ...baseItem,
+          id: 'open-next',
+          distance_meters: 110,
+          hours: {
+            monday: [{ open: '08:00', close: '18:00' }],
+          },
+        },
+        {
+          ...baseItem,
+          id: 'locked-second',
+          distance_meters: 150,
+          flags: {
+            ...baseItem.flags,
+            is_locked: true,
+          },
+        },
+      ],
+      {
+        lockedLimit: 1,
+        targetDate: new Date(2026, 2, 16, 12, 0, 0),
+      }
+    );
+
+    expect(nearbyHighlights.nearestOpenUnlocked?.id).toBe('open-next');
+    expect(nearbyHighlights.lockedBathrooms.map((bathroom) => bathroom.id)).toEqual(['locked-nearest']);
+  });
+
+  it('builds a confidence profile with freshness, code reliability, and photo evidence', () => {
+    const listItem = mapBathroomRowToListItem(bathroomRow, {
+      cachedAt: '2026-03-10T12:05:00.000Z',
+      stale: false,
+    });
+    const profile = buildBathroomConfidenceProfile(listItem, {
+      latestPhotoCreatedAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+      now: new Date(),
+    });
+
+    expect(profile.trust_score).toBeGreaterThan(60);
+    expect(profile.code_reliability_label).toContain('Code reliability');
+    expect(profile.flags.some((flag) => flag.label.includes('Verified recently'))).toBe(true);
+    expect(profile.photo_evidence_label).toContain('Photo evidence');
+  });
+
+  it('recommends the best bathrooms for overall, accessible, and no-code scenarios', () => {
+    const accessibleBathroom = mapBathroomRowToListItem(
+      {
+        ...bathroomRow,
+        id: 'bathroom-accessible',
+        is_locked: false,
+        is_customer_only: true,
+        accessibility_score: 90,
+        confidence_score: 25,
+        cleanliness_avg: 2.8,
+        last_verified_at: new Date(Date.now() - 80 * 24 * 60 * 60 * 1000).toISOString(),
+        updated_at: new Date(Date.now() - 80 * 24 * 60 * 60 * 1000).toISOString(),
+        distance_meters: 220,
+      },
+      {
+        cachedAt: '2026-03-10T12:05:00.000Z',
+        stale: false,
+      }
+    );
+    const noCodeBathroom = mapBathroomRowToListItem(
+      {
+        ...bathroomRow,
+        id: 'bathroom-no-code',
+        is_locked: false,
+        accessibility_score: 20,
+        code_id: null,
+        confidence_score: null,
+        distance_meters: 80,
+      },
+      {
+        cachedAt: '2026-03-10T12:05:00.000Z',
+        stale: false,
+      }
+    );
+    const lockedBathroom = mapBathroomRowToListItem(
+      {
+        ...bathroomRow,
+        id: 'bathroom-locked',
+        distance_meters: 60,
+      },
+      {
+        cachedAt: '2026-03-10T12:05:00.000Z',
+        stale: false,
+      }
+    );
+    const recommendations = buildBathroomRecommendations([
+      accessibleBathroom,
+      noCodeBathroom,
+      lockedBathroom,
+    ]);
+
+    expect(recommendations.find((item) => item.scenario === 'accessible')?.bathroom?.id).toBe('bathroom-accessible');
+    expect(recommendations.find((item) => item.scenario === 'no_code')?.bathroom?.id).toBe('bathroom-no-code');
+    expect(
+      calculateBathroomRecommendationScore(noCodeBathroom, { scenario: 'no_code' })
+    ).toBeGreaterThan(calculateBathroomRecommendationScore(lockedBathroom, { scenario: 'no_code' }));
   });
 
   it('filters bathrooms by openNow, noCodeRequired, and cleanliness', () => {

@@ -2,137 +2,29 @@ import { useCallback, useEffect, useMemo } from 'react';
 import { RefreshControl, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
 import {
-  BusinessHoursEditorSheet,
-  ClaimedBathroomCard,
-  DashboardStats,
-  FeaturedPlacementCard,
+  ActionTile,
+  BusinessHeroHeader,
+  BusinessLocationCard,
+  BusinessNavCard,
+  BusinessSectionHeader,
+  EarlyAdopterBanner,
+  QuickStatTile,
 } from '@/components/business';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBusinessDashboard, useBusinessFeaturedPlacements } from '@/hooks/useBusiness';
 import { useBusinessClaims } from '@/hooks/useBusinessClaims';
+import { useBusinessCoupons } from '@/hooks/useBusinessCoupons';
+import { useEarlyAdopterInvites, useGenerateInvite } from '@/hooks/useEarlyAdopterInvite';
+import { useBusinessVisitStats } from '@/hooks/useStallPassVisits';
 import { pushSafely } from '@/lib/navigation';
 import { useBusinessStore } from '@/store/useBusinessStore';
-import { BusinessClaimListItem, BusinessClaimStatus } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
-
-const STATUS_META: Record<
-  BusinessClaimStatus,
-  {
-    label: string;
-    badgeClassName: string;
-    badgeLabelClassName: string;
-    body: string;
-  }
-> = {
-  pending: {
-    label: 'Pending review',
-    badgeClassName: 'border border-warning/20 bg-warning/10',
-    badgeLabelClassName: 'text-warning',
-    body: 'Your ownership claim is queued for moderator review. Analytics unlock as soon as this location is approved.',
-  },
-  approved: {
-    label: 'Approved',
-    badgeClassName: 'border border-success/20 bg-success/10',
-    badgeLabelClassName: 'text-success',
-    body: 'This location is approved and can now be managed through the business dashboard.',
-  },
-  rejected: {
-    label: 'Needs changes',
-    badgeClassName: 'border border-danger/20 bg-danger/10',
-    badgeLabelClassName: 'text-danger',
-    body: 'This claim was rejected. Review the details, gather stronger evidence, and resubmit when ready.',
-  },
-};
-
-function formatClaimDate(timestamp: string): string {
-  return new Date(timestamp).toLocaleDateString(undefined, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
-
-function SummaryCard({
-  label,
-  value,
-}: {
-  label: string;
-  value: number;
-}) {
-  return (
-    <View className="flex-1 rounded-2xl border border-surface-strong bg-surface-card px-4 py-4">
-      <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">{label}</Text>
-      <Text className="mt-2 text-3xl font-black tracking-tight text-ink-900">{value}</Text>
-    </View>
-  );
-}
-
-function ClaimStatusCard({
-  claim,
-  onOpenBathroom,
-  onResubmitClaim,
-}: {
-  claim: BusinessClaimListItem;
-  onOpenBathroom: (bathroomId: string) => void;
-  onResubmitClaim: (bathroomId: string) => void;
-}) {
-  const statusMeta = STATUS_META[claim.review_status];
-
-  return (
-    <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
-      <View className="flex-row items-start justify-between gap-3">
-        <View className="flex-1">
-          <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Claimed Business</Text>
-          <Text className="mt-2 text-2xl font-bold text-ink-900">{claim.business_name}</Text>
-          <Text className="mt-2 text-base leading-6 text-ink-600">
-            {claim.bathroom?.place_name ?? 'Bathroom details unavailable'}
-          </Text>
-        </View>
-        <View className={['rounded-full px-3 py-2', statusMeta.badgeClassName].join(' ')}>
-          <Text
-            className={[
-              'text-xs font-semibold uppercase tracking-[1px]',
-              statusMeta.badgeLabelClassName,
-            ].join(' ')}
-          >
-            {statusMeta.label}
-          </Text>
-        </View>
-      </View>
-
-      <Text className="mt-4 text-sm leading-6 text-ink-600">{statusMeta.body}</Text>
-
-      <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
-        <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Bathroom</Text>
-        <Text className="mt-2 text-base font-semibold text-ink-900">
-          {claim.bathroom?.place_name ?? `Bathroom ${claim.bathroom_id}`}
-        </Text>
-        <Text className="mt-1 text-sm leading-5 text-ink-600">
-          {claim.bathroom?.address ?? 'This bathroom is no longer visible in the public directory.'}
-        </Text>
-      </View>
-
-      <Text className="mt-4 text-xs font-medium uppercase tracking-[1px] text-ink-500">
-        Submitted {formatClaimDate(claim.created_at)}
-      </Text>
-
-      <View className="mt-4 gap-3">
-        <Button
-          label="Open Bathroom"
-          onPress={() => onOpenBathroom(claim.bathroom_id)}
-          variant="secondary"
-        />
-        {claim.review_status === 'rejected' ? (
-          <Button label="Resubmit Claim" onPress={() => onResubmitClaim(claim.bathroom_id)} />
-        ) : null}
-      </View>
-    </View>
-  );
-}
 
 export default function BusinessTab() {
   const router = useRouter();
@@ -145,21 +37,28 @@ export default function BusinessTab() {
     isLoading: isClaimsLoading,
     refetch: refetchClaims,
   } = useBusinessClaims();
-  const {
-    isHoursEditorOpen,
-    selectedBathroomId,
-    openHoursEditor,
-    closeHoursEditor,
-    reset: resetBusinessStore,
-  } = useBusinessStore();
+  const { reset: resetBusinessStore } = useBusinessStore();
 
-  const hasDashboardAccess = profile?.role === 'business' || profile?.role === 'admin' || counts.approved > 0;
+  const isAdmin = profile?.role === 'admin';
+  const hasDashboardAccess = profile?.role === 'business' || isAdmin || counts.approved > 0;
+
   const dashboardQuery = useBusinessDashboard({
     enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
   });
   const featuredPlacementsQuery = useBusinessFeaturedPlacements({
     enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
   });
+  const visitStatsQuery = useBusinessVisitStats({
+    enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
+  });
+  const couponsQuery = useBusinessCoupons({
+    enabled: !isGuest && !isClaimsLoading && hasDashboardAccess,
+  });
+  const invitesQuery = useEarlyAdopterInvites(undefined, {
+    enabled: !isGuest && isAdmin,
+  });
+
+  const generateInviteMutation = useGenerateInvite();
 
   useEffect(() => {
     if (isGuest) {
@@ -167,238 +66,419 @@ export default function BusinessTab() {
     }
   }, [isGuest, resetBusinessStore]);
 
-  const headerCopy = useMemo(() => {
-    if (hasDashboardAccess && (dashboardQuery.data?.bathrooms.length ?? 0) > 0) {
-      return {
-        eyebrow: 'Business Dashboard',
-        title: 'Run your claimed bathrooms with live analytics.',
-        body: 'Verified locations surface favorites, reports, featured placement inventory, and public hours from one operational view.',
-      };
-    }
-
-    if (counts.pending > 0 || counts.approved > 0 || counts.rejected > 0) {
-      return {
-        eyebrow: 'Business Portal',
-        title: 'Track claim review and unlock management tools.',
-        body: 'Claim history stays visible here while approved locations graduate into the analytics dashboard.',
-      };
-    }
-
-    return {
-      eyebrow: 'Business Portal',
-      title: 'Claim bathrooms and manage the trusted surface customers see.',
-      body: 'Once your first ownership claim is approved, this tab turns into the operating console for that location.',
-    };
-  }, [counts.approved, counts.pending, counts.rejected, dashboardQuery.data?.bathrooms.length, hasDashboardAccess]);
-
   const handleRefresh = useCallback(async () => {
     await Promise.all([
       refetchClaims(),
       hasDashboardAccess ? dashboardQuery.refetch() : Promise.resolve(),
       hasDashboardAccess ? featuredPlacementsQuery.refetch() : Promise.resolve(),
+      hasDashboardAccess ? visitStatsQuery.refetch() : Promise.resolve(),
+      hasDashboardAccess ? couponsQuery.refetch() : Promise.resolve(),
+      isAdmin ? invitesQuery.refetch() : Promise.resolve(),
     ]);
-  }, [dashboardQuery, featuredPlacementsQuery, hasDashboardAccess, refetchClaims]);
+  }, [
+    couponsQuery,
+    dashboardQuery,
+    featuredPlacementsQuery,
+    hasDashboardAccess,
+    invitesQuery,
+    isAdmin,
+    refetchClaims,
+    visitStatsQuery,
+  ]);
 
-  const handleOpenBathroom = useCallback(
-    (bathroomId: string) => {
-      pushSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.business);
-    },
-    [router]
-  );
-
-  const handleResubmitClaim = useCallback(
-    (bathroomId: string) => {
-      pushSafely(router, routes.modal.claimBusinessBathroom(bathroomId), routes.tabs.business);
+  const goTo = useCallback(
+    (route: Parameters<typeof pushSafely>[1]) => {
+      pushSafely(router, route, routes.tabs.business);
     },
     [router]
   );
 
   const managedBathrooms = dashboardQuery.data?.bathrooms ?? [];
+  const summary = dashboardQuery.data?.summary;
+  const visitStats = visitStatsQuery.data ?? [];
+  const coupons = couponsQuery.data ?? [];
   const placements = featuredPlacementsQuery.data ?? [];
-  const dashboardError = dashboardQuery.error;
-  const featuredPlacementsError = featuredPlacementsQuery.error;
-  const isRefreshing = isClaimsFetching || dashboardQuery.isFetching || featuredPlacementsQuery.isFetching;
+  const invites = invitesQuery.data ?? [];
 
+  const activeCouponCount = coupons.filter((c) => c.is_active).length;
+  const activeCouponsByBathroom = useMemo(() => {
+    return coupons
+      .filter((c) => c.is_active)
+      .reduce<Record<string, number>>((acc, coupon) => {
+        acc[coupon.bathroom_id] = (acc[coupon.bathroom_id] ?? 0) + 1;
+        return acc;
+      }, {});
+  }, [coupons]);
+
+  const activePlacementCount = placements.filter((p) => p.status === 'active').length;
+
+  const totalStallPassVisits = useMemo(
+    () => visitStats.reduce((sum, stat) => sum + (stat.visits_this_month ?? 0), 0),
+    [visitStats]
+  );
+
+  const isRefreshing =
+    isClaimsFetching ||
+    dashboardQuery.isFetching ||
+    featuredPlacementsQuery.isFetching ||
+    visitStatsQuery.isFetching ||
+    couponsQuery.isFetching;
+
+  // Guest view
   if (isGuest) {
     return (
       <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
-        <View className="flex-1 px-6 py-8">
-          <View className="rounded-[32px] bg-ink-900 px-6 py-8">
-            <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/70">Business Portal</Text>
-            <Text className="mt-3 text-4xl font-black tracking-tight text-white">Sign in to track business claims.</Text>
-            <Text className="mt-3 text-base leading-6 text-white/80">
-              Ownership claims, verification badges, and paid placement inventory are account-scoped and managed from this portal.
-            </Text>
-          </View>
+        <ScrollView className="flex-1">
+          <View className="px-5 pb-10 pt-6">
+            <BusinessHeroHeader
+              eyebrow="Business Portal"
+              title="Run your bathroom like a real listing."
+              subtitle="Sign in to claim ownership, set hours, manage coupons, and track who StallPass sends to your front door."
+              iconName="business"
+              variant="dark"
+            />
 
-          <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
-            <Text className="text-base leading-6 text-ink-600">
-              Start from a bathroom detail screen, open the claim flow, and this tab will track review status until your dashboard goes live.
-            </Text>
-            <Button
-              className="mt-6"
-              label="Sign In"
-              onPress={() => pushSafely(router, routes.auth.login, routes.auth.login)}
-            />
-            <Button
-              className="mt-3"
-              label="Create Account"
-              onPress={() => pushSafely(router, routes.auth.register, routes.auth.register)}
-              variant="secondary"
-            />
-            <Button
-              className="mt-3"
-              label="Browse Bathrooms"
-              onPress={() => pushSafely(router, routes.tabs.map, routes.tabs.map)}
-              variant="ghost"
-            />
+            <View className="mt-6 gap-4">
+              <View className="flex-row gap-3">
+                <QuickStatTile
+                  iconName="storefront"
+                  label="Manage"
+                  tone="brand"
+                  value="Locations"
+                  helper="Hours, photos, visibility"
+                />
+                <QuickStatTile
+                  iconName="pricetags"
+                  label="Promote"
+                  value="Coupons"
+                  helper="Win premium customers"
+                />
+              </View>
+              <View className="flex-row gap-3">
+                <QuickStatTile
+                  iconName="bar-chart"
+                  label="Track"
+                  value="Analytics"
+                  helper="Routes, reach, ratings"
+                />
+                <QuickStatTile
+                  iconName="star"
+                  label="Boost"
+                  value="Featured"
+                  helper="Top of the map"
+                />
+              </View>
+            </View>
+
+            <View className="mt-6 rounded-[24px] border border-surface-strong bg-surface-card p-6">
+              <Text className="text-base leading-6 text-ink-700">
+                Open any bathroom from the map and tap <Text className="font-bold">Claim this business</Text> — we'll guide you through verification and your dashboard goes live as soon as it's approved.
+              </Text>
+              <Button
+                className="mt-5"
+                label="Sign In"
+                onPress={() => pushSafely(router, routes.auth.login, routes.auth.login)}
+              />
+              <Button
+                className="mt-3"
+                label="Create Account"
+                onPress={() => pushSafely(router, routes.auth.register, routes.auth.register)}
+                variant="secondary"
+              />
+              <Button
+                className="mt-3"
+                label="Browse bathrooms"
+                onPress={() => pushSafely(router, routes.tabs.map, routes.tabs.map)}
+                variant="ghost"
+              />
+            </View>
           </View>
-        </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
 
   if (isClaimsLoading) {
-    return <LoadingScreen message="Loading your business claims and dashboard access." />;
+    return <LoadingScreen message="Loading your business hub." />;
   }
+
+  // No dashboard access — show onboarding hub
+  if (!hasDashboardAccess) {
+    return (
+      <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
+        <ScrollView
+          className="flex-1"
+          refreshControl={
+            <RefreshControl refreshing={isRefreshing} onRefresh={() => void handleRefresh()} />
+          }
+        >
+          <View className="px-5 pb-10 pt-6">
+            <BusinessHeroHeader
+              eyebrow="Business Portal"
+              title={
+                counts.pending > 0
+                  ? "Your claim is in review."
+                  : counts.rejected > 0
+                    ? "Let's get that claim back on track."
+                    : 'Claim a bathroom to unlock your dashboard.'
+              }
+              subtitle={
+                counts.pending > 0
+                  ? "We'll notify you the moment a moderator approves it. Your full operating console goes live right after."
+                  : counts.rejected > 0
+                    ? 'Review the rejection notes, gather stronger evidence, and resubmit when you are ready.'
+                    : 'Submit an ownership claim from any bathroom detail page to start managing it like a real listing.'
+              }
+              iconName="business"
+            />
+
+            {claimsError ? (
+              <View className="mt-6 rounded-[24px] border border-danger/20 bg-danger/10 p-5">
+                <Text className="text-lg font-bold text-danger">Business portal unavailable</Text>
+                <Text className="mt-2 text-sm leading-6 text-danger">
+                  {getErrorMessage(claimsError, 'We could not load your ownership claims.')}
+                </Text>
+                <Button
+                  className="mt-4"
+                  label="Try Again"
+                  loading={isRefreshing}
+                  onPress={() => void handleRefresh()}
+                />
+              </View>
+            ) : null}
+
+            <View className="mt-6 flex-row gap-3">
+              <QuickStatTile label="Pending" tone="warning" value={counts.pending} />
+              <QuickStatTile label="Approved" tone="success" value={counts.approved} />
+              <QuickStatTile label="Rejected" tone="danger" value={counts.rejected} />
+            </View>
+
+            {claims.length > 0 ? (
+              <View className="mt-6">
+                <BusinessNavCard
+                  description={`Track every ownership claim · ${counts.pending} pending`}
+                  iconName="document-text"
+                  onPress={() => goTo(routes.business.claims)}
+                  title="Claim history"
+                />
+              </View>
+            ) : (
+              <View className="mt-6 rounded-[24px] border border-surface-strong bg-surface-card p-6">
+                <View className="h-12 w-12 items-center justify-center rounded-2xl bg-brand-50">
+                  <Ionicons name="business" size={24} color={colors.brand[600]} />
+                </View>
+                <Text className="mt-3 text-xl font-black text-ink-900">No claims yet</Text>
+                <Text className="mt-2 text-sm leading-6 text-ink-600">
+                  Open a bathroom from the map and tap "Claim this business" to start.
+                </Text>
+                <Button
+                  className="mt-5"
+                  label="Open map"
+                  onPress={() => pushSafely(router, routes.tabs.map, routes.tabs.map)}
+                />
+                <Button
+                  className="mt-3"
+                  label="Search bathrooms"
+                  onPress={() => pushSafely(router, routes.tabs.search, routes.tabs.map)}
+                  variant="secondary"
+                />
+              </View>
+            )}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
+  // Full business hub
+  const heroTitle =
+    managedBathrooms.length === 1
+      ? `Welcome back to ${managedBathrooms[0].place_name}`
+      : `${managedBathrooms.length} location${managedBathrooms.length === 1 ? '' : 's'} under your management`;
 
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
       <ScrollView
         className="flex-1"
-        contentInsetAdjustmentBehavior="automatic"
-        refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => void handleRefresh()} />}
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={() => void handleRefresh()} />
+        }
       >
-        <View className="px-6 py-8">
-          <View className="rounded-[32px] bg-brand-600 px-6 py-8">
-            <Text className="text-sm font-semibold uppercase tracking-[1px] text-white/80">{headerCopy.eyebrow}</Text>
-            <Text className="mt-3 text-4xl font-black tracking-tight text-white">{headerCopy.title}</Text>
-            <Text className="mt-3 text-base leading-6 text-white/80">{headerCopy.body}</Text>
-          </View>
+        <View className="px-5 pb-10 pt-6">
+          <BusinessHeroHeader
+            eyebrow="Business Hub"
+            title={heroTitle}
+            subtitle="Direct controls for everything customers see in StallPass."
+            iconName="business"
+          />
 
-          <View className="mt-6 flex-row gap-3">
-            <SummaryCard label="Pending" value={counts.pending} />
-            <SummaryCard label="Approved" value={counts.approved} />
-            <SummaryCard label="Needs Changes" value={counts.rejected} />
-          </View>
-
-          {claimsError ? (
-            <View className="mt-6 rounded-[28px] border border-danger/20 bg-danger/10 p-5">
-              <Text className="text-xl font-bold text-danger">Business portal unavailable</Text>
-              <Text className="mt-2 text-sm leading-6 text-danger">
-                {getErrorMessage(claimsError, 'We could not load your ownership claims right now.')}
-              </Text>
-              <Button className="mt-5" label="Try Again" loading={isRefreshing} onPress={() => void handleRefresh()} />
+          {/* Top stats glance */}
+          <View className="mt-6 gap-3">
+            <View className="flex-row gap-3">
+              <QuickStatTile
+                iconName="storefront"
+                label="Locations"
+                tone="brand"
+                value={summary?.total_bathrooms ?? managedBathrooms.length}
+              />
+              <QuickStatTile
+                iconName="people"
+                label="Weekly reach"
+                tone="brand"
+                value={summary?.total_weekly_unique_visitors ?? 0}
+                helper="unique viewers"
+              />
             </View>
-          ) : null}
+            <View className="flex-row gap-3">
+              <QuickStatTile
+                iconName="navigate"
+                label="Routes"
+                value={summary?.total_weekly_navigation_count ?? 0}
+                helper="this week"
+              />
+              <QuickStatTile
+                iconName="alert-circle"
+                label="Open issues"
+                tone={(summary?.total_open_reports ?? 0) > 0 ? 'danger' : 'success'}
+                value={summary?.total_open_reports ?? 0}
+              />
+            </View>
+          </View>
 
-          {hasDashboardAccess ? (
-            <View className="mt-6 gap-4">
-              {dashboardError ? (
-                <View className="rounded-[28px] border border-warning/20 bg-warning/10 p-5">
-                  <Text className="text-xl font-bold text-warning">Dashboard data delayed</Text>
-                  <Text className="mt-2 text-sm leading-6 text-warning">
-                    {getErrorMessage(dashboardError, 'Your claim history is available, but analytics could not be refreshed right now.')}
-                  </Text>
-                  <Button
-                    className="mt-5"
-                    label="Retry Analytics"
-                    onPress={() => void dashboardQuery.refetch()}
-                    variant="secondary"
+          {/* Quick actions */}
+          <View className="mt-7">
+            <BusinessSectionHeader
+              eyebrow="Quick actions"
+              title="Jump straight in"
+              description="The shortcuts you'll use the most."
+              iconName="flash"
+            />
+            <View className="gap-3">
+              <View className="flex-row gap-3">
+                <ActionTile
+                  iconName="storefront"
+                  onPress={() => goTo(routes.business.locations)}
+                  subtitle="Manage every location"
+                  title="Locations"
+                  badge={managedBathrooms.length || undefined}
+                  tone="brand"
+                />
+                <ActionTile
+                  iconName="bar-chart"
+                  onPress={() => goTo(routes.business.analytics)}
+                  subtitle="Discovery & reach"
+                  title="Analytics"
+                  tone="neutral"
+                />
+              </View>
+              <View className="flex-row gap-3">
+                <ActionTile
+                  iconName="pricetags"
+                  badge={activeCouponCount || undefined}
+                  onPress={() => goTo(routes.business.coupons)}
+                  subtitle="Create discounts"
+                  title="Coupons"
+                  tone="success"
+                />
+                <ActionTile
+                  iconName="star"
+                  badge={activePlacementCount || undefined}
+                  onPress={() => goTo(routes.business.featured)}
+                  subtitle="Boost on the map"
+                  title="Featured"
+                  tone="warning"
+                />
+              </View>
+            </View>
+          </View>
+
+          {/* Locations preview */}
+          {managedBathrooms.length > 0 ? (
+            <View className="mt-7">
+              <BusinessSectionHeader
+                eyebrow="My locations"
+                title="Tap to manage"
+                description="Open a location for direct control of its StallPass parameters."
+                iconName="business"
+                actionLabel={managedBathrooms.length > 2 ? 'See all' : undefined}
+                onAction={
+                  managedBathrooms.length > 2 ? () => goTo(routes.business.locations) : undefined
+                }
+              />
+              <View className="gap-4">
+                {managedBathrooms.slice(0, 2).map((bathroom) => (
+                  <BusinessLocationCard
+                    activeCouponCount={activeCouponsByBathroom[bathroom.bathroom_id] ?? 0}
+                    bathroom={bathroom}
+                    key={bathroom.bathroom_id}
+                    onPress={(id) => goTo(routes.business.location(id))}
                   />
-                </View>
-              ) : null}
-
-              {dashboardQuery.data ? <DashboardStats summary={dashboardQuery.data.summary} /> : null}
-
-              <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
-                <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Managed Locations</Text>
-                {managedBathrooms.length ? (
-                  <View className="mt-4 gap-4">
-                    {managedBathrooms.map((bathroom) => (
-                      <ClaimedBathroomCard
-                        bathroom={bathroom}
-                        key={bathroom.bathroom_id}
-                        onManageHours={openHoursEditor}
-                        onOpenBathroom={handleOpenBathroom}
-                      />
-                    ))}
-                  </View>
-                ) : (
-                  <View className="mt-4 rounded-2xl bg-surface-base px-4 py-5">
-                    <Text className="text-base font-semibold text-ink-900">No approved bathrooms yet</Text>
-                    <Text className="mt-2 text-sm leading-6 text-ink-600">
-                      Claims show up below immediately. Analytics appear here as soon as the first location is approved.
-                    </Text>
-                  </View>
-                )}
-              </View>
-
-              <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
-                <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Featured Placements</Text>
-                {featuredPlacementsError ? (
-                  <Text className="mt-4 text-sm leading-6 text-danger">
-                    {getErrorMessage(featuredPlacementsError, 'Featured placement data is temporarily unavailable.')}
-                  </Text>
-                ) : placements.length ? (
-                  <View className="mt-4 gap-4">
-                    {placements.map((placement) => (
-                      <FeaturedPlacementCard key={placement.id} placement={placement} />
-                    ))}
-                  </View>
-                ) : (
-                  <View className="mt-4 rounded-2xl bg-surface-base px-4 py-5">
-                    <Text className="text-base font-semibold text-ink-900">No active placements</Text>
-                    <Text className="mt-2 text-sm leading-6 text-ink-600">
-                      Featured placement inventory is empty for this account right now. Once a campaign is scheduled, impressions and clicks will appear here.
-                    </Text>
-                  </View>
-                )}
+                ))}
               </View>
             </View>
           ) : null}
 
-          {!claimsError && !claims.length ? (
-            <View className="mt-6 rounded-[28px] border border-surface-strong bg-surface-card p-6">
-              <Text className="text-2xl font-bold text-ink-900">No ownership claims yet</Text>
-              <Text className="mt-3 text-base leading-6 text-ink-600">
-                Open any bathroom detail screen from the map or search tab to submit your first claim.
-              </Text>
-              <View className="mt-6 gap-3">
-                <Button
-                  label="Open Map"
-                  onPress={() => pushSafely(router, routes.tabs.map, routes.tabs.map)}
-                />
-                <Button
-                  label="Search Bathrooms"
-                  onPress={() => pushSafely(router, routes.tabs.search, routes.tabs.map)}
-                  variant="secondary"
-                />
-              </View>
+          {/* Sections nav */}
+          <View className="mt-7">
+            <BusinessSectionHeader
+              eyebrow="Manage"
+              title="Everything in one place"
+              iconName="apps"
+            />
+            <View className="gap-3">
+              <BusinessNavCard
+                description={`${counts.pending} pending · ${counts.approved} approved · ${counts.rejected} rejected`}
+                iconName="document-text"
+                onPress={() => goTo(routes.business.claims)}
+                title="Ownership claims"
+                badge={counts.pending > 0 ? counts.pending : undefined}
+                badgeTone="warning"
+              />
+              <BusinessNavCard
+                description={`${activeCouponCount} active coupon${activeCouponCount === 1 ? '' : 's'} across your locations`}
+                iconName="pricetags"
+                onPress={() => goTo(routes.business.coupons)}
+                title="Coupons & discounts"
+                badge={activeCouponCount > 0 ? activeCouponCount : undefined}
+                badgeTone="success"
+              />
+              <BusinessNavCard
+                description={
+                  totalStallPassVisits > 0
+                    ? `${totalStallPassVisits} StallPass-driven visits this month`
+                    : 'Discovery, routes, and trust metrics'
+                }
+                iconName="bar-chart"
+                onPress={() => goTo(routes.business.analytics)}
+                title="Live analytics"
+              />
+              <BusinessNavCard
+                description={
+                  activePlacementCount > 0
+                    ? `${activePlacementCount} active campaign${activePlacementCount === 1 ? '' : 's'}`
+                    : 'Boost a location on the map'
+                }
+                iconName="star"
+                onPress={() => goTo(routes.business.featured)}
+                title="Featured placements"
+                badge={activePlacementCount > 0 ? activePlacementCount : undefined}
+                badgeTone="brand"
+              />
             </View>
-          ) : null}
+          </View>
 
-          {!claimsError && claims.length ? (
-            <View className="mt-6 gap-4">
-              <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Claim History</Text>
-              {claims.map((claim) => (
-                <ClaimStatusCard
-                  claim={claim}
-                  key={claim.id}
-                  onOpenBathroom={handleOpenBathroom}
-                  onResubmitClaim={handleResubmitClaim}
-                />
-              ))}
+          {/* Admin invites */}
+          {isAdmin ? (
+            <View className="mt-7">
+              <EarlyAdopterBanner
+                invites={invites}
+                isGenerating={generateInviteMutation.isPending}
+                onGenerate={(input) => generateInviteMutation.mutate(input)}
+              />
             </View>
           ) : null}
         </View>
       </ScrollView>
-
-      <BusinessHoursEditorSheet
-        bathroomId={selectedBathroomId}
-        onClose={closeHoursEditor}
-        visible={isHoursEditorOpen}
-      />
     </SafeAreaView>
   );
 }

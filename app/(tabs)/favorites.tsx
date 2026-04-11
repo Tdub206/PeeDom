@@ -13,6 +13,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useFavoriteDirectory, useFavorites } from '@/hooks/useFavorites';
+import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { pushSafely } from '@/lib/navigation';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useMapStore } from '@/store/useMapStore';
@@ -21,7 +22,7 @@ import { getErrorMessage } from '@/utils/errorMap';
 
 export default function FavoritesTab() {
   const router = useRouter();
-  const { isGuest } = useAuth();
+  const { isGuest, user } = useAuth();
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
   const setRegion = useMapStore((state) => state.setRegion);
   const userLocation = useMapStore((state) => state.userLocation);
@@ -29,6 +30,7 @@ export default function FavoritesTab() {
   const setSortBy = useFavoritesStore((state) => state.setSortBy);
   const favoritesDirectory = useFavoriteDirectory(userLocation);
   const favorites = useFavorites(favoritesDirectory.items);
+  const recordVisitMutation = useRecordVisit();
   const visibleFavorites = useMemo(
     () =>
       favoritesDirectory.items.filter(
@@ -39,6 +41,13 @@ export default function FavoritesTab() {
 
   const handleSelectFavorite = useCallback(
     (favoriteItem: FavoriteItem) => {
+      if (user?.id) {
+        recordVisitMutation.mutate({
+          bathroomId: favoriteItem.bathroom_id,
+          source: 'favorite',
+        });
+      }
+
       setRegion({
         latitude: favoriteItem.coordinates.latitude,
         longitude: favoriteItem.coordinates.longitude,
@@ -48,7 +57,7 @@ export default function FavoritesTab() {
       setActiveBathroomId(favoriteItem.bathroom_id);
       pushSafely(router, routes.tabs.map, routes.tabs.favorites);
     },
-    [router, setActiveBathroomId, setRegion]
+    [recordVisitMutation, router, setActiveBathroomId, setRegion, user?.id]
   );
 
   const handleRemoveFavorite = useCallback(
@@ -100,7 +109,7 @@ export default function FavoritesTab() {
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-white/70">Favorites</Text>
             <Text className="mt-2 text-3xl font-black tracking-tight text-white">Save reliable stops.</Text>
             <Text className="mt-2 text-sm leading-6 text-white/80">
-              Sign in to build a synced favorites list that follows you across Pee-Dom sessions.
+              Sign in to build a synced favorites list that follows you across StallPass sessions.
             </Text>
           </View>
 

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="StallPass Business is a configurable browser dashboard for launch tasks, support links, listing controls, and business operations."
+  >
+  <meta property="og:title" content="StallPass Business">
+  <meta
+    property="og:description"
+    content="Configurable browser dashboard for launch tasks, support links, listing controls, and business operations."
+  >
+  <meta property="og:image" content="/assets/open-graph-social-preview.png">
+  <meta property="og:type" content="website">
+  <title>StallPass Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="icon" type="image/png" href="/assets/pwa-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/pwa-icon-512.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/business.css">
+  <script src="/assets/site.js" defer></script>
+  <script src="/assets/business.js" defer></script>
+</head>
+<body class="business-body" data-theme="signal" data-density="comfortable">
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand-mark" href="/" aria-label="StallPass home">
+        <span class="brand-kicker">SP</span>
+        <span class="brand-copy">
+          <strong>StallPass Business</strong>
+          <span>Configurable dashboard for claimed locations</span>
+        </span>
+      </a>
+
+      <button class="menu-toggle" data-menu-toggle type="button" aria-expanded="false" aria-controls="business-menu">
+        Menu
+      </button>
+
+      <nav class="site-nav" id="business-menu" data-menu>
+        <a href="/">Home</a>
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="business-shell shell">
+    <aside class="business-rail">
+      <div class="rail-card" data-reveal>
+        <p class="eyebrow">Surface modes</p>
+        <h2>Shape the dashboard around the role in front of it.</h2>
+        <div class="preset-stack">
+          <button class="preset-button is-selected" type="button" data-theme-choice="signal">Signal</button>
+          <button class="preset-button" type="button" data-theme-choice="stone">Stone</button>
+          <button class="preset-button" type="button" data-theme-choice="verdant">Verdant</button>
+        </div>
+        <div class="density-toggle">
+          <button class="density-button is-selected" type="button" data-density-choice="comfortable">Comfortable</button>
+          <button class="density-button" type="button" data-density-choice="compact">Compact</button>
+        </div>
+      </div>
+
+      <div class="rail-card" data-reveal>
+        <p class="eyebrow">Widgets</p>
+        <div class="toggle-list">
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="checklist" checked>
+            <span>Launch checklist</span>
+            <span class="toggle-status-dot" aria-hidden="true"></span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="operations" checked>
+            <span>Location operations</span>
+            <span class="toggle-status-dot" aria-hidden="true"></span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="support" checked>
+            <span>Support surfaces</span>
+            <span class="toggle-status-dot" aria-hidden="true"></span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="playbook" checked>
+            <span>Reputation playbook</span>
+            <span class="toggle-status-dot" aria-hidden="true"></span>
+          </label>
+          <label class="toggle-row">
+            <input type="checkbox" data-widget-toggle="notes" checked>
+            <span>Team notes</span>
+            <span class="toggle-status-dot" aria-hidden="true"></span>
+          </label>
+        </div>
+        <button class="button button-secondary rail-reset" type="button" data-reset-dashboard>
+          Reset local dashboard state
+        </button>
+      </div>
+    </aside>
+
+    <section class="business-main">
+      <div class="business-hero" data-reveal>
+        <div class="hero-text">
+          <p class="eyebrow">Browser control surface</p>
+          <h1>Manage launch readiness before analytics are wired in.</h1>
+          <p class="lede">
+            This dashboard is intentionally useful without fabricated numbers. Setup score, pending tasks,
+            support-link readiness, widget visibility, and operating notes are all derived from real inputs.
+          </p>
+        </div>
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-actions">
+          <a class="button button-secondary" href="/support/">Support Center</a>
+          <a class="button button-primary" href="/privacy/">Privacy Policy</a>
+        </div>
+      </div>
+
+      <section class="metric-grid" aria-label="Business dashboard summary">
+        <article class="metric-card" data-reveal>
+          <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+            <circle cx="16" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 24a12 12 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="18" x2="22" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="16" cy="18" r="2" fill="currentColor"/>
+          </svg>
+          <span class="metric-label">Setup score</span>
+          <strong class="metric-value" data-metric-setup>0%</strong>
+          <p class="metric-copy">Derived from the launch checklist below.</p>
+          <div class="metric-accent" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card" data-reveal>
+          <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+            <path d="M16 3C11 3 7 7.5 7 13c0 7 9 16 9 16s9-9 9-16c0-5.5-4-10-9-10z" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="16" cy="13" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <span class="metric-label">Claimed locations</span>
+          <strong class="metric-value" data-metric-locations>0</strong>
+          <p class="metric-copy">Counted from the checklist, not invented traffic numbers.</p>
+          <div class="metric-accent" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card" data-reveal>
+          <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+            <path d="M10 16a6 6 0 0 1 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 16a6 6 0 0 1-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 12a10 10 0 0 1 10-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M26 20a10 10 0 0 1-10 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="metric-label">Live support surfaces</span>
+          <strong class="metric-value" data-metric-links>0</strong>
+          <p class="metric-copy">Email and public URLs currently configured in this browser.</p>
+          <div class="metric-accent" aria-hidden="true"></div>
+        </article>
+        <article class="metric-card" data-reveal>
+          <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+            <rect x="7" y="4" width="18" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 4V2h8v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="17" x2="20" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="12" y1="22" x2="17" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="metric-label">Pending tasks</span>
+          <strong class="metric-value" data-metric-tasks>0</strong>
+          <p class="metric-copy">Outstanding work before a location can look fully managed.</p>
+          <div class="metric-accent" aria-hidden="true"></div>
+        </article>
+      </section>
+
+      <hr class="widget-divider" aria-hidden="true">
+
+      <section class="widget-grid">
+        <article class="widget-card" data-widget="checklist" data-reveal>
+          <div class="widget-head">
+            <div>
+              <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <path d="M12 2C6.5 2 2 6 2 11c0 3 1.5 5.5 4 7.3V22l3.5-2c.8.2 1.6.3 2.5.3 5.5 0 10-4 10-9S17.5 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 15l3-10 4 8 3-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span class="widget-label">Launch checklist</span>
+              <h2>Get one location to a review-safe operational baseline.</h2>
+            </div>
+            <span class="widget-badge" data-progress-text>0 of 5 complete</span>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-bar" data-progress-bar></div>
+          </div>
+          <div class="checklist-complete-banner is-hidden" data-checklist-banner>
+            <svg class="banner-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 12l3 3 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>All launch tasks complete — you're ready for review.</span>
+          </div>
+          <div class="checklist-grid">
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="claimLocation">
+              <span>Claim at least one bathroom listing</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="setHours">
+              <span>Publish verified operating hours</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="publishAmenities">
+              <span>Confirm amenities and accessibility metadata</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="uploadHero">
+              <span>Prepare imagery and business-facing listing copy</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" data-checklist-item="reviewPolicy">
+              <span>Publish support, privacy, and terms surfaces</span>
+            </label>
+          </div>
+        </article>
+
+        <article class="widget-card" data-widget="operations" data-reveal>
+          <div class="widget-head">
+            <div>
+              <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="widget-label">Location operations</span>
+              <h2>Turn listing details into clear business controls.</h2>
+            </div>
+          </div>
+          <div class="operations-grid">
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="changingTable">
+              <span class="control-title">Changing table availability</span>
+              <span class="control-copy">Expose family-friendly signals with confidence.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="accessibleRouting">
+              <span class="control-title">Accessibility routing notes</span>
+              <span class="control-copy">Track whether door width and route details are published.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="customerOnly">
+              <span class="control-title">Customer-only access policy</span>
+              <span class="control-copy">Document whether access requires a staff interaction or code.</span>
+            </label>
+            <label class="control-card">
+              <input type="checkbox" data-operation-flag="featuredPlacement">
+              <span class="control-title">Featured placement intent</span>
+              <span class="control-copy">Mark whether you plan to run a featured campaign after launch.</span>
+            </label>
+          </div>
+          <div class="status-grid" data-operation-summary></div>
+        </article>
+
+        <article class="widget-card" data-widget="support" data-reveal>
+          <div class="widget-head">
+            <div>
+              <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="widget-label">Support surfaces</span>
+              <h2>Control the public URLs businesses and stores rely on.</h2>
+            </div>
+          </div>
+          <form class="input-grid" data-support-form>
+            <label>
+              <span>Support email</span>
+              <input type="email" name="supportEmail" autocomplete="email" placeholder="team@yourbusiness.com">
+            </label>
+            <label>
+              <span>Privacy URL</span>
+              <input type="url" name="privacyUrl" autocomplete="url" placeholder="https://yourdomain.com/privacy">
+            </label>
+            <label>
+              <span>Terms URL</span>
+              <input type="url" name="termsUrl" autocomplete="url" placeholder="https://yourdomain.com/terms">
+            </label>
+            <label>
+              <span>Support URL</span>
+              <input type="url" name="supportUrl" autocomplete="url" placeholder="https://yourdomain.com/support">
+            </label>
+            <label>
+              <span>App Store URL</span>
+              <input type="url" name="appStoreUrl" autocomplete="url" placeholder="https://apps.apple.com/...">
+            </label>
+            <label>
+              <span>Google Play URL</span>
+              <input type="url" name="playStoreUrl" autocomplete="url" placeholder="https://play.google.com/store/...">
+            </label>
+          </form>
+        </article>
+
+        <article class="widget-card" data-widget="playbook" data-reveal>
+          <div class="widget-head">
+            <div>
+              <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              <span class="widget-label">Reputation playbook</span>
+              <h2>Give the team a response posture before feedback starts arriving.</h2>
+            </div>
+          </div>
+          <div class="input-grid">
+            <label>
+              <span>Customer promise</span>
+              <textarea rows="4" data-customer-promise></textarea>
+            </label>
+            <label>
+              <span>Default reply template</span>
+              <textarea rows="6" data-reply-template></textarea>
+            </label>
+          </div>
+        </article>
+
+        <article class="widget-card" data-widget="notes" data-reveal>
+          <div class="widget-head">
+            <div>
+              <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="8" y1="6" x2="16" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="8" y1="10" x2="16" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="8" y1="14" x2="13" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span class="widget-label">Team notes</span>
+              <h2>Keep local launch notes visible without opening another tool.</h2>
+            </div>
+          </div>
+          <label class="notes-field">
+            <span>Launch notes</span>
+            <textarea rows="10" data-team-notes></textarea>
+          </label>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <a class="brand-mark brand-mark-footer" href="/">
+        <span class="brand-kicker">SP</span>
+        <span class="brand-copy">
+          <strong>StallPass</strong>
+          <span>Business dashboard</span>
+        </span>
+      </a>
+      <nav class="footer-links">
+        <a href="/support/">Support</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/terms/">Terms</a>
+        <a href="mailto:support@stallpass.org">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

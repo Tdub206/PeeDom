@@ -49,6 +49,17 @@ ANDROID_ADMOB_APP_ID=ca-app-pub-3940256099942544~3347511713
 - Local and staging Android builds fall back to Google's test app id when `ANDROID_ADMOB_APP_ID` is blank.
 - Production builds should use your real AdMob app id and rewarded unit id.
 
+## Google Hours Sync
+
+- Set `GOOGLE_PLACES_API_KEY` as a Supabase Edge Function secret before deploying `supabase/functions/google-place-hours`.
+- The business hours editor now supports linking a Google Place ID and importing weekly hours through that function.
+
+## Google Maps and Places launch setup
+
+- Use separate native Android, native iOS, and server-side Places keys.
+- Keep the Places key server-side only in Supabase Edge Function secrets.
+- Follow the repo checklist in `docs/google-maps-places-production-checklist-2026-04-02.md`.
+
 ## Release workflow
 
 - Local Android builds: Android Studio or `npm run android:assembleDebug`
