@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    // Keeps us honest — forces server actions to be opt-in per file.
-    typedRoutes: true,
-  },
+  // Graduated out of `experimental` in Next 15.5.
+  typedRoutes: true,
   // The mobile Expo app lives in the repo root; we don't want Next
   // trying to trace node_modules up there.
   outputFileTracingRoot: new URL('.', import.meta.url).pathname,
