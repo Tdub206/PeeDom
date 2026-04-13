@@ -10,45 +10,69 @@ import {
   Tag,
   TrendingUp,
 } from 'lucide-react';
-import { getApprovedLocations } from '@/lib/business/queries';
+import { getApprovedLocations, getBusinessCoupons } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Hub',
 };
 
-// Business Hub landing page. Mirrors the mobile (tabs)/business.tsx
-// structure: hero, top stats, quick actions, section nav. Data is
-// fetched server-side so the first paint already shows real numbers.
 export default async function BusinessHubPage() {
   const supabase = await createSupabaseServerClient();
 
-  // The middleware guarantees a user here.
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
   if (!user) {
     redirect('/login');
   }
 
-  // Approved claims — identical shape to mobile `useBusinessClaims`.
-  const { locations, error } = await getApprovedLocations(supabase, user.id);
+  const now = new Date();
+  const [{ locations, error: locationsError }, { coupons, error: couponsError }] =
+    await Promise.all([
+      getApprovedLocations(supabase, user.id),
+      getBusinessCoupons(supabase, user.id),
+    ]);
+
   const locationCount = locations.length;
+  const totalWeeklyUnique = locations.reduce(
+    (sum, location) => sum + location.weekly_unique_visitors,
+    0
+  );
+  const activeCouponCount = coupons.filter((coupon) => isCouponCurrentlyActive(coupon, now)).length;
+  const openIssueCount = locations.reduce((sum, location) => sum + location.open_reports, 0);
+  const errorMessage = locationsError ?? couponsError;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-10 py-10">
-      <Hero name={user.email ?? 'there'} locationCount={locationCount} />
-      {error ? (
+      <Hero
+        name={user.email ?? 'there'}
+        locationCount={locationCount}
+        totalWeeklyUnique={totalWeeklyUnique}
+      />
+
+      {errorMessage ? (
         <div className="mt-6 rounded-4xl border border-danger/20 bg-danger/10 px-5 py-4 text-sm text-danger">
-          {error}
+          {errorMessage}
         </div>
       ) : null}
 
       <section className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Locations" value={locationCount} tone="brand" icon={<Building2 size={18} />} />
-        <StatCard label="Weekly reach" value="—" helper="unique viewers" icon={<TrendingUp size={18} />} />
-        <StatCard label="Active coupons" value="—" icon={<Tag size={18} />} />
-        <StatCard label="Open issues" value="—" tone="success" icon={<BarChart3 size={18} />} />
+        <StatCard
+          label="Weekly reach"
+          value={totalWeeklyUnique}
+          helper="unique viewers"
+          icon={<TrendingUp size={18} />}
+        />
+        <StatCard label="Active coupons" value={activeCouponCount} icon={<Tag size={18} />} />
+        <StatCard
+          label="Open issues"
+          value={openIssueCount}
+          tone={openIssueCount > 0 ? 'danger' : 'success'}
+          icon={<BarChart3 size={18} />}
+        />
       </section>
 
       <section className="mt-10">
@@ -112,7 +136,15 @@ export default async function BusinessHubPage() {
   );
 }
 
-function Hero({ name, locationCount }: { name: string; locationCount: number }) {
+function Hero({
+  name,
+  locationCount,
+  totalWeeklyUnique,
+}: {
+  name: string;
+  locationCount: number;
+  totalWeeklyUnique: number;
+}) {
   return (
     <div className="rounded-4xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 p-8 text-white shadow-pop">
       <div className="text-[11px] font-bold uppercase tracking-[2px] text-white/80">
@@ -124,8 +156,9 @@ function Hero({ name, locationCount }: { name: string; locationCount: number }) 
           : `${locationCount} location${locationCount === 1 ? '' : 's'} under your management`}
       </h1>
       <p className="mt-2 max-w-xl text-sm leading-6 text-white/80">
-        Direct controls for everything StallPass customers see. Any change you make here syncs
-        instantly to the iOS and Android app.
+        {totalWeeklyUnique > 0
+          ? `${totalWeeklyUnique} unique visitors reached your locations this week.`
+          : 'Direct controls for everything StallPass customers see. Any change you make here syncs instantly to the iOS and Android app.'}
       </p>
     </div>
   );
@@ -142,7 +175,7 @@ function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   );
 }
 
-type Tone = 'brand' | 'success' | 'warning' | 'neutral';
+type Tone = 'brand' | 'success' | 'warning' | 'danger' | 'neutral';
 
 function StatCard({
   label,
@@ -161,8 +194,10 @@ function StatCard({
     brand: 'bg-brand-50 text-brand-700',
     success: 'bg-success/10 text-success',
     warning: 'bg-warning/10 text-warning',
+    danger: 'bg-danger/10 text-danger',
     neutral: 'bg-surface-muted text-ink-600',
   };
+
   return (
     <div className="rounded-4xl border border-surface-strong bg-surface-card p-5 shadow-card">
       {icon ? (
@@ -196,8 +231,10 @@ function ActionTile({
     brand: 'bg-brand-50 text-brand-700',
     success: 'bg-success/10 text-success',
     warning: 'bg-warning/10 text-warning',
+    danger: 'bg-danger/10 text-danger',
     neutral: 'bg-surface-muted text-ink-600',
   };
+
   return (
     <Link
       href={href}
@@ -239,7 +276,37 @@ function NavCard({
         <div className="text-base font-bold text-ink-900">{title}</div>
         <div className="mt-0.5 text-xs text-ink-500">{description}</div>
       </div>
-      <span className="text-ink-400">→</span>
+      <span className="text-ink-400">{'->'}</span>
     </Link>
   );
+}
+
+function isCouponCurrentlyActive(
+  coupon: {
+    is_active: boolean;
+    expires_at: string | null;
+    max_redemptions: number | null;
+    current_redemptions: number;
+  },
+  now: Date
+): boolean {
+  if (!coupon.is_active) {
+    return false;
+  }
+
+  if (coupon.expires_at !== null) {
+    const expirationDate = new Date(coupon.expires_at);
+    if (!Number.isNaN(expirationDate.getTime()) && expirationDate <= now) {
+      return false;
+    }
+  }
+
+  if (
+    coupon.max_redemptions !== null &&
+    coupon.current_redemptions >= coupon.max_redemptions
+  ) {
+    return false;
+  }
+
+  return true;
 }
