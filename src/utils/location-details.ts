@@ -27,11 +27,13 @@ export function formatCoordinateValue(value?: number): string {
 }
 
 export function buildBathroomLocationFormPatchFromGoogleSelection(
-  selection: GooglePlaceAddressResolutionResult,
-  fallbackAddressLine1?: string | null
+  selection: GooglePlaceAddressResolutionResult
 ): BathroomLocationFormPatch {
+  const structuredLine1 = toTrimmedString(selection.address_components.address_line1);
+  const formattedLine1 = toTrimmedString(selection.formatted_address).split(',')[0]?.trim() ?? '';
+
   return {
-    address_line1: toTrimmedString(selection.address_components.address_line1) || toTrimmedString(fallbackAddressLine1),
+    address_line1: structuredLine1 || formattedLine1 || '',
     city: toTrimmedString(selection.address_components.city),
     state: toTrimmedString(selection.address_components.state),
     postal_code: toTrimmedString(selection.address_components.postal_code),

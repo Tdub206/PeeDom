@@ -23,8 +23,7 @@ describe('location details helpers', () => {
           postal_code: '98101',
           country_code: 'US',
         },
-      },
-      'Fallback Address'
+      }
     );
 
     expect(result).toEqual({

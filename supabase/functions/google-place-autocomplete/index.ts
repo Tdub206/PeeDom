@@ -3,23 +3,16 @@ interface Coordinates {
   longitude: number;
 }
 
-interface RegionBounds {
-  latitude: number;
-  longitude: number;
-  latitudeDelta: number;
-  longitudeDelta: number;
-}
-
 interface GooglePlaceAutocompleteRequest {
   query?: string;
   sessionToken?: string;
   origin?: Coordinates | null;
-  region?: RegionBounds | null;
 }
 
 interface GooglePlaceSuggestion {
   placePrediction?: {
     placeId?: string;
+    types?: string[];
     text?: {
       text?: string;
     };
@@ -38,6 +31,82 @@ interface GooglePlaceSuggestion {
 interface GooglePlaceAutocompleteResponse {
   suggestions?: GooglePlaceSuggestion[];
 }
+
+// Useful-destination filtering for Places API (New) Autocomplete.
+//
+// `includedPrimaryTypes` in the New API filters on a place's *primary*
+// type only and caps at 5 values, so it cannot express "any place a
+// bathroom-finder user would care about." Instead we request the full
+// `types` array per prediction via the field mask and server-side filter.
+//
+// A prediction is kept if its `types` array contains any tag in
+// USEFUL_DESTINATION_TYPES. This covers:
+//   - businesses (establishment / point_of_interest marker tags,
+//     inherited by restaurants, cafes, stores, bars, pharmacies, etc.)
+//   - transit hubs (airports, train/subway/bus/rail stations, ferries)
+//   - public amenities (libraries, hospitals, universities, schools,
+//     parks, stadiums, museums, tourist attractions, shopping malls,
+//     gas stations, rest stops, community/convention centers, gyms)
+//   - entertainment (amusement parks, zoos, aquariums, movie theaters)
+//   - civic/government (city halls, courthouses, post offices, visitor
+//     centers)
+//   - places of worship (churches, mosques, synagogues, temples)
+//
+// Pure address / route / locality / postal_code / political / country /
+// neighborhood / plus_code predictions never carry any of these tags
+// and are therefore excluded.
+const USEFUL_DESTINATION_TYPES = new Set<string>([
+  // Broad business markers — catches all commercial POIs
+  'establishment',
+  'point_of_interest',
+  // Transit
+  'airport',
+  'train_station',
+  'subway_station',
+  'transit_station',
+  'bus_station',
+  'light_rail_station',
+  'ferry_terminal',
+  'rest_stop',
+  // Public amenities
+  'library',
+  'hospital',
+  'university',
+  'school',
+  'park',
+  'stadium',
+  'museum',
+  'tourist_attraction',
+  'shopping_mall',
+  'gas_station',
+  'community_center',
+  'convention_center',
+  'event_venue',
+  'visitor_center',
+  'gym',
+  'campground',
+  'rv_park',
+  // Entertainment
+  'amusement_park',
+  'zoo',
+  'aquarium',
+  'movie_theater',
+  // Civic / government
+  'city_hall',
+  'courthouse',
+  'post_office',
+  // Places of worship
+  'church',
+  'mosque',
+  'synagogue',
+  'hindu_temple',
+]);
+const BIAS_RADIUS_METERS = 10_000;
+const MIN_QUERY_LENGTH = 2;
+// Cap returned to the client after server-side filtering. Google typically
+// returns up to 5 predictions; after our destination filter drops
+// non-POI results, we keep up to 5 of whatever survives.
+const MAX_RESULTS = 5;
 
 function jsonResponse(status: number, body: unknown): Response {
   return new Response(JSON.stringify(body), {
@@ -71,43 +140,6 @@ function isCoordinates(value: unknown): value is Coordinates {
   return isFiniteCoordinate(coordinates.latitude) && isFiniteCoordinate(coordinates.longitude);
 }
 
-function isRegionBounds(value: unknown): value is RegionBounds {
-  if (!value || typeof value !== 'object') {
-    return false;
-  }
-
-  const region = value as RegionBounds;
-  return (
-    isFiniteCoordinate(region.latitude) &&
-    isFiniteCoordinate(region.longitude) &&
-    typeof region.latitudeDelta === 'number' &&
-    Number.isFinite(region.latitudeDelta) &&
-    region.latitudeDelta > 0 &&
-    typeof region.longitudeDelta === 'number' &&
-    Number.isFinite(region.longitudeDelta) &&
-    region.longitudeDelta > 0
-  );
-}
-
-function buildBiasRadiusMeters(
-  region: RegionBounds | null | undefined,
-  origin: Coordinates | null | undefined
-): number | null {
-  if (region) {
-    const latitudeRadiusMeters = (Math.abs(region.latitudeDelta) * 111_320) / 2;
-    const longitudeMetersPerDegree = 111_320 * Math.max(Math.cos((region.latitude * Math.PI) / 180), 0.1);
-    const longitudeRadiusMeters = (Math.abs(region.longitudeDelta) * longitudeMetersPerDegree) / 2;
-
-    return Math.max(2_500, Math.min(25_000, Math.ceil(Math.max(latitudeRadiusMeters, longitudeRadiusMeters))));
-  }
-
-  if (origin) {
-    return 10_000;
-  }
-
-  return null;
-}
-
 Deno.serve(async (request) => {
   if (request.method !== 'POST') {
     return jsonResponse(405, {
@@ -121,11 +153,10 @@ Deno.serve(async (request) => {
     const query = payload.query?.trim() ?? '';
     const sessionToken = payload.sessionToken?.trim() ?? '';
     const origin = isCoordinates(payload.origin) ? payload.origin : null;
-    const region = isRegionBounds(payload.region) ? payload.region : null;
 
-    if (query.length < 3) {
+    if (query.length < MIN_QUERY_LENGTH) {
       return jsonResponse(400, {
-        error: 'Search at least three characters before requesting suggestions.',
+        error: `Search at least ${MIN_QUERY_LENGTH} characters before requesting suggestions.`,
       });
     }
 
@@ -135,26 +166,18 @@ Deno.serve(async (request) => {
       });
     }
 
-    const radiusMeters = buildBiasRadiusMeters(region, origin);
-    const biasCenter = region
-      ? {
-          latitude: region.latitude,
-          longitude: region.longitude,
-        }
-      : origin;
-
     const body: Record<string, unknown> = {
       input: query,
       sessionToken,
-      includedPrimaryTypes: ['street_address', 'route', 'premise', 'subpremise'],
+      includeQueryPredictions: false,
     };
 
-    if (biasCenter && radiusMeters) {
-      body.origin = biasCenter;
+    if (origin) {
+      body.origin = origin;
       body.locationBias = {
         circle: {
-          center: biasCenter,
-          radius: radiusMeters,
+          center: origin,
+          radius: BIAS_RADIUS_METERS,
         },
       };
     }
@@ -165,7 +188,7 @@ Deno.serve(async (request) => {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': googlePlacesApiKey,
         'X-Goog-FieldMask':
-          'suggestions.placePrediction.placeId,suggestions.placePrediction.text.text,suggestions.placePrediction.structuredFormat.mainText.text,suggestions.placePrediction.structuredFormat.secondaryText.text,suggestions.placePrediction.distanceMeters',
+          'suggestions.placePrediction.placeId,suggestions.placePrediction.types,suggestions.placePrediction.text.text,suggestions.placePrediction.structuredFormat.mainText.text,suggestions.placePrediction.structuredFormat.secondaryText.text,suggestions.placePrediction.distanceMeters',
       },
       body: JSON.stringify(body),
     });
@@ -181,6 +204,15 @@ Deno.serve(async (request) => {
       .filter((prediction): prediction is NonNullable<GooglePlaceSuggestion['placePrediction']> =>
         Boolean(prediction?.placeId && prediction.text?.text)
       )
+      // Useful-destination filter: keep any prediction whose types array
+      // contains at least one tag in USEFUL_DESTINATION_TYPES. Pure
+      // address / route / locality / postal_code / political predictions
+      // never carry any of these tags and are dropped cleanly.
+      .filter(
+        (prediction) =>
+          Array.isArray(prediction.types) &&
+          prediction.types.some((type) => USEFUL_DESTINATION_TYPES.has(type))
+      )
       .map((prediction) => ({
         place_id: prediction.placeId ?? '',
         text: prediction.text?.text ?? '',
@@ -188,11 +220,11 @@ Deno.serve(async (request) => {
         secondary_text: prediction.structuredFormat?.secondaryText?.text ?? null,
         distance_meters: typeof prediction.distanceMeters === 'number' ? prediction.distanceMeters : null,
       }))
-      .slice(0, 5);
+      .slice(0, MAX_RESULTS);
 
     return jsonResponse(200, predictions);
   } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unable to load Google address suggestions.';
+    const message = error instanceof Error ? error.message : 'Unable to load Google business suggestions.';
 
     console.error('[google-place-autocomplete]', message);
 

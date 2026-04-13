@@ -5,18 +5,10 @@ const coordinatesSchema = z.object({
   longitude: z.number().finite(),
 });
 
-const regionBoundsSchema = z.object({
-  latitude: z.number().finite(),
-  longitude: z.number().finite(),
-  latitudeDelta: z.number().positive(),
-  longitudeDelta: z.number().positive(),
-});
-
 export const googlePlaceAutocompleteInputSchema = z.object({
-  query: z.string().trim().min(3).max(100),
+  query: z.string().trim().min(2).max(100),
   session_token: z.string().trim().min(8).max(128),
   origin: coordinatesSchema.nullable().optional(),
-  region: regionBoundsSchema.nullable().optional(),
 });
 
 export const googlePlaceAddressResolutionInputSchema = z.object({

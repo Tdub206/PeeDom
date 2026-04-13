@@ -79,7 +79,8 @@ export type MutationType =
   | 'report_create'
   | 'rating_create'
   | 'status_report'
-  | 'accessibility_update';
+  | 'accessibility_update'
+  | 'bug_report';
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
@@ -110,6 +111,22 @@ export interface BathroomStatusMutationPayload {
 }
 
 export interface BathroomAccessibilityMutationPayload extends BathroomAccessibilityUpdateInput {}
+
+export interface BugReportMutationPayload {
+  schema_version: number;
+  idempotency_key: string;
+  screen_name: string;
+  error_message: string;
+  error_stack: string;
+  component_stack: string;
+  user_comment: string;
+  app_version: string;
+  os_name: string;
+  os_version: string;
+  device_model: string;
+  captured_at: string;
+  sentry_event_id: string | null;
+}
 
 export interface QueuedMutation {
   id: string;
@@ -235,7 +252,6 @@ export interface GooglePlaceAutocompleteInput {
   query: string;
   session_token: string;
   origin?: Coordinates | null;
-  region?: RegionBounds | null;
 }
 
 export interface GooglePlaceAddressResolutionInput {
