@@ -144,3 +144,49 @@ export const createBusinessCouponSchema = z
   });
 
 export type CreateBusinessCouponInput = z.infer<typeof createBusinessCouponSchema>;
+
+// -------------------------------------------------------------------
+// Business Claims
+// -------------------------------------------------------------------
+
+export const businessClaimRowSchema = z.object({
+  id: z.string(),
+  bathroom_id: z.string(),
+  claimant_user_id: z.string(),
+  business_name: z.string(),
+  contact_email: z.string(),
+  contact_phone: z.string().nullable(),
+  evidence_url: z.string().nullable(),
+  review_status: z.enum(['pending', 'approved', 'rejected']),
+  reviewed_by: z.string().nullable(),
+  reviewed_at: dateTimeStringSchema.nullable(),
+  is_lifetime_free: z.boolean(),
+  invite_id: z.string().nullable(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const businessClaimRowsSchema = z.array(businessClaimRowSchema);
+export type BusinessClaimRow = z.infer<typeof businessClaimRowSchema>;
+
+// -------------------------------------------------------------------
+// Featured Placements
+// -------------------------------------------------------------------
+
+export const featuredPlacementRowSchema = z.object({
+  id: z.string(),
+  bathroom_id: z.string(),
+  business_user_id: z.string(),
+  placement_type: z.enum(['search_top', 'map_priority', 'nearby_featured']),
+  geographic_scope: z.unknown(),
+  start_date: dateTimeStringSchema,
+  end_date: dateTimeStringSchema,
+  impressions_count: z.number().int().nonnegative(),
+  clicks_count: z.number().int().nonnegative(),
+  status: z.enum(['active', 'paused', 'expired', 'cancelled']),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const featuredPlacementRowsSchema = z.array(featuredPlacementRowSchema);
+export type FeaturedPlacementRow = z.infer<typeof featuredPlacementRowSchema>;
