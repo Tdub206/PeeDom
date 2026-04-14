@@ -1,17 +1,8 @@
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import {
-  BarChart3,
-  Building2,
-  DoorOpen,
-  FileText,
-  LayoutDashboard,
-  LogOut,
-  Sparkles,
-  Tag,
-} from 'lucide-react';
+import { LogOut } from 'lucide-react';
 import { getCurrentUserProfile } from '@/lib/auth/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { SidebarNav, type SidebarNavItem } from './sidebar-nav';
 import { SignOutButton } from './sign-out-button';
 
 // Server-component shell for all authenticated pages. Loads the
@@ -31,6 +22,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const profile = await getCurrentUserProfile(supabase);
   const displayName = profile?.full_name || user.email || 'Business owner';
   const initials = getInitials(displayName);
+  const sidebarItems: SidebarNavItem[] = [
+    { href: '/hub', icon: 'hub', label: 'Overview' },
+    { href: '/locations', icon: 'locations', label: 'Locations' },
+    { href: '/coupons', icon: 'coupons', label: 'Coupons' },
+    { href: '/codes', icon: 'codes', label: 'Access codes' },
+    { href: '/analytics', icon: 'analytics', label: 'Analytics' },
+    { href: '/featured', icon: 'featured', label: 'Featured' },
+    { href: '/claims', icon: 'claims', label: 'Claim history' },
+  ];
 
   return (
     <div className="flex min-h-screen bg-surface-base">
@@ -42,29 +42,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
           <div className="mt-1 text-xl font-black tracking-tight text-ink-900">Business Hub</div>
         </div>
 
-        <nav className="flex-1 overflow-y-auto p-3">
-          <SidebarLink href="/hub" icon={<LayoutDashboard size={18} />}>
-            Overview
-          </SidebarLink>
-          <SidebarLink href="/locations" icon={<Building2 size={18} />}>
-            Locations
-          </SidebarLink>
-          <SidebarLink href="/coupons" icon={<Tag size={18} />}>
-            Coupons
-          </SidebarLink>
-          <SidebarLink href="/codes" icon={<DoorOpen size={18} />}>
-            Access codes
-          </SidebarLink>
-          <SidebarLink href="/analytics" icon={<BarChart3 size={18} />}>
-            Analytics
-          </SidebarLink>
-          <SidebarLink href="/featured" icon={<Sparkles size={18} />}>
-            Featured
-          </SidebarLink>
-          <SidebarLink href="/claims" icon={<FileText size={18} />}>
-            Claim history
-          </SidebarLink>
-        </nav>
+        <SidebarNav items={sidebarItems} />
 
         <div className="border-t border-surface-strong px-5 py-4">
           <div className="flex items-center gap-3">
@@ -86,26 +64,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       <main className="flex-1 overflow-x-hidden">{children}</main>
     </div>
-  );
-}
-
-function SidebarLink({
-  href,
-  icon,
-  children,
-}: {
-  href: string;
-  icon: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="mb-1 flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold text-ink-600 transition hover:bg-surface-base hover:text-ink-900"
-    >
-      <span className="text-ink-500">{icon}</span>
-      {children}
-    </Link>
   );
 }
 

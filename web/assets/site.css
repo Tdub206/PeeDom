@@ -530,6 +530,85 @@ h1 {
   font-weight: 600;
 }
 
+.contribute-card {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top left, rgba(29, 92, 242, 0.18), transparent 58%),
+    radial-gradient(circle at bottom right, rgba(24, 114, 90, 0.16), transparent 62%),
+    rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.contribute-copy h2 {
+  margin: 12px 0 14px;
+  font-family: var(--headline);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.contribute-copy p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+.store-badges {
+  display: grid;
+  gap: 14px;
+  justify-items: stretch;
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: #ffffff;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+  box-shadow: 0 14px 28px rgba(16, 35, 60, 0.22);
+}
+
+.store-badge:hover,
+.store-badge:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(16, 35, 60, 0.28);
+}
+
+.store-badge-icon {
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.store-badge-copy {
+  display: grid;
+  line-height: 1.1;
+}
+
+.store-badge-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  text-transform: uppercase;
+}
+
+.store-badge-store {
+  font-family: var(--headline);
+  font-weight: 700;
+  font-size: 1.18rem;
+  letter-spacing: -0.01em;
+}
+
 .footer {
   padding: 28px 0 40px;
   border-top: 1px solid var(--line);
@@ -564,7 +643,8 @@ h1 {
   .stage-panel-grid,
   .panel-grid,
   .support-card-grid,
-  .faq-grid {
+  .faq-grid,
+  .contribute-card {
     grid-template-columns: 1fr;
   }
 }
@@ -603,11 +683,24 @@ h1 {
   .stage-panel-grid,
   .panel-grid,
   .support-card-grid,
-  .faq-grid {
+  .faq-grid,
+  .contribute-card {
     grid-template-columns: 1fr;
+  }
+
+  .contribute-card {
+    padding: 28px;
   }
 
   .cta-row .button {
     width: 100%;
+  }
+
+  .store-badges {
+    justify-items: stretch;
+  }
+
+  .store-badge {
+    justify-content: center;
   }
 }

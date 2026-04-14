@@ -44,6 +44,8 @@ export function VisibilitySettingsForm({
     })
   );
   const [draftState, setDraftState] = useState<VisibilitySettingsState>(confirmedState);
+  const normalizedConfirmedState = useMemo(() => normalizeState(confirmedState), [confirmedState]);
+  const normalizedDraftState = useMemo(() => normalizeState(draftState), [draftState]);
 
   useEffect(() => {
     const nextState = normalizeState({
@@ -61,10 +63,11 @@ export function VisibilitySettingsForm({
 
   const hasChanges = useMemo(
     () =>
-      draftState.requires_premium_access !== confirmedState.requires_premium_access ||
-      draftState.show_on_free_map !== confirmedState.show_on_free_map ||
-      draftState.is_location_verified !== confirmedState.is_location_verified,
-    [confirmedState, draftState]
+      normalizedDraftState.requires_premium_access !==
+        normalizedConfirmedState.requires_premium_access ||
+      normalizedDraftState.show_on_free_map !== normalizedConfirmedState.show_on_free_map ||
+      normalizedDraftState.is_location_verified !== normalizedConfirmedState.is_location_verified,
+    [normalizedConfirmedState, normalizedDraftState]
   );
 
   function updateDraftState(
@@ -86,8 +89,8 @@ export function VisibilitySettingsForm({
       return;
     }
 
-    const nextState = normalizeState(draftState);
-    const previousConfirmedState = confirmedState;
+    const nextState = normalizedDraftState;
+    const previousConfirmedState = normalizedConfirmedState;
 
     setDraftState(nextState);
     setSaveState('saving');
@@ -123,7 +126,7 @@ export function VisibilitySettingsForm({
       <SettingRow
         label="Premium-only listing"
         description="When on, this bathroom stays premium-gated. Turning it off keeps the location visible on the free map."
-        value={draftState.requires_premium_access}
+        value={normalizedDraftState.requires_premium_access}
         disabled={isPending}
         tone="brand"
         onChange={(value) => updateDraftState('requires_premium_access', value)}
@@ -131,19 +134,19 @@ export function VisibilitySettingsForm({
       <SettingRow
         label="Also show on free map"
         description={
-          draftState.requires_premium_access
+          normalizedDraftState.requires_premium_access
             ? 'Control whether premium-gated locations also appear on the free map.'
             : 'Public locations must stay visible on the free map.'
         }
-        value={draftState.show_on_free_map}
-        disabled={isPending || !draftState.requires_premium_access}
+        value={normalizedDraftState.show_on_free_map}
+        disabled={isPending || !normalizedDraftState.requires_premium_access}
         tone="brand"
         onChange={(value) => updateDraftState('show_on_free_map', value)}
       />
       <SettingRow
         label="Location verified"
         description="Confirms the saved address and pin coordinates are accurate."
-        value={draftState.is_location_verified}
+        value={normalizedDraftState.is_location_verified}
         disabled={isPending}
         tone="success"
         onChange={(value) => updateDraftState('is_location_verified', value)}

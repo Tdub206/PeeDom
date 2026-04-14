@@ -74,6 +74,11 @@ export const businessCouponRowSchema = z.object({
 });
 
 export const businessCouponRowsSchema = z.array(businessCouponRowSchema);
+export const businessCouponIdSchema = z.string().uuid('Select a valid coupon before updating it.');
+export const businessCouponOwnershipRowSchema = z.object({
+  id: businessCouponIdSchema,
+  business_user_id: z.string().uuid(),
+});
 
 export type BusinessCouponRow = z.infer<typeof businessCouponRowSchema>;
 
