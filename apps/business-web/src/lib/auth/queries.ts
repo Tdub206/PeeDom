@@ -8,6 +8,11 @@ export type CurrentUserProfile = Pick<
   full_name: string | null;
 };
 
+type CurrentUserProfileRow = Pick<
+  BusinessWebDatabase['public']['Tables']['profiles']['Row'],
+  'id' | 'display_name' | 'role'
+>;
+
 export async function getCurrentUserProfile(
   supabase: BusinessSupabaseClient
 ): Promise<CurrentUserProfile | null> {
@@ -21,10 +26,10 @@ export async function getCurrentUserProfile(
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .select('*')
+    .select('id, display_name, role')
     .eq('id', user.id)
     .maybeSingle()
-    .overrideTypes<BusinessWebDatabase['public']['Tables']['profiles']['Row'], { merge: false }>();
+    .overrideTypes<CurrentUserProfileRow, { merge: false }>();
 
   if (error) {
     return null;

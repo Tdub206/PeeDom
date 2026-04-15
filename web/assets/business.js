@@ -34,12 +34,12 @@ const DEFAULT_DASHBOARD_STATE = {
     playStoreUrl: "",
   },
   playbook: {
-    customerPromise: "Verified hours, clearer access details, and less guesswork for every guest.",
+    customerPromise: "Clean restrooms, honest hours, and a warm welcome — every time you stop in.",
     replyTemplate:
-      "Thanks for the report. We reviewed the location details, updated the listing where needed, and logged the issue for the location team.",
+      "Thanks for letting us know. We looked into it, updated the listing, and made sure the team on the ground saw your note.",
   },
   notes:
-    "Use this space for launch notes, reviewer talking points, featured-placement timing, or staff handoff instructions.",
+    "Jot down reminders for the team — featured-placement timing, cleaning rotations, anything you want the next shift to see.",
 };
 
 function clone(value) {
@@ -221,32 +221,32 @@ function renderOperations() {
   const summary = document.querySelector("[data-operation-summary]");
   summary.innerHTML = [
     {
-      title: "Amenities",
-      pill: state.operations.changingTable ? "Published" : "Missing",
+      title: "Baby changing",
+      pill: state.operations.changingTable ? "Live" : "Add it",
       copy: state.operations.changingTable
-        ? "Changing table availability has been marked for the location."
-        : "Family-friendly amenity details are still missing from this dashboard state.",
+        ? "Parents can see you offer a changing table when they pick a spot."
+        : "Turn this on to show parents that your spot is family-friendly.",
     },
     {
       title: "Accessibility",
-      pill: state.operations.accessibleRouting ? "Ready" : "Review",
+      pill: state.operations.accessibleRouting ? "Live" : "Add it",
       copy: state.operations.accessibleRouting
-        ? "Accessibility route notes are accounted for before launch."
-        : "Door width, route notes, or accessibility details still need a pass.",
+        ? "Guests can see your accessible entrance and route notes."
+        : "Share door width, step-free route, or any helpful notes for guests.",
     },
     {
       title: "Access policy",
-      pill: state.operations.customerOnly ? "Controlled" : "Open",
+      pill: state.operations.customerOnly ? "Customer only" : "Open access",
       copy: state.operations.customerOnly
-        ? "Customer-only access is documented so guest expectations stay clear."
-        : "No customer-only access policy has been flagged in this browser state.",
+        ? "Guests know a purchase or staff interaction is required — no surprises."
+        : "Anyone can stop in without needing to buy something.",
     },
     {
-      title: "Featured intent",
-      pill: state.operations.featuredPlacement ? "Planned" : "Off",
+      title: "Featured placement",
+      pill: state.operations.featuredPlacement ? "Boosted" : "Off",
       copy: state.operations.featuredPlacement
-        ? "The team intends to request a featured placement after launch."
-        : "No featured placement has been marked in this dashboard yet.",
+        ? "Your spot is set to appear at the top of the map in your area."
+        : "Turn this on to boost your listing above nearby competitors.",
     },
   ]
     .map(
@@ -405,10 +405,10 @@ function applyMetricTooltips() {
   const linksEl = document.querySelector("[data-metric-links]");
   const tasksEl = document.querySelector("[data-metric-tasks]");
 
-  if (setupEl) setupEl.title = "Percentage of launch checklist items completed";
+  if (setupEl) setupEl.title = "Percentage of listing checklist items completed";
   if (locEl) locEl.title = "Number of claimed locations in your checklist";
   if (linksEl) linksEl.title = "Number of support URLs and emails configured";
-  if (tasksEl) tasksEl.title = "Remaining checklist items before launch readiness";
+  if (tasksEl) tasksEl.title = "Remaining checklist items for this location";
 }
 applyMetricTooltips();
 
