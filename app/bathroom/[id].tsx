@@ -13,6 +13,7 @@ import { CodeRevealCard } from '@/components/CodeRevealCard';
 import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
+import { PredictionBadge } from '@/components/PredictionBadge';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
 import { QuickVisitActionsCard } from '@/components/QuickVisitActionsCard';
 import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
@@ -27,15 +28,19 @@ import { useBathroomLiveStatus } from '@/hooks/useBathroomLiveStatus';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { useFavorites } from '@/hooks/useFavorites';
+import { useEventEmitter } from '@/hooks/useEventEmitter';
 import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
+import { usePredictionBadge } from '@/hooks/usePredictionBadge';
 import { useRealtimeCodeVotes } from '@/hooks/useRealtimeCodeVotes';
 import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
+import { useTrustTier } from '@/hooks/useTrustTier';
 import { useToast } from '@/hooks/useToast';
 import { getBathroomStatusLabel } from '@/lib/bathroom-status';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
+import { getTrustBandLabel } from '@/lib/stallpass-signals';
 import { BathroomLiveStatus, BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import { buildBathroomConfidenceProfile, mapBathroomDetailRowToListItem } from '@/utils/bathroom';
@@ -117,6 +122,9 @@ export default function BathroomDetailScreen() {
   const { profile, user } = useAuth();
   const { showToast } = useToast();
   const hasFocusedOnceRef = useRef(false);
+  const hasTrackedCodeViewRef = useRef(false);
+  const hasTrackedPredictionRef = useRef(false);
+  const { emitEvent } = useEventEmitter();
   const [revealedCode, setRevealedCode] = useState<BathroomAccessCodeRow | null>(null);
   const [codeErrorMessage, setCodeErrorMessage] = useState<string | null>(null);
   const [isLoadingCode, setIsLoadingCode] = useState(false);
@@ -134,6 +142,8 @@ export default function BathroomDetailScreen() {
     return id ?? '';
   }, [id]);
   useBathroomView(bathroomId || null);
+  const trustTierQuery = useTrustTier(user?.id ?? null);
+  const predictionQuery = usePredictionBadge(bathroomId || null);
   const { data: kudosCount } = useKudosCount(bathroomId || null);
   const sendKudosMutation = useSendKudos(bathroomId || null);
 
@@ -301,6 +311,10 @@ export default function BathroomDetailScreen() {
     bathroomId: bathroomId || null,
     userId: user?.id ?? null,
   });
+  const trustBandLabel = useMemo(
+    () => (trustTierQuery.data ? getTrustBandLabel(trustTierQuery.data.normalized_tier) : null),
+    [trustTierQuery.data]
+  );
 
   useFocusEffect(
     useCallback(() => {
@@ -318,6 +332,38 @@ export default function BathroomDetailScreen() {
     void loadVisibleCode();
   }, [loadVisibleCode]);
 
+  useEffect(() => {
+    hasTrackedCodeViewRef.current = false;
+    hasTrackedPredictionRef.current = false;
+  }, [bathroomId]);
+
+  useEffect(() => {
+    if (!bathroomId || !visibleCodeValue || hasTrackedCodeViewRef.current) {
+      return;
+    }
+
+    hasTrackedCodeViewRef.current = true;
+    void emitEvent('code_viewed', {
+      bathroom_id: bathroomId,
+      screen_name: 'bathroom_detail',
+      trust_band: trustTierQuery.data?.normalized_tier ?? null,
+    }).catch(() => undefined);
+  }, [bathroomId, emitEvent, trustTierQuery.data?.normalized_tier, visibleCodeValue]);
+
+  useEffect(() => {
+    if (!bathroomId || !predictionQuery.data || hasTrackedPredictionRef.current) {
+      return;
+    }
+
+    hasTrackedPredictionRef.current = true;
+    void emitEvent('prediction_shown', {
+      bathroom_id: bathroomId,
+      screen_name: 'bathroom_detail',
+      prediction_confidence: Math.round(predictionQuery.data.prediction_confidence),
+      predicted_access_confidence: Math.round(predictionQuery.data.predicted_access_confidence),
+    }).catch(() => undefined);
+  }, [bathroomId, emitEvent, predictionQuery.data]);
+
   const handleUnlockWithAd = useCallback(() => {
     void unlockWithAd();
   }, [unlockWithAd]);
@@ -326,11 +372,19 @@ export default function BathroomDetailScreen() {
     setPendingVerificationVote(1);
 
     try {
-      await submitVerificationVote(1);
+      const outcome = await submitVerificationVote(1);
+
+      if (outcome === 'completed' || outcome === 'queued_retry') {
+        void emitEvent('code_confirmed', {
+          bathroom_id: bathroomId,
+          screen_name: 'bathroom_detail',
+          sync_outcome: outcome,
+        }).catch(() => undefined);
+      }
     } finally {
       setPendingVerificationVote(null);
     }
-  }, [submitVerificationVote]);
+  }, [bathroomId, emitEvent, submitVerificationVote]);
 
   const handleFailedVote = useCallback(async () => {
     if (!bathroomDetail) {
@@ -343,6 +397,11 @@ export default function BathroomDetailScreen() {
       const outcome = await submitVerificationVote(-1);
 
       if (outcome === 'completed' || outcome === 'queued_retry') {
+        void emitEvent('code_denied', {
+          bathroom_id: bathroomDetail.id,
+          screen_name: 'bathroom_detail',
+          sync_outcome: outcome,
+        }).catch(() => undefined);
         pushSafely(
           router,
           routes.modal.reportBathroom(bathroomDetail.id, 'wrong_code'),
@@ -352,7 +411,7 @@ export default function BathroomDetailScreen() {
     } finally {
       setPendingVerificationVote(null);
     }
-  }, [bathroomDetail, router, submitVerificationVote]);
+  }, [bathroomDetail, emitEvent, router, submitVerificationVote]);
 
   const handleQuickStatusUpdate = useCallback(
     async (status: BathroomLiveStatus) => {
@@ -587,6 +646,18 @@ export default function BathroomDetailScreen() {
 
           {bathroomTrustProfile ? <BathroomConfidenceCard profile={bathroomTrustProfile} /> : null}
 
+          {trustTierQuery.data ? (
+            <View className="mt-4 rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5">
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Contributor Status</Text>
+              <Text className="mt-2 text-xl font-black text-ink-900">{trustBandLabel}</Text>
+              <Text className="mt-2 text-sm leading-6 text-ink-600">
+                {trustTierQuery.data.shadow_banned
+                  ? 'Your account is currently in silent review, so new trust signals may take longer to propagate.'
+                  : `Trust score ${Math.round(trustTierQuery.data.trust_score)} with ${trustTierQuery.data.device_account_count} known device account link${trustTierQuery.data.device_account_count === 1 ? '' : 's'}.`}
+              </Text>
+            </View>
+          ) : null}
+
           {livePresence && livePresence.viewer_count > 0 ? (
             <View className="mt-4 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5">
               <Text className="text-sm font-semibold uppercase tracking-[1px] text-brand-700">Live Presence</Text>
@@ -635,6 +706,12 @@ export default function BathroomDetailScreen() {
             downVotes={trustDownVotes}
             lastVerifiedAt={trustLastVerifiedAt}
             upVotes={trustUpVotes}
+          />
+
+          <PredictionBadge
+            errorMessage={predictionQuery.error instanceof Error ? predictionQuery.error.message : null}
+            isLoading={predictionQuery.isLoading}
+            prediction={predictionQuery.data ?? null}
           />
 
           <CodeRevealCard

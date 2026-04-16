@@ -1,6 +1,7 @@
 import '../global.css';
 
 import { useEffect, useRef } from 'react';
+import { AppState } from 'react-native';
 import { Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -21,6 +22,8 @@ import { usePushNotifications } from '@/hooks/usePushNotifications';
 import { useAppUpdate } from '@/hooks/useAppUpdate';
 import { ForceUpdateScreen } from '@/components/ForceUpdateScreen';
 import { useOnboarding } from '@/hooks/useOnboarding';
+import { useDeviceFingerprint } from '@/hooks/useDeviceFingerprint';
+import { useEventEmitter } from '@/hooks/useEventEmitter';
 import { OnboardingScreen } from '@/components/OnboardingScreen';
 import { initializeAnalytics, trackAnalyticsEvent } from '@/lib/analytics';
 import { isNetworkStateOnline } from '@/lib/network-state';
@@ -43,12 +46,15 @@ function RootNavigator() {
   const [fontsLoaded, fontError] = useFonts({
     ...Ionicons.font,
   });
-  const { loading } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
   const hasTrackedBootstrap = useRef(false);
+  const hasTrackedAppOpen = useRef(false);
   const wasOnlineRef = useRef<boolean | null>(null);
   const setConnectionState = useRealtimeStore((state) => state.setConnectionState);
+  const { emitEvent, flushEvents, resetSession } = useEventEmitter();
   useOfflineSync();
   usePushNotifications();
+  useDeviceFingerprint();
   const { forceUpdateRequired, message: updateMessage, storeUrl, applyOtaUpdate, isApplyingUpdate } =
     useAppUpdate();
   const { hasOnboarded, completeOnboarding } = useOnboarding();
@@ -77,6 +83,19 @@ function RootNavigator() {
   }, [fontError, fontsLoaded, isAppReady, loading]);
 
   useEffect(() => {
+    if (!isAppReady || hasTrackedAppOpen.current) {
+      return;
+    }
+
+    hasTrackedAppOpen.current = true;
+    resetSession();
+    void emitEvent('app_opened', {
+      screen_name: 'root',
+      is_authenticated: isAuthenticated,
+    }).catch(() => undefined);
+  }, [emitEvent, isAppReady, isAuthenticated, resetSession]);
+
+  useEffect(() => {
     if (!isAppReady) {
       return;
     }
@@ -85,6 +104,17 @@ function RootNavigator() {
   }, [isAppReady]);
 
   useEffect(() => {
+    const appStateSubscription = AppState.addEventListener('change', (nextState) => {
+      if (nextState !== 'background') {
+        return;
+      }
+
+      void emitEvent('app_backgrounded', {
+        screen_name: 'root',
+      }).catch(() => undefined);
+      void flushEvents().catch(() => undefined);
+    });
+
     const unsubscribeForeground = realtimeManager.onForeground(() => {
       void queryClient.invalidateQueries({ refetchType: 'active' }).catch((error) => {
         Sentry.captureException(error);
@@ -129,14 +159,16 @@ function RootNavigator() {
       });
 
     return () => {
+      appStateSubscription.remove();
       unsubscribeForeground();
       unsubscribeBackground();
       unsubscribeNetwork();
+      void flushEvents().catch(() => undefined);
       void realtimeManager.destroy().catch((error) => {
         Sentry.captureException(error);
       });
     };
-  }, [setConnectionState]);
+  }, [emitEvent, flushEvents, setConnectionState]);
 
   if (!isAppReady) {
     return <LoadingScreen />;

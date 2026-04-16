@@ -39,6 +39,7 @@ supabase/.env
 .codex/environments/
 .codex/prompts/
 _codex_tmp/
+.mobile-startup-studio/
 .stallpass-ai/
 thread_exports/
 PeeDom-thread-export/

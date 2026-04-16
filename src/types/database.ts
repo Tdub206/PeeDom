@@ -220,6 +220,11 @@ export interface Database {
           hours_json: Json | null
           search_vector: unknown | null
           source_type: 'community' | 'business' | 'imported' | 'admin'
+          access_type: 'public' | 'code' | 'purchase_required' | 'key' | 'nfc_future'
+          hardware_ready: boolean
+          partner_lock_vendor_id: string | null
+          dwell_time_avg_seconds: number | null
+          peak_usage_jsonb: Json
           moderation_status: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           show_on_free_map: boolean
           hours_source: 'manual' | 'google' | 'preset_offset'
@@ -246,6 +251,11 @@ export interface Database {
           hours_json?: Json | null
           search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
+          access_type?: 'public' | 'code' | 'purchase_required' | 'key' | 'nfc_future'
+          hardware_ready?: boolean
+          partner_lock_vendor_id?: string | null
+          dwell_time_avg_seconds?: number | null
+          peak_usage_jsonb?: Json
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           show_on_free_map?: boolean
           hours_source?: 'manual' | 'google' | 'preset_offset'
@@ -272,6 +282,11 @@ export interface Database {
           hours_json?: Json | null
           search_vector?: unknown | null
           source_type?: 'community' | 'business' | 'imported' | 'admin'
+          access_type?: 'public' | 'code' | 'purchase_required' | 'key' | 'nfc_future'
+          hardware_ready?: boolean
+          partner_lock_vendor_id?: string | null
+          dwell_time_avg_seconds?: number | null
+          peak_usage_jsonb?: Json
           moderation_status?: 'active' | 'flagged' | 'hidden' | 'deleted' | 'unverified'
           show_on_free_map?: boolean
           hours_source?: 'manual' | 'google' | 'preset_offset'
@@ -1470,6 +1485,44 @@ export interface Database {
           p_bathroom_id: string
           p_status: string
           p_note?: string | null
+        }
+        Returns: Json
+      }
+      get_user_trust_tier: {
+        Args: {
+          p_user_id?: string | null
+        }
+        Returns: {
+          user_id: string
+          contributor_trust_tier: 'brand_new' | 'lightly_trusted' | 'verified_contributor' | 'highly_reliable_local' | 'business_verified_manager' | 'flagged_low_trust'
+          normalized_tier: 'newcomer' | 'normal' | 'power'
+          trust_score: number
+          trust_weight: number
+          shadow_banned: boolean
+          fraud_flags: Json
+          device_account_count: number
+          last_calculated_at: string
+        }[]
+      }
+      calculate_prediction_confidence: {
+        Args: {
+          p_bathroom_id: string
+          p_reference_hour?: number | null
+        }
+        Returns: {
+          bathroom_id: string
+          predicted_access_confidence: number
+          prediction_confidence: number
+          busy_level: 'unknown' | 'quiet' | 'moderate' | 'busy'
+          best_visit_hour: number | null
+          signal_count: number
+          recommended_copy: string
+          generated_at: string
+        }[]
+      }
+      track_event_batch: {
+        Args: {
+          p_events: Json
         }
         Returns: Json
       }

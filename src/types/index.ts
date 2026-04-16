@@ -777,6 +777,7 @@ export type ContributorTrustTier =
   | 'highly_reliable_local'
   | 'business_verified_manager'
   | 'flagged_low_trust';
+export type UserTrustBand = 'newcomer' | 'normal' | 'power';
 export type DuplicateCaseStatus = 'open' | 'under_review' | 'merged' | 'dismissed' | 'quarantined';
 
 export interface BusinessFeaturedPlacementScope {
@@ -863,6 +864,80 @@ export interface ContributorReputationProfile {
   primary_state: string | null;
   last_contribution_at: string | null;
   last_calculated_at: string;
+}
+
+export interface UserTrustTierSummary {
+  user_id: string;
+  contributor_trust_tier: ContributorTrustTier;
+  normalized_tier: UserTrustBand;
+  trust_score: number;
+  trust_weight: number;
+  shadow_banned: boolean;
+  fraud_flags: string[];
+  device_account_count: number;
+  last_calculated_at: string;
+}
+
+export type BathroomPredictionBusyLevel = 'unknown' | 'quiet' | 'moderate' | 'busy';
+
+export interface BathroomPrediction {
+  bathroom_id: string;
+  predicted_access_confidence: number;
+  prediction_confidence: number;
+  busy_level: BathroomPredictionBusyLevel;
+  best_visit_hour: number | null;
+  signal_count: number;
+  recommended_copy: string;
+  generated_at: string;
+}
+
+export type StallPassEventName =
+  | 'bathroom_viewed'
+  | 'bathroom_searched'
+  | 'code_viewed'
+  | 'code_confirmed'
+  | 'code_denied'
+  | 'code_submitted'
+  | 'prediction_shown'
+  | 'prediction_correct'
+  | 'review_submitted'
+  | 'report_submitted'
+  | 'app_opened'
+  | 'app_backgrounded'
+  | 'urgency_session';
+
+export type StallPassEventPropertyValue = boolean | number | string | null;
+
+export interface StallPassEventPayload {
+  [key: string]: StallPassEventPropertyValue | undefined;
+}
+
+export interface QueuedStallPassEvent {
+  client_event_id: string;
+  anonymous_id: string;
+  session_id: string;
+  name: StallPassEventName;
+  bathroom_id: string | null;
+  screen_name: string | null;
+  occurred_at: string;
+  properties: Record<string, StallPassEventPropertyValue>;
+}
+
+export interface EventBatchResult {
+  accepted_count: number;
+  deduplicated_count: number;
+  processed_at: string;
+}
+
+export interface DeviceFingerprintResult {
+  allowed: boolean;
+  shadow_mode: boolean;
+  reason: string;
+  device_account_count: number;
+  recent_contribution_count: number;
+  detected_speed_kmh: number | null;
+  fraud_flags: string[];
+  checked_at: string;
 }
 
 export interface DuplicateCase {

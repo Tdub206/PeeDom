@@ -1,10 +1,11 @@
 module.exports = {
   preset: 'ts-jest',
+  roots: ['<rootDir>/__tests__'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'node',
-  testMatch: ['<rootDir>/__tests__/**/*.test.ts'],
+  testRegex: '.*\\.test\\.ts$',
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',

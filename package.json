@@ -16,6 +16,7 @@
     "ai:plan": "node scripts/stallpass-ai-orchestrator.cjs plan",
     "ai:review": "node scripts/stallpass-ai-orchestrator.cjs review",
     "ai:launch": "node scripts/stallpass-ai-orchestrator.cjs launch",
+    "studio:swarm": "node plugins/mobile-startup-studio/scripts/startup-swarm-orchestrator.cjs",
     "lint": "eslint .",
     "test": "jest",
     "type-check": "tsc --noEmit",
