@@ -12,11 +12,22 @@ buildscript {
   }
 }
 
+ext {
+    reactNativePackage = file("${rootProject.projectDir}/../node_modules/react-native/package.json")
+}
+
 allprojects {
   repositories {
     google()
     mavenCentral()
     maven { url 'https://www.jitpack.io' }
+    
+    def rnPackage = file("${rootProject.projectDir}/../node_modules/react-native")
+    if (rnPackage.exists()) {
+        maven {
+            url "$rnPackage/android"
+        }
+    }
   }
 }
 

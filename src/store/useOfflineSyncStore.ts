@@ -123,6 +123,8 @@ export function formatQueuedMutationLabel(type: MutationType): string {
       return 'Live status updates';
     case 'accessibility_update':
       return 'Accessibility updates';
+    case 'bug_report':
+      return 'Bug reports';
     default:
       return type;
   }

@@ -20,6 +20,16 @@ export const config = {
   },
   analytics: analyticsRuntimeConfig,
 
+  // Public-facing URLs. These must be live before Google Play submission.
+  // Hosted copies live in docs/legal/*.md and should be published to these paths.
+  urls: {
+    website: 'https://stallpass.app',
+    privacy: 'https://stallpass.app/privacy',
+    terms: 'https://stallpass.app/terms',
+    support: 'mailto:support@stallpass.app',
+    dataDeletion: 'https://stallpass.app/delete-account',
+  },
+
   // Map defaults
   map: {
     defaultRegion: {

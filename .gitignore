@@ -21,6 +21,7 @@ web-build/
 .env*.local
 .env*.backup
 *.backup
+sentry.properties
 supabase/.env
 
 # Keep example env checked in

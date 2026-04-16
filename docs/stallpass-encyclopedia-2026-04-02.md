@@ -89,7 +89,7 @@
 
 | Feature | Description | Key Files |
 |---|---|---|
-| **Interactive map** | Google Maps with bathroom markers, region-based PostGIS queries | `app/(tabs)/index.tsx`, `src/components/MapView.tsx` |
+| **Interactive map** | Apple Maps on iOS and Google Maps on Android with bathroom markers and region-based PostGIS queries | `app/(tabs)/index.tsx`, `src/components/MapView.tsx` |
 | **Map clustering** | Pin clustering via react-native-map-clustering | `src/components/MapView.tsx` |
 | **Color-coded pins** | Green (open+unlocked), yellow (locked, code available), red (locked, no code), grey (unverified) | `src/utils/bathroom.ts` |
 | **Location context** | Centralized device location + permission handling | `src/contexts/LocationContext.tsx` |
@@ -386,7 +386,6 @@
 - `EXPO_PUBLIC_SUPABASE_ANON_KEY`
 - `EXPO_PUBLIC_SENTRY_DSN`
 - `ANDROID_GOOGLE_MAPS_API_KEY`
-- `IOS_GOOGLE_MAPS_API_KEY`
 - `ANDROID_ADMOB_APP_ID`
 - `IOS_ADMOB_APP_ID`
 - `EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID`

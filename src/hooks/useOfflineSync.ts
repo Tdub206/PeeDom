@@ -4,6 +4,7 @@ import NetInfo from '@react-native-community/netinfo';
 import { useQueryClient } from '@tanstack/react-query';
 import { createBathroomAccessCode, upsertCodeVote } from '@/api/access-codes';
 import { submitBathroomAccessibilityUpdate } from '@/api/accessibility';
+import { submitBugReport } from '@/api/bug-reports';
 import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
 import { reportBathroomStatus } from '@/api/notifications';
@@ -27,6 +28,7 @@ import {
   ReportType,
 } from '@/types';
 import { isTransientNetworkError } from '@/utils/network';
+import { bugReportPayloadSchema } from '@/utils/validate';
 
 function isFavoriteMutationPayload(
   payload: Record<string, unknown>
@@ -144,6 +146,11 @@ export function useOfflineSync() {
     useOfflineSyncStore.getState().markSyncStarted();
 
     try {
+      const snapshot = offlineQueue.getSnapshot();
+      const hasMutationsOtherThanBugReports = Object.entries(snapshot.pending_by_type).some(
+        ([type, count]) => type !== 'bug_report' && (count ?? 0) > 0
+      );
+
       const result = await offlineQueue.process(async (mutation) => {
         if (mutation.user_id !== userId) {
           return false;
@@ -253,6 +260,21 @@ export function useOfflineSync() {
             const accessibilityResult = await submitBathroomAccessibilityUpdate(mutation.payload);
             return !accessibilityResult.error;
           }
+          case 'bug_report': {
+            const parsed = bugReportPayloadSchema.safeParse(mutation.payload);
+
+            if (!parsed.success) {
+              return true; // Drop malformed payload.
+            }
+
+            const bugResult = await submitBugReport(parsed.data);
+
+            if (bugResult.success || bugResult.isTerminal) {
+              return true; // Success or terminal error — remove from queue.
+            }
+
+            return false; // Transient error — retry later.
+          }
           default:
             return true;
         }
@@ -292,11 +314,13 @@ export function useOfflineSync() {
           }),
         ]);
 
-        showToast({
-          title: 'Offline changes synced',
-          message: 'Queued updates are now synced with your account.',
-          variant: 'success',
-        });
+        if (hasMutationsOtherThanBugReports) {
+          showToast({
+            title: 'Offline changes synced',
+            message: 'Queued updates are now synced with your account.',
+            variant: 'success',
+          });
+        }
       }
 
       if (result.dropped_count > 0) {

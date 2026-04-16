@@ -55,8 +55,9 @@ function PrivacyPolicyContent() {
       <Paragraph>
         We do not sell your personal information. We share data only with service providers that help
         us operate the app: Supabase (database and authentication), Sentry (error monitoring),
-        Google Maps (map rendering), and push-notification infrastructure needed to deliver alerts.
-        Each provider processes data under their own privacy policies.
+        platform map providers such as Apple Maps on iOS and Google Maps on Android, Google Places
+        for address and business lookup, and push-notification infrastructure needed to deliver
+        alerts. Each provider processes data under their own privacy policies.
       </Paragraph>
 
       <SectionHeading>4. Current Launch Posture</SectionHeading>

@@ -374,7 +374,6 @@ function BathroomMapViewComponent({
           moveOnMarkerPress={false}
           onRegionChangeComplete={handleRegionChange}
           preserveClusterPressBehavior={false}
-          provider={PROVIDER_GOOGLE}
           radius={42}
           region={region}
           renderCluster={renderCluster}

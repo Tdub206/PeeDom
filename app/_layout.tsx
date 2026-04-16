@@ -31,6 +31,8 @@ import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
 import { supabaseConfigState } from '@/lib/supabase';
 import { useRealtimeStore } from '@/store/useRealtimeStore';
+import { usePathname } from 'expo-router';
+import { setActiveScreen } from '@/utils/active-screen-tracker';
 
 initializeSentry();
 initializeQueryLifecycleManagers();
@@ -45,6 +47,8 @@ function RootNavigator() {
   const hasTrackedBootstrap = useRef(false);
   const wasOnlineRef = useRef<boolean | null>(null);
   const setConnectionState = useRealtimeStore((state) => state.setConnectionState);
+  const pathname = usePathname();
+  useEffect(() => { setActiveScreen(pathname); }, [pathname]);
   useOfflineSync();
   usePushNotifications();
   const { forceUpdateRequired, message: updateMessage, storeUrl, applyOtaUpdate, isApplyingUpdate } =

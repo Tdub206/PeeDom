@@ -13,7 +13,6 @@ The repo now fails closed for production Expo config and Android release signing
 - `EXPO_PUBLIC_SENTRY_DSN`
 - `EAS_PROJECT_ID`
 - `ANDROID_GOOGLE_MAPS_API_KEY`
-- `IOS_GOOGLE_MAPS_API_KEY`
 - `ANDROID_ADMOB_APP_ID`
 - `IOS_ADMOB_APP_ID`
 - `EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID`

@@ -56,7 +56,6 @@ jobs:
       SENTRY_URL: ${{ secrets.SENTRY_URL }}
       EXPO_PUBLIC_ENV: ${{ github.event_name == 'pull_request' && 'preview' || github.event_name == 'push' && 'production' || inputs.profile }}
       ANDROID_GOOGLE_MAPS_API_KEY: ${{ secrets.ANDROID_GOOGLE_MAPS_API_KEY }}
-      IOS_GOOGLE_MAPS_API_KEY: ${{ secrets.IOS_GOOGLE_MAPS_API_KEY }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

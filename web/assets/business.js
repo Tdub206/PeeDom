@@ -201,6 +201,13 @@ function updateCompletionBanner() {
   } else {
     banner.classList.add("is-hidden");
   }
+
+  if (allComplete && !wasAllComplete) {
+    fireConfetti();
+    toast("Launch checklist complete - you're review-ready!", "success");
+  }
+
+  wasAllComplete = allComplete;
 }
 
 function renderChecklist() {
@@ -530,16 +537,6 @@ function fireConfetti() {
 
 // Fire confetti when checklist hits 100% (but only on transitions)
 let wasAllComplete = Object.values(state.checklist).every(Boolean);
-const _origUpdateBanner = updateCompletionBanner;
-updateCompletionBanner = function () {
-  _origUpdateBanner();
-  const allComplete = Object.values(state.checklist).every(Boolean);
-  if (allComplete && !wasAllComplete) {
-    fireConfetti();
-    toast("Launch checklist complete — you're review-ready!", "success");
-  }
-  wasAllComplete = allComplete;
-};
 
 // --- Command palette ---
 const cmdkOverlay = document.querySelector("[data-cmdk-overlay]");
@@ -601,10 +598,10 @@ function toggleWidget(key) {
 
 function exportState() {
   const json = JSON.stringify(state, null, 2);
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(json).then(
+  if (globalThis.navigator?.clipboard?.writeText) {
+    globalThis.navigator.clipboard.writeText(json).then(
       () => toast("Dashboard state copied to clipboard", "success"),
-      () => toast("Clipboard unavailable — check console"),
+      () => toast("Clipboard unavailable - check console"),
     );
   }
   // Also log for fallback

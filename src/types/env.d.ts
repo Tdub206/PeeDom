@@ -7,7 +7,6 @@ declare namespace NodeJS {
     EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED?: 'true' | 'false';
     EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID?: string;
     ANDROID_GOOGLE_MAPS_API_KEY?: string;
-    IOS_GOOGLE_MAPS_API_KEY?: string;
     ANDROID_ADMOB_APP_ID?: string;
     IOS_ADMOB_APP_ID?: string;
     EAS_PROJECT_ID?: string;
