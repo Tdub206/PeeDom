@@ -14,6 +14,7 @@ import { useGoogleAddressAutocomplete } from '@/hooks/useGooglePlaces';
 import { useSearch, useSearchSuggestions } from '@/hooks/useSearch';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
+import { useEventEmitter } from '@/hooks/useEventEmitter';
 import { pushSafely } from '@/lib/navigation';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useFilterStore } from '@/store/useFilterStore';
@@ -28,6 +29,7 @@ import { formatSearchDistance } from '@/utils/search';
 export default function SearchTab() {
   const router = useRouter();
   const { showToast } = useToast();
+  const { emitEvent } = useEventEmitter();
   const { user } = useAuth();
   const filters = useFilterStore((state) => state.filters);
   const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
@@ -62,6 +64,11 @@ export default function SearchTab() {
     origin: userLocation,
     onSearchResolved: async (query, resultCount) => {
       await addToHistory(query, resultCount);
+      void emitEvent('bathroom_searched', {
+        screen_name: 'search',
+        query_length: query.length,
+        results_count: resultCount,
+      }).catch(() => undefined);
     },
   });
   const suggestionsQuery = useSearchSuggestions(userLocation);
@@ -156,6 +163,12 @@ export default function SearchTab() {
         });
       }
 
+      void emitEvent('bathroom_viewed', {
+        bathroom_id: bathroom.id,
+        screen_name: 'search',
+        source: 'search_results',
+      }).catch(() => undefined);
+
       Keyboard.dismiss();
       clearSearchTarget();
       setRegion({
@@ -167,7 +180,7 @@ export default function SearchTab() {
       setActiveBathroomId(bathroom.id);
       pushSafely(router, routes.tabs.map, routes.tabs.search);
     },
-    [clearSearchTarget, recordVisitMutation, router, setActiveBathroomId, setRegion, user?.id]
+    [clearSearchTarget, emitEvent, recordVisitMutation, router, setActiveBathroomId, setRegion, user?.id]
   );
 
   const handleToggleFavorite = useCallback(

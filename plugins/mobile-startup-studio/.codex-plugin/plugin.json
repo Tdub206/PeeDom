@@ -1,0 +1,39 @@
+{
+  "name": "mobile-startup-studio",
+  "version": "0.1.0",
+  "description": "Cross-functional mobile startup team for coordinated product, engineering, launch, and growth work.",
+  "author": {
+    "name": "T"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "mobile",
+    "startup",
+    "ios",
+    "android",
+    "expo",
+    "react-native",
+    "supabase",
+    "growth",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Mobile Startup Studio",
+    "shortDescription": "Parallel startup team for mobile apps",
+    "longDescription": "Repo-local Codex plugin that models a successful app startup as a coordinated set of product, architecture, iOS, Android, Expo, Supabase, design, QA, analytics, research, ASO, growth, and social roles. Use the coordinator skill to run full-company sessions or pull in only the specialists a task needs.",
+    "developerName": "T",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Run a full-company planning session for a new mobile feature",
+      "Split a launch task across iOS, Android, Supabase, QA, and growth",
+      "Launch a persistent startup swarm for a complex mobile initiative"
+    ],
+    "brandColor": "#0F766E"
+  }
+}

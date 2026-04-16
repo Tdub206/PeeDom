@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { getSupabaseClient } from '@/lib/supabase';
 import { useAuth } from '@/contexts/AuthContext';
 import { Sentry } from '@/lib/sentry';
+import { useEventEmitter } from '@/hooks/useEventEmitter';
 
 /**
  * Fire-and-forget bathroom view event on mount.
@@ -9,7 +10,12 @@ import { Sentry } from '@/lib/sentry';
  */
 export function useBathroomView(bathroomId: string | null) {
   const { user } = useAuth();
+  const { emitEvent } = useEventEmitter();
   const hasRecorded = useRef(false);
+
+  useEffect(() => {
+    hasRecorded.current = false;
+  }, [bathroomId]);
 
   useEffect(() => {
     if (!bathroomId || !user?.id || hasRecorded.current) return;
@@ -17,6 +23,10 @@ export function useBathroomView(bathroomId: string | null) {
 
     void (async () => {
       try {
+        void emitEvent('bathroom_viewed', {
+          bathroom_id: bathroomId,
+          screen_name: 'bathroom_detail',
+        }).catch(() => undefined);
         await getSupabaseClient().rpc(
           'record_bathroom_view' as never,
           { p_bathroom_id: bathroomId } as never,
@@ -25,5 +35,5 @@ export function useBathroomView(bathroomId: string | null) {
         Sentry.captureException(err);
       }
     })();
-  }, [bathroomId, user?.id]);
+  }, [bathroomId, emitEvent, user?.id]);
 }

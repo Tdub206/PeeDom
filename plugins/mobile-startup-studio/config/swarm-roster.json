@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "roles": [
+    {
+      "name": "cto-lead",
+      "lane": "leadership",
+      "skillPath": "./skills/cto-lead/SKILL.md",
+      "mission": "Set architecture, ownership, and technical decision order."
+    },
+    {
+      "name": "product-strategist",
+      "lane": "product",
+      "skillPath": "./skills/product-strategist/SKILL.md",
+      "mission": "Define scope, value, acceptance criteria, and release shape."
+    },
+    {
+      "name": "brainstorm-facilitator",
+      "lane": "product",
+      "skillPath": "./skills/brainstorm-facilitator/SKILL.md",
+      "mission": "Generate alternatives, experiments, and idea matrices."
+    },
+    {
+      "name": "expo-platform-engineer",
+      "lane": "engineering",
+      "skillPath": "./skills/expo-platform-engineer/SKILL.md",
+      "mission": "Own shared React Native and Expo implementation details."
+    },
+    {
+      "name": "ios-engineer",
+      "lane": "engineering",
+      "skillPath": "./skills/ios-engineer/SKILL.md",
+      "mission": "Own iOS-specific runtime, review, and native concerns."
+    },
+    {
+      "name": "android-engineer",
+      "lane": "engineering",
+      "skillPath": "./skills/android-engineer/SKILL.md",
+      "mission": "Own Android-specific runtime, Play, and native concerns."
+    },
+    {
+      "name": "supabase-architect",
+      "lane": "backend",
+      "skillPath": "./skills/supabase-architect/SKILL.md",
+      "mission": "Own schema, RLS, auth, and sync guarantees."
+    },
+    {
+      "name": "design-lead",
+      "lane": "design",
+      "skillPath": "./skills/design-lead/SKILL.md",
+      "mission": "Own UX flows, accessibility, and state design."
+    },
+    {
+      "name": "qa-release-manager",
+      "lane": "operations",
+      "skillPath": "./skills/qa-release-manager/SKILL.md",
+      "mission": "Own regression strategy, release gates, and verification."
+    },
+    {
+      "name": "growth-marketer",
+      "lane": "growth",
+      "skillPath": "./skills/growth-marketer/SKILL.md",
+      "mission": "Own acquisition loops, positioning, and growth experiments."
+    },
+    {
+      "name": "social-media-manager",
+      "lane": "growth",
+      "skillPath": "./skills/social-media-manager/SKILL.md",
+      "mission": "Own social rollout, content angles, and community touchpoints."
+    },
+    {
+      "name": "aso-manager",
+      "lane": "growth",
+      "skillPath": "./skills/aso-manager/SKILL.md",
+      "mission": "Own store listing quality and discoverability experiments."
+    },
+    {
+      "name": "data-analyst",
+      "lane": "analytics",
+      "skillPath": "./skills/data-analyst/SKILL.md",
+      "mission": "Own metrics, instrumentation, and readout quality."
+    },
+    {
+      "name": "customer-research-lead",
+      "lane": "research",
+      "skillPath": "./skills/customer-research-lead/SKILL.md",
+      "mission": "Own interviews, feedback synthesis, and qualitative signal loops."
+    }
+  ]
+}

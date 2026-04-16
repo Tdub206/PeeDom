@@ -24,6 +24,7 @@ import { useFavorites } from '@/hooks/useFavorites';
 import { useLocation } from '@/hooks/useLocation';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
+import { useUrgencyDetection } from '@/hooks/useUrgencyDetection';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
@@ -37,6 +38,7 @@ import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 export default function MapTab() {
   const router = useRouter();
   const { showToast } = useToast();
+  const { finishUrgencySession, startUrgencySession } = useUrgencyDetection();
   const { profile, requireAuth, user } = useAuth();
   const filters = useFilterStore((state) => state.filters);
   const resetFilters = useFilterStore((state) => state.resetFilters);
@@ -214,6 +216,11 @@ export default function MapTab() {
       setIsOpeningDirections(true);
 
       try {
+        void startUrgencySession({
+          bathroomId: bathroom.id,
+          screenName: 'map',
+          source: 'map_navigation',
+        }).catch(() => undefined);
         void recordBathroomNavigationOpen(bathroom.id);
         if (user?.id) {
           recordVisitMutation.mutate({
@@ -239,7 +246,17 @@ export default function MapTab() {
         }
 
         await Linking.openURL(browserFallbackUrl);
+        void finishUrgencySession({
+          bathroomId: bathroom.id,
+          outcome: 'navigation_opened',
+          screenName: 'map',
+        }).catch(() => undefined);
       } catch (error) {
+        void finishUrgencySession({
+          bathroomId: bathroom.id,
+          outcome: 'navigation_failed',
+          screenName: 'map',
+        }).catch(() => undefined);
         showToast({
           title: 'Navigation unavailable',
           message: getErrorMessage(error, 'We could not open navigation right now.'),
@@ -249,7 +266,7 @@ export default function MapTab() {
         setIsOpeningDirections(false);
       }
     },
-    [recordVisitMutation, showToast, user?.id]
+    [finishUrgencySession, recordVisitMutation, showToast, startUrgencySession, user?.id]
   );
 
   const handleOpenBathroomDetail = useCallback(

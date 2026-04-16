@@ -7,6 +7,7 @@ import { fetchBathroomsNearRegion } from '@/api/bathrooms';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
+import { useUrgencyDetection } from '@/hooks/useUrgencyDetection';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { consumeEmergencyFindCredit, getFirstInstallCredits } from '@/lib/first-install-credits';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
@@ -109,6 +110,7 @@ export function useEmergencyMode() {
   const { coordinates, permission_status, requestPermission } = useLocation();
   const { profile } = useAuth();
   const { showToast } = useToast();
+  const { finishUrgencySession, startUrgencySession } = useUrgencyDetection();
   const isAccessibilityMode = useAccessibilityStore((s) => s.isAccessibilityMode);
   const accessibilityPreferences = useAccessibilityStore((s) => s.preferences);
   const [state, setState] = useState<EmergencyState>({
@@ -136,6 +138,11 @@ export function useEmergencyMode() {
     void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => undefined);
 
     try {
+      void startUrgencySession({
+        screenName: 'map',
+        source: 'emergency_button',
+      }).catch(() => undefined);
+
       // Step 0: Check if user has a free credit or points to cover the emergency find
       const credits = await getFirstInstallCredits();
       const hasFreeCredit = credits.emergency_finds > 0;
@@ -149,6 +156,10 @@ export function useEmergencyMode() {
           variant: 'warning',
         });
         setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+        void finishUrgencySession({
+          outcome: 'insufficient_balance',
+          screenName: 'map',
+        }).catch(() => undefined);
         isRunningRef.current = false;
         return;
       }
@@ -165,6 +176,10 @@ export function useEmergencyMode() {
             variant: 'error',
           });
           setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+          void finishUrgencySession({
+            outcome: 'points_spend_failed',
+            screenName: 'map',
+          }).catch(() => undefined);
           isRunningRef.current = false;
           return;
         }
@@ -185,6 +200,10 @@ export function useEmergencyMode() {
               variant: 'warning',
             });
             setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+            void finishUrgencySession({
+              outcome: 'location_denied',
+              screenName: 'map',
+            }).catch(() => undefined);
             return;
           }
         }
@@ -204,6 +223,10 @@ export function useEmergencyMode() {
             variant: 'error',
           });
           setState({ phase: 'error', nearestBathroom: null, candidates: [] });
+          void finishUrgencySession({
+            outcome: 'location_unavailable',
+            screenName: 'map',
+          }).catch(() => undefined);
           return;
         }
       }
@@ -267,6 +290,10 @@ export function useEmergencyMode() {
           variant: 'warning',
         });
         setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+        void finishUrgencySession({
+          outcome: 'no_results',
+          screenName: 'map',
+        }).catch(() => undefined);
         return;
       }
 
@@ -285,10 +312,23 @@ export function useEmergencyMode() {
         variant: 'error',
       });
       setState({ phase: 'error', nearestBathroom: null, candidates: [] });
+      void finishUrgencySession({
+        outcome: 'failed',
+        screenName: 'map',
+      }).catch(() => undefined);
     } finally {
       isRunningRef.current = false;
     }
-  }, [accessibilityPreferences, coordinates, isAccessibilityMode, permission_status, requestPermission, showToast]);
+  }, [
+    accessibilityPreferences,
+    coordinates,
+    finishUrgencySession,
+    isAccessibilityMode,
+    permission_status,
+    requestPermission,
+    showToast,
+    startUrgencySession,
+  ]);
 
   const selectAndNavigate = useCallback(
     async (bathroom: BathroomListItem) => {
@@ -313,18 +353,31 @@ export function useEmergencyMode() {
 
       try {
         await launchNavigation(bathroom);
+        void finishUrgencySession({
+          bathroomId: bathroom.id,
+          outcome: 'navigation_opened',
+          screenName: 'map',
+        }).catch(() => undefined);
       } catch (_e) {
-        // Navigation launch failed silently
+        void finishUrgencySession({
+          bathroomId: bathroom.id,
+          outcome: 'navigation_failed',
+          screenName: 'map',
+        }).catch(() => undefined);
       }
 
       setState((prev) => ({ ...prev, phase: 'idle' }));
     },
-    [showToast],
+    [finishUrgencySession, showToast],
   );
 
   const dismiss = useCallback(() => {
+    void finishUrgencySession({
+      outcome: 'dismissed',
+      screenName: 'map',
+    }).catch(() => undefined);
     setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
-  }, []);
+  }, [finishUrgencySession]);
 
   return {
     ...state,

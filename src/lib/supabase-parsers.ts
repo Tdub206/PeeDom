@@ -443,6 +443,46 @@ export const contributorReputationProfileSchema = z.object({
   last_calculated_at: dateTimeStringSchema,
 });
 
+export const userTrustTierSummarySchema = z.object({
+  user_id: rawTextSchema,
+  contributor_trust_tier: contributorTrustTierSchema,
+  normalized_tier: z.enum(['newcomer', 'normal', 'power']),
+  trust_score: z.number(),
+  trust_weight: z.number(),
+  shadow_banned: z.boolean(),
+  fraud_flags: z.array(z.string()).default([]),
+  device_account_count: z.number().int().nonnegative(),
+  last_calculated_at: dateTimeStringSchema,
+});
+
+export const bathroomPredictionSchema = z.object({
+  bathroom_id: rawTextSchema,
+  predicted_access_confidence: z.number(),
+  prediction_confidence: z.number(),
+  busy_level: z.enum(['unknown', 'quiet', 'moderate', 'busy']),
+  best_visit_hour: z.number().int().min(0).max(23).nullable(),
+  signal_count: z.number().int().nonnegative(),
+  recommended_copy: rawTextSchema,
+  generated_at: dateTimeStringSchema,
+});
+
+export const eventBatchResultSchema = z.object({
+  accepted_count: z.number().int().nonnegative(),
+  deduplicated_count: z.number().int().nonnegative(),
+  processed_at: dateTimeStringSchema,
+});
+
+export const deviceFingerprintResultSchema = z.object({
+  allowed: z.boolean(),
+  shadow_mode: z.boolean(),
+  reason: rawTextSchema,
+  device_account_count: z.number().int().nonnegative(),
+  recent_contribution_count: z.number().int().nonnegative(),
+  detected_speed_kmh: z.number().nullable(),
+  fraud_flags: z.array(z.string()).default([]),
+  checked_at: dateTimeStringSchema,
+});
+
 export const duplicateCaseSchema = z.object({
   id: rawTextSchema,
   bathroom_a_id: rawTextSchema,

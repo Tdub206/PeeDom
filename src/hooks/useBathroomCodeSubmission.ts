@@ -5,6 +5,7 @@ import { createBathroomAccessCode } from '@/api/access-codes';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { bathroomDetailQueryKey } from '@/hooks/useBathroomDetail';
+import { useEventEmitter } from '@/hooks/useEventEmitter';
 import { useToast } from '@/hooks/useToast';
 import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
@@ -44,6 +45,7 @@ export function useBathroomCodeSubmission() {
   const router = useRouter();
   const queryClient = useQueryClient();
   const { requireAuth } = useAuth();
+  const { emitEvent } = useEventEmitter();
   const { showToast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -97,6 +99,12 @@ export function useBathroomCodeSubmission() {
           variant: 'success',
         });
 
+        void emitEvent('code_submitted', {
+          bathroom_id: codeInput.bathroom_id,
+          screen_name: 'submit_code_modal',
+          sync_outcome: 'completed',
+        }).catch(() => undefined);
+
         return {
           status: 'completed',
           codeId: result.data.code_id,
@@ -118,6 +126,12 @@ export function useBathroomCodeSubmission() {
             variant: 'warning',
           });
 
+          void emitEvent('code_submitted', {
+            bathroom_id: codeInput.bathroom_id,
+            screen_name: 'submit_code_modal',
+            sync_outcome: 'queued_retry',
+          }).catch(() => undefined);
+
           return {
             status: 'queued_retry',
           };
@@ -133,7 +147,7 @@ export function useBathroomCodeSubmission() {
         setIsSubmitting(false);
       }
     },
-    [queryClient, requireAuth, router, showToast]
+    [emitEvent, queryClient, requireAuth, router, showToast]
   );
 
   return {
