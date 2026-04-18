@@ -83,6 +83,10 @@ export function getPointEventLabel(eventType: PointEventType): string {
       return 'Code milestone bonus';
     case 'premium_redeemed':
       return 'Premium redeemed';
+    case 'ad_watched':
+      return 'Watched an ad';
+    case 'points_spent':
+      return 'Points spent';
     default:
       return 'Contribution';
   }

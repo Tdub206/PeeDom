@@ -94,6 +94,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table: string
           reference_id: string
           points_awarded: number
@@ -111,6 +113,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table: string
           reference_id: string
           points_awarded: number
@@ -128,6 +132,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table?: string
           reference_id?: string
           points_awarded?: number

@@ -1,11 +1,14 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Linking, Platform } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import * as Location from 'expo-location';
+import { spendPointsForEmergencyFind } from '@/api/gamification';
 import { fetchBathroomsNearRegion } from '@/api/bathrooms';
+import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
+import { consumeEmergencyFindCredit, getFirstInstallCredits } from '@/lib/first-install-credits';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { BathroomListItem, Coordinates } from '@/types';
 import {
@@ -14,6 +17,8 @@ import {
   mapBathroomRowToListItem,
   mergeAccessibilityFilters,
 } from '@/utils/bathroom';
+
+export const EMERGENCY_FIND_POINTS_COST = 25;
 
 type EmergencyPhase = 'idle' | 'locating' | 'searching' | 'picking' | 'navigating' | 'error';
 
@@ -102,6 +107,7 @@ async function launchNavigation(bathroom: BathroomListItem): Promise<boolean> {
 
 export function useEmergencyMode() {
   const { coordinates, permission_status, requestPermission } = useLocation();
+  const { profile } = useAuth();
   const { showToast } = useToast();
   const isAccessibilityMode = useAccessibilityStore((s) => s.isAccessibilityMode);
   const accessibilityPreferences = useAccessibilityStore((s) => s.preferences);
@@ -110,7 +116,16 @@ export function useEmergencyMode() {
     nearestBathroom: null,
     candidates: [],
   });
+  const [emergencyFreeCredits, setEmergencyFreeCredits] = useState(0);
   const isRunningRef = useRef(false);
+
+  useEffect(() => {
+    let isMounted = true;
+    getFirstInstallCredits().then((credits) => {
+      if (isMounted) setEmergencyFreeCredits(credits.emergency_finds);
+    }).catch(() => undefined);
+    return () => { isMounted = false; };
+  }, []);
 
   const activate = useCallback(async () => {
     if (isRunningRef.current) {
@@ -121,6 +136,40 @@ export function useEmergencyMode() {
     void Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => undefined);
 
     try {
+      // Step 0: Check if user has a free credit or points to cover the emergency find
+      const credits = await getFirstInstallCredits();
+      const hasFreeCredit = credits.emergency_finds > 0;
+      const pointsBalance = profile?.points_balance ?? 0;
+      const hasEnoughPoints = pointsBalance >= EMERGENCY_FIND_POINTS_COST;
+
+      if (!hasFreeCredit && !hasEnoughPoints) {
+        showToast({
+          title: 'Emergency find unavailable',
+          message: `You need ${EMERGENCY_FIND_POINTS_COST} points to use emergency mode. Watch an ad on your profile to earn points.`,
+          variant: 'warning',
+        });
+        setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+        isRunningRef.current = false;
+        return;
+      }
+
+      if (hasFreeCredit) {
+        await consumeEmergencyFindCredit();
+        setEmergencyFreeCredits(0);
+      } else {
+        const spendResult = await spendPointsForEmergencyFind();
+        if (spendResult.error || !spendResult.data) {
+          showToast({
+            title: 'Could not use emergency mode',
+            message: 'Unable to deduct points right now. Please try again.',
+            variant: 'error',
+          });
+          setState({ phase: 'idle', nearestBathroom: null, candidates: [] });
+          isRunningRef.current = false;
+          return;
+        }
+      }
+
       // Step 1: Get location
       setState({ phase: 'locating', nearestBathroom: null, candidates: [] });
       let userCoordinates = coordinates;
@@ -280,6 +329,7 @@ export function useEmergencyMode() {
   return {
     ...state,
     isActive: state.phase !== 'idle' && state.phase !== 'error',
+    emergencyFreeCredits,
     isSearching: state.phase === 'locating' || state.phase === 'searching',
     isPicking: state.phase === 'picking',
     activate,

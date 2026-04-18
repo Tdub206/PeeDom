@@ -15,10 +15,30 @@ const TOKEN_PATTERN =
 const RLS_PATTERN = /permission denied|violates row-level security|row-level security|forbidden|not allowed/i;
 const NOT_FOUND_PATTERN = /no rows|not found/i;
 
+/**
+ * Returns true when the error is a request-abort signal (e.g. the 15 s
+ * resilientFetch timeout in supabase.ts fires an AbortController.abort()).
+ * React Native's fetch polyfill throws a plain Error with name 'AbortError'
+ * whose message "The operation was aborted." does not match OFFLINE_PATTERN,
+ * so we detect it explicitly before the pattern checks.
+ */
+function isAbortError(error: unknown): boolean {
+  return error instanceof Error && error.name === 'AbortError';
+}
+
 export function classifySupabaseError(
   error: unknown,
   fallbackMessage: string
 ): SupabaseErrorDetails {
+  if (isAbortError(error)) {
+    return {
+      kind: 'offline',
+      message: 'The request timed out. Check your connection and try again.',
+      shouldClearSession: false,
+      title: 'Request timed out',
+    };
+  }
+
   const rawMessage =
     error instanceof AuthError
       ? error.message
