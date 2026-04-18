@@ -138,14 +138,15 @@ grant execute on function public.get_business_dashboard_analytics(uuid) to authe
 -- 3. Backfill: copy any existing bathrooms.show_on_free_map values into
 --    business_bathroom_settings so previously-toggled bathrooms are not lost.
 -- -------------------------------------------------------------------------
--- Reconcile ALL bathrooms where the toggle was previously used (wrote to
--- bathrooms.show_on_free_map).  The ON CONFLICT clause ensures rows that
--- already exist in business_bathroom_settings are updated to match.
+-- Backfill only bathrooms whose show_on_free_map was explicitly toggled to
+-- false (differs from the column default of true), and only when no
+-- business_bathroom_settings row exists yet. Existing settings rows are
+-- authoritative and must not be overwritten.
 insert into public.business_bathroom_settings (bathroom_id, show_on_free_map, updated_at)
 select b.id, b.show_on_free_map, now()
 from public.bathrooms b
-where b.show_on_free_map is not null
-on conflict (bathroom_id)
-do update set
-  show_on_free_map = excluded.show_on_free_map,
-  updated_at       = excluded.updated_at;
+where b.show_on_free_map = false
+  and not exists (
+    select 1 from public.business_bathroom_settings s
+    where s.bathroom_id = b.id
+  );
