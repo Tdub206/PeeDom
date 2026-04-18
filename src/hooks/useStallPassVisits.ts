@@ -37,6 +37,9 @@ export function useBusinessVisitStats(options?: { enabled?: boolean }) {
 }
 
 export function useRecordVisit() {
+  const { user } = useAuth();
+  const queryClient = useQueryClient();
+
   return useMutation<
     { success: boolean; deduplicated: boolean },
     Error,
@@ -50,6 +53,20 @@ export function useRecordVisit() {
       }
 
       return result.data;
+    },
+    onSuccess: async () => {
+      if (!user?.id) {
+        return;
+      }
+
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: visitQueryKeys.stats(user.id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: businessQueryKeys.dashboard(user.id),
+        }),
+      ]);
     },
   });
 }

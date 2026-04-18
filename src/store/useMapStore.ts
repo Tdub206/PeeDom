@@ -1,14 +1,18 @@
 import { create } from 'zustand';
 import { config } from '@/constants/config';
-import { Coordinates, RegionBounds } from '@/types';
+import { Coordinates, MapSearchTarget, RegionBounds } from '@/types';
+import { areRegionBoundsEqual } from '@/utils/map';
 
 interface MapStoreState {
   region: RegionBounds;
   activeBathroomId: string | null;
+  searchTarget: MapSearchTarget | null;
   userLocation: Coordinates | null;
   hasCenteredOnUser: boolean;
   setRegion: (region: RegionBounds) => void;
   setActiveBathroomId: (bathroomId: string | null) => void;
+  setSearchTarget: (searchTarget: MapSearchTarget | null) => void;
+  clearSearchTarget: () => void;
   setUserLocation: (coordinates: Coordinates | null) => void;
   setHasCenteredOnUser: (value: boolean) => void;
   centerOnUser: () => void;
@@ -22,10 +26,19 @@ const defaultRegion: RegionBounds = {
 export const useMapStore = create<MapStoreState>((set, get) => ({
   region: defaultRegion,
   activeBathroomId: null,
+  searchTarget: null,
   userLocation: null,
   hasCenteredOnUser: false,
-  setRegion: (region) => set({ region }),
+  setRegion: (region) => {
+    if (areRegionBoundsEqual(get().region, region)) {
+      return;
+    }
+
+    set({ region });
+  },
   setActiveBathroomId: (activeBathroomId) => set({ activeBathroomId }),
+  setSearchTarget: (searchTarget) => set({ searchTarget, activeBathroomId: null }),
+  clearSearchTarget: () => set({ searchTarget: null }),
   setUserLocation: (userLocation) => set({ userLocation }),
   setHasCenteredOnUser: (hasCenteredOnUser) => set({ hasCenteredOnUser }),
   centerOnUser: () => {
@@ -42,6 +55,7 @@ export const useMapStore = create<MapStoreState>((set, get) => ({
         latitudeDelta: defaultRegion.latitudeDelta,
         longitudeDelta: defaultRegion.longitudeDelta,
       },
+      searchTarget: null,
       hasCenteredOnUser: true,
     });
   },
@@ -49,6 +63,7 @@ export const useMapStore = create<MapStoreState>((set, get) => ({
     set({
       region: defaultRegion,
       activeBathroomId: null,
+      searchTarget: null,
       userLocation: null,
       hasCenteredOnUser: false,
     }),

@@ -423,6 +423,18 @@ export default function ProfileTab() {
             <Pressable
               accessibilityRole="button"
               className="mt-4 flex-row items-center gap-3 rounded-2xl bg-surface-base px-4 py-3"
+              onPress={() => pushSafely(router, routes.modal.syncCenter, routes.tabs.profile)}
+            >
+              <Ionicons name="sync-outline" size={20} color={colors.brand[600]} />
+              <View className="flex-1">
+                <Text className="text-sm font-semibold text-brand-700">Sync Center</Text>
+                <Text className="text-xs text-ink-500">See queued actions, stale state, and retry sync</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color={colors.ink[400]} />
+            </Pressable>
+            <Pressable
+              accessibilityRole="button"
+              className="mt-3 flex-row items-center gap-3 rounded-2xl bg-surface-base px-4 py-3"
               onPress={() => pushSafely(router, routes.modal.cityPacks, routes.tabs.profile)}
             >
               <Ionicons name="cloud-download-outline" size={20} color={colors.brand[600]} />
@@ -497,6 +509,15 @@ export default function ProfileTab() {
                 onPress={handleConfirmDelete}
                 variant="destructive"
               />
+              <Pressable
+                accessibilityRole="link"
+                className="mt-3"
+                onPress={() => pushSafely(router, routes.legal.accountDeletion, routes.tabs.profile)}
+              >
+                <Text className="text-center text-xs text-ink-500 underline">
+                  Extended account deletion instructions
+                </Text>
+              </Pressable>
             </View>
           </View>
 

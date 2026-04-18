@@ -1,0 +1,20 @@
+{
+  "name": "stallpass-local",
+  "interface": {
+    "displayName": "StallPass Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "stallpass-shipyard",
+      "source": {
+        "source": "local",
+        "path": "./plugins/stallpass-shipyard"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

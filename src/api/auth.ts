@@ -1,5 +1,6 @@
 import { AuthError, Session, User } from '@supabase/supabase-js';
 import { z } from 'zod';
+import { invokeEdgeFunction } from '@/lib/edge-functions';
 import { getSupabaseClient } from '@/lib/supabase';
 
 interface AuthSuccess {
@@ -33,6 +34,12 @@ const signInPayloadSchema = z.object({
 
 const signUpPayloadSchema = signInPayloadSchema.extend({
   displayName: z.string().trim().min(2).max(50),
+});
+
+const deleteAccountResponseSchema = z.object({
+  error: z.string().optional(),
+  success: z.boolean().optional(),
+  warning: z.string().nullable().optional(),
 });
 
 function toFailure(error: unknown, fallbackMessage: string): AuthFailure {
@@ -119,6 +126,65 @@ export async function signOutUser(): Promise<{ error: AuthError | null }> {
   } catch (error) {
     return {
       error: error instanceof AuthError ? error : new AuthError('Unable to sign out right now.'),
+    };
+  }
+}
+
+export interface DeleteAccountResult {
+  error: AuthError | null;
+  warning: string | null;
+}
+
+export async function deleteCurrentAccount(): Promise<DeleteAccountResult> {
+  try {
+    const {
+      data: { session },
+    } = await getSupabaseClient().auth.getSession();
+
+    if (!session) {
+      return {
+        error: new AuthError('You must be signed in to delete your account.'),
+        warning: null,
+      };
+    }
+
+    const response = await invokeEdgeFunction<unknown>({
+      functionName: 'delete-account',
+      accessToken: session.access_token,
+      method: 'POST',
+    });
+
+    if (response.error) {
+      return {
+        error: new AuthError(response.error.message),
+        warning: null,
+      };
+    }
+
+    const parsedResponse = deleteAccountResponseSchema.safeParse(response.data);
+
+    if (!parsedResponse.success) {
+      return {
+        error: new AuthError('The account deletion response from StallPass was invalid.'),
+        warning: null,
+      };
+    }
+
+    if (parsedResponse.data.error || parsedResponse.data.success !== true) {
+      return {
+        error: new AuthError(parsedResponse.data.error ?? 'Unable to delete your account right now.'),
+        warning: null,
+      };
+    }
+
+    return {
+      error: null,
+      warning: parsedResponse.data.warning ?? null,
+    };
+  } catch (error) {
+    return {
+      error: error instanceof AuthError ? error : new AuthError('Unable to delete your account right now.'),
+      warning: null,
     };
   }
 }

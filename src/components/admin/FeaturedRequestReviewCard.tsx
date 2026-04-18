@@ -2,6 +2,7 @@ import { memo, useState } from 'react';
 import { Alert, Text, TextInput, View } from 'react-native';
 import { Button } from '@/components/Button';
 import type { FeaturedRequestListItem } from '@/api/admin';
+import { assessFeaturedRequestPriority, formatFeaturedScope } from '@/utils/admin-moderation';
 
 interface FeaturedRequestReviewCardProps {
   request: FeaturedRequestListItem;
@@ -23,6 +24,8 @@ function FeaturedRequestReviewCardComponent({
   isModeratingId,
 }: FeaturedRequestReviewCardProps) {
   const [notes, setNotes] = useState('');
+  const assessment = assessFeaturedRequestPriority(request);
+  const scopeLabel = formatFeaturedScope(request.geographic_scope);
   const isModerating = isModeratingId === request.id;
   const isPending = request.status === 'pending';
 
@@ -47,10 +50,31 @@ function FeaturedRequestReviewCardComponent({
           <Text className="mt-1 text-lg font-black tracking-tight text-ink-900">
             {request.requested_duration_days} days
           </Text>
+          {request.place_name ? (
+            <Text className="mt-2 text-sm leading-5 text-ink-600">{request.place_name}</Text>
+          ) : null}
         </View>
-        <View className="rounded-full bg-warning/15 px-3 py-1.5">
-          <Text className="text-xs font-black uppercase tracking-[1px] text-warning">
-            Pending
+        <View
+          className={[
+            'rounded-full px-3 py-1.5',
+            assessment.priority === 'high'
+              ? 'bg-danger/10'
+              : assessment.priority === 'medium'
+                ? 'bg-warning/15'
+                : 'bg-success/10',
+          ].join(' ')}
+        >
+          <Text
+            className={[
+              'text-xs font-black uppercase tracking-[1px]',
+              assessment.priority === 'high'
+                ? 'text-danger'
+                : assessment.priority === 'medium'
+                  ? 'text-warning'
+                  : 'text-success',
+            ].join(' ')}
+          >
+            {assessment.priority} priority
           </Text>
         </View>
       </View>
@@ -58,6 +82,28 @@ function FeaturedRequestReviewCardComponent({
       <Text className="mt-2 text-xs text-ink-400">
         Requested {new Date(request.created_at).toLocaleDateString()}
       </Text>
+      <Text className="mt-3 text-sm leading-6 text-ink-600">{assessment.summary}</Text>
+
+      <View className="mt-4 gap-2">
+        <Text className="text-sm font-semibold text-ink-900">Scope: {scopeLabel}</Text>
+        {assessment.signals.slice(0, 3).map((signal) => (
+          <Text
+            className={[
+              'text-sm leading-5',
+              signal.tone === 'critical'
+                ? 'text-danger'
+                : signal.tone === 'warning'
+                  ? 'text-warning'
+                  : signal.tone === 'positive'
+                    ? 'text-success'
+                    : 'text-ink-600',
+            ].join(' ')}
+            key={signal.label}
+          >
+            {signal.label}
+          </Text>
+        ))}
+      </View>
 
       {isPending ? (
         <View className="mt-4 gap-3">

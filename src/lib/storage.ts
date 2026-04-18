@@ -99,7 +99,13 @@ export const storage = {
 
   async clear(): Promise<void> {
     try {
-      await AsyncStorage.clear();
+      const namespacedKeys = await this.getAllKeys();
+
+      if (namespacedKeys.length === 0) {
+        return;
+      }
+
+      await AsyncStorage.multiRemove([...namespacedKeys]);
     } catch (error) {
       console.error('Error clearing storage:', error);
       throw error;

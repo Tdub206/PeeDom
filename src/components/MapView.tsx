@@ -1,17 +1,19 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Animated, Easing, Pressable, Text, View } from 'react-native';
-import MapView from 'react-native-map-clustering';
-import { Circle, Marker, Polyline, Region } from 'react-native-maps';
+import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import { Animated, Easing, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import ClusteredMapView from 'react-native-map-clustering';
+import NativeMapView, { Circle, Marker, Polyline, PROVIDER_GOOGLE, Region } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
-import { BathroomListItem, Coordinates, RegionBounds } from '@/types';
+import { BathroomListItem, Coordinates, MapSearchTarget, RegionBounds } from '@/types';
 import { buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { calculateDistanceMeters, getBathroomMapPinTone } from '@/utils/bathroom';
+import { areRegionBoundsEqual } from '@/utils/map';
 
 interface BathroomMapViewProps {
   bathrooms: BathroomListItem[];
   region: RegionBounds;
   selectedBathroomId: string | null;
+  searchTarget: MapSearchTarget | null;
   userLocation: Coordinates | null;
   isRefreshingLocation: boolean;
   activeFilterCount: number;
@@ -61,6 +63,8 @@ const PIN_PALETTES: Record<ReturnType<typeof getBathroomMapPinTone>, PinPalette>
   },
 };
 
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
 function getClusterDiameter(pointCount: number): number {
   if (pointCount >= 50) {
     return 58;
@@ -109,6 +113,7 @@ function BathroomMapViewComponent({
   bathrooms,
   region,
   selectedBathroomId,
+  searchTarget,
   userLocation,
   isRefreshingLocation,
   activeFilterCount,
@@ -118,12 +123,25 @@ function BathroomMapViewComponent({
   onRegionChangeComplete,
 }: BathroomMapViewProps) {
   const pulse = useRef(new Animated.Value(0)).current;
-  const [pulseProgress, setPulseProgress] = useState(0);
+  const animatedRadarRadius = useMemo(
+    () =>
+      pulse.interpolate({
+        inputRange: [0, 1],
+        outputRange: [60, 240],
+      }),
+    [pulse]
+  );
+  const animatedRadarFillColor = useMemo(
+    () =>
+      pulse.interpolate({
+        inputRange: [0, 1],
+        outputRange: [toRgba(colors.brand[500], 0.24), toRgba(colors.brand[500], 0)],
+      }),
+    [pulse]
+  );
 
   useEffect(() => {
-    const listenerId = pulse.addListener(({ value }) => {
-      setPulseProgress(value);
-    });
+    pulse.setValue(0);
 
     const animation = Animated.loop(
       Animated.timing(pulse, {
@@ -138,13 +156,17 @@ function BathroomMapViewComponent({
 
     return () => {
       animation.stop();
-      pulse.removeListener(listenerId);
+      pulse.stopAnimation();
       pulse.setValue(0);
     };
   }, [pulse]);
 
   const handleRegionChange = useCallback(
     (nextRegion: Region) => {
+      if (areRegionBoundsEqual(region, nextRegion)) {
+        return;
+      }
+
       onRegionChangeComplete({
         latitude: nextRegion.latitude,
         longitude: nextRegion.longitude,
@@ -152,7 +174,7 @@ function BathroomMapViewComponent({
         longitudeDelta: nextRegion.longitudeDelta,
       });
     },
-    [onRegionChangeComplete]
+    [onRegionChangeComplete, region]
   );
 
   const nearestHighlightedBathroom = useMemo(() => {
@@ -171,9 +193,6 @@ function BathroomMapViewComponent({
 
     return rankedBathrooms[0]?.bathroom ?? null;
   }, [bathrooms, userLocation]);
-
-  const radarRadius = 60 + pulseProgress * 180;
-  const radarOpacity = 0.24 * (1 - pulseProgress);
 
   const renderCluster = useCallback((cluster: ClusterRenderInput) => {
     const clusterSize = getClusterDiameter(cluster.properties.point_count);
@@ -209,107 +228,175 @@ function BathroomMapViewComponent({
     );
   }, []);
 
-  return (
-    <View className="flex-1 overflow-hidden rounded-[32px] border border-surface-strong bg-surface-card">
-      <MapView
-        animationEnabled
-        clusterColor={colors.brand[600]}
-        clusterTextColor={colors.surface.card}
-        edgePadding={{ top: 80, right: 80, bottom: 120, left: 80 }}
-        onRegionChangeComplete={handleRegionChange}
-        preserveClusterPressBehavior={false}
-        radius={42}
-        region={region}
-        renderCluster={renderCluster}
-        showsCompass={false}
-        showsMyLocationButton={false}
-        showsUserLocation={Boolean(userLocation)}
-        spiralEnabled
-        style={{ flex: 1 }}
-        tracksViewChanges={false}
-      >
-        {userLocation ? (
-          <>
-            <Circle
-              center={userLocation}
-              fillColor={toRgba(colors.brand[500], radarOpacity)}
-              radius={radarRadius}
-              strokeColor={toRgba(colors.brand[500], 0)}
-            />
-            <Circle
-              center={userLocation}
-              fillColor={toRgba(colors.brand[600], 0.12)}
-              radius={24}
-              strokeColor={toRgba(colors.brand[600], 0.18)}
-            />
-          </>
-        ) : null}
-
-        {userLocation && nearestHighlightedBathroom ? (
-          <Polyline
-            coordinates={[userLocation, nearestHighlightedBathroom.coordinates]}
-            lineDashPattern={[12, 8]}
-            strokeColor={toRgba(colors.brand[700], 0.6)}
-            strokeWidth={3}
+  const mapChildren = (
+    <>
+      {userLocation ? (
+        <>
+          <AnimatedCircle
+            center={userLocation}
+            fillColor={animatedRadarFillColor}
+            radius={animatedRadarRadius}
+            strokeColor={toRgba(colors.brand[500], 0)}
           />
-        ) : null}
+          <Circle
+            center={userLocation}
+            fillColor={toRgba(colors.brand[600], 0.12)}
+            radius={24}
+            strokeColor={toRgba(colors.brand[600], 0.18)}
+          />
+        </>
+      ) : null}
 
-        {bathrooms.map((bathroom) => {
-          const tone = getBathroomMapPinTone(bathroom);
-          const palette = PIN_PALETTES[tone];
-          const isSelected = selectedBathroomId === bathroom.id;
-          const isVerified = Boolean(bathroom.verification_badge_type);
+      {userLocation && nearestHighlightedBathroom ? (
+        <Polyline
+          coordinates={[userLocation, nearestHighlightedBathroom.coordinates]}
+          lineDashPattern={[12, 8]}
+          strokeColor={toRgba(colors.brand[700], 0.6)}
+          strokeWidth={3}
+        />
+      ) : null}
 
-          return (
-            <Marker
-              accessibilityHint="Double tap to open the bathroom preview card."
-              accessibilityLabel={buildBathroomAccessibilityLabel(bathroom)}
-              accessibilityRole="button"
-              coordinate={bathroom.coordinates}
-              description={bathroom.address}
-              key={`${bathroom.id}-${isSelected ? 'selected' : 'idle'}`}
-              onPress={() => onMarkerPress(bathroom.id)}
-              title={bathroom.place_name}
-              tracksViewChanges={false}
+      {searchTarget ? (
+        <Marker
+          accessibilityHint="Double tap to keep exploring this searched address on the map."
+          accessibilityLabel={`Searched address ${searchTarget.label}`}
+          accessibilityRole="image"
+          coordinate={searchTarget.coordinates}
+          description={searchTarget.address ?? undefined}
+          key={`search-target-${searchTarget.place_id ?? searchTarget.label}`}
+          title={searchTarget.label}
+          tracksViewChanges={false}
+        >
+          <View style={{ alignItems: 'center' }}>
+            <View
+              className="items-center justify-center rounded-full border-4 bg-white"
+              style={{
+                borderColor: colors.brand[600],
+                height: 34,
+                width: 34,
+                shadowColor: colors.ink[900],
+                shadowOffset: { width: 0, height: 6 },
+                shadowOpacity: 0.18,
+                shadowRadius: 10,
+                elevation: 4,
+              }}
             >
-              <View style={{ alignItems: 'center' }}>
-                <View
-                  className="items-center justify-center rounded-full border-4 bg-white"
-                  style={{
-                    borderColor: isVerified ? colors.brand[600] : palette.borderColor,
-                    height: isSelected ? 34 : 28,
-                    width: isSelected ? 34 : 28,
-                    shadowColor: colors.ink[900],
-                    shadowOffset: { width: 0, height: 6 },
-                    shadowOpacity: 0.18,
-                    shadowRadius: 10,
-                    elevation: 4,
-                  }}
-                >
-                  {isVerified ? (
-                    <Ionicons name="shield-checkmark" size={isSelected ? 16 : 12} color={colors.brand[600]} />
-                  ) : (
-                    <View
-                      className="rounded-full"
-                      style={{
-                        backgroundColor: palette.backgroundColor,
-                        height: isSelected ? 18 : 14,
-                        width: isSelected ? 18 : 14,
-                      }}
-                    />
-                  )}
-                </View>
+              <Ionicons color={colors.brand[600]} name="location" size={18} />
+            </View>
+          </View>
+        </Marker>
+      ) : null}
+
+      {bathrooms.map((bathroom) => {
+        const tone = getBathroomMapPinTone(bathroom);
+        const palette = PIN_PALETTES[tone];
+        const isSelected = selectedBathroomId === bathroom.id;
+        const isVerified = Boolean(bathroom.verification_badge_type);
+
+        return (
+          <Marker
+            accessibilityHint="Double tap to open the bathroom preview card."
+            accessibilityLabel={buildBathroomAccessibilityLabel(bathroom)}
+            accessibilityRole="button"
+            coordinate={bathroom.coordinates}
+            description={bathroom.address}
+            key={`${bathroom.id}-${isSelected ? 'selected' : 'idle'}`}
+            onPress={() => onMarkerPress(bathroom.id)}
+            title={bathroom.place_name}
+            tracksViewChanges={false}
+          >
+            <View style={{ alignItems: 'center' }}>
+              <View
+                className="items-center justify-center rounded-full border-4 bg-white"
+                style={{
+                  borderColor: isVerified ? colors.brand[600] : palette.borderColor,
+                  height: isSelected ? 34 : 28,
+                  width: isSelected ? 34 : 28,
+                  shadowColor: colors.ink[900],
+                  shadowOffset: { width: 0, height: 6 },
+                  shadowOpacity: 0.18,
+                  shadowRadius: 10,
+                  elevation: 4,
+                }}
+              >
+                {isVerified ? (
+                  <Ionicons name="shield-checkmark" size={isSelected ? 16 : 12} color={colors.brand[600]} />
+                ) : (
+                  <View
+                    className="rounded-full"
+                    style={{
+                      backgroundColor: palette.backgroundColor,
+                      height: isSelected ? 18 : 14,
+                      width: isSelected ? 18 : 14,
+                    }}
+                  />
+                )}
               </View>
-            </Marker>
-          );
-        })}
-      </MapView>
+            </View>
+          </Marker>
+        );
+      })}
+    </>
+  );
+
+  return (
+    <View
+      className={[
+        'flex-1 rounded-[32px] border border-surface-strong bg-surface-card',
+        Platform.OS === 'ios' ? 'overflow-hidden' : '',
+      ].join(' ')}
+    >
+      {Platform.OS === 'android' ? (
+        <NativeMapView
+          googleRenderer="LEGACY"
+          loadingBackgroundColor={colors.surface.card}
+          loadingEnabled
+          moveOnMarkerPress={false}
+          onRegionChangeComplete={handleRegionChange}
+          provider={PROVIDER_GOOGLE}
+          region={region}
+          showsCompass={false}
+          showsMyLocationButton={false}
+          showsUserLocation={Boolean(userLocation)}
+          style={styles.map}
+          toolbarEnabled={false}
+        >
+          {mapChildren}
+        </NativeMapView>
+      ) : (
+        <ClusteredMapView
+          animationEnabled
+          clusterColor={colors.brand[600]}
+          clusterTextColor={colors.surface.card}
+          edgePadding={{ top: 80, right: 80, bottom: 120, left: 80 }}
+          loadingBackgroundColor={colors.surface.card}
+          loadingEnabled
+          moveOnMarkerPress={false}
+          onRegionChangeComplete={handleRegionChange}
+          preserveClusterPressBehavior={false}
+          provider={PROVIDER_GOOGLE}
+          radius={42}
+          region={region}
+          renderCluster={renderCluster}
+          showsCompass={false}
+          showsMyLocationButton={false}
+          showsUserLocation={Boolean(userLocation)}
+          spiralEnabled
+          style={styles.map}
+          tracksViewChanges={false}
+          toolbarEnabled={false}
+        >
+          {mapChildren}
+        </ClusteredMapView>
+      )}
 
       <View pointerEvents="box-none" className="absolute left-4 right-4 top-4 flex-row justify-between">
         <View className="rounded-2xl bg-surface-card/95 px-4 py-3">
           <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Nearby pins</Text>
           <Text className="mt-1 text-lg font-black text-ink-900">{bathrooms.length} bathrooms</Text>
-          {nearestHighlightedBathroom ? (
+          {searchTarget ? (
+            <Text className="mt-1 text-xs text-brand-700">Search target: {searchTarget.label}</Text>
+          ) : nearestHighlightedBathroom ? (
             <Text className="mt-1 text-xs text-brand-700">Closest live match: {nearestHighlightedBathroom.place_name}</Text>
           ) : null}
         </View>
@@ -355,3 +442,9 @@ function BathroomMapViewComponent({
 }
 
 export const BathroomMapView = memo(BathroomMapViewComponent);
+
+const styles = StyleSheet.create({
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});

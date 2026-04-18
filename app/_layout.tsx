@@ -171,6 +171,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="business"
+          options={{
+            presentation: 'card',
+            headerShown: false,
+            animation: 'slide_from_right',
+          }}
+        />
+        <Stack.Screen
           name="modal/report"
           options={{
             presentation: 'modal',
@@ -264,6 +272,30 @@ function RootNavigator() {
             presentation: 'modal',
             headerShown: true,
             headerTitle: 'Offline City Packs',
+          }}
+        />
+        <Stack.Screen
+          name="modal/sync-center"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Sync Center',
+          }}
+        />
+        <Stack.Screen
+          name="legal/account-deletion"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Delete Account',
+          }}
+        />
+        <Stack.Screen
+          name="legal/privacy"
+          options={{
+            presentation: 'modal',
+            headerShown: true,
+            headerTitle: 'Privacy Policy',
           }}
         />
         <Stack.Screen name="+not-found" options={{ title: 'Not Found' }} />

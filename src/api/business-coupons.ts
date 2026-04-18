@@ -5,6 +5,7 @@ import type {
   UpdateCouponInput,
   CouponRedemptionResult,
 } from '@/types';
+import type { Database } from '@/types/database';
 import {
   businessCouponSchema,
   bathroomCouponPublicSchema,
@@ -13,7 +14,6 @@ import {
   parseSupabaseNullableRow,
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
-import type { Database } from '@/types';
 
 interface ApiErrorShape {
   code?: string;

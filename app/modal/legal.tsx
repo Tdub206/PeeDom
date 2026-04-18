@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 type LegalTab = 'privacy' | 'terms';
 
-const PRIVACY_LAST_UPDATED = 'March 26, 2026';
+const PRIVACY_LAST_UPDATED = 'April 5, 2026';
 const TERMS_LAST_UPDATED = 'March 26, 2026';
 
 function SectionHeading({ children }: { children: string }) {
@@ -41,7 +41,7 @@ function PrivacyPolicyContent() {
       <BulletItem>Location data: your device's GPS coordinates while the app is in use, to show nearby bathrooms and power emergency mode.</BulletItem>
       <BulletItem>User-generated content: bathroom submissions, access codes, cleanliness ratings, live status updates, accessibility details, reports, and photos you upload.</BulletItem>
       <BulletItem>Device information: push notification tokens, device platform, and app version for delivering notifications and diagnosing crashes.</BulletItem>
-      <BulletItem>Analytics events: app launch, authentication, emergency mode activation, and offline sync events to improve reliability.</BulletItem>
+      <BulletItem>Crash diagnostics: Sentry crash and error telemetry when enabled for a production release.</BulletItem>
 
       <SectionHeading>2. How We Use Your Information</SectionHeading>
       <BulletItem>Display nearby bathrooms and provide navigation.</BulletItem>
@@ -49,22 +49,22 @@ function PrivacyPolicyContent() {
       <BulletItem>Power the gamification system (points, badges, leaderboards).</BulletItem>
       <BulletItem>Moderate content and enforce community guidelines.</BulletItem>
       <BulletItem>Diagnose crashes and improve app performance via Sentry.</BulletItem>
-      <BulletItem>Show non-personalized rewarded ads through Google AdMob with your consent where required.</BulletItem>
+      <BulletItem>Honor export, deactivation, deletion, notification, and permission choices that you make from the app or your device settings.</BulletItem>
 
       <SectionHeading>3. Information Sharing</SectionHeading>
       <Paragraph>
         We do not sell your personal information. We share data only with service providers that help
         us operate the app: Supabase (database and authentication), Sentry (error monitoring),
-        Google AdMob (non-personalized rewarded advertising), and Google Maps (map rendering). Each provider processes data
-        under their own privacy policies.
+        Google Maps (map rendering), and push-notification infrastructure needed to deliver alerts.
+        Each provider processes data under their own privacy policies.
       </Paragraph>
 
-      <SectionHeading>4. Ad Consent (GDPR/EEA)</SectionHeading>
+      <SectionHeading>4. Current Launch Posture</SectionHeading>
       <Paragraph>
-        If you are located in the European Economic Area, we request your consent before showing
-        rewarded ads through Google's User Messaging Platform (UMP). StallPass launches on iOS with
-        non-personalized rewarded ads. You can change your ad and privacy
-        preferences at any time in your device settings.
+        The April 5, 2026 production launch configuration keeps paid premium purchases, rewarded ads,
+        and the separate analytics ingestion endpoint disabled. If a future release enables ads,
+        analytics, or paid subscriptions, StallPass will update this policy and the corresponding
+        store privacy disclosures before rollout.
       </Paragraph>
 
       <SectionHeading>5. Data Retention</SectionHeading>
@@ -81,7 +81,7 @@ function PrivacyPolicyContent() {
       <BulletItem>Request correction of inaccurate data.</BulletItem>
       <BulletItem>Request deletion of your account and personal data.</BulletItem>
       <BulletItem>Export your data in a portable format.</BulletItem>
-      <BulletItem>Manage ad consent where advertising consent is required.</BulletItem>
+      <BulletItem>Disable optional permissions such as location and notifications.</BulletItem>
       <Paragraph>
         You can exercise these rights from the Profile tab in the app or by contacting us at
         support@stallpass.org.

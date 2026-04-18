@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { Button } from '@/components/Button';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
 import type { BusinessDashboardBathroom } from '@/types';
+import { getBathroomAttentionSummary, getBathroomRouteConversionPercent } from '@/utils/business-dashboard';
 
 interface ClaimedBathroomCardProps {
   bathroom: BusinessDashboardBathroom;
@@ -74,6 +75,9 @@ function ClaimedBathroomCardComponent({
   onManageHours,
   onRequestFeatured,
 }: ClaimedBathroomCardProps) {
+  const routeConversionPercent = getBathroomRouteConversionPercent(bathroom);
+  const attentionSummary = getBathroomAttentionSummary(bathroom);
+
   return (
     <View className="rounded-[28px] border border-surface-strong bg-surface-card p-5">
       <View className="flex-row items-start justify-between gap-3">
@@ -135,8 +139,8 @@ function ClaimedBathroomCardComponent({
       </View>
 
       <View className="mt-5 flex-row gap-3">
-        <Metric label="Favorites" value={bathroom.total_favorites.toString()} />
-        <Metric label="Cleanliness" value={bathroom.avg_cleanliness.toFixed(1)} />
+        <Metric label="Weekly Views" value={bathroom.weekly_views.toString()} />
+        <Metric label="Route Rate" value={`${routeConversionPercent}%`} />
       </View>
 
       <View className="mt-3 flex-row gap-3">
@@ -150,7 +154,21 @@ function ClaimedBathroomCardComponent({
 
       <View className="mt-3 flex-row gap-3">
         <Metric label="Route Opens" value={bathroom.weekly_navigation_count.toString()} />
+        <Metric label="Cleanliness" value={bathroom.avg_cleanliness.toFixed(1)} />
+      </View>
+
+      <View className="mt-3 flex-row gap-3">
+        <Metric label="Map Saves" value={bathroom.total_favorites.toString()} />
         <Metric label="Offers" value={bathroom.active_offer_count.toString()} />
+      </View>
+
+      <View className="mt-4 rounded-2xl bg-surface-base px-4 py-4">
+        <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Trust posture</Text>
+        <Text className="mt-2 text-sm leading-6 text-ink-600">
+          {attentionSummary.length
+            ? attentionSummary.join(', ')
+            : 'Verification, discovery, and complaint signals look healthy for this location.'}
+        </Text>
       </View>
 
       <View className="mt-5 gap-3">

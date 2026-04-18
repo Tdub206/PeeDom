@@ -14,6 +14,11 @@ interface ChannelEntry extends ChannelRegistration {
   onStatusChange?: ChannelStatusCallback;
 }
 
+interface CreatedChannelEntry {
+  entry: ChannelEntry;
+  subscriptionPromise: Promise<void> | null;
+}
+
 function isChannelErrorStatus(status: ChannelStatus): boolean {
   return status === 'CHANNEL_ERROR' || status === 'TIMED_OUT';
 }
@@ -21,6 +26,7 @@ function isChannelErrorStatus(status: ChannelStatus): boolean {
 const BASE_RECONNECT_DELAY_MS = 1_000;
 const MAX_RECONNECT_DELAY_MS = 30_000;
 const RECONNECT_JITTER_MS = 500;
+const RECONNECT_SUBSCRIBE_TIMEOUT_MS = 10_000;
 
 function computeReconnectDelay(attempt: number): number {
   const exponentialDelay = Math.min(
@@ -61,7 +67,7 @@ export class RealtimeManager {
     }
 
     useRealtimeStore.getState().setConnectionState('CONNECTING');
-    const entry = this.createEntry(channelName, configure, 1, onStatusChange);
+    const { entry } = this.createEntry(channelName, configure, 1, onStatusChange);
     this.channelRegistry.set(channelName, entry);
     return entry.channel;
   }
@@ -230,8 +236,9 @@ export class RealtimeManager {
     channelName: string,
     configure: ChannelConfigurator,
     refCount: number,
-    onStatusChange?: ChannelStatusCallback
-  ): ChannelEntry {
+    onStatusChange?: ChannelStatusCallback,
+    awaitSubscription = false
+  ): CreatedChannelEntry {
     const channel = configure(getSupabaseClient().channel(channelName));
     const entry: ChannelEntry = {
       channelName,
@@ -244,14 +251,61 @@ export class RealtimeManager {
       refCount,
       onStatusChange,
     };
+    let settleSubscriptionPromise:
+      | {
+          reject: (error: Error) => void;
+          resolve: () => void;
+          settled: boolean;
+          timeoutId: ReturnType<typeof setTimeout>;
+        }
+      | null = null;
+    const subscriptionPromise = awaitSubscription
+      ? new Promise<void>((resolve, reject) => {
+          const timeoutId = setTimeout(() => {
+            this.handleChannelStatus(channelName, 'TIMED_OUT');
+
+            if (settleSubscriptionPromise && !settleSubscriptionPromise.settled) {
+              settleSubscriptionPromise.settled = true;
+              reject(new Error(`Realtime channel ${channelName} did not reach SUBSCRIBED before the timeout.`));
+            }
+          }, RECONNECT_SUBSCRIBE_TIMEOUT_MS);
+
+          settleSubscriptionPromise = {
+            resolve,
+            reject,
+            settled: false,
+            timeoutId,
+          };
+        })
+      : null;
 
     useRealtimeStore.getState().setChannelStatus(channelName, 'SUBSCRIBING', refCount);
     channel.subscribe((rawStatus) => {
       const status = rawStatus as ChannelStatus;
       this.handleChannelStatus(channelName, status);
+
+      if (!settleSubscriptionPromise || settleSubscriptionPromise.settled) {
+        return;
+      }
+
+      if (status === 'SUBSCRIBED') {
+        settleSubscriptionPromise.settled = true;
+        clearTimeout(settleSubscriptionPromise.timeoutId);
+        settleSubscriptionPromise.resolve();
+        return;
+      }
+
+      if (isChannelErrorStatus(status) || status === 'CLOSED') {
+        settleSubscriptionPromise.settled = true;
+        clearTimeout(settleSubscriptionPromise.timeoutId);
+        settleSubscriptionPromise.reject(new Error(`Realtime channel ${channelName} failed to resubscribe.`));
+      }
     });
 
-    return entry;
+    return {
+      entry,
+      subscriptionPromise,
+    };
   }
 
   private handleChannelStatus(channelName: string, status: ChannelStatus): void {
@@ -300,15 +354,18 @@ export class RealtimeManager {
       console.error(`RealtimeManager failed to tear down channel ${channelName} before reconnect:`, error);
     }
 
-    const replacementEntry = this.createEntry(
+    const { entry: replacementEntry, subscriptionPromise } = this.createEntry(
       channelName,
       existingEntry.configure,
       existingEntry.refCount,
-      existingEntry.onStatusChange
+      existingEntry.onStatusChange,
+      true
     );
     replacementEntry.errorCount = existingEntry.errorCount;
     replacementEntry.lastErrorAt = existingEntry.lastErrorAt;
     this.channelRegistry.set(channelName, replacementEntry);
+
+    await subscriptionPromise;
   }
 }
 

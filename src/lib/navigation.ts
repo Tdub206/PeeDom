@@ -38,10 +38,18 @@ const STATIC_ROUTES = new Set<string>(
 );
 
 const BATHROOM_DETAIL_ROUTE_PATTERN = /^\/bathroom\/[^/]+$/;
+const BUSINESS_LOCATION_ROUTE_PATTERN = /^\/business\/location\/[^/]+$/;
+const BUSINESS_SUBROUTE_PATTERN = /^\/business\/(locations|analytics|coupons|claims|featured)$/;
 
 export function isAppRoute(route: RouteInput): boolean {
   const routePath = getRoutePath(route);
-  return Boolean(routePath && (STATIC_ROUTES.has(routePath) || BATHROOM_DETAIL_ROUTE_PATTERN.test(routePath)));
+  return Boolean(
+    routePath &&
+      (STATIC_ROUTES.has(routePath) ||
+        BATHROOM_DETAIL_ROUTE_PATTERN.test(routePath) ||
+        BUSINESS_LOCATION_ROUTE_PATTERN.test(routePath) ||
+        BUSINESS_SUBROUTE_PATTERN.test(routePath))
+  );
 }
 
 export function toSafeRoute(route: RouteInput, fallbackRoute: Href): Href {

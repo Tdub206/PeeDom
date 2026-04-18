@@ -142,8 +142,10 @@ export function useDeleteAccount() {
       await signOut();
       showToast({
         title: 'Account deleted',
-        message: 'Your account and personal data have been permanently removed.',
-        variant: 'info',
+        message:
+          result.data?.warning ??
+          'Your account and personal data have been permanently removed.',
+        variant: result.data?.warning ? 'warning' : 'info',
       });
       return true;
     } catch (error) {

@@ -8,7 +8,12 @@ import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { BathroomListItem, Coordinates } from '@/types';
-import { calculateDistanceMeters, mapBathroomRowToListItem, mergeAccessibilityFilters } from '@/utils/bathroom';
+import {
+  calculateBathroomRecommendationScore,
+  calculateDistanceMeters,
+  mapBathroomRowToListItem,
+  mergeAccessibilityFilters,
+} from '@/utils/bathroom';
 
 type EmergencyPhase = 'idle' | 'locating' | 'searching' | 'picking' | 'navigating' | 'error';
 
@@ -37,9 +42,18 @@ function findTopCandidates(
     .map((bathroom) => ({
       bathroom,
       distance: calculateDistanceMeters(origin, bathroom.coordinates),
+      recommendationScore: calculateBathroomRecommendationScore(bathroom, {
+        scenario: boostAccessible ? 'accessible' : 'best_overall',
+      }),
     }))
     .sort((a, b) => {
-      if (!boostAccessible) return a.distance - b.distance;
+      if (!boostAccessible) {
+        if (b.recommendationScore !== a.recommendationScore) {
+          return b.recommendationScore - a.recommendationScore;
+        }
+
+        return a.distance - b.distance;
+      }
       // When accessibility mode is on, prefer accessible bathrooms
       // that are within 50% additional distance of the nearest option.
       const aAccessible = (a.bathroom.accessibility_score ?? 0) > 30;
@@ -51,6 +65,9 @@ function findTopCandidates(
         if (farther <= closer * 1.5) {
           return aAccessible ? -1 : 1;
         }
+      }
+      if (b.recommendationScore !== a.recommendationScore) {
+        return b.recommendationScore - a.recommendationScore;
       }
       return a.distance - b.distance;
     })

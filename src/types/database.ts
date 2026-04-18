@@ -688,7 +688,13 @@ export interface Database {
           updated_by: string
           old_hours: Json | null
           new_hours: Json
-          update_source: 'business_dashboard' | 'admin_panel' | 'community_report'
+          update_source:
+            | 'business_dashboard'
+            | 'admin_panel'
+            | 'community_report'
+            | 'manual'
+            | 'google'
+            | 'preset_offset'
           created_at: string
         }
         Insert: {
@@ -697,7 +703,13 @@ export interface Database {
           updated_by: string
           old_hours?: Json | null
           new_hours: Json
-          update_source: 'business_dashboard' | 'admin_panel' | 'community_report'
+          update_source:
+            | 'business_dashboard'
+            | 'admin_panel'
+            | 'community_report'
+            | 'manual'
+            | 'google'
+            | 'preset_offset'
           created_at?: string
         }
         Update: {
@@ -706,7 +718,13 @@ export interface Database {
           updated_by?: string
           old_hours?: Json | null
           new_hours?: Json
-          update_source?: 'business_dashboard' | 'admin_panel' | 'community_report'
+          update_source?:
+            | 'business_dashboard'
+            | 'admin_panel'
+            | 'community_report'
+            | 'manual'
+            | 'google'
+            | 'preset_offset'
           created_at?: string
         }
       }

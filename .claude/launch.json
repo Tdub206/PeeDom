@@ -18,6 +18,12 @@
       "runtimeExecutable": "supabase",
       "runtimeArgs": ["functions", "serve"],
       "port": 54321
+    },
+    {
+      "name": "Web Preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "web", "-l", "3000", "--no-clipboard"],
+      "port": 3000
     }
   ]
 }

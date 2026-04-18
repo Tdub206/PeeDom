@@ -5,7 +5,7 @@ import type { BusinessCoupon } from '@/types';
 
 interface CouponCardProps {
   coupon: BusinessCoupon;
-  onEdit: (couponId: string) => void;
+  onEdit?: (couponId: string) => void;
   onDeactivate: (couponId: string) => void;
 }
 
@@ -41,7 +41,7 @@ function formatExpiry(expiresAt: string | null): string {
 }
 
 function CouponCardComponent({ coupon, onEdit, onDeactivate }: CouponCardProps) {
-  const handleEdit = useCallback(() => onEdit(coupon.id), [coupon.id, onEdit]);
+  const handleEdit = useCallback(() => onEdit?.(coupon.id), [coupon.id, onEdit]);
   const handleDeactivate = useCallback(() => onDeactivate(coupon.id), [coupon.id, onDeactivate]);
 
   return (
@@ -96,7 +96,7 @@ function CouponCardComponent({ coupon, onEdit, onDeactivate }: CouponCardProps) 
 
       {coupon.is_active ? (
         <View className="mt-3 flex-row gap-3">
-          <Button className="flex-1" label="Edit" onPress={handleEdit} variant="secondary" />
+          {onEdit ? <Button className="flex-1" label="Edit" onPress={handleEdit} variant="secondary" /> : null}
           <Button className="flex-1" label="Deactivate" onPress={handleDeactivate} variant="ghost" />
         </View>
       ) : null}

@@ -7,7 +7,7 @@ import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
-import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
+import { buildBathroomConfidenceProfile, getBathroomMapPinTone } from '@/utils/bathroom';
 
 interface MapDetailSheetCardProps {
   bathroom: BathroomListItem;
@@ -91,28 +91,6 @@ function formatWalkTime(distanceMeters?: number): string | null {
   return `~${minutes} min walk`;
 }
 
-function formatCleanliness(cleanlinessAverage: number | null): string {
-  if (typeof cleanlinessAverage !== 'number') {
-    return 'No cleanliness ratings yet';
-  }
-
-  return `${cleanlinessAverage.toFixed(1)} / 5 cleanliness`;
-}
-
-function formatHoursLabel(bathroom: BathroomListItem): string {
-  const openNow = isBathroomOpenNow(bathroom.hours);
-
-  if (openNow === true) {
-    return 'Open now according to posted hours';
-  }
-
-  if (openNow === false) {
-    return 'Closed right now according to posted hours';
-  }
-
-  return 'Hours unavailable';
-}
-
 function MapDetailSheetCardComponent({
   bathroom,
   isFavorited,
@@ -125,6 +103,7 @@ function MapDetailSheetCardComponent({
 }: MapDetailSheetCardProps) {
   const statusTone = getBathroomMapPinTone(bathroom);
   const statusCopy = STATUS_COPY[statusTone];
+  const confidenceProfile = useMemo(() => buildBathroomConfidenceProfile(bathroom), [bathroom]);
   const metadataChips = useMemo(() => {
     const chips: string[] = [];
 
@@ -214,13 +193,15 @@ function MapDetailSheetCardComponent({
         <View className="flex-row items-center justify-between gap-3">
           <View className="flex-1">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Live access pulse</Text>
-            <Text className="mt-1 text-base font-bold text-ink-900">{formatHoursLabel(bathroom)}</Text>
+            <Text className="mt-1 text-base font-bold text-ink-900">{confidenceProfile.open_state_label}</Text>
+            <Text className="mt-1 text-xs leading-5 text-ink-600">{confidenceProfile.info_freshness_label}</Text>
           </View>
           <View className="items-end">
-            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Community</Text>
-            <Text className="mt-1 text-sm font-bold text-ink-900">{formatCleanliness(bathroom.cleanliness_avg)}</Text>
+            <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Trust</Text>
+            <Text className="mt-1 text-sm font-bold text-ink-900">{confidenceProfile.trust_score}% ready</Text>
           </View>
         </View>
+        <Text className="mt-3 text-sm leading-5 text-ink-600">{confidenceProfile.code_reliability_label}</Text>
       </View>
 
       <View className="mt-4">

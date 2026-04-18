@@ -514,8 +514,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       data: { subscription },
     } = getSupabaseClient().auth.onAuthStateChange((event, currentSession) => {
       void (async () => {
-        console.log('Auth state change:', event);
-
         try {
           if (event === 'SIGNED_OUT') {
             await clearSessionArtifacts(currentSession?.user.id ?? user?.id);

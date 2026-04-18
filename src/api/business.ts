@@ -1,18 +1,26 @@
 import type {
+  BusinessBathroomHoursConfig,
   BusinessBathroomSettings,
   BusinessDashboardData,
   BusinessDashboardBathroom,
   BusinessFeaturedPlacement,
+  BusinessGoogleHoursSyncResult,
   BusinessHoursUpdateAudit,
   BusinessHoursUpdateResult,
+  BusinessManagedCodeDetails,
   BusinessPromotion,
+  SyncBusinessBathroomGoogleHoursInput,
   UpdateBusinessBathroomSettingsInput,
+  UpdateBusinessBathroomSettingsV2Input,
   UpdateBusinessHoursInput,
   UpsertBusinessPromotionInput,
 } from '@/types';
 import {
+  businessBathroomHoursConfigSchema,
   businessBathroomSettingsSchema,
   businessDashboardAnalyticsRowSchema,
+  businessManagedCodeDetailsSchema,
+  businessGoogleHoursSyncSchema,
   businessFeaturedPlacementSchema,
   businessHoursUpdateResultSchema,
   businessHoursUpdateSchema,
@@ -22,6 +30,8 @@ import {
 } from '@/lib/supabase-parsers';
 import {
   validateBusinessBathroomSettings,
+  validateBusinessBathroomSettingsV2,
+  validateBusinessGoogleHoursSync,
   validateBusinessHoursUpdate,
   validateBusinessPromotion,
 } from '@/lib/validators';
@@ -267,6 +277,175 @@ export async function upsertBusinessBathroomSettings(input: UpdateBusinessBathro
   }
 }
 
+export async function upsertBusinessBathroomSettingsV2(input: UpdateBusinessBathroomSettingsV2Input): Promise<{
+  data: BusinessBathroomSettings | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const validatedInput = validateBusinessBathroomSettingsV2(input);
+    const { data, error } = await getSupabaseClient().rpc(
+      'upsert_business_bathroom_settings_v2' as never,
+      {
+        p_bathroom_id: validatedInput.bathroom_id,
+        p_requires_premium_access: validatedInput.requires_premium_access,
+        p_show_on_free_map: validatedInput.show_on_free_map,
+        p_is_location_verified: validatedInput.is_location_verified,
+        p_code_policy: validatedInput.code_policy,
+        p_allow_user_code_submissions: validatedInput.allow_user_code_submissions,
+        p_owner_supplied_code: validatedInput.owner_supplied_code ?? null,
+        p_owner_code_notes: validatedInput.owner_code_notes ?? null,
+        p_official_access_instructions: validatedInput.official_access_instructions ?? null,
+        p_owner_code_last_verified_at: validatedInput.owner_code_last_verified_at ?? null,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to save these advanced StallPass settings right now.'),
+      };
+    }
+
+    const parsedRows = parseSupabaseRows(
+      businessBathroomSettingsSchema,
+      data,
+      'advanced business bathroom settings update',
+      'Unable to save these advanced StallPass settings right now.'
+    );
+
+    if (parsedRows.error) {
+      return {
+        data: null,
+        error: parsedRows.error,
+      };
+    }
+
+    return {
+      data: (parsedRows.data[0] as BusinessBathroomSettings | undefined) ?? null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to save these advanced StallPass settings right now.'),
+        'Unable to save these advanced StallPass settings right now.'
+      ),
+    };
+  }
+}
+
+export async function fetchBusinessManagedCode(bathroomId: string): Promise<{
+  data: BusinessManagedCodeDetails | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_business_managed_code' as never,
+      {
+        p_bathroom_id: bathroomId,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to load the managed code details right now.'),
+      };
+    }
+
+    const parsedRow = parseSupabaseNullableRow(
+      businessManagedCodeDetailsSchema,
+      Array.isArray(data) ? data[0] ?? null : data,
+      'business managed code',
+      'Unable to load the managed code details right now.'
+    );
+
+    if (parsedRow.error) {
+      return {
+        data: null,
+        error: parsedRow.error,
+      };
+    }
+
+    return {
+      data: parsedRow.data as BusinessManagedCodeDetails | null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load the managed code details right now.'),
+        'Unable to load the managed code details right now.'
+      ),
+    };
+  }
+}
+
+export async function fetchBusinessBathroomHoursConfig(bathroomId: string): Promise<{
+  data: BusinessBathroomHoursConfig | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_business_bathroom_hours_config' as never,
+      {
+        p_bathroom_id: bathroomId,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to load the saved restroom hours right now.'),
+      };
+    }
+
+    const parsedRow = parseSupabaseNullableRow(
+      businessBathroomHoursConfigSchema,
+      data,
+      'business bathroom hours config',
+      'Unable to load the saved restroom hours right now.'
+    );
+
+    if (parsedRow.error) {
+      return {
+        data: null,
+        error: parsedRow.error,
+      };
+    }
+
+    if (!parsedRow.data) {
+      return {
+        data: null,
+        error: null,
+      };
+    }
+
+    return {
+      data: {
+        bathroom_id: parsedRow.data.bathroom_id,
+        place_name: parsedRow.data.place_name,
+        hours: parsedRow.data.hours_json,
+        hours_source: parsedRow.data.hours_source,
+        hours_offset_minutes: parsedRow.data.hours_offset_minutes,
+        google_place_id: parsedRow.data.google_place_id,
+        updated_at: parsedRow.data.updated_at,
+      } as BusinessBathroomHoursConfig,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load the saved restroom hours right now.'),
+        'Unable to load the saved restroom hours right now.'
+      ),
+    };
+  }
+}
+
 export async function fetchBusinessPromotions(bathroomId: string): Promise<{
   data: BusinessPromotion[];
   error: (Error & { code?: string }) | null;
@@ -428,10 +607,16 @@ export async function updateBusinessBathroomHours(input: UpdateBusinessHoursInpu
   try {
     const validatedInput = validateBusinessHoursUpdate(input);
     const { data, error } = await getSupabaseClient().rpc(
-      'update_business_bathroom_hours' as never,
+      'update_business_bathroom_hours_v2' as never,
       {
         p_bathroom_id: validatedInput.bathroom_id,
         p_new_hours: validatedInput.hours,
+        p_hours_source: validatedInput.hours_source,
+        p_offset_minutes:
+          validatedInput.hours_source === 'preset_offset'
+            ? validatedInput.offset_minutes ?? null
+            : null,
+        p_google_place_id: validatedInput.google_place_id ?? null,
       } as never
     );
 
@@ -466,6 +651,87 @@ export async function updateBusinessBathroomHours(input: UpdateBusinessHoursInpu
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to update those business hours right now.'),
         'Unable to update those business hours right now.'
+      ),
+    };
+  }
+}
+
+export async function refreshBusinessBathroomHoursFromGoogle(
+  input: SyncBusinessBathroomGoogleHoursInput
+): Promise<{
+  data: BusinessGoogleHoursSyncResult | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const validatedInput = validateBusinessGoogleHoursSync(input);
+    const { data, error } = await getSupabaseClient().functions.invoke('google-place-hours', {
+      body: {
+        placeId: validatedInput.google_place_id,
+      },
+    });
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to fetch Google hours right now.'),
+      };
+    }
+
+    const parsedGoogleHours = parseSupabaseNullableRow(
+      businessGoogleHoursSyncSchema,
+      data,
+      'google place hours',
+      'Unable to fetch Google hours right now.'
+    );
+
+    if (parsedGoogleHours.error) {
+      return {
+        data: null,
+        error: parsedGoogleHours.error,
+      };
+    }
+
+    if (!parsedGoogleHours.data) {
+      return {
+        data: null,
+        error: toAppError(
+          new Error('Google did not return any opening hours for this listing.'),
+          'Google did not return any opening hours for this listing.'
+        ),
+      };
+    }
+
+    const updateResult = await updateBusinessBathroomHours({
+      bathroom_id: validatedInput.bathroom_id,
+      hours: parsedGoogleHours.data.hours,
+      hours_source: 'google',
+      google_place_id: parsedGoogleHours.data.google_place_id,
+    });
+
+    if (updateResult.error || !updateResult.data) {
+      return {
+        data: null,
+        error: updateResult.error ?? new Error('Unable to save Google hours right now.'),
+      };
+    }
+
+    return {
+      data: {
+        bathroom_id: updateResult.data.bathroom_id,
+        google_place_id: parsedGoogleHours.data.google_place_id,
+        place_name: parsedGoogleHours.data.place_name ?? null,
+        hours: parsedGoogleHours.data.hours,
+        hours_source: updateResult.data.hours_source,
+        updated_at: updateResult.data.updated_at,
+      },
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to fetch Google hours right now.'),
+        'Unable to fetch Google hours right now.'
       ),
     };
   }

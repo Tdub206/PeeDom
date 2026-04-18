@@ -13,8 +13,37 @@ import {
 import { ClaimReviewCard } from '@/components/admin/ClaimReviewCard';
 import { FeaturedRequestReviewCard } from '@/components/admin/FeaturedRequestReviewCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import {
+  assessClaimModerationRisk,
+  assessFeaturedRequestPriority,
+  summarizeAdminQueue,
+} from '@/utils/admin-moderation';
 
 type AdminTab = 'claims' | 'featured';
+
+function SummaryTile({
+  label,
+  value,
+  tone = 'default',
+}: {
+  label: string;
+  value: string;
+  tone?: 'default' | 'warning';
+}) {
+  return (
+    <View
+      className={[
+        'flex-1 rounded-2xl border px-4 py-4',
+        tone === 'warning' ? 'border-warning/20 bg-warning/10' : 'border-surface-strong bg-surface-card',
+      ].join(' ')}
+    >
+      <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">{label}</Text>
+      <Text className={['mt-2 text-2xl font-black', tone === 'warning' ? 'text-warning' : 'text-ink-900'].join(' ')}>
+        {value}
+      </Text>
+    </View>
+  );
+}
 
 export default function AdminScreen() {
   const { profile } = useAuth();
@@ -48,6 +77,28 @@ export default function AdminScreen() {
   const pendingRequestsCount = useMemo(
     () => featuredRequests?.filter((r) => r.status === 'pending').length ?? 0,
     [featuredRequests],
+  );
+  const queueSummary = useMemo(
+    () => summarizeAdminQueue(claims ?? [], featuredRequests ?? []),
+    [claims, featuredRequests]
+  );
+  const sortedClaims = useMemo(
+    () =>
+      [...(claims ?? [])].sort(
+        (leftClaim, rightClaim) =>
+          assessClaimModerationRisk(rightClaim).score - assessClaimModerationRisk(leftClaim).score
+      ),
+    [claims]
+  );
+  const sortedFeaturedRequests = useMemo(
+    () =>
+      [...(featuredRequests ?? [])]
+        .filter((request) => request.status === 'pending')
+        .sort(
+          (leftRequest, rightRequest) =>
+            assessFeaturedRequestPriority(rightRequest).score - assessFeaturedRequestPriority(leftRequest).score
+        ),
+    [featuredRequests]
   );
 
   const handleApproveClaim = useCallback(
@@ -118,7 +169,30 @@ export default function AdminScreen() {
     <SafeAreaView className="flex-1 bg-surface-base" edges={['top']}>
       <View className="px-5 pb-3 pt-6">
         <Text className="text-3xl font-black tracking-tight text-ink-900">Admin</Text>
-        <Text className="mt-1 text-sm text-ink-500">Moderation queue</Text>
+        <Text className="mt-1 text-sm text-ink-500">Moderation queue with trust and risk signals</Text>
+      </View>
+
+      <View className="gap-3 px-5 pb-4">
+        <View className="flex-row gap-3">
+          <SummaryTile label="Pending Claims" value={queueSummary.pending_claims.toString()} />
+          <SummaryTile
+            label="High Risk"
+            tone={queueSummary.high_risk_claims > 0 ? 'warning' : 'default'}
+            value={queueSummary.high_risk_claims.toString()}
+          />
+        </View>
+        <View className="flex-row gap-3">
+          <SummaryTile
+            label="No Evidence"
+            tone={queueSummary.claims_missing_evidence > 0 ? 'warning' : 'default'}
+            value={queueSummary.claims_missing_evidence.toString()}
+          />
+          <SummaryTile
+            label="Featured Queue"
+            tone={queueSummary.high_priority_featured_requests > 0 ? 'warning' : 'default'}
+            value={queueSummary.pending_featured_requests.toString()}
+          />
+        </View>
       </View>
 
       {/* Tab switcher */}
@@ -177,7 +251,7 @@ export default function AdminScreen() {
 
       {activeTab === 'claims' ? (
         <FlatList
-          data={claims ?? []}
+          data={sortedClaims}
           keyExtractor={(item) => item.claim_id}
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100, gap: 16 }}
           refreshControl={
@@ -200,7 +274,7 @@ export default function AdminScreen() {
         />
       ) : (
         <FlatList
-          data={featuredRequests?.filter((r) => r.status === 'pending') ?? []}
+          data={sortedFeaturedRequests}
           keyExtractor={(item) => item.id}
           contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 100, gap: 16 }}
           refreshControl={

@@ -205,6 +205,62 @@ export interface Coordinates {
   longitude: number;
 }
 
+export interface GooglePlaceViewportPoint {
+  latitude: number;
+  longitude: number;
+}
+
+export interface GooglePlaceViewport {
+  low: GooglePlaceViewportPoint;
+  high: GooglePlaceViewportPoint;
+}
+
+export interface GooglePlaceAutocompleteSuggestion {
+  place_id: string;
+  text: string;
+  primary_text: string;
+  secondary_text: string | null;
+  distance_meters: number | null;
+}
+
+export interface GooglePlaceAddressComponents {
+  address_line1: string | null;
+  city: string | null;
+  state: string | null;
+  postal_code: string | null;
+  country_code: string | null;
+}
+
+export interface GooglePlaceAutocompleteInput {
+  query: string;
+  session_token: string;
+  origin?: Coordinates | null;
+  region?: RegionBounds | null;
+}
+
+export interface GooglePlaceAddressResolutionInput {
+  place_id: string;
+  session_token: string;
+}
+
+export interface GooglePlaceAddressResolutionResult {
+  place_id: string;
+  formatted_address: string | null;
+  location: Coordinates;
+  viewport: GooglePlaceViewport | null;
+  address_components: GooglePlaceAddressComponents;
+}
+
+export type MapSearchTargetSource = 'google_maps_address' | 'device_geocoder';
+
+export interface MapSearchTarget {
+  label: string;
+  address: string | null;
+  coordinates: Coordinates;
+  source: MapSearchTargetSource;
+  place_id: string | null;
+}
+
 export interface BathroomFilters {
   isAccessible: boolean | null;
   isLocked: boolean | null;
@@ -345,6 +401,62 @@ export interface SyncMetadata {
   stale: boolean;
 }
 
+export type BathroomConfidenceTone = 'high' | 'medium' | 'low';
+export type BathroomConfidenceFlagTone = 'positive' | 'warning' | 'critical' | 'neutral';
+export type BathroomFreshnessState = 'fresh' | 'aging' | 'stale' | 'unknown';
+export type BathroomConflictState = 'stable' | 'conflicting' | 'outdated' | 'unknown';
+
+export interface BathroomConfidenceFlag {
+  label: string;
+  tone: BathroomConfidenceFlagTone;
+}
+
+export interface BathroomConfidenceProfile {
+  trust_score: number;
+  tone: BathroomConfidenceTone;
+  tone_label: string;
+  code_reliability_score: number | null;
+  code_reliability_label: string;
+  open_state_label: string;
+  info_freshness_days: number | null;
+  info_freshness_label: string;
+  freshness_state: BathroomFreshnessState;
+  conflict_state: BathroomConflictState;
+  conflict_label: string | null;
+  photo_evidence_label: string | null;
+  flags: BathroomConfidenceFlag[];
+}
+
+export type BathroomRecommendationScenario =
+  | 'best_overall'
+  | 'closest_guaranteed'
+  | 'accessible'
+  | 'no_code';
+
+export interface BathroomRecommendation {
+  scenario: BathroomRecommendationScenario;
+  title: string;
+  bathroom: BathroomListItem | null;
+  rationale: string;
+  score: number | null;
+}
+
+export type BathroomLocationArchetype =
+  | 'general'
+  | 'park'
+  | 'store'
+  | 'restaurant'
+  | 'transit'
+  | 'event_portable'
+  | 'medical'
+  | 'campus'
+  | 'library'
+  | 'mall'
+  | 'airport'
+  | 'hotel';
+
+export type BusinessCodePolicy = 'community' | 'owner_shared' | 'owner_private' | 'staff_only';
+
 export interface BathroomListItem {
   id: string;
   place_name: string;
@@ -363,6 +475,14 @@ export interface BathroomListItem {
   is_business_location_verified: boolean;
   location_verified_at: string | null;
   active_offer_count: number;
+  location_archetype?: BathroomLocationArchetype;
+  archetype_metadata?: Record<string, unknown>;
+  code_policy?: BusinessCodePolicy;
+  allow_user_code_submissions?: boolean;
+  has_official_code?: boolean;
+  owner_code_last_verified_at?: string | null;
+  official_access_instructions?: string | null;
+  last_updated_at: string | null;
   sync: SyncMetadata;
 }
 
@@ -451,6 +571,13 @@ export interface BathroomDetail {
   hours: HoursData | null;
   primary_code: PrimaryCode;
   community: CommunityMetrics;
+  location_archetype?: BathroomLocationArchetype;
+  archetype_metadata?: Record<string, unknown>;
+  code_policy?: BusinessCodePolicy;
+  allow_user_code_submissions?: boolean;
+  has_official_code?: boolean;
+  owner_code_last_verified_at?: string | null;
+  official_access_instructions?: string | null;
   viewer_state: ViewerState;
   sync: SyncMetadata;
 }
@@ -507,6 +634,7 @@ export interface DeleteAccountResult {
   user_id?: string;
   deleted_at?: string;
   error?: string;
+  warning?: string | null;
 }
 
 // ============================================================================
@@ -632,11 +760,24 @@ export type BusinessFeaturedPlacementStatus =
   Database['public']['Tables']['business_featured_placements']['Row']['status'];
 
 export type BusinessHoursUpdateSource =
-  Database['public']['Tables']['business_hours_updates']['Row']['update_source'];
+  | 'business_dashboard'
+  | 'admin_panel'
+  | 'community_report'
+  | 'manual'
+  | 'google'
+  | 'preset_offset';
 
 export type StallPassAccessTier = 'public' | 'premium';
 export type BusinessPricingPlan = 'standard' | 'lifetime';
 export type BusinessPromotionType = 'percentage' | 'amount_off' | 'freebie' | 'custom';
+export type ContributorTrustTier =
+  | 'brand_new'
+  | 'lightly_trusted'
+  | 'verified_contributor'
+  | 'highly_reliable_local'
+  | 'business_verified_manager'
+  | 'flagged_low_trust';
+export type DuplicateCaseStatus = 'open' | 'under_review' | 'merged' | 'dismissed' | 'quarantined';
 
 export interface BusinessFeaturedPlacementScope {
   city?: string;
@@ -650,6 +791,12 @@ export interface BusinessBathroomSettings {
   show_on_free_map: boolean;
   is_location_verified: boolean;
   location_verified_at: string | null;
+  code_policy: BusinessCodePolicy;
+  allow_user_code_submissions: boolean;
+  owner_supplied_code: string | null;
+  owner_code_last_verified_at: string | null;
+  owner_code_notes: string | null;
+  official_access_instructions: string | null;
   pricing_plan: BusinessPricingPlan;
   pricing_plan_granted_at: string | null;
   updated_by: string | null;
@@ -662,6 +809,82 @@ export interface UpdateBusinessBathroomSettingsInput {
   requires_premium_access: boolean;
   show_on_free_map: boolean;
   is_location_verified: boolean;
+}
+
+export interface UpdateBusinessBathroomSettingsV2Input extends UpdateBusinessBathroomSettingsInput {
+  code_policy: BusinessCodePolicy;
+  allow_user_code_submissions: boolean;
+  owner_supplied_code?: string | null;
+  owner_code_notes?: string | null;
+  official_access_instructions?: string | null;
+  owner_code_last_verified_at?: string | null;
+}
+
+export interface BathroomCodePolicySummary {
+  bathroom_id: string;
+  code_policy: BusinessCodePolicy;
+  allow_user_code_submissions: boolean;
+  has_official_code: boolean;
+  owner_code_last_verified_at: string | null;
+  owner_code_notes: string | null;
+  official_access_instructions: string | null;
+  can_manager_view_official_code: boolean;
+}
+
+export interface BusinessManagedCodeDetails {
+  bathroom_id: string;
+  code_policy: BusinessCodePolicy;
+  owner_supplied_code: string | null;
+  owner_code_last_verified_at: string | null;
+  owner_code_notes: string | null;
+  official_access_instructions: string | null;
+  allow_user_code_submissions: boolean;
+  updated_at: string;
+}
+
+export interface ContributorReputationProfile {
+  user_id: string;
+  trust_tier: ContributorTrustTier;
+  trust_score: number;
+  trust_weight: number;
+  accepted_contributions: number;
+  rejected_contributions: number;
+  reports_resolved: number;
+  reports_dismissed: number;
+  approved_photos: number;
+  rejected_photos: number;
+  active_codes: number;
+  removed_codes: number;
+  bathrooms_added: number;
+  approved_claims: number;
+  moderation_flag_count: number;
+  code_success_ratio: number;
+  primary_city: string | null;
+  primary_state: string | null;
+  last_contribution_at: string | null;
+  last_calculated_at: string;
+}
+
+export interface DuplicateCase {
+  id: string;
+  bathroom_a_id: string;
+  bathroom_a_name: string;
+  bathroom_a_address: string;
+  bathroom_b_id: string;
+  bathroom_b_name: string;
+  bathroom_b_address: string;
+  status: DuplicateCaseStatus;
+  similarity_score: number;
+  distance_meters: number | null;
+  suggested_merge_target_id: string | null;
+  merge_into_bathroom_id: string | null;
+  reason: string | null;
+  auto_flagged: boolean;
+  notes: string | null;
+  reviewed_by: string | null;
+  reviewed_at: string | null;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface BusinessPromotion {
@@ -778,25 +1001,47 @@ export interface BusinessHoursUpdateAudit {
   created_at: string;
 }
 
+export type HoursSourceType = 'manual' | 'google' | 'preset_offset';
+
+export interface BusinessBathroomHoursConfig {
+  bathroom_id: string;
+  place_name: string;
+  hours: HoursData | null;
+  hours_source: HoursSourceType;
+  hours_offset_minutes: number | null;
+  google_place_id: string | null;
+  updated_at: string;
+}
+
 export interface UpdateBusinessHoursInput {
   bathroom_id: string;
   hours: HoursData;
+  hours_source?: HoursSourceType;
+  offset_minutes?: number | null;
+  google_place_id?: string | null;
 }
 
 export interface BusinessHoursUpdateResult {
   success: boolean;
   bathroom_id: string;
+  hours_source: HoursSourceType;
   updated_at: string;
 }
 
-export type HoursSourceType = 'manual' | 'google' | 'preset_offset';
+export type UpdateBusinessHoursV2Input = UpdateBusinessHoursInput;
 
-export interface UpdateBusinessHoursV2Input {
+export interface SyncBusinessBathroomGoogleHoursInput {
   bathroom_id: string;
+  google_place_id: string;
+}
+
+export interface BusinessGoogleHoursSyncResult {
+  bathroom_id: string;
+  google_place_id: string;
+  place_name: string | null;
   hours: HoursData;
   hours_source: HoursSourceType;
-  offset_minutes?: number | null;
-  google_place_id?: string | null;
+  updated_at: string;
 }
 
 // ============================================================================

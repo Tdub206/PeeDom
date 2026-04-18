@@ -36,6 +36,7 @@
     "StallPass",
     "StallPass.git",
     "_preflight",
-    "supabase/functions"
+    "supabase/functions",
+    "apps"
   ]
 }

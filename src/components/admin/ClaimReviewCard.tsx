@@ -3,6 +3,7 @@ import { Alert, Linking, Pressable, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
 import type { AdminClaimListItem } from '@/api/admin';
+import { assessClaimModerationRisk } from '@/utils/admin-moderation';
 
 interface ClaimReviewCardProps {
   claim: AdminClaimListItem;
@@ -26,6 +27,7 @@ function ClaimReviewCardComponent({
   const [rejectReason, setRejectReason] = useState('');
   const [showRejectInput, setShowRejectInput] = useState(false);
   const status = STATUS_STYLES[claim.review_status] ?? STATUS_STYLES.pending;
+  const assessment = assessClaimModerationRisk(claim);
   const isModerating = isModeratingId === claim.claim_id;
   const isPending = claim.review_status === 'pending';
 
@@ -70,6 +72,30 @@ function ClaimReviewCardComponent({
       </View>
 
       <View className="mt-4 gap-2">
+        <View
+          className={[
+            'self-start rounded-full px-3 py-1.5',
+            assessment.priority === 'high'
+              ? 'bg-danger/10'
+              : assessment.priority === 'medium'
+                ? 'bg-warning/10'
+                : 'bg-success/10',
+          ].join(' ')}
+        >
+          <Text
+            className={[
+              'text-xs font-black uppercase tracking-[1px]',
+              assessment.priority === 'high'
+                ? 'text-danger'
+                : assessment.priority === 'medium'
+                  ? 'text-warning'
+                  : 'text-success',
+            ].join(' ')}
+          >
+            {assessment.priority} review risk
+          </Text>
+        </View>
+        <Text className="text-sm leading-6 text-ink-600">{assessment.summary}</Text>
         <View className="flex-row items-center gap-2">
           <Ionicons name="person-outline" size={14} color="#6b7280" />
           <Text className="text-sm text-ink-600">
@@ -101,6 +127,26 @@ function ClaimReviewCardComponent({
         <Text className="text-xs text-ink-400">
           Submitted {new Date(claim.created_at).toLocaleDateString()}
         </Text>
+      </View>
+
+      <View className="mt-4 gap-2">
+        {assessment.signals.slice(0, 4).map((signal) => (
+          <Text
+            className={[
+              'text-sm leading-5',
+              signal.tone === 'critical'
+                ? 'text-danger'
+                : signal.tone === 'warning'
+                  ? 'text-warning'
+                  : signal.tone === 'positive'
+                    ? 'text-success'
+                    : 'text-ink-600',
+            ].join(' ')}
+            key={signal.label}
+          >
+            {signal.label}
+          </Text>
+        ))}
       </View>
 
       {isPending ? (

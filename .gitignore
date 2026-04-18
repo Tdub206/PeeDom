@@ -9,6 +9,9 @@ web-build/
 # Build logs and artifacts
 *.log
 *.orig.*
+*.zip
+*.tar
+*.tgz
 
 # Environment files
 .env
@@ -16,6 +19,8 @@ web-build/
 .env.staging
 .env.production
 .env*.local
+.env*.backup
+*.backup
 supabase/.env
 
 # Keep example env checked in
@@ -27,6 +32,21 @@ supabase/.env
 # IDE
 .vscode/
 .idea/
+
+# Local tooling and agent artifacts
+.claude/settings.local.json
+.claude/worktrees/
+.codex/environments/
+.codex/prompts/
+_codex_tmp/
+.stallpass-ai/
+thread_exports/
+PeeDom-thread-export/
+PeeDom-thread-export.zip
+StallPass_App_Store_Assets/
+StallPass_App_Store_Assets.zip
+.firebase/
+desktop.ini
 
 # Android
 *.apk
