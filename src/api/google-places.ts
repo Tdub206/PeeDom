@@ -37,7 +37,6 @@ export async function fetchGoogleAddressAutocomplete(
         query: validatedInput.query,
         sessionToken: validatedInput.session_token,
         origin: validatedInput.origin ?? null,
-        region: validatedInput.region ?? null,
       },
     });
 

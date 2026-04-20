@@ -1,8 +1,9 @@
-# StallPass Google Maps and Places Production Checklist
+# StallPass Maps and Places Production Checklist
 
-This checklist is for the current StallPass architecture:
+This checklist reflects the current StallPass architecture after the iOS renderer moved to Apple Maps:
 
-- Native map rendering uses Google Maps keys through Expo config in `app.config.ts`
+- Android map rendering uses Google Maps keys through Expo config in `app.config.ts`
+- iOS map rendering uses Apple Maps through the default `react-native-maps` provider
 - Address autocomplete runs server-side through Supabase Edge Functions
 - The Places web-service key must never be shipped in the mobile client
 - Business hours can remain manual; Google hours sync is not required for launch
@@ -10,7 +11,6 @@ This checklist is for the current StallPass architecture:
 ## Current StallPass wiring
 
 - Android map key env: `ANDROID_GOOGLE_MAPS_API_KEY`
-- iOS map key env: `IOS_GOOGLE_MAPS_API_KEY`
 - Server-side Places key env: `GOOGLE_PLACES_API_KEY`
 - Android package: `com.stallpass.app`
 - iOS bundle identifier: `com.stallpass.app`
@@ -22,14 +22,13 @@ This checklist is for the current StallPass architecture:
 Enable only the APIs StallPass actually needs:
 
 - `Maps SDK for Android`
-- `Maps SDK for iOS`
 - `Places API`
 
-Do not enable extra Google Maps Platform APIs unless StallPass starts using them. Right now, address search does not require the app to expose a Geocoding key on device.
+Do not enable extra Google Maps Platform APIs unless StallPass starts using them. Address search does not require the app to expose a Geocoding key on device.
 
 ## Key plan
 
-Create separate keys. Google explicitly recommends separate keys per app and split client-side from server-side usage.
+Create separate keys. Google explicitly recommends separating client-side and server-side usage.
 
 ### 1. Android maps key
 
@@ -49,22 +48,7 @@ API restriction:
 Suggested name:
 - `stallpass-android-maps-prod`
 
-### 2. iOS maps key
-
-Purpose:
-- Native Google map rendering inside the iOS app
-
-Restriction:
-- Application restriction: `iOS apps`
-- Bundle identifier: `com.stallpass.app`
-
-API restriction:
-- `Maps SDK for iOS`
-
-Suggested name:
-- `stallpass-ios-maps-prod`
-
-### 3. Server-side Places key
+### 2. Server-side Places key
 
 Purpose:
 - Places Autocomplete and Place Details calls from Supabase Edge Functions
@@ -80,7 +64,7 @@ Suggested name:
 - `stallpass-server-places-prod`
 
 Important:
-- Do not reuse the Android or iOS map keys for Places web-service calls
+- Do not reuse the Android maps key for Places web-service calls
 - Do not put `GOOGLE_PLACES_API_KEY` into `EXPO_PUBLIC_*` env vars
 - Do not commit any of these keys into the repo
 
@@ -99,38 +83,22 @@ The current code is already aligned with the cheaper address-search path:
 
 Operationally, keep it this way for launch unless usage data shows a clear reason to expand.
 
-## Possible future cost optimization
-
-Google’s current Places docs say that for address-only use cases, programmatic Autocomplete plus Geocoding can be cheaper than session-based Autocomplete plus Place Details if users usually select within four autocomplete requests or fewer.
-
-Do not switch now.
-
-Launch recommendation:
-- keep the current implementation
-- measure average autocomplete requests per successful selection
-- only test a Geocoding-based variant after real traffic confirms it is likely cheaper
-
 ## Google Cloud Console steps
 
 1. Open your Google Cloud project used for StallPass.
 2. Confirm billing is enabled.
 3. Enable:
    - `Maps SDK for Android`
-   - `Maps SDK for iOS`
    - `Places API`
 4. Create the Android maps key and apply:
    - Android application restriction
    - package `com.stallpass.app`
    - correct SHA-1 fingerprints
    - API restriction `Maps SDK for Android`
-5. Create the iOS maps key and apply:
-   - iOS application restriction
-   - bundle ID `com.stallpass.app`
-   - API restriction `Maps SDK for iOS`
-6. Create the server Places key and apply:
+5. Create the server Places key and apply:
    - API restriction `Places API`
    - no app restriction unless you have fixed server egress IPs
-7. Label the keys clearly so rotation later is obvious.
+6. Label the keys clearly so rotation later is obvious.
 
 ## How to get Android SHA-1 fingerprints
 
@@ -153,11 +121,10 @@ If you publish through Play App Signing, the Play signing fingerprint is the one
 
 ## StallPass env mapping
 
-Set these in your local non-committed env file and in build/deploy systems:
+Set these in your local non-committed env file and in build or deploy systems:
 
 ```dotenv
 ANDROID_GOOGLE_MAPS_API_KEY=
-IOS_GOOGLE_MAPS_API_KEY=
 GOOGLE_PLACES_API_KEY=
 ```
 
@@ -166,8 +133,6 @@ Where each one goes:
 - `ANDROID_GOOGLE_MAPS_API_KEY`
   - consumed by `app.config.ts`
   - consumed by `android/app/build.gradle`
-- `IOS_GOOGLE_MAPS_API_KEY`
-  - consumed by `app.config.ts`
 - `GOOGLE_PLACES_API_KEY`
   - only for Supabase Edge Functions
   - never public
@@ -194,11 +159,9 @@ You do not need to deploy `google-place-hours` for the current launch scope if b
 Before production builds:
 
 1. Put `ANDROID_GOOGLE_MAPS_API_KEY` into the EAS environment used for Android builds.
-2. Put `IOS_GOOGLE_MAPS_API_KEY` into the EAS environment used for iOS builds.
-3. Keep `GOOGLE_PLACES_API_KEY` out of EAS app-public config unless you are also deploying functions from that environment.
-4. Verify `app.config.ts` resolves the expected keys during:
-   - Android EAS build
-   - iOS EAS build
+2. Keep `GOOGLE_PLACES_API_KEY` out of EAS app-public config unless you are also deploying functions from that environment.
+3. Verify `app.config.ts` resolves the expected Android key during Android EAS builds.
+4. Verify the iOS build no longer expects an iOS Google Maps key and still renders the default native provider.
 
 ## Verification checklist
 
@@ -216,9 +179,10 @@ Before production builds:
 - Select a suggestion
 - Confirm the map recenters even when there are zero bathrooms
 - Confirm the searched address marker stays visible
-- Confirm the “no bathrooms listed here yet” state appears when applicable
+- Confirm the "no bathrooms listed here yet" state appears when applicable
 - Confirm regular StallPass bathroom search still works
-- Confirm “Locate Me” clears the searched-address target and returns to user-centered browsing
+- Confirm "Locate Me" clears the searched-address target and returns to user-centered browsing
+- On iOS, confirm the in-app map still clusters markers and renders overlays through Apple Maps
 
 ### Security verification
 
@@ -231,7 +195,6 @@ Before production builds:
 
 - Check key metrics and quota after first staging traffic
 - Confirm the Android key only shows Android Maps traffic
-- Confirm the iOS key only shows iOS Maps traffic
 - Confirm the server key only shows Places API traffic
 
 ## Launch recommendation
@@ -239,11 +202,11 @@ Before production builds:
 For launch, use this exact shape:
 
 - Google Maps SDK key on Android
-- Google Maps SDK key on iOS
+- Apple Maps renderer on iOS
 - Separate server-side Places key in Supabase
 - Keep autocomplete address-focused
 - Keep manual business hours
-- Revisit Geocoding-vs-Place-Details optimization only after usage data exists
+- Revisit a full MapKit search migration only after usage data exists
 
 ## Official references
 
@@ -252,4 +215,3 @@ For launch, use this exact shape:
 - [Autocomplete session pricing](https://developers.google.com/maps/documentation/places/web-service/session-pricing)
 - [Places API usage and billing](https://developers.google.com/maps/documentation/places/web-service/usage-and-billing)
 - [Place Details (New)](https://developers.google.com/maps/documentation/places/web-service/place-details)
-- [Maps SDK for iOS setup](https://developers.google.com/maps/documentation/ios-sdk/config)

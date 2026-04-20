@@ -1,11 +1,17 @@
 import { z } from 'zod';
-import type { BathroomCodePolicySummary, Database, DbCodeRevealGrant, DbCodeVote } from '@/types';
+import type {
+  BathroomCodePolicySummary,
+  CodeRevealUnlockResult,
+  Database,
+  DbCodeVote,
+  FeatureUnlockMethod,
+} from '@/types';
 import {
   bathroomCodeSubmissionResultSchema,
   bathroomCodePolicySummarySchema,
   bathroomAccessCodeSchema,
+  codeRevealUnlockResultSchema,
   codeVoteMutationResultSchema,
-  dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
   parseSupabaseNullableRow,
   parseSupabaseRows,
@@ -47,6 +53,18 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
 
   if (/CODE_NOT_AVAILABLE/i.test(errorMessage)) {
     return 'CODE_NOT_AVAILABLE';
+  }
+
+  if (/STARTER_UNLOCK_ALREADY_USED/i.test(errorMessage)) {
+    return 'STARTER_UNLOCK_ALREADY_USED';
+  }
+
+  if (/INSUFFICIENT_UNLOCK_POINTS/i.test(errorMessage)) {
+    return 'INSUFFICIENT_UNLOCK_POINTS';
+  }
+
+  if (/INVALID_UNLOCK_METHOD/i.test(errorMessage)) {
+    return 'INVALID_UNLOCK_METHOD';
   }
 
   if (/SELF_CODE_VOTE/i.test(errorMessage)) {
@@ -252,11 +270,13 @@ export async function fetchBathroomCodePolicySummary(
 }
 
 export async function grantBathroomCodeRevealAccess(
-  bathroomId: string
-): Promise<{ data: DbCodeRevealGrant | null; error: (Error & { code?: string }) | null }> {
+  bathroomId: string,
+  unlockMethod: FeatureUnlockMethod = 'rewarded_ad'
+): Promise<{ data: CodeRevealUnlockResult | null; error: (Error & { code?: string }) | null }> {
   try {
     const { data, error } = await getSupabaseClient().rpc('grant_bathroom_code_reveal_access' as never, {
       p_bathroom_id: bathroomId,
+      p_unlock_method: unlockMethod,
     } as never);
 
     if (error) {
@@ -267,7 +287,7 @@ export async function grantBathroomCodeRevealAccess(
     }
 
     const parsedGrantRows = parseSupabaseRows(
-      dbCodeRevealGrantSchema,
+      codeRevealUnlockResultSchema,
       data,
       'code reveal grant',
       'Unable to unlock this code right now.'

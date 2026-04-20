@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="StallPass Business is a configurable browser dashboard for launch tasks, support links, listing controls, and business operations."
+    content="StallPass Business is a configurable browser dashboard for operational tasks, support links, listing controls, and business operations."
   >
   <meta property="og:title" content="StallPass Business">
   <meta
     property="og:description"
-    content="Configurable browser dashboard for launch tasks, support links, listing controls, and business operations."
+    content="Configurable browser dashboard for operational tasks, support links, listing controls, and business operations."
   >
   <meta property="og:image" content="/assets/open-graph-social-preview.png">
   <meta property="og:type" content="website">
@@ -53,6 +53,24 @@
     </div>
   </header>
 
+  <nav class="section-jumper" data-section-jumper aria-label="Dashboard sections">
+    <div class="shell jumper-inner">
+      <div class="jumper-links">
+        <a href="#pitch" data-jump>Why join</a>
+        <a href="#metrics" data-jump>Metrics</a>
+        <a href="#checklist" data-jump>Checklist</a>
+        <a href="#operations" data-jump>Operations</a>
+        <a href="#support" data-jump>Support links</a>
+        <a href="#playbook" data-jump>Playbook</a>
+        <a href="#notes" data-jump>Notes</a>
+      </div>
+      <button type="button" class="cmdk-trigger" data-open-cmdk aria-label="Open command palette">
+        <span class="cmdk-kbd">Ctrl</span><span class="cmdk-kbd">K</span>
+        <span class="cmdk-text">Command palette</span>
+      </button>
+    </div>
+  </nav>
+
   <main class="business-shell shell">
     <aside class="business-rail">
       <div class="rail-card" data-reveal>
@@ -74,7 +92,7 @@
         <div class="toggle-list">
           <label class="toggle-row">
             <input type="checkbox" data-widget-toggle="checklist" checked>
-            <span>Launch checklist</span>
+            <span>Listing checklist</span>
             <span class="toggle-status-dot" aria-hidden="true"></span>
           </label>
           <label class="toggle-row">
@@ -106,12 +124,17 @@
 
     <section class="business-main">
       <div class="business-hero" data-reveal>
+        <div class="aurora" aria-hidden="true">
+          <span class="aurora-blob aurora-1"></span>
+          <span class="aurora-blob aurora-2"></span>
+          <span class="aurora-blob aurora-3"></span>
+        </div>
         <div class="hero-text">
           <p class="eyebrow">Browser control surface</p>
-          <h1>Manage launch readiness before analytics are wired in.</h1>
+          <h1>Manage claimed locations from a single operational dashboard.</h1>
           <p class="lede">
-            This dashboard is intentionally useful without fabricated numbers. Setup score, pending tasks,
-            support-link readiness, widget visibility, and operating notes are all derived from real inputs.
+            Setup score, pending tasks, support-link readiness, widget visibility, and operating notes are
+            all derived from real listing inputs, so the dashboard reflects the actual state of your business.
           </p>
         </div>
         <div class="hero-glow" aria-hidden="true"></div>
@@ -121,7 +144,36 @@
         </div>
       </div>
 
-      <section class="metric-grid" aria-label="Business dashboard summary">
+      <section class="pitch-strip" id="pitch" data-reveal aria-label="Why businesses join">
+        <header class="pitch-head">
+          <p class="eyebrow">Why businesses join</p>
+          <h2>A listing that works as hard as your storefront.</h2>
+        </header>
+        <div class="pitch-grid">
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">◆</span>
+            <h3>Own your listing</h3>
+            <p>Claim once. Control hours, amenities, accessibility, and access policy from a single surface.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">▲</span>
+            <h3>Feature when it matters</h3>
+            <p>Mark featured placement intent, prep campaign copy, and stay store-review ready.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">●</span>
+            <h3>No fake numbers</h3>
+            <p>Every metric is derived from real input. No invented impressions, no vanity dashboards.</p>
+          </article>
+          <article class="pitch-card">
+            <span class="pitch-icon" aria-hidden="true">✦</span>
+            <h3>Built for teams</h3>
+            <p>Launch notes, reply templates, customer promises, and support URLs — all in one place.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="metric-grid" id="metrics" aria-label="Business dashboard summary">
         <article class="metric-card" data-reveal>
           <svg class="metric-icon" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
             <circle cx="16" cy="18" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -131,7 +183,7 @@
           </svg>
           <span class="metric-label">Setup score</span>
           <strong class="metric-value" data-metric-setup>0%</strong>
-          <p class="metric-copy">Derived from the launch checklist below.</p>
+          <p class="metric-copy">Derived from the listing checklist below.</p>
           <div class="metric-accent" aria-hidden="true"></div>
         </article>
         <article class="metric-card" data-reveal>
@@ -141,7 +193,7 @@
           </svg>
           <span class="metric-label">Claimed locations</span>
           <strong class="metric-value" data-metric-locations>0</strong>
-          <p class="metric-copy">Counted from the checklist, not invented traffic numbers.</p>
+          <p class="metric-copy">Counted from your approved business claims.</p>
           <div class="metric-accent" aria-hidden="true"></div>
         </article>
         <article class="metric-card" data-reveal>
@@ -174,15 +226,15 @@
       <hr class="widget-divider" aria-hidden="true">
 
       <section class="widget-grid">
-        <article class="widget-card" data-widget="checklist" data-reveal>
+        <article class="widget-card" id="checklist" data-widget="checklist" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
                 <path d="M12 2C6.5 2 2 6 2 11c0 3 1.5 5.5 4 7.3V22l3.5-2c.8.2 1.6.3 2.5.3 5.5 0 10-4 10-9S17.5 2 12 2z" fill="none" stroke="currentColor" stroke-width="1.5"/>
                 <path d="M7 15l3-10 4 8 3-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              <span class="widget-label">Launch checklist</span>
-              <h2>Get one location to a review-safe operational baseline.</h2>
+              <span class="widget-label">Listing checklist</span>
+              <h2>Get every location to a polished operational baseline.</h2>
             </div>
             <span class="widget-badge" data-progress-text>0 of 5 complete</span>
           </div>
@@ -194,7 +246,7 @@
               <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
               <path d="M8 12l3 3 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>All launch tasks complete — you're ready for review.</span>
+            <span>All listing tasks complete — this location is fully managed.</span>
           </div>
           <div class="checklist-grid">
             <label class="checklist-item">
@@ -220,7 +272,7 @@
           </div>
         </article>
 
-        <article class="widget-card" data-widget="operations" data-reveal>
+        <article class="widget-card" id="operations" data-widget="operations" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -250,13 +302,13 @@
             <label class="control-card">
               <input type="checkbox" data-operation-flag="featuredPlacement">
               <span class="control-title">Featured placement intent</span>
-              <span class="control-copy">Mark whether you plan to run a featured campaign after launch.</span>
+              <span class="control-copy">Mark whether you plan to run a featured placement campaign.</span>
             </label>
           </div>
           <div class="status-grid" data-operation-summary></div>
         </article>
 
-        <article class="widget-card" data-widget="support" data-reveal>
+        <article class="widget-card" id="support" data-widget="support" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -296,7 +348,7 @@
           </form>
         </article>
 
-        <article class="widget-card" data-widget="playbook" data-reveal>
+        <article class="widget-card" id="playbook" data-widget="playbook" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -318,7 +370,7 @@
           </div>
         </article>
 
-        <article class="widget-card" data-widget="notes" data-reveal>
+        <article class="widget-card" id="notes" data-widget="notes" data-reveal>
           <div class="widget-head">
             <div>
               <svg class="widget-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
@@ -328,17 +380,36 @@
                 <line x1="8" y1="14" x2="13" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
               <span class="widget-label">Team notes</span>
-              <h2>Keep local launch notes visible without opening another tool.</h2>
+              <h2>Keep local operations notes visible without opening another tool.</h2>
             </div>
           </div>
           <label class="notes-field">
-            <span>Launch notes</span>
+            <span>Operations notes</span>
             <textarea rows="10" data-team-notes></textarea>
           </label>
         </article>
       </section>
     </section>
   </main>
+
+  <div class="cmdk-overlay" data-cmdk-overlay hidden role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="cmdk-panel" role="document">
+      <div class="cmdk-search">
+        <span class="cmdk-search-icon" aria-hidden="true">⌕</span>
+        <input type="text" data-cmdk-input placeholder="Type a command: jump to, set theme, export, reset…" aria-label="Search commands">
+        <kbd class="cmdk-esc">Esc</kbd>
+      </div>
+      <ul class="cmdk-list" data-cmdk-list role="listbox"></ul>
+      <div class="cmdk-footer">
+        <span><kbd>↑↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> run</span>
+        <span><kbd>Esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
+  <canvas class="confetti-canvas" data-confetti aria-hidden="true"></canvas>
 
   <footer class="footer">
     <div class="shell footer-grid">

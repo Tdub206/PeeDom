@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 type LegalTab = 'privacy' | 'terms';
 
-const PRIVACY_LAST_UPDATED = 'April 5, 2026';
+const PRIVACY_LAST_UPDATED = 'April 18, 2026';
 const TERMS_LAST_UPDATED = 'March 26, 2026';
 
 function SectionHeading({ children }: { children: string }) {
@@ -55,16 +55,18 @@ function PrivacyPolicyContent() {
       <Paragraph>
         We do not sell your personal information. We share data only with service providers that help
         us operate the app: Supabase (database and authentication), Sentry (error monitoring),
-        Google Maps (map rendering), and push-notification infrastructure needed to deliver alerts.
-        Each provider processes data under their own privacy policies.
+        platform map providers such as Apple Maps on iOS and Google Maps on Android, Google Places
+        for address and business lookup, and push-notification infrastructure needed to deliver
+        alerts. Each provider processes data under their own privacy policies.
       </Paragraph>
 
       <SectionHeading>4. Current Launch Posture</SectionHeading>
       <Paragraph>
-        The April 5, 2026 production launch configuration keeps paid premium purchases, rewarded ads,
-        and the separate analytics ingestion endpoint disabled. If a future release enables ads,
-        analytics, or paid subscriptions, StallPass will update this policy and the corresponding
-        store privacy disclosures before rollout.
+        Free accounts may use a limited starter code reveal and emergency lookup, then unlock
+        additional reveals with rewarded ads. Premium access can also be granted through points
+        redemption and approved entitlements. If a future release enables direct paid premium
+        purchases or a separate analytics endpoint, StallPass will update this policy and the
+        corresponding store privacy disclosures before rollout.
       </Paragraph>
 
       <SectionHeading>5. Data Retention</SectionHeading>

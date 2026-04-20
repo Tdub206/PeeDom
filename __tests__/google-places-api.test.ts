@@ -17,13 +17,13 @@ describe('google places API', () => {
     functionsInvoke.mockReset();
   });
 
-  it('requests address autocomplete suggestions through the edge function', async () => {
+  it('requests business autocomplete predictions through the edge function with origin bias and no region', async () => {
     functionsInvoke.mockResolvedValueOnce({
       data: [
         {
           place_id: 'ChIJ123',
-          text: '123 Main St, Seattle, WA',
-          primary_text: '123 Main St',
+          text: 'Starbucks Reserve Roastery Seattle',
+          primary_text: 'Starbucks Reserve Roastery',
           secondary_text: 'Seattle, WA',
           distance_meters: 150,
         },
@@ -33,31 +33,56 @@ describe('google places API', () => {
 
     const { fetchGoogleAddressAutocomplete } = await import('@/api/google-places');
     const result = await fetchGoogleAddressAutocomplete({
-      query: '123 Main',
+      query: 'st',
       session_token: 'stallpass_test_token',
       origin: {
         latitude: 47.6062,
         longitude: -122.3321,
       },
-      region: null,
     });
 
     expect(result.error).toBeNull();
     expect(functionsInvoke).toHaveBeenCalledWith('google-place-autocomplete', {
       body: {
-        query: '123 Main',
+        query: 'st',
         sessionToken: 'stallpass_test_token',
         origin: {
           latitude: 47.6062,
           longitude: -122.3321,
         },
-        region: null,
       },
     });
+    // No region forwarded — both screens must bias only off the shared user location.
+    const invokeBody = functionsInvoke.mock.calls[0]?.[1] as { body?: Record<string, unknown> };
+    expect(invokeBody?.body).toBeDefined();
+    expect(invokeBody?.body && 'region' in invokeBody.body).toBe(false);
+
     expect(result.data[0]?.place_id).toBe('ChIJ123');
+    expect(result.data[0]?.primary_text).toBe('Starbucks Reserve Roastery');
+    expect(result.data[0]?.secondary_text).toBe('Seattle, WA');
+    expect(result.data[0]?.distance_meters).toBe(150);
   });
 
-  it('resolves a selected address through the place details edge function', async () => {
+  it('forwards a null origin when shared location is unavailable', async () => {
+    functionsInvoke.mockResolvedValueOnce({ data: [], error: null });
+
+    const { fetchGoogleAddressAutocomplete } = await import('@/api/google-places');
+    await fetchGoogleAddressAutocomplete({
+      query: 'star',
+      session_token: 'stallpass_test_token',
+      origin: null,
+    });
+
+    expect(functionsInvoke).toHaveBeenCalledWith('google-place-autocomplete', {
+      body: {
+        query: 'star',
+        sessionToken: 'stallpass_test_token',
+        origin: null,
+      },
+    });
+  });
+
+  it('resolves a selected place through the place details edge function', async () => {
     functionsInvoke.mockResolvedValueOnce({
       data: {
         place_id: 'ChIJ123',

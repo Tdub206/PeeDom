@@ -20,7 +20,7 @@ export function usePremiumArrivalAlert(bathroomId: string | null) {
 
   const alertQuery = useQuery({
     queryKey: premiumArrivalAlertQueryKey(bathroomId),
-    enabled: isAuthenticated && Boolean(bathroomId),
+    enabled: isAuthenticated && Boolean(bathroomId) && isPremiumUser,
     queryFn: async () => {
       if (!bathroomId) {
         return [] as PremiumArrivalAlert[];

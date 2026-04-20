@@ -71,7 +71,6 @@ function assertProductionBuildEnv(easProjectId: string): void {
   readRequiredEnv('EXPO_PUBLIC_SUPABASE_ANON_KEY');
   readRequiredEnv('EXPO_PUBLIC_SENTRY_DSN');
   readRequiredEnv('ANDROID_GOOGLE_MAPS_API_KEY');
-  readRequiredEnv('IOS_GOOGLE_MAPS_API_KEY');
 
   if (!easProjectId) {
     throw new Error('Missing required EAS project ID for production build. Link the project with EAS or set EAS_PROJECT_ID.');
@@ -103,6 +102,7 @@ if (sentryBuildConfig.enabled) {
   buildPlugins.push([
     '@sentry/react-native/expo',
     {
+      authToken: sentryBuildConfig.authToken || undefined,
       organization: sentryBuildConfig.organization || undefined,
       project: sentryBuildConfig.project || undefined,
       url: sentryBuildConfig.url || undefined,
@@ -144,11 +144,9 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       bundleIdentifier: 'com.stallpass.app',
       buildNumber: iosBuildNumber,
       infoPlist: {
+        ITSAppUsesNonExemptEncryption: false,
         NSLocationWhenInUseUsageDescription:
           'StallPass uses your location to find nearby bathrooms and improve search relevance.',
-      },
-      config: {
-        googleMapsApiKey: process.env.IOS_GOOGLE_MAPS_API_KEY || '',
       },
     },
     android: {

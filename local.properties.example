@@ -10,9 +10,9 @@ sdk.dir=C\:/Users/<YOUR_USERNAME>/AppData/Local/Android/Sdk
 ## Linux default:
 # sdk.dir=/home/<YOUR_USERNAME>/Android/Sdk
 
-## ── Optional: Google Maps Android API key ───────────────────────────────────
-## Only needed for Android native map rendering.
+## ── Google Maps Android API key ──────────────────────────────────────────────
+## Required for Android native map rendering.
 ## Get your key from: https://console.cloud.google.com/
 ## Enable: Maps SDK for Android
-## Restrict to: Android apps + your package name (com.peedom.mobile)
+## Restrict to: Android apps + your package name (com.stallpass.app)
 # ANDROID_GOOGLE_MAPS_API_KEY=AIza...

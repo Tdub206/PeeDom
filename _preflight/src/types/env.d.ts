@@ -6,7 +6,6 @@ declare namespace NodeJS {
     EXPO_PUBLIC_SUPABASE_ANON_KEY?: string;
     EXPO_PUBLIC_SENTRY_DSN?: string;
     ANDROID_GOOGLE_MAPS_API_KEY?: string;
-    IOS_GOOGLE_MAPS_API_KEY?: string;
     EAS_PROJECT_ID?: string;
   }
 }

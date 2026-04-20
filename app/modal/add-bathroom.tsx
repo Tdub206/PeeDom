@@ -20,6 +20,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomSubmissions } from '@/hooks/useBathroomSubmissions';
 import { useBathroomDuplicateSuggestions } from '@/hooks/useBathroomDuplicateSuggestions';
 import { useGoogleAddressAutocomplete } from '@/hooks/useGooglePlaces';
+import { PlacesAutocompleteDropdown } from '@/components/places/PlacesAutocompleteDropdown';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { addBathroomDrafts } from '@/lib/draft-manager';
@@ -181,7 +182,6 @@ export default function AddBathroomModalScreen() {
   const { showToast } = useToast();
   const { coordinates, is_refreshing, permission_status, refreshLocation, requestPermission } = useLocation();
   const mapUserLocation = useMapStore((state) => state.userLocation);
-  const mapRegion = useMapStore((state) => state.region);
   const { isSubmitting, submitBathroom } = useBathroomSubmissions();
   const { hasAccepted: hasAcceptedTerms, acceptTerms } = useTermsAcceptance();
   const [formState, setFormState] = useState<AddBathroomFormState>(INITIAL_FORM_STATE);
@@ -202,12 +202,12 @@ export default function AddBathroomModalScreen() {
   const {
     suggestions: addressSuggestions,
     isLoading: isAddressAutocompleteLoading,
+    error: addressAutocompleteError,
     resetSession: resetAddressAutocompleteSession,
     resolveSelection: resolveAddressSelection,
   } = useGoogleAddressAutocomplete({
     query: formState.address_line1,
     origin: autocompleteOrigin,
-    region: mapRegion,
     enabled: isAddressAutocompleteEnabled,
   });
 
@@ -475,14 +475,16 @@ export default function AddBathroomModalScreen() {
     async (suggestion: GooglePlaceAutocompleteSuggestion) => {
       try {
         const selection = await resolveAddressSelection(suggestion);
-        const nextLocationPatch = buildBathroomLocationFormPatchFromGoogleSelection(
-          selection,
-          suggestion.primary_text
-        );
+        const nextLocationPatch = buildBathroomLocationFormPatchFromGoogleSelection(selection);
 
         setFormState((currentState) => ({
           ...currentState,
           ...nextLocationPatch,
+          place_name: suggestion.primary_text,
+        }));
+        setFieldErrors((currentErrors) => ({
+          ...currentErrors,
+          place_name: undefined,
         }));
         clearLocationFieldErrors();
         setIsAddressAutocompleteEnabled(false);
@@ -720,43 +722,27 @@ export default function AddBathroomModalScreen() {
               <Input
                 autoCapitalize="words"
                 containerClassName="mt-5"
-                helperText="Start typing a street address to see Google suggestions."
-                label="Street address"
+                helperText="Start typing a business name or street address to see Google suggestions."
+                label="Address or business"
                 onChangeText={handleAddressLine1Change}
                 onFocus={() => setIsAddressAutocompleteEnabled(true)}
-                placeholder="123 Main St"
+                placeholder="Union Station or 123 Main St"
                 returnKeyType="next"
                 value={formState.address_line1}
                 error={fieldErrors.address_line1}
               />
 
-              {isAddressAutocompleteLoading && isAddressAutocompleteEnabled ? (
-                <Text className="mt-3 text-sm text-ink-500">Looking up matching addresses...</Text>
-              ) : null}
-
-              {addressSuggestions.length > 0 ? (
-                <View className="mt-3 gap-3 rounded-[24px] border border-brand-100 bg-brand-50 p-3">
-                  <Text className="px-1 text-xs font-semibold uppercase tracking-[1px] text-brand-700">
-                    Address Autocomplete
-                  </Text>
-                  {addressSuggestions.map((suggestion) => (
-                    <Pressable
-                      accessibilityLabel={`Address suggestion ${suggestion.text}`}
-                      accessibilityRole="button"
-                      className="rounded-2xl border border-brand-100 bg-white px-4 py-4"
-                      key={suggestion.place_id}
-                      onPress={() => {
-                        void handleSelectAddressSuggestion(suggestion);
-                      }}
-                    >
-                      <Text className="text-base font-semibold text-brand-700">{suggestion.primary_text}</Text>
-                      {suggestion.secondary_text ? (
-                        <Text className="mt-1 text-sm leading-5 text-brand-700">{suggestion.secondary_text}</Text>
-                      ) : null}
-                    </Pressable>
-                  ))}
-                </View>
-              ) : null}
+              <PlacesAutocompleteDropdown
+                suggestions={addressSuggestions}
+                isLoading={isAddressAutocompleteLoading}
+                error={addressAutocompleteError}
+                visible={isAddressAutocompleteEnabled}
+                variant="form"
+                showDistance={false}
+                onSelect={(suggestion) => {
+                  void handleSelectAddressSuggestion(suggestion);
+                }}
+              />
 
               <View className="mt-5 flex-row gap-3">
                 <View className="flex-1">

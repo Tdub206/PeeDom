@@ -40,7 +40,9 @@ export type IntentType =
   | 'favorite_toggle'
   | 'submit_code'
   | 'reveal_code'
+  | 'emergency_lookup'
   | 'vote_code'
+  | 'verify_imported_location'
   | 'report_bathroom'
   | 'report_live_status'
   | 'add_bathroom'
@@ -76,10 +78,12 @@ export type MutationType =
   | 'favorite_remove'
   | 'code_submit'
   | 'code_vote'
+  | 'location_verification'
   | 'report_create'
   | 'rating_create'
   | 'status_report'
-  | 'accessibility_update';
+  | 'accessibility_update'
+  | 'bug_report';
 
 export interface FavoriteMutationPayload {
   bathroom_id: string;
@@ -109,7 +113,29 @@ export interface BathroomStatusMutationPayload {
   note?: string | null;
 }
 
+export interface ImportedLocationVerificationMutationPayload {
+  bathroom_id: string;
+  location_exists: boolean;
+  note?: string | null;
+}
+
 export interface BathroomAccessibilityMutationPayload extends BathroomAccessibilityUpdateInput {}
+
+export interface BugReportMutationPayload {
+  schema_version: number;
+  idempotency_key: string;
+  screen_name: string;
+  error_message: string;
+  error_stack: string;
+  component_stack: string;
+  user_comment: string;
+  app_version: string;
+  os_name: string;
+  os_version: string;
+  device_model: string;
+  captured_at: string;
+  sentry_event_id: string | null;
+}
 
 export interface QueuedMutation {
   id: string;
@@ -235,7 +261,6 @@ export interface GooglePlaceAutocompleteInput {
   query: string;
   session_token: string;
   origin?: Coordinates | null;
-  region?: RegionBounds | null;
 }
 
 export interface GooglePlaceAddressResolutionInput {
@@ -405,6 +430,7 @@ export type BathroomConfidenceTone = 'high' | 'medium' | 'low';
 export type BathroomConfidenceFlagTone = 'positive' | 'warning' | 'critical' | 'neutral';
 export type BathroomFreshnessState = 'fresh' | 'aging' | 'stale' | 'unknown';
 export type BathroomConflictState = 'stable' | 'conflicting' | 'outdated' | 'unknown';
+export type ImportedLocationFreshnessStatus = 'unreviewed' | 'fresh' | 'aging' | 'disputed' | 'likely_removed';
 
 export interface BathroomConfidenceFlag {
   label: string;
@@ -482,6 +508,13 @@ export interface BathroomListItem {
   has_official_code?: boolean;
   owner_code_last_verified_at?: string | null;
   official_access_instructions?: string | null;
+  imported_location_last_verified_at?: string | null;
+  imported_location_confirmation_count?: number;
+  imported_location_denial_count?: number;
+  imported_location_weighted_confirmation_score?: number;
+  imported_location_weighted_denial_score?: number;
+  imported_location_freshness_status?: ImportedLocationFreshnessStatus | null;
+  imported_location_needs_review?: boolean;
   last_updated_at: string | null;
   sync: SyncMetadata;
 }
@@ -532,7 +565,30 @@ export interface BathroomPhotoUploadInput {
 
 export type BathroomPhotoType = 'exterior' | 'interior' | 'keypad' | 'sign';
 export type BathroomPhotoModerationStatus = 'approved' | 'pending' | 'rejected';
-export type CodeRevealGrantSource = 'rewarded_ad';
+export type CodeRevealGrantSource = 'rewarded_ad' | 'starter_free' | 'points_redeemed';
+export type FeatureUnlockMethod = CodeRevealGrantSource;
+
+export interface CodeRevealUnlockResult {
+  id: string;
+  bathroom_id: string;
+  user_id: string;
+  grant_source: CodeRevealGrantSource;
+  expires_at: string;
+  created_at: string;
+  updated_at: string;
+  points_spent: number;
+  remaining_points: number;
+  used_free_unlock: boolean;
+}
+
+export interface EmergencyLookupAccessResult {
+  user_id: string;
+  unlock_method: FeatureUnlockMethod;
+  points_spent: number;
+  remaining_points: number;
+  used_free_unlock: boolean;
+  unlocked_at: string;
+}
 
 export interface BathroomPhotoProofCreateInput {
   bathroom_id: string;
@@ -578,6 +634,13 @@ export interface BathroomDetail {
   has_official_code?: boolean;
   owner_code_last_verified_at?: string | null;
   official_access_instructions?: string | null;
+  imported_location_last_verified_at?: string | null;
+  imported_location_confirmation_count?: number;
+  imported_location_denial_count?: number;
+  imported_location_weighted_confirmation_score?: number;
+  imported_location_weighted_denial_score?: number;
+  imported_location_freshness_status?: ImportedLocationFreshnessStatus | null;
+  imported_location_needs_review?: boolean;
   viewer_state: ViewerState;
   sync: SyncMetadata;
 }
@@ -714,6 +777,29 @@ export interface Report {
   status: 'open' | 'reviewing' | 'resolved' | 'dismissed';
   notes: string | null;
   created_at: string;
+}
+
+export interface ImportedLocationVerificationInput {
+  bathroom_id: string;
+  location_exists: boolean;
+  note?: string | null;
+}
+
+export interface ImportedLocationVerificationResult {
+  success: boolean;
+  error?: string | null;
+  verification_id: string | null;
+  created_at: string | null;
+  bathroom_id: string;
+  location_exists: boolean;
+  next_allowed_at: string | null;
+  imported_location_last_verified_at: string | null;
+  imported_location_confirmation_count: number;
+  imported_location_denial_count: number;
+  imported_location_weighted_confirmation_score: number;
+  imported_location_weighted_denial_score: number;
+  imported_location_freshness_status: ImportedLocationFreshnessStatus;
+  imported_location_needs_review: boolean;
 }
 
 // ============================================================================
@@ -1243,6 +1329,8 @@ export interface UserProfile {
   last_contribution_date: string | null;
   streak_multiplier: number;
   streak_multiplier_expires_at: string | null;
+  free_code_reveal_used_at: string | null;
+  free_emergency_lookup_used_at: string | null;
   push_token: string | null;
   push_enabled: boolean;
   notification_prefs: NotificationPrefs;

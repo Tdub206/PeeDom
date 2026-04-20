@@ -6,6 +6,8 @@ import { Button } from '@/components/Button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNearbyBathrooms } from '@/hooks/useNearbyBathrooms';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
+import { shouldShowNearbyPremiumPrompt } from '@/lib/feature-access';
+import { hasActivePremium } from '@/lib/gamification';
 import type { BathroomFilters, BathroomListItem, BathroomRecommendation } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 
@@ -13,6 +15,7 @@ interface NearbyBathroomsPanelProps {
   filters: BathroomFilters;
   onNavigate: (bathroom: BathroomListItem) => void;
   onOpenBathroomDetail: (bathroomId: string) => void;
+  onViewPremiumOptions?: () => void;
 }
 
 function formatDistance(distanceMeters?: number): string {
@@ -42,10 +45,15 @@ function LockedBathroomCard({
   const [isLoadingCode, setIsLoadingCode] = useState(false);
   const {
     hasUnlock,
+    isFreeUnlockAvailable,
+    canUnlockWithPoints,
+    pointsUnlockCost,
     isAdUnlockAvailable,
-    isUnlocking,
+    isUnlockingWithAd,
+    isUnlockingWithPoints,
     unlockIssue,
     unlockWithAd,
+    unlockWithPoints,
   } = useRewardedCodeUnlock({
     bathroomId: bathroom.id,
     userId: user?.id ?? null,
@@ -107,7 +115,6 @@ function LockedBathroomCard({
     };
   }, [bathroom.id, bathroom.primary_code_summary.has_code, hasUnlock]);
 
-  const canUnlockWithAd = bathroom.primary_code_summary.has_code && !hasUnlock && isAdUnlockAvailable;
   const codeStatusCopy = useMemo(() => {
     if (!bathroom.primary_code_summary.has_code) {
       return 'No community code submitted yet.';
@@ -125,12 +132,45 @@ function LockedBathroomCard({
       return codeIssue ?? 'Code access granted.';
     }
 
-    if (canUnlockWithAd) {
+    if (!user) {
+      return 'Sign in to unlock codes. Accounts get one free reveal before points or ads.';
+    }
+
+    if (isFreeUnlockAvailable) {
+      return 'Your account still has one free code reveal.';
+    }
+
+    if (canUnlockWithPoints && isAdUnlockAvailable) {
+      return `Spend ${pointsUnlockCost} points or use a rewarded unlock.`;
+    }
+
+    if (canUnlockWithPoints) {
+      return `${pointsUnlockCost}-point unlock available.`;
+    }
+
+    if (isAdUnlockAvailable) {
       return 'Rewarded unlock available.';
     }
 
     return unlockIssue ?? 'Open details to check access options.';
-  }, [bathroom.primary_code_summary.has_code, canUnlockWithAd, codeIssue, hasUnlock, isLoadingCode, revealedCode, unlockIssue]);
+  }, [
+    canUnlockWithPoints,
+    bathroom.primary_code_summary.has_code,
+    codeIssue,
+    hasUnlock,
+    isFreeUnlockAvailable,
+    isLoadingCode,
+    pointsUnlockCost,
+    revealedCode,
+    unlockIssue,
+    user,
+    isAdUnlockAvailable,
+  ]);
+
+  const shouldShowUnlockAction =
+    bathroom.primary_code_summary.has_code &&
+    !hasUnlock &&
+    (!user || isFreeUnlockAvailable || isAdUnlockAvailable);
 
   return (
     <View className="rounded-3xl border border-surface-strong bg-surface-base px-4 py-4">
@@ -155,13 +195,33 @@ function LockedBathroomCard({
       ) : null}
 
       <View className="mt-4 gap-3">
-        {canUnlockWithAd ? (
+        {shouldShowUnlockAction ? (
           <Button
-            label="Watch Ad To Unlock Code"
-            loading={isUnlocking}
+            label={
+              !user
+                ? 'Sign In To Unlock Code'
+                : isFreeUnlockAvailable
+                  ? 'Unlock 1 Code Free'
+                  : 'Watch Ad To Unlock Code'
+            }
+            loading={isUnlockingWithAd}
             onPress={() => {
               void unlockWithAd();
             }}
+          />
+        ) : null}
+        {user && canUnlockWithPoints ? (
+          <Button
+            label={
+              isUnlockingWithPoints
+                ? `Spending ${pointsUnlockCost} Points...`
+                : `Spend ${pointsUnlockCost} Points`
+            }
+            loading={isUnlockingWithPoints}
+            onPress={() => {
+              void unlockWithPoints();
+            }}
+            variant="secondary"
           />
         ) : null}
         <Button
@@ -219,7 +279,9 @@ function NearbyBathroomsPanelComponent({
   filters,
   onNavigate,
   onOpenBathroomDetail,
+  onViewPremiumOptions,
 }: NearbyBathroomsPanelProps) {
+  const { profile } = useAuth();
   const [isExpanded, setIsExpanded] = useState(true);
   const {
     data,
@@ -235,10 +297,20 @@ function NearbyBathroomsPanelComponent({
   });
 
   const lockedCount = data?.lockedBathrooms.length ?? 0;
+  const hiddenPremiumVerifiedCount = data?.hiddenPremiumVerifiedCount ?? 0;
   const nearestBathroom = data?.nearestOpenUnlocked ?? null;
+  const nearestHiddenPremiumVerified = data?.nearestHiddenPremiumVerified ?? null;
   const recommendations = data?.recommendations ?? [];
+  const visibleBathroomCount = data?.items.length ?? 0;
+  const showPremiumPrompt = shouldShowNearbyPremiumPrompt({
+    hiddenPremiumVerifiedCount,
+    isPremiumUser: hasActivePremium(profile),
+    visibleBathroomCount,
+  });
   const headerSummary = nearestBathroom
     ? `${nearestBathroom.place_name} is the closest open restroom right now.`
+    : showPremiumPrompt
+      ? 'No free bathrooms within 5 miles right now.'
     : lockedCount > 0
       ? `${lockedCount} locked bathroom${lockedCount === 1 ? '' : 's'} nearby.`
       : 'No nearby highlights yet.';
@@ -307,6 +379,27 @@ function NearbyBathroomsPanelComponent({
             </View>
           ) : (
             <>
+              {showPremiumPrompt ? (
+                <View className="rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
+                  <Text className="text-sm font-semibold text-brand-700">Verified businesses nearby</Text>
+                  <Text className="mt-2 text-sm leading-5 text-brand-700">
+                    We did not find a free bathroom within 5 miles, but {hiddenPremiumVerifiedCount}{' '}
+                    StallPass verified {hiddenPremiumVerifiedCount === 1 ? 'business is' : 'businesses are'} nearby
+                    {nearestHiddenPremiumVerified
+                      ? `, with the closest around ${formatDistance(nearestHiddenPremiumVerified.distance_meters)}.`
+                      : '.'}
+                  </Text>
+                  {onViewPremiumOptions ? (
+                    <Button
+                      className="mt-4"
+                      label="See Premium Options"
+                      onPress={onViewPremiumOptions}
+                      variant="secondary"
+                    />
+                  ) : null}
+                </View>
+              ) : null}
+
               {recommendations.length > 0 ? (
                 <View className="gap-3">
                   <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Best options right now</Text>

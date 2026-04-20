@@ -7,25 +7,22 @@ import type {
   Coordinates,
   GooglePlaceAddressResolutionResult,
   GooglePlaceAutocompleteSuggestion,
-  RegionBounds,
 } from '@/types';
 import {
   createGoogleAutocompleteSessionToken,
-  GOOGLE_ADDRESS_AUTOCOMPLETE_DEBOUNCE_MS,
-  isAddressLikeSearchQuery,
+  GOOGLE_AUTOCOMPLETE_DEBOUNCE_MS,
+  isGoogleAutocompleteEligibleQuery,
 } from '@/utils/google-places';
 
 interface UseGoogleAddressAutocompleteOptions {
   query: string;
   origin?: Coordinates | null;
-  region?: RegionBounds | null;
   enabled?: boolean;
 }
 
 export function useGoogleAddressAutocomplete({
   query,
   origin,
-  region,
   enabled = true,
 }: UseGoogleAddressAutocompleteOptions) {
   const [suggestions, setSuggestions] = useState<GooglePlaceAutocompleteSuggestion[]>([]);
@@ -33,10 +30,16 @@ export function useGoogleAddressAutocomplete({
   const [error, setError] = useState<Error | null>(null);
   const sessionTokenRef = useRef<string | null>(null);
   const lastQueryRef = useRef('');
+  // Monotonic sequence so a slow in-flight request can never overwrite a
+  // newer response. Combined with the per-effect `cancelled` flag this gives
+  // us strong stale-response suppression without threading AbortSignal
+  // through the supabase functions.invoke transport.
+  const requestSequenceRef = useRef(0);
 
   const resetSession = useCallback(() => {
     sessionTokenRef.current = null;
     lastQueryRef.current = '';
+    requestSequenceRef.current += 1;
     setSuggestions([]);
     setError(null);
     setIsLoading(false);
@@ -44,7 +47,7 @@ export function useGoogleAddressAutocomplete({
 
   useEffect(() => {
     const trimmedQuery = query.trim();
-    const shouldSearchGoogle = enabled && isAddressLikeSearchQuery(trimmedQuery);
+    const shouldSearchGoogle = enabled && isGoogleAutocompleteEligibleQuery(trimmedQuery);
 
     if (!shouldSearchGoogle) {
       resetSession();
@@ -59,16 +62,16 @@ export function useGoogleAddressAutocomplete({
     const timer = setTimeout(() => {
       const sessionToken = sessionTokenRef.current ?? createGoogleAutocompleteSessionToken();
       sessionTokenRef.current = sessionToken;
+      const requestId = ++requestSequenceRef.current;
       setIsLoading(true);
 
       fetchGoogleAddressAutocomplete({
         query: trimmedQuery,
         session_token: sessionToken,
         origin,
-        region,
       })
         .then((result) => {
-          if (cancelled) {
+          if (cancelled || requestId !== requestSequenceRef.current) {
             return;
           }
 
@@ -77,7 +80,7 @@ export function useGoogleAddressAutocomplete({
           setError(result.error);
         })
         .catch((nextError) => {
-          if (cancelled) {
+          if (cancelled || requestId !== requestSequenceRef.current) {
             return;
           }
 
@@ -86,21 +89,23 @@ export function useGoogleAddressAutocomplete({
           setError(
             nextError instanceof Error
               ? nextError
-              : new Error('Unable to load address suggestions right now.')
+              : new Error('Unable to load business suggestions right now.')
           );
         })
         .finally(() => {
-          if (!cancelled) {
-            setIsLoading(false);
+          if (cancelled || requestId !== requestSequenceRef.current) {
+            return;
           }
+
+          setIsLoading(false);
         });
-    }, GOOGLE_ADDRESS_AUTOCOMPLETE_DEBOUNCE_MS);
+    }, GOOGLE_AUTOCOMPLETE_DEBOUNCE_MS);
 
     return () => {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [enabled, origin, query, region, resetSession]);
+  }, [enabled, origin, query, resetSession]);
 
   const resolveSelection = useCallback(
     async (suggestion: GooglePlaceAutocompleteSuggestion): Promise<GooglePlaceAddressResolutionResult> => {
@@ -115,7 +120,7 @@ export function useGoogleAddressAutocomplete({
       resetSession();
 
       if (result.error || !result.data) {
-        throw result.error ?? new Error('Unable to load that address right now.');
+        throw result.error ?? new Error('Unable to load that place right now.');
       }
 
       return result.data;
@@ -127,7 +132,7 @@ export function useGoogleAddressAutocomplete({
     suggestions,
     isLoading,
     error,
-    isEnabled: enabled && isAddressLikeSearchQuery(query),
+    isEnabled: enabled && isGoogleAutocompleteEligibleQuery(query),
     resetSession,
     resolveSelection,
   };

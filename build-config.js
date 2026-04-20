@@ -14,39 +14,11 @@ function readBuildVersionConfig(env) {
   };
 }
 
-function shouldRequireMapsKeys(env) {
-  const normalizedExpoEnv = trimValue(env.EXPO_PUBLIC_ENV).toLowerCase();
-  const normalizedBuildProfile = trimValue(env.EAS_BUILD_PROFILE).toLowerCase();
-
-  return normalizedExpoEnv === 'production' || normalizedBuildProfile === 'production';
-}
-
 function shouldRequireSentryBuildSecrets(env) {
   const hasSentryDsn = trimValue(env.EXPO_PUBLIC_SENTRY_DSN).length > 0;
   const isBuildEnvironment = trimValue(env.EAS_BUILD).length > 0 || trimValue(env.CI).toLowerCase() === 'true';
 
   return hasSentryDsn && isBuildEnvironment;
-}
-
-function readMapsBuildConfig(env, options) {
-  const androidGoogleMapsApiKey = trimValue(env.ANDROID_GOOGLE_MAPS_API_KEY);
-  const iosGoogleMapsApiKey = trimValue(env.IOS_GOOGLE_MAPS_API_KEY);
-  const missingKeys = [
-    !androidGoogleMapsApiKey ? 'ANDROID_GOOGLE_MAPS_API_KEY' : null,
-    !iosGoogleMapsApiKey ? 'IOS_GOOGLE_MAPS_API_KEY' : null,
-  ].filter(Boolean);
-  const requireKeys = options?.requireKeys ?? false;
-
-  return {
-    androidGoogleMapsApiKey,
-    iosGoogleMapsApiKey,
-    missingKeys,
-    isConfigured: !requireKeys || missingKeys.length === 0,
-    errorMessage:
-      requireKeys && missingKeys.length > 0
-        ? `Missing required Google Maps build secrets: ${missingKeys.join(', ')}.`
-        : null,
-  };
 }
 
 function readSentryBuildConfig(env, options) {
@@ -83,8 +55,6 @@ function readSentryBuildConfig(env, options) {
 
 module.exports = {
   readBuildVersionConfig,
-  readMapsBuildConfig,
   readSentryBuildConfig,
-  shouldRequireMapsKeys,
   shouldRequireSentryBuildSecrets,
 };

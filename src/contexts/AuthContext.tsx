@@ -81,6 +81,12 @@ async function readCachedProfile(userId: string): Promise<UserProfile | null> {
       typeof cachedProfile.streak_multiplier_expires_at === 'string'
         ? cachedProfile.streak_multiplier_expires_at
         : null,
+    free_code_reveal_used_at:
+      typeof cachedProfile.free_code_reveal_used_at === 'string' ? cachedProfile.free_code_reveal_used_at : null,
+    free_emergency_lookup_used_at:
+      typeof cachedProfile.free_emergency_lookup_used_at === 'string'
+        ? cachedProfile.free_emergency_lookup_used_at
+        : null,
     push_token: typeof cachedProfile.push_token === 'string' ? cachedProfile.push_token : null,
     push_enabled: typeof cachedProfile.push_enabled === 'boolean' ? cachedProfile.push_enabled : true,
     notification_prefs:

@@ -9,8 +9,9 @@ import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useFavorites } from '@/hooks/useFavorites';
 import { useAccessibilityPreferences } from '@/hooks/useAccessibility';
-import { useGeocodeFallback, useGeocodeTypeahead } from '@/hooks/useGeocodeFallback';
+import { useGeocodeFallback } from '@/hooks/useGeocodeFallback';
 import { useGoogleAddressAutocomplete } from '@/hooks/useGooglePlaces';
+import { PlacesAutocompleteDropdown } from '@/components/places/PlacesAutocompleteDropdown';
 import { useSearch, useSearchSuggestions } from '@/hooks/useSearch';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
@@ -45,7 +46,6 @@ export default function SearchTab() {
   const setPhase = useSearchStore((state) => state.setPhase);
   const clearSearchTarget = useMapStore((state) => state.clearSearchTarget);
   const setActiveBathroomId = useMapStore((state) => state.setActiveBathroomId);
-  const currentMapRegion = useMapStore((state) => state.region);
   const setRegion = useMapStore((state) => state.setRegion);
   const setSearchTarget = useMapStore((state) => state.setSearchTarget);
   const userLocation = useMapStore((state) => state.userLocation);
@@ -68,15 +68,14 @@ export default function SearchTab() {
   const {
     suggestions: googleSuggestions,
     isLoading: isGoogleAutocompleteLoading,
+    error: googleAutocompleteError,
     resetSession: resetGoogleAutocompleteSession,
     resolveSelection: resolveGoogleAddressSelection,
   } = useGoogleAddressAutocomplete({
     query: activeQuery,
     origin: userLocation,
-    region: currentMapRegion,
   });
   const { geocoded } = useGeocodeFallback(committedQuery);
-  const { geocoded: typeaheadLocation } = useGeocodeTypeahead(activeQuery);
   useAccessibilityPreferences();
   const bathrooms = searchResults.items;
   const suggestions = suggestionsQuery.data ?? [];
@@ -295,13 +294,10 @@ export default function SearchTab() {
 
   const showIdleState = phase === 'idle';
   const isTypingPhase = phase === 'typing' || phase === 'suggesting';
-  const showSuggestions = isTypingPhase && (suggestions.length > 0 || googleSuggestions.length > 0);
-  const showTypeaheadGeocode =
+  const showGoogleDropdown =
     isTypingPhase &&
-    suggestions.length === 0 &&
-    googleSuggestions.length === 0 &&
-    !isGoogleAutocompleteLoading &&
-    typeaheadLocation !== null;
+    (googleSuggestions.length > 0 || isGoogleAutocompleteLoading || Boolean(googleAutocompleteError));
+  const showSuggestions = isTypingPhase && (suggestions.length > 0 || showGoogleDropdown);
   return (
     <SafeAreaView className="flex-1 bg-surface-base" edges={['top', 'left', 'right']}>
       <KeyboardAvoidingView
@@ -335,9 +331,9 @@ export default function SearchTab() {
               keyboardShouldPersistTaps="handled"
               showsVerticalScrollIndicator={false}
             >
-              <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-4">
-                <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Suggestions</Text>
-                {suggestions.length > 0 ? (
+              {suggestions.length > 0 ? (
+                <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-4">
+                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">PeeDom listings</Text>
                   <View className="mt-4 gap-3">
                     {suggestions.map((suggestion) => (
                       <Pressable
@@ -360,80 +356,24 @@ export default function SearchTab() {
                       </Pressable>
                     ))}
                   </View>
-                ) : null}
+                </View>
+              ) : null}
 
-                {googleSuggestions.length > 0 ? (
-                  <View className={suggestions.length > 0 ? 'mt-5' : 'mt-4'}>
-                    <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">
-                      Address Search
-                    </Text>
-                    <Text className="mt-1 text-xs leading-5 text-ink-500">Google Maps</Text>
-                    <View className="mt-3 gap-3">
-                      {googleSuggestions.map((suggestion) => (
-                        <Pressable
-                          accessibilityLabel={`Address suggestion ${suggestion.text}`}
-                          accessibilityRole="button"
-                          className="rounded-2xl border border-brand-100 bg-brand-50 px-4 py-4"
-                          key={suggestion.place_id}
-                          onPress={() => {
-                            void handleSelectGoogleSuggestion(suggestion);
-                          }}
-                        >
-                          <Text className="text-base font-semibold text-brand-700">
-                            {suggestion.primary_text}
-                          </Text>
-                          {suggestion.secondary_text ? (
-                            <Text className="mt-1 text-sm leading-5 text-brand-700">
-                              {suggestion.secondary_text}
-                            </Text>
-                          ) : null}
-                          {formatSearchDistance(suggestion.distance_meters) ? (
-                            <Text className="mt-2 text-xs font-medium text-brand-600">
-                              {formatSearchDistance(suggestion.distance_meters)}
-                            </Text>
-                          ) : null}
-                        </Pressable>
-                      ))}
-                    </View>
-                  </View>
-                ) : null}
-              </View>
+              <PlacesAutocompleteDropdown
+                suggestions={googleSuggestions}
+                isLoading={isGoogleAutocompleteLoading}
+                error={googleAutocompleteError}
+                visible={showGoogleDropdown}
+                variant="search"
+                showDistance
+                onSelect={(suggestion) => {
+                  void handleSelectGoogleSuggestion(suggestion);
+                }}
+              />
             </ScrollView>
           ) : null}
 
-          {showTypeaheadGeocode ? (
-            <View className="mt-4">
-              <Pressable
-                accessibilityLabel={`Search ${typeaheadLocation.name} on the map`}
-                accessibilityRole="button"
-                className="flex-row items-center gap-3 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5"
-                onPress={() =>
-                  handleJumpToLocation(typeaheadLocation.coordinates, {
-                    label: typeaheadLocation.name,
-                    address: null,
-                    placeId: null,
-                    region: null,
-                    source: 'device_geocoder',
-                  })
-                }
-              >
-                <View className="h-10 w-10 items-center justify-center rounded-2xl bg-brand-600">
-                  <Ionicons color="#fff" name="location-outline" size={20} />
-                </View>
-                <View className="flex-1">
-                  <Text className="text-base font-bold text-brand-700">
-                    {typeaheadLocation.name}
-                  </Text>
-                  <Text className="mt-1 text-sm text-brand-600">
-                    Tap to explore this area on the map
-                  </Text>
-                </View>
-                <Ionicons color={colors.brand[600]} name="chevron-forward" size={20} />
-              </Pressable>
-            </View>
-          ) : null}
-
-          {!showSuggestions && !showTypeaheadGeocode && showIdleState ? (
+          {!showSuggestions && showIdleState ? (
             <ScrollView className="mt-4 flex-1" keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
               <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-6">
                 <Text className="text-lg font-bold text-ink-900">Start with a place, address, or city.</Text>
@@ -466,7 +406,7 @@ export default function SearchTab() {
             </ScrollView>
           ) : null}
 
-          {!showSuggestions && !showTypeaheadGeocode && !showIdleState ? (
+          {!showSuggestions && !showIdleState ? (
             <>
               <SearchResultsList
                 bathrooms={bathrooms}
