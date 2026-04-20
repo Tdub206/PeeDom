@@ -115,6 +115,8 @@ export function formatQueuedMutationLabel(type: MutationType): string {
       return 'Code submissions';
     case 'code_vote':
       return 'Code confirmations';
+    case 'location_verification':
+      return 'Imported location checks';
     case 'report_create':
       return 'Issue reports';
     case 'rating_create':
@@ -123,6 +125,8 @@ export function formatQueuedMutationLabel(type: MutationType): string {
       return 'Live status updates';
     case 'accessibility_update':
       return 'Accessibility updates';
+    case 'bug_report':
+      return 'Bug reports';
     default:
       return type;
   }

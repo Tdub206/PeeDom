@@ -30,13 +30,13 @@ import { ToastProvider } from '@/contexts/ToastContext';
 import { queryClient } from '@/lib/query-client';
 import { initializeSentry, Sentry } from '@/lib/sentry';
 import { supabaseConfigState } from '@/lib/supabase';
-import { initializeFirstInstallCredits } from '@/lib/first-install-credits';
 import { useRealtimeStore } from '@/store/useRealtimeStore';
+import { usePathname } from 'expo-router';
+import { setActiveScreen } from '@/utils/active-screen-tracker';
 
 initializeSentry();
 initializeQueryLifecycleManagers();
 void initializeAnalytics().catch(() => undefined);
-void initializeFirstInstallCredits().catch(() => undefined);
 void SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function RootNavigator() {
@@ -47,6 +47,8 @@ function RootNavigator() {
   const hasTrackedBootstrap = useRef(false);
   const wasOnlineRef = useRef<boolean | null>(null);
   const setConnectionState = useRealtimeStore((state) => state.setConnectionState);
+  const pathname = usePathname();
+  useEffect(() => { setActiveScreen(pathname); }, [pathname]);
   useOfflineSync();
   usePushNotifications();
   const { forceUpdateRequired, message: updateMessage, storeUrl, applyOtaUpdate, isApplyingUpdate } =
