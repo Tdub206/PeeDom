@@ -101,7 +101,7 @@ export async function submitBugReport(
 
       if (response.error) {
         const status = response.status ?? 0;
-        const isTerminal = status === 400 || status === 413 || status === 429;
+        const isTerminal = status === 400 || status === 401 || status === 403 || status === 413 || status === 429;
         return { success: false, error: response.error, isTerminal };
       }
 
@@ -117,12 +117,22 @@ export async function submitBugReport(
       headers: {
         'Content-Type': 'application/json',
         apikey: supabaseAnonKey,
+        // Authorization required even for guest requests — Supabase edge function JWT
+        // verification rejects requests with no Authorization header by default.
+        // Using the anon key as a bearer token allows the edge function to resolve
+        // user_id = null without a hard 401.
+        Authorization: `Bearer ${supabaseAnonKey}`,
       },
       body: JSON.stringify(payload),
     });
 
     if (!resp.ok) {
-      const isTerminal = resp.status === 400 || resp.status === 413 || resp.status === 429;
+      const isTerminal =
+        resp.status === 400 ||
+        resp.status === 401 ||
+        resp.status === 403 ||
+        resp.status === 413 ||
+        resp.status === 429;
       return {
         success: false,
         error: new Error(`Bug report submission failed: HTTP ${resp.status}`),
