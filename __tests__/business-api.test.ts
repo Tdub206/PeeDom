@@ -35,7 +35,6 @@ const analyticsRow = {
   active_featured_placements: 1,
   active_offer_count: 2,
   requires_premium_access: true,
-  show_on_free_map: false,
   is_location_verified: true,
   location_verified_at: '2026-03-18T08:00:00.000Z',
   pricing_plan: 'lifetime',
@@ -73,7 +72,7 @@ describe('business API', () => {
       total_monthly_unique_visitors: 14,
       total_weekly_navigation_count: 4,
       active_offers: 2,
-      premium_only_locations: 1,
+      premium_only_locations: 0,
       lifetime_locations: 1,
     });
   });

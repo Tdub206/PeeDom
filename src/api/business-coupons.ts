@@ -20,6 +20,8 @@ interface ApiErrorShape {
   message: string;
 }
 
+type BusinessCouponUpdate = Database['public']['Tables']['business_coupons']['Update'];
+
 function toAppError(error: ApiErrorShape | Error, fallbackMessage: string): Error & { code?: string } {
   const appError = new Error(error.message || fallbackMessage) as Error & { code?: string };
   appError.code = 'code' in error ? error.code : undefined;
@@ -149,9 +151,7 @@ export async function updateBusinessCoupon(input: UpdateCouponInput): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const updates: Database['public']['Tables']['business_coupons']['Update'] = {
-      updated_at: new Date().toISOString(),
-    };
+    const updates: BusinessCouponUpdate = { updated_at: new Date().toISOString() };
 
     if (input.title !== undefined) updates.title = input.title;
     if (input.description !== undefined) updates.description = input.description;
@@ -188,14 +188,14 @@ export async function deactivateBusinessCoupon(couponId: string): Promise<{
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const updates: Database['public']['Tables']['business_coupons']['Update'] = {
+    const deactivationUpdate: BusinessCouponUpdate = {
       is_active: false,
       updated_at: new Date().toISOString(),
     };
 
     const { error } = await getSupabaseClient()
       .from('business_coupons' as never)
-      .update(updates as never)
+      .update(deactivationUpdate as never)
       .eq('id', couponId);
 
     if (error) {
