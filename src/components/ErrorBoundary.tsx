@@ -15,6 +15,7 @@ import { getActiveScreen } from '@/utils/active-screen-tracker';
 import {
   buildBugReportPayload,
   generateIdempotencyKey,
+  readOrCreateDeviceId,
   submitBugReport,
 } from '@/api/bug-reports';
 import { offlineQueue } from '@/lib/offline-queue';
@@ -87,7 +88,10 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
   private handleSubmit = async (): Promise<void> => {
     this.setState({ submitPhase: 'submitting', submitErrorMessage: null });
 
+    const deviceId = await readOrCreateDeviceId();
+
     const payload = buildBugReportPayload({
+      deviceId,
       errorMessage: this.state.error?.message ?? 'Unknown error',
       errorStack: this.state.error?.stack ?? null,
       componentStack: this.state.componentStack,

@@ -64,6 +64,7 @@ export const queuedMutationsSchema = z.array(queuedMutationSchema);
 export const bugReportPayloadSchema = z.object({
   schema_version: z.number().int().min(1),
   idempotency_key: z.string().min(1),
+  device_id: z.string().min(1).max(200),
   screen_name: z.string().max(200),
   error_message: z.string().min(1).max(600),
   error_stack: z.string().max(10_000),

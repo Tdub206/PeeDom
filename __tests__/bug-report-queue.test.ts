@@ -17,6 +17,7 @@ describe('bugReportPayloadSchema', () => {
   const validPayload = {
     schema_version: 1,
     idempotency_key: 'bug_123_abc',
+    device_id: 'test-device-abc123',
     screen_name: '/search',
     error_message: 'Something broke',
     error_stack: 'Error: Something broke\n  at Foo.bar',

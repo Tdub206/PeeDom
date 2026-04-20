@@ -124,6 +124,7 @@ export interface BathroomAccessibilityMutationPayload extends BathroomAccessibil
 export interface BugReportMutationPayload {
   schema_version: number;
   idempotency_key: string;
+  device_id: string;
   screen_name: string;
   error_message: string;
   error_stack: string;
