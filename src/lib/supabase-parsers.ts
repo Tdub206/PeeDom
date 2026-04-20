@@ -78,6 +78,8 @@ export const dbProfileSchema = z.object({
   last_contribution_date: z.string().nullable(),
   streak_multiplier: z.number(),
   streak_multiplier_expires_at: dateTimeStringSchema.nullable(),
+  free_code_reveal_used_at: dateTimeStringSchema.nullable(),
+  free_emergency_lookup_used_at: dateTimeStringSchema.nullable(),
   push_token: z.string().nullable(),
   push_enabled: z.boolean(),
   notification_prefs: notificationPrefsSchema,
@@ -161,10 +163,25 @@ export const dbCodeRevealGrantSchema = z.object({
   id: rawTextSchema,
   bathroom_id: rawTextSchema,
   user_id: rawTextSchema,
-  grant_source: z.literal('rewarded_ad'),
+  grant_source: z.enum(['rewarded_ad', 'starter_free', 'points_redeemed']),
   expires_at: dateTimeStringSchema,
   created_at: dateTimeStringSchema,
   updated_at: dateTimeStringSchema,
+});
+
+export const codeRevealUnlockResultSchema = dbCodeRevealGrantSchema.extend({
+  points_spent: z.number().int().nonnegative(),
+  remaining_points: z.number().int().nonnegative(),
+  used_free_unlock: z.boolean(),
+});
+
+export const emergencyLookupAccessResultSchema = z.object({
+  user_id: rawTextSchema,
+  unlock_method: z.enum(['rewarded_ad', 'starter_free', 'points_redeemed']),
+  points_spent: z.number().int().nonnegative(),
+  remaining_points: z.number().int().nonnegative(),
+  used_free_unlock: z.boolean(),
+  unlocked_at: dateTimeStringSchema,
 });
 
 export const dbPointEventSchema = z.object({
@@ -178,6 +195,10 @@ export const dbPointEventSchema = z.object({
     'report_resolved',
     'code_milestone',
     'premium_redeemed',
+    'code_verification_consensus',
+    'consensus_denial_award',
+    'code_reveal_redeemed',
+    'emergency_lookup_redeemed',
   ]),
   reference_table: rawTextSchema,
   reference_id: rawTextSchema,
@@ -280,6 +301,25 @@ export const bathroomReportResultSchema = z.object({
   created_at: dateTimeStringSchema,
 });
 
+export const importedLocationVerificationResultSchema = z.object({
+  success: z.boolean(),
+  error: z.string().nullable().optional().default(null),
+  verification_id: z.string().nullable().default(null),
+  created_at: dateTimeStringSchema.nullable().default(null),
+  bathroom_id: rawTextSchema,
+  location_exists: z.boolean(),
+  next_allowed_at: dateTimeStringSchema.nullable().default(null),
+  imported_location_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  imported_location_confirmation_count: z.number().int().nonnegative().default(0),
+  imported_location_denial_count: z.number().int().nonnegative().default(0),
+  imported_location_weighted_confirmation_score: z.number().nonnegative().default(0),
+  imported_location_weighted_denial_score: z.number().nonnegative().default(0),
+  imported_location_freshness_status: z
+    .enum(['unreviewed', 'fresh', 'aging', 'disputed', 'likely_removed'])
+    .default('unreviewed'),
+  imported_location_needs_review: z.boolean().default(true),
+});
+
 export const cleanlinessRatingMutationResultSchema = z.object({
   bathroom_id: rawTextSchema,
   rating: z.number().int().min(1).max(5),
@@ -369,6 +409,7 @@ const bathroomLocationArchetypeSchema = z.enum([
   'hotel',
 ]);
 const businessCodePolicySchema = z.enum(['community', 'owner_shared', 'owner_private', 'staff_only']);
+const importedLocationFreshnessStatusSchema = z.enum(['unreviewed', 'fresh', 'aging', 'disputed', 'likely_removed']);
 const contributorTrustTierSchema = z.enum([
   'brand_new',
   'lightly_trusted',
@@ -789,6 +830,13 @@ export const publicBathroomDetailRowSchema = z.object({
   has_official_code: z.boolean().default(false),
   owner_code_last_verified_at: dateTimeStringSchema.nullable().default(null),
   official_access_instructions: z.string().nullable().default(null),
+  imported_location_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  imported_location_confirmation_count: z.number().int().nonnegative().default(0),
+  imported_location_denial_count: z.number().int().nonnegative().default(0),
+  imported_location_weighted_confirmation_score: z.number().nonnegative().default(0),
+  imported_location_weighted_denial_score: z.number().nonnegative().default(0),
+  imported_location_freshness_status: importedLocationFreshnessStatusSchema.nullable().default(null),
+  imported_location_needs_review: z.boolean().default(false),
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({

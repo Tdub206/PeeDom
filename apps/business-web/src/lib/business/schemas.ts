@@ -144,3 +144,87 @@ export const createBusinessCouponSchema = z
   });
 
 export type CreateBusinessCouponInput = z.infer<typeof createBusinessCouponSchema>;
+
+// Rows returned by `get_business_location_codes`. The mobile schema for
+// bathroom_access_codes lives in supabase/migrations/001_foundation_schema.sql
+// (table) + 047_business_owner_access_codes.sql (RPC). We only surface the
+// fields the dashboard renders — submitter identity is intentionally omitted
+// because the RPC already restricts output to the approved claim owner.
+export const businessLocationCodeRowSchema = z.object({
+  id: z.string().uuid(),
+  code_value: z.string().min(1),
+  confidence_score: z.number().nonnegative(),
+  up_votes: z.number().int().nonnegative(),
+  down_votes: z.number().int().nonnegative(),
+  lifecycle_status: z.enum(['active', 'expired', 'superseded']),
+  visibility_status: z.enum(['visible', 'needs_review', 'removed']),
+  last_verified_at: dateTimeStringSchema.nullable(),
+  created_at: dateTimeStringSchema,
+});
+
+export const businessLocationCodeRowsSchema = z.array(businessLocationCodeRowSchema);
+
+export type BusinessLocationCodeRow = z.infer<typeof businessLocationCodeRowSchema>;
+
+export const submitBusinessOwnerCodeSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid location.'),
+  code_value: z
+    .string()
+    .trim()
+    .min(1, 'Code cannot be empty.')
+    .max(20, 'Code must be 20 characters or fewer.'),
+});
+
+export type SubmitBusinessOwnerCodeInput = z.infer<typeof submitBusinessOwnerCodeSchema>;
+
+export const createBusinessClaimSchema = z.object({
+  bathroom_id: z.string().uuid('Pick a location before submitting the claim.'),
+  business_name: z
+    .string()
+    .trim()
+    .min(1, 'Enter the business name tied to this location.')
+    .max(120, 'Keep the business name under 120 characters.'),
+  contact_email: z
+    .string()
+    .trim()
+    .email('Enter a valid contact email address.'),
+  contact_phone: z
+    .string()
+    .trim()
+    .max(30, 'Keep the contact phone under 30 characters.')
+    .optional()
+    .transform((value) => (value && value.length > 0 ? value : null)),
+  evidence_url: z
+    .union([z.literal(''), z.string().trim().url('Enter a valid proof URL.')])
+    .optional()
+    .transform((value) => {
+      if (!value) {
+        return null;
+      }
+
+      const trimmedValue = value.trim();
+      return trimmedValue.length > 0 ? trimmedValue : null;
+    }),
+});
+
+export type CreateBusinessClaimInput = z.infer<typeof createBusinessClaimSchema>;
+
+export const updateBusinessProfileSchema = z.object({
+  display_name: z
+    .string()
+    .trim()
+    .min(2, 'Display name must be at least 2 characters.')
+    .max(80, 'Display name must be 80 characters or fewer.'),
+});
+
+export type UpdateBusinessProfileInput = z.infer<typeof updateBusinessProfileSchema>;
+
+export const notificationPreferencesSchema = z.object({
+  code_verified: z.boolean(),
+  favorite_update: z.boolean(),
+  nearby_new: z.boolean(),
+  streak_reminder: z.boolean(),
+  arrival_alert: z.boolean(),
+});
+
+export type NotificationPreferencesInput = z.infer<typeof notificationPreferencesSchema>;

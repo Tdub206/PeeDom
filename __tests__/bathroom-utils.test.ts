@@ -10,7 +10,9 @@ import {
   calculateAccessibilityScore,
   calculateBathroomRecommendationScore,
   getBathroomMapPinTone,
+  getBathroomOriginBadgeLabel,
   isBathroomVisibleOnMap,
+  isOverpassImportedBathroom,
   isBathroomOpenNow,
   mergeAccessibilityFilters,
   mapBathroomDetailRowToListItem,
@@ -69,7 +71,42 @@ const bathroomRow: BathroomRow = {
   expires_at: null,
   cleanliness_avg: 4.3,
   updated_at: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
+  verification_badge_type: null,
+  stallpass_access_tier: 'public',
+  show_on_free_map: true,
+  is_business_location_verified: false,
+  location_verified_at: null,
+  active_offer_count: 0,
+  location_archetype: 'general',
+  archetype_metadata: {},
+  code_policy: 'community',
+  allow_user_code_submissions: true,
+  has_official_code: false,
+  owner_code_last_verified_at: null,
+  official_access_instructions: null,
+  imported_location_last_verified_at: null,
+  imported_location_confirmation_count: 0,
+  imported_location_denial_count: 0,
+  imported_location_weighted_confirmation_score: 0,
+  imported_location_weighted_denial_score: 0,
+  imported_location_freshness_status: null,
+  imported_location_needs_review: false,
 };
+
+const overpassBathroomRow = {
+  ...bathroomRow,
+  archetype_metadata: {
+    import_source: 'osm-overpass-us',
+    source_dataset: 'OpenStreetMap Overpass public restrooms',
+  },
+  imported_location_last_verified_at: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+  imported_location_confirmation_count: 3,
+  imported_location_denial_count: 0,
+  imported_location_weighted_confirmation_score: 3,
+  imported_location_weighted_denial_score: 0,
+  imported_location_freshness_status: 'fresh',
+  imported_location_needs_review: false,
+} satisfies Parameters<typeof mapBathroomRowToListItem>[0];
 
 describe('bathroom utilities', () => {
   it('builds a readable address from a bathroom row', () => {
@@ -131,7 +168,7 @@ describe('bathroom utilities', () => {
   });
 
   it('maps a bathroom row into a render-ready list item', () => {
-    const listItem = mapBathroomRowToListItem(bathroomRow, {
+    const listItem = mapBathroomRowToListItem(overpassBathroomRow, {
       cachedAt: '2026-03-10T12:05:00.000Z',
       stale: false,
       origin: {
@@ -148,20 +185,32 @@ describe('bathroom utilities', () => {
     expect(listItem.distance_meters).toBeGreaterThan(0);
     expect(listItem.stallpass_access_tier).toBe('public');
     expect(listItem.show_on_free_map).toBe(true);
+    expect(listItem.archetype_metadata?.import_source).toBe('osm-overpass-us');
     expect(listItem.last_updated_at).toBe(bathroomRow.updated_at);
     expect(listItem.sync.cached_at).toBe('2026-03-10T12:05:00.000Z');
   });
 
   it('maps a bathroom detail row into a favorite-ready list item without extra screen glue', () => {
-    const listItem = mapBathroomDetailRowToListItem(bathroomRow, {
+    const listItem = mapBathroomDetailRowToListItem(overpassBathroomRow, {
       cachedAt: '2026-03-20T09:15:00.000Z',
     });
 
     expect(listItem.id).toBe('bathroom-1');
     expect(listItem.place_name).toBe('Central Cafe');
     expect(listItem.primary_code_summary.has_code).toBe(true);
+    expect(listItem.archetype_metadata?.import_source).toBe('osm-overpass-us');
     expect(listItem.sync.cached_at).toBe('2026-03-20T09:15:00.000Z');
     expect(listItem.sync.stale).toBe(false);
+  });
+
+  it('marks Overpass-imported bathrooms for source badges and review flows', () => {
+    const listItem = mapBathroomRowToListItem(overpassBathroomRow, {
+      cachedAt: '2026-03-10T12:05:00.000Z',
+      stale: false,
+    });
+
+    expect(isOverpassImportedBathroom(listItem)).toBe(true);
+    expect(getBathroomOriginBadgeLabel(listItem)).toBe('OSM Import');
   });
 
   it('detects whether a bathroom is open based on hours_json', () => {
@@ -286,7 +335,7 @@ describe('bathroom utilities', () => {
   });
 
   it('builds a confidence profile with freshness, code reliability, and photo evidence', () => {
-    const listItem = mapBathroomRowToListItem(bathroomRow, {
+    const listItem = mapBathroomRowToListItem(overpassBathroomRow, {
       cachedAt: '2026-03-10T12:05:00.000Z',
       stale: false,
     });
@@ -297,7 +346,7 @@ describe('bathroom utilities', () => {
 
     expect(profile.trust_score).toBeGreaterThan(60);
     expect(profile.code_reliability_label).toContain('Code reliability');
-    expect(profile.flags.some((flag) => flag.label.includes('Verified recently'))).toBe(true);
+    expect(profile.flags.some((flag) => flag.label.includes('Imported location confirmed recently'))).toBe(true);
     expect(profile.photo_evidence_label).toContain('Photo evidence');
   });
 

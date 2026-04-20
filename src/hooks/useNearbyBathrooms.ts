@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchBathroomsNearRegion } from '@/api/bathrooms';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from '@/hooks/useLocation';
+import { NEARBY_PREMIUM_PROMPT_RADIUS_METERS } from '@/lib/feature-access';
 import { hasActivePremium } from '@/lib/gamification';
 import type { BathroomFilters, BathroomListItem, BathroomRecommendation, Coordinates, RegionBounds } from '@/types';
 import {
@@ -12,7 +13,7 @@ import {
   mapBathroomRowToListItem,
 } from '@/utils/bathroom';
 
-const DEFAULT_RADIUS_METERS = 2500;
+const DEFAULT_RADIUS_METERS = NEARBY_PREMIUM_PROMPT_RADIUS_METERS;
 const DEFAULT_LOCKED_LIMIT = 2;
 
 function buildNearbyRegion(origin: Coordinates, radiusMeters: number): RegionBounds {
@@ -30,6 +31,8 @@ function buildNearbyRegion(origin: Coordinates, radiusMeters: number): RegionBou
 
 export interface NearbyBathroomsResult {
   items: BathroomListItem[];
+  hiddenPremiumVerifiedCount: number;
+  nearestHiddenPremiumVerified: BathroomListItem | null;
   nearestOpenUnlocked: BathroomListItem | null;
   lockedBathrooms: BathroomListItem[];
   recommendations: BathroomRecommendation[];
@@ -90,15 +93,23 @@ export function useNearbyBathrooms({
       }
 
       const cachedAt = new Date().toISOString();
-      const items = result.data
+      const rawItems = result.data
         .map((bathroom) =>
           mapBathroomRowToListItem(bathroom, {
             cachedAt,
             stale: false,
             origin: coordinates,
           })
-        )
-        .filter((bathroom) => isBathroomVisibleOnMap(bathroom, isPremiumViewer));
+        );
+      const items = rawItems.filter((bathroom) => isBathroomVisibleOnMap(bathroom, isPremiumViewer));
+      const hiddenPremiumVerifiedBathrooms = rawItems
+        .filter((bathroom) => !isBathroomVisibleOnMap(bathroom, isPremiumViewer))
+        .filter((bathroom) => bathroom.is_business_location_verified || Boolean(bathroom.verification_badge_type))
+        .sort(
+          (leftBathroom, rightBathroom) =>
+            (leftBathroom.distance_meters ?? Number.POSITIVE_INFINITY) -
+            (rightBathroom.distance_meters ?? Number.POSITIVE_INFINITY)
+        );
 
       const highlights = buildNearbyBathroomHighlights(items, {
         lockedLimit,
@@ -106,6 +117,8 @@ export function useNearbyBathrooms({
 
       return {
         items,
+        hiddenPremiumVerifiedCount: hiddenPremiumVerifiedBathrooms.length,
+        nearestHiddenPremiumVerified: hiddenPremiumVerifiedBathrooms[0] ?? null,
         nearestOpenUnlocked: highlights.nearestOpenUnlocked,
         lockedBathrooms: highlights.lockedBathrooms,
         recommendations: buildBathroomRecommendations(items),

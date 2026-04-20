@@ -12,7 +12,7 @@ export default function PrivacyPolicyScreen() {
             <Text className="mt-3 text-base leading-6 text-white/80">
               This policy describes the data processed by the StallPass mobile app and its connected Supabase backend.
             </Text>
-            <Text className="mt-3 text-sm font-medium text-white/70">Last updated: April 5, 2026</Text>
+            <Text className="mt-3 text-sm font-medium text-white/70">Last updated: April 18, 2026</Text>
           </View>
 
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
@@ -30,7 +30,7 @@ export default function PrivacyPolicyScreen() {
               Diagnostics: if Sentry is configured for a production build, crash and error telemetry may be sent to help diagnose failures.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
-              Current launch posture: the April 5, 2026 production build keeps paid premium purchases, rewarded ads, and the separate analytics ingestion endpoint disabled.
+              Current launch posture: free accounts may use a limited starter code reveal and emergency lookup, then unlock additional reveals with rewarded ads. Premium access can also be granted through points redemption and approved entitlements. Direct paid subscriptions may remain disabled until app-store billing is launched.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               Local device storage: cached bathrooms, favorites, drafts, and offline queue items are stored on-device to improve reliability and offline recovery.
@@ -52,7 +52,7 @@ export default function PrivacyPolicyScreen() {
               We use local storage so your drafts, caches, and queued actions survive app restarts and temporary network loss.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
-              If a future release enables ads, a paid premium tier, or a separate analytics endpoint, StallPass will update this policy and the store privacy disclosures before rollout.
+              If a future release enables direct paid premium purchases or a separate analytics endpoint, StallPass will update this policy and the store privacy disclosures before rollout.
             </Text>
           </View>
 

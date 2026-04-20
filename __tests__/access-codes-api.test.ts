@@ -114,6 +114,37 @@ describe('access codes API', () => {
     });
   });
 
+  it('passes the requested unlock method into code reveal grants', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'grant-1',
+          bathroom_id: 'bathroom-1',
+          user_id: 'user-1',
+          grant_source: 'points_redeemed',
+          expires_at: '2026-03-20T12:00:00.000Z',
+          created_at: '2026-03-20T12:00:00.000Z',
+          updated_at: '2026-03-20T12:00:00.000Z',
+          points_spent: 100,
+          remaining_points: 240,
+          used_free_unlock: false,
+        },
+      ],
+      error: null,
+    });
+
+    const { grantBathroomCodeRevealAccess } = await import('@/api/access-codes');
+    const result = await grantBathroomCodeRevealAccess('bathroom-1', 'points_redeemed');
+
+    expect(result.error).toBeNull();
+    expect(result.data?.grant_source).toBe('points_redeemed');
+    expect(result.data?.points_spent).toBe(100);
+    expect(rpc).toHaveBeenCalledWith('grant_bathroom_code_reveal_access', {
+      p_bathroom_id: 'bathroom-1',
+      p_unlock_method: 'points_redeemed',
+    });
+  });
+
   it('maps self-vote protection errors into stable app codes', async () => {
     rpc.mockResolvedValueOnce({
       data: null,

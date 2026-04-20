@@ -1,4 +1,5 @@
-import type { Database, PremiumArrivalAlert, PremiumCityPackManifest } from '@/types';
+import { z } from 'zod';
+import type { PremiumArrivalAlert, PremiumCityPackManifest } from '@/types';
 import {
   dbPremiumArrivalAlertSchema,
   parseSupabaseRows,
@@ -7,7 +8,7 @@ import {
 } from '@/lib/supabase-parsers';
 import { getSupabaseClient } from '@/lib/supabase';
 
-export type PremiumCityPackBathroomRow = Database['public']['Functions']['get_premium_city_pack_bathrooms']['Returns'][number];
+export type PremiumCityPackBathroomRow = z.infer<typeof publicBathroomDetailRowSchema>;
 
 interface AppErrorShape {
   code?: string;

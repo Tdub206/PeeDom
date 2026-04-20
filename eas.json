@@ -34,6 +34,18 @@
         "buildType": "apk"
       }
     },
+    "ios-simulator": {
+      "distribution": "internal",
+      "channel": "preview",
+      "environment": "preview",
+      "env": {
+        "EXPO_PUBLIC_ENV": "staging"
+      },
+      "ios": {
+        "simulator": true,
+        "resourceClass": "m-medium"
+      }
+    },
     "production": {
       "distribution": "store",
       "channel": "production",

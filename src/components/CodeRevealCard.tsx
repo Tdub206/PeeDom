@@ -11,8 +11,12 @@ interface CodeRevealCardProps {
   confidenceScore: number | null;
   lastVerifiedAt?: string | null;
   expiresAt?: string | null;
+  isFreeUnlockAvailable: boolean;
   isLoadingCode: boolean;
+  canUnlockWithPoints: boolean;
+  pointsUnlockCost: number;
   isUnlockingWithAd: boolean;
+  isUnlockingWithPoints: boolean;
   isPremiumUser: boolean;
   requiresAuthForUnlock?: boolean;
   isRewardedUnlockActive: boolean;
@@ -20,6 +24,9 @@ interface CodeRevealCardProps {
   unavailableReason?: string | null;
   issueMessage?: string | null;
   onUnlockWithAd: () => void;
+  onUnlockWithPoints?: () => void;
+  onViewPremiumOptions?: () => void;
+  showPremiumPrompt?: boolean;
 }
 
 function formatTimestamp(label: string, value?: string | null): string | null {
@@ -42,8 +49,12 @@ function CodeRevealCardComponent({
   confidenceScore,
   lastVerifiedAt,
   expiresAt,
+  isFreeUnlockAvailable,
   isLoadingCode,
+  canUnlockWithPoints,
+  pointsUnlockCost,
   isUnlockingWithAd,
+  isUnlockingWithPoints,
   isPremiumUser,
   requiresAuthForUnlock = false,
   isRewardedUnlockActive,
@@ -51,6 +62,9 @@ function CodeRevealCardComponent({
   unavailableReason,
   issueMessage,
   onUnlockWithAd,
+  onUnlockWithPoints,
+  onViewPremiumOptions,
+  showPremiumPrompt = false,
 }: CodeRevealCardProps) {
   const [copied, setCopied] = useState(false);
 
@@ -71,6 +85,8 @@ function CodeRevealCardComponent({
   const verificationLabel = formatTimestamp('Last verified', lastVerifiedAt);
   const expiryLabel = formatTimestamp('Code expires', expiresAt);
   const isRevealPending = isRewardedUnlockActive || isLoadingCode;
+  const shouldShowPrimaryUnlockButton = requiresAuthForUnlock || isFreeUnlockAvailable || isAdUnlockAvailable;
+  const shouldShowPointsUnlockButton = !requiresAuthForUnlock && !isFreeUnlockAvailable && canUnlockWithPoints;
 
   return (
     <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
@@ -102,7 +118,7 @@ function CodeRevealCardComponent({
           <Text className="mt-3 text-sm leading-5 text-ink-600">
             {isPremiumUser
               ? 'Premium access revealed this code instantly.'
-              : 'This code is unlocked on this device because you completed a rewarded ad.'}
+              : 'This code is unlocked for your account.'}
           </Text>
         </>
       ) : (
@@ -115,29 +131,56 @@ function CodeRevealCardComponent({
             {isPremiumUser
               ? 'Premium accounts can reveal verified bathroom codes instantly.'
               : requiresAuthForUnlock
-                ? 'Sign in and watch a rewarded ad to reveal the latest verified bathroom code for your account.'
-                : 'Watch a rewarded AdMob ad to reveal the latest verified bathroom code for your account.'}
+                ? 'Sign in to unlock verified bathroom codes and keep your first free reveal tied to your account.'
+                : isFreeUnlockAvailable
+                  ? 'Your account still has one free code reveal. After that, use 100 points or a rewarded video.'
+                  : canUnlockWithPoints && isAdUnlockAvailable
+                    ? `Spend ${pointsUnlockCost} points or watch a rewarded video to reveal the latest verified bathroom code.`
+                    : canUnlockWithPoints
+                      ? `Spend ${pointsUnlockCost} points to reveal the latest verified bathroom code right now.`
+                      : 'Watch a rewarded video to reveal the latest verified bathroom code for your account.'}
           </Text>
 
           {!isPremiumUser ? (
-            <Button
-              className="mt-4"
-              disabled={!isAdUnlockAvailable || isRevealPending}
-              label={
-                isUnlockingWithAd
-                  ? 'Loading Rewarded Ad...'
-                  : isRevealPending
-                    ? 'Revealing Code...'
-                    : requiresAuthForUnlock
-                      ? 'Sign In To Reveal Code'
-                      : 'Watch Ad To Reveal Code'
-              }
-              loading={isUnlockingWithAd}
-              onPress={onUnlockWithAd}
-            />
+            <View className="mt-4 gap-3">
+              {shouldShowPrimaryUnlockButton ? (
+                <Button
+                  disabled={isRevealPending}
+                  label={
+                    isUnlockingWithAd
+                      ? isFreeUnlockAvailable
+                        ? 'Unlocking Free Reveal...'
+                        : 'Loading Rewarded Ad...'
+                      : isRevealPending
+                        ? 'Revealing Code...'
+                        : requiresAuthForUnlock
+                          ? 'Sign In To Unlock Code'
+                          : isFreeUnlockAvailable
+                            ? 'Unlock 1 Code Free'
+                            : 'Watch Ad To Reveal Code'
+                  }
+                  loading={isUnlockingWithAd}
+                  onPress={onUnlockWithAd}
+                />
+              ) : null}
+
+              {shouldShowPointsUnlockButton && onUnlockWithPoints ? (
+                <Button
+                  disabled={isRevealPending}
+                  label={
+                    isUnlockingWithPoints
+                      ? `Spending ${pointsUnlockCost} Points...`
+                      : `Spend ${pointsUnlockCost} Points`
+                  }
+                  loading={isUnlockingWithPoints}
+                  onPress={onUnlockWithPoints}
+                  variant="secondary"
+                />
+              ) : null}
+            </View>
           ) : null}
 
-          {!isPremiumUser && !isAdUnlockAvailable && unavailableReason ? (
+          {!isPremiumUser && !requiresAuthForUnlock && !isFreeUnlockAvailable && !canUnlockWithPoints && !isAdUnlockAvailable && unavailableReason ? (
             <Text className="mt-3 text-sm leading-5 text-warning">{unavailableReason}</Text>
           ) : null}
 
@@ -149,6 +192,20 @@ function CodeRevealCardComponent({
 
           {issueMessage ? (
             <Text className="mt-3 text-sm leading-5 text-danger">{issueMessage}</Text>
+          ) : null}
+
+          {!isPremiumUser && showPremiumPrompt && onViewPremiumOptions ? (
+            <View className="mt-4 rounded-2xl bg-brand-50 px-4 py-4">
+              <Text className="text-sm font-semibold text-brand-700">
+                Premium keeps code reveals and emergency lookups ad-free.
+              </Text>
+              <Button
+                className="mt-3"
+                label="See Premium Options"
+                onPress={onViewPremiumOptions}
+                variant="ghost"
+              />
+            </View>
           ) : null}
         </>
       )}

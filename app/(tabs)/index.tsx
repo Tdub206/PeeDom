@@ -77,7 +77,6 @@ export default function MapTab() {
     () => bathrooms.filter((bathroom) => isBathroomVisibleOnMap(bathroom, isPremiumUser)),
     [bathrooms, isPremiumUser]
   );
-  const hiddenPremiumCount = bathrooms.length - visibleBathrooms.length;
   useRealtimeBathrooms({
     viewport: region,
     visibleBathrooms,
@@ -282,6 +281,10 @@ export default function MapTab() {
     pushSafely(router, routes.modal.addBathroom, routes.tabs.map);
   }, [requireAuth, router]);
 
+  const handleViewPremiumOptions = useCallback(() => {
+    pushSafely(router, routes.tabs.profile, routes.tabs.map);
+  }, [router]);
+
   if (bathroomsQuery.isLoading && !visibleBathrooms.length) {
     return <LoadingScreen message="Finding bathrooms around the current map region." />;
   }
@@ -336,15 +339,6 @@ export default function MapTab() {
           </View>
         ) : null}
 
-        {!isPremiumUser && hiddenPremiumCount > 0 ? (
-          <View className="mt-4 rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
-            <Text className="text-sm font-semibold text-brand-700">Premium-only StallPass partners hidden</Text>
-            <Text className="mt-1 text-sm leading-5 text-brand-700">
-              {hiddenPremiumCount} premium-only business {hiddenPremiumCount === 1 ? 'listing is' : 'listings are'} currently hidden from the free map.
-            </Text>
-          </View>
-        ) : null}
-
         {searchTarget && visibleBathrooms.length === 0 ? (
           <View className="mt-4 rounded-3xl border border-brand-200 bg-brand-50 px-4 py-4">
             <Text className="text-sm font-semibold text-brand-700">Exploring {searchTarget.label}</Text>
@@ -360,6 +354,7 @@ export default function MapTab() {
             void handleNavigateToBathroom(bathroom);
           }}
           onOpenBathroomDetail={handleOpenBathroomDetail}
+          onViewPremiumOptions={handleViewPremiumOptions}
         />
 
         <View className="mt-4 flex-1">
@@ -401,6 +396,13 @@ export default function MapTab() {
 
           <EmergencyButton
             isActive={emergency.isActive}
+            isFreeLookupAvailable={emergency.isFreeLookupAvailable}
+            canUnlockWithPoints={emergency.canUnlockWithPoints}
+            pointsUnlockCost={emergency.pointsUnlockCost}
+            requiresAuthForUnlock={emergency.requiresAuthForUnlock}
+            isPremiumUser={emergency.isPremiumUser}
+            isUnlocking={emergency.isUnlocking}
+            isAdUnlockAvailable={emergency.isAdUnlockAvailable}
             onPress={() => {
               void emergency.activate();
             }}

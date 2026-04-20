@@ -43,6 +43,35 @@ type BusinessWebFunctions = Omit<
       coupon_code: string;
     };
   };
+  submit_business_owner_access_code: {
+    Args: { p_bathroom_id: string; p_code_value: string };
+    Returns: Array<{ code_id: string; created_at: string }>;
+  };
+  get_business_location_codes: {
+    Args: { p_bathroom_id: string };
+    Returns: Array<{
+      id: string;
+      code_value: string;
+      confidence_score: number;
+      up_votes: number;
+      down_votes: number;
+      lifecycle_status: 'active' | 'expired' | 'superseded';
+      visibility_status: 'visible' | 'needs_review' | 'removed';
+      last_verified_at: string | null;
+      created_at: string;
+    }>;
+  };
+  submit_business_claim: {
+    Args: {
+      p_bathroom_id: string;
+      p_business_name: string;
+      p_contact_email: string;
+      p_contact_phone: string | null;
+      p_evidence_url: string | null;
+      p_growth_invite_code: string | null;
+    };
+    Returns: Array<MobileDatabase['public']['Tables']['business_claims']['Row']>;
+  };
 };
 
 export type BusinessWebDatabase = Omit<MobileDatabase, 'public'> & {

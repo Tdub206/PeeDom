@@ -7,6 +7,7 @@ import { useFocusEffect, useLocalSearchParams, useRouter } from 'expo-router';
 import { fetchLatestVisibleBathroomCode, type BathroomAccessCodeRow } from '@/api/access-codes';
 import { recordBathroomNavigationOpen, type PublicBathroomDetailRow } from '@/api/bathrooms';
 import { BathroomConfidenceCard } from '@/components/BathroomConfidenceCard';
+import { BathroomOriginBadge } from '@/components/BathroomOriginBadge';
 import { Button } from '@/components/Button';
 import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
@@ -14,6 +15,7 @@ import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
+import { ImportedBathroomReviewCard } from '@/components/ImportedBathroomReviewCard';
 import { QuickVisitActionsCard } from '@/components/QuickVisitActionsCard';
 import { AccessibilitySummaryCard } from '@/components/accessibility/AccessibilitySummaryCard';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
@@ -23,6 +25,7 @@ import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
 import { shouldRefreshBathroomDetailOnFocus, useBathroomDetail } from '@/hooks/useBathroomDetail';
+import { useImportedBathroomLocationVerification } from '@/hooks/useImportedBathroomLocationVerification';
 import { useBathroomLiveStatus } from '@/hooks/useBathroomLiveStatus';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
@@ -38,7 +41,12 @@ import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { BathroomLiveStatus, BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
-import { buildBathroomConfidenceProfile, mapBathroomDetailRowToListItem } from '@/utils/bathroom';
+import {
+  buildBathroomConfidenceProfile,
+  getBathroomOriginBadgeLabel,
+  isOverpassImportedBathroom,
+  mapBathroomDetailRowToListItem,
+} from '@/utils/bathroom';
 import { useBathroomView } from '@/hooks/useBathroomView';
 import { useKudosCount, useSendKudos } from '@/hooks/useKudos';
 import { bathroomPhotoSchema } from '@/utils/validate';
@@ -123,6 +131,7 @@ export default function BathroomDetailScreen() {
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
   const [pendingVerificationVote, setPendingVerificationVote] = useState<-1 | 1 | null>(null);
+  const [pendingImportedLocationExists, setPendingImportedLocationExists] = useState<boolean | null>(null);
   const [pendingQuickStatus, setPendingQuickStatus] = useState<BathroomLiveStatus | null>(null);
   const [selectedPhotoType, setSelectedPhotoType] = useState<BathroomPhotoType>('interior');
 
@@ -157,11 +166,17 @@ export default function BathroomDetailScreen() {
   const isPremiumUser = hasActivePremium(profile);
   const {
     hasUnlock: hasRewardedCodeUnlock,
-    isUnlocking: isUnlockingWithAd,
+    isFreeUnlockAvailable,
+    canUnlockWithPoints,
+    pointsUnlockCost,
+    isUnlockingWithAd,
+    isUnlockingWithPoints,
     isAdUnlockAvailable,
     adUnlockUnavailableReason,
     unlockIssue,
+    showPremiumPrompt,
     unlockWithAd,
+    unlockWithPoints,
   } = useRewardedCodeUnlock({
     bathroomId: bathroomId || null,
     userId: user?.id ?? null,
@@ -269,6 +284,10 @@ export default function BathroomDetailScreen() {
     isLoadingCurrentRating,
   } = useCleanlinessRating(bathroomId || null);
   const {
+    isSubmittingVerification: isSubmittingImportedLocationVerification,
+    submitVerification: submitImportedLocationVerification,
+  } = useImportedBathroomLocationVerification(bathroomId || null);
+  const {
     currentStatus: currentQuickStatus,
     isReportingStatus: isReportingQuickStatus,
     reportStatus,
@@ -297,6 +316,14 @@ export default function BathroomDetailScreen() {
       latestPhotoCreatedAt,
     });
   }, [favoriteCandidate, latestPhotoCreatedAt]);
+  const originBadgeLabel = useMemo(
+    () => (bathroomDetail ? getBathroomOriginBadgeLabel(bathroomDetail) : null),
+    [bathroomDetail]
+  );
+  const isOverpassImportedLocation = useMemo(
+    () => (bathroomDetail ? isOverpassImportedBathroom(bathroomDetail) : false),
+    [bathroomDetail]
+  );
   const livePresence = useRealtimePresence({
     bathroomId: bathroomId || null,
     userId: user?.id ?? null,
@@ -321,6 +348,14 @@ export default function BathroomDetailScreen() {
   const handleUnlockWithAd = useCallback(() => {
     void unlockWithAd();
   }, [unlockWithAd]);
+
+  const handleUnlockWithPoints = useCallback(() => {
+    void unlockWithPoints();
+  }, [unlockWithPoints]);
+
+  const handleViewPremiumOptions = useCallback(() => {
+    pushSafely(router, routes.tabs.profile, routes.bathroomDetail(bathroomId));
+  }, [bathroomId, router]);
 
   const handleWorkedVote = useCallback(async () => {
     setPendingVerificationVote(1);
@@ -366,6 +401,16 @@ export default function BathroomDetailScreen() {
     },
     [reportStatus]
   );
+  const handleImportedLocationVerification = useCallback(async (locationExists: boolean) => {
+    try {
+      setPendingImportedLocationExists(locationExists);
+      await submitImportedLocationVerification(locationExists);
+    } catch (_error) {
+      // The hook already shows a user-facing error toast.
+    } finally {
+      setPendingImportedLocationExists(null);
+    }
+  }, [submitImportedLocationVerification]);
 
   const handleUploadPhotoProof = useCallback(async () => {
     if (!bathroomId) {
@@ -544,6 +589,7 @@ export default function BathroomDetailScreen() {
               {bathroomDetail.verification_badge_type ? (
                 <VerificationBadge badgeType={bathroomDetail.verification_badge_type} />
               ) : null}
+              {originBadgeLabel ? <BathroomOriginBadge label={originBadgeLabel} /> : null}
             </View>
             <Text className="mt-3 text-4xl font-black tracking-tight text-white">{bathroomDetail.place_name}</Text>
             <Text className="mt-3 text-base leading-6 text-white/80">{address}</Text>
@@ -586,6 +632,26 @@ export default function BathroomDetailScreen() {
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />
 
           {bathroomTrustProfile ? <BathroomConfidenceCard profile={bathroomTrustProfile} /> : null}
+          {isOverpassImportedLocation ? (
+            <ImportedBathroomReviewCard
+              confirmationCount={bathroomDetail.imported_location_confirmation_count ?? 0}
+              denialCount={bathroomDetail.imported_location_denial_count ?? 0}
+              freshnessStatus={bathroomDetail.imported_location_freshness_status}
+              isConfirmingCurrent={
+                isSubmittingImportedLocationVerification && pendingImportedLocationExists === true
+              }
+              isReportingMissing={
+                isSubmittingImportedLocationVerification && pendingImportedLocationExists === false
+              }
+              lastVerifiedAt={bathroomDetail.imported_location_last_verified_at}
+              onConfirmCurrent={() => {
+                void handleImportedLocationVerification(true);
+              }}
+              onReportMissing={() => {
+                void handleImportedLocationVerification(false);
+              }}
+            />
+          ) : null}
 
           {livePresence && livePresence.viewer_count > 0 ? (
             <View className="mt-4 rounded-[28px] border border-brand-200 bg-brand-50 px-5 py-5">
@@ -643,8 +709,12 @@ export default function BathroomDetailScreen() {
             confidenceScore={revealedCode?.confidence_score ?? bathroomDetail.confidence_score ?? null}
             lastVerifiedAt={revealedCode?.last_verified_at ?? bathroomDetail.last_verified_at}
             expiresAt={revealedCode?.expires_at ?? bathroomDetail.expires_at}
+            isFreeUnlockAvailable={isFreeUnlockAvailable}
             isLoadingCode={isLoadingCode}
             isUnlockingWithAd={isUnlockingWithAd}
+            canUnlockWithPoints={canUnlockWithPoints}
+            pointsUnlockCost={pointsUnlockCost}
+            isUnlockingWithPoints={isUnlockingWithPoints}
             isPremiumUser={isPremiumUser}
             requiresAuthForUnlock={!user}
             isRewardedUnlockActive={hasRewardedCodeUnlock}
@@ -652,6 +722,9 @@ export default function BathroomDetailScreen() {
             unavailableReason={adUnlockUnavailableReason}
             issueMessage={codeRevealIssueMessage}
             onUnlockWithAd={handleUnlockWithAd}
+            onUnlockWithPoints={handleUnlockWithPoints}
+            onViewPremiumOptions={handleViewPremiumOptions}
+            showPremiumPrompt={showPremiumPrompt && Boolean(bathroomDetail.code_id)}
           />
 
           <CodeVerificationCard
@@ -835,18 +908,20 @@ export default function BathroomDetailScreen() {
             />
           </View>
 
-          <PremiumArrivalAlertCard
-            activeAlert={activeAlert}
-            isLoading={isAlertLoading}
-            isPremiumUser={isPremiumUser}
-            isUpdating={isAlertUpdating}
-            onArmAlert={(minutes) => {
-              void armAlert(minutes);
-            }}
-            onCancelAlert={() => {
-              void cancelAlert();
-            }}
-          />
+          {isPremiumUser || Boolean(activeAlert) ? (
+            <PremiumArrivalAlertCard
+              activeAlert={activeAlert}
+              isLoading={isAlertLoading}
+              isPremiumUser={isPremiumUser}
+              isUpdating={isAlertUpdating}
+              onArmAlert={(minutes) => {
+                void armAlert(minutes);
+              }}
+              onCancelAlert={() => {
+                void cancelAlert();
+              }}
+            />
+          ) : null}
 
           {alertsError ? (
             <Text className="mt-4 text-sm text-warning">{alertsError}</Text>

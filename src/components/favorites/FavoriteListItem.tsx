@@ -1,10 +1,11 @@
 import { memo, useMemo } from 'react';
 import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { BathroomOriginBadge } from '@/components/BathroomOriginBadge';
 import { CodeBadge } from '@/components/CodeBadge';
 import { colors } from '@/constants/colors';
 import { FavoriteItem } from '@/types';
-import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
+import { getBathroomMapPinTone, getBathroomOriginBadgeLabel, isBathroomOpenNow } from '@/utils/bathroom';
 
 interface FavoriteListItemProps {
   item: FavoriteItem;
@@ -70,6 +71,7 @@ function FavoriteListItemComponent({ item, isPending, onPress, onRemove }: Favor
   const toneCopy = TONE_COPY[tone];
   const openNow = isBathroomOpenNow(item.hours);
   const savedDate = formatSavedDate(item.favorited_at);
+  const originBadgeLabel = useMemo(() => getBathroomOriginBadgeLabel(item), [item]);
   const tags = useMemo(() => {
     const nextTags: string[] = [formatDistance(item.distance_meters)];
 
@@ -108,7 +110,10 @@ function FavoriteListItemComponent({ item, isPending, onPress, onRemove }: Favor
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">{toneCopy.label}</Text>
           </View>
 
-          <Text className="mt-3 text-xl font-black text-ink-900">{item.place_name}</Text>
+          <View className="mt-3 flex-row flex-wrap items-center gap-2">
+            <Text className="text-xl font-black text-ink-900">{item.place_name}</Text>
+            {originBadgeLabel ? <BathroomOriginBadge label={originBadgeLabel} /> : null}
+          </View>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{item.address}</Text>
           {savedDate ? (
             <Text className="mt-3 text-xs font-semibold uppercase tracking-[0.75px] text-brand-700">

@@ -8,10 +8,13 @@ import {
   dbCodeRevealGrantSchema,
   dbCodeVoteSchema,
   bathroomAccessibilityUpdateResultSchema,
+  codeRevealUnlockResultSchema,
   deactivateAccountResultSchema,
   dbProfileSchema,
   dbUserBadgeSchema,
+  emergencyLookupAccessResultSchema,
   gamificationSummarySchema,
+  importedLocationVerificationResultSchema,
   leaderboardEntrySchema,
   parseSupabaseNullableRow,
   parseSupabaseRows,
@@ -40,6 +43,8 @@ describe('parseSupabaseNullableRow', () => {
         last_contribution_date: '2026-03-15',
         streak_multiplier: 1,
         streak_multiplier_expires_at: null,
+        free_code_reveal_used_at: null,
+        free_emergency_lookup_used_at: null,
         push_token: null,
         push_enabled: true,
         notification_prefs: {
@@ -77,6 +82,8 @@ describe('parseSupabaseNullableRow', () => {
         last_contribution_date: null,
         streak_multiplier: 1,
         streak_multiplier_expires_at: null,
+        free_code_reveal_used_at: null,
+        free_emergency_lookup_used_at: null,
         push_token: null,
         push_enabled: true,
         notification_prefs: {
@@ -204,6 +211,13 @@ describe('parseSupabaseRows', () => {
           expires_at: null,
           cleanliness_avg: 4.4,
           updated_at: '2026-03-15T12:00:00.000Z',
+          imported_location_last_verified_at: '2026-03-16T08:30:00.000Z',
+          imported_location_confirmation_count: 3,
+          imported_location_denial_count: 1,
+          imported_location_weighted_confirmation_score: 3.5,
+          imported_location_weighted_denial_score: 1,
+          imported_location_freshness_status: 'fresh',
+          imported_location_needs_review: false,
         },
       ],
       'bathroom directory',
@@ -216,6 +230,37 @@ describe('parseSupabaseRows', () => {
     expect(result.data[0]?.accessibility_score).toBe(72);
     expect(result.data[0]?.stallpass_access_tier).toBe('public');
     expect(result.data[0]?.active_offer_count).toBe(0);
+    expect(result.data[0]?.imported_location_freshness_status).toBe('fresh');
+    expect(result.data[0]?.imported_location_confirmation_count).toBe(3);
+  });
+
+  it('parses imported location verification RPC payloads', () => {
+    const result = parseSupabaseNullableRow(
+      importedLocationVerificationResultSchema,
+      {
+        success: true,
+        error: null,
+        verification_id: 'verification-123',
+        created_at: '2026-04-19T18:30:00.000Z',
+        bathroom_id: 'bathroom-123',
+        location_exists: false,
+        next_allowed_at: '2026-04-20T06:30:00.000Z',
+        imported_location_last_verified_at: '2026-04-19T18:30:00.000Z',
+        imported_location_confirmation_count: 2,
+        imported_location_denial_count: 3,
+        imported_location_weighted_confirmation_score: 2.5,
+        imported_location_weighted_denial_score: 3.5,
+        imported_location_freshness_status: 'likely_removed',
+        imported_location_needs_review: true,
+      },
+      'imported location verification result',
+      'Unable to parse imported location verification.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.verification_id).toBe('verification-123');
+    expect(result.data?.imported_location_freshness_status).toBe('likely_removed');
+    expect(result.data?.imported_location_needs_review).toBe(true);
   });
 
   it('parses server-backed code reveal grants', () => {
@@ -226,7 +271,7 @@ describe('parseSupabaseRows', () => {
           id: 'grant-123',
           bathroom_id: 'bathroom-123',
           user_id: 'user-123',
-          grant_source: 'rewarded_ad',
+          grant_source: 'starter_free',
           expires_at: '2026-03-17T12:00:00.000Z',
           created_at: '2026-03-16T12:00:00.000Z',
           updated_at: '2026-03-16T12:00:00.000Z',
@@ -237,7 +282,54 @@ describe('parseSupabaseRows', () => {
     );
 
     expect(result.error).toBeNull();
-    expect(result.data[0]?.grant_source).toBe('rewarded_ad');
+    expect(result.data[0]?.grant_source).toBe('starter_free');
+  });
+
+  it('parses enriched code unlock RPC payloads', () => {
+    const result = parseSupabaseRows(
+      codeRevealUnlockResultSchema,
+      [
+        {
+          id: 'grant-123',
+          bathroom_id: 'bathroom-123',
+          user_id: 'user-123',
+          grant_source: 'points_redeemed',
+          expires_at: '2026-03-17T12:00:00.000Z',
+          created_at: '2026-03-16T12:00:00.000Z',
+          updated_at: '2026-03-16T12:00:00.000Z',
+          points_spent: 100,
+          remaining_points: 240,
+          used_free_unlock: false,
+        },
+      ],
+      'code reveal unlock result',
+      'Unable to parse reveal grants.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data[0]?.points_spent).toBe(100);
+    expect(result.data[0]?.grant_source).toBe('points_redeemed');
+  });
+
+  it('parses emergency lookup unlock payloads', () => {
+    const result = parseSupabaseRows(
+      emergencyLookupAccessResultSchema,
+      [
+        {
+          user_id: 'user-123',
+          unlock_method: 'starter_free',
+          points_spent: 0,
+          remaining_points: 340,
+          used_free_unlock: true,
+          unlocked_at: '2026-03-16T12:00:00.000Z',
+        },
+      ],
+      'emergency lookup access',
+      'Unable to parse emergency lookup access.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data[0]?.used_free_unlock).toBe(true);
   });
 
   it('parses premium city pack manifests', () => {
@@ -429,6 +521,27 @@ describe('gamification parser schemas', () => {
 
     expect(result.error).toBeNull();
     expect(result.data?.event_type).toBe('premium_redeemed');
+  });
+
+  it('parses one-off unlock redemption events', () => {
+    const result = parseSupabaseNullableRow(
+      dbPointEventSchema,
+      {
+        id: 'event-2',
+        user_id: 'user-123',
+        event_type: 'code_reveal_redeemed',
+        reference_table: 'feature_unlocks',
+        reference_id: 'unlock-123',
+        points_awarded: -100,
+        metadata: { feature_key: 'code_reveal' },
+        created_at: '2026-03-16T12:00:00.000Z',
+      },
+      'point event',
+      'Unable to parse point event.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.event_type).toBe('code_reveal_redeemed');
   });
 
   it('parses earned badges', () => {

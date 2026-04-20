@@ -72,8 +72,8 @@ function SearchFiltersComponent() {
   ) => {
     if (premiumOnly && !isPremiumUser) {
       showToast({
-        title: 'Premium filter',
-        message: 'Premium unlocks recently verified, changing table, and family restroom filters.',
+        title: 'Filter unavailable',
+        message: 'This filter is not available on the current account.',
         variant: 'info',
       });
       return;

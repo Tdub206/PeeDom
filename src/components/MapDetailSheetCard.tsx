@@ -2,12 +2,13 @@ import React, { memo, useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
+import { BathroomOriginBadge } from '@/components/BathroomOriginBadge';
 import { CodeBadge } from '@/components/CodeBadge';
 import { colors } from '@/constants/colors';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
-import { buildBathroomConfidenceProfile, getBathroomMapPinTone } from '@/utils/bathroom';
+import { buildBathroomConfidenceProfile, getBathroomMapPinTone, getBathroomOriginBadgeLabel } from '@/utils/bathroom';
 
 interface MapDetailSheetCardProps {
   bathroom: BathroomListItem;
@@ -104,6 +105,7 @@ function MapDetailSheetCardComponent({
   const statusTone = getBathroomMapPinTone(bathroom);
   const statusCopy = STATUS_COPY[statusTone];
   const confidenceProfile = useMemo(() => buildBathroomConfidenceProfile(bathroom), [bathroom]);
+  const originBadgeLabel = useMemo(() => getBathroomOriginBadgeLabel(bathroom), [bathroom]);
   const metadataChips = useMemo(() => {
     const chips: string[] = [];
 
@@ -141,11 +143,12 @@ function MapDetailSheetCardComponent({
             </View>
           </View>
 
-          <View className="mt-4 flex-row items-center gap-2">
+          <View className="mt-4 flex-row flex-wrap items-center gap-2">
             <Text className="flex-1 text-2xl font-black text-ink-900">{bathroom.place_name}</Text>
             {bathroom.verification_badge_type ? (
               <VerificationBadge badgeType={bathroom.verification_badge_type} />
             ) : null}
+            {originBadgeLabel ? <BathroomOriginBadge label={originBadgeLabel} /> : null}
           </View>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroom.address}</Text>
           <View className="mt-3 flex-row items-center gap-2">

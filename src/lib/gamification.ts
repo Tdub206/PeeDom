@@ -83,6 +83,14 @@ export function getPointEventLabel(eventType: PointEventType): string {
       return 'Code milestone bonus';
     case 'premium_redeemed':
       return 'Premium redeemed';
+    case 'code_verification_consensus':
+      return 'Consensus verification bonus';
+    case 'consensus_denial_award':
+      return 'Consensus correction bonus';
+    case 'code_reveal_redeemed':
+      return 'Code reveal unlocked';
+    case 'emergency_lookup_redeemed':
+      return 'Emergency lookup unlocked';
     default:
       return 'Contribution';
   }

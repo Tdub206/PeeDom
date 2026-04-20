@@ -16,6 +16,8 @@
     "ai:plan": "node scripts/stallpass-ai-orchestrator.cjs plan",
     "ai:review": "node scripts/stallpass-ai-orchestrator.cjs review",
     "ai:launch": "node scripts/stallpass-ai-orchestrator.cjs launch",
+    "fetch:public-restrooms:overpass": "node --experimental-strip-types scripts/fetch-overpass-public-restrooms.ts",
+    "import:public-restrooms": "node --experimental-strip-types scripts/import-public-restrooms.ts",
     "lint": "eslint .",
     "test": "jest",
     "type-check": "tsc --noEmit",
@@ -52,6 +54,7 @@
     "expo-updates": "~29.0.16",
     "nativewind": "^4.0.1",
     "react": "^19.1.0",
+    "react-dom": "19.1.0",
     "react-native": "^0.81.5",
     "react-native-gesture-handler": "~2.28.0",
     "react-native-google-mobile-ads": "^16.2.3",
@@ -61,6 +64,7 @@
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.16.0",
     "react-native-url-polyfill": "^2.0.0",
+    "react-native-web": "^0.21.0",
     "react-native-worklets": "0.5.1",
     "zod": "^3.24.2",
     "zustand": "^5.0.11"
@@ -75,7 +79,6 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-native": "^5.0.0",
     "jest": "~29.7.0",
-    "react-dom": "^19.1.0",
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.4.6",
     "typescript": "^5.8.2"

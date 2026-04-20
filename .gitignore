@@ -23,6 +23,7 @@ web-build/
 *.backup
 sentry.properties
 supabase/.env
+eas.json
 
 # Keep example env checked in
 !.env.example

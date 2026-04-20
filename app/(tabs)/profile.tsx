@@ -400,7 +400,7 @@ export default function ProfileTab() {
             <Text className="mt-2 text-sm leading-6 text-ink-600">
               {premiumActive
                 ? `Premium access is currently active through ${formatProfileDate(profile.premium_expires_at)}.`
-                : 'Earn your way into ad-free code reveals and premium privileges by contributing reliable bathroom data.'}
+                : 'Earn your way into ad-free code reveals and premium privileges by contributing reliable bathroom data. You can also spend 100 points on a single code reveal or emergency lookup.'}
             </Text>
             <Button
               className="mt-5"

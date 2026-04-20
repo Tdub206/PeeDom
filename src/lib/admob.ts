@@ -5,6 +5,12 @@ interface RewardedCodeRevealOptions {
   userId?: string | null;
 }
 
+interface RewardedFeatureUnlockOptions {
+  context: 'code_reveal' | 'emergency_lookup';
+  bathroomId?: string | null;
+  userId?: string | null;
+}
+
 export interface RewardedCodeRevealResult {
   outcome: 'earned' | 'dismissed' | 'unavailable';
   message: string | null;
@@ -139,7 +145,11 @@ async function ensureMobileAdsReady(): Promise<void> {
   return initializePromise;
 }
 
-async function buildRequestOptions({ bathroomId, userId }: RewardedCodeRevealOptions) {
+async function buildRequestOptions({
+  bathroomId,
+  context,
+  userId,
+}: RewardedFeatureUnlockOptions) {
   const googleMobileAdsModule = googleMobileAdsModuleState.module;
   let requestNonPersonalizedAdsOnly = getPlatformOs() === 'ios';
 
@@ -152,17 +162,22 @@ async function buildRequestOptions({ bathroomId, userId }: RewardedCodeRevealOpt
     }
   }
 
+  const customData =
+    context === 'code_reveal' && bathroomId
+      ? bathroomId.slice(0, 64)
+      : context.slice(0, 64);
+
   return {
     requestNonPersonalizedAdsOnly,
     serverSideVerificationOptions: {
       userId: (userId ?? 'guest').slice(0, 64),
-      customData: bathroomId.slice(0, 64),
+      customData,
     },
   };
 }
 
-export async function showRewardedCodeRevealAd(
-  options: RewardedCodeRevealOptions
+export async function showRewardedFeatureUnlockAd(
+  options: RewardedFeatureUnlockOptions
 ): Promise<RewardedCodeRevealResult> {
   const availability = getAdMobAvailability();
   const adUnitId = getRewardedCodeRevealUnitId();
@@ -244,5 +259,15 @@ export async function showRewardedCodeRevealAd(
     }, 45000);
 
     rewardedAd.load();
+  });
+}
+
+export async function showRewardedCodeRevealAd(
+  options: RewardedCodeRevealOptions
+): Promise<RewardedCodeRevealResult> {
+  return showRewardedFeatureUnlockAd({
+    context: 'code_reveal',
+    bathroomId: options.bathroomId,
+    userId: options.userId ?? null,
   });
 }

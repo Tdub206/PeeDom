@@ -13,6 +13,7 @@ import {
   DEFAULT_ACCESSIBILITY_FEATURES,
   FavoriteItem,
   HoursData,
+  ImportedLocationFreshnessStatus,
   RegionBounds,
   StallPassAccessTier,
   SyncMetadata,
@@ -58,6 +59,23 @@ interface BathroomDirectoryRowBase {
   is_business_location_verified?: boolean;
   location_verified_at?: string | null;
   active_offer_count?: number;
+  location_archetype?: BathroomListItem['location_archetype'];
+  archetype_metadata?:
+    | BathroomListItem['archetype_metadata']
+    | Database['public']['Views']['v_bathroom_detail_public']['Row']['archetype_metadata']
+    | null;
+  code_policy?: BathroomListItem['code_policy'];
+  allow_user_code_submissions?: boolean;
+  has_official_code?: boolean;
+  owner_code_last_verified_at?: string | null;
+  official_access_instructions?: string | null;
+  imported_location_last_verified_at?: string | null;
+  imported_location_confirmation_count?: number;
+  imported_location_denial_count?: number;
+  imported_location_weighted_confirmation_score?: number;
+  imported_location_weighted_denial_score?: number;
+  imported_location_freshness_status?: ImportedLocationFreshnessStatus | null;
+  imported_location_needs_review?: boolean;
 }
 
 export type BathroomRow = BathroomDirectoryRowBase;
@@ -98,6 +116,48 @@ interface RecommendationScoreOptions {
 
 function roundCoordinate(value: number): number {
   return Math.round(value * 1000) / 1000;
+}
+
+function getArchetypeMetadataValue(
+  archetypeMetadata:
+    | BathroomListItem['archetype_metadata']
+    | Database['public']['Views']['v_bathroom_detail_public']['Row']['archetype_metadata']
+    | null
+    | undefined,
+  key: string
+): string | null {
+  if (!archetypeMetadata || typeof archetypeMetadata !== 'object' || Array.isArray(archetypeMetadata)) {
+    return null;
+  }
+
+  const value = archetypeMetadata[key];
+  return typeof value === 'string' && value.trim().length > 0 ? value.trim() : null;
+}
+
+function normalizeArchetypeMetadata(
+  archetypeMetadata: BathroomDirectoryRowBase['archetype_metadata']
+): Record<string, unknown> {
+  if (!archetypeMetadata || typeof archetypeMetadata !== 'object' || Array.isArray(archetypeMetadata)) {
+    return {};
+  }
+
+  return { ...archetypeMetadata };
+}
+
+export function isOverpassImportedBathroom(
+  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata'>
+): boolean {
+  return getArchetypeMetadataValue(bathroom.archetype_metadata ?? null, 'import_source') === 'osm-overpass-us';
+}
+
+export function getBathroomOriginBadgeLabel(
+  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata'>
+): string | null {
+  if (isOverpassImportedBathroom(bathroom)) {
+    return 'OSM Import';
+  }
+
+  return null;
 }
 
 export function buildBathroomAddress(
@@ -203,6 +263,79 @@ function getFreshnessScore(days: number | null): number {
   }
 
   return 38;
+}
+
+function getImportedLocationFreshnessState(
+  status: ImportedLocationFreshnessStatus | null | undefined,
+  days: number | null
+): BathroomConfidenceProfile['freshness_state'] {
+  switch (status) {
+    case 'fresh':
+      return 'fresh';
+    case 'aging':
+      return 'aging';
+    case 'disputed':
+      return 'aging';
+    case 'likely_removed':
+      return 'stale';
+    case 'unreviewed':
+      return days === null ? 'unknown' : getFreshnessState(days);
+    default:
+      return getFreshnessState(days);
+  }
+}
+
+function getImportedLocationFreshnessScore(
+  status: ImportedLocationFreshnessStatus | null | undefined,
+  days: number | null
+): number {
+  switch (status) {
+    case 'fresh':
+      return 94;
+    case 'aging':
+      return 58;
+    case 'disputed':
+      return 34;
+    case 'likely_removed':
+      return 16;
+    case 'unreviewed':
+      return 46;
+    default:
+      return getFreshnessScore(days);
+  }
+}
+
+function getImportedLocationConflictState(
+  status: ImportedLocationFreshnessStatus | null | undefined
+): BathroomConfidenceProfile['conflict_state'] | null {
+  switch (status) {
+    case 'disputed':
+      return 'conflicting';
+    case 'likely_removed':
+      return 'outdated';
+    default:
+      return null;
+  }
+}
+
+function getImportedLocationFreshnessLabel(
+  status: ImportedLocationFreshnessStatus | null | undefined,
+  days: number | null
+): string | null {
+  switch (status) {
+    case 'fresh':
+      return formatDaysAgo(days, 'Location check');
+    case 'aging':
+      return formatDaysAgo(days, 'Freshness review');
+    case 'disputed':
+      return 'Existence reports are conflicting';
+    case 'likely_removed':
+      return 'Recent reports suggest the restroom is gone';
+    case 'unreviewed':
+      return 'Imported location still needs confirmation';
+    default:
+      return null;
+  }
 }
 
 function getVerificationStrength(
@@ -550,6 +683,8 @@ export function buildBathroomConfidenceProfile(
     | 'cleanliness_avg'
     | 'flags'
     | 'hours'
+    | 'imported_location_freshness_status'
+    | 'imported_location_last_verified_at'
     | 'is_business_location_verified'
     | 'last_updated_at'
     | 'location_verified_at'
@@ -563,6 +698,7 @@ export function buildBathroomConfidenceProfile(
   }
 ): BathroomConfidenceProfile {
   const now = options?.now ?? new Date();
+  const importedFreshnessStatus = bathroom.imported_location_freshness_status ?? null;
   const codeTrust = getCodeTrustSummary({
     confidenceScore: bathroom.primary_code_summary.confidence_score,
     downVotes: null,
@@ -570,17 +706,20 @@ export function buildBathroomConfidenceProfile(
     upVotes: null,
   });
   const infoFreshnessDays = getDaysSinceTimestamp(
-    bathroom.primary_code_summary.last_verified_at ?? bathroom.last_updated_at ?? bathroom.location_verified_at,
+    bathroom.imported_location_last_verified_at ??
+      bathroom.primary_code_summary.last_verified_at ??
+      bathroom.last_updated_at ??
+      bathroom.location_verified_at,
     now
   );
-  const freshnessState = getFreshnessState(infoFreshnessDays);
+  const freshnessState = getImportedLocationFreshnessState(importedFreshnessStatus, infoFreshnessDays);
   const latestPhotoAgeDays = getDaysSinceTimestamp(options?.latestPhotoCreatedAt ?? null, now);
   const accessReliabilityScore = getAccessReliabilityScore(bathroom);
   const availabilityStrength = getAvailabilityStrength(bathroom, now);
   const verificationStrength = getVerificationStrength(bathroom);
   const cleanlinessStrength =
     typeof bathroom.cleanliness_avg === 'number' ? clampPercent((bathroom.cleanliness_avg / 5) * 100) : 58;
-  const freshnessStrength = getFreshnessScore(infoFreshnessDays);
+  const freshnessStrength = getImportedLocationFreshnessScore(importedFreshnessStatus, infoFreshnessDays);
   const trustScore = clampPercent(
     accessReliabilityScore * 0.38 +
       availabilityStrength * 0.2 +
@@ -607,13 +746,24 @@ export function buildBathroomConfidenceProfile(
         ? `Code reliability: ${accessReliabilityScore}%`
         : 'Code reliability: no dependable code yet'
       : 'Code reliability: no code required';
-  const conflictState = getConflictState(codeTrust.approvalRatio, codeTrust.totalVotes, freshnessState);
+  const importedConflictState = getImportedLocationConflictState(importedFreshnessStatus);
+  const conflictState =
+    importedConflictState ?? getConflictState(codeTrust.approvalRatio, codeTrust.totalVotes, freshnessState);
   const conflictLabel =
-    conflictState === 'conflicting'
+    importedFreshnessStatus === 'disputed'
+      ? 'Imported location has conflicting existence reports'
+      : importedFreshnessStatus === 'likely_removed'
+        ? 'Imported location is trending toward removal'
+        : conflictState === 'conflicting'
       ? 'Conflicting reports detected'
       : conflictState === 'outdated'
         ? 'Community signals are aging out'
         : null;
+  const freshnessLabel =
+    bathroom.sync.stale
+      ? 'Showing cached data'
+      : getImportedLocationFreshnessLabel(importedFreshnessStatus, infoFreshnessDays) ??
+        formatDaysAgo(infoFreshnessDays, 'Info freshness');
   const photoEvidenceLabel =
     latestPhotoAgeDays === null
       ? 'No recent photo evidence'
@@ -624,19 +774,29 @@ export function buildBathroomConfidenceProfile(
   const flags: BathroomConfidenceFlag[] = [
     {
       label:
-        freshnessState === 'fresh'
-          ? 'Verified recently'
-          : freshnessState === 'aging'
-            ? 'Freshness is holding'
-            : freshnessState === 'stale'
-              ? 'Info may be stale'
-              : 'Freshness unknown',
+        importedFreshnessStatus === 'fresh'
+          ? 'Imported location confirmed recently'
+          : importedFreshnessStatus === 'aging'
+            ? 'Imported location needs a fresh visit'
+            : importedFreshnessStatus === 'disputed'
+              ? 'Imported location has conflicting reports'
+              : importedFreshnessStatus === 'likely_removed'
+                ? 'Imported location may no longer exist'
+                : importedFreshnessStatus === 'unreviewed'
+                  ? 'Imported location still needs confirmation'
+                  : freshnessState === 'fresh'
+                    ? 'Verified recently'
+                    : freshnessState === 'aging'
+                      ? 'Freshness is holding'
+                      : freshnessState === 'stale'
+                        ? 'Info may be stale'
+                        : 'Freshness unknown',
       tone:
-        freshnessState === 'fresh'
+        importedFreshnessStatus === 'fresh' || freshnessState === 'fresh'
           ? 'positive'
-          : freshnessState === 'aging'
-            ? 'neutral'
-            : freshnessState === 'stale'
+          : importedFreshnessStatus === 'likely_removed' || freshnessState === 'stale'
+            ? 'warning'
+            : importedFreshnessStatus === 'disputed'
               ? 'warning'
               : 'neutral',
     },
@@ -663,7 +823,7 @@ export function buildBathroomConfidenceProfile(
       tone: bathroom.verification_badge_type || bathroom.is_business_location_verified ? 'positive' : 'neutral',
     },
     {
-      label: bathroom.sync.stale ? 'Showing cached data' : formatDaysAgo(infoFreshnessDays, 'Info freshness'),
+      label: freshnessLabel,
       tone: bathroom.sync.stale ? 'warning' : freshnessState === 'stale' ? 'warning' : 'neutral',
     },
   ];
@@ -671,7 +831,7 @@ export function buildBathroomConfidenceProfile(
   if (conflictLabel) {
     flags.push({
       label: conflictLabel,
-      tone: conflictState === 'conflicting' ? 'warning' : 'neutral',
+      tone: conflictState === 'stable' ? 'neutral' : 'warning',
     });
   }
 
@@ -690,7 +850,7 @@ export function buildBathroomConfidenceProfile(
     code_reliability_label: codeReliabilityLabel,
     open_state_label: openStateLabel,
     info_freshness_days: infoFreshnessDays,
-    info_freshness_label: formatDaysAgo(infoFreshnessDays, 'Info freshness'),
+    info_freshness_label: freshnessLabel,
     freshness_state: freshnessState,
     conflict_state: conflictState,
     conflict_label: conflictLabel,
@@ -911,6 +1071,20 @@ export function mapBathroomRowToListItem(
     is_business_location_verified: bathroom.is_business_location_verified ?? false,
     location_verified_at: bathroom.location_verified_at ?? null,
     active_offer_count: bathroom.active_offer_count ?? 0,
+    location_archetype: bathroom.location_archetype ?? 'general',
+    archetype_metadata: normalizeArchetypeMetadata(bathroom.archetype_metadata),
+    code_policy: bathroom.code_policy ?? 'community',
+    allow_user_code_submissions: bathroom.allow_user_code_submissions ?? true,
+    has_official_code: bathroom.has_official_code ?? false,
+    owner_code_last_verified_at: bathroom.owner_code_last_verified_at ?? null,
+    official_access_instructions: bathroom.official_access_instructions ?? null,
+    imported_location_last_verified_at: bathroom.imported_location_last_verified_at ?? null,
+    imported_location_confirmation_count: bathroom.imported_location_confirmation_count ?? 0,
+    imported_location_denial_count: bathroom.imported_location_denial_count ?? 0,
+    imported_location_weighted_confirmation_score: bathroom.imported_location_weighted_confirmation_score ?? 0,
+    imported_location_weighted_denial_score: bathroom.imported_location_weighted_denial_score ?? 0,
+    imported_location_freshness_status: bathroom.imported_location_freshness_status ?? null,
+    imported_location_needs_review: bathroom.imported_location_needs_review ?? false,
     last_updated_at: bathroom.updated_at ?? null,
     sync: buildSyncMetadata(options),
   };

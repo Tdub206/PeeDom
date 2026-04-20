@@ -7,6 +7,7 @@ import { submitBathroomAccessibilityUpdate } from '@/api/accessibility';
 import { submitBugReport } from '@/api/bug-reports';
 import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
+import { verifyImportedBathroomLocation } from '@/api/imported-location-verifications';
 import { reportBathroomStatus } from '@/api/notifications';
 import { createBathroomReport } from '@/api/reports';
 import { useAuth } from '@/contexts/AuthContext';
@@ -25,6 +26,7 @@ import {
   CodeSubmitMutationPayload,
   CodeVoteMutationPayload,
   FavoriteMutationPayload,
+  ImportedLocationVerificationMutationPayload,
   ReportType,
 } from '@/types';
 import { isTransientNetworkError } from '@/utils/network';
@@ -109,6 +111,17 @@ function isBathroomStatusMutationPayload(
     payload.bathroom_id.length > 0 &&
     typeof payload.status === 'string' &&
     ['clean', 'dirty', 'closed', 'out_of_order', 'long_wait'].includes(payload.status) &&
+    (typeof payload.note === 'undefined' || payload.note === null || typeof payload.note === 'string')
+  );
+}
+
+function isImportedLocationVerificationMutationPayload(
+  payload: Record<string, unknown>
+): payload is Record<string, unknown> & ImportedLocationVerificationMutationPayload {
+  return (
+    typeof payload.bathroom_id === 'string' &&
+    payload.bathroom_id.length > 0 &&
+    typeof payload.location_exists === 'boolean' &&
     (typeof payload.note === 'undefined' || payload.note === null || typeof payload.note === 'string')
   );
 }
@@ -207,7 +220,11 @@ export function useOfflineSync() {
               report_type: mutation.payload.report_type,
               notes: typeof mutation.payload.notes === 'string' ? mutation.payload.notes : undefined,
             });
-            return !reportResult.error;
+            if (!reportResult.error) {
+              return true;
+            }
+
+            return !isTransientNetworkError(reportResult.error);
           }
           case 'code_submit': {
             if (!isCodeSubmitMutationPayload(mutation.payload)) {
@@ -250,7 +267,28 @@ export function useOfflineSync() {
               status: mutation.payload.status,
               note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
             });
-            return !statusResult.error;
+            if (!statusResult.error) {
+              return true;
+            }
+
+            return !isTransientNetworkError(statusResult.error);
+          }
+          case 'location_verification': {
+            if (!isImportedLocationVerificationMutationPayload(mutation.payload)) {
+              return false;
+            }
+
+            const verificationResult = await verifyImportedBathroomLocation({
+              bathroom_id: mutation.payload.bathroom_id,
+              location_exists: mutation.payload.location_exists,
+              note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
+            });
+
+            if (!verificationResult.error) {
+              return true;
+            }
+
+            return !isTransientNetworkError(verificationResult.error);
           }
           case 'accessibility_update': {
             if (!isBathroomAccessibilityMutationPayload(mutation.payload)) {
