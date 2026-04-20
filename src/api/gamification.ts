@@ -241,6 +241,118 @@ export async function fetchContributorLeaderboard(options: {
   }
 }
 
+export interface AdWatchedPointsResult {
+  points_awarded: number;
+  new_balance: number;
+  daily_ad_count: number;
+  daily_limit_reached: boolean;
+}
+
+/**
+ * Records that the authenticated user completed a rewarded ad and awards points.
+ * The server enforces a daily cap (5 ads / 50 points per day).
+ */
+export async function recordAdWatchedPoints(): Promise<{
+  data: AdWatchedPointsResult | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('record_ad_watched_points' as never);
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to record your ad reward right now.'),
+      };
+    }
+
+    return {
+      data: data as AdWatchedPointsResult ?? null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to record your ad reward right now.'),
+        'Unable to record your ad reward right now.'
+      ),
+    };
+  }
+}
+
+export interface SpendPointsResult {
+  success: boolean;
+  points_spent: number;
+  new_balance: number;
+}
+
+/**
+ * Spends points to unlock a bathroom code reveal. Fails if balance is insufficient.
+ */
+export async function spendPointsForCodeReveal(bathroomId: string): Promise<{
+  data: SpendPointsResult | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('spend_points_for_code_reveal' as never, {
+      p_bathroom_id: bathroomId,
+    } as never);
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to spend points for this code reveal.'),
+      };
+    }
+
+    return {
+      data: data as SpendPointsResult ?? null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to spend points for this code reveal.'),
+        'Unable to spend points for this code reveal.'
+      ),
+    };
+  }
+}
+
+/**
+ * Spends points to use an emergency find. Fails if balance is insufficient.
+ */
+export async function spendPointsForEmergencyFind(): Promise<{
+  data: SpendPointsResult | null;
+  error: (Error & { code?: string }) | null;
+}> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('spend_points_for_emergency_find' as never);
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to spend points for emergency find.'),
+      };
+    }
+
+    return {
+      data: data as SpendPointsResult ?? null,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to spend points for emergency find.'),
+        'Unable to spend points for emergency find.'
+      ),
+    };
+  }
+}
+
 export async function redeemPointsForPremium(months = 1): Promise<{
   data: PremiumRedemptionResult | null;
   error: (Error & { code?: string }) | null;

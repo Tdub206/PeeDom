@@ -29,8 +29,6 @@ export interface Database {
           last_contribution_date: string | null
           streak_multiplier: number
           streak_multiplier_expires_at: string | null
-          free_code_reveal_used_at: string | null
-          free_emergency_lookup_used_at: string | null
           push_token: string | null
           push_enabled: boolean
           notification_prefs: Json
@@ -54,8 +52,6 @@ export interface Database {
           last_contribution_date?: string | null
           streak_multiplier?: number
           streak_multiplier_expires_at?: string | null
-          free_code_reveal_used_at?: string | null
-          free_emergency_lookup_used_at?: string | null
           push_token?: string | null
           push_enabled?: boolean
           notification_prefs?: Json
@@ -79,8 +75,6 @@ export interface Database {
           last_contribution_date?: string | null
           streak_multiplier?: number
           streak_multiplier_expires_at?: string | null
-          free_code_reveal_used_at?: string | null
-          free_emergency_lookup_used_at?: string | null
           push_token?: string | null
           push_enabled?: boolean
           notification_prefs?: Json
@@ -100,10 +94,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
-            | 'code_verification_consensus'
-            | 'consensus_denial_award'
-            | 'code_reveal_redeemed'
-            | 'emergency_lookup_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table: string
           reference_id: string
           points_awarded: number
@@ -121,10 +113,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
-            | 'code_verification_consensus'
-            | 'consensus_denial_award'
-            | 'code_reveal_redeemed'
-            | 'emergency_lookup_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table: string
           reference_id: string
           points_awarded: number
@@ -142,10 +132,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
-            | 'code_verification_consensus'
-            | 'consensus_denial_award'
-            | 'code_reveal_redeemed'
-            | 'emergency_lookup_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
           reference_table?: string
           reference_id?: string
           points_awarded?: number
@@ -190,7 +178,7 @@ export interface Database {
           id: string
           bathroom_id: string
           user_id: string
-          grant_source: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          grant_source: 'rewarded_ad'
           expires_at: string
           created_at: string
           updated_at: string
@@ -199,7 +187,7 @@ export interface Database {
           id?: string
           bathroom_id: string
           user_id: string
-          grant_source?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          grant_source?: 'rewarded_ad'
           expires_at: string
           created_at?: string
           updated_at?: string
@@ -208,7 +196,7 @@ export interface Database {
           id?: string
           bathroom_id?: string
           user_id?: string
-          grant_source?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          grant_source?: 'rewarded_ad'
           expires_at?: string
           created_at?: string
           updated_at?: string
@@ -480,41 +468,6 @@ export interface Database {
           status?: 'clean' | 'dirty' | 'closed' | 'out_of_order' | 'long_wait'
           note?: string | null
           expires_at?: string
-          created_at?: string
-        }
-      }
-      imported_bathroom_location_verifications: {
-        Row: {
-          id: string
-          bathroom_id: string
-          user_id: string
-          location_exists: boolean
-          note: string | null
-          trust_weight: number
-          effective_weight: number
-          shadow_banned_at_time: boolean
-          created_at: string
-        }
-        Insert: {
-          id?: string
-          bathroom_id: string
-          user_id: string
-          location_exists: boolean
-          note?: string | null
-          trust_weight?: number
-          effective_weight?: number
-          shadow_banned_at_time?: boolean
-          created_at?: string
-        }
-        Update: {
-          id?: string
-          bathroom_id?: string
-          user_id?: string
-          location_exists?: boolean
-          note?: string | null
-          trust_weight?: number
-          effective_weight?: number
-          shadow_banned_at_time?: boolean
           created_at?: string
         }
       }
@@ -1038,38 +991,6 @@ export interface Database {
           expires_at: string | null
           cleanliness_avg: number | null
           updated_at: string
-          verification_badge_type: 'standard' | 'premium' | 'featured' | null
-          stallpass_access_tier: 'public' | 'premium'
-          show_on_free_map: boolean
-          is_business_location_verified: boolean
-          location_verified_at: string | null
-          active_offer_count: number
-          location_archetype:
-            | 'general'
-            | 'park'
-            | 'store'
-            | 'restaurant'
-            | 'transit'
-            | 'event_portable'
-            | 'medical'
-            | 'campus'
-            | 'library'
-            | 'mall'
-            | 'airport'
-            | 'hotel'
-          archetype_metadata: Json
-          code_policy: 'community' | 'owner_shared' | 'owner_private' | 'staff_only'
-          allow_user_code_submissions: boolean
-          has_official_code: boolean
-          owner_code_last_verified_at: string | null
-          official_access_instructions: string | null
-          imported_location_last_verified_at: string | null
-          imported_location_confirmation_count: number
-          imported_location_denial_count: number
-          imported_location_weighted_confirmation_score: number
-          imported_location_weighted_denial_score: number
-          imported_location_freshness_status: 'unreviewed' | 'fresh' | 'aging' | 'disputed' | 'likely_removed' | null
-          imported_location_needs_review: boolean
         }
       }
     }
@@ -1139,19 +1060,15 @@ export interface Database {
       grant_bathroom_code_reveal_access: {
         Args: {
           p_bathroom_id: string
-          p_unlock_method?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
         }
         Returns: {
           id: string
           bathroom_id: string
           user_id: string
-          grant_source: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          grant_source: 'rewarded_ad'
           expires_at: string
           created_at: string
           updated_at: string
-          points_spent: number
-          remaining_points: number
-          used_free_unlock: boolean
         }[]
       }
       get_bathrooms_near: {
@@ -1407,25 +1324,6 @@ export interface Database {
         }
         Returns: boolean
       }
-      get_action_unlock_cost: {
-        Args: {
-          p_feature_key: string
-        }
-        Returns: number
-      }
-      consume_emergency_lookup_access: {
-        Args: {
-          p_unlock_method?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
-        }
-        Returns: {
-          user_id: string
-          unlock_method: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
-          points_spent: number
-          remaining_points: number
-          used_free_unlock: boolean
-          unlocked_at: string
-        }[]
-      }
       redeem_points_for_premium: {
         Args: {
           p_months?: number
@@ -1571,14 +1469,6 @@ export interface Database {
         Args: {
           p_bathroom_id: string
           p_status: string
-          p_note?: string | null
-        }
-        Returns: Json
-      }
-      verify_imported_bathroom_location: {
-        Args: {
-          p_bathroom_id: string
-          p_location_exists: boolean
           p_note?: string | null
         }
         Returns: Json
