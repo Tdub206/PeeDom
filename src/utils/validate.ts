@@ -45,10 +45,12 @@ export const queuedMutationSchema = z.object({
     'favorite_remove',
     'code_submit',
     'code_vote',
+    'location_verification',
     'report_create',
     'rating_create',
     'status_report',
     'accessibility_update',
+    'bug_report',
   ]),
   payload: z.record(z.string(), z.unknown()),
   created_at: z.string().datetime(),
@@ -58,6 +60,23 @@ export const queuedMutationSchema = z.object({
 });
 
 export const queuedMutationsSchema = z.array(queuedMutationSchema);
+
+export const bugReportPayloadSchema = z.object({
+  schema_version: z.number().int().min(1),
+  idempotency_key: z.string().min(1),
+  device_id: z.string().min(1).max(200),
+  screen_name: z.string().max(200),
+  error_message: z.string().min(1).max(600),
+  error_stack: z.string().max(10_000),
+  component_stack: z.string().max(10_000),
+  user_comment: z.string().max(1_100),
+  app_version: z.string().max(50),
+  os_name: z.string().max(50),
+  os_version: z.string().max(50),
+  device_model: z.string().max(100),
+  captured_at: z.string().datetime(),
+  sentry_event_id: z.string().nullable(),
+});
 
 export const addBathroomSchema = z
   .object({

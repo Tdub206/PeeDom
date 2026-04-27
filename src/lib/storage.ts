@@ -22,9 +22,12 @@ const STORAGE_KEYS = {
   SEARCH_HISTORY: '@peedom/search_history',
   PREMIUM_CITY_PACK_INDEX: '@peedom/premium_city_pack_index',
   PREMIUM_CITY_PACK_PREFIX: '@peedom/premium_city_pack',
-  FIRST_INSTALL_CREDITS: '@peedom/first_install_credits',
   TERMS_ACCEPTED_AT: '@peedom/terms_accepted_at',
   HAS_COMPLETED_ONBOARDING: '@peedom/has_completed_onboarding',
+  FIRST_INSTALL_CREDITS: '@peedom/first_install_credits',
+
+  // Beta bug reporting
+  BUG_REPORT_GUEST_ID: '@peedom/bug_report_guest_id',
 } as const;
 
 export const storage = {
