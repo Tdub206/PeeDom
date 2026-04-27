@@ -10,11 +10,12 @@ import { shouldShowNearbyPremiumPrompt } from '@/lib/feature-access';
 import { hasActivePremium } from '@/lib/gamification';
 import type { BathroomFilters, BathroomListItem, BathroomRecommendation } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { getCanonicalBathroomId } from '@/utils/bathroom';
 
 interface NearbyBathroomsPanelProps {
   filters: BathroomFilters;
   onNavigate: (bathroom: BathroomListItem) => void;
-  onOpenBathroomDetail: (bathroomId: string) => void;
+  onOpenBathroomDetail: (bathroom: BathroomListItem) => void;
   onViewPremiumOptions?: () => void;
 }
 
@@ -37,9 +38,10 @@ function LockedBathroomCard({
 }: {
   bathroom: BathroomListItem;
   onNavigate: (bathroom: BathroomListItem) => void;
-  onOpenBathroomDetail: (bathroomId: string) => void;
+  onOpenBathroomDetail: (bathroom: BathroomListItem) => void;
 }) {
   const { user } = useAuth();
+  const canonicalBathroomId = getCanonicalBathroomId(bathroom);
   const [revealedCode, setRevealedCode] = useState<string | null>(null);
   const [codeIssue, setCodeIssue] = useState<string | null>(null);
   const [isLoadingCode, setIsLoadingCode] = useState(false);
@@ -55,7 +57,7 @@ function LockedBathroomCard({
     unlockWithAd,
     unlockWithPoints,
   } = useRewardedCodeUnlock({
-    bathroomId: bathroom.id,
+    bathroomId: canonicalBathroomId,
     userId: user?.id ?? null,
   });
 
@@ -63,7 +65,7 @@ function LockedBathroomCard({
     let isMounted = true;
 
     const loadVisibleCode = async () => {
-      if (!bathroom.primary_code_summary.has_code || !hasUnlock) {
+      if (!canonicalBathroomId || !bathroom.primary_code_summary.has_code || !hasUnlock) {
         if (isMounted) {
           setRevealedCode(null);
           setCodeIssue(null);
@@ -74,7 +76,7 @@ function LockedBathroomCard({
       setIsLoadingCode(true);
 
       try {
-        const result = await fetchLatestVisibleBathroomCode(bathroom.id);
+        const result = await fetchLatestVisibleBathroomCode(canonicalBathroomId);
 
         if (!isMounted) {
           return;
@@ -113,9 +115,13 @@ function LockedBathroomCard({
     return () => {
       isMounted = false;
     };
-  }, [bathroom.id, bathroom.primary_code_summary.has_code, hasUnlock]);
+  }, [bathroom.primary_code_summary.has_code, canonicalBathroomId, hasUnlock]);
 
   const codeStatusCopy = useMemo(() => {
+    if (!canonicalBathroomId) {
+      return 'Source candidates do not expose codes until they are promoted into the main StallPass directory.';
+    }
+
     if (!bathroom.primary_code_summary.has_code) {
       return 'No community code submitted yet.';
     }
@@ -165,9 +171,11 @@ function LockedBathroomCard({
     unlockIssue,
     user,
     isAdUnlockAvailable,
+    canonicalBathroomId,
   ]);
 
   const shouldShowUnlockAction =
+    Boolean(canonicalBathroomId) &&
     bathroom.primary_code_summary.has_code &&
     !hasUnlock &&
     (!user || isFreeUnlockAvailable || isAdUnlockAvailable);
@@ -226,7 +234,7 @@ function LockedBathroomCard({
         ) : null}
         <Button
           label="Open Details"
-          onPress={() => onOpenBathroomDetail(bathroom.id)}
+          onPress={() => onOpenBathroomDetail(bathroom)}
           variant="secondary"
         />
         <Button
@@ -246,7 +254,7 @@ function RecommendationCard({
 }: {
   recommendation: BathroomRecommendation;
   onNavigate: (bathroom: BathroomListItem) => void;
-  onOpenBathroomDetail: (bathroomId: string) => void;
+  onOpenBathroomDetail: (bathroom: BathroomListItem) => void;
 }) {
   if (!recommendation.bathroom) {
     return (
@@ -267,7 +275,7 @@ function RecommendationCard({
         <Button label="Navigate" onPress={() => onNavigate(recommendation.bathroom as BathroomListItem)} />
         <Button
           label="Open Details"
-          onPress={() => onOpenBathroomDetail((recommendation.bathroom as BathroomListItem).id)}
+          onPress={() => onOpenBathroomDetail(recommendation.bathroom as BathroomListItem)}
           variant="secondary"
         />
       </View>
@@ -431,7 +439,7 @@ function NearbyBathroomsPanelComponent({
                     <Button label="Navigate" onPress={() => onNavigate(nearestBathroom)} />
                     <Button
                       label="Open Details"
-                      onPress={() => onOpenBathroomDetail(nearestBathroom.id)}
+                      onPress={() => onOpenBathroomDetail(nearestBathroom)}
                       variant="secondary"
                     />
                   </View>

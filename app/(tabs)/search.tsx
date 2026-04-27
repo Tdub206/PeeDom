@@ -22,7 +22,7 @@ import { useMapStore } from '@/store/useMapStore';
 import { useSearchStore } from '@/store/useSearchStore';
 import { useToast } from '@/hooks/useToast';
 import { BathroomListItem, GooglePlaceAutocompleteSuggestion } from '@/types';
-import { mergeAccessibilityFilters } from '@/utils/bathroom';
+import { getCanonicalBathroomId, mergeAccessibilityFilters } from '@/utils/bathroom';
 import { buildRegionFromGoogleViewport } from '@/utils/google-places';
 import { formatSearchDistance } from '@/utils/search';
 
@@ -148,9 +148,11 @@ export default function SearchTab() {
 
   const handleSelectBathroom = useCallback(
     (bathroom: BathroomListItem) => {
-      if (user?.id) {
+      const canonicalBathroomId = getCanonicalBathroomId(bathroom);
+
+      if (user?.id && canonicalBathroomId) {
         recordVisitMutation.mutate({
-          bathroomId: bathroom.id,
+          bathroomId: canonicalBathroomId,
           source: 'search',
         });
       }
@@ -171,6 +173,10 @@ export default function SearchTab() {
 
   const handleToggleFavorite = useCallback(
     async (bathroom: BathroomListItem) => {
+      if (bathroom.can_favorite === false) {
+        return;
+      }
+
       try {
         await toggleFavorite(bathroom);
       } catch (error) {
@@ -333,7 +339,7 @@ export default function SearchTab() {
             >
               {suggestions.length > 0 ? (
                 <View className="rounded-[28px] border border-surface-strong bg-surface-card px-5 py-4">
-                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">PeeDom listings</Text>
+                  <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">StallPass listings</Text>
                   <View className="mt-4 gap-3">
                     {suggestions.map((suggestion) => (
                       <Pressable

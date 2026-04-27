@@ -40,6 +40,7 @@ export const updateBusinessBathroomSettingsSchema = z.object({
   requires_premium_access: z.boolean(),
   show_on_free_map: z.boolean(),
   is_location_verified: z.boolean(),
+  is_locked: z.boolean(),
 });
 
 // Matches the mobile `business_coupons` table + `create_business_coupon`
@@ -228,3 +229,52 @@ export const notificationPreferencesSchema = z.object({
 });
 
 export type NotificationPreferencesInput = z.infer<typeof notificationPreferencesSchema>;
+
+export const uploadBusinessPhotoSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid location before uploading a photo.'),
+});
+
+export type UploadBusinessPhotoInput = z.infer<typeof uploadBusinessPhotoSchema>;
+
+export const deleteBusinessPhotoSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid location before deleting a photo.'),
+  photo_id: z.string().uuid('Select a valid photo before deleting it.'),
+});
+
+export type DeleteBusinessPhotoInput = z.infer<typeof deleteBusinessPhotoSchema>;
+
+export const businessAiMessageSchema = z.object({
+  role: z.enum(['user', 'assistant']),
+  content: z
+    .string()
+    .trim()
+    .min(1, 'Enter a message before sending it.')
+    .max(4000, 'Keep each message under 4000 characters.'),
+});
+
+export type BusinessAiMessageInput = z.infer<typeof businessAiMessageSchema>;
+
+export const businessAiRequestSchema = z
+  .object({
+    messages: z
+      .array(businessAiMessageSchema)
+      .min(1, 'Include at least one message.')
+      .max(20, 'Keep the conversation under 20 messages per request.'),
+    businessContext: z
+      .string()
+      .trim()
+      .max(8000, 'Business context is too long.')
+      .optional()
+      .default(''),
+  })
+  .superRefine((input, ctx) => {
+    if (input.messages[input.messages.length - 1]?.role !== 'user') {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ['messages'],
+        message: 'Last message must come from the user.',
+      });
+    }
+  });
+
+export type BusinessAiRequestInput = z.infer<typeof businessAiRequestSchema>;

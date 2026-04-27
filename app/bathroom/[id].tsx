@@ -25,7 +25,6 @@ import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
 import { shouldRefreshBathroomDetailOnFocus, useBathroomDetail } from '@/hooks/useBathroomDetail';
-import { useImportedBathroomLocationVerification } from '@/hooks/useImportedBathroomLocationVerification';
 import { useBathroomLiveStatus } from '@/hooks/useBathroomLiveStatus';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
@@ -131,7 +130,6 @@ export default function BathroomDetailScreen() {
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
   const [pendingVerificationVote, setPendingVerificationVote] = useState<-1 | 1 | null>(null);
-  const [pendingImportedLocationExists, setPendingImportedLocationExists] = useState<boolean | null>(null);
   const [pendingQuickStatus, setPendingQuickStatus] = useState<BathroomLiveStatus | null>(null);
   const [selectedPhotoType, setSelectedPhotoType] = useState<BathroomPhotoType>('interior');
 
@@ -284,10 +282,6 @@ export default function BathroomDetailScreen() {
     isLoadingCurrentRating,
   } = useCleanlinessRating(bathroomId || null);
   const {
-    isSubmittingVerification: isSubmittingImportedLocationVerification,
-    submitVerification: submitImportedLocationVerification,
-  } = useImportedBathroomLocationVerification(bathroomId || null);
-  const {
     currentStatus: currentQuickStatus,
     isReportingStatus: isReportingQuickStatus,
     reportStatus,
@@ -322,6 +316,29 @@ export default function BathroomDetailScreen() {
   );
   const isOverpassImportedLocation = useMemo(
     () => (bathroomDetail ? isOverpassImportedBathroom(bathroomDetail) : false),
+    [bathroomDetail]
+  );
+  const formattedSourceUpdatedAt = useMemo(() => {
+    if (!bathroomDetail?.source_updated_at) {
+      return null;
+    }
+
+    const parsedDate = new Date(bathroomDetail.source_updated_at);
+
+    if (Number.isNaN(parsedDate.getTime())) {
+      return null;
+    }
+
+    return parsedDate.toLocaleString();
+  }, [bathroomDetail?.source_updated_at]);
+  const hasSourceFreshness = useMemo(
+    () =>
+      Boolean(
+        bathroomDetail?.origin_source_key ||
+          bathroomDetail?.source_dataset ||
+          bathroomDetail?.source_last_verified_at ||
+          bathroomDetail?.source_freshness_status
+      ),
     [bathroomDetail]
   );
   const livePresence = useRealtimePresence({
@@ -401,16 +418,6 @@ export default function BathroomDetailScreen() {
     },
     [reportStatus]
   );
-  const handleImportedLocationVerification = useCallback(async (locationExists: boolean) => {
-    try {
-      setPendingImportedLocationExists(locationExists);
-      await submitImportedLocationVerification(locationExists);
-    } catch (_error) {
-      // The hook already shows a user-facing error toast.
-    } finally {
-      setPendingImportedLocationExists(null);
-    }
-  }, [submitImportedLocationVerification]);
 
   const handleUploadPhotoProof = useCallback(async () => {
     if (!bathroomId) {
@@ -632,25 +639,34 @@ export default function BathroomDetailScreen() {
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />
 
           {bathroomTrustProfile ? <BathroomConfidenceCard profile={bathroomTrustProfile} /> : null}
-          {isOverpassImportedLocation ? (
+          {hasSourceFreshness ? (
             <ImportedBathroomReviewCard
-              confirmationCount={bathroomDetail.imported_location_confirmation_count ?? 0}
-              denialCount={bathroomDetail.imported_location_denial_count ?? 0}
-              freshnessStatus={bathroomDetail.imported_location_freshness_status}
-              isConfirmingCurrent={
-                isSubmittingImportedLocationVerification && pendingImportedLocationExists === true
-              }
-              isReportingMissing={
-                isSubmittingImportedLocationVerification && pendingImportedLocationExists === false
-              }
-              lastVerifiedAt={bathroomDetail.imported_location_last_verified_at}
-              onConfirmCurrent={() => {
-                void handleImportedLocationVerification(true);
-              }}
-              onReportMissing={() => {
-                void handleImportedLocationVerification(false);
-              }}
+              badgeLabel={bathroomDetail.origin_label ?? originBadgeLabel ?? (isOverpassImportedLocation ? 'OSM Import' : 'Imported Bathroom')}
+              confirmationCount={bathroomDetail.source_confirmation_count ?? bathroomDetail.imported_location_confirmation_count ?? 0}
+              denialCount={bathroomDetail.source_denial_count ?? bathroomDetail.imported_location_denial_count ?? 0}
+              freshnessStatus={bathroomDetail.source_freshness_status ?? bathroomDetail.imported_location_freshness_status}
+              lastVerifiedAt={bathroomDetail.source_last_verified_at ?? bathroomDetail.imported_location_last_verified_at}
+              title="Source freshness"
             />
+          ) : null}
+          {bathroomDetail.origin_attribution_short || bathroomDetail.source_dataset || bathroomDetail.source_license_key ? (
+            <View className="mt-4 rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5">
+              <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Source attribution</Text>
+              <Text className="mt-3 text-base font-bold text-ink-900">
+                {bathroomDetail.origin_attribution_short ?? 'Public dataset'}
+              </Text>
+              {bathroomDetail.source_dataset ? (
+                <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroomDetail.source_dataset}</Text>
+              ) : null}
+              {bathroomDetail.source_license_key ? (
+                <Text className="mt-2 text-xs font-semibold uppercase tracking-[1px] text-ink-500">
+                  License: {bathroomDetail.source_license_key}
+                </Text>
+              ) : null}
+              {formattedSourceUpdatedAt ? (
+                <Text className="mt-2 text-sm leading-6 text-ink-600">Source updated: {formattedSourceUpdatedAt}</Text>
+              ) : null}
+            </View>
           ) : null}
 
           {livePresence && livePresence.viewer_count > 0 ? (

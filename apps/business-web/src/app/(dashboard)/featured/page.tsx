@@ -8,6 +8,7 @@ import {
   type BusinessFeaturedPlacementSummary,
 } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { CreateCampaignForm } from './create-campaign-form';
 
 export const metadata: Metadata = {
   title: 'Featured',
@@ -36,8 +37,8 @@ export default async function FeaturedPage() {
       <div className="text-[11px] font-bold uppercase tracking-[2px] text-brand-600">Featured</div>
       <h1 className="mt-1 text-3xl font-black tracking-tight text-ink-900">Boost on the map</h1>
       <p className="mt-2 max-w-3xl text-sm text-ink-600">
-        Monitor featured placement campaigns for your locations. The table-backed campaign read
-        surface is live; the write path for launching new campaigns is the next dashboard step.
+        Launch and monitor featured placement campaigns for your locations. Pick a placement type,
+        set your campaign window, and your listing moves to the top of search and map results.
       </p>
 
       {error ? (
@@ -54,13 +55,13 @@ export default async function FeaturedPage() {
         />
         <ExplainerCard
           step="2"
-          title="Set your budget"
-          description="Daily budget and campaign duration controls are the next write-path to be wired."
+          title="Set your window"
+          description="Choose a placement type and campaign start and end dates, then launch."
         />
         <ExplainerCard
           step="3"
           title="Track performance"
-          description="Impressions, taps, and CTR already flow through the placements table below."
+          description="Impressions, taps, and CTR update in the active campaigns panel below."
         />
       </section>
 
@@ -98,33 +99,15 @@ export default async function FeaturedPage() {
             Launch campaign
           </div>
           <div className="mt-1 text-xl font-black tracking-tight text-ink-900">
-            Write path coming next
+            New featured placement
           </div>
-
-          <div className="mt-4 rounded-2xl border border-brand-200 bg-brand-50 p-4 text-sm leading-6 text-ink-600">
-            The featured-placement table already powers the reporting view. Creating and editing
-            campaigns still needs a server action or RPC before we expose it here.
-          </div>
-
-          <div className="mt-5 grid gap-3">
-            <div className="rounded-2xl border border-surface-strong bg-surface-base p-4">
-              <div className="text-[11px] font-bold uppercase tracking-[1.5px] text-ink-500">
-                Eligible locations
-              </div>
-              <div className="mt-2 text-sm text-ink-600">
-                {locations.length} approved location{locations.length === 1 ? '' : 's'} on this account.
-              </div>
-            </div>
-            <div className="rounded-2xl border border-surface-strong bg-surface-base p-4">
-              <div className="text-[11px] font-bold uppercase tracking-[1.5px] text-ink-500">
-                Next backend step
-              </div>
-              <div className="mt-2 text-sm leading-6 text-ink-600">
-                Add a campaign create/update mutation so the form can save daily budget, duration,
-                and target location directly into `business_featured_placements`.
-              </div>
-            </div>
-          </div>
+          <CreateCampaignForm
+            locations={locations.map((loc) => ({
+              bathroom_id: loc.bathroom_id,
+              place_name: loc.place_name,
+              address: loc.address,
+            }))}
+          />
         </section>
       </div>
 

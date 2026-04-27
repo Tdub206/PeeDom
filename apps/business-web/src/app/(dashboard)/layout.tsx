@@ -3,7 +3,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/lib/auth/queries';
-import { getPendingClaimsCount } from '@/lib/business/queries';
+import { getApprovedLocations, getPendingClaimsCount } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { DashboardNav } from './dashboard-nav';
 import { DashboardTopbar } from './dashboard-topbar';
@@ -23,10 +23,17 @@ export default async function DashboardLayout({ children }: { children: React.Re
     redirect('/login');
   }
 
-  const profile = await getCurrentUserProfile(supabase);
-  const { count: pendingClaimsCount } = await getPendingClaimsCount(supabase, user.id);
+  const [profile, { count: pendingClaimsCount }, { locations }] = await Promise.all([
+    getCurrentUserProfile(supabase),
+    getPendingClaimsCount(supabase, user.id),
+    getApprovedLocations(supabase, user.id),
+  ]);
+
   const displayName = profile?.full_name || user.email || 'Business owner';
   const initials = getInitials(displayName);
+
+  // Compact business context injected into the AI assistant system prompt.
+  const businessContext = buildBusinessContext(displayName, user.email ?? '', locations);
 
   return (
     <div className="flex min-h-screen bg-surface-base">
@@ -59,7 +66,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
       </aside>
 
       <div className="flex min-h-screen flex-1 flex-col overflow-x-hidden">
-        <DashboardTopbar initials={initials} pendingClaimsCount={pendingClaimsCount} />
+        <DashboardTopbar
+          initials={initials}
+          pendingClaimsCount={pendingClaimsCount}
+          businessContext={businessContext}
+        />
         <main className="flex-1 overflow-x-hidden">{children}</main>
       </div>
     </div>
@@ -69,4 +80,32 @@ export default async function DashboardLayout({ children }: { children: React.Re
 function getInitials(name: string): string {
   const parts = name.trim().split(/\s+/).slice(0, 2);
   return parts.map((p) => p[0]?.toUpperCase() ?? '').join('') || 'SP';
+}
+
+function buildBusinessContext(
+  displayName: string,
+  email: string,
+  locations: Awaited<ReturnType<typeof getApprovedLocations>>['locations']
+): string {
+  const locationLines =
+    locations.length === 0
+      ? '  - No approved locations yet'
+      : locations
+          .map((loc) => {
+            const parts = [
+              `  - ${loc.place_name} (${loc.address})`,
+              loc.weekly_views > 0 ? `${loc.weekly_views} weekly views` : null,
+              loc.avg_cleanliness > 0 ? `cleanliness ${loc.avg_cleanliness.toFixed(1)}/5` : null,
+              loc.active_offer_count > 0 ? `${loc.active_offer_count} active coupon(s)` : null,
+              loc.open_reports > 0 ? `${loc.open_reports} open report(s)` : null,
+            ].filter(Boolean);
+            return parts.join(', ');
+          })
+          .join('\n');
+
+  return [
+    `Business owner: ${displayName} (${email})`,
+    `Approved locations (${locations.length}):`,
+    locationLines,
+  ].join('\n');
 }

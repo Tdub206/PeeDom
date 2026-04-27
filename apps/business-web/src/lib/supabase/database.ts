@@ -20,6 +20,7 @@ type BusinessWebFunctions = Omit<
       p_requires_premium_access: boolean;
       p_show_on_free_map: boolean;
       p_is_location_verified: boolean;
+      p_is_locked: boolean;
     };
     Returns: BusinessBathroomSettings[];
   };

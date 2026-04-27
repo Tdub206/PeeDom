@@ -1,0 +1,3 @@
+-- Placeholder: migration 043 was applied to the remote database but the
+-- original file was later renumbered to 047_server_capabilities_foundation.sql.
+-- This file satisfies the CLI's local/remote version-match check.

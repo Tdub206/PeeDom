@@ -26,7 +26,7 @@ const DEFAULT_DASHBOARD_STATE = {
     featuredPlacement: false,
   },
   support: {
-    supportEmail: "support@stallpass.org",
+    supportEmail: "support@stallpass.app",
     privacyUrl: "/privacy/",
     termsUrl: "/terms/",
     supportUrl: "/support/",

@@ -1,11 +1,14 @@
 import { z } from 'zod';
 import { BathroomFilters, Coordinates, RegionBounds } from '@/types';
 import {
+  canonicalBathroomDetailRowSchema,
   cityBrowseRowSchema,
+  directoryListingRowSchema,
   nearbyBathroomRowSchema,
   parseSupabaseNullableRow,
   parseSupabaseRows,
   publicBathroomDetailRowSchema,
+  sourceCandidateDetailRowSchema,
   searchBathroomRowSchema,
   searchSuggestionRowSchema,
 } from '@/lib/supabase-parsers';
@@ -23,7 +26,11 @@ import {
 import { groupCityBrowseRows } from '@/utils/search';
 import { isMissingRpcError } from '@/utils/network';
 
-export type PublicBathroomDetailRow = z.infer<typeof publicBathroomDetailRowSchema>;
+export type LegacyPublicBathroomDetailRow = z.infer<typeof publicBathroomDetailRowSchema>;
+export type CanonicalBathroomDetailRow = z.infer<typeof canonicalBathroomDetailRowSchema>;
+export type PublicBathroomDetailRow = CanonicalBathroomDetailRow;
+export type DirectoryListingRow = z.infer<typeof directoryListingRowSchema>;
+export type SourceCandidateDetailRow = z.infer<typeof sourceCandidateDetailRowSchema>;
 export type NearbyBathroomRow = z.infer<typeof nearbyBathroomRowSchema>;
 export type SearchBathroomRow = z.infer<typeof searchBathroomRowSchema>;
 export type CityBrowseRow = z.infer<typeof cityBrowseRowSchema>;
@@ -47,6 +54,10 @@ interface SearchBathroomsOptions {
 interface BathroomsByIdOptions {
   bathroomIds: string[];
   origin?: Coordinates | null;
+}
+
+interface SourceCandidateByIdOptions {
+  sourceRecordId: string;
 }
 
 interface CityBrowseOptions {
@@ -88,9 +99,149 @@ function buildApproximateRadiusBounds(origin: Coordinates, radiusMeters: number)
   };
 }
 
+function getArchetypeMetadataRecord(
+  value: LegacyPublicBathroomDetailRow['archetype_metadata']
+): Record<string, unknown> {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return {};
+  }
+
+  return value;
+}
+
+function getArchetypeMetadataText(
+  value: LegacyPublicBathroomDetailRow['archetype_metadata'],
+  key: string
+): string | null {
+  const metadata = getArchetypeMetadataRecord(value);
+  const rawValue = metadata[key];
+
+  return typeof rawValue === 'string' && rawValue.trim().length > 0 ? rawValue.trim() : null;
+}
+
+function decorateLegacyBathroomDetailRow(
+  row: LegacyPublicBathroomDetailRow
+): CanonicalBathroomDetailRow {
+  const importSource = getArchetypeMetadataText(row.archetype_metadata, 'import_source');
+  const sourceDataset = getArchetypeMetadataText(row.archetype_metadata, 'source_dataset');
+  const sourceUrl = getArchetypeMetadataText(row.archetype_metadata, 'website');
+  const sourceTimestamp =
+    getArchetypeMetadataText(row.archetype_metadata, 'source_timestamp') ??
+    getArchetypeMetadataText(row.archetype_metadata, 'last_edited_at');
+  const originLabel =
+    importSource === 'osm-overpass-us'
+      ? 'OpenStreetMap import'
+      : importSource === 'seattle-parks'
+        ? 'Seattle Parks import'
+        : importSource
+          ? importSource
+              .split('-')
+              .filter((segment) => segment.length > 0)
+              .map((segment) => segment.charAt(0).toUpperCase() + segment.slice(1))
+              .join(' ')
+          : null;
+  const originAttributionShort =
+    importSource === 'osm-overpass-us'
+      ? 'OpenStreetMap contributors'
+      : sourceDataset;
+  const sourceLicenseKey = importSource === 'osm-overpass-us' ? 'ODbL-1.0' : null;
+
+  return {
+    ...row,
+    origin_source_key: importSource,
+    origin_label: originLabel,
+    origin_attribution_short: originAttributionShort,
+    source_dataset: sourceDataset,
+    source_license_key: sourceLicenseKey,
+    source_url: sourceUrl,
+    source_updated_at: sourceTimestamp,
+    source_last_verified_at: row.imported_location_last_verified_at ?? null,
+    source_confirmation_count: row.imported_location_confirmation_count ?? 0,
+    source_denial_count: row.imported_location_denial_count ?? 0,
+    source_weighted_confirmation_score: row.imported_location_weighted_confirmation_score ?? 0,
+    source_weighted_denial_score: row.imported_location_weighted_denial_score ?? 0,
+    source_freshness_status: row.imported_location_freshness_status ?? null,
+    source_needs_review: row.imported_location_needs_review ?? false,
+  };
+}
+
+function decorateLegacyDirectoryRow(
+  row: LegacyPublicBathroomDetailRow
+): BathroomDirectoryRow {
+  const detailRow = decorateLegacyBathroomDetailRow(row);
+
+  return normalizeDirectoryListingRow({
+    listing_kind: 'canonical',
+    bathroom_id: detailRow.id,
+    source_record_id: null,
+    place_name: detailRow.place_name,
+    address_line1: detailRow.address_line1,
+    city: detailRow.city,
+    state: detailRow.state,
+    postal_code: detailRow.postal_code,
+    country_code: detailRow.country_code,
+    latitude: detailRow.latitude,
+    longitude: detailRow.longitude,
+    is_locked: detailRow.is_locked,
+    is_accessible: detailRow.is_accessible,
+    is_customer_only: detailRow.is_customer_only,
+    accessibility_features: detailRow.accessibility_features,
+    accessibility_score: detailRow.accessibility_score,
+    hours_json: detailRow.hours_json,
+    code_id: detailRow.code_id,
+    confidence_score: detailRow.confidence_score,
+    up_votes: detailRow.up_votes,
+    down_votes: detailRow.down_votes,
+    last_verified_at: detailRow.last_verified_at,
+    expires_at: detailRow.expires_at,
+    cleanliness_avg: detailRow.cleanliness_avg,
+    updated_at: detailRow.updated_at,
+    verification_badge_type: detailRow.verification_badge_type,
+    stallpass_access_tier: detailRow.stallpass_access_tier,
+    show_on_free_map: detailRow.show_on_free_map,
+    is_business_location_verified: detailRow.is_business_location_verified,
+    location_verified_at: detailRow.location_verified_at,
+    active_offer_count: detailRow.active_offer_count,
+    location_archetype: detailRow.location_archetype,
+    archetype_metadata: detailRow.archetype_metadata,
+    code_policy: detailRow.code_policy,
+    allow_user_code_submissions: detailRow.allow_user_code_submissions,
+    has_official_code: detailRow.has_official_code,
+    owner_code_last_verified_at: detailRow.owner_code_last_verified_at,
+    official_access_instructions: detailRow.official_access_instructions,
+    origin_source_key: detailRow.origin_source_key,
+    origin_label: detailRow.origin_label,
+    origin_attribution_short: detailRow.origin_attribution_short,
+    source_dataset: detailRow.source_dataset,
+    source_license_key: detailRow.source_license_key,
+    source_url: detailRow.source_url,
+    source_updated_at: detailRow.source_updated_at,
+    source_last_verified_at: detailRow.source_last_verified_at,
+    source_confirmation_count: detailRow.source_confirmation_count,
+    source_denial_count: detailRow.source_denial_count,
+    source_weighted_confirmation_score: detailRow.source_weighted_confirmation_score,
+    source_weighted_denial_score: detailRow.source_weighted_denial_score,
+    source_freshness_status: detailRow.source_freshness_status,
+    source_needs_review: detailRow.source_needs_review,
+    can_favorite: true,
+    can_submit_code: true,
+    can_report_live_status: true,
+    can_claim_business: true,
+    distance_meters: null,
+    rank: 0,
+  });
+}
+
+function normalizeDirectoryListingRow(row: DirectoryListingRow): BathroomDirectoryRow {
+  return {
+    ...row,
+    code_policy: row.code_policy ?? undefined,
+  };
+}
+
 async function fetchNearbyBathroomsFallback(
   options: NearbyBathroomsOptions
-): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: BathroomDirectoryRow[]; error: (Error & { code?: string }) | null }> {
   try {
     const bounds = getRegionBounds(options.region);
     let query = getSupabaseClient()
@@ -139,7 +290,10 @@ async function fetchNearbyBathroomsFallback(
     }
 
     return {
-      data: applyBathroomFilters(parsedData.data as PublicBathroomDetailRow[], options.filters),
+      data: applyBathroomFilters(
+        (parsedData.data as LegacyPublicBathroomDetailRow[]).map(decorateLegacyDirectoryRow),
+        options.filters
+      ),
       error: null,
     };
   } catch (error) {
@@ -155,22 +309,66 @@ async function fetchNearbyBathroomsFallback(
 
 export async function fetchBathroomDetailById(
   bathroomId: string
-): Promise<{ data: PublicBathroomDetailRow | null; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: CanonicalBathroomDetailRow | null; error: (Error & { code?: string }) | null }> {
   try {
-    const { data, error } = await getSupabaseClient()
-      .from('v_bathroom_detail_public')
-      .select('*')
-      .eq('id', bathroomId)
-      .maybeSingle();
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_canonical_bathroom_detail' as never,
+      {
+        p_bathroom_id: bathroomId,
+      } as never
+    );
 
     if (error) {
+      if (isMissingRpcError(error)) {
+        const fallbackResult = await getSupabaseClient()
+          .from('v_bathroom_detail_public')
+          .select('*')
+          .eq('id', bathroomId)
+          .maybeSingle();
+
+        if (fallbackResult.error) {
+          return {
+            data: null,
+            error: toAppError(fallbackResult.error, 'Unable to load bathroom details.'),
+          };
+        }
+
+        if (!fallbackResult.data) {
+          return {
+            data: null,
+            error: toAppError({ code: 'PGRST116', message: 'That bathroom could not be found.' }, 'That bathroom could not be found.'),
+          };
+        }
+
+        const parsedFallback = parseSupabaseNullableRow(
+          publicBathroomDetailRowSchema,
+          fallbackResult.data,
+          'bathroom detail',
+          'Unable to load bathroom details.'
+        );
+
+        if (parsedFallback.error) {
+          return {
+            data: null,
+            error: parsedFallback.error,
+          };
+        }
+
+        return {
+          data: parsedFallback.data ? decorateLegacyBathroomDetailRow(parsedFallback.data as LegacyPublicBathroomDetailRow) : null,
+          error: null,
+        };
+      }
+
       return {
         data: null,
         error: toAppError(error, 'Unable to load bathroom details.'),
       };
     }
 
-    if (!data) {
+    const firstRow = Array.isArray(data) ? data[0] ?? null : data;
+
+    if (!firstRow) {
       return {
         data: null,
         error: toAppError({ code: 'PGRST116', message: 'That bathroom could not be found.' }, 'That bathroom could not be found.'),
@@ -178,8 +376,8 @@ export async function fetchBathroomDetailById(
     }
 
     const parsedData = parseSupabaseNullableRow(
-      publicBathroomDetailRowSchema,
-      data,
+      canonicalBathroomDetailRowSchema,
+      firstRow,
       'bathroom detail',
       'Unable to load bathroom details.'
     );
@@ -192,7 +390,7 @@ export async function fetchBathroomDetailById(
     }
 
     return {
-      data: parsedData.data as PublicBathroomDetailRow,
+      data: parsedData.data as CanonicalBathroomDetailRow,
       error: null,
     };
   } catch (error) {
@@ -206,6 +404,62 @@ export async function fetchBathroomDetailById(
   }
 }
 
+export async function fetchSourceCandidateById(
+  options: SourceCandidateByIdOptions
+): Promise<{ data: SourceCandidateDetailRow | null; error: (Error & { code?: string }) | null }> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc(
+      'get_source_candidate_detail' as never,
+      {
+        p_source_record_id: options.sourceRecordId,
+      } as never
+    );
+
+    if (error) {
+      return {
+        data: null,
+        error: toAppError(error, 'Unable to load this source candidate.'),
+      };
+    }
+
+    const firstRow = Array.isArray(data) ? data[0] ?? null : data;
+
+    if (!firstRow) {
+      return {
+        data: null,
+        error: toAppError({ code: 'PGRST116', message: 'That source candidate could not be found.' }, 'That source candidate could not be found.'),
+      };
+    }
+
+    const parsedData = parseSupabaseNullableRow(
+      sourceCandidateDetailRowSchema,
+      firstRow,
+      'source candidate detail',
+      'Unable to load this source candidate.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
+    return {
+      data: parsedData.data as SourceCandidateDetailRow,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: null,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to load this source candidate.'),
+        'Unable to load this source candidate.'
+      ),
+    };
+  }
+}
+
 export async function fetchBathroomsNearRegion(
   options: NearbyBathroomsOptions
 ): Promise<{ data: BathroomDirectoryRow[]; error: (Error & { code?: string }) | null }> {
@@ -213,7 +467,7 @@ export async function fetchBathroomsNearRegion(
 
   try {
     const { data, error } = await getSupabaseClient().rpc(
-      'get_bathrooms_near' as never,
+      'get_directory_listings_near' as never,
       {
         lat: options.region.latitude,
         lng: options.region.longitude,
@@ -233,7 +487,7 @@ export async function fetchBathroomsNearRegion(
     }
 
     const parsedData = parseSupabaseRows(
-      nearbyBathroomRowSchema,
+      directoryListingRowSchema,
       data,
       'nearby bathrooms',
       'Unable to load nearby bathrooms.'
@@ -247,10 +501,17 @@ export async function fetchBathroomsNearRegion(
     }
 
     return {
-      data: sortBathroomsByFilters(applyBathroomFilters(parsedData.data as NearbyBathroomRow[], options.filters), options.filters, {
-        latitude: options.region.latitude,
-        longitude: options.region.longitude,
-      }),
+      data: sortBathroomsByFilters(
+        applyBathroomFilters(
+          (parsedData.data as DirectoryListingRow[]).map(normalizeDirectoryListingRow),
+          options.filters
+        ),
+        options.filters,
+        {
+          latitude: options.region.latitude,
+          longitude: options.region.longitude,
+        }
+      ),
       error: null,
     };
   } catch (error) {
@@ -278,7 +539,7 @@ export async function fetchBathroomsNearRegion(
 
 export async function searchBathrooms(
   options: SearchBathroomsOptions
-): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: BathroomDirectoryRow[]; error: (Error & { code?: string }) | null }> {
   const trimmedQuery = options.query.trim();
   const hasOrigin = Boolean(options.origin);
   const hasFilterDrivenNearbySearch =
@@ -299,7 +560,7 @@ export async function searchBathrooms(
   }
 
   try {
-    const { data, error } = await getSupabaseClient().rpc(
+    const legacyRpcResult = await getSupabaseClient().rpc(
       'search_bathrooms' as never,
       {
         p_query: trimmedQuery.length >= 2 ? trimmedQuery : null,
@@ -315,35 +576,35 @@ export async function searchBathrooms(
       } as never
     );
 
-    if (error) {
-      if (!isMissingRpcError(error)) {
+    if (!legacyRpcResult.error) {
+      const parsedData = parseSupabaseRows(
+        searchBathroomRowSchema,
+        legacyRpcResult.data,
+        'search bathrooms',
+        'Unable to search bathrooms.'
+      );
+
+      if (parsedData.error) {
         return {
           data: [],
-          error: toAppError(error, 'Unable to search bathrooms.'),
+          error: parsedData.error,
         };
       }
 
-      return searchBathroomsFallback(options);
-    }
-
-    const parsedData = parseSupabaseRows(
-      searchBathroomRowSchema,
-      data,
-      'search bathrooms',
-      'Unable to search bathrooms.'
-    );
-
-    if (parsedData.error) {
       return {
-        data: [],
-        error: parsedData.error,
+        data: applyBathroomFilters(parsedData.data as SearchBathroomRow[], options.filters),
+        error: null,
       };
     }
 
-    return {
-      data: applyBathroomFilters(parsedData.data as SearchBathroomRow[], options.filters),
-      error: null,
-    };
+    if (!isMissingRpcError(legacyRpcResult.error)) {
+      return {
+        data: [],
+        error: toAppError(legacyRpcResult.error, 'Unable to search bathrooms.'),
+      };
+    }
+
+    return searchBathroomsFallback(options);
   } catch (error) {
     return {
       data: [],
@@ -357,7 +618,7 @@ export async function searchBathrooms(
 
 async function searchBathroomsFallback(
   options: SearchBathroomsOptions
-): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: BathroomDirectoryRow[]; error: (Error & { code?: string }) | null }> {
   try {
     let query = getSupabaseClient()
       .from('v_bathroom_detail_public')
@@ -424,7 +685,10 @@ async function searchBathroomsFallback(
 
     return {
       data: sortBathroomsByFilters(
-        applyBathroomFilters(parsedData.data as PublicBathroomDetailRow[], options.filters),
+        applyBathroomFilters(
+          (parsedData.data as LegacyPublicBathroomDetailRow[]).map(decorateLegacyDirectoryRow),
+          options.filters
+        ),
         options.filters,
         options.origin
       ),
@@ -687,7 +951,7 @@ async function fetchCityBrowseFallback(
 
 export async function fetchBathroomsByIds(
   options: BathroomsByIdOptions
-): Promise<{ data: PublicBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
+): Promise<{ data: CanonicalBathroomDetailRow[]; error: (Error & { code?: string }) | null }> {
   if (!options.bathroomIds.length) {
     return {
       data: [],
@@ -730,7 +994,7 @@ export async function fetchBathroomsByIds(
     );
 
     return {
-      data: orderedBathrooms,
+      data: orderedBathrooms.map((bathroom) => decorateLegacyBathroomDetailRow(bathroom as LegacyPublicBathroomDetailRow)),
       error: null,
     };
   } catch (error) {

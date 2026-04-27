@@ -1,10 +1,8 @@
 {
   "expo": {
-    "name": "PeeDom",
-    "slug": "peedom",
+    "name": "StallPass",
+    "slug": "stallpass",
+    "owner": "stallpass",
     "version": "1.0.0"
-  },
-  "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-3940256099942544~3347511713"
   }
 }

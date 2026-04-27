@@ -1,9 +1,11 @@
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type {
   ImportedPublicBathroomParseResult,
   ImportedPublicBathroomRecord,
   JsonObject,
+  JsonValue,
 } from '../src/lib/import/public-restroom-import';
 
 const { parseNormalizedPublicBathroomImport, parseSeattleParksGeoJson } = (await import(
@@ -18,32 +20,24 @@ interface CliOptions {
   includeLimitedUse: boolean;
 }
 
-interface ExistingBathroomRow {
-  id: string;
-  place_name: string;
-  address_line1: string | null;
-  city: string | null;
-  state: string | null;
-  postal_code: string | null;
-  country_code: string;
-  latitude: number;
-  longitude: number;
-  is_locked: boolean | null;
-  is_accessible: boolean | null;
-  is_customer_only: boolean;
-  accessibility_features: unknown;
-  hours_json: unknown;
-  source_type: string | null;
-  moderation_status: string | null;
-  show_on_free_map: boolean | null;
-  hours_source: string | null;
-  google_place_id: string | null;
-  access_type: string | null;
-  location_archetype: string | null;
-  archetype_metadata: unknown;
+interface SupabaseRestContext {
+  restUrl: string;
+  headers: Record<string, string>;
 }
 
-interface BathroomMutationRow {
+interface SourceRecordLookupRow {
+  id: string;
+  source_key: string;
+  external_source_id: string;
+}
+
+interface SourceImportRunRow {
+  id: string;
+}
+
+interface SourceRecordUpsertPayload {
+  source_key: string;
+  external_source_id: string;
   place_name: string;
   address_line1: string | null;
   city: string | null;
@@ -55,29 +49,41 @@ interface BathroomMutationRow {
   is_locked: boolean | null;
   is_accessible: boolean | null;
   is_customer_only: boolean;
-  accessibility_features: unknown;
-  hours_json: unknown;
-  source_type: string;
-  moderation_status: string;
+  accessibility_features: JsonValue;
+  hours_json: JsonValue | null;
   show_on_free_map: boolean;
   hours_source: string;
   google_place_id: string | null;
   access_type: string;
   location_archetype: string;
   archetype_metadata: JsonObject;
+  source_dataset: string | null;
+  source_url: string | null;
+  source_license_key: string | null;
+  source_attribution_text: string | null;
+  source_updated_at: string | null;
+  raw_payload: JsonObject;
+  raw_payload_hash: string;
+  import_run_id: string;
 }
 
-interface SupabaseRestContext {
-  restUrl: string;
-  headers: Record<string, string>;
+interface ReconcileResultRow {
+  source_record_id: string;
+  canonical_bathroom_id: string | null;
+  action: string;
+  status: string;
 }
 
 interface ApplySummary {
+  importRunId: string;
   inserted: number;
   updated: number;
+  linked: number;
+  promoted: number;
 }
 
 const DEFAULT_SOURCE: CliOptions['source'] = 'seattle-parks';
+const UPSERT_BATCH_SIZE = 200;
 
 function parseArgs(argv: string[]): CliOptions {
   const options: CliOptions = {
@@ -168,23 +174,6 @@ function buildDefaultOutputPath(inputPath: string, source: CliOptions['source'])
   return path.join(normalizedDirectory, fileName);
 }
 
-function normalizeName(value: string): string {
-  return value
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-zA-Z0-9]+/g, ' ')
-    .trim()
-    .toLowerCase();
-}
-
-function roundCoordinate(value: number): string {
-  return value.toFixed(5);
-}
-
-function buildGeoNameKey(placeName: string, latitude: number, longitude: number): string {
-  return `${roundCoordinate(latitude)}:${roundCoordinate(longitude)}:${normalizeName(placeName)}`;
-}
-
 function asJsonObject(value: unknown): JsonObject {
   if (!value || typeof value !== 'object' || Array.isArray(value)) {
     return {};
@@ -193,191 +182,123 @@ function asJsonObject(value: unknown): JsonObject {
   return value as JsonObject;
 }
 
-function buildExternalSourceKey(metadata: unknown): string | null {
-  const metadataObject = asJsonObject(metadata);
-  const importSource = typeof metadataObject.import_source === 'string' ? metadataObject.import_source : null;
-  const externalSourceId =
-    typeof metadataObject.external_source_id === 'string' ? metadataObject.external_source_id : null;
-
-  if (!importSource || !externalSourceId) {
-    return null;
-  }
-
-  return `${importSource}:${externalSourceId}`;
+function getMetadataText(metadata: JsonObject, key: string): string | null {
+  const rawValue = metadata[key];
+  return typeof rawValue === 'string' && rawValue.trim().length > 0 ? rawValue.trim() : null;
 }
 
-function buildImportedSourceKey(importedRecord: ImportedPublicBathroomRecord): string {
+function buildSourceKey(importedRecord: ImportedPublicBathroomRecord): string {
   const metadataObject = asJsonObject(importedRecord.archetype_metadata);
   const importSource =
-    typeof metadataObject.import_source === 'string' ? metadataObject.import_source : 'imported-source';
+    typeof metadataObject.import_source === 'string' && metadataObject.import_source.trim().length > 0
+      ? metadataObject.import_source.trim()
+      : 'public-import';
 
-  return `${importSource}:${importedRecord.external_source_id}`;
+  return importSource;
 }
 
-function mergeArchetypeMetadata(existingValue: unknown, importedValue: JsonObject): JsonObject {
-  return {
-    ...asJsonObject(existingValue),
-    ...importedValue,
-  };
+function buildSourceAttribution(importedRecord: ImportedPublicBathroomRecord, metadataObject: JsonObject): string | null {
+  const sourceKey = buildSourceKey(importedRecord);
+  const explicitAttribution = getMetadataText(metadataObject, 'source_attribution_text');
+
+  if (explicitAttribution) {
+    return explicitAttribution;
+  }
+
+  if (sourceKey === 'osm-overpass-us') {
+    return 'OpenStreetMap contributors';
+  }
+
+  return getMetadataText(metadataObject, 'source_dataset');
 }
 
-function mergeBathroomUpdate(
-  existingRow: ExistingBathroomRow,
-  importedRecord: ImportedPublicBathroomRecord
-): Partial<BathroomMutationRow> {
-  const existingMetadata = asJsonObject(existingRow.archetype_metadata);
-  const existingShowOnFreeMap = existingRow.show_on_free_map ?? true;
+function buildSourceLicenseKey(importedRecord: ImportedPublicBathroomRecord): string | null {
+  return buildSourceKey(importedRecord) === 'osm-overpass-us' ? 'ODbL-1.0' : null;
+}
 
+function buildRawPayload(importedRecord: ImportedPublicBathroomRecord): JsonObject {
   return {
-    place_name: existingRow.place_name || importedRecord.place_name,
-    address_line1: existingRow.address_line1 ?? importedRecord.address_line1,
-    city: existingRow.city ?? importedRecord.city,
-    state: existingRow.state ?? importedRecord.state,
-    postal_code: existingRow.postal_code ?? importedRecord.postal_code,
-    country_code: existingRow.country_code || importedRecord.country_code,
+    external_source_id: importedRecord.external_source_id,
+    dedupe_key: importedRecord.dedupe_key,
+    place_name: importedRecord.place_name,
+    address_line1: importedRecord.address_line1,
+    city: importedRecord.city,
+    state: importedRecord.state,
+    postal_code: importedRecord.postal_code,
+    country_code: importedRecord.country_code,
     latitude: importedRecord.latitude,
     longitude: importedRecord.longitude,
-    is_locked: existingRow.is_locked ?? importedRecord.is_locked,
-    is_accessible: existingRow.is_accessible ?? importedRecord.is_accessible,
-    is_customer_only: existingRow.is_customer_only || importedRecord.is_customer_only,
-    accessibility_features:
-      existingRow.accessibility_features ?? importedRecord.accessibility_features,
-    hours_json: existingRow.hours_json ?? importedRecord.hours_json,
-    source_type: existingRow.source_type ?? importedRecord.source_type,
-    moderation_status:
-      existingRow.moderation_status && existingRow.moderation_status !== 'deleted'
-        ? existingRow.moderation_status
-        : importedRecord.moderation_status,
-    show_on_free_map: existingShowOnFreeMap || importedRecord.show_on_free_map,
-    hours_source: existingRow.hours_source ?? importedRecord.hours_source,
-    google_place_id: existingRow.google_place_id ?? importedRecord.google_place_id,
-    access_type: existingRow.access_type ?? importedRecord.access_type,
-    location_archetype:
-      existingRow.location_archetype && existingRow.location_archetype !== 'general'
-        ? existingRow.location_archetype
-        : importedRecord.location_archetype,
-    archetype_metadata: mergeArchetypeMetadata(existingMetadata, importedRecord.archetype_metadata),
+    is_locked: importedRecord.is_locked,
+    is_accessible: importedRecord.is_accessible,
+    is_customer_only: importedRecord.is_customer_only,
+    accessibility_features: importedRecord.accessibility_features as unknown as JsonValue,
+    hours_json: (importedRecord.hours_json ?? null) as unknown as JsonValue,
+    show_on_free_map: importedRecord.show_on_free_map,
+    hours_source: importedRecord.hours_source,
+    google_place_id: importedRecord.google_place_id,
+    access_type: importedRecord.access_type,
+    location_archetype: importedRecord.location_archetype,
+    archetype_metadata: importedRecord.archetype_metadata,
   };
 }
 
-function buildInsertPayload(importedRecord: ImportedPublicBathroomRecord): BathroomMutationRow {
-  const { dedupe_key, external_source_id, ...databaseRecord } = importedRecord;
+function buildSourceRecordPayload(
+  importedRecord: ImportedPublicBathroomRecord,
+  importRunId: string
+): SourceRecordUpsertPayload {
+  const metadataObject = asJsonObject(importedRecord.archetype_metadata);
+  const rawPayload = buildRawPayload(importedRecord);
 
   return {
-    ...databaseRecord,
-    archetype_metadata: {
-      ...databaseRecord.archetype_metadata,
-      import_dedupe_key: dedupe_key,
-      external_source_id,
-    },
-  } satisfies BathroomMutationRow;
+    source_key: buildSourceKey(importedRecord),
+    external_source_id: importedRecord.external_source_id,
+    place_name: importedRecord.place_name,
+    address_line1: importedRecord.address_line1,
+    city: importedRecord.city,
+    state: importedRecord.state,
+    postal_code: importedRecord.postal_code,
+    country_code: importedRecord.country_code,
+    latitude: importedRecord.latitude,
+    longitude: importedRecord.longitude,
+    is_locked: importedRecord.is_locked,
+    is_accessible: importedRecord.is_accessible,
+    is_customer_only: importedRecord.is_customer_only,
+    accessibility_features: importedRecord.accessibility_features as unknown as JsonValue,
+    hours_json: (importedRecord.hours_json ?? null) as unknown as JsonValue,
+    show_on_free_map: importedRecord.show_on_free_map,
+    hours_source: importedRecord.hours_source,
+    google_place_id: importedRecord.google_place_id,
+    access_type: importedRecord.access_type,
+    location_archetype: importedRecord.location_archetype,
+    archetype_metadata: importedRecord.archetype_metadata,
+    source_dataset: getMetadataText(metadataObject, 'source_dataset'),
+    source_url:
+      getMetadataText(metadataObject, 'website') ??
+      getMetadataText(metadataObject, 'link_1') ??
+      getMetadataText(metadataObject, 'link_2'),
+    source_license_key: buildSourceLicenseKey(importedRecord),
+    source_attribution_text: buildSourceAttribution(importedRecord, metadataObject),
+    source_updated_at:
+      getMetadataText(metadataObject, 'source_timestamp') ??
+      getMetadataText(metadataObject, 'last_edited_at'),
+    raw_payload: rawPayload,
+    raw_payload_hash: createHash('sha256').update(JSON.stringify(rawPayload)).digest('hex'),
+    import_run_id: importRunId,
+  };
 }
 
-async function fetchExistingBathrooms(
-  restContext: SupabaseRestContext,
-  importedRecords: ImportedPublicBathroomRecord[]
-): Promise<ExistingBathroomRow[]> {
-  if (importedRecords.length === 0) {
-    return [];
+function chunkArray<T>(items: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+
+  for (let index = 0; index < items.length; index += size) {
+    chunks.push(items.slice(index, index + size));
   }
 
-  const scopes = new Map<string, { state: string | null; city: string | null; countryCode: string }>();
-
-  for (const importedRecord of importedRecords) {
-    const scopeKey = `${importedRecord.country_code}:${importedRecord.state ?? '__null__'}:${
-      importedRecord.city ?? '__null__'
-    }`;
-
-    if (!scopes.has(scopeKey)) {
-      scopes.set(scopeKey, {
-        state: importedRecord.state,
-        city: importedRecord.city,
-        countryCode: importedRecord.country_code,
-      });
-    }
-  }
-
-  const rowsById = new Map<string, ExistingBathroomRow>();
-
-  for (const scope of scopes.values()) {
-    const requestUrl = new URL(`${restContext.restUrl}/bathrooms`);
-    requestUrl.searchParams.set('select', '*');
-    requestUrl.searchParams.set('country_code', `eq.${scope.countryCode}`);
-
-    if (scope.state) {
-      requestUrl.searchParams.set('state', `eq.${scope.state}`);
-    } else if (scope.city) {
-      requestUrl.searchParams.set('city', `eq.${scope.city}`);
-    }
-
-    const scopeRows = await requestJson<ExistingBathroomRow[]>(requestUrl, {
-      method: 'GET',
-      headers: restContext.headers,
-    });
-
-    for (const row of scopeRows) {
-      rowsById.set(row.id, row);
-    }
-  }
-
-  return Array.from(rowsById.values());
+  return chunks;
 }
 
-async function applyRecords(
-  restContext: SupabaseRestContext,
-  importedRecords: ImportedPublicBathroomRecord[]
-): Promise<ApplySummary> {
-  const existingRows = await fetchExistingBathrooms(restContext, importedRecords);
-  const sourceIdMap = new Map<string, ExistingBathroomRow>();
-  const geoNameMap = new Map<string, ExistingBathroomRow>();
-
-  for (const existingRow of existingRows) {
-    const externalSourceKey = buildExternalSourceKey(existingRow.archetype_metadata);
-
-    if (externalSourceKey) {
-      sourceIdMap.set(externalSourceKey, existingRow);
-    }
-
-    if (existingRow.moderation_status !== 'deleted') {
-      geoNameMap.set(
-        buildGeoNameKey(existingRow.place_name, existingRow.latitude, existingRow.longitude),
-        existingRow
-      );
-    }
-  }
-
-  let inserted = 0;
-  let updated = 0;
-
-  for (const importedRecord of importedRecords) {
-    const sourceKey = buildImportedSourceKey(importedRecord);
-    const bySourceId = sourceIdMap.get(sourceKey);
-    const byGeoName = geoNameMap.get(importedRecord.dedupe_key);
-    const existingRow = bySourceId ?? byGeoName ?? null;
-
-    if (existingRow) {
-      const updatePayload = mergeBathroomUpdate(existingRow, importedRecord);
-      await updateBathroom(restContext, existingRow.id, updatePayload);
-
-      const refreshedRow: ExistingBathroomRow = {
-        ...existingRow,
-        ...updatePayload,
-        id: existingRow.id,
-      } as ExistingBathroomRow;
-      sourceIdMap.set(sourceKey, refreshedRow);
-      geoNameMap.set(importedRecord.dedupe_key, refreshedRow);
-      updated += 1;
-      continue;
-    }
-
-    const insertPayload = buildInsertPayload(importedRecord);
-    const insertedRow = await insertBathroom(restContext, insertPayload);
-    sourceIdMap.set(sourceKey, insertedRow);
-    geoNameMap.set(importedRecord.dedupe_key, insertedRow);
-    inserted += 1;
-  }
-
-  return { inserted, updated };
+function buildPostgrestInFilter(values: string[]): string {
+  return `in.(${values.map((value) => JSON.stringify(value)).join(',')})`;
 }
 
 function formatSummary(parseResult: ImportedPublicBathroomParseResult): string {
@@ -401,6 +322,10 @@ async function requestJson<T>(requestUrl: URL, init: RequestInit): Promise<T> {
     throw new Error(`Supabase REST request failed (${response.status}): ${responseBody}`);
   }
 
+  if (response.status === 204) {
+    return [] as T;
+  }
+
   return (await response.json()) as T;
 }
 
@@ -415,13 +340,55 @@ function createRestContext(supabaseUrl: string, serviceRoleKey: string): Supabas
   };
 }
 
-async function updateBathroom(
+async function createImportRun(
   restContext: SupabaseRestContext,
-  bathroomId: string,
-  updatePayload: Partial<BathroomMutationRow>
+  options: {
+    sourceKey: string;
+    sourceDataset: string | null;
+    totalRecords: number;
+    rawArtifactPath: string | null;
+    normalizedArtifactPath: string | null;
+    rawArtifactHash: string | null;
+    normalizedArtifactHash: string;
+  }
+): Promise<SourceImportRunRow> {
+  const requestUrl = new URL(`${restContext.restUrl}/bathroom_source_import_runs`);
+  requestUrl.searchParams.set('select', 'id');
+
+  const insertedRows = await requestJson<SourceImportRunRow[]>(requestUrl, {
+    method: 'POST',
+    headers: {
+      ...restContext.headers,
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify({
+      source_key: options.sourceKey,
+      source_dataset: options.sourceDataset,
+      status: 'pending',
+      total_records: options.totalRecords,
+      raw_artifact_path: options.rawArtifactPath,
+      normalized_artifact_path: options.normalizedArtifactPath,
+      raw_artifact_hash: options.rawArtifactHash,
+      normalized_artifact_hash: options.normalizedArtifactHash,
+    }),
+  });
+
+  const importRun = insertedRows[0];
+
+  if (!importRun) {
+    throw new Error('Supabase import run insert succeeded but returned no row.');
+  }
+
+  return importRun;
+}
+
+async function updateImportRun(
+  restContext: SupabaseRestContext,
+  importRunId: string,
+  patch: Record<string, unknown>
 ): Promise<void> {
-  const requestUrl = new URL(`${restContext.restUrl}/bathrooms`);
-  requestUrl.searchParams.set('id', `eq.${bathroomId}`);
+  const requestUrl = new URL(`${restContext.restUrl}/bathroom_source_import_runs`);
+  requestUrl.searchParams.set('id', `eq.${importRunId}`);
 
   const response = await fetch(requestUrl, {
     method: 'PATCH',
@@ -429,38 +396,181 @@ async function updateBathroom(
       ...restContext.headers,
       Prefer: 'return=minimal',
     },
-    body: JSON.stringify(updatePayload),
+    body: JSON.stringify({
+      ...patch,
+      updated_at: new Date().toISOString(),
+    }),
   });
 
   if (!response.ok) {
     const responseBody = await response.text();
-    throw new Error(`Unable to update bathroom ${bathroomId}: ${responseBody}`);
+    throw new Error(`Unable to update import run ${importRunId}: ${responseBody}`);
   }
 }
 
-async function insertBathroom(
+async function fetchExistingSourceRecords(
   restContext: SupabaseRestContext,
-  insertPayload: BathroomMutationRow
-): Promise<ExistingBathroomRow> {
-  const requestUrl = new URL(`${restContext.restUrl}/bathrooms`);
-  requestUrl.searchParams.set('select', '*');
-
-  const insertedRows = await requestJson<ExistingBathroomRow[]>(requestUrl, {
-    method: 'POST',
-    headers: {
-      ...restContext.headers,
-      Prefer: 'return=representation',
-    },
-    body: JSON.stringify(insertPayload),
-  });
-
-  const insertedRow = insertedRows[0];
-
-  if (!insertedRow) {
-    throw new Error('Supabase insert succeeded but returned no bathroom row.');
+  importedRecords: ImportedPublicBathroomRecord[]
+): Promise<SourceRecordLookupRow[]> {
+  if (importedRecords.length === 0) {
+    return [];
   }
 
-  return insertedRow;
+  const sourceKeys = new Map<string, string[]>();
+
+  for (const importedRecord of importedRecords) {
+    const sourceKey = buildSourceKey(importedRecord);
+    const externalSourceIds = sourceKeys.get(sourceKey) ?? [];
+    externalSourceIds.push(importedRecord.external_source_id);
+    sourceKeys.set(sourceKey, externalSourceIds);
+  }
+
+  const existingRows = new Map<string, SourceRecordLookupRow>();
+
+  for (const [sourceKey, externalSourceIds] of sourceKeys.entries()) {
+    const uniqueIds = [...new Set(externalSourceIds)];
+
+    for (const idChunk of chunkArray(uniqueIds, UPSERT_BATCH_SIZE)) {
+      const requestUrl = new URL(`${restContext.restUrl}/bathroom_source_records`);
+      requestUrl.searchParams.set('select', 'id,source_key,external_source_id');
+      requestUrl.searchParams.set('source_key', `eq.${sourceKey}`);
+      requestUrl.searchParams.set('external_source_id', buildPostgrestInFilter(idChunk));
+
+      const chunkRows = await requestJson<SourceRecordLookupRow[]>(requestUrl, {
+        method: 'GET',
+        headers: restContext.headers,
+      });
+
+      for (const row of chunkRows) {
+        existingRows.set(`${row.source_key}:${row.external_source_id}`, row);
+      }
+    }
+  }
+
+  return Array.from(existingRows.values());
+}
+
+async function upsertSourceRecords(
+  restContext: SupabaseRestContext,
+  payloads: SourceRecordUpsertPayload[]
+): Promise<void> {
+  for (const payloadChunk of chunkArray(payloads, UPSERT_BATCH_SIZE)) {
+    const requestUrl = new URL(`${restContext.restUrl}/bathroom_source_records`);
+    requestUrl.searchParams.set('on_conflict', 'source_key,external_source_id');
+
+    await requestJson<SourceRecordLookupRow[]>(requestUrl, {
+      method: 'POST',
+      headers: {
+        ...restContext.headers,
+        Prefer: 'resolution=merge-duplicates,return=minimal',
+      },
+      body: JSON.stringify(payloadChunk),
+    });
+  }
+}
+
+async function reconcileSourceRecords(
+  restContext: SupabaseRestContext,
+  importedRecords: ImportedPublicBathroomRecord[]
+): Promise<ReconcileResultRow[]> {
+  const groupedIds = new Map<string, string[]>();
+
+  for (const importedRecord of importedRecords) {
+    const sourceKey = buildSourceKey(importedRecord);
+    const ids = groupedIds.get(sourceKey) ?? [];
+    ids.push(importedRecord.external_source_id);
+    groupedIds.set(sourceKey, ids);
+  }
+
+  const results: ReconcileResultRow[] = [];
+
+  for (const [sourceKey, externalSourceIds] of groupedIds.entries()) {
+    const uniqueIds = [...new Set(externalSourceIds)];
+
+    for (const idChunk of chunkArray(uniqueIds, UPSERT_BATCH_SIZE)) {
+      const requestUrl = new URL(`${restContext.restUrl}/rpc/reconcile_bathroom_source_records`);
+      const chunkResults = await requestJson<ReconcileResultRow[]>(requestUrl, {
+        method: 'POST',
+        headers: restContext.headers,
+        body: JSON.stringify({
+          p_source_key: sourceKey,
+          p_external_source_ids: idChunk,
+        }),
+      });
+
+      results.push(...chunkResults);
+    }
+  }
+
+  return results;
+}
+
+async function applySourceRecords(
+  restContext: SupabaseRestContext,
+  importedRecords: ImportedPublicBathroomRecord[],
+  artifactPaths: {
+    inputPath: string;
+    normalizedPath: string;
+  }
+): Promise<ApplySummary> {
+  if (importedRecords.length === 0) {
+    throw new Error('No imported records were available to apply.');
+  }
+
+  const existingRows = await fetchExistingSourceRecords(restContext, importedRecords);
+  const existingKeys = new Set(existingRows.map((row) => `${row.source_key}:${row.external_source_id}`));
+  const metadataObject = asJsonObject(importedRecords[0]?.archetype_metadata);
+  const sourceKey = buildSourceKey(importedRecords[0]);
+  const sourceDataset = getMetadataText(metadataObject, 'source_dataset');
+  const rawArtifactHash = createHash('sha256').update(await readFile(artifactPaths.inputPath, 'utf8')).digest('hex');
+  const normalizedArtifactHash = createHash('sha256')
+    .update(await readFile(artifactPaths.normalizedPath, 'utf8'))
+    .digest('hex');
+  const importRun = await createImportRun(restContext, {
+    sourceKey,
+    sourceDataset,
+    totalRecords: importedRecords.length,
+    rawArtifactPath: artifactPaths.inputPath,
+    normalizedArtifactPath: artifactPaths.normalizedPath,
+    rawArtifactHash,
+    normalizedArtifactHash,
+  });
+
+  try {
+    const payloads = importedRecords.map((record) => buildSourceRecordPayload(record, importRun.id));
+    await upsertSourceRecords(restContext, payloads);
+    const reconcileResults = await reconcileSourceRecords(restContext, importedRecords);
+    const inserted = importedRecords.filter(
+      (record) => !existingKeys.has(`${buildSourceKey(record)}:${record.external_source_id}`)
+    ).length;
+    const updated = importedRecords.length - inserted;
+    const linked = reconcileResults.filter((result) => result.status === 'linked' || result.action === 'already_linked').length;
+    const promoted = reconcileResults.filter((result) => result.status === 'promoted').length;
+
+    await updateImportRun(restContext, importRun.id, {
+      status: 'applied',
+      inserted_records: inserted,
+      updated_records: updated,
+      linked_records: linked,
+      promoted_records: promoted,
+      completed_at: new Date().toISOString(),
+    });
+
+    return {
+      importRunId: importRun.id,
+      inserted,
+      updated,
+      linked,
+      promoted,
+    };
+  } catch (error) {
+    await updateImportRun(restContext, importRun.id, {
+      status: 'failed',
+      operator_notes: error instanceof Error ? error.message : String(error),
+      completed_at: new Date().toISOString(),
+    });
+    throw error;
+  }
 }
 
 async function main(): Promise<void> {
@@ -500,9 +610,13 @@ async function main(): Promise<void> {
   }
 
   const restContext = createRestContext(supabaseUrl, serviceRoleKey);
-  const applySummary = await applyRecords(restContext, parseResult.records);
+  const applySummary = await applySourceRecords(restContext, parseResult.records, {
+    inputPath,
+    normalizedPath: outputPath,
+  });
+
   console.log(
-    `Applied to Supabase. Inserted ${applySummary.inserted} and updated ${applySummary.updated} bathrooms.`
+    `Applied to source records. Import run ${applySummary.importRunId} inserted ${applySummary.inserted}, updated ${applySummary.updated}, linked ${applySummary.linked}, and promoted ${applySummary.promoted}.`
   );
 }
 

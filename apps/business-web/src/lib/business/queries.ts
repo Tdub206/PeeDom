@@ -16,7 +16,7 @@ type ApprovedClaimRow = Pick<
 
 type BathroomRow = Pick<
   BusinessWebDatabase['public']['Tables']['bathrooms']['Row'],
-  'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at'
+  'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at' | 'is_locked'
 >;
 
 export type { BusinessCouponRow, BusinessLocationCodeRow } from '@/lib/business/schemas';
@@ -64,6 +64,7 @@ type BlockingClaimRow = Pick<
 
 export type ApprovedLocation = BusinessDashboardBathroom & {
   address: string;
+  is_locked: boolean | null;
 };
 
 export interface ApprovedLocationQueryResult {
@@ -166,7 +167,7 @@ export async function getApprovedLocations(
   ] = await Promise.all([
     supabase
       .from('bathrooms')
-      .select('id, place_name, address_line1, city, state, postal_code, show_on_free_map, updated_at')
+      .select('id, place_name, address_line1, city, state, postal_code, show_on_free_map, updated_at, is_locked')
       .in('id', bathroomIds)
       .overrideTypes<BathroomRow[]>(),
     (supabase as unknown as AnalyticsRpcClient).rpc('get_business_dashboard_analytics', {
@@ -252,6 +253,7 @@ function hydrateApprovedLocation(
       place_name: bathroom.place_name,
       business_name: claim.business_name,
       address: formatBathroomAddress(bathroom),
+      is_locked: bathroom.is_locked,
     };
   }
 
@@ -280,6 +282,7 @@ function hydrateApprovedLocation(
     pricing_plan: claim.is_lifetime_free ? 'lifetime' : 'standard',
     last_updated: bathroom.updated_at,
     address: formatBathroomAddress(bathroom),
+    is_locked: bathroom.is_locked,
   };
 }
 

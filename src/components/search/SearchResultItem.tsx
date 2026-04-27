@@ -64,6 +64,7 @@ function SearchResultItemComponent({
   onPress,
   onToggleFavorite,
 }: SearchResultItemProps) {
+  const canFavorite = item.can_favorite !== false;
   const tone = getBathroomMapPinTone(item);
   const toneCopy = TONE_COPY[tone];
   const openNow = isBathroomOpenNow(item.hours);
@@ -111,28 +112,30 @@ function SearchResultItemComponent({
           <Text className="mt-2 text-sm leading-6 text-ink-600">{item.address}</Text>
         </View>
 
-        <Pressable
-          accessibilityLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
-          accessibilityHint="Saves this bathroom for faster access later."
-          accessibilityRole="button"
-          accessibilityState={{ busy: isFavoritePending }}
-          className={[
-            'h-12 w-12 items-center justify-center rounded-full border',
-            isFavorited ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
-            isFavoritePending ? 'opacity-60' : '',
-          ].join(' ')}
-          disabled={isFavoritePending}
-          onPress={(event: GestureResponderEvent) => {
-            event.stopPropagation();
-            onToggleFavorite();
-          }}
-        >
-          <Ionicons
-            color={isFavorited ? colors.brand[600] : colors.ink[500]}
-            name={isFavorited ? 'heart' : 'heart-outline'}
-            size={20}
-          />
-        </Pressable>
+        {canFavorite ? (
+          <Pressable
+            accessibilityLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
+            accessibilityHint="Saves this bathroom for faster access later."
+            accessibilityRole="button"
+            accessibilityState={{ busy: isFavoritePending }}
+            className={[
+              'h-12 w-12 items-center justify-center rounded-full border',
+              isFavorited ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
+              isFavoritePending ? 'opacity-60' : '',
+            ].join(' ')}
+            disabled={isFavoritePending}
+            onPress={(event: GestureResponderEvent) => {
+              event.stopPropagation();
+              onToggleFavorite();
+            }}
+          >
+            <Ionicons
+              color={isFavorited ? colors.brand[600] : colors.ink[500]}
+              name={isFavorited ? 'heart' : 'heart-outline'}
+              size={20}
+            />
+          </Pressable>
+        ) : null}
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-2">

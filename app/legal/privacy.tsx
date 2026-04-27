@@ -78,7 +78,7 @@ export default function PrivacyPolicyScreen() {
               You can sign out from the Profile screen whenever you want to stop syncing account data on the device.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
-              You can export your data from the Profile screen and contact support@stallpass.org for privacy-related support requests.
+              You can export your data from the Profile screen and contact support@stallpass.app for privacy-related support requests.
             </Text>
             <Text className="mt-3 text-base leading-7 text-ink-700">
               You can delete your account from the in-app Account Deletion screen, which is also designed to be published on the web for external account deletion access.

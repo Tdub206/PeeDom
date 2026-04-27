@@ -16,9 +16,18 @@ import {
 } from 'lucide-react';
 import { getApprovedLocationById, type ApprovedLocation } from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { PhotoUploadForm } from './photo-upload-form';
 import { VisibilitySettingsForm } from './visibility-settings-form';
 
 type PageParams = { id: string };
+
+// Minimal shape we project from bathroom_photos for the photo strip.
+// `overrideTypes` below tells the Supabase client what the selected columns resolve to.
+type BathroomPhotoRow = {
+  id: string;
+  storage_path: string;
+  moderation_status: 'approved' | 'pending' | 'rejected';
+};
 
 export async function generateMetadata({
   params,
@@ -83,6 +92,26 @@ export default async function LocationDetailPage({
   if (!location) {
     notFound();
   }
+
+  const { data: photosData, error: photosError } = await supabase
+    .from('bathroom_photos')
+    .select('id, storage_path, moderation_status')
+    .eq('bathroom_id', location.bathroom_id)
+    .neq('moderation_status', 'rejected')
+    .order('created_at', { ascending: false })
+    .limit(30)
+    .overrideTypes<BathroomPhotoRow[]>();
+
+  const existingPhotos = (photosData ?? []).map((row) => ({
+    id: row.id,
+    storage_path: row.storage_path,
+    moderation_status: row.moderation_status as 'approved' | 'pending' | 'rejected',
+    url: supabase.storage.from('bathroom-photos').getPublicUrl(row.storage_path).data.publicUrl,
+  }));
+
+  const photoLoadError = photosError
+    ? 'Existing photos are temporarily unavailable. You can still upload new ones.'
+    : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-10 py-10">
@@ -155,7 +184,27 @@ export default async function LocationDetailPage({
           requiresPremiumAccess={location.requires_premium_access}
           showOnFreeMap={location.show_on_free_map}
           isLocationVerified={location.is_location_verified}
+          isLocked={location.is_locked ?? false}
         />
+      </section>
+
+      <section className="mt-10">
+        <SectionHeader
+          eyebrow="Media"
+          title="Photos"
+          description="Upload photos of the exterior, interior, or entry keypad. Images go into moderation review before appearing publicly."
+        />
+        <div className="rounded-4xl border border-surface-strong bg-surface-card p-6 shadow-card">
+          {photoLoadError ? (
+            <div className="mb-4 rounded-2xl border border-warning/20 bg-warning/10 px-4 py-3 text-sm text-warning">
+              {photoLoadError}
+            </div>
+          ) : null}
+          <PhotoUploadForm
+            bathroomId={location.bathroom_id}
+            initialPhotos={existingPhotos}
+          />
+        </div>
       </section>
 
       <section className="mt-10">

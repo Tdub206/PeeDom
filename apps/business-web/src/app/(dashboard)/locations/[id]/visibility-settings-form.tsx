@@ -13,6 +13,7 @@ interface VisibilitySettingsFormProps {
   requiresPremiumAccess: boolean;
   showOnFreeMap: boolean;
   isLocationVerified: boolean;
+  isLocked: boolean;
 }
 
 interface VisibilitySettingsState {
@@ -20,6 +21,7 @@ interface VisibilitySettingsState {
   requires_premium_access: boolean;
   show_on_free_map: boolean;
   is_location_verified: boolean;
+  is_locked: boolean;
 }
 
 type SaveState = 'idle' | 'saving' | 'success' | 'error';
@@ -30,6 +32,7 @@ export function VisibilitySettingsForm({
   requiresPremiumAccess,
   showOnFreeMap,
   isLocationVerified,
+  isLocked,
 }: VisibilitySettingsFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
@@ -41,6 +44,7 @@ export function VisibilitySettingsForm({
       requires_premium_access: requiresPremiumAccess,
       show_on_free_map: showOnFreeMap,
       is_location_verified: isLocationVerified,
+      is_locked: isLocked,
     })
   );
   const [draftState, setDraftState] = useState<VisibilitySettingsState>(confirmedState);
@@ -51,26 +55,28 @@ export function VisibilitySettingsForm({
       requires_premium_access: requiresPremiumAccess,
       show_on_free_map: showOnFreeMap,
       is_location_verified: isLocationVerified,
+      is_locked: isLocked,
     });
 
     setConfirmedState(nextState);
     setDraftState(nextState);
     setSaveState('idle');
     setMessage(null);
-  }, [bathroomId, isLocationVerified, requiresPremiumAccess, showOnFreeMap]);
+  }, [bathroomId, isLocationVerified, isLocked, requiresPremiumAccess, showOnFreeMap]);
 
   const hasChanges = useMemo(
     () =>
       draftState.requires_premium_access !== confirmedState.requires_premium_access ||
       draftState.show_on_free_map !== confirmedState.show_on_free_map ||
-      draftState.is_location_verified !== confirmedState.is_location_verified,
+      draftState.is_location_verified !== confirmedState.is_location_verified ||
+      draftState.is_locked !== confirmedState.is_locked,
     [confirmedState, draftState]
   );
 
   function updateDraftState(
     key: keyof Pick<
       VisibilitySettingsState,
-      'requires_premium_access' | 'show_on_free_map' | 'is_location_verified'
+      'requires_premium_access' | 'show_on_free_map' | 'is_location_verified' | 'is_locked'
     >,
     value: boolean
   ) {
@@ -147,6 +153,14 @@ export function VisibilitySettingsForm({
         disabled={isPending}
         tone="success"
         onChange={(value) => updateDraftState('is_location_verified', value)}
+      />
+      <SettingRow
+        label="Require access code"
+        description="When on, users must enter a valid access code to unlock this bathroom in the app."
+        value={draftState.is_locked}
+        disabled={isPending}
+        tone="brand"
+        onChange={(value) => updateDraftState('is_locked', value)}
       />
 
       <div className="rounded-4xl border border-surface-strong bg-surface-card p-5 shadow-card">
@@ -259,10 +273,7 @@ function StatusMessage({
 
 function normalizeState(state: VisibilitySettingsState): VisibilitySettingsState {
   if (!state.requires_premium_access) {
-    return {
-      ...state,
-      show_on_free_map: true,
-    };
+    return { ...state, show_on_free_map: true };
   }
 
   return state;

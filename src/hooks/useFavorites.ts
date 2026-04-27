@@ -27,6 +27,7 @@ import {
   type Coordinates,
 } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
+import { getCanonicalBathroomId } from '@/utils/bathroom';
 import { isTransientNetworkError } from '@/utils/network';
 
 interface FavoritesPage {
@@ -38,7 +39,14 @@ interface FavoritesPage {
 const FAVORITES_PAGE_SIZE = 50;
 
 function buildScopedBathroomIds(items: BathroomListItem[]): string[] {
-  return [...new Set(items.map((item) => item.id).filter((id) => id.length > 0))];
+  return [
+    ...new Set(
+      items
+        .filter((item) => item.can_favorite !== false)
+        .map((item) => getCanonicalBathroomId(item))
+        .filter((id): id is string => typeof id === 'string' && id.length > 0)
+    ),
+  ];
 }
 
 export function useFavoriteDirectory(origin?: Coordinates | null) {
@@ -320,9 +328,20 @@ export function useFavorites(replayCandidates: BathroomListItem[] = []) {
 
   const toggleFavorite = useCallback(
     async (item: BathroomListItem): Promise<MutationOutcome> => {
-      return commitFavoriteChange(item.id);
+      const canonicalBathroomId = getCanonicalBathroomId(item);
+
+      if (item.can_favorite === false || !canonicalBathroomId) {
+        showToast({
+          title: 'Favorites unavailable',
+          message: 'Source candidates can be verified and navigated to, but they cannot be saved to favorites yet.',
+          variant: 'warning',
+        });
+        return 'completed';
+      }
+
+      return commitFavoriteChange(canonicalBathroomId);
     },
-    [commitFavoriteChange]
+    [commitFavoriteChange, showToast]
   );
 
   useEffect(() => {

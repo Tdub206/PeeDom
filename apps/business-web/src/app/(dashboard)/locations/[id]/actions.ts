@@ -78,6 +78,7 @@ export async function upsertBusinessBathroomSettings(
       p_requires_premium_access: normalizedInput.requires_premium_access,
       p_show_on_free_map: normalizedInput.show_on_free_map,
       p_is_location_verified: normalizedInput.is_location_verified,
+      p_is_locked: normalizedInput.is_locked,
     }
   );
 

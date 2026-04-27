@@ -7,9 +7,9 @@ import { submitBathroomAccessibilityUpdate } from '@/api/accessibility';
 import { submitBugReport } from '@/api/bug-reports';
 import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
-import { verifyImportedBathroomLocation } from '@/api/imported-location-verifications';
 import { reportBathroomStatus } from '@/api/notifications';
 import { createBathroomReport } from '@/api/reports';
+import { verifySourceRecordLocation } from '@/api/source-record-verifications';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
@@ -26,8 +26,8 @@ import {
   CodeSubmitMutationPayload,
   CodeVoteMutationPayload,
   FavoriteMutationPayload,
-  ImportedLocationVerificationMutationPayload,
   ReportType,
+  SourceRecordVerificationMutationPayload,
 } from '@/types';
 import { isTransientNetworkError } from '@/utils/network';
 import { bugReportPayloadSchema } from '@/utils/validate';
@@ -115,12 +115,12 @@ function isBathroomStatusMutationPayload(
   );
 }
 
-function isImportedLocationVerificationMutationPayload(
+function isSourceRecordVerificationMutationPayload(
   payload: Record<string, unknown>
-): payload is Record<string, unknown> & ImportedLocationVerificationMutationPayload {
+): payload is Record<string, unknown> & SourceRecordVerificationMutationPayload {
   return (
-    typeof payload.bathroom_id === 'string' &&
-    payload.bathroom_id.length > 0 &&
+    typeof payload.source_record_id === 'string' &&
+    payload.source_record_id.length > 0 &&
     typeof payload.location_exists === 'boolean' &&
     (typeof payload.note === 'undefined' || payload.note === null || typeof payload.note === 'string')
   );
@@ -274,12 +274,12 @@ export function useOfflineSync() {
             return !isTransientNetworkError(statusResult.error);
           }
           case 'location_verification': {
-            if (!isImportedLocationVerificationMutationPayload(mutation.payload)) {
+            if (!isSourceRecordVerificationMutationPayload(mutation.payload)) {
               return false;
             }
 
-            const verificationResult = await verifyImportedBathroomLocation({
-              bathroom_id: mutation.payload.bathroom_id,
+            const verificationResult = await verifySourceRecordLocation({
+              source_record_id: mutation.payload.source_record_id,
               location_exists: mutation.payload.location_exists,
               note: typeof mutation.payload.note === 'string' ? mutation.payload.note : null,
             });
@@ -336,6 +336,9 @@ export function useOfflineSync() {
             queryKey: ['bathroom-detail'],
           }),
           queryClient.invalidateQueries({
+            queryKey: ['source-candidate-detail'],
+          }),
+          queryClient.invalidateQueries({
             queryKey: ['bathrooms'],
           }),
           queryClient.invalidateQueries({
@@ -380,7 +383,6 @@ export function useOfflineSync() {
       useOfflineSyncStore
         .getState()
         .markWarning(error instanceof Error ? error.message : 'Unable to process the offline queue right now.');
-      throw error;
     }
   }, [queryClient, showToast, userId]);
 

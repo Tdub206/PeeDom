@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="StallPass Business Dashboard prototype served as a static React experience for Firebase Hosting."
+  >
+  <meta property="og:title" content="StallPass Business Dashboard">
+  <meta
+    property="og:description"
+    content="Manage locations, analytics, coupons, access codes, claims, and settings in the StallPass Business Dashboard."
+  >
+  <meta property="og:image" content="/assets/open-graph-social-preview.png">
+  <meta property="og:type" content="website">
+  <title>StallPass Business Dashboard</title>
+  <link rel="icon" type="image/png" href="/assets/pwa-icon-192.png">
+  <link rel="apple-touch-icon" href="/assets/pwa-icon-512.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/dashboard/styles.css">
+</head>
+<body>
+  <div id="root"></div>
+  <noscript>This dashboard requires JavaScript to run.</noscript>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel" data-presets="env,react" src="/dashboard/data.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/shared.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/sidebar.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/hub.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/locations.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/analytics.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/coupons.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/codes.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/featured.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/claims.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/settings.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/ai.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/notifs.jsx"></script>
+  <script type="text/babel" data-presets="env,react" src="/dashboard/app.jsx"></script>
+</body>
+</html>

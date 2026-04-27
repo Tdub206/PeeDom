@@ -166,4 +166,5 @@ export const routes = {
     accountDeletion: '/legal/account-deletion' as Href,
   },
   bathroomDetail: (bathroomId: string) => `/bathroom/${bathroomId}` as Href,
+  candidateDetail: (sourceRecordId: string) => `/candidate/${sourceRecordId}` as Href,
 } as const;

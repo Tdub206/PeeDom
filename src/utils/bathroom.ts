@@ -5,6 +5,7 @@ import {
   BathroomConfidenceProfile,
   BathroomConfidenceTone,
   BathroomFilters,
+  BathroomListingKind,
   BathroomListItem,
   BathroomRecommendation,
   BathroomRecommendationScenario,
@@ -27,7 +28,10 @@ type BathroomAccessibilityFeaturesInput =
   | null;
 
 interface BathroomDirectoryRowBase {
-  id: string;
+  id?: string;
+  listing_kind?: BathroomListingKind;
+  bathroom_id?: string | null;
+  source_record_id?: string | null;
   place_name: string;
   address_line1: string | null;
   city: string | null;
@@ -69,6 +73,24 @@ interface BathroomDirectoryRowBase {
   has_official_code?: boolean;
   owner_code_last_verified_at?: string | null;
   official_access_instructions?: string | null;
+  origin_source_key?: string | null;
+  origin_label?: string | null;
+  origin_attribution_short?: string | null;
+  source_dataset?: string | null;
+  source_license_key?: string | null;
+  source_url?: string | null;
+  source_updated_at?: string | null;
+  source_last_verified_at?: string | null;
+  source_confirmation_count?: number;
+  source_denial_count?: number;
+  source_weighted_confirmation_score?: number;
+  source_weighted_denial_score?: number;
+  source_freshness_status?: ImportedLocationFreshnessStatus | null;
+  source_needs_review?: boolean;
+  can_favorite?: boolean;
+  can_submit_code?: boolean;
+  can_report_live_status?: boolean;
+  can_claim_business?: boolean;
   imported_location_last_verified_at?: string | null;
   imported_location_confirmation_count?: number;
   imported_location_denial_count?: number;
@@ -145,16 +167,62 @@ function normalizeArchetypeMetadata(
 }
 
 export function isOverpassImportedBathroom(
-  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata'>
+  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata' | 'origin_source_key'>
 ): boolean {
-  return getArchetypeMetadataValue(bathroom.archetype_metadata ?? null, 'import_source') === 'osm-overpass-us';
+  return (
+    bathroom.origin_source_key === 'osm-overpass-us' ||
+    getArchetypeMetadataValue(bathroom.archetype_metadata ?? null, 'import_source') === 'osm-overpass-us'
+  );
+}
+
+export function isSourceCandidate(
+  bathroom: Pick<BathroomDirectoryRowBase, 'listing_kind' | 'source_record_id'>
+): boolean {
+  return bathroom.listing_kind === 'source_candidate' || typeof bathroom.source_record_id === 'string';
+}
+
+export function getCanonicalBathroomId(
+  bathroom: Pick<BathroomDirectoryRowBase, 'bathroom_id' | 'id' | 'listing_kind' | 'source_record_id'>
+): string | null {
+  if (typeof bathroom.bathroom_id === 'string' && bathroom.bathroom_id.length > 0) {
+    return bathroom.bathroom_id;
+  }
+
+  if (!isSourceCandidate(bathroom) && typeof bathroom.id === 'string' && bathroom.id.length > 0) {
+    return bathroom.id;
+  }
+
+  return null;
+}
+
+export function getBathroomListingId(
+  bathroom: Pick<BathroomDirectoryRowBase, 'bathroom_id' | 'id' | 'listing_kind' | 'source_record_id'>
+): string {
+  if (isSourceCandidate(bathroom) && typeof bathroom.source_record_id === 'string' && bathroom.source_record_id.length > 0) {
+    return bathroom.source_record_id;
+  }
+
+  return (
+    getCanonicalBathroomId(bathroom) ??
+    bathroom.source_record_id ??
+    bathroom.id ??
+    ''
+  );
 }
 
 export function getBathroomOriginBadgeLabel(
-  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata'>
+  bathroom: Pick<BathroomDirectoryRowBase, 'archetype_metadata' | 'listing_kind' | 'origin_label' | 'origin_source_key' | 'source_record_id'>
 ): string | null {
   if (isOverpassImportedBathroom(bathroom)) {
     return 'OSM Import';
+  }
+
+  if (typeof bathroom.origin_label === 'string' && bathroom.origin_label.trim().length > 0) {
+    return bathroom.origin_label.trim();
+  }
+
+  if (isSourceCandidate(bathroom)) {
+    return 'Imported Candidate';
   }
 
   return null;
@@ -1026,6 +1094,13 @@ export function mapBathroomRowToListItem(
   bathroom: BathroomDirectoryRow,
   options: MappingOptions
 ): BathroomListItem {
+  const listingKind = bathroom.listing_kind ?? (bathroom.source_record_id ? 'source_candidate' : 'canonical');
+  const bathroomId = getCanonicalBathroomId(bathroom);
+  const sourceRecordId =
+    typeof bathroom.source_record_id === 'string' && bathroom.source_record_id.length > 0
+      ? bathroom.source_record_id
+      : null;
+  const listingId = getBathroomListingId(bathroom);
   const accessibilityFeatures = normalizeAccessibilityFeatures(bathroom.accessibility_features);
   const accessibilityScore =
     typeof bathroom.accessibility_score === 'number'
@@ -1041,9 +1116,40 @@ export function mapBathroomRowToListItem(
             longitude: bathroom.longitude,
           })
         : undefined;
+  const importedLocationLastVerifiedAt =
+    bathroom.source_last_verified_at ??
+    bathroom.imported_location_last_verified_at ??
+    null;
+  const importedLocationConfirmationCount =
+    bathroom.source_confirmation_count ??
+    bathroom.imported_location_confirmation_count ??
+    0;
+  const importedLocationDenialCount =
+    bathroom.source_denial_count ??
+    bathroom.imported_location_denial_count ??
+    0;
+  const importedLocationWeightedConfirmationScore =
+    bathroom.source_weighted_confirmation_score ??
+    bathroom.imported_location_weighted_confirmation_score ??
+    0;
+  const importedLocationWeightedDenialScore =
+    bathroom.source_weighted_denial_score ??
+    bathroom.imported_location_weighted_denial_score ??
+    0;
+  const importedLocationFreshnessStatus =
+    bathroom.source_freshness_status ??
+    bathroom.imported_location_freshness_status ??
+    null;
+  const importedLocationNeedsReview =
+    bathroom.source_needs_review ??
+    bathroom.imported_location_needs_review ??
+    false;
 
   return {
-    id: bathroom.id,
+    id: listingId,
+    listing_kind: listingKind,
+    bathroom_id: bathroomId,
+    source_record_id: sourceRecordId,
     place_name: bathroom.place_name,
     address: buildBathroomAddress(bathroom),
     coordinates: {
@@ -1078,13 +1184,31 @@ export function mapBathroomRowToListItem(
     has_official_code: bathroom.has_official_code ?? false,
     owner_code_last_verified_at: bathroom.owner_code_last_verified_at ?? null,
     official_access_instructions: bathroom.official_access_instructions ?? null,
-    imported_location_last_verified_at: bathroom.imported_location_last_verified_at ?? null,
-    imported_location_confirmation_count: bathroom.imported_location_confirmation_count ?? 0,
-    imported_location_denial_count: bathroom.imported_location_denial_count ?? 0,
-    imported_location_weighted_confirmation_score: bathroom.imported_location_weighted_confirmation_score ?? 0,
-    imported_location_weighted_denial_score: bathroom.imported_location_weighted_denial_score ?? 0,
-    imported_location_freshness_status: bathroom.imported_location_freshness_status ?? null,
-    imported_location_needs_review: bathroom.imported_location_needs_review ?? false,
+    origin_source_key: bathroom.origin_source_key ?? null,
+    origin_label: bathroom.origin_label ?? null,
+    origin_attribution_short: bathroom.origin_attribution_short ?? null,
+    source_dataset: bathroom.source_dataset ?? null,
+    source_license_key: bathroom.source_license_key ?? null,
+    source_url: bathroom.source_url ?? null,
+    source_updated_at: bathroom.source_updated_at ?? null,
+    source_last_verified_at: bathroom.source_last_verified_at ?? null,
+    source_confirmation_count: bathroom.source_confirmation_count ?? 0,
+    source_denial_count: bathroom.source_denial_count ?? 0,
+    source_weighted_confirmation_score: bathroom.source_weighted_confirmation_score ?? 0,
+    source_weighted_denial_score: bathroom.source_weighted_denial_score ?? 0,
+    source_freshness_status: bathroom.source_freshness_status ?? null,
+    source_needs_review: bathroom.source_needs_review ?? false,
+    can_favorite: bathroom.can_favorite ?? listingKind === 'canonical',
+    can_submit_code: bathroom.can_submit_code ?? listingKind === 'canonical',
+    can_report_live_status: bathroom.can_report_live_status ?? listingKind === 'canonical',
+    can_claim_business: bathroom.can_claim_business ?? listingKind === 'canonical',
+    imported_location_last_verified_at: importedLocationLastVerifiedAt,
+    imported_location_confirmation_count: importedLocationConfirmationCount,
+    imported_location_denial_count: importedLocationDenialCount,
+    imported_location_weighted_confirmation_score: importedLocationWeightedConfirmationScore,
+    imported_location_weighted_denial_score: importedLocationWeightedDenialScore,
+    imported_location_freshness_status: importedLocationFreshnessStatus,
+    imported_location_needs_review: importedLocationNeedsReview,
     last_updated_at: bathroom.updated_at ?? null,
     sync: buildSyncMetadata(options),
   };
@@ -1107,10 +1231,11 @@ export function mapBathroomRowToFavoriteItem(
   options: MappingOptions
 ): FavoriteItem {
   const listItem = mapBathroomRowToListItem(bathroom, options);
+  const bathroomId = getCanonicalBathroomId(bathroom) ?? listItem.bathroom_id ?? listItem.id;
 
   return {
     ...listItem,
-    bathroom_id: bathroom.id,
+    bathroom_id: bathroomId,
     favorited_at: favoritedAt,
   };
 }

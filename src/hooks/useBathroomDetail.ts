@@ -8,7 +8,7 @@ export const bathroomDetailQueryKey = (bathroomId: string | null) =>
   ['bathroom-detail', bathroomId ?? 'unknown'] as const;
 
 export function shouldRefreshBathroomDetailOnFocus(
-  bathroomDetail: PublicBathroomDetailRow | null | undefined,
+  bathroomDetail: { id: string } | null | undefined,
   dataUpdatedAt: number,
   now = Date.now()
 ): boolean {

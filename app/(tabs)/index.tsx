@@ -31,7 +31,12 @@ import { useFilterStore } from '@/store/useFilterStore';
 import { useMapStore } from '@/store/useMapStore';
 import { BathroomListItem } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
-import { hasActiveBathroomFilters, isBathroomVisibleOnMap, mergeAccessibilityFilters } from '@/utils/bathroom';
+import {
+  getCanonicalBathroomId,
+  hasActiveBathroomFilters,
+  isBathroomVisibleOnMap,
+  mergeAccessibilityFilters,
+} from '@/utils/bathroom';
 import { countActiveAccessibilityPreferences } from '@/utils/accessibility';
 
 export default function MapTab() {
@@ -146,6 +151,10 @@ export default function MapTab() {
 
   const handleToggleFavorite = useCallback(
     async (bathroom: BathroomListItem) => {
+      if (bathroom.can_favorite === false) {
+        return;
+      }
+
       try {
         const outcome = await toggleFavorite(bathroom);
 
@@ -203,6 +212,7 @@ export default function MapTab() {
 
   const handleNavigateToBathroom = useCallback(
     async (bathroom: BathroomListItem) => {
+      const canonicalBathroomId = getCanonicalBathroomId(bathroom);
       const encodedLabel = encodeURIComponent(bathroom.place_name);
       const latitude = bathroom.coordinates.latitude;
       const longitude = bathroom.coordinates.longitude;
@@ -213,10 +223,13 @@ export default function MapTab() {
       setIsOpeningDirections(true);
 
       try {
-        void recordBathroomNavigationOpen(bathroom.id);
-        if (user?.id) {
+        if (canonicalBathroomId) {
+          void recordBathroomNavigationOpen(canonicalBathroomId);
+        }
+
+        if (user?.id && canonicalBathroomId) {
           recordVisitMutation.mutate({
-            bathroomId: bathroom.id,
+            bathroomId: canonicalBathroomId,
             source: 'map_navigation',
           });
         }
@@ -252,15 +265,28 @@ export default function MapTab() {
   );
 
   const handleOpenBathroomDetail = useCallback(
-    (bathroomId: string) => {
-      pushSafely(router, routes.bathroomDetail(bathroomId), routes.tabs.map);
+    (bathroom: BathroomListItem) => {
+      const targetRoute =
+        bathroom.listing_kind === 'source_candidate' && bathroom.source_record_id
+          ? routes.candidateDetail(bathroom.source_record_id)
+          : bathroom.bathroom_id
+            ? routes.bathroomDetail(bathroom.bathroom_id)
+            : routes.tabs.map;
+
+      pushSafely(router, targetRoute, routes.tabs.map);
     },
     [router]
   );
 
   const handleOpenReport = useCallback(
-    (bathroomId: string) => {
-      pushSafely(router, routes.modal.reportBathroom(bathroomId), routes.tabs.map);
+    (bathroom: BathroomListItem) => {
+      const canonicalBathroomId = getCanonicalBathroomId(bathroom);
+
+      if (!canonicalBathroomId || bathroom.can_report_live_status === false) {
+        return;
+      }
+
+      pushSafely(router, routes.modal.reportBathroom(canonicalBathroomId), routes.tabs.map);
     },
     [router]
   );
@@ -428,8 +454,8 @@ export default function MapTab() {
                   onNavigate={() => {
                     void handleNavigateToBathroom(activeBathroom);
                   }}
-                  onOpenDetail={() => handleOpenBathroomDetail(activeBathroom.id)}
-                  onReport={() => handleOpenReport(activeBathroom.id)}
+                  onOpenDetail={() => handleOpenBathroomDetail(activeBathroom)}
+                  onReport={() => handleOpenReport(activeBathroom)}
                   onToggleFavorite={() => {
                     void handleToggleFavorite(activeBathroom);
                   }}

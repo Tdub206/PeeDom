@@ -116,7 +116,7 @@ export function formatQueuedMutationLabel(type: MutationType): string {
     case 'code_vote':
       return 'Code confirmations';
     case 'location_verification':
-      return 'Imported location checks';
+      return 'Source candidate checks';
     case 'report_create':
       return 'Issue reports';
     case 'rating_create':

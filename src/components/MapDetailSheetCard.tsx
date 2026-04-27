@@ -17,8 +17,8 @@ interface MapDetailSheetCardProps {
   isNavigating: boolean;
   onNavigate: () => void;
   onOpenDetail: () => void;
-  onReport: () => void;
-  onToggleFavorite: () => void;
+  onReport?: () => void;
+  onToggleFavorite?: () => void;
 }
 
 type StatusTone = ReturnType<typeof getBathroomMapPinTone>;
@@ -102,6 +102,8 @@ function MapDetailSheetCardComponent({
   onReport,
   onToggleFavorite,
 }: MapDetailSheetCardProps) {
+  const canFavorite = bathroom.can_favorite !== false && Boolean(onToggleFavorite);
+  const canReport = bathroom.can_report_live_status !== false && bathroom.listing_kind === 'canonical' && Boolean(onReport);
   const statusTone = getBathroomMapPinTone(bathroom);
   const statusCopy = STATUS_COPY[statusTone];
   const confidenceProfile = useMemo(() => buildBathroomConfidenceProfile(bathroom), [bathroom]);
@@ -163,25 +165,27 @@ function MapDetailSheetCardComponent({
           </View>
         </View>
 
-        <Pressable
-          accessibilityLabel={isFavorited ? 'Remove bathroom from favorites' : 'Save bathroom to favorites'}
-          accessibilityHint="Adds this bathroom to your saved list."
-          accessibilityRole="button"
-          accessibilityState={{ busy: isFavoritePending }}
-          className={[
-            'h-12 w-12 items-center justify-center rounded-full border',
-            isFavorited ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
-            isFavoritePending ? 'opacity-60' : '',
-          ].join(' ')}
-          disabled={isFavoritePending}
-          onPress={onToggleFavorite}
-        >
-          <Ionicons
-            color={isFavorited ? colors.brand[600] : colors.ink[500]}
-            name={isFavorited ? 'heart' : 'heart-outline'}
-            size={20}
-          />
-        </Pressable>
+        {canFavorite ? (
+          <Pressable
+            accessibilityLabel={isFavorited ? 'Remove bathroom from favorites' : 'Save bathroom to favorites'}
+            accessibilityHint="Adds this bathroom to your saved list."
+            accessibilityRole="button"
+            accessibilityState={{ busy: isFavoritePending }}
+            className={[
+              'h-12 w-12 items-center justify-center rounded-full border',
+              isFavorited ? 'border-brand-200 bg-brand-50' : 'border-surface-strong bg-surface-base',
+              isFavoritePending ? 'opacity-60' : '',
+            ].join(' ')}
+            disabled={isFavoritePending}
+            onPress={onToggleFavorite}
+          >
+            <Ionicons
+              color={isFavorited ? colors.brand[600] : colors.ink[500]}
+              name={isFavorited ? 'heart' : 'heart-outline'}
+              size={20}
+            />
+          </Pressable>
+        ) : null}
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-2">
@@ -235,29 +239,35 @@ function MapDetailSheetCardComponent({
           </View>
         </Pressable>
 
-        <Pressable
-          accessibilityLabel="Report this bathroom"
-          accessibilityHint="Opens the issue report flow for this bathroom."
-          accessibilityRole="button"
-          className="flex-1 rounded-[22px] border border-surface-strong bg-surface-base px-4 py-4"
-          onPress={onReport}
-        >
-          <View className="flex-row items-center gap-3">
-            <View className="h-11 w-11 items-center justify-center rounded-2xl bg-danger/10">
-              <Ionicons color={colors.danger} name="flag-outline" size={20} />
+        {canReport ? (
+          <Pressable
+            accessibilityLabel="Report this bathroom"
+            accessibilityHint="Opens the issue report flow for this bathroom."
+            accessibilityRole="button"
+            className="flex-1 rounded-[22px] border border-surface-strong bg-surface-base px-4 py-4"
+            onPress={onReport}
+          >
+            <View className="flex-row items-center gap-3">
+              <View className="h-11 w-11 items-center justify-center rounded-2xl bg-danger/10">
+                <Ionicons color={colors.danger} name="flag-outline" size={20} />
+              </View>
+              <View className="flex-1">
+                <Text className="text-sm font-black text-ink-900">Report issue</Text>
+                <Text className="mt-1 text-xs leading-5 text-ink-600">Flag wrong codes, closures, or unsafe access.</Text>
+              </View>
             </View>
-            <View className="flex-1">
-              <Text className="text-sm font-black text-ink-900">Report issue</Text>
-              <Text className="mt-1 text-xs leading-5 text-ink-600">Flag wrong codes, closures, or unsafe access.</Text>
-            </View>
-          </View>
-        </Pressable>
+          </Pressable>
+        ) : null}
       </View>
 
       <Button
         className="mt-5"
-        label="Open details and verify"
-        accessibilityHint="Opens the full bathroom detail screen with code verification and accessibility details."
+        label={bathroom.listing_kind === 'source_candidate' ? 'Open candidate details' : 'Open details and verify'}
+        accessibilityHint={
+          bathroom.listing_kind === 'source_candidate'
+            ? 'Opens the candidate detail screen with source verification actions.'
+            : 'Opens the full bathroom detail screen with code verification and accessibility details.'
+        }
         onPress={onOpenDetail}
       />
     </View>

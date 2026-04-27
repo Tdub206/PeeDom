@@ -43,6 +43,7 @@ export type IntentType =
   | 'emergency_lookup'
   | 'vote_code'
   | 'verify_imported_location'
+  | 'verify_source_candidate'
   | 'report_bathroom'
   | 'report_live_status'
   | 'add_bathroom'
@@ -113,8 +114,8 @@ export interface BathroomStatusMutationPayload {
   note?: string | null;
 }
 
-export interface ImportedLocationVerificationMutationPayload {
-  bathroom_id: string;
+export interface SourceRecordVerificationMutationPayload {
+  source_record_id: string;
   location_exists: boolean;
   note?: string | null;
 }
@@ -432,6 +433,8 @@ export type BathroomConfidenceFlagTone = 'positive' | 'warning' | 'critical' | '
 export type BathroomFreshnessState = 'fresh' | 'aging' | 'stale' | 'unknown';
 export type BathroomConflictState = 'stable' | 'conflicting' | 'outdated' | 'unknown';
 export type ImportedLocationFreshnessStatus = 'unreviewed' | 'fresh' | 'aging' | 'disputed' | 'likely_removed';
+export type SourceFreshnessStatus = ImportedLocationFreshnessStatus;
+export type BathroomListingKind = 'canonical' | 'source_candidate';
 
 export interface BathroomConfidenceFlag {
   label: string;
@@ -486,6 +489,9 @@ export type BusinessCodePolicy = 'community' | 'owner_shared' | 'owner_private' 
 
 export interface BathroomListItem {
   id: string;
+  listing_kind: BathroomListingKind;
+  bathroom_id: string | null;
+  source_record_id: string | null;
   place_name: string;
   address: string;
   coordinates: Coordinates;
@@ -509,6 +515,24 @@ export interface BathroomListItem {
   has_official_code?: boolean;
   owner_code_last_verified_at?: string | null;
   official_access_instructions?: string | null;
+  origin_source_key?: string | null;
+  origin_label?: string | null;
+  origin_attribution_short?: string | null;
+  source_dataset?: string | null;
+  source_license_key?: string | null;
+  source_url?: string | null;
+  source_updated_at?: string | null;
+  source_last_verified_at?: string | null;
+  source_confirmation_count?: number;
+  source_denial_count?: number;
+  source_weighted_confirmation_score?: number;
+  source_weighted_denial_score?: number;
+  source_freshness_status?: SourceFreshnessStatus | null;
+  source_needs_review?: boolean;
+  can_favorite?: boolean;
+  can_submit_code?: boolean;
+  can_report_live_status?: boolean;
+  can_claim_business?: boolean;
   imported_location_last_verified_at?: string | null;
   imported_location_confirmation_count?: number;
   imported_location_denial_count?: number;
@@ -635,6 +659,20 @@ export interface BathroomDetail {
   has_official_code?: boolean;
   owner_code_last_verified_at?: string | null;
   official_access_instructions?: string | null;
+  origin_source_key?: string | null;
+  origin_label?: string | null;
+  origin_attribution_short?: string | null;
+  source_dataset?: string | null;
+  source_license_key?: string | null;
+  source_url?: string | null;
+  source_updated_at?: string | null;
+  source_last_verified_at?: string | null;
+  source_confirmation_count?: number;
+  source_denial_count?: number;
+  source_weighted_confirmation_score?: number;
+  source_weighted_denial_score?: number;
+  source_freshness_status?: SourceFreshnessStatus | null;
+  source_needs_review?: boolean;
   imported_location_last_verified_at?: string | null;
   imported_location_confirmation_count?: number;
   imported_location_denial_count?: number;
@@ -780,28 +818,69 @@ export interface Report {
   created_at: string;
 }
 
-export interface ImportedLocationVerificationInput {
-  bathroom_id: string;
+export interface SourceRecordVerificationInput {
+  source_record_id: string;
   location_exists: boolean;
   note?: string | null;
 }
 
-export interface ImportedLocationVerificationResult {
+export interface SourceRecordVerificationResult {
   success: boolean;
   error?: string | null;
   verification_id: string | null;
   created_at: string | null;
-  bathroom_id: string;
+  source_record_id: string;
+  canonical_bathroom_id: string | null;
   location_exists: boolean;
+  listing_promoted: boolean;
   next_allowed_at: string | null;
-  imported_location_last_verified_at: string | null;
-  imported_location_confirmation_count: number;
-  imported_location_denial_count: number;
-  imported_location_weighted_confirmation_score: number;
-  imported_location_weighted_denial_score: number;
-  imported_location_freshness_status: ImportedLocationFreshnessStatus;
-  imported_location_needs_review: boolean;
+  source_last_verified_at: string | null;
+  source_confirmation_count: number;
+  source_denial_count: number;
+  source_weighted_confirmation_score: number;
+  source_weighted_denial_score: number;
+  source_freshness_status: SourceFreshnessStatus;
+  source_needs_review: boolean;
+  eligible_positive_user_count?: number;
 }
+
+export interface SourceCandidateDetail {
+  source_record_id: string;
+  canonical_bathroom_id: string | null;
+  place_name: string;
+  address: Address;
+  coordinates: Coordinates;
+  flags: BathroomFlags;
+  hours: HoursData | null;
+  accessibility_features: AccessibilityFeatures;
+  accessibility_score: number;
+  show_on_free_map: boolean;
+  location_archetype?: BathroomLocationArchetype;
+  archetype_metadata?: Record<string, unknown>;
+  origin_source_key?: string | null;
+  origin_label?: string | null;
+  origin_attribution_short?: string | null;
+  source_dataset?: string | null;
+  source_license_key?: string | null;
+  source_url?: string | null;
+  source_updated_at?: string | null;
+  source_status: 'candidate' | 'linked' | 'promoted' | 'rejected' | 'likely_removed' | 'superseded';
+  source_last_verified_at?: string | null;
+  source_confirmation_count: number;
+  source_denial_count: number;
+  source_weighted_confirmation_score: number;
+  source_weighted_denial_score: number;
+  source_freshness_status?: SourceFreshnessStatus | null;
+  source_needs_review: boolean;
+  can_favorite: boolean;
+  can_submit_code: boolean;
+  can_report_live_status: boolean;
+  can_claim_business: boolean;
+  sync: SyncMetadata;
+}
+
+export type ImportedLocationVerificationInput = SourceRecordVerificationInput;
+export type ImportedLocationVerificationResult = SourceRecordVerificationResult;
 
 // ============================================================================
 // BUSINESS CLAIM TYPES

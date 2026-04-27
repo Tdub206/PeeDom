@@ -387,6 +387,9 @@ left join lateral public.get_imported_location_verification_summary(bathrooms.id
   on bathrooms.source_type = 'imported'
 where bathrooms.moderation_status = 'active';
 
+-- Drop first so PostgreSQL allows the changed return type (new imported_location_* columns).
+drop function if exists public.get_bathrooms_near(double precision, double precision, integer);
+
 create or replace function public.get_bathrooms_near(
   lat double precision,
   lng double precision,
@@ -497,6 +500,8 @@ as $$
   )
   order by distance_meters asc, details.updated_at desc;
 $$;
+
+drop function if exists public.search_bathrooms(text, double precision, double precision, double precision, boolean, boolean, boolean, boolean, integer, integer);
 
 create or replace function public.search_bathrooms(
   p_query text default null,
@@ -733,6 +738,8 @@ as $$
   offset greatest(coalesce(p_offset, 0), 0);
 $$;
 
+drop function if exists public.get_user_favorites(double precision, double precision);
+
 create or replace function public.get_user_favorites(
   p_user_lat double precision default null,
   p_user_lng double precision default null
@@ -851,6 +858,8 @@ as $$
   where favorites.user_id = auth.uid()
   order by favorites.created_at desc;
 $$;
+
+drop function if exists public.get_premium_city_pack_bathrooms(text, text, text);
 
 create or replace function public.get_premium_city_pack_bathrooms(
   p_city text,

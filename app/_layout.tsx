@@ -175,6 +175,14 @@ function RootNavigator() {
           }}
         />
         <Stack.Screen
+          name="candidate/[id]"
+          options={{
+            presentation: 'card',
+            headerShown: true,
+            headerTitle: 'Candidate Details',
+          }}
+        />
+        <Stack.Screen
           name="business"
           options={{
             presentation: 'card',

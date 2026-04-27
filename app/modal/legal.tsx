@@ -86,7 +86,7 @@ function PrivacyPolicyContent() {
       <BulletItem>Disable optional permissions such as location and notifications.</BulletItem>
       <Paragraph>
         You can exercise these rights from the Profile tab in the app or by contacting us at
-        support@stallpass.org.
+        support@stallpass.app.
       </Paragraph>
 
       <SectionHeading>7. Children's Privacy</SectionHeading>
@@ -112,7 +112,7 @@ function PrivacyPolicyContent() {
 
       <SectionHeading>10. Contact Us</SectionHeading>
       <Paragraph>
-        If you have questions about this Privacy Policy, contact us at support@stallpass.org.
+        If you have questions about this Privacy Policy, contact us at support@stallpass.app.
       </Paragraph>
     </>
   );
@@ -213,7 +213,7 @@ function TermsOfServiceContent() {
 
       <SectionHeading>12. Contact</SectionHeading>
       <Paragraph>
-        Questions about these Terms? Contact us at support@stallpass.org.
+        Questions about these Terms? Contact us at support@stallpass.app.
       </Paragraph>
     </>
   );

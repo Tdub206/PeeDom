@@ -36,6 +36,7 @@ function BathroomCardComponent({
   onPress,
   onToggleFavorite,
 }: BathroomCardProps) {
+  const canFavorite = item.can_favorite !== false;
   const metadataChips = useMemo(() => {
     const chips: string[] = [];
 
@@ -80,7 +81,7 @@ function BathroomCardComponent({
           <Text className="mt-3 text-sm font-medium text-brand-700">{formatDistance(item.distance_meters)}</Text>
         </View>
 
-        {onToggleFavorite ? (
+        {onToggleFavorite && canFavorite ? (
           <Pressable
             accessibilityLabel={isFavorited ? 'Remove from favorites' : 'Add to favorites'}
             accessibilityHint="Saves this bathroom for faster access later."

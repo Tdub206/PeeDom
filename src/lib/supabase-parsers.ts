@@ -320,6 +320,28 @@ export const importedLocationVerificationResultSchema = z.object({
   imported_location_needs_review: z.boolean().default(true),
 });
 
+export const sourceRecordVerificationResultSchema = z.object({
+  success: z.boolean(),
+  error: z.string().nullable().optional().default(null),
+  verification_id: z.string().nullable().default(null),
+  created_at: dateTimeStringSchema.nullable().default(null),
+  source_record_id: rawTextSchema,
+  canonical_bathroom_id: z.string().nullable().default(null),
+  location_exists: z.boolean(),
+  listing_promoted: z.boolean().default(false),
+  next_allowed_at: dateTimeStringSchema.nullable().default(null),
+  source_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  source_confirmation_count: z.number().int().nonnegative().default(0),
+  source_denial_count: z.number().int().nonnegative().default(0),
+  source_weighted_confirmation_score: z.number().nonnegative().default(0),
+  source_weighted_denial_score: z.number().nonnegative().default(0),
+  source_freshness_status: z
+    .enum(['unreviewed', 'fresh', 'aging', 'disputed', 'likely_removed'])
+    .default('unreviewed'),
+  source_needs_review: z.boolean().default(true),
+  eligible_positive_user_count: z.number().int().nonnegative().optional().default(0),
+});
+
 export const cleanlinessRatingMutationResultSchema = z.object({
   bathroom_id: rawTextSchema,
   rating: z.number().int().min(1).max(5),
@@ -410,6 +432,8 @@ const bathroomLocationArchetypeSchema = z.enum([
 ]);
 const businessCodePolicySchema = z.enum(['community', 'owner_shared', 'owner_private', 'staff_only']);
 const importedLocationFreshnessStatusSchema = z.enum(['unreviewed', 'fresh', 'aging', 'disputed', 'likely_removed']);
+const bathroomListingKindSchema = z.enum(['canonical', 'source_candidate']);
+const sourceRecordStatusSchema = z.enum(['candidate', 'linked', 'promoted', 'rejected', 'likely_removed', 'superseded']);
 const contributorTrustTierSchema = z.enum([
   'brand_new',
   'lightly_trusted',
@@ -837,6 +861,150 @@ export const publicBathroomDetailRowSchema = z.object({
   imported_location_weighted_denial_score: z.number().nonnegative().default(0),
   imported_location_freshness_status: importedLocationFreshnessStatusSchema.nullable().default(null),
   imported_location_needs_review: z.boolean().default(false),
+});
+
+const sourceSummaryFieldsSchema = z.object({
+  origin_source_key: z.string().nullable().default(null),
+  origin_label: z.string().nullable().default(null),
+  origin_attribution_short: z.string().nullable().default(null),
+  source_dataset: z.string().nullable().default(null),
+  source_license_key: z.string().nullable().default(null),
+  source_url: z.string().nullable().default(null),
+  source_updated_at: dateTimeStringSchema.nullable().default(null),
+  source_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  source_confirmation_count: z.number().int().nonnegative().default(0),
+  source_denial_count: z.number().int().nonnegative().default(0),
+  source_weighted_confirmation_score: z.number().nonnegative().default(0),
+  source_weighted_denial_score: z.number().nonnegative().default(0),
+  source_freshness_status: importedLocationFreshnessStatusSchema.nullable().default(null),
+  source_needs_review: z.boolean().default(false),
+});
+
+const directoryCapabilitiesSchema = z.object({
+  can_favorite: z.boolean().default(false),
+  can_submit_code: z.boolean().default(false),
+  can_report_live_status: z.boolean().default(false),
+  can_claim_business: z.boolean().default(false),
+});
+
+export const canonicalBathroomDetailRowSchema = publicBathroomDetailRowSchema.extend({
+  ...sourceSummaryFieldsSchema.shape,
+});
+
+export const directoryListingRowSchema = z.object({
+  listing_kind: bathroomListingKindSchema,
+  bathroom_id: z.string().nullable().default(null),
+  source_record_id: z.string().nullable().default(null),
+  place_name: rawTextSchema,
+  address_line1: z.string().nullable(),
+  city: z.string().nullable(),
+  state: z.string().nullable(),
+  postal_code: z.string().nullable(),
+  country_code: rawTextSchema,
+  latitude: z.number(),
+  longitude: z.number(),
+  is_locked: z.boolean().nullable(),
+  is_accessible: z.boolean().nullable(),
+  is_customer_only: z.boolean(),
+  accessibility_features: accessibilityFeaturesSchema.default({
+    has_grab_bars: false,
+    door_width_inches: null,
+    is_automatic_door: false,
+    has_changing_table: false,
+    is_family_restroom: false,
+    is_gender_neutral: false,
+    has_audio_cue: false,
+    has_braille_signage: false,
+    has_wheelchair_ramp: false,
+    has_elevator_access: false,
+    stall_width_inches: null,
+    turning_radius_inches: null,
+    notes: null,
+    photo_urls: [],
+    verification_date: null,
+  }),
+  accessibility_score: z.number().int().nonnegative().default(0),
+  hours_json: jsonValueSchema.nullable(),
+  code_id: z.string().nullable().default(null),
+  confidence_score: z.number().nullable().default(null),
+  up_votes: z.number().int().nullable().default(null),
+  down_votes: z.number().int().nullable().default(null),
+  last_verified_at: dateTimeStringSchema.nullable().default(null),
+  expires_at: dateTimeStringSchema.nullable().default(null),
+  cleanliness_avg: z.number().nullable().default(null),
+  updated_at: dateTimeStringSchema,
+  verification_badge_type: z.enum(['standard', 'premium', 'featured']).nullable().default(null),
+  stallpass_access_tier: z.enum(['public', 'premium']).default('public'),
+  show_on_free_map: z.boolean().default(true),
+  is_business_location_verified: z.boolean().default(false),
+  location_verified_at: dateTimeStringSchema.nullable().default(null),
+  active_offer_count: z.number().int().nonnegative().default(0),
+  location_archetype: bathroomLocationArchetypeSchema.default('general'),
+  archetype_metadata: z.record(z.string(), jsonValueSchema).default({}),
+  code_policy: businessCodePolicySchema.nullable().default(null),
+  allow_user_code_submissions: z.boolean().default(false),
+  has_official_code: z.boolean().default(false),
+  owner_code_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  official_access_instructions: z.string().nullable().default(null),
+  ...sourceSummaryFieldsSchema.shape,
+  ...directoryCapabilitiesSchema.shape,
+  distance_meters: z.number().nullable().default(null),
+  rank: z.number().optional().default(0),
+});
+
+export const sourceCandidateDetailRowSchema = z.object({
+  source_record_id: rawTextSchema,
+  canonical_bathroom_id: z.string().nullable().default(null),
+  place_name: rawTextSchema,
+  address_line1: z.string().nullable(),
+  city: z.string().nullable(),
+  state: z.string().nullable(),
+  postal_code: z.string().nullable(),
+  country_code: rawTextSchema,
+  latitude: z.number(),
+  longitude: z.number(),
+  is_locked: z.boolean().nullable(),
+  is_accessible: z.boolean().nullable(),
+  is_customer_only: z.boolean(),
+  accessibility_features: accessibilityFeaturesSchema.default({
+    has_grab_bars: false,
+    door_width_inches: null,
+    is_automatic_door: false,
+    has_changing_table: false,
+    is_family_restroom: false,
+    is_gender_neutral: false,
+    has_audio_cue: false,
+    has_braille_signage: false,
+    has_wheelchair_ramp: false,
+    has_elevator_access: false,
+    stall_width_inches: null,
+    turning_radius_inches: null,
+    notes: null,
+    photo_urls: [],
+    verification_date: null,
+  }),
+  accessibility_score: z.number().int().nonnegative().default(0),
+  hours_json: jsonValueSchema.nullable(),
+  updated_at: dateTimeStringSchema,
+  show_on_free_map: z.boolean().default(true),
+  location_archetype: bathroomLocationArchetypeSchema.default('general'),
+  archetype_metadata: z.record(z.string(), jsonValueSchema).default({}),
+  origin_source_key: z.string().nullable().default(null),
+  origin_label: z.string().nullable().default(null),
+  origin_attribution_short: z.string().nullable().default(null),
+  source_dataset: z.string().nullable().default(null),
+  source_license_key: z.string().nullable().default(null),
+  source_url: z.string().nullable().default(null),
+  source_updated_at: dateTimeStringSchema.nullable().default(null),
+  source_status: sourceRecordStatusSchema,
+  source_last_verified_at: dateTimeStringSchema.nullable().default(null),
+  source_confirmation_count: z.number().int().nonnegative().default(0),
+  source_denial_count: z.number().int().nonnegative().default(0),
+  source_weighted_confirmation_score: z.number().nonnegative().default(0),
+  source_weighted_denial_score: z.number().nonnegative().default(0),
+  source_freshness_status: importedLocationFreshnessStatusSchema.nullable().default(null),
+  source_needs_review: z.boolean().default(false),
+  ...directoryCapabilitiesSchema.shape,
 });
 
 export const nearbyBathroomRowSchema = publicBathroomDetailRowSchema.extend({
