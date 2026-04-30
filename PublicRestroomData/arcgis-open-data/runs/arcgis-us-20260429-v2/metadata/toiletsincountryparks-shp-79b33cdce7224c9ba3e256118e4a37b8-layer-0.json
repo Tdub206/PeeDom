@@ -1,0 +1,616 @@
+{
+  "item": {
+    "id": "79b33cdce7224c9ba3e256118e4a37b8",
+    "owner": "24229679",
+    "created": 1776835146000,
+    "modified": 1776835157000,
+    "guid": null,
+    "name": null,
+    "title": "ToiletsinCountryParks_SHP",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": null,
+    "tags": [],
+    "snippet": null,
+    "thumbnail": null,
+    "documentation": null,
+    "extent": [
+      [
+        113.84378272218503,
+        22.204499305736388
+      ],
+      [
+        114.44077331614402,
+        22.541500488907
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102100",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services7.arcgis.com/E361BcjVtoi3PB9e/arcgis/rest/services/ToiletsinCountryParks_SHP/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 15,
+    "scoreCompleteness": 16,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1776870000000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "ToiletsinCountryParks_SHP",
+    "type": "Feature Layer",
+    "serviceItemId": "79b33cdce7224c9ba3e256118e4a37b8",
+    "cacheMaxAge": 30,
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1776835155561,
+      "schemaLastEditDate": 1776835155561,
+      "dataLastEditDate": 1776835155561
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 12673031.922613712,
+      "ymin": 2536095.5901092472,
+      "xmax": 12739488.6115416,
+      "ymax": 2576664.2477616365,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "RedSphere.png",
+          "imageData": "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",
+          "contentType": "image/png",
+          "width": 15,
+          "height": 15
+        }
+      }
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeNone",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "FID",
+    "uniqueIdField": {
+      "name": "FID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "FID",
+        "type": "esriFieldTypeOID",
+        "actualType": "int",
+        "alias": "FID",
+        "sqlType": "sqlTypeInteger",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeDouble",
+        "actualType": "float",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeFloat",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NAME_EN",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "NAME_EN",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NAME_TC",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "NAME_TC",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CP_EN",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "CP_EN",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CP_TC",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "CP_TC",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TYPE_EN",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "TYPE_EN",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TYPE_TC",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "TYPE_TC",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ACCESSIBLE",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "ACCESSIBLE",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FAC_ID",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "FAC_ID",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__TOILETSI__C1BEA5A2A18371D8",
+        "fields": "FID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "TOILETSINCOUNTRYPARKS_SHP_TOILETSINCOUNTRYPARKS_SHP_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "OBJECTID": null,
+            "NAME_EN": null,
+            "NAME_TC": null,
+            "CP_EN": null,
+            "CP_TC": null,
+            "TYPE_EN": null,
+            "TYPE_TC": null,
+            "ACCESSIBLE": null,
+            "FAC_ID": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": true,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "FID": 1,
+        "OBJECTID": 1,
+        "NAME_EN": "Toilet (Shing Mun Kisok)",
+        "NAME_TC": "廁所 (城門茶水亭)",
+        "CP_EN": "SHING MUN COUNTRY PARK",
+        "CP_TC": "城門郊野公園",
+        "TYPE_EN": "Flushing Toilet",
+        "TYPE_TC": "沖水式廁所",
+        "ACCESSIBLE": "Yes",
+        "FAC_ID": "SM/TF/001"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 2,
+        "OBJECTID": 2,
+        "NAME_EN": "Toilet (Tung Lung Fort Camp Site)",
+        "NAME_TC": "廁所 (東龍洲炮台營地)",
+        "CP_EN": "TUNG LUNG FORT (SPECIAL AREA)",
+        "CP_TC": "東龍洲炮台特別地區",
+        "TYPE_EN": "Dry Toilet",
+        "TYPE_TC": "旱廁",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "TLF/TT/003"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 3,
+        "OBJECTID": 3,
+        "NAME_EN": "Toilet (Ngong Ping Campsite)",
+        "NAME_TC": "廁所 (昂平營地)",
+        "CP_EN": "MA ON SHAN COUNTRY PARK",
+        "CP_TC": "馬鞍山郊野公園",
+        "TYPE_EN": "Dry Toilet",
+        "TYPE_TC": "旱廁",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "MOS/TT/001"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 4,
+        "OBJECTID": 5,
+        "NAME_EN": "Toilet (Shap Long Campsite)",
+        "NAME_TC": "廁所 (十塱營地)",
+        "CP_EN": "LANTAU SOUTH COUNTRY PARK",
+        "CP_TC": "南大嶼郊野公園",
+        "TYPE_EN": "Dry Toilet",
+        "TYPE_TC": "旱廁",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "LS/TT/001"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 5,
+        "OBJECTID": 6,
+        "NAME_EN": "Toilet (Tin Fu Tsai Campsite)",
+        "NAME_TC": "廁所 (田夫仔營地)",
+        "CP_EN": "TAI LAM COUNTRY PARK",
+        "CP_TC": "大欖郊野公園",
+        "TYPE_EN": "Portable Toilet",
+        "TYPE_TC": "流動廁所",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "TL/TH/055"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 6,
+        "OBJECTID": 7,
+        "NAME_EN": "Toilet (Junction of Pak Tam Road and MacLehose Trail - Section No. 2)",
+        "NAME_TC": "廁所 (北潭路及麥理浩徑 - 第二段 交界)",
+        "CP_EN": "SAI KUNG EAST COUNTRY PARK",
+        "CP_TC": "西貢東郊野公園",
+        "TYPE_EN": "Flushing Toilet",
+        "TYPE_TC": "沖水式廁所",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "SKE/TF/302"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 7,
+        "OBJECTID": 8,
+        "NAME_EN": "Toilet (Hok Tau Campsite)",
+        "NAME_TC": "廁所 (鶴藪營地)",
+        "CP_EN": "PAT SIN LENG COUNTRY PARK",
+        "CP_TC": "八仙嶺郊野公園",
+        "TYPE_EN": "Flushing Toilet",
+        "TYPE_TC": "沖水式廁所",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "PSL/TF/301"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 8,
+        "OBJECTID": 9,
+        "NAME_EN": "Toilet (Near Tai Tam Barbecue Site No. 2, Tai Tam Reservoir Road)",
+        "NAME_TC": "廁所 (近大潭燒烤場地2號；大潭水塘道)",
+        "CP_EN": "TAI TAM COUNTRY PARK",
+        "CP_TC": "大潭郊野公園",
+        "TYPE_EN": "Flushing Toilet",
+        "TYPE_TC": "沖水式廁所",
+        "ACCESSIBLE": "Yes",
+        "FAC_ID": "TT/TF/001"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 9,
+        "OBJECTID": 10,
+        "NAME_EN": "Toilet (Kong Ha Au Barbecue Site, Bride's Pool Road, Wu Kau Tang Country Trail End Point)",
+        "NAME_TC": "廁所 (新娘潭路；降下坳燒烤場地；烏蛟騰郊遊徑 終點)",
+        "CP_EN": "PLOVER COVE COUNTRY PARK",
+        "CP_TC": "船灣郊野公園",
+        "TYPE_EN": "Flushing Toilet",
+        "TYPE_TC": "沖水式廁所",
+        "ACCESSIBLE": "Yes",
+        "FAC_ID": "PC/TF/601"
+      }
+    },
+    {
+      "attributes": {
+        "FID": 10,
+        "OBJECTID": 11,
+        "NAME_EN": "Toilet (Near Peak Trail - Pinewood Battery Section)",
+        "NAME_TC": "廁所 (近爐峰自然步道 - 松林砲台段)",
+        "CP_EN": "LUNG FU SHAN COUNTRY PARK",
+        "CP_TC": "龍虎山郊野公園",
+        "TYPE_EN": "Dry Toilet",
+        "TYPE_TC": "旱廁",
+        "ACCESSIBLE": "No",
+        "FAC_ID": "LFS/TT/003"
+      }
+    }
+  ]
+}

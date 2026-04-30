@@ -67,3 +67,35 @@ ANDROID_ADMOB_APP_ID=ca-app-pub-3940256099942544~3347511713
 - Fast Windows emulator verification: `npm run android:assembleDebug:emulator`
 - Android release artifacts: EAS via `eas.json`
 - iOS local builds: `npx expo run:ios`
+
+## Firebase web deployment
+
+The repo now has two Firebase-managed web surfaces:
+
+- `web/` stays on Firebase Hosting for the brochure, privacy, terms, and support pages.
+- `apps/business-web/` is wired for Firebase App Hosting as the real business dashboard.
+
+One-time setup in Firebase:
+
+1. Create an App Hosting backend for this repo with root directory `apps/business-web`.
+2. Use backend id `stallpass-business-web`.
+3. Connect the custom domain `business.stallpass.app`.
+4. Set App Hosting secrets for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+5. Optionally add `ANTHROPIC_API_KEY` later if you want the AI panel enabled in production.
+
+Secret commands:
+
+```bash
+npx firebase-tools apphosting:secrets:set NEXT_PUBLIC_SUPABASE_URL
+npx firebase-tools apphosting:secrets:set NEXT_PUBLIC_SUPABASE_ANON_KEY
+# optional
+npx firebase-tools apphosting:secrets:set ANTHROPIC_API_KEY
+```
+
+After that, deploy from the repo root:
+
+- `npm run firebase:deploy` to ship both Hosting and App Hosting
+- `npm run firebase:deploy:hosting` to ship only the static site
+- `npm run firebase:deploy:business-web` to ship only the business dashboard
+
+The public site keeps linking to `/business/`, and Firebase Hosting now redirects that path to `https://business.stallpass.app` so existing marketing/support links continue to work.

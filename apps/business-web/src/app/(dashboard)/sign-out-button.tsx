@@ -2,7 +2,7 @@
 
 import { useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { createSupabaseBrowserClient } from '@/lib/supabase/client';
+import { createSupabaseBrowserClient } from '../../lib/supabase/client';
 
 export function SignOutButton({ children }: { children: React.ReactNode }) {
   const router = useRouter();

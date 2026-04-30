@@ -1,0 +1,643 @@
+{
+  "item": {
+    "id": "fe3b64af7c6d4a54bb4dea8b5f67645d",
+    "owner": "dcoley_sarco",
+    "created": 1536606639000,
+    "modified": 1777181457000,
+    "guid": null,
+    "name": "Restroom",
+    "title": "Restroom",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS",
+      "providerSDS",
+      "Feature Access",
+      "Feature Service",
+      "ArcGIS Server",
+      "Metadata",
+      "Service",
+      "Data"
+    ],
+    "description": "The Restroom layer contains restroom locations throughout Sarasota County parks and natural areas.",
+    "tags": [
+      "Parks",
+      "Facilities"
+    ],
+    "snippet": "The Restroom layer contains restroom locations throughout Sarasota County parks and natural areas.",
+    "thumbnail": "thumbnail/thumbnail.JPEG",
+    "documentation": null,
+    "extent": [
+      [
+        -82.63955000505469,
+        26.955954546452247
+      ],
+      [
+        -82.29461898360744,
+        27.38868927905974
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "2882",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "<b>GIS Data Disclaimer and Limitation of Liability</b>                   <p>Sarasota County shall not be held liable for improper or incorrect use of the data described and/or contained herein.                  These data and related graphics are not legal documents and are not intended to be used as such.</p><p> </p>                   <p>Sarasota County GIS data is provided as a public service. Data is provided in an “as is” condition, and Sarasota County makes no claims,                   promises, or guarantees about the accuracy, completeness, or adequacy of the data; and expressly disclaims liability for errors and omissions in                   the contents of this website. No warranty of any kind, implied, expressed or statutory, including but not limited to warranties of non-infringement                   of third-party rights, title, merchantability, fitness for a particular purpose and freedom from computer virus, is given with respect to the contents                   of this website or the data. In no event will Sarasota County, its staff, or any contributing agencies be liable for any direct, indirect, incidental, special,                   consequential, or other damages, including loss of profit, arising from the use of these data, even if Sarasota County has been advised of the possibility of such damages.                   Users of this data should therefore do so at their own risk.</p>                   <p> </p>                  <p>USE OF THESE MATERIALS AND DATA CONSTITUTES ACCEPTANCE OF THIS DISCLAIMER OF LIABILITY.</p>",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://ags3.scgov.net/server/rest/services/Hosted/Restroom/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": "",
+    "banner": "",
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 11641,
+    "contentStatus": "public_authoritative",
+    "orgId": "icrWMv7eBkctFu1f",
+    "scoreCompleteness": 66,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777525200000
+  },
+  "layerMetadata": {
+    "isCoGoEnabled": false,
+    "extent": {
+      "ymin": 953683.7508091107,
+      "xmin": 448632.77859167755,
+      "ymax": 1110580.3960046917,
+      "xmax": 560196.3113696799,
+      "spatialReference": {
+        "falseM": -100000,
+        "xyTolerance": 0.003280833333333333,
+        "mUnits": 10000,
+        "zUnits": 10000,
+        "latestWkid": 2882,
+        "zTolerance": 0.001,
+        "wkid": 2882,
+        "xyUnits": 3048.0060960121928,
+        "mTolerance": 0.001,
+        "falseX": -17791300,
+        "falseY": -41645400,
+        "falseZ": -100000
+      }
+    },
+    "isDataBranchVersioned": false,
+    "supportsApplyEditsWithGlobalIds": true,
+    "maxRecordCount": 2000,
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "datesInUnknownTimezone": false,
+    "type": "Feature Layer",
+    "onlyAllowTrueCurveUpdatesByTrueCurveClients": true,
+    "supportsAttachmentsByUploadId": true,
+    "editingInfo": {},
+    "relationships": [],
+    "supportedAppendCapabilities": "Features,Attachments",
+    "supportsAttachmentsResizing": true,
+    "cimVersion": "3.6.0",
+    "isDataArchived": false,
+    "id": 0,
+    "spatialReference": {
+      "falseM": -100000,
+      "xyTolerance": 0.003280833333333333,
+      "mUnits": 10000,
+      "zUnits": 10000,
+      "latestWkid": 2882,
+      "zTolerance": 0.001,
+      "wkid": 2882,
+      "xyUnits": 3048.0060960121928,
+      "mTolerance": 0.001,
+      "falseX": -17791300,
+      "falseY": -41645400,
+      "falseZ": -100000
+    },
+    "supportsSubtypeEditing": true,
+    "supportsStatistics": true,
+    "supportedExportFormats": "sqlite,filegdb,shapefile,csv,geojson,kml",
+    "standardMaxRecordCount": 16000,
+    "isDataVersioned": false,
+    "templates": [
+      {
+        "name": "Restroom",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "facilityid": null,
+            "pnl_id": null,
+            "parkname": null,
+            "familyrestroom": null,
+            "lastupdate": null,
+            "facilitytype": null,
+            "inspectiondate": null
+          }
+        }
+      }
+    ],
+    "supportsAdvancedQueries": true,
+    "parentLayer": null,
+    "currentVersion": 12,
+    "canScaleSymbols": false,
+    "hasZ": false,
+    "advancedEditingCapabilities": {
+      "supportsAsyncApplyEdits": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportsReturnEditResults": true,
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF"
+    },
+    "objectIdField": "objectid",
+    "supportsQuantizationEditMode": true,
+    "hasContingentValuesDefinition": false,
+    "name": "Restroom",
+    "allowTrueCurvesUpdates": false,
+    "displayField": "parkname",
+    "supportsCalculate": true,
+    "fields": [
+      {
+        "modelName": "OBJECTID",
+        "nullable": false,
+        "defaultValue": null,
+        "editable": false,
+        "domain": null,
+        "length": 4,
+        "name": "objectid",
+        "alias": "OBJECTID",
+        "type": "esriFieldTypeOID"
+      },
+      {
+        "modelName": "FacilityID",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": null,
+        "name": "facilityid",
+        "length": 18,
+        "alias": "FacilityID",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "modelName": "PNL_ID",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": null,
+        "name": "pnl_id",
+        "length": 7,
+        "alias": "PNL_ID",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "modelName": "ParkName",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": null,
+        "name": "parkname",
+        "length": 55,
+        "alias": "ParkName",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "modelName": "FacilityType",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": {
+          "splitPolicy": "esriSPTDefaultValue",
+          "name": "pkPersonalFacility_252",
+          "description": "Personal Facility Type",
+          "type": "codedValue",
+          "codedValues": [
+            {
+              "code": "Restrooms",
+              "name": "Restrooms"
+            },
+            {
+              "code": "Indoor Shower",
+              "name": "Indoor Shower"
+            }
+          ],
+          "mergePolicy": "esriMPTDefaultValue"
+        },
+        "name": "facilitytype",
+        "length": 50,
+        "alias": "FacilityType",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "modelName": "FamilyRestroom",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": {
+          "splitPolicy": "esriSPTDefaultValue",
+          "name": "pkYesNo",
+          "description": "Park Amenities Yes No",
+          "type": "codedValue",
+          "codedValues": [
+            {
+              "code": "Yes",
+              "name": "Yes"
+            },
+            {
+              "code": "No",
+              "name": "No"
+            },
+            {
+              "code": "NA",
+              "name": "Not Applicable"
+            }
+          ],
+          "mergePolicy": "esriMPTDefaultValue"
+        },
+        "name": "familyrestroom",
+        "length": 5,
+        "alias": "FamilyRestroom",
+        "type": "esriFieldTypeString"
+      },
+      {
+        "modelName": "InspectionDate",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": null,
+        "precision": 1,
+        "name": "inspectiondate",
+        "length": 29,
+        "alias": "InspectionDate",
+        "type": "esriFieldTypeDate"
+      },
+      {
+        "modelName": "LastUpdate",
+        "nullable": true,
+        "editable": true,
+        "defaultValue": null,
+        "domain": null,
+        "precision": 1,
+        "name": "lastupdate",
+        "length": 29,
+        "alias": "LastUpdate",
+        "type": "esriFieldTypeDate"
+      },
+      {
+        "modelName": "GlobalID",
+        "nullable": false,
+        "editable": false,
+        "defaultValue": null,
+        "domain": null,
+        "length": 38,
+        "name": "globalid",
+        "alias": "GlobalID",
+        "type": "esriFieldTypeGlobalID"
+      }
+    ],
+    "maxRecordCountFactor": 1,
+    "dateFieldsTimeReference": {
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false,
+      "timeZone": "UTC"
+    },
+    "supportsFieldDescriptionProperty": true,
+    "hasM": false,
+    "allowGeometryUpdates": true,
+    "useStandardizedQueries": true,
+    "globalIdField": "globalid",
+    "sourceSpatialReference": {
+      "wkt": "PROJCS[\"NAD_1983_HARN_StatePlane_Florida_West_FIPS_0902_Feet\",GEOGCS[\"GCS_North_American_1983_HARN\",DATUM[\"D_North_American_1983_HARN\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",656166.6666666665],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",-82.0],PARAMETER[\"Scale_Factor\",0.9999411764705882],PARAMETER[\"Latitude_Of_Origin\",24.33333333333333],UNIT[\"Foot_US\",0.3048006096012192]]",
+      "falseM": -100000,
+      "mUnits": 10000,
+      "zUnits": 10000,
+      "zTolerance": 0.001,
+      "wkid": 2882,
+      "xyUnits": 3048.00609601219,
+      "mTolerance": 0.001,
+      "falseX": -17791300,
+      "falseY": -41645400,
+      "falseZ": -100000
+    },
+    "description": "The Restroom layer contains restroom locations throughout Sarasota County parks and natural areas.",
+    "syncCanReturnChanges": true,
+    "supportsAsyncDelete": true,
+    "supportsAdminApi": true,
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin"
+    ],
+    "supportsRollbackOnFailureParameter": true,
+    "isDataReplicaTracked": false,
+    "standardMaxRecordCountNoGeometry": 16000,
+    "supportsTruncate": true,
+    "indexes": [
+      {
+        "name": "r36581_sde_rowid_uk",
+        "isUnique": true,
+        "description": "",
+        "fields": "objectid",
+        "isAscending": true
+      },
+      {
+        "name": "uuid_36581",
+        "isUnique": true,
+        "description": "",
+        "fields": "globalid",
+        "isAscending": true
+      },
+      {
+        "name": "a34781_ix1",
+        "isUnique": false,
+        "description": "",
+        "fields": "shape",
+        "isAscending": true
+      }
+    ],
+    "supportedAppendSourceFilterFormats": "featureService",
+    "editFieldsInfo": null,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "GUIDFormat": "O",
+    "minScale": 577792,
+    "hasAttachments": false,
+    "queryBinsCapabilities": {
+      "supportsFirstDayOfWeek": true,
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ],
+      "supportedStatisticTypes": [
+        "count",
+        "sum",
+        "min",
+        "max",
+        "avg",
+        "stddev",
+        "var",
+        "percentile_cont",
+        "percentile_disc"
+      ],
+      "supportsNormalization": true,
+      "supportsSnapToData": true,
+      "supportsFixedIntervalBin": true,
+      "supportsStackBy": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsSplitBy": true,
+      "supportsReturnFullIntervalBin": true
+    },
+    "advancedQueryCapabilities": {
+      "supportsSqlExpression": true,
+      "supportsQueryWithResultType": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithCacheHint": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "fullTextSearchCapabilities": {
+        "supportsOperator": true,
+        "supportsSearchOperator": true
+      },
+      "supportsDefaultSR": true,
+      "supportsQueryDateBins": true,
+      "supportsQueryBins": true,
+      "supportsQueryWithLodSR": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsPagination": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsDegeneratedQuantizedGeometry": true,
+      "fullTextSearchableFields": [],
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsFullTextSearch": true,
+      "supportsQueryWithDistance": true,
+      "supportsLod": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsCountDistinct": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsQueryAttachments": true,
+      "supportsReturningQueryExtent": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsISODOW": true,
+      "supportsOrderByOnlyOnLayerFields": false,
+      "supportsOutFieldSqlExpression": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsDistinct": true,
+      "supportsReturningGeometryCentroid": false,
+      "supportsQueryAnalytic": true,
+      "supportsPercentileStatistics": true,
+      "supportsISOWeek": true,
+      "supportsHavingClause": true
+    },
+    "subtypeField": "",
+    "supportsValidateSQL": true,
+    "enableZDefaults": true,
+    "serviceItemId": "fe3b64af7c6d4a54bb4dea8b5f67645d",
+    "allowUpdateWithoutMValues": true,
+    "supportsCoordinatesQuantization": true,
+    "types": [],
+    "capabilities": "Query,Extract",
+    "maxScale": 0,
+    "supportsAppend": true,
+    "supportsExceedsLimitStatistics": true,
+    "defaultVisibility": true,
+    "advancedQueryAnalyticCapabilities": {
+      "supportsAsync": true,
+      "supportsLinearRegression": true,
+      "supportsPercentileAnalytic": false
+    },
+    "hasMetadata": true,
+    "supportedAppendFormats": "csv,excel,featureCollection,featureService,geojson,imageCollection,jsonl,pbf,shapefile",
+    "tileMaxRecordCount": 4000,
+    "typeIdField": "",
+    "supportsASyncCalculate": true,
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "sqlParserVersion": "PG_11.4.0",
+    "drawingInfo": {
+      "renderer": {
+        "symbol": {
+          "imageData": "iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADOUlEQVRIibVVT0zTcBR+wFZaIYMOQ7ayTTYSA263YQzR4yIXpkGcmCzhOI8mXjiy3fBk9Ib3HWSQRbcDBDAeSDjoTq4MY5Bt4EoQqZCV/QXNK7YpLQxB/S7rfv3lfe99772vOvjP0J3ncjgcp/3+Af6fEWBA0JXczRTlIxoJRyPZyMwtvCMPDw+5YqHI5guFiH94aP5CBOFX0x5Tu2HcamEcbW1tdHNTExCEXnxXLlcceUG4mU5nfLNzb5e3d/jgaUQnEryJz4ybTO0jXQ672Ui3at4jkZFoBSPdSiPRx2RqcioaC90f9D4/kwCD2zttAZezh65VugSsrO9GL82mVsanojFQk+g0spjaR5TB+fUEJGdD4OofA9rqlu+ysyH4ysbg9pMP4n9nTzdZKpbGwpPRRf+DwYSGABt6maYCPd1XzUpS2uoGymCGwh4HypJIgxkoA3OsGpfzGr25tTUBAL3aCnQlt93e7cGSldnnluNAtTDAbyRkMjwv7nFgtLpFYjyTemOzWByohNR0mQBHEadFmREGT84E5f/4PPzsJ7yPPBJJpLM7oZxM0tlpo9fSWQ8AHCfAOVdmj0CNu/oCsLr08nf2jJhxLRB6AvR6ndwsmaCuvo6R5lzdA1g6epbkqUlA6MVYGoKG+gZSeREzNVrcckD8ve6bgJ2N2gSISxRFSrYiE1Sr1S+4ocoqUB7UWwLZwoARyRTEytFFlMsVKBSKnORZMkGlUk3kBcGDGyrJoZYEnxnnADhbgmIlxV0OXP1BucGIvCBAqVRe1Ei0X9hPpNMZHtdfmRFtdYtS5dj4sUDY8A6nVyNPLsfxGEtD8NB3LzIztxDMC4JobBI6nF6gLUfzrpZDDcw+x20uH5SJ+ROt4vvOj8doXOgtcAGk01ledFb/EH8iAW5fJPr6BZtaGUVvwTNHXwCKuzmx4RJQKuwF4/SK7xBJNsVnstmnatvWuKlv8G5wKhrj0bjQW6Rmq0uSCA8aDGLwT59X/8yuEXgx/Gqa3fq2PWq1dty6YrOSuKGKD86R3jmOR83P/cGR5EI/QeNay6yP6OrrzbihuJD4ycRRxGnB4TgtRk0CNdFZ9y5M8Lf4BZhafK7jICgxAAAAAElFTkSuQmCC",
+          "yoffset": 0,
+          "width": 18,
+          "xoffset": 0,
+          "angle": 0,
+          "type": "esriPMS",
+          "contentType": "image/png",
+          "url": "d9793ecdd5419e908e853ffd2958f9a8",
+          "height": 18
+        },
+        "type": "simple"
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "geometryField": {
+      "sqlType": "sqlTypeDistinct",
+      "nullable": true,
+      "editable": true,
+      "name": "shape",
+      "typeName": "st_point",
+      "length": 2147483647,
+      "type": "esriFieldTypeGeometry"
+    },
+    "copyrightText": "",
+    "zDefault": 0,
+    "geometryType": "esriGeometryPoint",
+    "supportsLayerOverrides": true
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000021",
+        "pnl_id": "PNL_286",
+        "globalid": "{66B2FB3D-9B29-4157-BAF0-6783B2C71E9B}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1509321600000,
+        "objectid": 1
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000023",
+        "pnl_id": "PNL_039",
+        "globalid": "{7C514295-9AF4-4A09-B42D-93B10DC74750}",
+        "parkname": "Caspersen Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640822400000,
+        "objectid": 2
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000423",
+        "pnl_id": "PNL_040",
+        "globalid": "{ECAF65C0-CFA0-40C7-AF95-62DC5026D450}",
+        "parkname": "Caspersen Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640822400000,
+        "objectid": 3
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000826",
+        "pnl_id": "PNL_157",
+        "globalid": "{065A2A6A-0BD9-4E4F-95B9-D145381D67C7}",
+        "parkname": "Nokomis Beach Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1561041009000,
+        "objectid": 4
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000828",
+        "pnl_id": "PNL_033",
+        "globalid": "{75F8ECD8-3DED-4971-8BE7-F8E3670B85DE}",
+        "parkname": "Blind Pass Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1636502400000,
+        "objectid": 5
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000829",
+        "pnl_id": "PNL_217",
+        "globalid": "{AED75CD0-314A-4A1A-98D8-9B09C24FF92A}",
+        "parkname": "Siesta Beach",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1561983696000,
+        "objectid": 6
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000830",
+        "pnl_id": "PNL_238",
+        "globalid": "{5E9181DC-9F3C-405C-87B9-994A33DBA146}",
+        "parkname": "Snook Haven Park and Riverfront Restaurant",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1638835200000,
+        "objectid": 7
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000833",
+        "pnl_id": "PNL_026",
+        "globalid": "{2B73BFEC-49E7-443D-9615-5BFC84D85DA4}",
+        "parkname": "Bee Ridge Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619740800000,
+        "objectid": 8
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000834",
+        "pnl_id": "PNL_286",
+        "globalid": "{EDE7D211-E192-4801-803E-8F6013C10AF4}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637107200000,
+        "objectid": 9
+      }
+    },
+    {
+      "attributes": {
+        "facilityid": "PA_07122023_000835",
+        "pnl_id": "PNL_286",
+        "globalid": "{7BAD7856-E780-4A0A-BBCA-37128435F465}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637107200000,
+        "objectid": 10
+      }
+    }
+  ]
+}

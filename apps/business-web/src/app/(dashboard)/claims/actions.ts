@@ -1,9 +1,9 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { createBusinessClaimSchema } from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createBusinessClaimSchema } from '../../../lib/business/schemas';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export type CreateBusinessClaimResult =
   | { ok: true; claimId: string }

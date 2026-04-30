@@ -18,6 +18,9 @@ interface CliOptions {
   outputPath: string | null;
   apply: boolean;
   includeLimitedUse: boolean;
+  artifactRawInputPath: string | null;
+  artifactRawPath: string | null;
+  artifactNormalizedPath: string | null;
 }
 
 interface SupabaseRestContext {
@@ -92,6 +95,9 @@ function parseArgs(argv: string[]): CliOptions {
     outputPath: null,
     apply: false,
     includeLimitedUse: false,
+    artifactRawInputPath: null,
+    artifactRawPath: null,
+    artifactNormalizedPath: null,
   };
 
   for (const argument of argv.slice(2)) {
@@ -124,6 +130,20 @@ function parseArgs(argv: string[]): CliOptions {
     if (argument.startsWith('--output=')) {
       options.outputPath = argument.slice('--output='.length).trim();
       continue;
+    }
+
+    if (argument.startsWith('--artifact-raw-input=')) {
+      options.artifactRawInputPath = argument.slice('--artifact-raw-input='.length).trim();
+      continue;
+    }
+
+    if (argument.startsWith('--artifact-raw-path=')) {
+      options.artifactRawPath = argument.slice('--artifact-raw-path='.length).trim();
+      continue;
+    }
+
+    if (argument.startsWith('--artifact-normalized-path=')) {
+      options.artifactNormalizedPath = argument.slice('--artifact-normalized-path='.length).trim();
     }
   }
 
@@ -273,6 +293,7 @@ function buildSourceRecordPayload(
     archetype_metadata: importedRecord.archetype_metadata,
     source_dataset: getMetadataText(metadataObject, 'source_dataset'),
     source_url:
+      getMetadataText(metadataObject, 'source_url') ??
       getMetadataText(metadataObject, 'website') ??
       getMetadataText(metadataObject, 'link_1') ??
       getMetadataText(metadataObject, 'link_2'),
@@ -511,6 +532,9 @@ async function applySourceRecords(
   artifactPaths: {
     inputPath: string;
     normalizedPath: string;
+    rawArtifactInputPath: string | null;
+    rawArtifactPath: string | null;
+    normalizedArtifactPath: string | null;
   }
 ): Promise<ApplySummary> {
   if (importedRecords.length === 0) {
@@ -522,7 +546,8 @@ async function applySourceRecords(
   const metadataObject = asJsonObject(importedRecords[0]?.archetype_metadata);
   const sourceKey = buildSourceKey(importedRecords[0]);
   const sourceDataset = getMetadataText(metadataObject, 'source_dataset');
-  const rawArtifactHash = createHash('sha256').update(await readFile(artifactPaths.inputPath, 'utf8')).digest('hex');
+  const rawArtifactHashSourcePath = artifactPaths.rawArtifactInputPath ?? artifactPaths.inputPath;
+  const rawArtifactHash = createHash('sha256').update(await readFile(rawArtifactHashSourcePath, 'utf8')).digest('hex');
   const normalizedArtifactHash = createHash('sha256')
     .update(await readFile(artifactPaths.normalizedPath, 'utf8'))
     .digest('hex');
@@ -530,8 +555,8 @@ async function applySourceRecords(
     sourceKey,
     sourceDataset,
     totalRecords: importedRecords.length,
-    rawArtifactPath: artifactPaths.inputPath,
-    normalizedArtifactPath: artifactPaths.normalizedPath,
+    rawArtifactPath: artifactPaths.rawArtifactPath ?? artifactPaths.inputPath,
+    normalizedArtifactPath: artifactPaths.normalizedArtifactPath ?? artifactPaths.normalizedPath,
     rawArtifactHash,
     normalizedArtifactHash,
   });
@@ -613,6 +638,9 @@ async function main(): Promise<void> {
   const applySummary = await applySourceRecords(restContext, parseResult.records, {
     inputPath,
     normalizedPath: outputPath,
+    rawArtifactInputPath: options.artifactRawInputPath,
+    rawArtifactPath: options.artifactRawPath,
+    normalizedArtifactPath: options.artifactNormalizedPath,
   });
 
   console.log(

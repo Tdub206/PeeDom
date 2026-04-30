@@ -4,15 +4,15 @@ import { revalidatePath } from 'next/cache';
 import {
   deleteBusinessPhotoSchema,
   uploadBusinessPhotoSchema,
-} from '@/lib/business/schemas';
+} from '../../../../lib/business/schemas';
 import {
   BATHROOM_PHOTO_BUCKET,
   MAX_BATHROOM_PHOTO_BYTES,
   buildBathroomPhotoStoragePath,
   isAllowedBathroomPhotoType,
-} from '@/lib/business/photo-storage';
-import { getApprovedLocationById } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../../lib/business/photo-storage';
+import { getApprovedLocationById } from '../../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../../lib/supabase/server';
 
 type BathroomPhotoModerationStatus = 'approved' | 'pending' | 'rejected';
 

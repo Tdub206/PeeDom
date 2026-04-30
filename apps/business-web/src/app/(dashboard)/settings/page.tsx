@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import { notificationPreferencesSchema } from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { notificationPreferencesSchema } from '../../../lib/business/schemas';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { SettingsSections, type NotificationPreferences } from './settings-sections';
 
 export const metadata: Metadata = {

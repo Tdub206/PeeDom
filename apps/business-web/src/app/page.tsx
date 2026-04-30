@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createSupabaseServerClient } from '../lib/supabase/server';
 
 // Root route just bounces the visitor to the right place based on
 // their auth state. Marketing lives on the static ../../web/ site.

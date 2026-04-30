@@ -1,0 +1,1689 @@
+{
+  "item": {
+    "id": "00785c4fdb7b48b59362d7af5b0ba1f3",
+    "owner": "MatthewSisk",
+    "created": 1776266297000,
+    "modified": 1776266331000,
+    "guid": null,
+    "name": "ND-SMC_Bathroom_SurveyView",
+    "title": "ND-SMC Bathroom SurveyView",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Multilayer",
+      "Service",
+      "Hosted Service",
+      "View Service"
+    ],
+    "description": null,
+    "tags": [
+      "CDS"
+    ],
+    "snippet": null,
+    "thumbnail": "thumbnail/ago_downloaded.png",
+    "documentation": null,
+    "extent": [
+      [
+        -180,
+        -90
+      ],
+      [
+        180,
+        90
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "4326",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/7h4RfkpNzKg2iVL3/arcgis/rest/services/ND-SMC_Bathroom_SurveyView/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 149,
+    "scoreCompleteness": 33,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777528800000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "surveyPoint",
+    "type": "Feature Layer",
+    "serviceItemId": "00785c4fdb7b48b59362d7af5b0ba1f3",
+    "cacheMaxAge": 30,
+    "isView": true,
+    "isUpdatableView": true,
+    "sourceSchemaChangesAllowed": true,
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "ownershipBasedAccessControlForFeatures": {
+      "allowOthersToQuery": true,
+      "allowOthersToDelete": true,
+      "allowOthersToUpdate": true,
+      "allowAnonymousToQuery": true,
+      "allowAnonymousToUpdate": false,
+      "allowAnonymousToDelete": false
+    },
+    "editFieldsInfo": {
+      "creationDateField": "CreationDate",
+      "creatorField": "Creator",
+      "editDateField": "EditDate",
+      "editorField": "Editor"
+    },
+    "editingInfo": {
+      "lastEditDate": 1776266304909,
+      "schemaLastEditDate": 1776266304909,
+      "dataLastEditDate": 1776266304909
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "supportsOBACForAnonymousUsers": true,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": -180,
+      "ymin": -90,
+      "xmax": 180,
+      "ymax": 90,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "drawingInfo": {
+      "labelingInfo": null,
+      "renderer": {
+        "description": "Survey Data Locations",
+        "label": "Survey Point",
+        "symbol": {
+          "angle": 0,
+          "color": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "outline": {
+            "color": [
+              255,
+              255,
+              0,
+              255
+            ],
+            "width": 1
+          },
+          "size": 8,
+          "style": "esriSMSCircle",
+          "type": "esriSMS",
+          "xoffset": 0,
+          "yoffset": 0
+        },
+        "type": "simple"
+      },
+      "transparency": 0
+    },
+    "timeInfo": {
+      "startTimeField": "",
+      "endTimeField": "",
+      "trackIdField": "",
+      "timeExtent": [],
+      "timeReference": {
+        "timeZone": "UTC",
+        "timeZoneIANA": "Etc/UTC",
+        "respectsDaylightSaving": false
+      },
+      "timeInterval": 0,
+      "timeIntervalUnits": "",
+      "exportOptions": {
+        "useTime": false,
+        "timeDataCumulative": false,
+        "TimeOffset": 0,
+        "timeOffsetUnits": "esriTimeUnitsCenturies"
+      },
+      "hasLiveData": false
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "viewSourceHasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": false
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "ObjectId",
+    "uniqueIdField": {
+      "name": "ObjectId",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "globalid",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "ObjectId",
+        "type": "esriFieldTypeOID",
+        "alias": "ObjectID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "globalid",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_0",
+        "type": "esriFieldTypeString",
+        "alias": "Building name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_2",
+        "type": "esriFieldTypeDouble",
+        "alias": "Floor",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_3",
+        "type": "esriFieldTypeDouble",
+        "alias": "Room number",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_4",
+        "type": "esriFieldTypeString",
+        "alias": "Building hours",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_10",
+        "type": "esriFieldTypeString",
+        "alias": "Door width at least 32”",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_10",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_8",
+        "type": "esriFieldTypeString",
+        "alias": "Door knob:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_8",
+          "codedValues": [
+            {
+              "name": "Lever",
+              "code": "choice0"
+            },
+            {
+              "name": "Round knob",
+              "code": "choice1"
+            },
+            {
+              "name": "Handle",
+              "code": "choice2"
+            },
+            {
+              "name": "Automatic push-button",
+              "code": "choice3"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_8_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - Door knob:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_9",
+        "type": "esriFieldTypeDouble",
+        "alias": "Height of toilet seat in inches (ADA = 17-19”):",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_7",
+        "type": "esriFieldTypeString",
+        "alias": "Roll-under sink",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_7",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_11",
+        "type": "esriFieldTypeString",
+        "alias": "Soap and dryers at chair height",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_11",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_12",
+        "type": "esriFieldTypeString",
+        "alias": "Available products:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_12",
+          "codedValues": [
+            {
+              "name": "Tampons",
+              "code": "choice0"
+            },
+            {
+              "name": "Pads",
+              "code": "choice1"
+            },
+            {
+              "name": "Tampons and pads",
+              "code": "choice2"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_14",
+        "type": "esriFieldTypeDouble",
+        "alias": "Cost of products",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_13",
+        "type": "esriFieldTypeString",
+        "alias": "Machine is functioning and stocked",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_13",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_15",
+        "type": "esriFieldTypeString",
+        "alias": "Private sink for rinsing menstrual cups",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_15",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_17",
+        "type": "esriFieldTypeString",
+        "alias": "Changing Table",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_17",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_16",
+        "type": "esriFieldTypeString",
+        "alias": "Chair or other seating",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_16",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_19",
+        "type": "esriFieldTypeString",
+        "alias": "Comments",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "building_accessibility",
+        "type": "esriFieldTypeString",
+        "alias": "Building Accessibility",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "building_name",
+        "type": "esriFieldTypeString",
+        "alias": "Building name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "_floor",
+        "type": "esriFieldTypeDouble",
+        "alias": "Floor",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "room_number",
+        "type": "esriFieldTypeDouble",
+        "alias": "Room number",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "building_hours",
+        "type": "esriFieldTypeString",
+        "alias": "Building hours",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "door_width_at_least_32",
+        "type": "esriFieldTypeString",
+        "alias": "Door width at least 32”",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_door_width_at_least_32",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "door_knob",
+        "type": "esriFieldTypeString",
+        "alias": "Door knob:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_door_knob",
+          "codedValues": [
+            {
+              "name": "Lever",
+              "code": "choice0"
+            },
+            {
+              "name": "Round knob",
+              "code": "choice1"
+            },
+            {
+              "name": "Handle",
+              "code": "choice2"
+            },
+            {
+              "name": "Automatic push-button",
+              "code": "choice3"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "door_knob_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - Door knob:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "height_of_toilet_seat_in_inches",
+        "type": "esriFieldTypeDouble",
+        "alias": "Height of toilet seat in inches (ADA = 17-19”):",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "roll_under_sink",
+        "type": "esriFieldTypeString",
+        "alias": "Roll-under sink",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roll_under_sink",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "soap_and_dryers_at_chair_height",
+        "type": "esriFieldTypeString",
+        "alias": "Soap and dryers at chair height",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_soap_and_dryers_at_chair_height",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "available_products",
+        "type": "esriFieldTypeString",
+        "alias": "Available products:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_available_products",
+          "codedValues": [
+            {
+              "name": "Tampons",
+              "code": "choice0"
+            },
+            {
+              "name": "Pads",
+              "code": "choice1"
+            },
+            {
+              "name": "Tampons and pads",
+              "code": "choice2"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "cost_of_products",
+        "type": "esriFieldTypeDouble",
+        "alias": "Cost of products",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "machine_is_functioning_and_stoc",
+        "type": "esriFieldTypeString",
+        "alias": "Machine is functioning and stocked",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_machine_is_functioning_and_stoc",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "private_sink_for_rinsing_menstr",
+        "type": "esriFieldTypeString",
+        "alias": "Private sink for rinsing menstrual cups",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_private_sink_for_rinsing_menstr",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "changing_table",
+        "type": "esriFieldTypeString",
+        "alias": "Changing Table",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_changing_table",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "chair_or_other_seating",
+        "type": "esriFieldTypeString",
+        "alias": "Chair or other seating",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_chair_or_other_seating",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "choice0"
+            },
+            {
+              "name": "No",
+              "code": "choice1"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "comments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "campus",
+        "type": "esriFieldTypeString",
+        "alias": "Campus",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_campus",
+          "codedValues": [
+            {
+              "name": "Notre Dame",
+              "code": "Notre Dame"
+            },
+            {
+              "name": "St Mary's",
+              "code": "St Mary's"
+            },
+            {
+              "name": "Holy Cross",
+              "code": "Holy Cross"
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__survey12__9A619291F02AC78A",
+        "fields": "ObjectId",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_8257.survey123_df1291bc25724f5d8b0cd85b9a3cdbae_SURVEYPOINT_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "CreationDateIndex",
+        "fields": "CreationDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "CreationDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreatorIndex",
+        "fields": "Creator",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Creator Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditDateIndex",
+        "fields": "EditDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "EditDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditorIndex",
+        "fields": "Editor",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Editor Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "UK_survey123_df1291bc25724f5d8b0cd85b9a3cdbae_SURVEYPOINT_globalid",
+        "fields": "globalid",
+        "isAscending": false,
+        "isUnique": true,
+        "description": "nonclustered, unique",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "ObjectId": 3,
+        "globalid": "0f768d4a-3119-4746-bd61-ab0ea354f112",
+        "CreationDate": 1498671520084,
+        "Creator": "",
+        "EditDate": 1499373420719,
+        "Editor": "MatthewSisk",
+        "field_0": "Rockne Memorial",
+        "field_2": -1,
+        "field_3": null,
+        "field_4": "6am-11pm",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 19,
+        "field_7": "choice0",
+        "field_11": "choice1",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice0",
+        "field_16": "choice0",
+        "field_19": "Room number: B032B",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 4,
+        "globalid": "03f05894-88e9-4791-852d-c4c854f82125",
+        "CreationDate": 1498671556999,
+        "Creator": "",
+        "EditDate": 1499373623513,
+        "Editor": "MatthewSisk",
+        "field_0": "Hesburgh Library",
+        "field_2": 10,
+        "field_3": null,
+        "field_4": null,
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 18,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": "choice2",
+        "field_14": 0.5,
+        "field_13": "choice0",
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "There are two gender neutral bathrooms on this floor",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 5,
+        "globalid": "d082e7dd-449e-4241-b0a5-41310a08240f",
+        "CreationDate": 1498672404992,
+        "Creator": "",
+        "EditDate": 1499260133124,
+        "Editor": "MatthewSisk",
+        "field_0": "Morris inn ",
+        "field_2": 1,
+        "field_3": null,
+        "field_4": null,
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 16,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice0",
+        "field_16": "choice1",
+        "field_19": null,
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 6,
+        "globalid": "e0f7c2d5-5a1c-45f1-9df7-99f123c2e753",
+        "CreationDate": 1498672450948,
+        "Creator": "",
+        "EditDate": 1499373110637,
+        "Editor": "MatthewSisk",
+        "field_0": "Galvin Life Sciences Center ",
+        "field_2": 1,
+        "field_3": null,
+        "field_4": "Mon-Friday ",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 17,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": null,
+        "field_19": "Need to be buzzed into the building by main office ",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 7,
+        "globalid": "1ccdf89e-1860-4723-b71e-8fed46fe04b0",
+        "CreationDate": 1498672735971,
+        "Creator": "",
+        "EditDate": 1499373122506,
+        "Editor": "MatthewSisk",
+        "field_0": "Galvin Life Sciences Center",
+        "field_2": 2,
+        "field_3": null,
+        "field_4": "Mon-Fri",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 17,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "Must be buzzed in past main offices ",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 8,
+        "globalid": "be921a2d-678f-4f13-bd53-1685899ec8c5",
+        "CreationDate": 1498672756858,
+        "Creator": "",
+        "EditDate": 1499373136047,
+        "Editor": "MatthewSisk",
+        "field_0": "Galvin Life Sciences Center ",
+        "field_2": 2,
+        "field_3": null,
+        "field_4": "Mon-Friday",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 17,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": "choice2",
+        "field_14": 0.5,
+        "field_13": "choice0",
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "Buzz to get in in the office.",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 9,
+        "globalid": "2fae2781-2887-429e-a8cb-bb5331ee5aaf",
+        "CreationDate": 1498672826213,
+        "Creator": "",
+        "EditDate": 1499373560621,
+        "Editor": "MatthewSisk",
+        "field_0": "Eck Hall",
+        "field_2": 2,
+        "field_3": null,
+        "field_4": null,
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 17,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice0",
+        "field_16": "choice1",
+        "field_19": null,
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 10,
+        "globalid": "cfab3f5c-91d2-44c6-b6b5-cf64b5210865",
+        "CreationDate": 1498672826334,
+        "Creator": "",
+        "EditDate": 1499373449326,
+        "Editor": "MatthewSisk",
+        "field_0": "Brownson Hall",
+        "field_2": 1,
+        "field_3": null,
+        "field_4": "8:30-5:00",
+        "field_10": "choice0",
+        "field_8": "choice1",
+        "field_8_other": null,
+        "field_9": 18,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "No menstrual products ",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 11,
+        "globalid": "354d0d3e-afae-4fee-a082-5ed4dd9135d4",
+        "CreationDate": 1498673182872,
+        "Creator": "",
+        "EditDate": 1499373667325,
+        "Editor": "MatthewSisk",
+        "field_0": "Saint Liam Hall",
+        "field_2": 1,
+        "field_3": null,
+        "field_4": "9-7",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 18,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "No menstrual products ",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    },
+    {
+      "attributes": {
+        "ObjectId": 12,
+        "globalid": "3161434a-503a-42ff-89aa-da0288bb0a41",
+        "CreationDate": 1498673323770,
+        "Creator": "",
+        "EditDate": 1499373655625,
+        "Editor": "MatthewSisk",
+        "field_0": "Saint Liam Hall",
+        "field_2": 1,
+        "field_3": null,
+        "field_4": "9-7",
+        "field_10": "choice0",
+        "field_8": "choice0",
+        "field_8_other": null,
+        "field_9": 18,
+        "field_7": "choice0",
+        "field_11": "choice0",
+        "field_12": null,
+        "field_14": null,
+        "field_13": null,
+        "field_15": "choice0",
+        "field_17": "choice1",
+        "field_16": "choice1",
+        "field_19": "No menstrual products ",
+        "building_accessibility": null,
+        "building_name": null,
+        "_floor": null,
+        "room_number": null,
+        "building_hours": null,
+        "door_width_at_least_32": null,
+        "door_knob": null,
+        "door_knob_other": null,
+        "height_of_toilet_seat_in_inches": null,
+        "roll_under_sink": null,
+        "soap_and_dryers_at_chair_height": null,
+        "available_products": null,
+        "cost_of_products": null,
+        "machine_is_functioning_and_stoc": null,
+        "private_sink_for_rinsing_menstr": null,
+        "changing_table": null,
+        "chair_or_other_seating": null,
+        "comments": null,
+        "campus": null
+      }
+    }
+  ]
+}

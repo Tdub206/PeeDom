@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Linking, Platform, Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
@@ -25,6 +25,7 @@ import { useLocation } from '@/hooks/useLocation';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
 import { hasActivePremium } from '@/lib/gamification';
+import { openDirectionsInMaps } from '@/lib/map-navigation';
 import { pushSafely } from '@/lib/navigation';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { useFilterStore } from '@/store/useFilterStore';
@@ -213,12 +214,6 @@ export default function MapTab() {
   const handleNavigateToBathroom = useCallback(
     async (bathroom: BathroomListItem) => {
       const canonicalBathroomId = getCanonicalBathroomId(bathroom);
-      const encodedLabel = encodeURIComponent(bathroom.place_name);
-      const latitude = bathroom.coordinates.latitude;
-      const longitude = bathroom.coordinates.longitude;
-      const appleMapsUrl = `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodedLabel}`;
-      const googleNavigationUrl = `google.navigation:q=${latitude},${longitude}`;
-      const browserFallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
 
       setIsOpeningDirections(true);
 
@@ -234,23 +229,11 @@ export default function MapTab() {
           });
         }
 
-        if (Platform.OS === 'ios') {
-          const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
-
-          if (canOpenAppleMaps) {
-            await Linking.openURL(appleMapsUrl);
-            return;
-          }
-        } else {
-          const canOpenGoogleNavigation = await Linking.canOpenURL(googleNavigationUrl);
-
-          if (canOpenGoogleNavigation) {
-            await Linking.openURL(googleNavigationUrl);
-            return;
-          }
-        }
-
-        await Linking.openURL(browserFallbackUrl);
+        await openDirectionsInMaps({
+          placeName: bathroom.place_name,
+          coordinates: bathroom.coordinates,
+          address: bathroom.address,
+        });
       } catch (error) {
         showToast({
           title: 'Navigation unavailable',

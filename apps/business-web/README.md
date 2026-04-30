@@ -24,6 +24,42 @@ npm run dev
 
 The dev server runs on [http://localhost:3030](http://localhost:3030) on purpose — port 3000 conflicts with the Expo web preview.
 
+## Firebase deployment
+
+This app is wired for Firebase App Hosting from the repo root.
+
+One-time Firebase setup:
+
+1. Create an App Hosting backend for this repository.
+2. Set the backend root directory to `apps/business-web`.
+3. Use backend id `stallpass-business-web`.
+4. Connect the custom domain `business.stallpass.app`.
+5. Add App Hosting secrets for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+6. If you want the AI panel live, also add `ANTHROPIC_API_KEY`.
+
+Secret commands:
+
+```bash
+npx firebase-tools apphosting:secrets:set NEXT_PUBLIC_SUPABASE_URL
+npx firebase-tools apphosting:secrets:set NEXT_PUBLIC_SUPABASE_ANON_KEY
+# optional
+npx firebase-tools apphosting:secrets:set ANTHROPIC_API_KEY
+```
+
+Repo files involved:
+
+- [apphosting.yaml](C:/Users/T/Desktop/PeeDom/apps/business-web/apphosting.yaml)
+- [firebase.json](C:/Users/T/Desktop/PeeDom/firebase.json)
+
+Deployment commands from the repo root:
+
+```bash
+npm run firebase:deploy
+npm run firebase:deploy:business-web
+```
+
+The static marketing site remains on Firebase Hosting and redirects `/business/` to `https://business.stallpass.app`, so existing public links keep resolving to the real dashboard.
+
 ## Layout
 
 ```

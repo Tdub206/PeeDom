@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6163277190941,
+          63.0969402648471
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "esrignss_speed": null,
+        "esrignss_direction": null,
+        "esrisnsr_azimuth": null,
+        "esrignss_positionsourcetype": null,
+        "esrignss_receiver": null,
+        "esrignss_h_rms": null,
+        "esrignss_v_rms": null,
+        "esrignss_latitude": null,
+        "esrignss_longitude": null,
+        "esrignss_altitude": null,
+        "esrignss_pdop": null,
+        "esrignss_hdop": null,
+        "esrignss_vdop": null,
+        "esrignss_fixtype": null,
+        "esrignss_correctionage": null,
+        "esrignss_stationid": null,
+        "esrignss_numsats": null,
+        "esrignss_fixdatetime": null,
+        "esrignss_avg_h_rms": null,
+        "esrignss_avg_v_rms": null,
+        "esrignss_avg_positions": null,
+        "esrignss_h_stddev": null,
+        "GlobalID": "2d069c59-dce5-4fe0-8b0a-45b40dacff3f"
+      }
+    }
+  ]
+}

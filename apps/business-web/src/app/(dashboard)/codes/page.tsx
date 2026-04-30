@@ -17,8 +17,8 @@ import {
   getBusinessLocationCodes,
   type ApprovedLocation,
   type BusinessLocationCodeRow,
-} from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { CodeRevealCard } from './code-reveal-card';
 import { AccessCodeForm } from './access-code-form';
 

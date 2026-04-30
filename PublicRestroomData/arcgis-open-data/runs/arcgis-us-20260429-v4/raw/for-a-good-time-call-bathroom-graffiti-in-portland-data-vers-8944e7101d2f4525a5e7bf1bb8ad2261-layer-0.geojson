@@ -1,0 +1,281 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.670849747771,
+          45.5629197323227
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "name_venue": "The Florida Room",
+        "type_subject": "Protest",
+        "kind_emotions": "Defiance",
+        "category_scene": "Chaotic",
+        "choice_offensive": "Yes",
+        "can_erase": "No",
+        "media_used": "Market, paint, sharpie, pen",
+        "what_neighborhood": "Humboldt",
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.636228300327,
+          45.5262145490758
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "name_venue": "Migration Brewery",
+        "type_subject": "Humor",
+        "kind_emotions": "Amusement",
+        "category_scene": "Random",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Pen, paint, stickers, sharpie marker",
+        "what_neighborhood": "Kerns",
+        "type_bar": "Brewery"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.680722807665,
+          45.5525093535919
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "name_venue": "The Alibi",
+        "type_subject": "Sex/Love",
+        "kind_emotions": "Amusement",
+        "category_scene": "Chaotic",
+        "choice_offensive": "Yes",
+        "can_erase": "No",
+        "media_used": "Stickers, paint pen, marker, Sharpie",
+        "what_neighborhood": "Overlook",
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.639909702362,
+          45.5031750584196
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "name_venue": "Clinton Street Pub",
+        "type_subject": "Humor",
+        "kind_emotions": "Inspiration",
+        "category_scene": "Chaotic",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Paint, pen, stickers, marker, sharpie",
+        "what_neighborhood": "Hosford-Abernethy",
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.640542004033,
+          45.5047984247306
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "name_venue": "Reel ‘M Inn",
+        "type_subject": "Sex/Love",
+        "kind_emotions": "Love",
+        "category_scene": "Chaotic",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Paint. Pencil, pen, paint pen, marker, sharpie ",
+        "what_neighborhood": "Hosford-Abernethy",
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.658899146034,
+          45.5227028556766
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "name_venue": "B-Side",
+        "type_subject": "Art",
+        "kind_emotions": "Inspiration",
+        "category_scene": "Organized",
+        "choice_offensive": "Yes",
+        "can_erase": "No",
+        "media_used": "Paint, stickers, paint pen ",
+        "what_neighborhood": "Buckman",
+        "type_bar": "Hipster"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.653931263087,
+          45.5212227859746
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "name_venue": "Hungry Tiger",
+        "type_subject": "Art",
+        "kind_emotions": "Acceptance",
+        "category_scene": "Complex",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Marker, paint pen, hi lighter, Sharpie",
+        "what_neighborhood": "Buckman",
+        "type_bar": "Hipster"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.674569595005,
+          45.5601282969383
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "name_venue": "Red Fox",
+        "type_subject": "Protest",
+        "kind_emotions": "Defiance",
+        "category_scene": "Cohesive",
+        "choice_offensive": "Yes",
+        "can_erase": "No",
+        "media_used": "Sharpie, paint pen, stickers",
+        "what_neighborhood": "Humboldt",
+        "type_bar": "Hipster"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.63836235698,
+          45.5163869926218
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "name_venue": "The Vern",
+        "type_subject": "Other",
+        "kind_emotions": "Confusion",
+        "category_scene": "Chaotic",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Paint pens, Sharpie, chalk, stickers ",
+        "what_neighborhood": "Buckman",
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.615528867697,
+          45.5163144435691
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "name_venue": "Horse Brass",
+        "type_subject": "Humor",
+        "kind_emotions": "Acceptance",
+        "category_scene": "Organized",
+        "choice_offensive": "Yes",
+        "can_erase": "Yes",
+        "media_used": "Ink on paper, chalk, stickers, sharpie",
+        "what_neighborhood": "Sunnyside",
+        "type_bar": "Pub"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.610637763757,
+          45.5401238967019
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "name_venue": "Blackwater",
+        "type_subject": "Other",
+        "kind_emotions": "Confusion",
+        "category_scene": "Chaotic",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Sharpie, stickers, pen",
+        "what_neighborhood": null,
+        "type_bar": "Dive"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.654878696454,
+          45.5088341353704
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "name_venue": "Firkin Tavern",
+        "type_subject": "Other",
+        "kind_emotions": "Amusement",
+        "category_scene": "Random",
+        "choice_offensive": "No",
+        "can_erase": "No",
+        "media_used": "Stickers, paint pen",
+        "what_neighborhood": "Hosford-Abernethy",
+        "type_bar": "Dive"
+      }
+    }
+  ]
+}

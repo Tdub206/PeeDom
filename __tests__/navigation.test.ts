@@ -21,6 +21,14 @@ describe('navigation guards', () => {
     expect(isAppRoute('/modal/update-accessibility?bathroom_id=abc123')).toBe(true);
     expect(isAppRoute(routes.modal.claimBusiness)).toBe(true);
     expect(isAppRoute('/modal/claim-business?bathroom_id=abc123&draft_id=draft-123')).toBe(true);
+    expect(isAppRoute(routes.modal.legalPrivacy)).toBe(true);
+    expect(isAppRoute(routes.modal.legalTerms)).toBe(true);
+    expect(isAppRoute(routes.modal.syncCenter)).toBe(true);
+    expect(isAppRoute(routes.modal.cityPacks)).toBe(true);
+    expect(isAppRoute(routes.modal.routeBathrooms)).toBe(true);
+    expect(isAppRoute(routes.modal.requestFeaturedBathroom('abc123'))).toBe(true);
+    expect(isAppRoute(routes.legal.privacy)).toBe(true);
+    expect(isAppRoute(routes.legal.accountDeletion)).toBe(true);
     expect(isAppRoute('/bathroom/abc123')).toBe(true);
     expect(isAppRoute('/bathroom/abc123?from=login')).toBe(true);
   });

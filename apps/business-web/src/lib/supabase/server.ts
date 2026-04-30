@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { createServerClient, type CookieOptions, type SetAllCookies } from '@supabase/ssr';
-import { getPublicEnv } from '@/lib/env';
+import { getPublicEnv } from '../env';
 import type { BusinessWebDatabase } from './database';
 
 // Server-side Supabase client for Server Components, Route Handlers,

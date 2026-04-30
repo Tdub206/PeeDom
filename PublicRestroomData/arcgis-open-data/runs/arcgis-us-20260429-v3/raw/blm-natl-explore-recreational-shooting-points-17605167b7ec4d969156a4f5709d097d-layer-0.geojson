@@ -1,0 +1,3725 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.332878112793,
+          33.8761711120605
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Hassayampa Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Baldy Mountain",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 1440,
+        "LATITUDE": 33.87617,
+        "LONGITUDE": -112.3329,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Trash Containers (only)",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": 81000,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "Rifle Range Only. Annual expenses are estimated based on business plan. ",
+        "FID": 1,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.334335327148,
+          33.8416976928711
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Hassayampa Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Church Camp Road",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 744,
+        "LATITUDE": 33.8417,
+        "LONGITUDE": -112.3343,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Trash Containers",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": 219000,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "Concrete shooting pad is failing. Expansion joints have seperated allowing water to erode under the slab.  Section's of slab have shifted.  Berms are also begining to erode from rains and heavy use. Annual expenses are estimated based on business plan. ",
+        "FID": 2,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.32544708252,
+          33.8310699462891
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Hassayampa Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Saddleback Mountain",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 689,
+        "LATITUDE": 33.83107,
+        "LONGITUDE": -112.3254,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Trash Containers (only)",
+        "CONDITION_OF_SITE": "Bad",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": 81000,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "Site has significant errosion damage from recent rain event.  Access road needs heavy equipment work and sections of hazard exclusion fence were destroyed.  Rifle Range Only. Annual expenses are estimated based on business plan. ",
+        "FID": 3,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.151794433594,
+          33.0123329162598
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Lower Sonoran Field Office",
+        "COUNTY": "Pinal County",
+        "NAME": "Box Canyon",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 1072,
+        "LATITUDE": 33.01233,
+        "LONGITUDE": -112.1518,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": 219000,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "Shooting Range is in good condition. Annual expenses are estimated based on business plan. ",
+        "FID": 4,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.248100280762,
+          34.4360198974609
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Colorado River District",
+        "FIELD_OFFICE": "Lake Havasu Field Office",
+        "COUNTY": "Mohave County",
+        "NAME": "S.A.R.A. Park",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "AZA 00756701",
+        "CUSTOMER": "Lake Havasu City",
+        "ACRES": 1042.11,
+        "LATITUDE": 34.43602,
+        "LONGITUDE": -114.2481,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Duplicate",
+        "FID": 5,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.975761413574,
+          33.9057235717773
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Colorado River District",
+        "FIELD_OFFICE": "Lake Havasu Field Office",
+        "COUNTY": "La Paz County",
+        "NAME": "Bouse",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "AZA 027798",
+        "CUSTOMER": "La Paz Cnty Bd of Supvrs",
+        "ACRES": 79,
+        "LATITUDE": 33.90572,
+        "LONGITUDE": -113.9758,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": null,
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This casefile is for the Bouse Shooting Range R&PP Classification - not a separate site",
+        "FID": 6,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.499374389648,
+          36.946174621582
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Arizona Strip District",
+        "FIELD_OFFICE": "Arizona Strip Field Office",
+        "COUNTY": "Coconino County",
+        "NAME": "Fredonia Public Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "AZA 03195401",
+        "CUSTOMER": "Fredonia Town Of",
+        "ACRES": 67.5,
+        "LATITUDE": 36.94617,
+        "LONGITUDE": -112.4994,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This casefile is for the Classification only not a separate site. ",
+        "FID": 7,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.360816955566,
+          32.077091217041
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Gila District",
+        "FIELD_OFFICE": "Tucson Field Office",
+        "COUNTY": "Pima County",
+        "NAME": "Tucson Rifle Club- Three Points Public Shooting Range",
+        "CASE_TYPE": "Patent Issued",
+        "SERIAL": "AZA 001420",
+        "CUSTOMER": "AZ Game & Fish Comm",
+        "ACRES": 640.58,
+        "LATITUDE": 32.07709,
+        "LONGITUDE": -111.3608,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "AZA 001420 land is withdrawn",
+        "FID": 8,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.144737243652,
+          35.119083404541
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Colorado River District",
+        "FIELD_OFFICE": "Kingman Field Office",
+        "COUNTY": "Mohave County",
+        "NAME": "7 Mile",
+        "CASE_TYPE": "Patent Issued",
+        "SERIAL": "AZA00369101",
+        "CUSTOMER": "AZ Game & Fish Comm",
+        "ACRES": 430,
+        "LATITUDE": 35.11908,
+        "LONGITUDE": -114.1447,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Mohave Sportsman's Club and AZGFD",
+        "FID": 9,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.474670410156,
+          34.9892196655273
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Colorado River District",
+        "FIELD_OFFICE": "Kingman Field Office",
+        "COUNTY": "Mohave County",
+        "NAME": "Tri-State",
+        "CASE_TYPE": "Patent Issued",
+        "SERIAL": "AZA03173302",
+        "CUSTOMER": "AZ Game & Fish Comm",
+        "ACRES": 292.5,
+        "LATITUDE": 34.98922,
+        "LONGITUDE": -114.4747,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Tri-State Shooting Park, Inc. and AZGFD",
+        "FID": 10,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.661399841309,
+          32.8386001586914
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Gila District",
+        "FIELD_OFFICE": "Safford Field Office",
+        "COUNTY": "Graham County",
+        "NAME": "Dry Lake Park",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZA 00448101",
+        "CUSTOMER": "City of Safford",
+        "ACRES": 640,
+        "LATITUDE": 32.8386,
+        "LONGITUDE": -109.6614,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Site also contains an ATV course, paintball course, and a model aircraft range",
+        "FID": 11,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.623802185059,
+          33.488899230957
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Lower Sonoran Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Usery Mountain Shooting Range (updated 1.7.26 from Rio Salado Sportsmans Club AZGFD)",
+        "CASE_TYPE": "Patent Issued",
+        "SERIAL": "AZAR 0016604",
+        "CUSTOMER": "AZ Game & Fish Comm",
+        "ACRES": 40,
+        "LATITUDE": 33.4889,
+        "LONGITUDE": -111.6238,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Site is an AZ Game and Fish range managed by the Rio Salado Sportsmen Club. Name of the site is Usery Mountain Shooting Range.",
+        "FID": 12,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.046859741211,
+          31.5068874359131
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Gila District",
+        "FIELD_OFFICE": "Tucson Field Office",
+        "COUNTY": "Cochise County",
+        "NAME": "Sierra Vista Shooting Range- SV Rod & Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZA 01776902",
+        "CUSTOMER": "AZ Game & Fish Comm",
+        "ACRES": 640.9,
+        "LATITUDE": 31.50689,
+        "LONGITUDE": -110.0469,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 13,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.64640045166,
+          33.2750015258789
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Lower Sonoran Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Joe Foss Shooting Complex",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZAR 0032193B1",
+        "CUSTOMER": "Maricopa County Parks and Recreation",
+        "ACRES": 129,
+        "LATITUDE": 33.275,
+        "LONGITUDE": -112.6464,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This site is a Maricopa County Parks and Recreation range operated and maintained by the City of Buckeye.",
+        "FID": 14,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.822006225586,
+          32.4560546875
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Lower Sonoran Field Office",
+        "COUNTY": "Pima County",
+        "NAME": "Virgil Ellis Rifle and Pistol Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZPHX 0079814",
+        "CUSTOMER": "Pima County Parks",
+        "ACRES": 628.05,
+        "LATITUDE": 32.45605,
+        "LONGITUDE": -112.822,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Pima County",
+        "FID": 15,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.644027709961,
+          32.9649848937988
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Lower Sonoran Field Office",
+        "COUNTY": "Maricopa County",
+        "NAME": "Gila Bend Public Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZA 004154",
+        "CUSTOMER": "Town of Gila Bend",
+        "ACRES": 320,
+        "LATITUDE": 32.96498,
+        "LONGITUDE": -112.644,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Shade Stuctures, Benches",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Town of Gila",
+        "FID": 16,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.703125,
+          33.9767532348633
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "AZ",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Phoenix District",
+        "FIELD_OFFICE": "Hassayampa Field Office",
+        "COUNTY": "Yavapai County",
+        "NAME": "Constellation Park",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "AZAR0032282",
+        "CUSTOMER": "Town of Wickenburg",
+        "ACRES": 280,
+        "LATITUDE": 33.97675,
+        "LONGITUDE": -112.7031,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Unknown",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 17,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.800582885742,
+          35.5422592163086
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "California Desert District",
+        "FIELD_OFFICE": "Ridgecrest Field Office",
+        "COUNTY": "Kern County",
+        "NAME": "Sage Pistol League ",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 17,
+        "LATITUDE": 35.54226,
+        "LONGITUDE": -117.8006,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "No",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed as SR25-08 Sage Pistol League Special Recreation Permit through Sep 2029. BLM Ridgecrest is working to transitioning to R&PP Lease. ",
+        "FID": 18,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.101516723633,
+          39.1326560974121
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Central California District",
+        "FIELD_OFFICE": "Ukiah Field Office",
+        "COUNTY": "Mendocino County",
+        "NAME": "Cow Mountain Rifle Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 3,
+        "LATITUDE": 39.13266,
+        "LONGITUDE": -123.1015,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Bad",
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "No",
+        "COMMENTS_OR_NOTES": "Major cleanup in 2018.  Another cleanup shedulded tentatively 2026. Additional outside support/funding needed to accomplish this. Cost of maintenace and improvements outside of current FO budget and staff capabilities.  Only outdoor shooting range in the North SF Bay Area and is heavily used.",
+        "FID": 19,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.211799621582,
+          38.3079986572265
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Central California District",
+        "FIELD_OFFICE": "Bishop Field Office",
+        "COUNTY": "Mono County",
+        "NAME": "Bridgeport Gun Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "CACA 03066901",
+        "CUSTOMER": "Mono County",
+        "ACRES": 40,
+        "LATITUDE": 38.308,
+        "LONGITUDE": -119.2118,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Unknown",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 20,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.414497375488,
+          37.9719009399414
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "California Desert District",
+        "FIELD_OFFICE": "Mother Lode Field Office",
+        "COUNTY": "Tuolumne County",
+        "NAME": "Black Powder",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "CACA 005183",
+        "CUSTOMER": null,
+        "ACRES": 62.5,
+        "LATITUDE": 37.9719,
+        "LONGITUDE": -120.4145,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": null,
+        "AMENITIES": null,
+        "CONDITION_OF_SITE": null,
+        "MANAGED_OR_MAINTAINED": null,
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 21,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.515098571777,
+          40.4353981018066
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Northern California District",
+        "FIELD_OFFICE": "Eagle Lake Field Office",
+        "COUNTY": "Lassen County",
+        "NAME": "Rice Canyon Shooting Range ",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "CACA 006072",
+        "CUSTOMER": "Lassen County ",
+        "ACRES": 375,
+        "LATITUDE": 40.4354,
+        "LONGITUDE": -120.5151,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 22,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.457099914551,
+          40.6414985656738
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Northern California District",
+        "FIELD_OFFICE": "Redding Field Office",
+        "COUNTY": "Shasta County",
+        "NAME": "Iron Mountain Road Shooting Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 600,
+        "LATITUDE": 40.6415,
+        "LONGITUDE": -122.4571,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Other Public Safety Design or Features (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "N/A",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "Recently designated as a \"Special Recreation Management Area\" with a primary objective to develop an implementation level plan for managing the range, including developing facilities and establishing operationg procedures. Additional outside support/funding needed to accomplish this. Cost for construction and maintenace of a more developed range outside of current FO budget.",
+        "FID": 23,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.741737365723,
+          32.8789215087891
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CA",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "California Desert District",
+        "FIELD_OFFICE": "El Centro Field Office",
+        "COUNTY": "Imperial County",
+        "NAME": "Imperial Valley Rifle and Pistol Association  Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "CACA 106002829",
+        "CUSTOMER": "Imperial County",
+        "ACRES": 640,
+        "LATITUDE": 32.87892,
+        "LONGITUDE": -115.7417,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "R& PP Lease as of 11/2002 multipurpose shooting complex includes four 50 yard pistol ranges, 200 and 300 yard rifle range, 200 yard silhouette range, Trap and Skeet range, 1000 and 800 yard high power range.",
+        "FID": 24,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.497299194336,
+          39.1888008117676
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CO",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Upper Colorado River District",
+        "FIELD_OFFICE": "Grand Junction Field Office",
+        "COUNTY": "Mesa County",
+        "NAME": "Grand Valley Shooting Ranges",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 750,
+        "LATITUDE": 39.1888,
+        "LONGITUDE": -108.4973,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Stuctures, Benches",
+        "CONDITION_OF_SITE": "Bad",
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "Yes",
+        "COMMENTS_OR_NOTES": "HAZMAT issues, unmanaged; 1978 a 10-year R&PP Lease for a “public shooting range and recreation area” was issued to the Mesa County. A concrete vault toilet was installed at the location but due to vandalism, the structure was removed by BLM. 1988 BLM decision that Mesa County would relinquish the lease.The concrete pads, shade structures and target berms were left.",
+        "FID": 25,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.619903564453,
+          40.5620002746582
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CO",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Northwest District",
+        "FIELD_OFFICE": "Little Snake Field Office",
+        "COUNTY": "Moffat County",
+        "NAME": "Bears Ears Sportsman Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "COC 036351",
+        "CUSTOMER": "Bears Ears Sportsman",
+        "ACRES": 40,
+        "LATITUDE": 40.562,
+        "LONGITUDE": -107.6199,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Renewal of R&PP Lease submitted 11/17/25. LSFO needs to complete management actions necessary to support disposal of these lands to the Bears Ears Shooting Club, they are interested in full patent.",
+        "FID": 26,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.27970123291,
+          37.6421012878418
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CO",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Rocky Mountain District",
+        "FIELD_OFFICE": "San Luis Valley Field Office",
+        "COUNTY": "Rio Grande County",
+        "NAME": "San Luis Valley Field Office Shooting Area",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "COC 04773701",
+        "CUSTOMER": "Rio Grande Sportsman",
+        "ACRES": 14.5,
+        "LATITUDE": 37.6421,
+        "LONGITUDE": -106.2797,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 27,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.969902038574,
+          39.6575012207031
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "CO",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Upper Colorado River District",
+        "FIELD_OFFICE": "Colorado River Valley Field Office",
+        "COUNTY": "Eagle County",
+        "NAME": "Gypsum Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "COC 0066511",
+        "CUSTOMER": "Town of Gypsum",
+        "ACRES": 64.3,
+        "LATITUDE": 39.6575,
+        "LONGITUDE": -106.9699,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 28,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.952697753906,
+          42.5236015319824
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Twin Falls District Office",
+        "FIELD_OFFICE": "Burley Field Office",
+        "COUNTY": "Cassia County",
+        "NAME": "Burley Trap Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "IDI 01451401",
+        "CUSTOMER": "Burley Trap Club",
+        "ACRES": 60,
+        "LATITUDE": 42.5236,
+        "LONGITUDE": -113.9527,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 29,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.411697387695,
+          42.9473991394043
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Idaho Falls District Office",
+        "FIELD_OFFICE": "Pocatello Field Office",
+        "COUNTY": "Bannock County",
+        "NAME": "Oregon Trail Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "IDI 02858101",
+        "CUSTOMER": "Gate City Sport Shooting Assn",
+        "ACRES": 80,
+        "LATITUDE": 42.9474,
+        "LONGITUDE": -112.4117,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 30,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.300102233887,
+          43.3002014160156
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Idaho Falls District Office",
+        "FIELD_OFFICE": "Upper Snake Field Office",
+        "COUNTY": "Bingham County",
+        "NAME": "Cedar Hills Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "IDI 01643802",
+        "CUSTOMER": "Cedar Hills Gun Club",
+        "ACRES": 360,
+        "LATITUDE": 43.3002,
+        "LONGITUDE": -112.3001,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 31,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.959297180176,
+          43.8277015686035
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Idaho Falls District Office",
+        "FIELD_OFFICE": "Upper Snake Field Office",
+        "COUNTY": "Madison County",
+        "NAME": "Unified Sportmens Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "IDI 02746502",
+        "CUSTOMER": "Madison County",
+        "ACRES": 520,
+        "LATITUDE": 43.8277,
+        "LONGITUDE": -111.9593,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 32,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.85710144043,
+          45.1139984130859
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Idaho Falls District Office",
+        "FIELD_OFFICE": "Salmon Field Office",
+        "COUNTY": "Lemhi County",
+        "NAME": "Lemhi Rifle Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "IDI 03261001",
+        "CUSTOMER": "Lemhi County",
+        "ACRES": 37.5,
+        "LATITUDE": 45.114,
+        "LONGITUDE": -113.8571,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Other Public Safety Design or Features (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 33,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.551002502441,
+          43.4771003723144
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Boise District Office",
+        "FIELD_OFFICE": "Four Rivers Field Office",
+        "COUNTY": "Canyon County",
+        "NAME": "Nampa Rod and Gun Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "IDI 015317",
+        "CUSTOMER": "Nampa Rod & Gun",
+        "ACRES": 100,
+        "LATITUDE": 43.4771,
+        "LONGITUDE": -116.551,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 34,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.425369262695,
+          42.8032379150391
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Twin Falls District Office",
+        "FIELD_OFFICE": "Shoshone Field Office",
+        "COUNTY": "Jerome County",
+        "NAME": "Rifle Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "IDI 0010878",
+        "CUSTOMER": "Jerome County Rod & Gun Club",
+        "ACRES": 100,
+        "LATITUDE": 42.80324,
+        "LONGITUDE": -114.4254,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This shooting range was patented to Jerome County many years ago. It is a privately-managed shooting area that allows public use for a small fee.",
+        "FID": 35,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.811798095703,
+          42.9249992370605
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Twin Falls District Office",
+        "FIELD_OFFICE": "Shoshone Field Office",
+        "COUNTY": "Gooding County",
+        "NAME": "Malad Shooting Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 20,
+        "LATITUDE": 42.925,
+        "LONGITUDE": -114.8118,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": 5000,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Yes",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "No",
+        "COMMENTS_OR_NOTES": "Newly constructed shooting area/range near Gooding, ID. Built in 2023 as alternative to dispersed shooting sites in area which had become unsafe. ",
+        "FID": 36,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.307998657227,
+          45.4476013183594
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "ID",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Couer D'Alene District Office",
+        "FIELD_OFFICE": "Cottonwood Field Office",
+        "COUNTY": "Idaho County",
+        "NAME": "Cottonwood Field Office Shooting Area",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "IDI 036839",
+        "CUSTOMER": "Idaho County Shootin",
+        "ACRES": 36,
+        "LATITUDE": 45.4476,
+        "LONGITUDE": -116.308,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": null,
+        "AMENITIES": null,
+        "CONDITION_OF_SITE": null,
+        "MANAGED_OR_MAINTAINED": null,
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 37,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.744400024414,
+          44.3002700805664
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Eastern Montana/Daks District Office",
+        "FIELD_OFFICE": "South Dakota Field Office",
+        "COUNTY": "Lawrence County",
+        "NAME": "Yellowcreek Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "Lease Application being reviewed.",
+        "CUSTOMER": "City of Deadwood",
+        "ACRES": 14,
+        "LATITUDE": 44.30027,
+        "LONGITUDE": -103.7444,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Application in DTS (BLMR004706) for an RP & P lease of 14 acres of public land to expand and improve an existing shooting range including berms, security fencing, signage, permitted and controlled access. NEPA:  DOI-BLM-MT-C040-2021-0012-EA.  (https://eplanning.blm.gov/eplanning-ui/project/2013496/510)",
+        "FID": 38,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.48486328125,
+          44.4145736694336
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Eastern Montana/Daks District Office",
+        "FIELD_OFFICE": "South Dakota Field Office",
+        "COUNTY": "Meade County",
+        "NAME": "Muzzleloader Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "SDM 04238701",
+        "CUSTOMER": "Muzzle Loaders of the Black Hills",
+        "ACRES": 10,
+        "LATITUDE": 44.41457,
+        "LONGITUDE": -103.4849,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Lead remediation is being planned prior to reconstruction of the berms.  ",
+        "FID": 39,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.600555419922,
+          46.3349266052246
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Western Montana District Office",
+        "FIELD_OFFICE": "Butte Field Office",
+        "COUNTY": "Broadwater County",
+        "NAME": "Indian Creek Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "MTM 09072801",
+        "CUSTOMER": "Broadwater County/Broadwater Gun Club",
+        "ACRES": null,
+        "LATITUDE": 46.33493,
+        "LONGITUDE": -111.6006,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 40,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.17561340332,
+          46.2521591186523
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Western Montana District Office",
+        "FIELD_OFFICE": "Butte Field Office",
+        "COUNTY": "Jefferson County",
+        "NAME": "Last Chance Handgunners Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "MTM 078651",
+        "CUSTOMER": "Last Chance Handgunners",
+        "ACRES": 39,
+        "LATITUDE": 46.25216,
+        "LONGITUDE": -112.1756,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "These are the same range. it appears that when the R&PP lease was first created, they put the actual lease under MTM-07865101 (now serial number MTMT106065423), and the NORA for this R&PP lease (Notice of Realty Action) was filed under MTM-078651.  The only shooting range \"site\" is the R&PP lease under MTM-7865101 or MTMT106065423.",
+        "FID": 41,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.281272888184,
+          46.8238105773926
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Eastern Montana/Daks District Office",
+        "FIELD_OFFICE": "Miles City Field Office",
+        "COUNTY": "Prairie County",
+        "NAME": "Prairie County Shooting Range",
+        "CASE_TYPE": "ROW issued",
+        "SERIAL": "MTM 080587",
+        "CUSTOMER": "Prairie County",
+        "ACRES": 40,
+        "LATITUDE": 46.82381,
+        "LONGITUDE": -105.2813,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Other Public Safety Design or Features (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Unknown",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Original Special Land Use permit was applied for by Prairie County in 1978 to use land for shooting/rifle range; Outdoor toilets and a wooden storage building were originally installed but have since been removed. Another Land Use Permit was completed in 1989 and 1995. A Right of Way grant was filed in 1999 and then again in 2019. All information can be found in the Realty File MTM #80587. NEPA analysis CX-MT-C020-2019-0057",
+        "FID": 42,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.761001586914,
+          45.2369003295898
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "MT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Western Montana District Office",
+        "FIELD_OFFICE": "Dillon Field Office",
+        "COUNTY": "Beaverhead County",
+        "NAME": "Dillon Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "MTM 95482",
+        "CUSTOMER": "Beaverhead County",
+        "ACRES": 169.81,
+        "LATITUDE": 45.2369,
+        "LONGITUDE": -112.761,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": null,
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 43,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.939224243164,
+          32.9894523620605
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Las Cruces District Office",
+        "FIELD_OFFICE": "Las Cruces Field Office",
+        "COUNTY": "Otero County",
+        "NAME": "Sidney Paul Gordon Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NMNM 08271101",
+        "CUSTOMER": "Otero County of",
+        "ACRES": 76.25,
+        "LATITUDE": 32.98945,
+        "LONGITUDE": -105.9392,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Supervised range with all amenities.  Address 19 Rockcliff Road\nLa Luz, NM 88337. https://co.otero.nm.us/209/Rifle-Range",
+        "FID": 44,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.838508605957,
+          35.1384239196777
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Albuquerque District Office",
+        "FIELD_OFFICE": "Rio Puerco Field Office",
+        "COUNTY": "Bernalillo County",
+        "NAME": "Shooting Range Park",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NMNM 01714802",
+        "CUSTOMER": "Alburquerque City of",
+        "ACRES": 3485.44,
+        "LATITUDE": 35.13842,
+        "LONGITUDE": -106.8385,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Supervised range with amenities. 16001 Shooting Range Access NW Albuquerque, NM 87120.   https://www.cabq.gov/parksandrecreation/open-space/facilities/shooting-range-park   ",
+        "FID": 45,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.304901123047,
+          32.4476585388183
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Pecos District Office",
+        "FIELD_OFFICE": "Carlsbad Field Office",
+        "COUNTY": "Eddy County",
+        "NAME": "Carlsbad Shooting Range and Action Sport Recreational Area",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NMNM 02710902",
+        "CUSTOMER": "Carlsbad City of",
+        "ACRES": 178.13,
+        "LATITUDE": 32.44766,
+        "LONGITUDE": -104.3049,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "314 N Happy Valley Rd, Carlsbad, NM 88220.  The area provides 4 trap ranges, pistol range, small bore rifle range, large bore rifle range, silhouette rifle range, silhouette pistol range, muzzle loaders range, black powder range, archery range, cross-wind runways for radio controlled model airplanes, a competition go-cart track, restroom facilities and picnic areas.  https://carlsbadsportsmansclub.com/",
+        "FID": 46,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.112258911133,
+          36.70947265625
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Farmington District Office",
+        "FIELD_OFFICE": "Farmington Field Office",
+        "COUNTY": "San Juan County",
+        "NAME": "San Juan Wildlife Federation",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NMNM 00200401",
+        "CUSTOMER": "Unclear",
+        "ACRES": 160,
+        "LATITUDE": 36.70947,
+        "LONGITUDE": -108.1123,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This property has been patented. New/corrected is NMNM105902218.  This is a private range, open to the public, but is not a city- or county-managed facility.  https://www.sjwf.org/content.aspx?page_id=0&club_id=769532",
+        "FID": 47,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.011512756348,
+          32.2644348144531
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Las Cruces District Office",
+        "FIELD_OFFICE": "Las Cruces Field Office",
+        "COUNTY": "Doña Ana",
+        "NAME": "Butterfield Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NMNM 02598601",
+        "CUSTOMER": "Las Cruces Parks and Recreation Department",
+        "ACRES": null,
+        "LATITUDE": 32.26443,
+        "LONGITUDE": -107.0115,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "City-managed shooting range, with partner orgs supporting the site. https://www.picachogunclub.com/RangeMap.htm ",
+        "FID": 48,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.94930267334,
+          33.94580078125
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NM",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Albuquerque District Office",
+        "FIELD_OFFICE": "Socorro Field Office",
+        "COUNTY": "Socorro County",
+        "NAME": "Socorro Gun Club Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NM 30-66-0054; NMNM 0555032",
+        "CUSTOMER": "Socorro Gun Club",
+        "ACRES": 160,
+        "LATITUDE": 33.9458,
+        "LONGITUDE": -106.9493,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Private non-cost range patented through R&PP 1964 (NMNM 0555032).  More info here: http://www.socorrogunclub.com/index.html ",
+        "FID": 49,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.68132019043,
+          39.1795806884765
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Carson City District",
+        "FIELD_OFFICE": "Sierra Front Field Office",
+        "COUNTY": "Lyon County",
+        "NAME": "Carson City Rifle and Pistol Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NVN 04676101",
+        "CUSTOMER": "Lyon County",
+        "ACRES": 68.83,
+        "LATITUDE": 39.17958,
+        "LONGITUDE": -119.6813,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 50,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.668502807617,
+          39.8600997924805
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Carson City District",
+        "FIELD_OFFICE": "Sierra Front Field Office",
+        "COUNTY": "Washoe County",
+        "NAME": "Washoe County Regional Shooting Facility",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NVN 07563901",
+        "CUSTOMER": "Washoe County",
+        "ACRES": 110,
+        "LATITUDE": 39.8601,
+        "LONGITUDE": -119.6685,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 51,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.847679138184,
+          40.8035888671875
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Elko District",
+        "FIELD_OFFICE": "Tuscarora Field Office",
+        "COUNTY": "Elko County",
+        "NAME": "Elko County Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NVN 00469602",
+        "CUSTOMER": "Elko County",
+        "ACRES": 240,
+        "LATITUDE": 40.80359,
+        "LONGITUDE": -115.8477,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 52,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.788299560547,
+          39.269401550293
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Ely District",
+        "FIELD_OFFICE": "Bristlecone Field Office",
+        "COUNTY": "White Pine County",
+        "NAME": "Ely Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NVN 03775003",
+        "CUSTOMER": "White Pine County",
+        "ACRES": 580,
+        "LATITUDE": 39.2694,
+        "LONGITUDE": -114.7883,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 53,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 54,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.072463989258,
+          39.03125
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Carson City District",
+        "FIELD_OFFICE": "Sierra Front Field Office",
+        "COUNTY": "Lyon County",
+        "NAME": "Mason Valley Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NVN 03903902",
+        "CUSTOMER": "Lyon County",
+        "ACRES": 80,
+        "LATITUDE": 39.03125,
+        "LONGITUDE": -119.0725,
+        "TYPE_OF_RANGE_": "Sport Shooting (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Unknown",
+        "CONDITION_OF_SITE": "Unknown",
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 54,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 55,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.778350830078,
+          41.5715599060059
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Winnemucca District",
+        "FIELD_OFFICE": "Humboldt River Field Office",
+        "COUNTY": "Humboldt County",
+        "NAME": "Orovada Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "NVN 006710501",
+        "CUSTOMER": "Humboldt County",
+        "ACRES": 37.5,
+        "LATITUDE": 41.57156,
+        "LONGITUDE": -117.7784,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 55,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.415863037109,
+          37.949722290039
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Ely District",
+        "FIELD_OFFICE": "Caliente Field Office",
+        "COUNTY": "Lincoln County",
+        "NAME": "Pioche Shooting Range",
+        "CASE_TYPE": "Patent pending",
+        "SERIAL": "NVN 05984901",
+        "CUSTOMER": "Pioche Rod & Gun",
+        "ACRES": 240,
+        "LATITUDE": 37.94972,
+        "LONGITUDE": -114.4159,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Stuctures, Benches",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 56,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 57,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.788200378418,
+          41.1231002807617
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Winnemucca District",
+        "FIELD_OFFICE": "Humboldt River Field Office",
+        "COUNTY": "Humboldt County",
+        "NAME": "Winnemucca Shooting Range",
+        "CASE_TYPE": "Patent pending",
+        "SERIAL": "NVN 08564301",
+        "CUSTOMER": "Humboldt County",
+        "ACRES": 76.33,
+        "LATITUDE": 41.1231,
+        "LONGITUDE": -117.7882,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 57,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 58,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.209411621094,
+          36.3366241455078
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Southern Nevada District",
+        "FIELD_OFFICE": "Las Vegas Field Office",
+        "COUNTY": "Clark County",
+        "NAME": "Clark County Shooting Facility",
+        "CASE_TYPE": "Conveyance",
+        "SERIAL": "Public Law 107-350, NVN 076647",
+        "CUSTOMER": "Clark County",
+        "ACRES": 2880,
+        "LATITUDE": 36.33662,
+        "LONGITUDE": -115.2094,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 58,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 59,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.762817382813,
+          41.0293807983398
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Winnemucca District",
+        "FIELD_OFFICE": "Humboldt River Field Office",
+        "COUNTY": "Humboldt County",
+        "NAME": "Humboldt County Shooting Park",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "NVN 09854101",
+        "CUSTOMER": "Humboldt County",
+        "ACRES": 300,
+        "LATITUDE": 41.02938,
+        "LONGITUDE": -117.7628,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 59,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.072113037109,
+          38.0805320739746
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Battle Mountain District",
+        "FIELD_OFFICE": "Tonopah Field Office",
+        "COUNTY": "Nye County",
+        "NAME": "Tonopah Airfield Shooting Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 250,
+        "LATITUDE": 38.08053,
+        "LONGITUDE": -117.0721,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Battle Mountain has a shooting range on private land.  This is open to the public with a membership to the Lander County Gun Club. ",
+        "FID": 60,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 61,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.798980712891,
+          36.8761787414551
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "NV",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Battle Mountain District",
+        "FIELD_OFFICE": "Tonopah Field Office",
+        "COUNTY": "Nye County",
+        "NAME": "Beatty Shooting Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 250,
+        "LATITUDE": 36.87618,
+        "LONGITUDE": -116.799,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Not too much info known on this one.",
+        "FID": 61,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 62,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.696739196777,
+          44.8089065551758
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "OR",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Vale District Office",
+        "FIELD_OFFICE": "Baker Field Office",
+        "COUNTY": "Baker County",
+        "NAME": "Powder River Sportsman's Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "OR 48525",
+        "CUSTOMER": "Powder River Sportsman's Club",
+        "ACRES": 52,
+        "LATITUDE": 44.80891,
+        "LONGITUDE": -117.6967,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Shade Stuctures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 62,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 63,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.360900878906,
+          45.1338005065918
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "OR",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "NW Oregon District Office",
+        "FIELD_OFFICE": "Cascades Field Office",
+        "COUNTY": "Clackamas County",
+        "NAME": "Mollala Rifle Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "OROR106242892",
+        "CUSTOMER": "Mollala Rifle Club",
+        "ACRES": 92,
+        "LATITUDE": 45.1338,
+        "LONGITUDE": -122.3609,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 63,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 64,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.943199157715,
+          43.8908996582031
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "OR",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Prineville District Office",
+        "FIELD_OFFICE": "Deschutes Field Office",
+        "COUNTY": "Deschutes County",
+        "NAME": "Centeral Oregon Shooting Sports Assoc.",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "OR48823-01",
+        "CUSTOMER": "Centeral Oregon Shooting Sports Assoc.",
+        "ACRES": 600,
+        "LATITUDE": 43.8909,
+        "LONGITUDE": -120.9432,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 64,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 65,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.122703552246,
+          43.5630874633789
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "OR",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Burns District Office",
+        "FIELD_OFFICE": "Three Rivers Field Office",
+        "COUNTY": "Harney County",
+        "NAME": "Burns Butte Sportsmen Inc.",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "OROR 04789201",
+        "CUSTOMER": "Burns Butte Sportsmen Inc.",
+        "ACRES": 140,
+        "LATITUDE": 43.56309,
+        "LONGITUDE": -119.1227,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 65,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 66,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.222099304199,
+          43.9436988830566
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "OR",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Vale District Office",
+        "FIELD_OFFICE": "Malheur Field Office",
+        "COUNTY": "Malheur County",
+        "NAME": "Snake River Sportsmen Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "OROR106215347",
+        "CUSTOMER": "Snake River Sportsmen Club",
+        "ACRES": 481,
+        "LATITUDE": 43.9437,
+        "LONGITUDE": -117.2221,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Orginally R & PP Lease, patent 1999",
+        "FID": 66,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 67,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.548843383789,
+          37.1016578674316
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Paria River District",
+        "FIELD_OFFICE": "Kanab Field Office",
+        "COUNTY": "Kane County",
+        "NAME": "Kane County/Kanab Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 04039902",
+        "CUSTOMER": "Kane County ",
+        "ACRES": 13.16,
+        "LATITUDE": 37.10166,
+        "LONGITUDE": -112.5488,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Trash Containers, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed By Kane County, Patented R&PP.",
+        "FID": 67,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.432815551758,
+          37.1500854492188
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Color Country District",
+        "FIELD_OFFICE": "St George Field Office",
+        "COUNTY": "Washington County",
+        "NAME": "Southern Utah Shooting Sports Complex",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "UTU 07667201",
+        "CUSTOMER": "Washington County",
+        "ACRES": 512.53,
+        "LATITUDE": 37.15009,
+        "LONGITUDE": -113.4328,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Washington County Parks. This is a highly developed shooting park that supports the general public, along with several shooting clubs and groups. The site hosts competetive shooting events. Facilities include several outdoor short and long ranges for pistol and rifle shooting, skeet shooting trails, an archery range, shade-covered bays, electronic target systems, and volunteer staff to provide safety instructions and other assistance. More info: https://shootingsportspark.com/",
+        "FID": 68,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.495300292969,
+          39.4014663696289
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "West Desert District",
+        "FIELD_OFFICE": "Fillmore Field Office",
+        "COUNTY": "Millard County",
+        "NAME": "Delta Gun Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 05855402",
+        "CUSTOMER": "Delta City",
+        "ACRES": 60,
+        "LATITUDE": 39.40147,
+        "LONGITUDE": -112.4953,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Delta City, Patented R&PP.",
+        "FID": 69,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.213165283203,
+          37.7764358520508
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Color Country District",
+        "FIELD_OFFICE": "Cedar City Field Office",
+        "COUNTY": "Iron County",
+        "NAME": "Three Peaks Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 07517301",
+        "CUSTOMER": "Iron County",
+        "ACRES": 275,
+        "LATITUDE": 37.77644,
+        "LONGITUDE": -113.2132,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 70,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 71,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.440704345703,
+          37.7892417907715
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Paria River District",
+        "FIELD_OFFICE": "Kanab Field Office",
+        "COUNTY": "Garfield County",
+        "NAME": "Panguitch Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 07857601",
+        "CUSTOMER": "Garfield County",
+        "ACRES": 60,
+        "LATITUDE": 37.78924,
+        "LONGITUDE": -112.4407,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Panguitch City, Patented R&PP",
+        "FID": 71,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 72,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.503761291504,
+          37.0012435913086
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Paria River District",
+        "FIELD_OFFICE": "Kanab Field Office",
+        "COUNTY": "Kane County",
+        "NAME": "Kaneplex Trap Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 07858601",
+        "CUSTOMER": "Kane County",
+        "ACRES": 35.15,
+        "LATITUDE": 37.00124,
+        "LONGITUDE": -112.5038,
+        "TYPE_OF_RANGE_": "Sport Shooting (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed By Kane County, Patented R&PP.",
+        "FID": 72,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 73,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.435096740723,
+          40.4892692565918
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Green River District",
+        "FIELD_OFFICE": "Vernal Field Office",
+        "COUNTY": "Uintah County",
+        "NAME": "Uintah Basin Shooting Complex",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 079052",
+        "CUSTOMER": "Uintah County",
+        "ACRES": 1074.92,
+        "LATITUDE": 40.48927,
+        "LONGITUDE": -109.4351,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Range is managed by Uintah County. Shooting oppertunities include Long Distance Range (up to a mile), Buffalo Longdistance (1500 yards), Cowboy Action Range, 200 Yard Bays, 360 Pistol Range Bays, 100 Yard Ranges, and Sporting Clays. (https://www.buckskinhills.com/shootingrange)",
+        "FID": 73,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 74,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.03254699707,
+          39.2649612426758
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Green River District",
+        "FIELD_OFFICE": "Price Field Office",
+        "COUNTY": "Emery County",
+        "NAME": "Emery County Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 08329101",
+        "CUSTOMER": "Emery County",
+        "ACRES": 40,
+        "LATITUDE": 39.26496,
+        "LONGITUDE": -111.0325,
+        "TYPE_OF_RANGE_": "Sport Shooting (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "The range, managed by Emery County, is primarily set up for trap shooting. It features three concrete bunkers for throwers and clay targets, walkways, benches, shade structures, lights, and a converted shed used as a clubhouse. Portable toilets and garbage cans are available year-round. The Sheriff's Office uses a short-range facility on-site for training. While long-range rifle and archery setups have been used occasionally, they are not primary uses.",
+        "FID": 74,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 75,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.954635620117,
+          40.1746597290039
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "West Desert District",
+        "FIELD_OFFICE": "Salt Lake Field Office",
+        "COUNTY": "Utah County",
+        "NAME": "Soldier Pass Shooting Range",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "UTU 08955301",
+        "CUSTOMER": "Utah County",
+        "ACRES": 160,
+        "LATITUDE": 40.17466,
+        "LONGITUDE": -111.9546,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Managed by Utah County. Ranges available: 25 yard, 50 yard, 100 yard, 200 yard, 400 yard. ",
+        "FID": 75,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 76,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.51587677002,
+          38.3184547424316
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Color Country District",
+        "FIELD_OFFICE": "Richfield Field Office",
+        "COUNTY": "Wayne County",
+        "NAME": "Wayne County Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "UTU 04733701",
+        "CUSTOMER": "Wayne County",
+        "ACRES": 25,
+        "LATITUDE": 38.31845,
+        "LONGITUDE": -111.5159,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Buffer Distances (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Shade Stuctures, Benches",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Unknown",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "This site is either managed by Hanksville or Wayne County. There are benchs and shaded coverings. Expired R&PP but still maintained and used by public. Hard file located.",
+        "FID": 76,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 77,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.057945251465,
+          37.5844955444336
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Paria River District",
+        "FIELD_OFFICE": "Kanab Field Office",
+        "COUNTY": "Garfield County",
+        "NAME": "Cannonville Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "UTU 07477702",
+        "CUSTOMER": "Garfield County",
+        "ACRES": 10,
+        "LATITUDE": 37.5845,
+        "LONGITUDE": -112.0579,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 77,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 78,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.509582519531,
+          37.6406669616699
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Canyon Country District",
+        "FIELD_OFFICE": "Monticello Field Office",
+        "COUNTY": "San Juan County",
+        "NAME": "Blanding Shooting Range",
+        "CASE_TYPE": "ROW issued",
+        "SERIAL": "UTU 089151",
+        "CUSTOMER": "Blanding Shooting Range",
+        "ACRES": 21.1,
+        "LATITUDE": 37.64067,
+        "LONGITUDE": -109.5096,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Unknown",
+        "AMENITIES": "Benches (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "BLM Monticello is interested in funding for replacing damaged shooting benches. This range consists of one 100+ yard range with designated firing line and two short-range/pistol areas. The short range areas do not have designated firing lines. The BLM Monticello Office is interested in improving the infrastructure at this location. If funding or assistance is available, please contact Jeremy Martin j4martin@blm.gov.",
+        "FID": 78,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 79,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.828544616699,
+          39.1806411743164
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Color Country District",
+        "FIELD_OFFICE": "Richfield Field Office",
+        "COUNTY": "Sanpete County",
+        "NAME": "Gunnison Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "UTU 03931301",
+        "CUSTOMER": "Gunnison City",
+        "ACRES": 40,
+        "LATITUDE": 39.18064,
+        "LONGITUDE": -111.8285,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Expired R&PP. Hard file located.",
+        "FID": 79,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 80,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.37149810791,
+          37.8735008239746
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "UT",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Canyon Country District",
+        "FIELD_OFFICE": "Monticello Field Office",
+        "COUNTY": "San Juan County",
+        "NAME": "Monticello Shooting Range",
+        "CASE_TYPE": "BLM-Managed",
+        "SERIAL": null,
+        "CUSTOMER": null,
+        "ACRES": 2,
+        "LATITUDE": 37.8735,
+        "LONGITUDE": -109.3715,
+        "TYPE_OF_RANGE_": null,
+        "FIRING_LINE_": null,
+        "F_SAFETY_FEATURES": "Firearm (only)",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Berms (only)",
+        "AMENITIES": "Yes",
+        "CONDITION_OF_SITE": null,
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": "Good",
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": "As needed",
+        "COMMENTS_OR_NOTES": null,
+        "FID": 80,
+        "Management": "BLM"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 81,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.108200073242,
+          43.225700378418
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Wind River Bighorn Basin District",
+        "FIELD_OFFICE": "Lander Field Office",
+        "COUNTY": "Fremont County",
+        "NAME": "Shoshoni Shooting Range",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "WYW 08121401",
+        "CUSTOMER": "Shoshoni Town of",
+        "ACRES": 70,
+        "LATITUDE": 43.2257,
+        "LONGITUDE": -108.1082,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Maintained and operated by the Shoshoni Rifle Club",
+        "FID": 81,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 82,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.311599731445,
+          44.8772010803223
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Wind River Bighorn Basin District",
+        "FIELD_OFFICE": "Cody Field Office",
+        "COUNTY": "Big Horn County",
+        "NAME": "Lovell Gun Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "WYW 09417001",
+        "CUSTOMER": "Bighorn County of",
+        "ACRES": 136.2,
+        "LATITUDE": 44.8772,
+        "LONGITUDE": -108.3116,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Trash Containers, Benches",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Operated by Lovell Gun Club",
+        "FID": 82,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 83,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.329528808594,
+          41.4539489746094
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Desert District",
+        "FIELD_OFFICE": "Rock Springs Field Office",
+        "COUNTY": "Sweetwater County",
+        "NAME": "Sweetwater County Shooting Range ",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "WYW 12801401",
+        "CUSTOMER": "Sweetwater County of",
+        "ACRES": 480,
+        "LATITUDE": 41.45395,
+        "LONGITUDE": -109.3295,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 83,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 84,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.55192565918,
+          42.8204727172851
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Plains District",
+        "FIELD_OFFICE": "Casper Field Office",
+        "COUNTY": "Natrona County",
+        "NAME": "Platte River Rod & Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 012822",
+        "CUSTOMER": "Natrona County of",
+        "ACRES": 200,
+        "LATITUDE": 42.82047,
+        "LONGITUDE": -106.5519,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 84,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 85,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.238296508789,
+          42.5400009155273
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Desert District",
+        "FIELD_OFFICE": "Pinedale Field Office",
+        "COUNTY": "Sublette County",
+        "NAME": "Big Piney Gun Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 04591502",
+        "CUSTOMER": "Sublette County of",
+        "ACRES": 67.73,
+        "LATITUDE": 42.54,
+        "LONGITUDE": -110.2383,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 85,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 86,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.359481811523,
+          42.6959724426269
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Plains District",
+        "FIELD_OFFICE": "Casper Field Office",
+        "COUNTY": "Converse County",
+        "NAME": "Fort Fetterman Sportsman Assc.",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 05288802",
+        "CUSTOMER": "Converse County of",
+        "ACRES": 120,
+        "LATITUDE": 42.69597,
+        "LONGITUDE": -105.3595,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 86,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 87,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.113800048828,
+          44.5667991638184
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Wind River Bighorn Basin District",
+        "FIELD_OFFICE": "Cody Field Office",
+        "COUNTY": "Park County",
+        "NAME": "Cody Shooting Complex",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 06784702",
+        "CUSTOMER": "Park County of",
+        "ACRES": 297.5,
+        "LATITUDE": 44.5668,
+        "LONGITUDE": -109.1138,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Tied to the Cody Shooting Complex R&PP WYW 06784702 can be removed (Do not remove. Just relable as Cody Shooting Complex Expansion)",
+        "FID": 87,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 88,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.21369934082,
+          41.8307991027832
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Desert District",
+        "FIELD_OFFICE": "Rawlins Field Office",
+        "COUNTY": "Carbon County",
+        "NAME": "Rawlins Outdoor Shooting Complex",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 12270001",
+        "CUSTOMER": "Rawlins City of",
+        "ACRES": 260,
+        "LATITUDE": 41.8308,
+        "LONGITUDE": -107.2137,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 88,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 89,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.91919708252,
+          42.8469009399414
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Desert District",
+        "FIELD_OFFICE": "Pinedale Field Office",
+        "COUNTY": "Sublette County",
+        "NAME": "Pinedale Rifle and Pistol Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 15449501",
+        "CUSTOMER": "Sublette County of",
+        "ACRES": 17.58,
+        "LATITUDE": 42.8469,
+        "LONGITUDE": -109.9192,
+        "TYPE_OF_RANGE_": "Sport Shooting (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Shade Structures (only)",
+        "CONDITION_OF_SITE": "Neutral",
+        "MANAGED_OR_MAINTAINED": "As needed",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 89,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 90,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.686302185059,
+          43.5663986206055
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "Wind River Bighorn Basin District",
+        "FIELD_OFFICE": "Lander Field Office",
+        "COUNTY": "Fremont County",
+        "NAME": "Dubois Gun Club",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "WYW 08904602",
+        "CUSTOMER": "Fremont Co",
+        "ACRES": 120,
+        "LATITUDE": 43.5664,
+        "LONGITUDE": -109.6863,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 90,
+        "Management": "Partner Leased"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 91,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.061828613281,
+          44.8294792175293
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Plains District",
+        "FIELD_OFFICE": "Buffalo Field Office",
+        "COUNTY": "Sheridan County",
+        "NAME": "Sheridan Recreation Complex",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 066703",
+        "CUSTOMER": "Sheridan County",
+        "ACRES": 560,
+        "LATITUDE": 44.82948,
+        "LONGITUDE": -107.0618,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "Yes",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 91,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 92,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.79419708252,
+          44.3339004516602
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Plains District",
+        "FIELD_OFFICE": "Buffalo Field Office",
+        "COUNTY": "Johnson County",
+        "NAME": "Buffalo Outdoor Rifle Club",
+        "CASE_TYPE": "Patent issued",
+        "SERIAL": "WYW 027914",
+        "CUSTOMER": "Johnson County",
+        "ACRES": 129.47,
+        "LATITUDE": 44.3339,
+        "LONGITUDE": -106.7942,
+        "TYPE_OF_RANGE_": "Firearm (only)",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Buffer Distances, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Bad",
+        "MANAGED_OR_MAINTAINED": "No",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": "Currently being cleaned up post-compliance inspection. Will be removing reversionary clause from patent after satisfactory re-inspection.",
+        "FID": 92,
+        "Management": "Partner Owned"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 93,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.288200378418,
+          41.5805702209473
+        ]
+      },
+      "properties": {
+        "Q_NQ": "Q",
+        "STATE": "WY",
+        "CURRENT_STATUS": "Existing range",
+        "DISTRICT": "High Desert District",
+        "FIELD_OFFICE": "Rock Springs Field Office",
+        "COUNTY": "Sweetwater County",
+        "NAME": "Sweetwater Trap Club ",
+        "CASE_TYPE": "R & PP Lease",
+        "SERIAL": "WYW 87200",
+        "CUSTOMER": "Sweetwater County of",
+        "ACRES": 62,
+        "LATITUDE": 41.58057,
+        "LONGITUDE": -109.2882,
+        "TYPE_OF_RANGE_": "Firearm, Sport Shooting",
+        "FIRING_LINE_": "Yes",
+        "F_SAFETY_FEATURES": "Berms, Other Public Safety Design or Features",
+        "QUALIFYING_RANGE_": "Yes",
+        "F_ARCHERY": "No",
+        "AMENITIES": "Restrooms, Shade Structures, Benches, Trash Containers",
+        "CONDITION_OF_SITE": "Good",
+        "MANAGED_OR_MAINTAINED": "Regularly",
+        "ANNUAL_EXPENSES_BLM_MANAGED_ONLY": null,
+        "SUITABLE_FOR_EXPANSION_OR_ENHANCEMENT": null,
+        "VOLUNTEER_SUPPORT_BLM_MANAGED_ONLY": null,
+        "COMMENTS_OR_NOTES": null,
+        "FID": 93,
+        "Management": "Partner Leased"
+      }
+    }
+  ]
+}

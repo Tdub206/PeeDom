@@ -1,0 +1,1415 @@
+{
+  "item": {
+    "id": "6b61dad1b7cf442194e22c2738e66d3e",
+    "owner": "OfficeOfGIS_LasVegas",
+    "created": 1729545288000,
+    "modified": 1777515654000,
+    "guid": null,
+    "name": "Buildings_PRD",
+    "title": "Park Buildings",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "Last updated: Apr 29 2026",
+    "tags": [
+      "Shade Structures",
+      "Gazeebos",
+      "Picnic Structures",
+      "Restrooms"
+    ],
+    "snippet": "The Park Structures data set is used primarily to track and inventory the location, and type of structure assets located within City of Las Vegas parks and at Facilities maintained by Parks and Open Spaces.",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        -115.33435477736874,
+        36.14609533667758
+      ],
+      [
+        -115.0688209490029,
+        36.32540550478176
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102707",
+    "accessInformation": "City of Las Vegas, Parks and Open Spaces, and the Department of Information Technologies - GIS",
+    "classification": null,
+    "licenseInfo": "Due to continuous development activity this data is for reference only.<br /><br />\nThe City of Las Vegas makes no warranty, representation or guarantee of any kind regarding either any maps or other information provided herein or the other sources of such maps or other information. Although best efforts were made to ensure the accuracy of the data provided regardless of the cause of such or for any decision made, action taken, or action not taken by the user in reliance upon any maps or information provided herein.",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/F1v0ufATbBQScMtY/arcgis/rest/services/Buildings_PRD/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 1167,
+    "scoreCompleteness": 88,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777518000000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 14,
+    "name": "Buildings_PRD",
+    "type": "Feature Layer",
+    "serviceItemId": "6b61dad1b7cf442194e22c2738e66d3e",
+    "cacheMaxAge": 30,
+    "displayField": "ParkName",
+    "description": "Various structures located within City of Las Vegas Parks and at Facilities maintained by Parks and Open Spaces. Includes restrooms and shade structures for inventory purposes and building footprints of facilities maintained by Parks and Open Spaces. Stuctures were obtained via aerial imagery from various dates.",
+    "copyrightText": "City of Las Vegas, Parks and Open Spaces, and the Department of Information Technologies - GIS",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1777515651966,
+      "schemaLastEditDate": 1777515651966,
+      "dataLastEditDate": 1777515651966
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsMultiScaleGeometry": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "hasGeometryProperties": true,
+    "geometryProperties": {
+      "shapeAreaFieldName": "Shape__Area",
+      "shapeLengthFieldName": "Shape__Length",
+      "units": "esriFeet"
+    },
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportsTrueCurve": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": true,
+      "supportsReturningGeometryEnvelope": true,
+      "supportsReturningGeometryProperties": true,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPolygon",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 729676.8775511608,
+      "ymin": 26755199.533331074,
+      "xmax": 807728.4911326617,
+      "ymax": 26820165.62551149,
+      "spatialReference": {
+        "wkid": 102707,
+        "latestWkid": 3421
+      }
+    },
+    "spatialReference": {
+      "wkid": 102707,
+      "latestWkid": 3421
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSFS",
+          "style": "esriSFSSolid",
+          "color": [
+            48,
+            127,
+            130,
+            255
+          ],
+          "outline": {
+            "type": "esriSLS",
+            "style": "esriSLSSolid",
+            "color": [
+              110,
+              110,
+              110,
+              255
+            ],
+            "width": 0.7
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "trueCurveSupportMode": "OGC",
+    "supportedCurveTypes": [
+      "esriGeometryCircularArc"
+    ],
+    "supportedTrueCurvePbfFeatureEncodings": [
+      "esriCompressedShapeBuffer",
+      "esriDefault"
+    ],
+    "allowTrueCurvesUpdates": true,
+    "onlyAllowTrueCurveUpdatesByTrueCurveClients": false,
+    "hasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Label",
+        "type": "esriFieldTypeString",
+        "alias": "Label",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Type",
+        "type": "esriFieldTypeString",
+        "alias": "Type",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Notes",
+        "type": "esriFieldTypeString",
+        "alias": "Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Inst_Dat",
+        "type": "esriFieldTypeDate",
+        "alias": "Inst_Dat",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Location",
+        "type": "esriFieldTypeString",
+        "alias": "Location",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FACILITY_ID",
+        "type": "esriFieldTypeString",
+        "alias": "FACILITY_ID",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CONDITION_INSPECTION_DATE",
+        "type": "esriFieldTypeDate",
+        "alias": "CONDITION_INSPECTION_DATE",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "ParkName",
+        "type": "esriFieldTypeString",
+        "alias": "ParkName",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ParkName",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Barkin Basin",
+              "code": "Barkin Basin"
+            },
+            {
+              "name": "Centennial Plaza",
+              "code": "Centennial Plaza"
+            },
+            {
+              "name": "Hualapai Canyon Trailhead",
+              "code": "Hualapai Canyon Trailhead"
+            },
+            {
+              "name": "Neon Boneyard",
+              "code": "Neon Boneyard"
+            },
+            {
+              "name": "Baker",
+              "code": "Baker"
+            },
+            {
+              "name": "Hadland",
+              "code": "Hadland"
+            },
+            {
+              "name": "AnSan",
+              "code": "AnSan"
+            },
+            {
+              "name": "Bettye Wilson",
+              "code": "Bettye Wilson"
+            },
+            {
+              "name": "Bill Briare",
+              "code": "Bill Briare"
+            },
+            {
+              "name": "Buckskin",
+              "code": "Buckskin"
+            },
+            {
+              "name": "Centennial Hills",
+              "code": "Centennial Hills"
+            },
+            {
+              "name": "Children's Memorial",
+              "code": "Children's Memorial"
+            },
+            {
+              "name": "Clarence Ray",
+              "code": "Clarence Ray"
+            },
+            {
+              "name": "Doug Selby",
+              "code": "Doug Selby"
+            },
+            {
+              "name": "Becker Tech",
+              "code": "Becker Tech"
+            },
+            {
+              "name": "FS 45 Pocket",
+              "code": "FS 45 Pocket"
+            },
+            {
+              "name": "Firefighters",
+              "code": "Firefighters"
+            },
+            {
+              "name": "Floyd Lamb",
+              "code": "Floyd Lamb"
+            },
+            {
+              "name": "Garehime",
+              "code": "Garehime"
+            },
+            {
+              "name": "Freedom",
+              "code": "Freedom"
+            },
+            {
+              "name": "Gilcrease",
+              "code": "Gilcrease"
+            },
+            {
+              "name": "Healing Garden",
+              "code": "Healing Garden"
+            },
+            {
+              "name": "Huntridge",
+              "code": "Huntridge"
+            },
+            {
+              "name": "James Gay",
+              "code": "James Gay"
+            },
+            {
+              "name": "Leavitt/Jaycee",
+              "code": "Leavitt/Jaycee"
+            },
+            {
+              "name": "Kellogg Zaher",
+              "code": "Kellogg Zaher"
+            },
+            {
+              "name": "E. Las Vegas Family",
+              "code": "E. Las Vegas Family"
+            },
+            {
+              "name": "HWS Legacy",
+              "code": "HWS Legacy"
+            },
+            {
+              "name": "Mike Morgan",
+              "code": "Mike Morgan"
+            },
+            {
+              "name": "Patriot",
+              "code": "Patriot"
+            },
+            {
+              "name": "Polly Gonzalez",
+              "code": "Polly Gonzalez"
+            },
+            {
+              "name": "Rainbow",
+              "code": "Rainbow"
+            },
+            {
+              "name": "Raptor",
+              "code": "Raptor"
+            },
+            {
+              "name": "Veterans Memorial",
+              "code": "Veterans Memorial"
+            },
+            {
+              "name": "Bunker",
+              "code": "Bunker"
+            },
+            {
+              "name": "Essex Circle",
+              "code": "Essex Circle"
+            },
+            {
+              "name": "Woofter",
+              "code": "Woofter"
+            },
+            {
+              "name": "Charleston Neigh. Pres.",
+              "code": "Charleston Neigh. Pres."
+            },
+            {
+              "name": "All American",
+              "code": "All American"
+            },
+            {
+              "name": "Aloha Shores",
+              "code": "Aloha Shores"
+            },
+            {
+              "name": "Alyn Beck",
+              "code": "Alyn Beck"
+            },
+            {
+              "name": "Angel",
+              "code": "Angel"
+            },
+            {
+              "name": "Angel Trailhead",
+              "code": "Angel Trailhead"
+            },
+            {
+              "name": "Arroyo Vista",
+              "code": "Arroyo Vista"
+            },
+            {
+              "name": "Bearden",
+              "code": "Bearden"
+            },
+            {
+              "name": "Bob Baskin",
+              "code": "Bob Baskin"
+            },
+            {
+              "name": "Boulder Plaza",
+              "code": "Boulder Plaza"
+            },
+            {
+              "name": "Bradley Bridle",
+              "code": "Bradley Bridle"
+            },
+            {
+              "name": "Bruce Trent",
+              "code": "Bruce Trent"
+            },
+            {
+              "name": "Buckskin/Cliff Shadows",
+              "code": "Buckskin/Cliff Shadows"
+            },
+            {
+              "name": "Cameron Community",
+              "code": "Cameron Community"
+            },
+            {
+              "name": "Cimarron Rose",
+              "code": "Cimarron Rose"
+            },
+            {
+              "name": "Coleman",
+              "code": "Coleman"
+            },
+            {
+              "name": "Cragin",
+              "code": "Cragin"
+            },
+            {
+              "name": "Doc Romeo",
+              "code": "Doc Romeo"
+            },
+            {
+              "name": "Durango Hills",
+              "code": "Durango Hills"
+            },
+            {
+              "name": "Estelle Neal",
+              "code": "Estelle Neal"
+            },
+            {
+              "name": "Ethel Pearson",
+              "code": "Ethel Pearson"
+            },
+            {
+              "name": "Fitzgerald Tot Lot",
+              "code": "Fitzgerald Tot Lot"
+            },
+            {
+              "name": "Gary Dexter",
+              "code": "Gary Dexter"
+            },
+            {
+              "name": "Heers",
+              "code": "Heers"
+            },
+            {
+              "name": "Heritage",
+              "code": "Heritage"
+            },
+            {
+              "name": "Lubertha Johnson",
+              "code": "Lubertha Johnson"
+            },
+            {
+              "name": "Majestic",
+              "code": "Majestic"
+            },
+            {
+              "name": "Mary Dutton",
+              "code": "Mary Dutton"
+            },
+            {
+              "name": "Mayfair",
+              "code": "Mayfair"
+            },
+            {
+              "name": "Mirabelli",
+              "code": "Mirabelli"
+            },
+            {
+              "name": "Mountain Ridge",
+              "code": "Mountain Ridge"
+            },
+            {
+              "name": "Pioneer",
+              "code": "Pioneer"
+            },
+            {
+              "name": "Pocket",
+              "code": "Pocket"
+            },
+            {
+              "name": "Police Memorial",
+              "code": "Police Memorial"
+            },
+            {
+              "name": "Pop Squires",
+              "code": "Pop Squires"
+            },
+            {
+              "name": "Rafael Rivera",
+              "code": "Rafael Rivera"
+            },
+            {
+              "name": "Rotary",
+              "code": "Rotary"
+            },
+            {
+              "name": "Sky Ridge",
+              "code": "Sky Ridge"
+            },
+            {
+              "name": "Stewart Place",
+              "code": "Stewart Place"
+            },
+            {
+              "name": "Stupak",
+              "code": "Stupak"
+            },
+            {
+              "name": "Sunny Springs",
+              "code": "Sunny Springs"
+            },
+            {
+              "name": "Teton Trails",
+              "code": "Teton Trails"
+            },
+            {
+              "name": "Trigono Hills",
+              "code": "Trigono Hills"
+            },
+            {
+              "name": "Wildwood",
+              "code": "Wildwood"
+            },
+            {
+              "name": "Winding Trails",
+              "code": "Winding Trails"
+            },
+            {
+              "name": "Lorenzi",
+              "code": "Lorenzi"
+            },
+            {
+              "name": "Viper",
+              "code": "Viper"
+            },
+            {
+              "name": "Ed Fountain",
+              "code": "Ed Fountain"
+            },
+            {
+              "name": "Doolittle",
+              "code": "Doolittle"
+            },
+            {
+              "name": "Garside Pool",
+              "code": "Garside Pool"
+            },
+            {
+              "name": "Knickerbocker",
+              "code": "Knickerbocker"
+            },
+            {
+              "name": "Huckleberry",
+              "code": "Huckleberry"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Ward",
+        "type": "esriFieldTypeString",
+        "alias": "Ward",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Ward",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "1",
+              "code": "1"
+            },
+            {
+              "name": "2",
+              "code": "2"
+            },
+            {
+              "name": "3",
+              "code": "3"
+            },
+            {
+              "name": "4",
+              "code": "4"
+            },
+            {
+              "name": "5",
+              "code": "5"
+            },
+            {
+              "name": "6",
+              "code": "6"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Area",
+        "type": "esriFieldTypeString",
+        "alias": "Area",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Area",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Parks - East",
+              "code": "Parks - East"
+            },
+            {
+              "name": "Parks - Northwest",
+              "code": "Parks - Northwest"
+            },
+            {
+              "name": "Parks - Southwest",
+              "code": "Parks - Southwest"
+            },
+            {
+              "name": "Parks - West",
+              "code": "Parks - West"
+            },
+            {
+              "name": "Urban Forestry",
+              "code": "Urban Forestry"
+            },
+            {
+              "name": "Downtown Maintenance Area",
+              "code": "Downtown Maintenance Area"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "District",
+        "type": "esriFieldTypeString",
+        "alias": "District",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "District",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Crew East-1",
+              "code": "Crew East-1"
+            },
+            {
+              "name": "Crew East-2",
+              "code": "Crew East-2"
+            },
+            {
+              "name": "Crew East-3",
+              "code": "Crew East-3"
+            },
+            {
+              "name": "Crew Southwest-1",
+              "code": "Crew Southwest-1"
+            },
+            {
+              "name": "Crew Southwest-2",
+              "code": "Crew Southwest-2"
+            },
+            {
+              "name": "Crew Southwest-3",
+              "code": "Crew Southwest-3"
+            },
+            {
+              "name": "Crew West-1",
+              "code": "Crew West-1"
+            },
+            {
+              "name": "Crew West-2",
+              "code": "Crew West-2"
+            },
+            {
+              "name": "Crew West-3",
+              "code": "Crew West-3"
+            },
+            {
+              "name": "Crew Northwest-1",
+              "code": "Crew Northwest-1"
+            },
+            {
+              "name": "Crew Northwest-2",
+              "code": "Crew Northwest-2"
+            },
+            {
+              "name": "Crew Northwest-3",
+              "code": "Crew Northwest-3"
+            },
+            {
+              "name": "Contractor Maintained",
+              "code": "Contractor Maintained"
+            },
+            {
+              "name": "Downtown Crew",
+              "code": "Downtown Crew"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "FacilityAddress",
+        "type": "esriFieldTypeString",
+        "alias": "FacilityAddress",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FacilityName",
+        "type": "esriFieldTypeString",
+        "alias": "FacilityName",
+        "sqlType": "sqlTypeOther",
+        "length": 250,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Area",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Area",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Shape__Length",
+        "type": "esriFieldTypeDouble",
+        "alias": "Shape__Length",
+        "sqlType": "sqlTypeDouble",
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__BUILDING__F4B70D855362BEF0",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_2566.BUILDINGS_PRD_BUILDINGS_PRD_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "Shape__Area_Index",
+        "fields": "Shape__Area",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Shape__Length_Index",
+        "fields": "Shape__Length",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "Buildings_PRD",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPolygon",
+        "prototype": {
+          "attributes": {
+            "EditDate": null,
+            "Editor": null,
+            "Label": null,
+            "Type": null,
+            "Notes": null,
+            "Inst_Dat": null,
+            "Location": null,
+            "FACILITY_ID": null,
+            "CONDITION_INSPECTION_DATE": null,
+            "ParkName": null,
+            "Ward": null,
+            "Area": null,
+            "District": null,
+            "FacilityAddress": null,
+            "FacilityName": null,
+            "CreationDate": null,
+            "Creator": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 2000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 4000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 14890,
+        "Label": "Restroom #2",
+        "Type": "Restroom",
+        "Notes": null,
+        "Inst_Dat": 1765922934000,
+        "Location": "All American Park",
+        "FACILITY_ID": "BLDG-0002",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "All American",
+        "Ward": "2",
+        "Area": "Parks - Southwest",
+        "District": "Crew Southwest-2",
+        "FacilityAddress": null,
+        "FacilityName": "All American - Restroom #2",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1767050019057,
+        "Editor": "rittergis_lasvegas",
+        "Shape__Area": 479.603515625,
+        "Shape__Length": 91.62458406641119
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14891,
+        "Label": "Pump Station",
+        "Type": "Pump Station",
+        "Notes": "Irrigation Pump",
+        "Inst_Dat": null,
+        "Location": "Bill Briare Family Park",
+        "FACILITY_ID": "BLDG-0004",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Bill Briare",
+        "Ward": "1",
+        "Area": "Parks - Southwest",
+        "District": "Crew Southwest-3",
+        "FacilityAddress": null,
+        "FacilityName": "Bill Briare - Pump Station",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 220.51171875,
+        "Shape__Length": 59.81850070900565
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14892,
+        "Label": "Pump Station",
+        "Type": "Pump Station",
+        "Notes": "Inside of pipe chase",
+        "Inst_Dat": 1756916897000,
+        "Location": "AnSan Sister City Park",
+        "FACILITY_ID": "BLDG-0208",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "AnSan",
+        "Ward": "1",
+        "Area": "Parks - West",
+        "District": "Crew West-2",
+        "FacilityAddress": "7801 Ducharme Ave",
+        "FacilityName": "AnSan - Pump Station",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1756917347239,
+        "Editor": "rittergis_lasvegas",
+        "Shape__Area": 744.595703125,
+        "Shape__Length": 129.44219061221793
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14893,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": " ",
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0007",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 1608.68359375,
+        "Shape__Length": 160.61495915311102
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14894,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": " ",
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0008",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 925.271484375,
+        "Shape__Length": 121.67602256836571
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14895,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": null,
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0009",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 1456.75,
+        "Shape__Length": 235.12938714142493
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14896,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": null,
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0010",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 183.7421875,
+        "Shape__Length": 54.34175483137369
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14897,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": " ",
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0011",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 816.623046875,
+        "Shape__Length": 120.77151794572384
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14898,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": " ",
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0012",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 479.2265625,
+        "Shape__Length": 105.65575222517845
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 14899,
+        "Label": "Out of Park - City Building",
+        "Type": "Out of Park - City Building",
+        "Notes": " ",
+        "Inst_Dat": null,
+        "Location": "East Service Center",
+        "FACILITY_ID": "BLDG-0013",
+        "CONDITION_INSPECTION_DATE": null,
+        "ParkName": "Freedom",
+        "Ward": "3",
+        "Area": "Parks - East",
+        "District": "Crew East-1",
+        "FacilityAddress": null,
+        "FacilityName": "Freedom - Out of Park - City Building",
+        "CreationDate": 1729118170973,
+        "Creator": "jwashington_lasvegas",
+        "EditDate": 1729118170973,
+        "Editor": "jwashington_lasvegas",
+        "Shape__Area": 556.47265625,
+        "Shape__Length": 96.11857417225838
+      }
+    }
+  ]
+}

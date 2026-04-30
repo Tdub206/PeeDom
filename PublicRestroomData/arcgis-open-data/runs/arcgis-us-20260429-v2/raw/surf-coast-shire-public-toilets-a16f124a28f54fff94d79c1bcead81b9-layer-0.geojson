@@ -1,0 +1,1355 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.098356597404,
+          -38.4659196109043
+        ]
+      },
+      "properties": {
+        "ID": 39428,
+        "Suburb": "Aireys Inlet",
+        "Location": "Aireys Inlet Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Aireys Inlet / Aireys Inlet Reserve / Aireys Inlet Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "Multiple - see Black book",
+        "Longitude": 144.0983505782519,
+        "Latitude": -38.46593282839709,
+        "OBJECTID": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.201025130163,
+          -38.3985281281734
+        ]
+      },
+      "properties": {
+        "ID": 39441,
+        "Suburb": "Anglesea",
+        "Location": "Ellimatta Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Ellimatta Reserve / Anglesea Football Club - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3991:Anglesea Football Club - Toilet : Planned|WO#4192:Anglesea Foo",
+        "Longitude": 144.2010191218541,
+        "Latitude": -38.39854133858406,
+        "OBJECTID": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.190199211415,
+          -38.4049581275063
+        ]
+      },
+      "properties": {
+        "ID": 39442,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Shopping Centre",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Shopping Centre / Toilet - Shopping Centre Carpark",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3992:Toilet - Shopping Centre Carpark : Planned|WO#4193:Toilet - Sh",
+        "Longitude": 144.19019320227,
+        "Latitude": -38.40497133884703,
+        "OBJECTID": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.187129537391,
+          -38.410382527339
+        ]
+      },
+      "properties": {
+        "ID": 39443,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Riverbank Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Riverbank Reserve / Anglesea River Bank - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "3993",
+        "CostingWorkOrderDesc": "WO#3993:Anglesea River Bank - Toilet : Planned",
+        "Longitude": 144.18712352843983,
+        "Latitude": -38.41039573872928,
+        "OBJECTID": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.186591423812,
+          -38.4073020382853
+        ]
+      },
+      "properties": {
+        "ID": 39444,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Riverbank Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Riverbank Reserve / Anglesea River Bridge - Toilet",
+        "IsCosted": "N",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.18658541379676,
+        "Latitude": -38.407315249557364,
+        "OBJECTID": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.182753768027,
+          -38.4022557790046
+        ]
+      },
+      "properties": {
+        "ID": 39445,
+        "Suburb": "Anglesea",
+        "Location": "Coogoorah Park Nature Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Coogoorah Park Nature Reserve / Coogoorah Park - Shelter & Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3995:Coogoorah Park - Shelter & Toilet : Planned|WO#4196:Coogoorah ",
+        "Longitude": 144.18274775657656,
+        "Latitude": -38.40226899106511,
+        "OBJECTID": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.950380765251,
+          -38.3658317777507
+        ]
+      },
+      "properties": {
+        "ID": 39449,
+        "Suburb": "Bambra",
+        "Location": "Bambra Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Bambra / Bambra Reserve / Toilet - Greg Drayton Memorial Reserve",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3996:Toilet - Greg Drayton Memorial Reserve : Planned|WO#4197:Toile",
+        "Longitude": 143.95037470937964,
+        "Latitude": -38.36584500530587,
+        "OBJECTID": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.26381750157,
+          -38.3361089828995
+        ]
+      },
+      "properties": {
+        "ID": 39454,
+        "Suburb": "Bellbrae",
+        "Location": "Bellbrae Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Bellbrae / Bellbrae Reserve / Bellbrae Recreation Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3997:Bellbrae Recreation Reserve - Toilet : Planned|WO#4198:Bellbra",
+        "Longitude": 144.2638114981998,
+        "Latitude": -38.33612218977629,
+        "OBJECTID": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.281987216931,
+          -38.3683545332863
+        ]
+      },
+      "properties": {
+        "ID": 39456,
+        "Suburb": "Bells Beach",
+        "Location": "Bells Beach Surfing Recreation Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Bells Beach / Bells Beach Surfing Recreation Reserve / Toilet - Bells Beach Carpark",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "3998",
+        "CostingWorkOrderDesc": "WO#3998:Toilet - Bells Beach Carpark : Planned",
+        "Longitude": 144.28198121953932,
+        "Latitude": -38.36836773863089,
+        "OBJECTID": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.883738824612,
+          -38.3999249056867
+        ]
+      },
+      "properties": {
+        "ID": 39460,
+        "Suburb": "Deans Marsh",
+        "Location": "Deans Marsh Recreation Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Deans Marsh / Deans Marsh Recreation Reserve / Deans Marsh Rec Reserve Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3999:Deans Marsh Rec Reserve Toilet : Planned|WO#4200:Deans Marsh R",
+        "Longitude": 143.8837327602957,
+        "Latitude": -38.399938136520085,
+        "OBJECTID": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.280341963908,
+          -38.2577369935056
+        ]
+      },
+      "properties": {
+        "ID": 39466,
+        "Suburb": "Freshwater Creek",
+        "Location": "Freshwater Creek Recreation Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Freshwater Creek / Freshwater Creek Recreation Reserve / Freshwater Creek Community Hall - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4000:Freshwater Creek Community Hall - Toilet : Planned|WO#4201:Fre",
+        "Longitude": 144.28033595468102,
+        "Latitude": -38.25775019987372,
+        "OBJECTID": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.13830920651,
+          -38.2536856482096
+        ]
+      },
+      "properties": {
+        "ID": 39483,
+        "Suburb": "Modewarre",
+        "Location": "Modewarre Hall and Recreation Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Modewarre / Modewarre Hall and Recreation Reserve / Modewarre Rec Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4002:Modewarre Rec Reserve - Toilet : Planned|WO#4203:Modewarre Rec",
+        "Longitude": 144.13830317177445,
+        "Latitude": -38.25369886428238,
+        "OBJECTID": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.174033779528,
+          -38.2407784064552
+        ]
+      },
+      "properties": {
+        "ID": 39488,
+        "Suburb": "Moriac",
+        "Location": "Moriac and District Lions Park",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Moriac / Moriac and District Lions Park / Moriac & District Lions Park - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "4003",
+        "CostingWorkOrderDesc": "WO#4003:Moriac & District Lions Park - Toilet : Planned",
+        "Longitude": 144.17402774970378,
+        "Latitude": -38.24079161952211,
+        "OBJECTID": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.1953510321,
+          -38.2183642937079
+        ]
+      },
+      "properties": {
+        "ID": 39493,
+        "Suburb": "Mount Moriac",
+        "Location": "Mount Moriac Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Mount Moriac / Mount Moriac Reserve / Mount Moriac Reserve -Toilet 1",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4004:Mount Moriac Reserve -Toilet 1 : Planned|WO#4205:Mount Moriac ",
+        "Longitude": 144.1953450035187,
+        "Latitude": -38.218377505858335,
+        "OBJECTID": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.990755794824,
+          -38.242675528599
+        ]
+      },
+      "properties": {
+        "ID": 39515,
+        "Suburb": "Winchelsea",
+        "Location": "Lions Park",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Winchelsea / Lions Park / Toilet - Palmer St",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4006:Toilet - Palmer St : Planned|WO#4207:Toilet - Palmer St : Reac",
+        "Longitude": 143.9907497327936,
+        "Latitude": -38.24268875398481,
+        "OBJECTID": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.986290900778,
+          -38.2411119613021
+        ]
+      },
+      "properties": {
+        "ID": 39519,
+        "Suburb": "Winchelsea",
+        "Location": "Hesse Street Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Winchelsea / Hesse Street Reserve / Hesse Street Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4007:Hesse Street Reserve - Toilet : Planned|WO#4208:Hesse Street R",
+        "Longitude": 143.9862848383647,
+        "Latitude": -38.24112518671955,
+        "OBJECTID": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.917384713984,
+          -38.2218757167603
+        ]
+      },
+      "properties": {
+        "ID": 39543,
+        "Suburb": "Winchelsea",
+        "Location": "Mirnee School Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Winchelsea / Mirnee School Reserve / Mirnee Tennis Club - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4009:Mirnee Tennis Club - Toilet : Planned|WO#4210:Mirnee Tennis Cl",
+        "Longitude": 143.91737863687686,
+        "Latitude": -38.22188894652423,
+        "OBJECTID": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.294544482681,
+          -38.3496120609962
+        ]
+      },
+      "properties": {
+        "ID": 39595,
+        "Suburb": "Jan Juc",
+        "Location": "Bob Pettitt Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Jan Juc / Bob Pettitt Reserve / Jan Juc Recreation Reserve - Public Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4011:Jan Juc Recreation Reserve - Public Toilet : Planned|WO#4212:J",
+        "Longitude": 144.29453848617624,
+        "Latitude": -38.34962526615931,
+        "OBJECTID": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.324329738187,
+          -38.3326090788494
+        ]
+      },
+      "properties": {
+        "ID": 39600,
+        "Suburb": "Torquay",
+        "Location": "Torquay Central Shopping Precinct",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Torquay / Torquay Central Shopping Precinct / Torquay Town Centre Community Hub & Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4012:Torquay Town Centre Community Hub & Toilet : Planned|WO#4213:T",
+        "Longitude": 144.32432374468783,
+        "Latitude": -38.33262228165626,
+        "OBJECTID": 19
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.337244431247,
+          -38.3198424536213
+        ]
+      },
+      "properties": {
+        "ID": 49517,
+        "Suburb": "Torquay",
+        "Location": "Whites Beach Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Torquay / Whites Beach Reserve / Toilet - Whites Beach Reserve",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4013:Toilet - Whites Beach Reserve : Planned|WO#4214:Toilet - White",
+        "Longitude": 144.33723843941354,
+        "Latitude": -38.31985565626285,
+        "OBJECTID": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.099712355407,
+          -38.4445082428626
+        ]
+      },
+      "properties": {
+        "ID": 50076,
+        "Suburb": "Aireys Inlet",
+        "Location": "Aireys Inlet Pony Club",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Aireys Inlet / Aireys Inlet Pony Club / Aireys Inlet Pony Club-Toilet",
+        "IsCosted": "N",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.09970633415506,
+        "Latitude": -38.44452146028219,
+        "OBJECTID": 21
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.323312332012,
+          -38.3076521846308
+        ]
+      },
+      "properties": {
+        "ID": 57551,
+        "Suburb": "Torquay",
+        "Location": "Banyul Warri Fields",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Torquay / Banyul Warri Fields / Public Toilet - Banyul-Warri Fields",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "Multiple - see Black book",
+        "Longitude": 144.32330633606483,
+        "Latitude": -38.307665388012005,
+        "OBJECTID": 22
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.990768244004,
+          -38.2409171715891
+        ]
+      },
+      "properties": {
+        "ID": 57925,
+        "Suburb": "Winchelsea",
+        "Location": "Barwon River Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Winchelsea / Barwon River Reserve / Barwon River Reserve Public Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4017:Barwon River Reserve Public Toilet : Planned|WO#4218:Barwon Ri",
+        "Longitude": 143.99076218220398,
+        "Latitude": -38.2409303974573,
+        "OBJECTID": 23
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.263094344453,
+          -38.3289664588087
+        ]
+      },
+      "properties": {
+        "ID": 57933,
+        "Suburb": "Bellbrae",
+        "Location": "Bellbrae Picnic Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Bellbrae / Bellbrae Picnic Reserve / Portable Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#4018:Portable Toilet - 57933 : Planned|WO#4219:Portable Toilet - 57",
+        "Longitude": 144.26308834001932,
+        "Latitude": -38.32897966617246,
+        "OBJECTID": 24
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.314048328755,
+          -38.3350536641885
+        ]
+      },
+      "properties": {
+        "ID": 73693,
+        "Suburb": "Torquay",
+        "Location": "Spring Creek Recreation Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Torquay / Spring Creek Recreation Reserve / Spring Creek Reserve - Toilet",
+        "IsCosted": "N",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.31404233394642,
+        "Latitude": -38.33506686817282,
+        "OBJECTID": 25
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.337550323239,
+          -38.3099736805814
+        ]
+      },
+      "properties": {
+        "ID": 85429,
+        "Suburb": "Torquay",
+        "Location": "Quay Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Torquay / Quay Reserve / Quay Reserve Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "Multiple - see Black book",
+        "Longitude": 144.33754433018572,
+        "Latitude": -38.3099868833086,
+        "OBJECTID": 26
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.978056619847,
+          -38.5433660536029
+        ]
+      },
+      "properties": {
+        "ID": 23,
+        "Suburb": "Lorne",
+        "Location": "Scotchmans Hill",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.97805058666464,
+        "Latitude": -38.54337927844909,
+        "OBJECTID": 27
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.326566890304,
+          -38.3277627859671
+        ]
+      },
+      "properties": {
+        "ID": 3,
+        "Suburb": "Torquay",
+        "Location": "Torquay Motor Angling Club",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32656089689897,
+        "Latitude": -38.32777598854807,
+        "OBJECTID": 28
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.324831514633,
+          -38.3370035959092
+        ]
+      },
+      "properties": {
+        "ID": 6,
+        "Suburb": "Torquay",
+        "Location": "Bells Street",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32482552223848,
+        "Latitude": -38.33701679856905,
+        "OBJECTID": 29
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.178900133099,
+          -38.427093959904
+        ]
+      },
+      "properties": {
+        "ID": 15,
+        "Suburb": "Anglesea",
+        "Location": "Point Roadknight",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.17889412361308,
+        "Latitude": -38.427107171914514,
+        "OBJECTID": 30
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.320230122982,
+          -38.3414215096335
+        ]
+      },
+      "properties": {
+        "ID": 9,
+        "Suburb": "Torquay",
+        "Location": "Dressing Sheds W/C rear of Carvan Park on Surf Beach",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32022413026525,
+        "Latitude": -38.34143471301262,
+        "OBJECTID": 31
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.308753706558,
+          -38.345798734906
+        ]
+      },
+      "properties": {
+        "ID": 12,
+        "Suburb": "Jan Juc",
+        "Location": "Jan Juc 3 teir Carpark",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.30874771214945,
+        "Latitude": -38.34581193867893,
+        "OBJECTID": 32
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.976317168598,
+          -38.5391587814656
+        ]
+      },
+      "properties": {
+        "ID": 21,
+        "Suburb": "Lorne",
+        "Location": "Grove Road",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.97631113539805,
+        "Latitude": -38.53917200614499,
+        "OBJECTID": 33
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.189270154786,
+          -38.4125043074915
+        ]
+      },
+      "properties": {
+        "ID": 38,
+        "Suburb": "Anglesea",
+        "Location": "Four Kings Corner",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.18926414617985,
+        "Latitude": -38.41251751897307,
+        "OBJECTID": 34
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.364670998223,
+          -38.3118758363792
+        ]
+      },
+      "properties": {
+        "ID": 1,
+        "Suburb": "Torquay",
+        "Location": "Optional Dress Beach",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.3646650097102,
+        "Latitude": -38.31188903663705,
+        "OBJECTID": 35
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.980962385678,
+          -38.5303956457116
+        ]
+      },
+      "properties": {
+        "ID": 18,
+        "Suburb": "Lorne",
+        "Location": "North Lorne bbq area",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.9809563521224,
+        "Latitude": -38.53040886950967,
+        "OBJECTID": 36
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.325331452402,
+          -38.3383394919502
+        ]
+      },
+      "properties": {
+        "ID": 7,
+        "Suburb": "Torquay",
+        "Location": "Cosy Corner",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.3253254598294,
+        "Latitude": -38.33835269484414,
+        "OBJECTID": 37
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.986355709798,
+          -38.5487333971693
+        ]
+      },
+      "properties": {
+        "ID": 24,
+        "Suburb": "Lorne",
+        "Location": "Point Grey",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.98634967921146,
+        "Latitude": -38.54874662112988,
+        "OBJECTID": 38
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.318875141175,
+          -38.3418681335472
+        ]
+      },
+      "properties": {
+        "ID": 10,
+        "Suburb": "Torquay",
+        "Location": "Surf Bech Toilet Block, called solo block , behind kiosk",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.3188691477004,
+        "Latitude": -38.34188133701905,
+        "OBJECTID": 39
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.327304960827,
+          -38.3310233200355
+        ]
+      },
+      "properties": {
+        "ID": 4,
+        "Suburb": "Torquay",
+        "Location": "Torquay Playpark , Zeally Bay Road",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.3272989679765,
+        "Latitude": -38.331036522670765,
+        "OBJECTID": 40
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.30011297263,
+          -38.3501860443652
+        ]
+      },
+      "properties": {
+        "ID": 13,
+        "Suburb": "Jan Juc",
+        "Location": "Bird Rock Carpark",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.30010697688513,
+        "Latitude": -38.35019924948514,
+        "OBJECTID": 41
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.376730837724,
+          -38.3058450771377
+        ]
+      },
+      "properties": {
+        "ID": 56,
+        "Suburb": "Torquay",
+        "Location": "Point Impossible",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.37672485084698,
+        "Latitude": -38.30585827669444,
+        "OBJECTID": 42
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.251817067616,
+          -38.3937615404638
+        ]
+      },
+      "properties": {
+        "ID": 33,
+        "Suburb": "Point Addis",
+        "Location": "Point Addis Carpark - Great Otway National Park",
+        "Management": "Parks Victoria",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.25181106846148,
+        "Latitude": -38.393774747843395,
+        "OBJECTID": 43
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.101033101778,
+          -38.4673298800863
+        ]
+      },
+      "properties": {
+        "ID": 16,
+        "Suburb": "Aireys Inlet",
+        "Location": "Reserve Road, Aireys",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.10102708303077,
+        "Latitude": -38.46734309746905,
+        "OBJECTID": 44
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.974849166147,
+          -38.5364180643546
+        ]
+      },
+      "properties": {
+        "ID": 19,
+        "Suburb": "Lorne",
+        "Location": "VIC centre",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.97484313163284,
+        "Latitude": -38.53643128906094,
+        "OBJECTID": 45
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.325903075794,
+          -38.3336853539594
+        ]
+      },
+      "properties": {
+        "ID": 5,
+        "Suburb": "Torquay",
+        "Location": "Anderson Street",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32589708345247,
+        "Latitude": -38.33369855720668,
+        "OBJECTID": 46
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.975680257468,
+          -38.5414936994387
+        ]
+      },
+      "properties": {
+        "ID": 22,
+        "Suburb": "Lorne",
+        "Location": "Central Carpark area",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.97567422417916,
+        "Latitude": -38.54150692376904,
+        "OBJECTID": 47
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.329220587129,
+          -38.3249581151245
+        ]
+      },
+      "properties": {
+        "ID": 2,
+        "Suburb": "Torquay",
+        "Location": "Darian Road",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32921459383738,
+        "Latitude": -38.324971317507035,
+        "OBJECTID": 48
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.318316092509,
+          -38.339656878497
+        ]
+      },
+      "properties": {
+        "ID": 11,
+        "Suburb": "Torquay",
+        "Location": "Surf Beach Drive, Block 11 on Spring Creek",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.31831009943508,
+        "Latitude": -38.339670082141865,
+        "OBJECTID": 49
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.130375702805,
+          -38.4361800318021
+        ]
+      },
+      "properties": {
+        "ID": 54,
+        "Suburb": "Aireys Inlet",
+        "Location": "Urquhart Bluff",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.13036968577376,
+        "Latitude": -38.43619324677995,
+        "OBJECTID": 50
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.324107241454,
+          -38.3398973588791
+        ]
+      },
+      "properties": {
+        "ID": 8,
+        "Suburb": "Torquay",
+        "Location": "Voss Carpark",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.32410124877788,
+        "Latitude": -38.339910561534104,
+        "OBJECTID": 51
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.08448926162,
+          -38.4684264120209
+        ]
+      },
+      "properties": {
+        "ID": 17,
+        "Suburb": "Fairhaven",
+        "Location": "Fairhaven Surf Club",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.08448323988375,
+        "Latitude": -38.46843962970723,
+        "OBJECTID": 52
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          143.977145634884,
+          -38.5349909374937
+        ]
+      },
+      "properties": {
+        "ID": 20,
+        "Suburb": "Lorne",
+        "Location": "Otway Street near playground",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 143.97713960104764,
+        "Latitude": -38.535004161722384,
+        "OBJECTID": 53
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 54,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          144.186363019122,
+          -38.4142364443125
+        ]
+      },
+      "properties": {
+        "ID": 14,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Surf Club w/c just down the beach access ramp",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "",
+        "IsCosted": "",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.18635701008887,
+        "Latitude": -38.41424965565937,
+        "OBJECTID": 54
+      }
+    }
+  ]
+}

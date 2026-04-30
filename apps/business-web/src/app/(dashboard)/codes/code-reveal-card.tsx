@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { CalendarClock, Copy, Eye, EyeOff, ShieldAlert } from 'lucide-react';
-import type { BusinessLocationCodeRow } from '@/lib/business/queries';
+import type { BusinessLocationCodeRow } from '../../../lib/business/queries';
 
 interface CodeRevealCardProps {
   activeCode: BusinessLocationCodeRow | null;

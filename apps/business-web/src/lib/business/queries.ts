@@ -5,9 +5,9 @@ import {
   businessLocationCodeRowsSchema,
   type BusinessCouponRow,
   type BusinessLocationCodeRow,
-} from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import type { BusinessSupabaseClient } from '@/lib/supabase/server';
+} from './schemas';
+import type { BusinessWebDatabase } from '../supabase/database';
+import type { BusinessSupabaseClient } from '../supabase/server';
 
 type ApprovedClaimRow = Pick<
   BusinessWebDatabase['public']['Tables']['business_claims']['Row'],
@@ -19,7 +19,7 @@ type BathroomRow = Pick<
   'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at' | 'is_locked'
 >;
 
-export type { BusinessCouponRow, BusinessLocationCodeRow } from '@/lib/business/schemas';
+export type { BusinessCouponRow, BusinessLocationCodeRow } from './schemas';
 
 export interface BusinessCouponsQueryResult {
   coupons: BusinessCouponRow[];

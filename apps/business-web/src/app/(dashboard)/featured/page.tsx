@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { Sparkles } from 'lucide-react';
-import { calculateFeaturedPlacementCtr } from '@/lib/business/dashboard-metrics';
+import { calculateFeaturedPlacementCtr } from '../../../lib/business/dashboard-metrics';
 import {
   getApprovedLocations,
   getBusinessFeaturedPlacements,
   type BusinessFeaturedPlacementSummary,
-} from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { CreateCampaignForm } from './create-campaign-form';
 
 export const metadata: Metadata = {

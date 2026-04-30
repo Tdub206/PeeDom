@@ -3,7 +3,7 @@
 import { useMemo, useState, useTransition } from 'react';
 import { AlertTriangle, CheckCircle2, Loader2, Plus, Save, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import type { ClaimableBathroomOption } from '@/lib/business/queries';
+import type { ClaimableBathroomOption } from '../../../lib/business/queries';
 import { createBusinessClaim, type CreateBusinessClaimResult } from './actions';
 
 interface CreateClaimFormProps {

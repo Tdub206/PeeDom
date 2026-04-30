@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createSupabaseServerClient } from '../../../../lib/supabase/server';
 
 // OAuth / magic-link callback. Supabase redirects here after the
 // user clicks the link in their email. We exchange the `code`

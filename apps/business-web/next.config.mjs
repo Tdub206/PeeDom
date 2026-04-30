@@ -1,4 +1,7 @@
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+
+const configDir = fileURLToPath(new URL('.', import.meta.url));
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,7 +10,7 @@ const nextConfig = {
   typedRoutes: true,
   // The mobile Expo app lives in the repo root; we don't want Next
   // trying to trace node_modules up there.
-  outputFileTracingRoot: fileURLToPath(new URL('.', import.meta.url)),
+  outputFileTracingRoot: configDir,
   images: {
     remotePatterns: [
       {
@@ -15,6 +18,14 @@ const nextConfig = {
         hostname: '*.supabase.co',
       },
     ],
+  },
+  webpack(config) {
+    config.resolve = config.resolve ?? {};
+    config.resolve.alias = {
+      ...(config.resolve.alias ?? {}),
+      '@': path.join(configDir, 'src'),
+    };
+    return config;
   },
 };
 

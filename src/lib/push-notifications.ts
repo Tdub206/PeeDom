@@ -16,6 +16,10 @@ export type PushRegistrationResult =
   | { status: 'missing_project_id' }
   | { status: 'error'; error: Error };
 
+interface PushTokenRequestOptions {
+  requestPermission?: boolean;
+}
+
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowBanner: true,
@@ -44,7 +48,9 @@ async function ensureAndroidChannel(): Promise<void> {
   });
 }
 
-export async function requestPushToken(): Promise<PushRegistrationResult> {
+export async function requestPushToken(
+  options: PushTokenRequestOptions = {}
+): Promise<PushRegistrationResult> {
   if (!Device.isDevice) {
     return {
       status: 'not_device',
@@ -58,6 +64,12 @@ export async function requestPushToken(): Promise<PushRegistrationResult> {
     let finalStatus = existingPermissions.status;
 
     if (finalStatus !== 'granted') {
+      if (options.requestPermission === false) {
+        return {
+          status: 'permission_denied',
+        };
+      }
+
       const requestedPermissions = await Notifications.requestPermissionsAsync();
       finalStatus = requestedPermissions.status;
     }

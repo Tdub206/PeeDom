@@ -1,0 +1,649 @@
+{
+  "item": {
+    "id": "a16f124a28f54fff94d79c1bcead81b9",
+    "owner": "surfcoastshire",
+    "created": 1748582367000,
+    "modified": 1777494574000,
+    "guid": null,
+    "name": null,
+    "title": "Surf Coast Shire Public Toilets",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": null,
+    "tags": [],
+    "snippet": null,
+    "thumbnail": "thumbnail/ago_downloaded.png",
+    "documentation": null,
+    "extent": [
+      [
+        143.88373883511238,
+        -38.5487334066035
+      ],
+      [
+        144.37673082050122,
+        -38.21836429736442
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102100",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "en-au",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services-ap1.arcgis.com/gzhjuYmPupMv4d06/arcgis/rest/services/Surf_Coast_Shire_Public_Toilets/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 1902,
+    "scoreCompleteness": 33,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777525200000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Public_Toilets",
+    "type": "Feature Layer",
+    "serviceItemId": "a16f124a28f54fff94d79c1bcead81b9",
+    "cacheMaxAge": 30,
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1777494571014,
+      "schemaLastEditDate": 1777494549503,
+      "dataLastEditDate": 1777494549503
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 2311163,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 16017064.540557073,
+      "ymin": -4657236.1046958575,
+      "xmax": 16071944.157335723,
+      "ymax": -4610319.456902923,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "RedSphere.png",
+          "imageData": "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",
+          "contentType": "image/png",
+          "width": 15,
+          "height": 15
+        }
+      }
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeNone",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "ID",
+        "type": "esriFieldTypeInteger",
+        "alias": "ID",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Suburb",
+        "type": "esriFieldTypeString",
+        "alias": "Suburb",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Location",
+        "type": "esriFieldTypeString",
+        "alias": "Location",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Management",
+        "type": "esriFieldTypeString",
+        "alias": "Management",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Disabled",
+        "type": "esriFieldTypeString",
+        "alias": "Disabled",
+        "sqlType": "sqlTypeOther",
+        "length": 3,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "AssetName",
+        "type": "esriFieldTypeString",
+        "alias": "AssetName",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "IsCosted",
+        "type": "esriFieldTypeString",
+        "alias": "IsCosted",
+        "sqlType": "sqlTypeOther",
+        "length": 1,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "CostingWorkOrder",
+        "type": "esriFieldTypeString",
+        "alias": "CostingWorkOrder",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "CostingWorkOrderDesc",
+        "type": "esriFieldTypeString",
+        "alias": "CostingWorkOrderDesc",
+        "sqlType": "sqlTypeOther",
+        "length": 70,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Longitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "Latitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": "",
+        "required": true
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__SURF_COA__F4B70D85874FE5F2",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_378.SURF_COAST_SHIRE_PUBLIC_TOILETS_PUBLIC_TOILETS2_SHAPE_sidx",
+        "fields": "SHAPE",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "ID": null,
+            "Suburb": null,
+            "Location": null,
+            "Management": null,
+            "Disabled": null,
+            "AssetName": null,
+            "IsCosted": null,
+            "CostingWorkOrder": null,
+            "CostingWorkOrderDesc": null,
+            "Longitude": null,
+            "Latitude": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": true,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "ID": 39428,
+        "Suburb": "Aireys Inlet",
+        "Location": "Aireys Inlet Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Aireys Inlet / Aireys Inlet Reserve / Aireys Inlet Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "Multiple - see Black book",
+        "Longitude": 144.0983505782519,
+        "Latitude": -38.46593282839709,
+        "OBJECTID": 1
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39441,
+        "Suburb": "Anglesea",
+        "Location": "Ellimatta Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Ellimatta Reserve / Anglesea Football Club - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3991:Anglesea Football Club - Toilet : Planned|WO#4192:Anglesea Foo",
+        "Longitude": 144.2010191218541,
+        "Latitude": -38.39854133858406,
+        "OBJECTID": 2
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39442,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Shopping Centre",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Shopping Centre / Toilet - Shopping Centre Carpark",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3992:Toilet - Shopping Centre Carpark : Planned|WO#4193:Toilet - Sh",
+        "Longitude": 144.19019320227,
+        "Latitude": -38.40497133884703,
+        "OBJECTID": 3
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39443,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Riverbank Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Riverbank Reserve / Anglesea River Bank - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "3993",
+        "CostingWorkOrderDesc": "WO#3993:Anglesea River Bank - Toilet : Planned",
+        "Longitude": 144.18712352843983,
+        "Latitude": -38.41039573872928,
+        "OBJECTID": 4
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39444,
+        "Suburb": "Anglesea",
+        "Location": "Anglesea Riverbank Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Anglesea / Anglesea Riverbank Reserve / Anglesea River Bridge - Toilet",
+        "IsCosted": "N",
+        "CostingWorkOrder": "",
+        "CostingWorkOrderDesc": "",
+        "Longitude": 144.18658541379676,
+        "Latitude": -38.407315249557364,
+        "OBJECTID": 5
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39445,
+        "Suburb": "Anglesea",
+        "Location": "Coogoorah Park Nature Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Anglesea / Coogoorah Park Nature Reserve / Coogoorah Park - Shelter & Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3995:Coogoorah Park - Shelter & Toilet : Planned|WO#4196:Coogoorah ",
+        "Longitude": 144.18274775657656,
+        "Latitude": -38.40226899106511,
+        "OBJECTID": 6
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39449,
+        "Suburb": "Bambra",
+        "Location": "Bambra Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Bambra / Bambra Reserve / Toilet - Greg Drayton Memorial Reserve",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3996:Toilet - Greg Drayton Memorial Reserve : Planned|WO#4197:Toile",
+        "Longitude": 143.95037470937964,
+        "Latitude": -38.36584500530587,
+        "OBJECTID": 7
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39454,
+        "Suburb": "Bellbrae",
+        "Location": "Bellbrae Reserve",
+        "Management": "Council",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Bellbrae / Bellbrae Reserve / Bellbrae Recreation Reserve - Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3997:Bellbrae Recreation Reserve - Toilet : Planned|WO#4198:Bellbra",
+        "Longitude": 144.2638114981998,
+        "Latitude": -38.33612218977629,
+        "OBJECTID": 8
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39456,
+        "Suburb": "Bells Beach",
+        "Location": "Bells Beach Surfing Recreation Reserve",
+        "Management": "Great Ocean Road Coast and Parks Authority",
+        "Disabled": "Yes",
+        "AssetName": "Land & Building Assets / Bells Beach / Bells Beach Surfing Recreation Reserve / Toilet - Bells Beach Carpark",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "3998",
+        "CostingWorkOrderDesc": "WO#3998:Toilet - Bells Beach Carpark : Planned",
+        "Longitude": 144.28198121953932,
+        "Latitude": -38.36836773863089,
+        "OBJECTID": 9
+      }
+    },
+    {
+      "attributes": {
+        "ID": 39460,
+        "Suburb": "Deans Marsh",
+        "Location": "Deans Marsh Recreation Reserve",
+        "Management": "Council",
+        "Disabled": "No",
+        "AssetName": "Land & Building Assets / Deans Marsh / Deans Marsh Recreation Reserve / Deans Marsh Rec Reserve Toilet",
+        "IsCosted": "Y",
+        "CostingWorkOrder": "Multiple - See Asset description",
+        "CostingWorkOrderDesc": "WO#3999:Deans Marsh Rec Reserve Toilet : Planned|WO#4200:Deans Marsh R",
+        "Longitude": 143.8837327602957,
+        "Latitude": -38.399938136520085,
+        "OBJECTID": 10
+      }
+    }
+  ]
+}

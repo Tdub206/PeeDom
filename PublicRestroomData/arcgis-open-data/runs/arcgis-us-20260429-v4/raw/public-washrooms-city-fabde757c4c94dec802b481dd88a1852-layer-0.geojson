@@ -1,0 +1,551 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.09984893669,
+          49.2832754879932
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "ASSETID": "070008",
+        "LOCATION": "Powell St and Main St",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1199145600000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Fair",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "HastingsCross",
+        "GlobalID": "3abede3f-ea43-4010-9e39-bed88816d303"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.124113936247,
+          49.2760544631188
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "ASSETID": "070009",
+        "LOCATION": "Richards St and Davie St, Emery Barnes Park",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1167609600000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Fair",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": "Is being serviced ",
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "Downtown",
+        "GlobalID": "ba8531f5-c15f-4ffa-83f4-1324788fa660"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.110131935788,
+          49.2825906631537
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "ASSETID": "070002",
+        "LOCATION": "Victory Square",
+        "OWNER": "Engineering",
+        "STATUS": "InService",
+        "TYPE": "Comfort Station",
+        "YEAR_INSTALLED": -1577923200000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": "Lots of toilets and mirrors our of order",
+        "CONDITION_STRUC": "Poor",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Poor",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "8am (femalle) 6am (male)",
+        "CLOSE_TIME": "Midnight",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "HastingsCross",
+        "GlobalID": "bc93dfaf-0278-46cc-af73-e855c91199cc"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.133140936834,
+          49.2818541634877
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "ASSETID": "070003",
+        "LOCATION": "Bute St and Davie St",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1293840000000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Good",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "WestEnd",
+        "GlobalID": "593849c8-aac4-4067-be4e-a6c1a1bf4235"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.099849936238,
+          49.2811070629705
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "ASSETID": "070001",
+        "LOCATION": "Main St and E Hastings St",
+        "OWNER": "Engineering",
+        "STATUS": "InService",
+        "TYPE": "Comfort Station",
+        "YEAR_INSTALLED": -1577923200000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": null,
+        "CONDITION_CLEAN": null,
+        "CONDITION_GRAFF": null,
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "8am (female) 6am (male)",
+        "CLOSE_TIME": "Midnight",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "HastingsCross",
+        "GlobalID": "330be273-ebee-4b0f-a6dd-ed7293f0326a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.104601936229,
+          49.2816384634795
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "ASSETID": "070004",
+        "LOCATION": "W Hastings St and Carral St - Pigeon Park",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1262304000000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Fair",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "2hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "HastingsCross",
+        "GlobalID": "9c916b8e-2594-4592-8453-33b6fd4a4286"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.09977793553,
+          49.2731387630239
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "ASSETID": "070005",
+        "LOCATION": "Main St and Terminal Ave",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "LargeAPT",
+        "YEAR_INSTALLED": 1167609600000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Poor",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "6am",
+        "CLOSE_TIME": "10pm",
+        "WHEELCHAIR_ACCESS": "Yes",
+        "RESTRICTIONS": null,
+        "BIA": null,
+        "GlobalID": "9f6cfc7d-d7ba-4075-855b-b83caa5e86ea"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.130676935856,
+          49.2833780635079
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "ASSETID": "070006",
+        "LOCATION": "Bute St, Nelson Park",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "LargeAPT",
+        "YEAR_INSTALLED": 1388534400000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": null,
+        "CONDITION_CLEAN": null,
+        "CONDITION_GRAFF": null,
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "Yes",
+        "RESTRICTIONS": null,
+        "BIA": null,
+        "GlobalID": "2aeb100c-a49d-4ea1-86cb-4767d72841f0"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.123515935829,
+          49.2796964635751
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "ASSETID": "070007",
+        "LOCATION": "Nelson St and Howe St",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1199145600000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": "Tried to enter, did not open or indicate that it was occupied",
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Good",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": null,
+        "GlobalID": "99724b82-54a6-4a1b-af90-241cb5e58644"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.133106351,
+          49.2820555019457
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "ASSETID": "070013",
+        "LOCATION": "Bute at Davie",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "LargeAPT",
+        "YEAR_INSTALLED": 1514764800000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": null,
+        "CONDITION_CLEAN": null,
+        "CONDITION_GRAFF": null,
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "Yes",
+        "RESTRICTIONS": null,
+        "BIA": "WestEnd",
+        "GlobalID": "5aba31cd-a29e-49e8-b035-c668edb7c0c4"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.214667019882,
+          49.2679682339515
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "ASSETID": null,
+        "LOCATION": null,
+        "OWNER": null,
+        "STATUS": null,
+        "TYPE": null,
+        "YEAR_INSTALLED": null,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": null,
+        "CONDITION_CLEAN": null,
+        "CONDITION_GRAFF": null,
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": null,
+        "OPEN_TIME": null,
+        "CLOSE_TIME": null,
+        "WHEELCHAIR_ACCESS": null,
+        "RESTRICTIONS": null,
+        "BIA": null,
+        "GlobalID": "033430d8-0663-4bb2-accb-b28547a6ce8c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.11805393636,
+          49.2803243632901
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "ASSETID": "070011",
+        "LOCATION": "Robson St and Richards St",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "SmallAPT",
+        "YEAR_INSTALLED": 1262304000000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Good",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "24hrs",
+        "CLOSE_TIME": "24hrs",
+        "WHEELCHAIR_ACCESS": "No",
+        "RESTRICTIONS": null,
+        "BIA": "Downtown",
+        "GlobalID": "4f974ae9-f7a3-4a0a-8880-54e5bf0fd08e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.120081937151,
+          49.2816325636732
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "ASSETID": "070010",
+        "LOCATION": "Robson St and Granville St",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "LargeAPT",
+        "YEAR_INSTALLED": 1293840000000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": "Good",
+        "CONDITION_CLEAN": "Fair",
+        "CONDITION_GRAFF": "Good",
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "6am",
+        "CLOSE_TIME": "1pm",
+        "WHEELCHAIR_ACCESS": "Yes",
+        "RESTRICTIONS": null,
+        "BIA": "Downtown",
+        "GlobalID": "6f260fec-8da2-436e-aa5b-51ad081978ea"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.119863936392,
+          49.2829610629397
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "ASSETID": "070012",
+        "LOCATION": "Vancouver Art Gallery",
+        "OWNER": "Contractor",
+        "STATUS": "InService",
+        "TYPE": "LargeAPT",
+        "YEAR_INSTALLED": 1483228800000,
+        "EXPECTED_LIFESPAN": null,
+        "NOTES": null,
+        "CONDITION_STRUC": null,
+        "CONDITION_CLEAN": null,
+        "CONDITION_GRAFF": null,
+        "OVERALL_CONDITION": null,
+        "CONDITION_COMMENTS": null,
+        "LAST_INSPECTION": null,
+        "MAINT_TYPE": null,
+        "PROJECT_NAME": null,
+        "PROJECT_COORD": null,
+        "CONTACT_PARTNER": null,
+        "DAYS": "7 / week",
+        "OPEN_TIME": "6am",
+        "CLOSE_TIME": "10pm",
+        "WHEELCHAIR_ACCESS": "Yes",
+        "RESTRICTIONS": null,
+        "BIA": "Downtown",
+        "GlobalID": "719dfb6f-e4cd-4748-adab-e9aa41fffbb8"
+      }
+    }
+  ]
+}

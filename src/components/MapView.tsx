@@ -348,9 +348,8 @@ function BathroomMapViewComponent({
     >
       {Platform.OS === 'android' ? (
         <NativeMapView
-          googleRenderer="LEGACY"
-          loadingBackgroundColor={colors.surface.card}
-          loadingEnabled
+          googleRenderer="LATEST"
+          mapType="standard"
           moveOnMarkerPress={false}
           onRegionChangeComplete={handleRegionChange}
           provider={PROVIDER_GOOGLE}

@@ -18,15 +18,14 @@ function HubPage({ setPage }) {
     <div className="sp-page">
       {/* Hero */}
       <div className="sp-hero" style={{marginBottom: 28}}>
-        <div className="sp-hero-kicker">Business Hub</div>
+        <div className="sp-hero-kicker">Business dashboard</div>
         <h1>
           {locations.length === 0
             ? `Welcome to StallPass Business`
             : `${locations.length} location${locations.length === 1 ? '' : 's'} under management`}
         </h1>
         <p>
-          Every change you make here syncs instantly to the StallPass iOS and Android app.
-          Your customers see updates in real-time.
+          Changes you make here show up in the StallPass app, so customers see updated details quickly.
         </p>
         <div style={{display:'flex', gap:10, marginTop:18, flexWrap:'wrap'}}>
           <Btn variant="secondary" style={{background:'rgba(255,255,255,0.18)', color:'#fff', border:'1px solid rgba(255,255,255,0.25)', backdropFilter:'blur(8px)'}}
@@ -61,9 +60,9 @@ function HubPage({ setPage }) {
           <SectionHead eyebrow="Quick actions" title="Jump straight in"/>
           <div className="sp-grid-2" style={{gap:12}}>
             {[
-              { id:'locations', icon:<IcoBuilding size={20}/>, title:'Locations', sub:'Hours, access, amenities', bg:'var(--brand-soft)', color:'var(--brand)' },
-              { id:'coupons',   icon:<IcoTag size={20}/>,     title:'Coupons',   sub:'Create & manage offers', bg:'var(--success-soft)', color:'var(--success)' },
-              { id:'codes',     icon:<IcoKey size={20}/>,     title:'Access Codes', sub:'Set or rotate codes', bg:'var(--warning-soft)', color:'var(--warning)' },
+              { id:'locations', icon:<IcoBuilding size={20}/>, title:'Locations', sub:'Hours, access, and details', bg:'var(--brand-soft)', color:'var(--brand)' },
+              { id:'coupons',   icon:<IcoTag size={20}/>,     title:'Coupons',   sub:'Create and manage offers', bg:'var(--success-soft)', color:'var(--success)' },
+              { id:'codes',     icon:<IcoKey size={20}/>,     title:'Access Codes', sub:'Set or change entry codes', bg:'var(--warning-soft)', color:'var(--warning)' },
               { id:'featured',  icon:<IcoSpark size={20}/>,   title:'Featured',  sub:'Boost on the map', bg:'rgba(139,92,246,0.1)', color:'#7c3aed' },
             ].map(a => (
               <button key={a.id} className="sp-action-tile" onClick={() => setPage(a.id)}>
@@ -95,7 +94,7 @@ function HubPage({ setPage }) {
       </div>
 
       {/* Location list overview */}
-      <SectionHead eyebrow="Your locations" title="All managed bathrooms"
+      <SectionHead eyebrow="Your locations" title="All of your managed bathrooms"
         action={<Btn variant="primary" size="sm" onClick={() => setPage('claims')}><IcoPlus size={14}/> Add location</Btn>}/>
       <div className="sp-stack">
         {MOCK_DATA.locations.map(loc => (
@@ -109,7 +108,7 @@ function HubPage({ setPage }) {
                 <div className="sp-loc-chips">
                   <Badge tone={loc.verified ? 'success' : 'warning'}>{loc.verified ? 'Verified' : 'Pending verification'}</Badge>
                   <Badge tone={loc.visibleOnMap ? 'brand' : 'neutral'}>{loc.visibleOnMap ? 'Live on map' : 'Hidden'}</Badge>
-                  <Badge tone={loc.premiumAccess ? 'warning' : 'neutral'}>{loc.premiumAccess ? 'Premium access' : 'Public'}</Badge>
+                  <Badge tone={loc.premiumAccess ? 'warning' : 'neutral'}>{loc.premiumAccess ? 'Premium only' : 'Public'}</Badge>
                 </div>
               </div>
               <div style={{textAlign:'right', flexShrink:0}}>

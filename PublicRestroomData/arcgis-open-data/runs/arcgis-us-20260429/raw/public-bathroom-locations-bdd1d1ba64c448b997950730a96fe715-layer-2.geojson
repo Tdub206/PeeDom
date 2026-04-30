@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.142357259966,
+          43.5419905054343
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "GlobalID": "474c4c55-3bc6-43d0-9787-d4700be130c5",
+        "LocationName": "Tittabawassee Township Park",
+        "BathroomType": "Portable Bathroom",
+        "Address": "9200 Midland Rd, Freeland, MI 48623"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1182274371164,
+          43.522832691423
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "GlobalID": "5f66043b-d7df-4953-a8d2-24b5c9cef668",
+        "LocationName": "Freeland Learning Center",
+        "BathroomType": "Portable Bathroom",
+        "Address": "305 Third St, Freeland, MI 48623"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1194442104416,
+          43.5180927970256
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "GlobalID": "f10991f1-052a-47b1-833d-1e234657c7f8",
+        "LocationName": "Burt Watson",
+        "BathroomType": "Portable Bathroom",
+        "Address": "7468 Midland Rd, Freeland, MI 48623"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1192685147965,
+          43.5206305728169
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "GlobalID": "67471031-98a7-473d-877e-d685f1094f7a",
+        "LocationName": "Live Oak Coffee",
+        "BathroomType": "Business",
+        "Address": "7736 Midland Rd Suite 1, Freeland, MI 48623"
+      }
+    }
+  ]
+}

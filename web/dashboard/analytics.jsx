@@ -23,8 +23,8 @@ function AnalyticsPage() {
 
   return (
     <div className="sp-page">
-      <SectionHead eyebrow="Analytics" title="Discovery &amp; engagement"
-        sub="How guests are finding and interacting with your locations on StallPass."
+      <SectionHead eyebrow="Analytics" title="Views and guest activity"
+        sub="See how people are finding and using your locations in StallPass."
         action={
           <div style={{display:'flex', gap:4, background:'var(--surface-muted)', borderRadius:999, padding:3}}>
             {RANGES.map(r => (
@@ -43,8 +43,8 @@ function AnalyticsPage() {
       <div className="sp-grid-4" style={{marginBottom:24}}>
         <StatCard label="Total views"      value={analytics.overview.totalViews.value.toLocaleString()}    delta={analytics.overview.totalViews.delta}     icon={<IcoEye size={18}/>}   iconBg="var(--brand-soft)"   iconColor="var(--brand)"/>
         <StatCard label="Unique visitors"  value={analytics.overview.uniqueVisits.value.toLocaleString()}  delta={analytics.overview.uniqueVisits.delta}    icon={<IcoUser size={18}/>}  iconBg="var(--success-soft)" iconColor="var(--success)"/>
-        <StatCard label="Route requests"   value={analytics.overview.routeRequests.value.toLocaleString()} delta={analytics.overview.routeRequests.delta}   icon={<IcoArrowRight size={18}/>} iconBg="var(--warning-soft)" iconColor="var(--warning)"/>
-        <StatCard label="Avg trust score"  value={`${analytics.overview.trustScore.value}/5`}              delta={analytics.overview.trustScore.delta}      icon={<IcoStar size={18}/>}  iconBg="rgba(139,92,246,0.1)" iconColor="#7c3aed"/>
+        <StatCard label="Directions taps"  value={analytics.overview.routeRequests.value.toLocaleString()} delta={analytics.overview.routeRequests.delta}   icon={<IcoArrowRight size={18}/>} iconBg="var(--warning-soft)" iconColor="var(--warning)"/>
+        <StatCard label="Average rating"   value={`${analytics.overview.trustScore.value}/5`}              delta={analytics.overview.trustScore.delta}      icon={<IcoStar size={18}/>}  iconBg="rgba(139,92,246,0.1)" iconColor="#7c3aed"/>
       </div>
 
       {/* Main chart */}
@@ -63,15 +63,15 @@ function AnalyticsPage() {
       </Card>
 
       {/* Per-location breakdown */}
-      <SectionHead eyebrow="By location" title="Location breakdown"/>
+      <SectionHead eyebrow="By location" title="Each location at a glance"/>
       <div className="sp-table-wrap" style={{marginBottom:24}}>
         <table className="sp-table">
           <thead>
             <tr>
               <th>Location</th>
               <th>Views</th>
-              <th>Route requests</th>
-              <th>Trust score</th>
+              <th>Directions taps</th>
+              <th>Rating</th>
               <th>Trend</th>
               <th>Status</th>
             </tr>
@@ -103,9 +103,9 @@ function AnalyticsPage() {
       {/* Routes chart */}
       <Card>
         <div style={{marginBottom:16}}>
-          <div className="sp-eyebrow">Route requests</div>
+          <div className="sp-eyebrow">Directions taps</div>
           <div style={{fontFamily:'var(--font-head)', fontSize:'1.1rem', fontWeight:800, letterSpacing:'-0.03em', color:'var(--ink)'}}>
-            Guests navigating to your locations
+            People opening directions to your locations
           </div>
         </div>
         <AreaChart data={analytics.daily.routes} height={100} color="var(--success)" labels={analytics.daily.labels}/>
@@ -118,7 +118,7 @@ function AnalyticsPage() {
             <div style={{fontFamily:'var(--font-head)', fontWeight:800, fontSize:'1.5rem', letterSpacing:'-0.04em', color:'var(--ink)'}}>
               {Math.round(analytics.overview.routeRequests.value / analytics.overview.totalViews.value * 100)}%
             </div>
-            <div style={{fontSize:'0.72rem', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em', color:'var(--ink-muted)'}}>View-to-route rate</div>
+            <div style={{fontSize:'0.72rem', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em', color:'var(--ink-muted)'}}>Tap rate</div>
           </div>
           <div>
             <div style={{fontFamily:'var(--font-head)', fontWeight:800, fontSize:'1.5rem', letterSpacing:'-0.04em', color:'var(--ink)', display:'flex', alignItems:'center', gap:4}}>

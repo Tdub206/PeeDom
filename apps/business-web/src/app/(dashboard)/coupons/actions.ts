@@ -1,10 +1,10 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { getApprovedLocationById } from '@/lib/business/queries';
-import { createBusinessCouponSchema } from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getApprovedLocationById } from '../../../lib/business/queries';
+import { createBusinessCouponSchema } from '../../../lib/business/schemas';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export type CreateBusinessCouponResult =
   | { ok: true; couponId: string; couponCode: string }

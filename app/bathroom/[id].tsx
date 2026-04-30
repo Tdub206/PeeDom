@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
@@ -37,6 +37,7 @@ import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
 import { getBathroomStatusLabel } from '@/lib/bathroom-status';
 import { hasActivePremium } from '@/lib/gamification';
+import { openDirectionsInMaps } from '@/lib/map-navigation';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
 import { BathroomLiveStatus, BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
@@ -489,13 +490,6 @@ export default function BathroomDetailScreen() {
       return;
     }
 
-    const encodedLabel = encodeURIComponent(bathroomDetail.place_name);
-    const latitude = bathroomDetail.latitude;
-    const longitude = bathroomDetail.longitude;
-    const appleMapsUrl = `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodedLabel}`;
-    const googleNavigationUrl = `google.navigation:q=${latitude},${longitude}`;
-    const browserFallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
-
     setIsOpeningDirections(true);
 
     try {
@@ -507,23 +501,20 @@ export default function BathroomDetailScreen() {
         });
       }
 
-      if (Platform.OS === 'ios') {
-        const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
-
-        if (canOpenAppleMaps) {
-          await Linking.openURL(appleMapsUrl);
-          return;
-        }
-      } else {
-        const canOpenGoogleNavigation = await Linking.canOpenURL(googleNavigationUrl);
-
-        if (canOpenGoogleNavigation) {
-          await Linking.openURL(googleNavigationUrl);
-          return;
-        }
-      }
-
-      await Linking.openURL(browserFallbackUrl);
+      await openDirectionsInMaps({
+        placeName: bathroomDetail.place_name,
+        coordinates: {
+          latitude: bathroomDetail.latitude,
+          longitude: bathroomDetail.longitude,
+        },
+        address: {
+          address_line1: bathroomDetail.address_line1,
+          city: bathroomDetail.city,
+          state: bathroomDetail.state,
+          postal_code: bathroomDetail.postal_code,
+          country_code: bathroomDetail.country_code,
+        },
+      });
     } catch (error) {
       showToast({
         title: 'Navigation unavailable',

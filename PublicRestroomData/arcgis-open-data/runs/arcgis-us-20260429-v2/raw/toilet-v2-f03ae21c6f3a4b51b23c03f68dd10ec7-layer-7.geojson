@@ -1,0 +1,629 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.842412023,
+          -12.4628925345
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "asset_id": "BLDG000012",
+        "asset_name": "Austin Lane",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10b",
+        "link": "https://www.toiletmap.gov.au/4163",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84241202300007",
+        "y": "-12.462892534499957"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.850556163,
+          -12.3871995649999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "asset_id": "BLDG000098",
+        "asset_name": "Nightcliff Shopping Centre ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/37189",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 9pm",
+        "comment": null,
+        "x": "130.85055616300002",
+        "y": "-12.387199564999946"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.867705443,
+          -12.3866941619999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "asset_id": "BLDG000057",
+        "asset_name": "Jingili Water Gardens",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4180",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Daylight hours",
+        "comment": "Amenities: <br>- Change room",
+        "x": "130.8677054430001",
+        "y": "-12.386694161999941"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.83714758,
+          -12.462673138
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "asset_id": "BLDG000020",
+        "asset_name": "Bicentennial Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10b",
+        "link": "https://www.toiletmap.gov.au/18670",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.83714758000002",
+        "y": "-12.462673137999957"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.8586160145,
+          -12.37607713
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "asset_id": "BLDG000086",
+        "asset_name": "Nightcliff Foreshore ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4179",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.85861601450006",
+        "y": "-12.37607712999997"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.844566936,
+          -12.4650481855
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "asset_id": "BLDG000032",
+        "asset_name": "Civic Park ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/50495",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84456693600004",
+        "y": "-12.465048185499967"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.89106491,
+          -12.391276648
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "asset_id": "BLDG000010",
+        "asset_name": "Anula Oval",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4187",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 7pm",
+        "comment": "Amenities:<br>- Baby change table",
+        "x": "130.89106491000007",
+        "y": "-12.391276647999973"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.820563321,
+          -12.4069576905
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "asset_id": "BLDG000041",
+        "asset_name": "East Point Reserve",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4173",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 9pm",
+        "comment": null,
+        "x": "130.82056332100007",
+        "y": "-12.40695769049995"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.858466092,
+          -12.395942979
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "asset_id": "BLDG000014",
+        "asset_name": "Bagot Park, Oval and Velodrome",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Fri 4-10pm, Sat-Sun 7am–10pm ",
+        "comment": "Amenities:<br>- Baby change table<br>- Change room",
+        "x": "130.85846609200007",
+        "y": "-12.395942978999955"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.832137504,
+          -12.4491873999999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "asset_id": "BLDG000052",
+        "asset_name": "Gardens Park Golf Links",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/42227",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Daylight hours",
+        "comment": null,
+        "x": "130.83213750400012",
+        "y": "-12.449187399999943"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.854803118,
+          -12.375628477
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "asset_id": "BLDG000087",
+        "asset_name": "Nightcliff Foreshore ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.85480311800006",
+        "y": "-12.375628476999964"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.841027798,
+          -12.466456391
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "asset_id": "BLDG000019",
+        "asset_name": "Bicentennial Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10b",
+        "link": "https://www.toiletmap.gov.au/39539",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84102779800008",
+        "y": "-12.46645639099998"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.8571221515,
+          -12.3837966385
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "asset_id": "BLDG000139",
+        "asset_name": "Rapid Creek Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: daylight hours",
+        "comment": "Amenities: <br>- Baby change table",
+        "x": "130.8571221515001",
+        "y": "-12.383796638499973"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.833230822,
+          -12.4470637224999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "asset_id": "BLDG000050",
+        "asset_name": "Gardens Oval",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Fri 4-10pm, Sat-Sun 7am-10pm",
+        "comment": null,
+        "x": "130.83323082200008",
+        "y": "-12.447063722499934"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.834241719,
+          -12.4449091675
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "asset_id": "BLDG000049",
+        "asset_name": "Gardens Oval",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": null,
+        "comment": null,
+        "x": "130.83424171900003",
+        "y": "-12.444909167499958"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.9019861885,
+          -12.3949136734999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "asset_id": "BLDG000070",
+        "asset_name": "Malak Oval",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "unlocked by tenant only",
+        "comment": null,
+        "x": "130.90198618850008",
+        "y": "-12.394913673499929"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.842062196,
+          -12.3801359825
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "asset_id": "BLDG000148",
+        "asset_name": "Sunset Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/19124",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.8420621960001",
+        "y": "-12.38013598249995"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.835351387,
+          -12.4307106655
+        ]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "asset_id": "BLDG000155",
+        "asset_name": "Bundilla Beach",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Exeloo Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4169",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.83535138700012",
+        "y": "-12.430710665499959"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.84460537,
+          -12.4312998235
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "asset_id": "BLDG000128",
+        "asset_name": "Parap Markets",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4174",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84460537000007",
+        "y": "-12.431299823499955"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.8475608865,
+          -12.3778053214999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 20,
+        "asset_id": "BLDG000096",
+        "asset_name": "Nightcliff Pool",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4177",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84756088650005",
+        "y": "-12.377805321499949"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.8311633995,
+          -12.4455883639999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 21,
+        "asset_id": "BLDG000073",
+        "asset_name": "Mindil Beach",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4167",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.8311633995001",
+        "y": "-12.445588363999946"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.834830373,
+          -12.4607296254999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 22,
+        "asset_id": "BLDG000021",
+        "asset_name": "Bicentennial Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.83483037300005",
+        "y": "-12.460729625499937"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.829674021,
+          -12.4125498779999
+        ]
+      },
+      "properties": {
+        "OBJECTID": 23,
+        "asset_id": "BLDG000040",
+        "asset_name": "East Point Reserve",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4171",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.82967402100007",
+        "y": "-12.412549877999936"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          130.832535438,
+          -12.4437783565
+        ]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "asset_id": "BLDG000074",
+        "asset_name": "Mindil Beach",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4168",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 9pm",
+        "comment": null,
+        "x": "130.83253543800004",
+        "y": "-12.443778356499962"
+      }
+    }
+  ]
+}

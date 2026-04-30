@@ -16,26 +16,63 @@ function getRoutePath(route: RouteInput): string | null {
   return route.pathname;
 }
 
-const STATIC_ROUTES = new Set<string>(
-  [
-    routes.tabs.map,
-    routes.tabs.search,
-    routes.tabs.favorites,
-    routes.tabs.profile,
-    routes.tabs.business,
-    routes.auth.login,
-    routes.auth.register,
-    routes.modal.addBathroom,
-    routes.modal.report,
-    routes.modal.submitCode,
-    routes.modal.rateCleanliness,
-    routes.modal.liveStatus,
-    routes.modal.updateAccessibility,
-    routes.modal.claimBusiness,
-  ]
-    .map((route) => getRoutePath(route))
-    .filter((route): route is string => Boolean(route))
-);
+function collectStaticRoutePaths(value: unknown, routePaths: Set<string>): void {
+  if (!value) {
+    return;
+  }
+
+  if (typeof value === 'string') {
+    const routePath = getRoutePath(value);
+
+    if (routePath) {
+      routePaths.add(routePath);
+    }
+
+    return;
+  }
+
+  if (typeof value === 'function' || typeof value !== 'object') {
+    return;
+  }
+
+  const routeObject = value as { pathname?: unknown };
+
+  if (typeof routeObject.pathname === 'string') {
+    const routePath = getRoutePath(value as RouteInput);
+
+    if (routePath) {
+      routePaths.add(routePath);
+    }
+
+    return;
+  }
+
+  Object.values(value as Record<string, unknown>).forEach((entry) => {
+    collectStaticRoutePaths(entry, routePaths);
+  });
+}
+
+const STATIC_ROUTES = (() => {
+  const routePaths = new Set<string>();
+  collectStaticRoutePaths(
+    {
+      tabs: routes.tabs,
+      auth: routes.auth,
+      business: routes.business,
+      modal: routes.modal,
+      legal: routes.legal,
+    },
+    routePaths
+  );
+
+  const adminRoutePath = getRoutePath(routes.tabs.admin);
+
+  if (adminRoutePath) {
+    routePaths.delete(adminRoutePath);
+  }
+
+  return routePaths;
+})();
 
 const BATHROOM_DETAIL_ROUTE_PATTERN = /^\/bathroom\/[^/]+$/;
 const SOURCE_CANDIDATE_ROUTE_PATTERN = /^\/candidate\/[^/]+$/;

@@ -1,4 +1,4 @@
-// StallPass Business Dashboard — Mock Data
+// StallPass Business Dashboard - Mock Data
 const MOCK_DATA = {
   business: {
     name: 'The Corner Cafe Group',
@@ -20,9 +20,9 @@ const MOCK_DATA = {
       requiresCode: true,
       code: '4821',
       codeLastChanged: '3 days ago',
-      hours: { Mon: '7am–8pm', Tue: '7am–8pm', Wed: '7am–8pm', Thu: '7am–8pm', Fri: '7am–10pm', Sat: '8am–10pm', Sun: '9am–6pm' },
+      hours: { Mon: '7am-8pm', Tue: '7am-8pm', Wed: '7am-8pm', Thu: '7am-8pm', Fri: '7am-10pm', Sat: '8am-10pm', Sun: '9am-6pm' },
       amenities: { changingTable: true, accessible: true, genderNeutral: false, singleOccupancy: false, keypad: true },
-      notes: 'Key entry. Ask barista for access. Handicap accessible via side entrance.',
+      notes: 'Key entry. Ask the barista for access. Accessible entrance on the side.',
       impressions: 1240,
       routes: 187,
     },
@@ -37,7 +37,7 @@ const MOCK_DATA = {
       requiresCode: false,
       code: null,
       codeLastChanged: null,
-      hours: { Mon: '6am–9pm', Tue: '6am–9pm', Wed: '6am–9pm', Thu: '6am–9pm', Fri: '6am–11pm', Sat: '8am–11pm', Sun: 'Closed' },
+      hours: { Mon: '6am-9pm', Tue: '6am-9pm', Wed: '6am-9pm', Thu: '6am-9pm', Fri: '6am-11pm', Sat: '8am-11pm', Sun: 'Closed' },
       amenities: { changingTable: false, accessible: true, genderNeutral: true, singleOccupancy: true, keypad: false },
       notes: 'No code needed. Open to all guests during business hours.',
       impressions: 892,
@@ -54,9 +54,9 @@ const MOCK_DATA = {
       requiresCode: true,
       code: '7743',
       codeLastChanged: '1 week ago',
-      hours: { Mon: 'Closed', Tue: '11am–11pm', Wed: '11am–11pm', Thu: '11am–11pm', Fri: '11am–2am', Sat: '10am–2am', Sun: '10am–8pm' },
+      hours: { Mon: 'Closed', Tue: '11am-11pm', Wed: '11am-11pm', Thu: '11am-11pm', Fri: '11am-2am', Sat: '10am-2am', Sun: '10am-8pm' },
       amenities: { changingTable: true, accessible: false, genderNeutral: true, singleOccupancy: true, keypad: true },
-      notes: 'Verification in progress. Contact our team if delayed.',
+      notes: 'Review still in progress. Contact our team if it takes longer than expected.',
       impressions: 0,
       routes: 0,
     },
@@ -115,37 +115,37 @@ const MOCK_DATA = {
 
   analytics: {
     overview: {
-      totalViews:   { value: 2847, delta: 18, label: 'Total views' },
-      uniqueVisits: { value: 1203, delta: 9,  label: 'Unique visitors' },
-      routeRequests:{ value: 436,  delta: 24, label: 'Route requests' },
-      trustScore:   { value: '4.2', delta: 5, label: 'Trust score' },
+      totalViews: { value: 2847, delta: 18, label: 'Total views' },
+      uniqueVisits: { value: 1203, delta: 9, label: 'Unique visitors' },
+      routeRequests: { value: 436, delta: 24, label: 'Route requests' },
+      trustScore: { value: '4.2', delta: 5, label: 'Trust score' },
     },
     daily: {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-      views:  [310, 420, 380, 490, 520, 445, 582],
-      routes: [42,  58,  51,  67,  88,  72,  98],
+      views: [310, 420, 380, 490, 520, 445, 582],
+      routes: [42, 58, 51, 67, 88, 72, 98],
     },
     byLocation: [
-      { id: 'loc-001', name: 'Downtown', views: 1240, routes: 187, trust: 4.5, sparkline: [120,180,140,210,200,195,245] },
-      { id: 'loc-002', name: 'Midtown',  views: 892,  routes: 134, trust: 3.9, sparkline: [90,100,110,95,130,120,140] },
-      { id: 'loc-003', name: 'SoHo',     views: 0,    routes: 0,   trust: null, sparkline: [0,0,0,0,0,0,0] },
+      { id: 'loc-001', name: 'Downtown', views: 1240, routes: 187, trust: 4.5, sparkline: [120, 180, 140, 210, 200, 195, 245] },
+      { id: 'loc-002', name: 'Midtown', views: 892, routes: 134, trust: 3.9, sparkline: [90, 100, 110, 95, 130, 120, 140] },
+      { id: 'loc-003', name: 'SoHo', views: 0, routes: 0, trust: null, sparkline: [0, 0, 0, 0, 0, 0, 0] },
     ],
   },
 
   claims: [
-    { id: 'clm-001', locationName: 'The Corner Cafe — Downtown', address: '147 Main St', status: 'approved', submittedAt: 'April 1, 2026', reviewedAt: 'April 3, 2026' },
-    { id: 'clm-002', locationName: 'The Corner Cafe — Midtown',  address: '892 Park Ave', status: 'approved', submittedAt: 'April 1, 2026', reviewedAt: 'April 3, 2026' },
-    { id: 'clm-003', locationName: 'The Corner Lounge — SoHo',  address: '34 Spring St',  status: 'approved', submittedAt: 'April 8, 2026', reviewedAt: 'April 10, 2026' },
-    { id: 'clm-004', locationName: 'The Corner Cafe — East Village', address: '218 Ave A', status: 'pending', submittedAt: 'April 15, 2026', reviewedAt: null },
+    { id: 'clm-001', locationName: 'The Corner Cafe - Downtown', address: '147 Main St', status: 'approved', submittedAt: 'April 1, 2026', reviewedAt: 'April 3, 2026' },
+    { id: 'clm-002', locationName: 'The Corner Cafe - Midtown', address: '892 Park Ave', status: 'approved', submittedAt: 'April 1, 2026', reviewedAt: 'April 3, 2026' },
+    { id: 'clm-003', locationName: 'The Corner Lounge - SoHo', address: '34 Spring St', status: 'approved', submittedAt: 'April 8, 2026', reviewedAt: 'April 10, 2026' },
+    { id: 'clm-004', locationName: 'The Corner Cafe - East Village', address: '218 Ave A', status: 'pending', submittedAt: 'April 15, 2026', reviewedAt: null },
   ],
 
   featured: [
     {
       id: 'feat-001',
       locationId: 'loc-001',
-      locationName: 'The Corner Cafe — Downtown',
+      locationName: 'The Corner Cafe - Downtown',
       active: true,
-      budget: 0.50,
+      budget: 0.5,
       impressions: 1240,
       clicks: 187,
       startDate: 'April 5, 2026',

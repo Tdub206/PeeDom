@@ -1,0 +1,1914 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4352349997809,
+          27.263106687370207
+        ],
+        "crs": null
+      },
+      "id": 1,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000021",
+        "pnl_id": "PNL_286",
+        "globalid": "{66B2FB3D-9B29-4157-BAF0-6783B2C71E9B}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1509321600000,
+        "objectid": 1
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.44237202336598,
+          27.056312831615916
+        ],
+        "crs": null
+      },
+      "id": 2,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000023",
+        "pnl_id": "PNL_039",
+        "globalid": "{7C514295-9AF4-4A09-B42D-93B10DC74750}",
+        "parkname": "Caspersen Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640822400000,
+        "objectid": 2
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4402804632883,
+          27.05693397417762
+        ],
+        "crs": null
+      },
+      "id": 3,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000423",
+        "pnl_id": "PNL_040",
+        "globalid": "{ECAF65C0-CFA0-40C7-AF95-62DC5026D450}",
+        "parkname": "Caspersen Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640822400000,
+        "objectid": 3
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47077502243525,
+          27.124737715836737
+        ],
+        "crs": null
+      },
+      "id": 4,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000826",
+        "pnl_id": "PNL_157",
+        "globalid": "{065A2A6A-0BD9-4E4F-95B9-D145381D67C7}",
+        "parkname": "Nokomis Beach Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1561041009000,
+        "objectid": 4
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.38444679779755,
+          26.963111816818333
+        ],
+        "crs": null
+      },
+      "id": 5,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000828",
+        "pnl_id": "PNL_033",
+        "globalid": "{75F8ECD8-3DED-4971-8BE7-F8E3670B85DE}",
+        "parkname": "Blind Pass Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1636502400000,
+        "objectid": 5
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.55020555250896,
+          27.26569735812128
+        ],
+        "crs": null
+      },
+      "id": 6,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000829",
+        "pnl_id": "PNL_217",
+        "globalid": "{AED75CD0-314A-4A1A-98D8-9B09C24FF92A}",
+        "parkname": "Siesta Beach",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1561983696000,
+        "objectid": 6
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33361603534969,
+          27.10093753536845
+        ],
+        "crs": null
+      },
+      "id": 7,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000830",
+        "pnl_id": "PNL_238",
+        "globalid": "{5E9181DC-9F3C-405C-87B9-994A33DBA146}",
+        "parkname": "Snook Haven Park and Riverfront Restaurant",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1638835200000,
+        "objectid": 7
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.50639791103478,
+          27.290311773525563
+        ],
+        "crs": null
+      },
+      "id": 8,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000833",
+        "pnl_id": "PNL_026",
+        "globalid": "{2B73BFEC-49E7-443D-9615-5BFC84D85DA4}",
+        "parkname": "Bee Ridge Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619740800000,
+        "objectid": 8
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43522311913368,
+          27.26568283739225
+        ],
+        "crs": null
+      },
+      "id": 9,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000834",
+        "pnl_id": "PNL_286",
+        "globalid": "{EDE7D211-E192-4801-803E-8F6013C10AF4}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637107200000,
+        "objectid": 9
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43527922137622,
+          27.266823624326022
+        ],
+        "crs": null
+      },
+      "id": 10,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000835",
+        "pnl_id": "PNL_286",
+        "globalid": "{7BAD7856-E780-4A0A-BBCA-37128435F465}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637107200000,
+        "objectid": 10
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43728824585527,
+          27.26656919850428
+        ],
+        "crs": null
+      },
+      "id": 11,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_000836",
+        "pnl_id": "PNL_286",
+        "globalid": "{ECC8E998-9517-4D3D-B954-4E88D5E4D896}",
+        "parkname": "Twin Lakes Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637107200000,
+        "objectid": 11
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.55235720089235,
+          27.266417833395803
+        ],
+        "crs": null
+      },
+      "id": 12,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001229",
+        "pnl_id": "PNL_217",
+        "globalid": "{F7C9A756-8DD6-413A-A22C-7F68913247A9}",
+        "parkname": "Siesta Beach",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1561987828000,
+        "objectid": 12
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.49581149581063,
+          27.180676779462342
+        ],
+        "crs": null
+      },
+      "id": 13,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001231",
+        "pnl_id": "PNL_032",
+        "globalid": "{B58BE5DC-9AE1-4EE5-BEDB-6D09C4386669}",
+        "parkname": "Blackburn Point Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619136000000,
+        "objectid": 13
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43377905517191,
+          27.325704554415736
+        ],
+        "crs": null
+      },
+      "id": 14,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001232",
+        "pnl_id": "PNL_016",
+        "globalid": "{C87A4F04-C07E-49A7-BB5A-5F84D6DEE869}",
+        "parkname": "Celery Fields Regional Stormwater Facility",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1615766400000,
+        "objectid": 14
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48567355044652,
+          27.196685404666958
+        ],
+        "crs": null
+      },
+      "id": 15,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001233",
+        "pnl_id": "PNL_016",
+        "globalid": "{4570004A-974C-449E-98E7-DC6056A07AE4}",
+        "parkname": "Bay Street Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1618876800000,
+        "objectid": 15
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5694703413619,
+          27.30930700373486
+        ],
+        "crs": null
+      },
+      "id": 16,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001234",
+        "pnl_id": "PNL_241",
+        "globalid": "{C48A2A9E-F70C-4B27-88F7-470E89325BA6}",
+        "parkname": "Ted Sperling Nature Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620259200000,
+        "objectid": 16
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.56608767771502,
+          27.299595149195245
+        ],
+        "crs": null
+      },
+      "id": 17,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001235",
+        "pnl_id": "PNL_241",
+        "globalid": "{26297B18-F52C-4B57-BFC3-0749792596B7}",
+        "parkname": "Ted Sperling Park at South Lido Beach",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620259200000,
+        "objectid": 17
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.51669487151973,
+          27.220180460862398
+        ],
+        "crs": null
+      },
+      "id": 18,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001236",
+        "pnl_id": "PNL_411",
+        "globalid": "{A4BBCDF1-D8E9-4E21-B477-371B7AD5EA5D}",
+        "parkname": "Turtle Beach Campground",
+        "familyrestroom": "No",
+        "facilitytype": "Indoor Shower",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619136000000,
+        "objectid": 18
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.51556095910303,
+          27.219339431159597
+        ],
+        "crs": null
+      },
+      "id": 19,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001237",
+        "pnl_id": "PNL_285",
+        "globalid": "{E3F1B636-9A5C-44AD-8E40-F8BF90C0F237}",
+        "parkname": "Turtle Beach Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620172800000,
+        "objectid": 19
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.50383363928067,
+          27.319871897554922
+        ],
+        "crs": null
+      },
+      "id": 20,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001238",
+        "pnl_id": "PNL_185",
+        "globalid": "{A73628BE-984F-451B-8D39-C6BF2B5D0EE5}",
+        "parkname": "Pinecraft Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619481600000,
+        "objectid": 20
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.49100975727764,
+          27.179608611113174
+        ],
+        "crs": null
+      },
+      "id": 21,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001631",
+        "pnl_id": "PNL_374",
+        "globalid": "{49BC47DE-A2AC-46B0-BBDF-D81563D720C0}",
+        "parkname": "Blackburn Point Park Addition",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619136000000,
+        "objectid": 21
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43944203941656,
+          27.101359373929036
+        ],
+        "crs": null
+      },
+      "id": 22,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001632",
+        "pnl_id": "PNL_351",
+        "globalid": "{7A58EA74-BAFB-4792-A2D5-18A665BBC36F}",
+        "parkname": "Legacy Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619568000000,
+        "objectid": 22
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4402359022631,
+          27.101155987579187
+        ],
+        "crs": null
+      },
+      "id": 23,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001633",
+        "pnl_id": "PNL_297",
+        "globalid": "{B67BC737-47E9-4332-A8C6-1BFC488F61E3}",
+        "parkname": "Venice Train Depot and Rollins W. Coakley Railroad Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619568000000,
+        "objectid": 23
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.53368800122703,
+          27.270167096884485
+        ],
+        "crs": null
+      },
+      "id": 24,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001634",
+        "pnl_id": "PNL_179",
+        "globalid": "{E88B0483-F8B6-4C2B-AF05-47E5092D6465}",
+        "parkname": "Phillippi Estate Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1619654400000,
+        "objectid": 24
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47021638897468,
+          27.12272214829222
+        ],
+        "crs": null
+      },
+      "id": 25,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001635",
+        "pnl_id": "PNL_157",
+        "globalid": "{A1CFE033-0CE1-47A0-8B28-32719E3DB8AC}",
+        "parkname": "Nokomis Beach Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1615972929000,
+        "objectid": 25
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.46676151618678,
+          27.114184571186815
+        ],
+        "crs": null
+      },
+      "id": 26,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001636",
+        "pnl_id": "PNL_162",
+        "globalid": "{8E700268-C540-4438-A4C0-E7829F94FE26}",
+        "parkname": "North Jetty Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1616057953000,
+        "objectid": 26
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.46548479380499,
+          27.297410478192045
+        ],
+        "crs": null
+      },
+      "id": 27,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001637",
+        "pnl_id": "PNL_096",
+        "globalid": "{676D3AA7-AE9F-4F2E-BD20-11DF12F0DBEC}",
+        "parkname": "Urfer Family Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1616488194000,
+        "objectid": 27
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47426841006367,
+          27.350910213379287
+        ],
+        "crs": null
+      },
+      "id": 28,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001639",
+        "pnl_id": "PNL_372",
+        "globalid": "{BC63EEA5-8D9F-468F-86B5-33A91F8912F5}",
+        "parkname": "17th Street Park - East Entrance",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620691200000,
+        "objectid": 28
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47887110416774,
+          27.34796215359193
+        ],
+        "crs": null
+      },
+      "id": 29,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001640",
+        "pnl_id": "PNL_001",
+        "globalid": "{9DACC222-4DB7-4867-A2C3-CD121F9EBF24}",
+        "parkname": "17th Street Park - West Entrance",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620691200000,
+        "objectid": 29
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.46766046005361,
+          27.343183934843573
+        ],
+        "crs": null
+      },
+      "id": 30,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001641",
+        "pnl_id": "PNL_081",
+        "globalid": "{CB6668FC-5060-4F5D-B3C6-62AA42756162}",
+        "parkname": "Fruitville Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1620864000000,
+        "objectid": 30
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48302768725608,
+          27.387346033859764
+        ],
+        "crs": null
+      },
+      "id": 31,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001642",
+        "pnl_id": "PNL_127",
+        "globalid": "{E8EF7B9A-FF28-4229-840E-0433BD6D2360}",
+        "parkname": "Longwood Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621468800000,
+        "objectid": 31
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48272992181631,
+          27.38620151158876
+        ],
+        "crs": null
+      },
+      "id": 32,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001643",
+        "pnl_id": "PNL_127",
+        "globalid": "{0B08C36A-B464-4CBE-AEFF-76CADC8640F1}",
+        "parkname": "Longwood Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621468800000,
+        "objectid": 32
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.52299852225288,
+          27.361031949229382
+        ],
+        "crs": null
+      },
+      "id": 33,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001644",
+        "pnl_id": "PNL_156",
+        "globalid": "{8FE86B07-9457-4F02-B565-1F9146B4E11C}",
+        "parkname": "Newtown Estates Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621900800000,
+        "objectid": 33
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4507464306439,
+          27.13596468065043
+        ],
+        "crs": null
+      },
+      "id": 34,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001645",
+        "pnl_id": "PNL_113",
+        "globalid": "{D45F5A74-A326-4F12-97E0-1ED26D4B0EB2}",
+        "parkname": "Laurel Park and Sandra Sims Terry Community Center",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621987200000,
+        "objectid": 34
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.45055201916932,
+          27.134688539592194
+        ],
+        "crs": null
+      },
+      "id": 35,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001646",
+        "pnl_id": "PNL_113",
+        "globalid": "{B40FADF3-E824-4E0D-9D87-7454B646D26C}",
+        "parkname": "Laurel Park and Sandra Sims Terry Community Center",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621987200000,
+        "objectid": 35
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.41852468872041,
+          27.325339025253875
+        ],
+        "crs": null
+      },
+      "id": 36,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001647",
+        "pnl_id": "PNL_330",
+        "globalid": "{0DF5A630-8414-4191-8E47-EBDFD0948047}",
+        "parkname": "Tatum Ridge Elementary School - Soccer Fields",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1622073600000,
+        "objectid": 36
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.54925247990136,
+          27.273703977515
+        ],
+        "crs": null
+      },
+      "id": 37,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001648",
+        "pnl_id": "PNL_088",
+        "globalid": "{BB369B8D-12FF-4787-B676-60F1BC37DFBF}",
+        "parkname": "Glebe Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1623196800000,
+        "objectid": 37
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.46311115400776,
+          27.31093722825414
+        ],
+        "crs": null
+      },
+      "id": 38,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001649",
+        "pnl_id": "PNL_052",
+        "globalid": "{721F31B8-8900-4027-875C-2E13F7425DCC}",
+        "parkname": "Colonial Oaks Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1623801600000,
+        "objectid": 38
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.53680152448476,
+          27.29759417807265
+        ],
+        "crs": null
+      },
+      "id": 39,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_001650",
+        "pnl_id": "PNL_197",
+        "globalid": "{6EEA4D65-E61F-493F-81FA-D26667876120}",
+        "parkname": "Red Rock Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1627430400000,
+        "objectid": 39
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48201500672792,
+          27.386792735202214
+        ],
+        "crs": null
+      },
+      "id": 40,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002042",
+        "pnl_id": "PNL_127",
+        "globalid": "{0E3EEC76-A0B4-4913-84DF-E361963B0B65}",
+        "parkname": "Longwood Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621468800000,
+        "objectid": 40
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.52354073163033,
+          27.360828514477
+        ],
+        "crs": null
+      },
+      "id": 41,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002043",
+        "pnl_id": "PNL_156",
+        "globalid": "{25C1FA6B-1329-445F-9B65-532E5DEDE419}",
+        "parkname": "Newtown Estates Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1621900800000,
+        "objectid": 41
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.50511032429843,
+          27.327620203258608
+        ],
+        "crs": null
+      },
+      "id": 42,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002044",
+        "pnl_id": "PNL_124",
+        "globalid": "{D6838D5F-78D0-465D-A4D7-B6B34C8C72F8}",
+        "parkname": "Locklear Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1622073600000,
+        "objectid": 42
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.44419255356549,
+          27.110583988960105
+        ],
+        "crs": null
+      },
+      "id": 43,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002045",
+        "pnl_id": "PNL_176",
+        "globalid": "{AB1FA442-8C76-4544-A8E3-99F79DA7EBA2}",
+        "parkname": "Patriots Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1627948800000,
+        "objectid": 43
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.36265758263986,
+          26.956932058244977
+        ],
+        "crs": null
+      },
+      "id": 44,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002046",
+        "pnl_id": "PNL_101",
+        "globalid": "{762B70FE-8370-47A0-9EFD-2D3F3E16656F}",
+        "parkname": "Indian Mound Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629158400000,
+        "objectid": 44
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.45210185791443,
+          27.37572529257839
+        ],
+        "crs": null
+      },
+      "id": 45,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002047",
+        "pnl_id": "PNL_155",
+        "globalid": "{DB834443-76F2-4018-B7A0-B2E558115D99}",
+        "parkname": "Nathan Benderson Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629331200000,
+        "objectid": 45
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3742361414278,
+          26.97291440711641
+        ],
+        "crs": null
+      },
+      "id": 46,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002048",
+        "pnl_id": "PNL_117",
+        "globalid": "{79C5BDF7-0A17-4C76-9FB8-05C985FC7489}",
+        "parkname": "Lemon Bay Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629763200000,
+        "objectid": 46
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.29485035073645,
+          27.04465845419103
+        ],
+        "crs": null
+      },
+      "id": 47,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002049",
+        "pnl_id": "PNL_327",
+        "globalid": "{830AF017-EC74-413D-98C8-4A83B3AE988C}",
+        "parkname": "Senator Bob Johnson's Landing",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629849600000,
+        "objectid": 47
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3693563847264,
+          26.990362574490977
+        ],
+        "crs": null
+      },
+      "id": 48,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002050",
+        "pnl_id": "PNL_108",
+        "globalid": "{2014D528-E588-476C-95A7-0978B9663556}",
+        "parkname": "Buchan Airport Community Park/Kiwanis Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1630540800000,
+        "objectid": 48
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.36950792961912,
+          26.990367355091948
+        ],
+        "crs": null
+      },
+      "id": 49,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002051",
+        "pnl_id": "PNL_108",
+        "globalid": "{E47F58BB-245D-4360-B7BD-53BC9C33EC08}",
+        "parkname": "Buchan Airport Community Park/Kiwanis Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1630540800000,
+        "objectid": 49
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43608645274439,
+          27.053592068009003
+        ],
+        "crs": null
+      },
+      "id": 50,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002052",
+        "pnl_id": "PNL_214",
+        "globalid": "{A19E1CF1-4C69-48F2-9A49-271E0BB53386}",
+        "parkname": "Shamrock Park and Nature Center",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1631577600000,
+        "objectid": 50
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.45428380892456,
+          27.377113602162044
+        ],
+        "crs": null
+      },
+      "id": 51,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002447",
+        "pnl_id": "PNL_155",
+        "globalid": "{BDB0659D-0B2A-4E40-8168-B19C5BE9F0D6}",
+        "parkname": "Nathan Benderson Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629331200000,
+        "objectid": 51
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.45448097513938,
+          27.362757560500246
+        ],
+        "crs": null
+      },
+      "id": 52,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002448",
+        "pnl_id": "PNL_155",
+        "globalid": "{8086C873-7060-4B9E-8C05-3EBE3D56990B}",
+        "parkname": "Nathan Benderson Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1629331200000,
+        "objectid": 52
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.63955317405753,
+          27.38754195119084
+        ],
+        "crs": null
+      },
+      "id": 53,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002449",
+        "pnl_id": "PNL_125",
+        "globalid": "{77B05962-1C85-4F72-8232-EB8754F16247}",
+        "parkname": "Bayfront Park Addition",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1632268800000,
+        "objectid": 53
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3972015097598,
+          27.29566160132357
+        ],
+        "crs": null
+      },
+      "id": 54,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002450",
+        "pnl_id": "PNL_204",
+        "globalid": "{3200D134-DDC9-4D64-BAAD-0A18ADE35A64}",
+        "parkname": "Rothenbach Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1632787200000,
+        "objectid": 54
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.44656002068997,
+          27.117185273144713
+        ],
+        "crs": null
+      },
+      "id": 55,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002451",
+        "pnl_id": "PNL_158",
+        "globalid": "{200954B8-26AF-4040-9A01-137F34727F52}",
+        "parkname": "Nokomis Community Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1633910400000,
+        "objectid": 55
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.41293831574902,
+          27.16222295100387
+        ],
+        "crs": null
+      },
+      "id": 56,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002452",
+        "pnl_id": "PNL_109",
+        "globalid": "{EBD81DA9-6E30-48A2-B006-FF987C70B07D}",
+        "parkname": "Knight Trail Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1635120000000,
+        "objectid": 56
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.41228024845842,
+          27.010617850387963
+        ],
+        "crs": null
+      },
+      "id": 57,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002453",
+        "pnl_id": "PNL_131",
+        "globalid": "{3A80B335-C6C6-4925-91B2-CFA1E87FBBCC}",
+        "parkname": "Manasota Beach Park",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1635811200000,
+        "objectid": 57
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.42594660681833,
+          27.28976867178777
+        ],
+        "crs": null
+      },
+      "id": 58,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002454",
+        "pnl_id": "PNL_111",
+        "globalid": "{9D279CEB-B8E0-4923-8003-FE19831A5891}",
+        "parkname": "Lakeview Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1636455579000,
+        "objectid": 58
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.42907146955568,
+          27.09182604850311
+        ],
+        "crs": null
+      },
+      "id": 59,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002455",
+        "pnl_id": "PNL_079",
+        "globalid": "{DA3B11D5-A00C-4E68-8B32-7301771E8057}",
+        "parkname": "Bypass Park - Foxworthy Campus",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637020800000,
+        "objectid": 59
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33294069685655,
+          27.128837301938393
+        ],
+        "crs": null
+      },
+      "id": 60,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002456",
+        "pnl_id": "PNL_284",
+        "globalid": "{3A0B3468-949F-4B6F-871A-E93DC611E584}",
+        "parkname": "Carlton Reserve (T. Mabry Carlton, Jr. Memorial Reserve",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637280000000,
+        "objectid": 60
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47361897338905,
+          27.34876753819146
+        ],
+        "crs": null
+      },
+      "id": 61,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002457",
+        "pnl_id": "PNL_141",
+        "globalid": "{16194A33-01E0-4A42-9A39-5AED66F1208C}",
+        "parkname": "Miss Sarasota Softball Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637625600000,
+        "objectid": 61
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47315117968958,
+          27.34787428877493
+        ],
+        "crs": null
+      },
+      "id": 62,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002850",
+        "pnl_id": "PNL_141",
+        "globalid": "{69DD835F-9816-411B-BC4B-870BF807DD3E}",
+        "parkname": "Miss Sarasota Softball Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637712000000,
+        "objectid": 62
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.49789666540315,
+          27.277427105617093
+        ],
+        "crs": null
+      },
+      "id": 63,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002851",
+        "pnl_id": "PNL_196",
+        "globalid": "{C5D7E4F3-56D7-4E86-BD23-26100453E541}",
+        "parkname": "Red Bug Slough Preserve",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1639440000000,
+        "objectid": 63
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3969568824647,
+          27.05642174683923
+        ],
+        "crs": null
+      },
+      "id": 64,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002852",
+        "pnl_id": "PNL_319",
+        "globalid": "{ABEC701E-BFBB-4A30-9A14-7CB879D181C3}",
+        "parkname": "Woodmere Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1639526400000,
+        "objectid": 64
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5118957963881,
+          27.34999326909746
+        ],
+        "crs": null
+      },
+      "id": 65,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002853",
+        "pnl_id": "PNL_320",
+        "globalid": "{D6E8A81E-3778-439A-8278-FFB5684C5564}",
+        "parkname": "Youth Athletic Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1639612800000,
+        "objectid": 65
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.51319681341955,
+          27.35089178591168
+        ],
+        "crs": null
+      },
+      "id": 66,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002854",
+        "pnl_id": "PNL_320",
+        "globalid": "{7A9FA85E-B5B3-4A76-A1E5-9C06FC073210}",
+        "parkname": "Youth Athletic Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1639699200000,
+        "objectid": 66
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48643130521826,
+          27.2274930332653
+        ],
+        "crs": null
+      },
+      "id": 67,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002855",
+        "pnl_id": "PNL_191",
+        "globalid": "{C0017BA3-03D3-4906-BC5A-59FC71B6DA5F}",
+        "parkname": "Potter Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640131200000,
+        "objectid": 67
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.32739420025955,
+          26.97412568667793
+        ],
+        "crs": null
+      },
+      "id": 68,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002856",
+        "pnl_id": "PNL_074",
+        "globalid": "{093F7133-7D27-4E4B-8563-1FC8E94B8BB1}",
+        "parkname": "Englewood Sports Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640649600000,
+        "objectid": 68
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33345666460959,
+          26.972411299213217
+        ],
+        "crs": null
+      },
+      "id": 69,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002857",
+        "pnl_id": "PNL_074",
+        "globalid": "{E2097123-5D2E-4F2A-B8F8-055D8442EFEA}",
+        "parkname": "Englewood Sports Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640649600000,
+        "objectid": 69
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33148148528295,
+          26.970427684252336
+        ],
+        "crs": null
+      },
+      "id": 70,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002858",
+        "pnl_id": "PNL_074",
+        "globalid": "{3EEA9D6D-E884-4DC1-B531-17DDD4A2F591}",
+        "parkname": "Englewood Sports Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640649600000,
+        "objectid": 70
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48246395142864,
+          27.276956483834063
+        ],
+        "crs": null
+      },
+      "id": 71,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002859",
+        "pnl_id": "PNL_439",
+        "globalid": "{B19BBF5C-0781-4DCD-8685-C6347EA0ABF3}",
+        "parkname": "Ashton Road Trailhead",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1641340800000,
+        "objectid": 71
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.50737950055185,
+          27.33066886797157
+        ],
+        "crs": null
+      },
+      "id": 72,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002860",
+        "pnl_id": "PNL_439",
+        "globalid": "{16F22869-40C1-4D69-8278-AA770A8F019B}",
+        "parkname": "Pompano Trailhead",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1656630000000,
+        "objectid": 72
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.48907266160909,
+          27.30754895954674
+        ],
+        "crs": null
+      },
+      "id": 73,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002861",
+        "pnl_id": "PNL_447",
+        "globalid": "{A743D74A-C1E3-4336-BAEE-07AD0A8B7188}",
+        "parkname": "Sarasota Springs Trailhead",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1658358000000,
+        "objectid": 73
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47443228798537,
+          27.249517148606575
+        ],
+        "crs": null
+      },
+      "id": 74,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002862",
+        "pnl_id": "PNL_343",
+        "globalid": "{34021655-9BB7-4B10-915B-05A5BF9B7739}",
+        "parkname": "Culverhouse Nature Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1670284800000,
+        "objectid": 74
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.54751245518732,
+          27.302127876826408
+        ],
+        "crs": null
+      },
+      "id": 75,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002863",
+        "pnl_id": "PNL_014",
+        "globalid": "{5C0836D2-B444-4138-800C-50C006AD0954}",
+        "parkname": "Nora Patterson Bay Island Park (South)",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1752495195000,
+        "inspectiondate": 1681426800000,
+        "objectid": 75
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.46338788277546,
+          27.19663508271514
+        ],
+        "crs": null
+      },
+      "id": 76,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002864",
+        "pnl_id": "PNL_065",
+        "globalid": "{3333EEDF-9A89-41E9-B03D-53448A01FEF6}",
+        "parkname": "Osprey Junction Trailhead",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1751284593000,
+        "inspectiondate": 1681686000000,
+        "objectid": 76
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.36035139446598,
+          26.965036530124525
+        ],
+        "crs": null
+      },
+      "id": 77,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_002865",
+        "pnl_id": "PNL_072",
+        "globalid": "{00B60725-A66C-4F8F-B1E6-608058B43E08}",
+        "parkname": "Englewood Park ",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1751889119000,
+        "inspectiondate": 1681945200000,
+        "objectid": 77
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.44143638167637,
+          27.19280213657151
+        ],
+        "crs": null
+      },
+      "id": 78,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_01092024_105116",
+        "pnl_id": "PNL_171",
+        "globalid": "{198E3A07-1D51-4262-B706-AAFEF9CF57A7}",
+        "parkname": "Scherer Thaxton Preserve",
+        "familyrestroom": "Yes",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1754040942000,
+        "inspectiondate": 1704797489000,
+        "objectid": 78
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.47470067937843,
+          27.348144921846874
+        ],
+        "crs": null
+      },
+      "id": 79,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_003250",
+        "pnl_id": "PNL_141",
+        "globalid": "{5E6A3B60-BC13-4433-99A1-22D1175DE403}",
+        "parkname": "Miss Sarasota Softball Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1637712000000,
+        "objectid": 79
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5101220506349,
+          27.35082543252627
+        ],
+        "crs": null
+      },
+      "id": 80,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_003251",
+        "pnl_id": "PNL_320",
+        "globalid": "{E10E05DE-CAEB-4BA8-BE25-4482FE9C01F5}",
+        "parkname": "Youth Athletic Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1639612800000,
+        "objectid": 80
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.33119781408067,
+          26.972548865683024
+        ],
+        "crs": null
+      },
+      "id": 81,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_07122023_003252",
+        "pnl_id": "PNL_074",
+        "globalid": "{2E964994-C180-4F46-BCD8-D63EBB52D9FE}",
+        "parkname": "Englewood Sports Complex",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1689171613000,
+        "inspectiondate": 1640649600000,
+        "objectid": 81
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.44587046485351,
+          27.117091175436197
+        ],
+        "crs": null
+      },
+      "id": 82,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_06102025_141149",
+        "pnl_id": "PNL_158",
+        "globalid": "{29BF9F57-DCA0-48A6-B312-4BC890ED10C1}",
+        "parkname": "Nokomis Community Park",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1749564750000,
+        "inspectiondate": 1749564748000,
+        "objectid": 82
+      }
+    },
+    {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.43058631778405,
+          27.092366598062732
+        ],
+        "crs": null
+      },
+      "id": 83,
+      "type": "Feature",
+      "properties": {
+        "facilityid": "PA_01152026_095234",
+        "pnl_id": "PNL_079",
+        "globalid": "{41A9F94E-2D28-49E1-BDEB-9FFCEAA7A672}",
+        "parkname": "Foxworthy Campus",
+        "familyrestroom": "No",
+        "facilitytype": "Restrooms",
+        "lastupdate": 1768471210000,
+        "inspectiondate": 1768470771000,
+        "objectid": 83
+      }
+    }
+  ]
+}

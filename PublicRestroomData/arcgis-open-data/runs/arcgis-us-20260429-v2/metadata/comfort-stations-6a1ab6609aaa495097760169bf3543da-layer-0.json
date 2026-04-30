@@ -1,0 +1,590 @@
+{
+  "item": {
+    "id": "6a1ab6609aaa495097760169bf3543da",
+    "owner": "SillarsS@hillsboroughcounty.org_hillsborough",
+    "created": 1728147713000,
+    "modified": 1729713221000,
+    "guid": null,
+    "name": "Comfort_Stations",
+    "title": "Comfort Stations",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS API for JavaScript",
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      "Emergency Management",
+      "Hillsborough County"
+    ],
+    "snippet": "Comfort and Hygiene Support Stations to aid recovery after Hurricane Helene. Displayed in the Unmet Needs Dashboard for Mass Care.",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        -82.56593396969207,
+        27.693498664646057
+      ],
+      [
+        -82.3538031937901,
+        27.999343576096912
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102659",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "Hillsborough County makes no warranty, representation or guarantee as to the content, sequence, accuracy, timeliness, or completeness of any of the information provided herein. The reader should not rely on the data provided herein for any reason. Hillsborough County explicitly disclaims any representations and warranties, including, without limitation, the implied warranties of merchantability and fitness for a particular purpose. Hillsborough County shall assume no liability for: 1. Any errors, omissions, or inaccuracies in the information provided regardless of how caused; or 2. Any decision made or action taken or not taken by any person in reliance upon any information or data furnished hereunder. This dataset is provided by Hillsborough County for informational purposes and Hillsborough County does not guarantee the accuracy or content of the data. Hillsborough County is not liable for any deficiencies in the dataset or analyses/applications using the dataset. This data should not be construed as legal advice or legal opinion on any specific facts or circumstances. The contents are intended for general information purposes only, and you are urged to consult your own lawyer concerning your own situation and any specific questions you may have. Infrastructure records, drawings, and other documents have been gathered over many decades, using differing standards for quality control, documentation and verification. All of the data provided represents current information in a readily available format. While the data is generally believed to be accurate, occasionally it proves to be incorrect; thus its accuracy is not warranted. Prior to making any property purchases or investments, or taking any other action based in full or in part upon the material provided, it is specifically advised that you independently field verify the information contained in county records.",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Comfort_Stations/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 2821,
+    "scoreCompleteness": 75,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777316400000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Comfort Stations",
+    "type": "Feature Layer",
+    "serviceItemId": "6a1ab6609aaa495097760169bf3543da",
+    "cacheMaxAge": 30,
+    "displayField": "OBJECTID",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1730727388642,
+      "schemaLastEditDate": 1729512679125,
+      "dataLastEditDate": 1730727388642
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 4622325,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 473542.6119739972,
+      "ymin": 1221691.355057077,
+      "xmax": 589071.5651119621,
+      "ymax": 1360073.1906662148,
+      "spatialReference": {
+        "wkid": 102659,
+        "latestWkid": 2237
+      }
+    },
+    "spatialReference": {
+      "wkid": 102659,
+      "latestWkid": 2237
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "63c0579116e2578954c7dc31f675c3fb",
+          "imageData": "iVBORw0KGgoAAAANSUhEUgAAABoAAAAYCAYAAADkgu3FAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB+UlEQVRIic2WvW7aUBiGnyEj2Yhks1aW6Gg5I74AI1MJqWFkYCATU6ZMdZYwhaGZQiQPXUFCqitzAWYsOmORzBwjla1cQAcb60DxIVJL1Fey/KvzfD/vd+Qz3khn/zMoAIbZ+WQgC3AB/eSgqmayWAkrg85PBeraRp2Lc50oDk8GsgDLNhxswyGKwy5pr/49qKqZVDVzB8wrs5JBFdJGF6lrG/X8xjbqRHHooTZFnrEMsoAnQI4618W5TtPs5Pe3ziM/fyXuoeAWK7G9nGfHDigAPgBf3+smt86jIlAolzS+dGZ/PO9PeyxWIgGukcq636MAuJwIP/iRCH3QGlMuaUqgnMVzdE8Uh3Pgjr2SHjLDHKgsViJo+zV30BodLKWsKJ7Sn/ZYb5JvWSYv+9+oXNdYbxKv7dc+PVyNsQ2nEHIz+kiWhVe02DF7e4A7W4ZWEWi2DCGtQiHkNaAKYMlu21fT7DARvnVknaMgt1zSd3r0HN1TLmm51aV3DRQzdQzU2JZsz1XWbDnl4WoE5FnpqoVUoArgNs2O7KohadOJ4vB726/pg9Z4C/JQ7H0qkFUu6UyEz0T4kNpWXqiyWImn+ud33Wy4dRR7nxK03iRMhH9wADNdA8P+tBf8DYgsgzsODKCkOXBJuk8Wuk8F8o4EIeuF1HWFerO/oN80tLE/Zh66vgAAAABJRU5ErkJggg==",
+          "contentType": "image/png",
+          "width": 19,
+          "height": 18,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GlobalID",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Name",
+        "type": "esriFieldTypeString",
+        "alias": "Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Address",
+        "type": "esriFieldTypeString",
+        "alias": "Address",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "City",
+        "type": "esriFieldTypeString",
+        "alias": "City",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "State",
+        "type": "esriFieldTypeString",
+        "alias": "State",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Zip",
+        "type": "esriFieldTypeDouble",
+        "alias": "Zip",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Municipality",
+        "type": "esriFieldTypeString",
+        "alias": "Municipality",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": "NEWID() WITH VALUES"
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__COMFORT___F4B70D85F3060971",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_2614.COMFORT_STATIONS_COMFORT_STATIONS_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "Name_Index",
+        "fields": "Name",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Name_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "GlobalID_Index",
+        "fields": "GlobalID",
+        "isAscending": false,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Municipality_Index",
+        "fields": "Municipality",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Municipality_Index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "Comfort Stations",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": true,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query,Extract,Sync"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "Name": "Apollo Beach Park & Recreation Center",
+        "Address": "664 Golf and Sea Blvd",
+        "City": "Apollo Beach",
+        "State": "FL",
+        "Zip": 33572,
+        "Municipality": "Inactive",
+        "GlobalID": "c3b26809-9ed2-4516-a13f-7c710d3ac937"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "Name": "Ruskin Park & Recreation Center",
+        "Address": "901 6th St SE",
+        "City": "Ruskin",
+        "State": "FL",
+        "Zip": 33570,
+        "Municipality": "Inactive",
+        "GlobalID": "16ac70c9-ce44-4e54-a4f2-22ef0c7f8266"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "Name": "Skyway Sports Complex",
+        "Address": "3901 George Rd",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33634,
+        "Municipality": "Demob",
+        "GlobalID": "8b1add13-ce8d-45fd-9a31-f1bc7dd76d0b"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "Name": "Sandy Perrone Park",
+        "Address": "5120 Kelly Rd",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33615,
+        "Municipality": "Inactive",
+        "GlobalID": "0cbfd6c7-0921-42fd-a630-bd0a50220c73"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "Name": "Marjorie Park Marina",
+        "Address": "97 Columbia Dr",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33606,
+        "Municipality": "Inactive",
+        "GlobalID": "f81a1447-5572-4d94-81aa-f9e1d9def0a1"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "Name": "Desoto Park",
+        "Address": "2617 Corrine St",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33605,
+        "Municipality": "Inactive",
+        "GlobalID": "1556582c-1042-4b23-a787-60ce6371c42a"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "Name": "Gandy Civic Center",
+        "Address": "4207 W Oklahoma Ave",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33616,
+        "Municipality": "Inactive",
+        "GlobalID": "2ac3a7f6-cd93-4d90-a4bb-d35d7fa800a3"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "Name": "Town N Country Library",
+        "Address": "7606 Paula Dr Ste 120",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33615,
+        "Municipality": "Inactive",
+        "GlobalID": "b87b3135-12f7-42cf-97c3-4a791b2f9666"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "Name": "Gibsonton Walmart",
+        "Address": "9205 Gibsonton Dr",
+        "City": "Gibsonton",
+        "State": "FL",
+        "Zip": 33534,
+        "Municipality": "Inactive",
+        "GlobalID": "54cd26fa-719e-4d11-bbb8-fc27413bde5a"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 1009,
+        "Name": "Sun City Heritage Park",
+        "Address": "3030 S US 41",
+        "City": "Ruskin",
+        "State": "FL",
+        "Zip": 33570,
+        "Municipality": "Demob",
+        "GlobalID": "834d2047-907c-4019-925d-8746e0831b65"
+      }
+    }
+  ]
+}

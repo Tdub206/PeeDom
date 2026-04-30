@@ -1,0 +1,480 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6163357657207,
+          63.0969366238903
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "GlobalID": "81bcb300-92c3-4202-9206-a346f4ef4845",
+        "CreationDate": 1777011210093,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011210093,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Low",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6142436426885,
+          63.0951767747276
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "GlobalID": "1b0a7731-21ef-4cc7-9692-2a343a34c8d1",
+        "CreationDate": 1777011384325,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011384325,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Second floor.",
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6251124396962,
+          63.103749771236
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "GlobalID": "6397b80a-7d72-4d7e-893b-73151348a68d",
+        "CreationDate": 1777011470352,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011470352,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6149790540368,
+          63.0968412467788
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "GlobalID": "42913d13-19a5-4248-b8fe-3966a9313b88",
+        "CreationDate": 1777011513890,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011513890,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Second floor.",
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "No",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Paid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6529376760149,
+          63.1081624552863
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "GlobalID": "e11c4021-2773-42c4-b23a-e96fe9465089",
+        "CreationDate": 1777011564681,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011564681,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6521973863268,
+          63.1110181493268
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "GlobalID": "beede3a0-912a-44fc-be39-223390407439",
+        "CreationDate": 1777011594624,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011594624,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6176398053792,
+          63.0960329404289
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "GlobalID": "3ac86ef4-268d-471c-84a6-b42f69db4481",
+        "CreationDate": 1777011639850,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011639850,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6988356366776,
+          63.0727705513594
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "GlobalID": "87ba431b-03fe-4fcd-bf28-141c10a96d64",
+        "CreationDate": 1777011710931,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011710931,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "High",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6024987354897,
+          63.1308437722686
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "GlobalID": "eabc0996-6cf9-4f99-8d06-b4b4f6be1e83",
+        "CreationDate": 1777011765480,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011765480,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "High",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.7481453672073,
+          63.104125912853
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "GlobalID": "26d93576-abe7-4dca-8142-1045b0da646a",
+        "CreationDate": 1777011815184,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011815184,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Outdoor toilet.",
+        "Cleanliness_level": "Medium",
+        "Changing_table": "No",
+        "Wheelchair_accessibility": "No",
+        "Opening_hours": "Open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6469456210753,
+          63.1027232438573
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "GlobalID": "947f3391-87a7-47cb-b20a-012d136287d0",
+        "CreationDate": 1777011853710,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011853710,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.7182691914492,
+          63.0531795803754
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "GlobalID": "a4080589-5a50-4cea-bfbf-34b7e2df42d1",
+        "CreationDate": 1777011940328,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011940328,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Low",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6581061601653,
+          63.1117620828877
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "GlobalID": "fdf72e8e-deeb-435b-bb10-5c3bbc4634d8",
+        "CreationDate": 1777012010464,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777012010464,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6023099387876,
+          63.1058444569787
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "GlobalID": "474dfa09-6003-45a3-9a7a-f847c588b542",
+        "CreationDate": 1777012075524,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777012075524,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6417261923591,
+          63.1012068928136
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "GlobalID": "f85dc67e-0e85-4210-b033-d03a3a4b5999",
+        "CreationDate": 1777012128934,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777012128934,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.6356984998845,
+          63.0995827010048
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "GlobalID": "d9cc2768-4f5f-4d77-b37a-9982ab046f54",
+        "CreationDate": 1777012172100,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777012172100,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Paid"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.5947896534667,
+          63.0943552943491
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "GlobalID": "00bb627b-004e-4ea7-a9ca-22f168f0090b",
+        "CreationDate": 1777013476205,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777013476205,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Porta potties, atleast in summertime.",
+        "Cleanliness_level": "Medium",
+        "Changing_table": "No",
+        "Wheelchair_accessibility": "No",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.5552113277514,
+          63.0406513096428
+        ]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "GlobalID": "98d68156-eb4d-4389-b0b3-35030fe67d4a",
+        "CreationDate": 1777013584661,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777013584661,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "High",
+        "Changing_table": "Yes",
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.5462160666727,
+          63.0324728225858
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "GlobalID": "255602b3-9cc7-4954-8bd6-394bf3b01784",
+        "CreationDate": 1777013626077,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777013626077,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    }
+  ]
+}

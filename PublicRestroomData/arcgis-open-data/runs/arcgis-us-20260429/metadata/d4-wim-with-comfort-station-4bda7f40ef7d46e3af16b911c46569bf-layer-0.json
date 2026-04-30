@@ -1,0 +1,4295 @@
+{
+  "item": {
+    "id": "4bda7f40ef7d46e3af16b911c46569bf",
+    "owner": "clark.siler_fdot9",
+    "created": 1733258625000,
+    "modified": 1772135390000,
+    "guid": null,
+    "name": "service_1d215d4de4ce411aac9ca14ca18974ae",
+    "title": "D4 WIM with Comfort Station",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Public Data Collection",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": null,
+    "tags": [
+      "XForm",
+      "XForms"
+    ],
+    "snippet": null,
+    "thumbnail": "thumbnail/Weigh_Station_with_Truck_Comfort_Station_Survey.png",
+    "documentation": null,
+    "extent": [
+      [
+        -180,
+        -90
+      ],
+      [
+        180,
+        90
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "4326",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/service_1d215d4de4ce411aac9ca14ca18974ae/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 2268,
+    "scoreCompleteness": 41,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777521600000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "surveyPoint",
+    "type": "Feature Layer",
+    "serviceItemId": "4bda7f40ef7d46e3af16b911c46569bf",
+    "displayField": "objectid",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "ownershipBasedAccessControlForFeatures": {
+      "allowOthersToQuery": true,
+      "allowOthersToDelete": true,
+      "allowOthersToUpdate": true,
+      "allowAnonymousToQuery": true,
+      "allowAnonymousToUpdate": false,
+      "allowAnonymousToDelete": false
+    },
+    "editFieldsInfo": {
+      "creationDateField": "CreationDate",
+      "creatorField": "Creator",
+      "editDateField": "EditDate",
+      "editorField": "Editor"
+    },
+    "editingInfo": {
+      "lastEditDate": 1777485318016,
+      "schemaLastEditDate": 1777485318016,
+      "dataLastEditDate": 1777485318016
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "supportsOBACForAnonymousUsers": true,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": -180,
+      "ymin": -90,
+      "xmax": 180,
+      "ymax": 90,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "drawingInfo": {
+      "labelingInfo": null,
+      "renderer": {
+        "description": "Survey Data Locations",
+        "label": "D4 WIM with Comfort Station",
+        "symbol": {
+          "angle": 0,
+          "color": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "outline": {
+            "color": [
+              255,
+              255,
+              0,
+              255
+            ],
+            "width": 1
+          },
+          "size": 8,
+          "style": "esriSMSCircle",
+          "type": "esriSMS",
+          "xoffset": 0,
+          "yoffset": 0
+        },
+        "type": "simple"
+      },
+      "transparency": 0
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "objectid",
+    "uniqueIdField": {
+      "name": "objectid",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "globalid",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "ObjectID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "globalid",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeGUID",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "uniform_inspection_guide",
+        "type": "esriFieldTypeString",
+        "alias": "Inspection Guide PDF: link",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "inspection_type",
+        "type": "esriFieldTypeString",
+        "alias": "Inspection Type",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_inspection_type",
+          "codedValues": [
+            {
+              "name": "Announced",
+              "code": "announced"
+            },
+            {
+              "name": "Unannounced",
+              "code": "unannounced"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "tInspectionTime",
+        "type": "esriFieldTypeString",
+        "alias": "Day/Night Inspection:",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_tInspectionTime",
+          "codedValues": [
+            {
+              "name": "Day",
+              "code": "Day"
+            },
+            {
+              "name": "Night",
+              "code": "Night"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "name_of_weigh_station",
+        "type": "esriFieldTypeString",
+        "alias": "Name of Weigh Station",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "date_and_time_of_inspection",
+        "type": "esriFieldTypeDate",
+        "alias": "date_and_time_of_inspection",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "datetime_of_inspection",
+        "type": "esriFieldTypeString",
+        "alias": "Date and Time of Inspection",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "name_of_inspector",
+        "type": "esriFieldTypeString",
+        "alias": "Name of Inspector",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Security_Name",
+        "type": "esriFieldTypeString",
+        "alias": "Name of Security",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "_DateSecurityInspection",
+        "type": "esriFieldTypeDate",
+        "alias": "_DateSecurityInspection",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "datetime_of_security_inspection",
+        "type": "esriFieldTypeString",
+        "alias": "Date",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "FinalScore",
+        "type": "esriFieldTypeString",
+        "alias": "Final Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CustomerServiceYes",
+        "type": "esriFieldTypeString",
+        "alias": "CustomerServiceYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CustomerServiceNo",
+        "type": "esriFieldTypeString",
+        "alias": "CustomerServiceNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CustomerServiceScore",
+        "type": "esriFieldTypeString",
+        "alias": "Customer Service Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "customerservice_bulletinboards",
+        "type": "esriFieldTypeString",
+        "alias": "customerservice_bulletinboards",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_customerservice_bulletinboards",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "customerservice_phone",
+        "type": "esriFieldTypeString",
+        "alias": "customerservice_phone",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_customerservice_phone",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "customerservice_opiniatorsystem",
+        "type": "esriFieldTypeString",
+        "alias": "customerservice_opiniatorsystem",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_customerservice_opiniatorsystem",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "customerservice_vending",
+        "type": "esriFieldTypeString",
+        "alias": "customerservice_vending",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_customerservice_vending",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "customerservice_maps",
+        "type": "esriFieldTypeString",
+        "alias": "customerservice_maps",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_customerservice_maps",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "CustomerServiceComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Customer Service):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "AttendantYes",
+        "type": "esriFieldTypeString",
+        "alias": "AttendantYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "AttendantNo",
+        "type": "esriFieldTypeString",
+        "alias": "AttendantNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "AttendantScore",
+        "type": "esriFieldTypeString",
+        "alias": "Attendant Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "attendant_attendantuniform",
+        "type": "esriFieldTypeString",
+        "alias": "attendant_attendantuniform",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_attendant_attendantuniform",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "attendant_accessible",
+        "type": "esriFieldTypeString",
+        "alias": "attendant_accessible",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_attendant_accessible",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "attendant_supplies",
+        "type": "esriFieldTypeString",
+        "alias": "attendant_supplies",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_attendant_supplies",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "AttendantComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Attendant):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "InspectionBayYes",
+        "type": "esriFieldTypeString",
+        "alias": "InspectionBayYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "InspectionBayNo",
+        "type": "esriFieldTypeString",
+        "alias": "InspectionBayNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "InspectionBayScore",
+        "type": "esriFieldTypeString",
+        "alias": "Inspection Bay Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "inspectionbay_eyewash",
+        "type": "esriFieldTypeString",
+        "alias": "inspectionbay_eyewash",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_inspectionbay_eyewash",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "inspectionbay_ventilation",
+        "type": "esriFieldTypeString",
+        "alias": "inspectionbay_ventilation",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_inspectionbay_ventilation",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "inspectionbay_cleanliness",
+        "type": "esriFieldTypeString",
+        "alias": "inspectionbay_cleanliness",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_inspectionbay_cleanliness",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "inspectionbay_fireextinguishers",
+        "type": "esriFieldTypeString",
+        "alias": "inspectionbay_fireextinguishers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_inspectionbay_fireextinguishers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "InspectionBayComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Inspection Bay):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RestroomsYes",
+        "type": "esriFieldTypeString",
+        "alias": "RestroomsYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RestroomsNo",
+        "type": "esriFieldTypeString",
+        "alias": "RestroomsNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RestroomsScore",
+        "type": "esriFieldTypeString",
+        "alias": "Restrooms Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_countertops",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_countertops",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_countertops",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_sinks",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_sinks",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_sinks",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_toilets",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_toilets",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_toilets",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_toiletpaper",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_toiletpaper",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_toiletpaper",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_toiletpartitions",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_toiletpartitions",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_toiletpartitions",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_floors",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_floors",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_floors",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_ceiling",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_ceiling",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_ceiling",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_handdryers",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_handdryers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_handdryers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_soapdispensers",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_soapdispensers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_soapdispensers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_mirrors",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_mirrors",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_mirrors",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_lights",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_lights",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_lights",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "RestroomComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Restroom):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_family_changingtable",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_family_changingtable",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_family_changingtable",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_family_toilets",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_family_toilets",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_family_toilets",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "restrooms_family_floors",
+        "type": "esriFieldTypeString",
+        "alias": "restrooms_family_floors",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_restrooms_family_floors",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "FamilyRestroomComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Family Restroom):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BuildingsYes",
+        "type": "esriFieldTypeString",
+        "alias": "BuildingsYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BuildingsNo",
+        "type": "esriFieldTypeString",
+        "alias": "BuildingsNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BuildingsScore",
+        "type": "esriFieldTypeString",
+        "alias": "Buildings Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_roofs",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_roofs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_roofs",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_gutters",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_gutters",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_gutters",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_exteriorwalls",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_exteriorwalls",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_exteriorwalls",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_doors",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_doors",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_doors",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_foyers",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_foyers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_foyers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_waterfountains",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_waterfountains",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_waterfountains",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_utilityarea",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_utilityarea",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_utilityarea",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_generators",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_generators",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_generators",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_signs",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_signs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_signs",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_accessibility",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_accessibility",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_accessibility",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_wastewater",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_wastewater",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_wastewater",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_wellwater",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_wellwater",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_wellwater",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_fireextinguishers",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_fireextinguishers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_fireextinguishers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_scales",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_scales",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_scales",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_handrails",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_handrails",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_handrails",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_lights",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_lights",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_lights",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "buildings_airconditioner",
+        "type": "esriFieldTypeString",
+        "alias": "buildings_airconditioner",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_buildings_airconditioner",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "GroundsComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Grounds):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GroundsYes",
+        "type": "esriFieldTypeString",
+        "alias": "GroundsYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GroundsNo",
+        "type": "esriFieldTypeString",
+        "alias": "GroundsNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GroundsScore",
+        "type": "esriFieldTypeString",
+        "alias": "Grounds Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_turf",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_turf",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_turf",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_vegetation",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_vegetation",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_vegetation",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_litter",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_litter",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_litter",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_trash",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_trash",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_trash",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_recycle",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_recycle",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_recycle",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_lights",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_lights",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_lights",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_sidewalks",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_sidewalks",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_sidewalks",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_edging",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_edging",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_edging",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_trees",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_trees",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_trees",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_flags",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_flags",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_flags",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_pestcontrol",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_pestcontrol",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_pestcontrol",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_fences",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_fences",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_fences",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "grounds_retentionareas",
+        "type": "esriFieldTypeString",
+        "alias": "grounds_retentionareas",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_grounds_retentionareas",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "RoadwayYes",
+        "type": "esriFieldTypeString",
+        "alias": "RoadwayYes",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RoadwayNo",
+        "type": "esriFieldTypeString",
+        "alias": "RoadwayNo",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RoadwayScore",
+        "type": "esriFieldTypeString",
+        "alias": "Roadway Score",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_pavement",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_pavement",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_pavement",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_lighting",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_lighting",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_lighting",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_signs",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_signs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_signs",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_markers",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_markers",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_markers",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_striping",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_striping",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_striping",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_shoulders",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_shoulders",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_shoulders",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_sweeping",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_sweeping",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_sweeping",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_guardrail",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_guardrail",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_guardrail",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "roadway_drainage",
+        "type": "esriFieldTypeString",
+        "alias": "roadway_drainage",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_roadway_drainage",
+          "codedValues": [
+            {
+              "name": "Y",
+              "code": "yes"
+            },
+            {
+              "name": "N",
+              "code": "no"
+            },
+            {
+              "name": "X",
+              "code": "x"
+            },
+            {
+              "name": "[ ]",
+              "code": "blank"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "comments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BuildingsComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Buildings):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "RoadwayComments",
+        "type": "esriFieldTypeString",
+        "alias": "Comments (Roadway):",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Geo_Latitude",
+        "type": "esriFieldTypeString",
+        "alias": "Geo_Latitude",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Geo_Longitude",
+        "type": "esriFieldTypeString",
+        "alias": "Geo_Longitude",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__service___5242E632FE378707",
+        "fields": "objectid",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "GlobalIDIndex",
+        "fields": "globalid",
+        "isAscending": false,
+        "isUnique": true,
+        "description": "GlobalID index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "service_1d215d4de4ce411aac9ca14ca18974ae_SURVEYPOINT_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "CreationDateIndex",
+        "fields": "CreationDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "CreationDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreatorIndex",
+        "fields": "Creator",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Creator Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditDateIndex",
+        "fields": "EditDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "EditDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditorIndex",
+        "fields": "Editor",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Editor Field index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolNone",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 1000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Create,Delete,Query,Update,Editing,Extract"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "objectid": 10,
+        "globalid": "a70653db-8848-492a-ac2c-6a647a999422",
+        "uniform_inspection_guide": "https://bit.ly/2ML4vwX",
+        "inspection_type": "announced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1738243157338,
+        "datetime_of_inspection": "Thu, Jan 30, 2025 08:19",
+        "name_of_inspector": "Patricia Cabral, Diego Marcentes, Taylor Newsome",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Thu, Jan 30, 2025 08:19",
+        "FinalScore": "92.2",
+        "CustomerServiceYes": "2",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "x",
+        "customerservice_opiniatorsystem": "x",
+        "customerservice_vending": "x",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "13",
+        "RestroomsNo": "0",
+        "RestroomsScore": "20",
+        "restrooms_countertops": "blank",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": null,
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "13",
+        "BuildingsNo": "4",
+        "BuildingsScore": "15.3",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "no",
+        "buildings_exteriorwalls": "no",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "no",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "Landscaping does not meet the desired maintenance conditions. \nActive ant bed. ",
+        "GroundsYes": "11",
+        "GroundsNo": "2",
+        "GroundsScore": "16.9",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "no",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "no",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "8",
+        "RoadwayNo": "0",
+        "RoadwayScore": "10",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "yes",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility was in good condition ",
+        "CreationDate": 1738262501899,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1740751711484,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "The exterior ceiling needs to be clean.   The exterior lights around the comfort station need to be cleaned. Gutter leaks at the building and the gutter system should be painted to meet desired maintenance conditions. The door to the water treatment room was unlocked. One rolling door to the bay does not open. ",
+        "RoadwayComments": null,
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 11,
+        "globalid": "703e21c6-faf2-4610-8724-56088549d053",
+        "uniform_inspection_guide": "https://bit.ly/2ML4vwX",
+        "inspection_type": "unannounced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1740659221013,
+        "datetime_of_inspection": "Thu, Feb 27, 2025 07:27",
+        "name_of_inspector": "Patricia Cabral ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Thu, Feb 27, 2025 07:27",
+        "FinalScore": "94.3",
+        "CustomerServiceYes": "2",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "blank",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "13",
+        "RestroomsNo": "1",
+        "RestroomsScore": "18.6",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "no",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "Two sensors on the sink faucet area not working ( one in the men’s bathroom and one in the women’s bathroom)",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "16",
+        "BuildingsNo": "1",
+        "BuildingsScore": "18.8",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "no",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "yes",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "The landscaping in the comfort area doesn’t meet desired maintenance conditions.  One dead tree. ",
+        "GroundsYes": "11",
+        "GroundsNo": "2",
+        "GroundsScore": "16.9",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "no",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "no",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "7",
+        "RoadwayNo": "0",
+        "RoadwayScore": "10",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "x",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The weight station was in good condition. ",
+        "CreationDate": 1740751542052,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1740751542052,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "The exterior lights around the comfort station need be cleaned.  Gutter leaks at the south end of the building and the gutter system should be painted to meet desired maintenance conditions. ",
+        "RoadwayComments": null,
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 12,
+        "globalid": "6c366bd0-0a05-4281-8039-4fdfe9ccab86",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "announced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1742991866703,
+        "datetime_of_inspection": "Wed, Mar 26, 2025 08:24",
+        "name_of_inspector": "Patricia Cabral, Kendra, Taylor ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, Mar 26, 2025 08:24",
+        "FinalScore": "93.4",
+        "CustomerServiceYes": "3",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "yes",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": "The exit door was locked.\n",
+        "RestroomsYes": "13",
+        "RestroomsNo": "0",
+        "RestroomsScore": "20",
+        "restrooms_countertops": "blank",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "The toilets need to removed stains, The shower water is not coming out evenly. \n",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": "\n\n\n",
+        "BuildingsYes": "14",
+        "BuildingsNo": "3",
+        "BuildingsScore": "16.5",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "no",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "no",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "One dead tree in front the building. Active bed ant.\n",
+        "GroundsYes": "11",
+        "GroundsNo": "2",
+        "GroundsScore": "16.9",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "no",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "no",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "8",
+        "RoadwayNo": "0",
+        "RoadwayScore": "10",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "yes",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility was in good condition  ",
+        "CreationDate": 1743023774462,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1743023774462,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "Gutter leaks at the southbound of the building and the gutter system should be painted to meet desired maintenance conditions.  The exterior lights around the comfort station needs to cleaned. ",
+        "RoadwayComments": null,
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 13,
+        "globalid": "43d07660-d6e1-487a-9da9-e1a1af2efe3a",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "unannounced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1746014714753,
+        "datetime_of_inspection": "Wed, Apr 30, 2025 08:05",
+        "name_of_inspector": "Patricia Cabral ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, Apr 30, 2025 08:05",
+        "FinalScore": "96.2",
+        "CustomerServiceYes": "2",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "blank",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "14",
+        "RestroomsNo": "0",
+        "RestroomsScore": "20",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": null,
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "16",
+        "BuildingsNo": "1",
+        "BuildingsScore": "18.8",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "yes",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "no",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "Cut tree not collected\n",
+        "GroundsYes": "12",
+        "GroundsNo": "1",
+        "GroundsScore": "18.5",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "no",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "8",
+        "RoadwayNo": "1",
+        "RoadwayScore": "8.9",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "yes",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "no",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "yes",
+        "roadway_drainage": "yes",
+        "comments": null,
+        "CreationDate": 1746123770224,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1746123770224,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "The water in the fountain has low pressure.",
+        "RoadwayComments": "Symbols in a parking  area not meets desired maintenance conditions. ",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 14,
+        "globalid": "bf304807-50a0-4b9e-a583-dcf01eb48b34",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "announced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1748442117172,
+        "datetime_of_inspection": "Wed, May 28, 2025 10:21",
+        "name_of_inspector": "Richard Edwards, Kendra Leamon.",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, May 28, 2025 10:21",
+        "FinalScore": "88.2",
+        "CustomerServiceYes": "2",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "blank",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": "The exit door in the inspection bay is malfunctioning it cannot open from inside and needs to be pushed very hard to gets it open.",
+        "RestroomsYes": "13",
+        "RestroomsNo": "1",
+        "RestroomsScore": "18.6",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "The shower in the driver room not working ",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "no",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": "One of the two urinals in the comfort station is not working ",
+        "BuildingsYes": "16",
+        "BuildingsNo": "1",
+        "BuildingsScore": "18.8",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "The mowing is not being carried out properly and was pointed out during the inspection.The fence line has vines and invasive  growing on it in several locations.There have been several areas where vegetation is encroaching on to the curb for over 10 continuous feet. ",
+        "GroundsYes": "7",
+        "GroundsNo": "6",
+        "GroundsScore": "10.8",
+        "grounds_turf": "no",
+        "grounds_vegetation": "no",
+        "grounds_litter": "no",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "no",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "no",
+        "grounds_fences": "no",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "8",
+        "RoadwayNo": "0",
+        "RoadwayScore": "10",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "yes",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility is in good condition.The minor deficiencies were pointed out to JCS for corrective action including edging, mowing and herbicide.",
+        "CreationDate": 1748601613105,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1748601613105,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "One of the lights in the bay is not working ",
+        "RoadwayComments": "There is an area where the bare ground is over the minimum allowed. This is caused by police troopers, but the area needs to be maintain with grass or fillings. This was pointed out during the inspection.",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 15,
+        "globalid": "a9758b79-46e9-4d7c-8c9a-90579676e1cc",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "unannounced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1751031993816,
+        "datetime_of_inspection": "Fri, Jun 27, 2025 09:46",
+        "name_of_inspector": "Patricia Cabral ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Fri, Jun 27, 2025 09:46",
+        "FinalScore": "95",
+        "CustomerServiceYes": "3",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "yes",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "12",
+        "RestroomsNo": "1",
+        "RestroomsScore": "18.5",
+        "restrooms_countertops": "blank",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "no",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "One soap dispenser at men’s bathroom was empty. ",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "15",
+        "BuildingsNo": "2",
+        "BuildingsScore": "17.6",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "no",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "Junction box has a trip hazard. ",
+        "GroundsYes": "13",
+        "GroundsNo": "0",
+        "GroundsScore": "20",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "8",
+        "RoadwayNo": "1",
+        "RoadwayScore": "8.9",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "yes",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "no",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "yes",
+        "roadway_drainage": "yes",
+        "comments": "The weigh station was in good condition ",
+        "CreationDate": 1751462530682,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1751462530682,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "Water fountain haslow pressure. The exit door in the inspection bay is malfunctioning it cannot open from inside needs to be pushed very hard to get open. Missing padlock on electrical box.",
+        "RoadwayComments": "Symbols is peeling \n\n\n\n\n\n\n\n",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 16,
+        "globalid": "1c3ca3b5-87d3-44a8-a05e-ae637be45e46",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "announced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1753875581902,
+        "datetime_of_inspection": "Wed, Jul 30, 2025 07:39",
+        "name_of_inspector": "Patricia Cabral (FDOT), Taylor Newsome ( Jorgensen )",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, Jul 30, 2025 07:39",
+        "FinalScore": "92.8",
+        "CustomerServiceYes": "3",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "yes",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "13",
+        "RestroomsNo": "0",
+        "RestroomsScore": "20",
+        "restrooms_countertops": "blank",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "yes",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": null,
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "13",
+        "BuildingsNo": "4",
+        "BuildingsScore": "15.3",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "no",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "no",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "no",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": null,
+        "GroundsYes": "13",
+        "GroundsNo": "0",
+        "GroundsScore": "20",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "6",
+        "RoadwayNo": "2",
+        "RoadwayScore": "7.5",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "no",
+        "roadway_signs": "no",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility is un good condition. The deficiencies were pointed out to Jorgensen to take action. ",
+        "CreationDate": 1753980665062,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1753980665062,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "Generator log missing items. Portable water log not legible and difficult to understand. The exit door in the bay is malfunctioning it cannot open from inside needs to be pushed very hard to gets it open, Jorgensen was notified two months ago. Two lights out in the bay area are out. Water fountains with low water pressure. ",
+        "RoadwayComments": "The symbol meets desired maintenance conditions. \nLoose screws in the junction box. \n\n ",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 17,
+        "globalid": "fe6b8931-08da-47e2-a5b2-dfbb0bc3d3b5",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "unannounced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1755090579082,
+        "datetime_of_inspection": "Wed, Aug 13, 2025 09:09",
+        "name_of_inspector": "Patricia Cabral ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, Aug 13, 2025 09:09",
+        "FinalScore": "94.9",
+        "CustomerServiceYes": "4",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "yes",
+        "customerservice_opiniatorsystem": "yes",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "3",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "blank",
+        "InspectionBayComments": "Fire Extinguisher no inspection signature within 30 days.",
+        "RestroomsYes": "13",
+        "RestroomsNo": "1",
+        "RestroomsScore": "18.6",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "no",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "The toilets need to removed stains. ",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "16",
+        "BuildingsNo": "1",
+        "BuildingsScore": "18.8",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "no",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "yes",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "yes",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "yes",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": null,
+        "GroundsYes": "13",
+        "GroundsNo": "0",
+        "GroundsScore": "20",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "6",
+        "RoadwayNo": "2",
+        "RoadwayScore": "7.5",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "no",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "yes",
+        "roadway_shoulders": "no",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility was in good condition. ",
+        "CreationDate": 1755262142488,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1755262142488,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "Gutter system showing rust, maintenance required. ",
+        "RoadwayComments": "Handicap symbol peeling off. Loose screws in the electrical junction box. \nJunction boxes are missing screws and or nuts ",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 18,
+        "globalid": "55d7f738-fcd3-4661-a4f7-27656c058d33",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "announced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1758719336150,
+        "datetime_of_inspection": "Wed, Sep 24, 2025 09:08",
+        "name_of_inspector": "Patricia Cabral, Kendra Leamon",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Wed, Sep 24, 2025 09:08",
+        "FinalScore": "90.9",
+        "CustomerServiceYes": "5",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "yes",
+        "customerservice_opiniatorsystem": "yes",
+        "customerservice_vending": "yes",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": "One light in the inspection pit not working. ",
+        "RestroomsYes": "12",
+        "RestroomsNo": "2",
+        "RestroomsScore": "17.1",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "no",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "One urinal out. ",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "no",
+        "FamilyRestroomComments": "The floors was dirty.",
+        "BuildingsYes": "13",
+        "BuildingsNo": "3",
+        "BuildingsScore": "16.3",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "yes",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "blank",
+        "buildings_wellwater": "no",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "no",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "The sidewalk need edging. The bolts in the junction boxes ares losing.",
+        "GroundsYes": "13",
+        "GroundsNo": "0",
+        "GroundsScore": "20",
+        "grounds_turf": "yes",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "yes",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "yes",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "6",
+        "RoadwayNo": "2",
+        "RoadwayScore": "7.5",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "no",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "no",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility was in good condition. \n",
+        "CreationDate": 1758742998269,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1758742998269,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "The lights in the comfort restroom needs to be cleaned.  Could not be inspected well water because Jorgesen did not have the key. The exit door was locked, and hard to open. ",
+        "RoadwayComments": "Symbol in the parking area that meets desired maintenance conditions. ",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 19,
+        "globalid": "bcc24ea7-9042-4299-b5fe-ba9ed1d1966d",
+        "uniform_inspection_guide": "https://fdotwww.blob.core.windows.net/sitefinity/docs/default-source/maintenance/cont/ra/oom_20240303_ra-handbook_2023.pdf?sfvrsn=1595b40d_1",
+        "inspection_type": "unannounced",
+        "tInspectionTime": "Day",
+        "name_of_weigh_station": "Southbound Martin County I-95 Weigh Station",
+        "date_and_time_of_inspection": 1760620754425,
+        "datetime_of_inspection": "Thu, Oct 16, 2025 09:19",
+        "name_of_inspector": "Patricia Cabral ",
+        "Security_Name": null,
+        "_DateSecurityInspection": null,
+        "datetime_of_security_inspection": "Thu, Oct 16, 2025 09:19",
+        "FinalScore": "87.7",
+        "CustomerServiceYes": "2",
+        "CustomerServiceNo": "0",
+        "CustomerServiceScore": "15",
+        "customerservice_bulletinboards": "yes",
+        "customerservice_phone": "blank",
+        "customerservice_opiniatorsystem": "blank",
+        "customerservice_vending": "blank",
+        "customerservice_maps": "yes",
+        "CustomerServiceComments": null,
+        "AttendantYes": "3",
+        "AttendantNo": "0",
+        "AttendantScore": "5",
+        "attendant_attendantuniform": "yes",
+        "attendant_accessible": "yes",
+        "attendant_supplies": "yes",
+        "AttendantComments": null,
+        "InspectionBayYes": "4",
+        "InspectionBayNo": "0",
+        "InspectionBayScore": "10",
+        "inspectionbay_eyewash": "yes",
+        "inspectionbay_ventilation": "yes",
+        "inspectionbay_cleanliness": "yes",
+        "inspectionbay_fireextinguishers": "yes",
+        "InspectionBayComments": null,
+        "RestroomsYes": "13",
+        "RestroomsNo": "1",
+        "RestroomsScore": "18.6",
+        "restrooms_countertops": "yes",
+        "restrooms_sinks": "yes",
+        "restrooms_toilets": "no",
+        "restrooms_toiletpaper": "yes",
+        "restrooms_toiletpartitions": "yes",
+        "restrooms_floors": "yes",
+        "restrooms_ceiling": "yes",
+        "restrooms_handdryers": "yes",
+        "restrooms_soapdispensers": "yes",
+        "restrooms_mirrors": "yes",
+        "restrooms_lights": "yes",
+        "RestroomComments": "One urinal out \n\n",
+        "restrooms_family_changingtable": "yes",
+        "restrooms_family_toilets": "yes",
+        "restrooms_family_floors": "yes",
+        "FamilyRestroomComments": null,
+        "BuildingsYes": "13",
+        "BuildingsNo": "3",
+        "BuildingsScore": "16.3",
+        "buildings_roofs": "yes",
+        "buildings_gutters": "yes",
+        "buildings_exteriorwalls": "yes",
+        "buildings_doors": "no",
+        "buildings_foyers": "yes",
+        "buildings_waterfountains": "no",
+        "buildings_utilityarea": "yes",
+        "buildings_generators": "yes",
+        "buildings_signs": "yes",
+        "buildings_accessibility": "yes",
+        "buildings_wastewater": "blank",
+        "buildings_wellwater": "yes",
+        "buildings_fireextinguishers": "yes",
+        "buildings_scales": "yes",
+        "buildings_handrails": "yes",
+        "buildings_lights": "no",
+        "buildings_airconditioner": "yes",
+        "GroundsComments": "The grass not mowed looks abandoned. The fence should be free of any vegetation. ",
+        "GroundsYes": "10",
+        "GroundsNo": "3",
+        "GroundsScore": "15.4",
+        "grounds_turf": "no",
+        "grounds_vegetation": "yes",
+        "grounds_litter": "yes",
+        "grounds_trash": "yes",
+        "grounds_recycle": "yes",
+        "grounds_lights": "yes",
+        "grounds_sidewalks": "yes",
+        "grounds_edging": "no",
+        "grounds_trees": "yes",
+        "grounds_flags": "yes",
+        "grounds_pestcontrol": "yes",
+        "grounds_fences": "no",
+        "grounds_retentionareas": "yes",
+        "RoadwayYes": "6",
+        "RoadwayNo": "2",
+        "RoadwayScore": "7.5",
+        "roadway_pavement": "yes",
+        "roadway_lighting": "no",
+        "roadway_signs": "yes",
+        "roadway_markers": "yes",
+        "roadway_striping": "no",
+        "roadway_shoulders": "yes",
+        "roadway_sweeping": "yes",
+        "roadway_guardrail": "blank",
+        "roadway_drainage": "yes",
+        "comments": "The facility overal appearance needs attention ",
+        "CreationDate": 1760702778222,
+        "Creator": "Richard.Edwards@dot.state.fl.us_fdot",
+        "EditDate": 1760702778222,
+        "Editor": "Richard.Edwards@dot.state.fl.us_fdot",
+        "BuildingsComments": "Two lights in the inspection pic not working. The water fountains with low pressure. Exit door not functional as originally intended. The door in the portable  water was open.\n\n",
+        "RoadwayComments": " Peeling disabled symbol.  The missing and loose  bolts in the junction box.\n",
+        "Geo_Latitude": "27.190012",
+        "Geo_Longitude": "-80.400503"
+      }
+    }
+  ]
+}

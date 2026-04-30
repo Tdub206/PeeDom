@@ -5,6 +5,52 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "/business/:path*",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app/:path",
+        "type": 302
+      },
+      {
+        "source": "/business{,/**}",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      },
+      {
+        "source": "/business.html",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      }
     ]
-  }
+  },
+  "apphosting": [
+    {
+      "backendId": "stallpass-business-web",
+      "rootDir": "apps/business-web",
+      "ignore": [
+        "**/node_modules/**",
+        ".git",
+        ".firebase",
+        ".expo",
+        ".idea",
+        ".stallpass-ai",
+        "android",
+        "assets",
+        "debug",
+        "docs",
+        "output",
+        "plugins",
+        "public",
+        "PublicRestroomData",
+        "StallPass_App_Store_Assets",
+        "web",
+        "__tests__",
+        ".env.local",
+        ".env.production",
+        ".env.staging",
+        ".env.eas.production"
+      ]
+    }
+  ]
 }

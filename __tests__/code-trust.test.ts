@@ -2,12 +2,18 @@ import { afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals
 import { getCodeTrustSummary } from '@/lib/code-trust';
 
 describe('getCodeTrustSummary', () => {
+  const originalRelativeTimeFormatDescriptor = Object.getOwnPropertyDescriptor(Intl, 'RelativeTimeFormat');
+
   beforeEach(() => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date('2026-03-16T12:00:00.000Z'));
   });
 
   afterEach(() => {
+    if (originalRelativeTimeFormatDescriptor) {
+      Object.defineProperty(Intl, 'RelativeTimeFormat', originalRelativeTimeFormatDescriptor);
+    }
+
     jest.useRealTimers();
   });
 
@@ -60,5 +66,21 @@ describe('getCodeTrustSummary', () => {
     expect(summary.score).toBe(94);
     expect(summary.tone).toBe('high');
     expect(summary.totalVotes).toBe(13);
+  });
+
+  it('falls back when Intl.RelativeTimeFormat is unavailable', () => {
+    Object.defineProperty(Intl, 'RelativeTimeFormat', {
+      configurable: true,
+      value: undefined,
+    });
+
+    const summary = getCodeTrustSummary({
+      confidenceScore: null,
+      downVotes: 1,
+      lastVerifiedAt: '2026-03-16T10:00:00.000Z',
+      upVotes: 3,
+    });
+
+    expect(summary.freshnessLabel).toBe('Verified 2 hours ago');
   });
 });

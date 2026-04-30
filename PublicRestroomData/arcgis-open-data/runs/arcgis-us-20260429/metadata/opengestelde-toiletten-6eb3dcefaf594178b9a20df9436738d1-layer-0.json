@@ -1,0 +1,592 @@
+{
+  "item": {
+    "id": "6eb3dcefaf594178b9a20df9436738d1",
+    "owner": "Gemeente_Huizen",
+    "created": 1686827024000,
+    "modified": 1777454811000,
+    "guid": null,
+    "name": "Opengestelde_toiletten_WFL1",
+    "title": "Opengestelde toiletten",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      "toilet",
+      "wc",
+      "openbaar",
+      "GeoWeb"
+    ],
+    "snippet": "Deze kaart toont de openbare toiletten in de gemeente Huizen.",
+    "thumbnail": "thumbnail/thumbnail1777454808561.png",
+    "documentation": null,
+    "extent": [
+      [
+        5.231930819096973,
+        52.28556865224037
+      ],
+      [
+        5.268511959094382,
+        52.30797504376094
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "28992",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "<a href='https://geo.huizen.nl/pages/gebruiksvoorwaarden-en-privacy' rel='nofollow ugc'>Lees meer\nover de gebruiksvoorwaarden en het privacybeleid van de gemeente Huizen.</a>",
+    "culture": "nl-nl",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services-eu1.arcgis.com/VIvzN69YXjbXJsgR/arcgis/rest/services/Opengestelde_toiletten_WFL1/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 1765,
+    "scoreCompleteness": 83,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777528800000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Opengestelde toilet",
+    "type": "Feature Layer",
+    "serviceItemId": "6eb3dcefaf594178b9a20df9436738d1",
+    "cacheMaxAge": 30,
+    "displayField": "Invalidentoilet_aanwezig",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1720772452316,
+      "schemaLastEditDate": 1720772452316,
+      "dataLastEditDate": 1720772452316
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 144410.41950000077,
+      "ymin": 477519.37790000066,
+      "xmax": 146901.1699000001,
+      "ymax": 480007.6964999996,
+      "spatialReference": {
+        "wkid": 28992,
+        "latestWkid": 28992
+      }
+    },
+    "spatialReference": {
+      "wkid": 28992,
+      "latestWkid": 28992
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "4b92360fc87bad49ab80ac7b7cdfafad",
+          "imageData": "iVBORw0KGgoAAAANSUhEUgAAABsAAAAgCAYAAADjaQM7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAB00lEQVRIic2W3VHCQBSFz91kyYxWAG1AGegjGRtIyhDKkAYc8iiUYcpQKtCR/Ox1LjEaQpAQFsfzQkhm9tu9P+euiz+U+29hOkqGitXAEPUV89qQeU0nvdgaTAAEmgI0ZKBvSN4yil8FHWXyMAfM/BjYPQZh0JiPbzoAVNCL0pWbJ+H73fVra5iAAOeBwUOcIAaNM8d7vnp8GzUB3eYTqSWD+6eASkmoDwH3YEXo0AlUBwIYHITpKA8YPIYFMdCX9dKJM2+EFYm2JwJPi0qtwbxFdmNOLIg2p/MW2c3Gd5c7sKLyts1jVYboO/8/MFLj7V7sKyhD+X+90RqMYNZ8gZwRzHoPxqBGPztXXFm3EkYzFzO1jzP7fSbjQUd5DKu9RnF17NQLRHbxYAulmGfV/zsw8THxMzuno3jjO8uDMJHOP27Fsc9zfoplnbT2dg8mM0hmUep4L50wwJqYZ62GZwnUUR4CfHL+iBGWxtsKVuavt0gHTHTfHsSzja8bQb/CRImvpzrKJHdBG1Dia5lf3b0xnbjh13UtOAfU2ogF6C2ylSE81b8pxu1voevk+pJ0HSUjueIVfUgxkIcb3+KNuKov6xkVo363YWEbVupQaV8E1lWfOynSS7VBlvcAAAAASUVORK5CYII=",
+          "contentType": "image/png",
+          "width": 24,
+          "height": 24,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": [
+        {
+          "labelExpressionInfo": {
+            "expression": "$feature.Nummer",
+            "title": "Custom"
+          },
+          "labelPlacement": "esriServerPointLabelPlacementCenterCenter",
+          "deconflictionStrategy": "static",
+          "stackLabel": true,
+          "stackRowLength": 24,
+          "stackAlignment": "textSymbol",
+          "removeDuplicates": "none",
+          "useCodedValues": true,
+          "maxScale": 0,
+          "minScale": 0,
+          "name": "Class 1",
+          "priority": 0,
+          "symbol": {
+            "type": "esriTS",
+            "color": [
+              255,
+              255,
+              255,
+              255
+            ],
+            "backgroundColor": null,
+            "borderLineColor": null,
+            "borderLineSize": null,
+            "verticalAlignment": "bottom",
+            "horizontalAlignment": "left",
+            "rightToLeft": false,
+            "angle": 0,
+            "xoffset": 0,
+            "yoffset": 0,
+            "kerning": true,
+            "haloColor": null,
+            "haloSize": null,
+            "font": {
+              "family": "Arial",
+              "size": 9,
+              "style": "normal",
+              "weight": "bold",
+              "decoration": "none"
+            }
+          }
+        }
+      ]
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Invalidentoilet_aanwezig",
+        "type": "esriFieldTypeString",
+        "alias": "Invalidentoilet aanwezig",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Openingstijden_webkaart",
+        "type": "esriFieldTypeString",
+        "alias": "Openingstijden",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Aanvullende_informatie",
+        "type": "esriFieldTypeString",
+        "alias": "Aanvullende informatie",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Nummer",
+        "type": "esriFieldTypeInteger",
+        "alias": "Nr",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Adres",
+        "type": "esriFieldTypeString",
+        "alias": "Adres",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Naam_toilet",
+        "type": "esriFieldTypeString",
+        "alias": "Naam_toilet",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__OPENGEST__F4B70D854635B8FC",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_3397.OPENGESTELDE_TOILETTEN_WFL1_OPENGESTELDE_TOILET_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "Opengestelde toilet",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 12,
+        "Adres": "Landweg 5, 1276 AS Huizen",
+        "Naam_toilet": "Wijkcentrum Meentamorfose"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 14,
+        "Adres": "Holleblok 2, 1273EG Huizen",
+        "Naam_toilet": "Wijkcentrum Holleblok"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 17:00 uur, zaterdag en zondag van 13:00 tot 17:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 13,
+        "Adres": "'t Merk 12, 1276 DA Huizen",
+        "Naam_toilet": "Kinderboerderij de Warande"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 4,
+        "Adres": "Schoolstraat 6, 1271 SC Huizen",
+        "Naam_toilet": "Wijkcentrum 't Vuronger"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 17,
+        "Adres": "Draaikom 2, 1274 NS Huizen",
+        "Naam_toilet": "Wijkcentrum de Draaikom"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "dinsdag van 12:00 tot 14:00 uur, donderdag en vrijdag van 12:00 tot 21:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 11,
+        "Adres": "Gooierserf 124, 1276 KV Huizen ",
+        "Naam_toilet": "Jongerencentrum Connect "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met donderdag van 8.30 tot 17:00 uur, vrijdag van 8.30 tot 16:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 10,
+        "Adres": "Graaf Wichman 10, 1276 KB Huizen",
+        "Naam_toilet": "Gemeentehuis"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "maandag tot en met zaterdag van 7:30- tot 21:00 uur, zondag van 12:00 tot 18:00 uur",
+        "Aanvullende_informatie": "kosteloos, sleutel op te vragen bij personeel ",
+        "Nummer": 3,
+        "Adres": "Warandebergstraat 20, 1271 ZC Huizen",
+        "Naam_toilet": "Lidl "
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 6:00 tot 20:00 uur, zaterdag van 7:00 tot 19:00 uur",
+        "Aanvullende_informatie": "kosteloos, op verzoek bij personeel",
+        "Nummer": 7,
+        "Adres": "Nieuwe Bussummerweg 2, 1272 CJ Huizen",
+        "Naam_toilet": "Tankstation Vlaanderen"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 7:00 tot 22:30 uur, zaterdag en zondag van 8:30 tot 18:00 uur",
+        "Aanvullende_informatie": "kosteloos, vooral bedoeld voor mensen met beperking en bezoekers evenemententerrein in rolstoel",
+        "Nummer": 1,
+        "Adres": "IJsselmeerstraat 5b, 1271 AA Huizen ",
+        "Naam_toilet": "Coronel Sports"
+      }
+    }
+  ]
+}

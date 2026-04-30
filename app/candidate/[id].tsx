@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Linking, Platform, ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useLocalSearchParams, useRouter } from 'expo-router';
@@ -12,6 +12,8 @@ import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useSourceCandidateDetail } from '@/hooks/useSourceCandidateDetail';
 import { useSourceRecordVerification } from '@/hooks/useSourceRecordVerification';
+import { useToast } from '@/hooks/useToast';
+import { openDirectionsInMaps } from '@/lib/map-navigation';
 import { pushSafely } from '@/lib/navigation';
 import { getErrorMessage } from '@/utils/errorMap';
 
@@ -64,6 +66,7 @@ function formatSourceUpdatedAt(value: string | null | undefined): string | null 
 
 export default function SourceCandidateDetailScreen() {
   const router = useRouter();
+  const { showToast } = useToast();
   const { id } = useLocalSearchParams<{ id?: string | string[] }>();
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
 
@@ -107,37 +110,24 @@ export default function SourceCandidateDetailScreen() {
       return;
     }
 
-    const encodedLabel = encodeURIComponent(candidateDetail.place_name);
-    const latitude = candidateDetail.coordinates.latitude;
-    const longitude = candidateDetail.coordinates.longitude;
-    const appleMapsUrl = `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodedLabel}`;
-    const googleNavigationUrl = `google.navigation:q=${latitude},${longitude}`;
-    const browserFallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}`;
-
     setIsOpeningDirections(true);
 
     try {
-      if (Platform.OS === 'ios') {
-        const canOpenAppleMaps = await Linking.canOpenURL(appleMapsUrl);
-
-        if (canOpenAppleMaps) {
-          await Linking.openURL(appleMapsUrl);
-          return;
-        }
-      } else {
-        const canOpenGoogleNavigation = await Linking.canOpenURL(googleNavigationUrl);
-
-        if (canOpenGoogleNavigation) {
-          await Linking.openURL(googleNavigationUrl);
-          return;
-        }
-      }
-
-      await Linking.openURL(browserFallbackUrl);
+      await openDirectionsInMaps({
+        placeName: candidateDetail.place_name,
+        coordinates: candidateDetail.coordinates,
+        address: candidateDetail.address,
+      });
+    } catch (error) {
+      showToast({
+        title: 'Navigation unavailable',
+        message: getErrorMessage(error, 'We could not open navigation right now.'),
+        variant: 'error',
+      });
     } finally {
       setIsOpeningDirections(false);
     }
-  }, [candidateDetail]);
+  }, [candidateDetail, showToast]);
 
   const handleVerification = useCallback(
     async (locationExists: boolean) => {

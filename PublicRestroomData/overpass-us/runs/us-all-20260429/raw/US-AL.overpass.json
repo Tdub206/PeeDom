@@ -1,0 +1,9348 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-30T03:50:37Z",
+    "timestamp_areas_base": "2026-04-29T17:38:50Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 474074614,
+  "lat": 33.3058004,
+  "lon": -86.8093016,
+  "timestamp": "2009-08-26T00:57:36Z",
+  "version": 2,
+  "changeset": 2262698,
+  "user": "dwilkins",
+  "uid": 135108,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 559800168,
+  "lat": 33.2969990,
+  "lon": -86.8454146,
+  "timestamp": "2023-09-30T04:39:57Z",
+  "version": 2,
+  "changeset": 141936523,
+  "user": "Dmazybo",
+  "uid": 20226902,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 676010578,
+  "lat": 34.7309699,
+  "lon": -86.6412657,
+  "timestamp": "2024-04-10T10:15:50Z",
+  "version": 4,
+  "changeset": 149812460,
+  "user": "dandeto",
+  "uid": 14565225,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2024-04-10"
+  }
+},
+{
+  "type": "node",
+  "id": 929255300,
+  "lat": 34.7248908,
+  "lon": -86.5745052,
+  "timestamp": "2021-06-26T18:59:43Z",
+  "version": 3,
+  "changeset": 107013857,
+  "user": "forest_man",
+  "uid": 3234213,
+  "tags": {
+    "amenity": "toilets",
+    "ele": "186.1"
+  }
+},
+{
+  "type": "node",
+  "id": 974273439,
+  "lat": 34.5759084,
+  "lon": -86.5576019,
+  "timestamp": "2021-06-22T14:15:26Z",
+  "version": 2,
+  "changeset": 106782251,
+  "user": "seetag",
+  "uid": 7104482,
+  "tags": {
+    "amenity": "toilets",
+    "ele": "177.5"
+  }
+},
+{
+  "type": "node",
+  "id": 1041230896,
+  "lat": 34.8778941,
+  "lon": -86.9693450,
+  "timestamp": "2010-12-17T11:26:37Z",
+  "version": 2,
+  "changeset": 6685730,
+  "user": "Skubiduhh",
+  "uid": 329528,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1272323886,
+  "lat": 34.9344546,
+  "lon": -87.2612777,
+  "timestamp": "2011-05-04T19:06:03Z",
+  "version": 1,
+  "changeset": 8051599,
+  "user": "c0yote",
+  "uid": 449508,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1345267972,
+  "lat": 34.9537577,
+  "lon": -86.8922922,
+  "timestamp": "2017-05-30T19:58:53Z",
+  "version": 2,
+  "changeset": 49113710,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1354252887,
+  "lat": 34.9008781,
+  "lon": -86.2692053,
+  "timestamp": "2011-07-08T23:11:05Z",
+  "version": 1,
+  "changeset": 8670583,
+  "user": "Jkeck",
+  "uid": 484983,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1357003959,
+  "lat": 31.3016838,
+  "lon": -86.2705797,
+  "timestamp": "2011-07-10T19:37:19Z",
+  "version": 1,
+  "changeset": 8687669,
+  "user": "toralf",
+  "uid": 18483,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1359706690,
+  "lat": 34.8009637,
+  "lon": -86.9497614,
+  "timestamp": "2011-07-12T17:47:38Z",
+  "version": 1,
+  "changeset": 8705364,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1362251943,
+  "lat": 34.8005053,
+  "lon": -87.3293549,
+  "timestamp": "2017-02-08T15:38:35Z",
+  "version": 2,
+  "changeset": 45920613,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "fee": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1362251949,
+  "lat": 34.8040915,
+  "lon": -87.3266334,
+  "timestamp": "2017-02-08T15:38:35Z",
+  "version": 2,
+  "changeset": 45920613,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "fee": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1363980234,
+  "lat": 34.7952179,
+  "lon": -87.3851821,
+  "timestamp": "2011-07-17T01:47:59Z",
+  "version": 1,
+  "changeset": 8744087,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1372778316,
+  "lat": 33.1939543,
+  "lon": -87.5231840,
+  "timestamp": "2011-07-26T01:00:21Z",
+  "version": 2,
+  "changeset": 8831624,
+  "user": "toralf",
+  "uid": 18483,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1387059609,
+  "lat": 34.2853810,
+  "lon": -87.3984815,
+  "timestamp": "2011-08-05T03:42:40Z",
+  "version": 1,
+  "changeset": 8925243,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "source": "http://www.sipseywilderness.org/maps/mapindex.html"
+  }
+},
+{
+  "type": "node",
+  "id": 1568426173,
+  "lat": 31.3384138,
+  "lon": -87.1095272,
+  "timestamp": "2023-07-21T17:47:05Z",
+  "version": 6,
+  "changeset": 138824833,
+  "user": "unknown127",
+  "uid": 1906113,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2023-07-21",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1570139673,
+  "lat": 32.4978956,
+  "lon": -85.6131953,
+  "timestamp": "2023-06-24T01:27:13Z",
+  "version": 5,
+  "changeset": 137706721,
+  "user": "unknown127",
+  "uid": 1906113,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2023-06-23",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1747746898,
+  "lat": 31.3722935,
+  "lon": -87.0513597,
+  "timestamp": "2024-09-28T16:41:09Z",
+  "version": 4,
+  "changeset": 157219373,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2024-09-28",
+    "female": "yes",
+    "toilets:access": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:paper_supplied": "yes",
+    "toilets:position": "seated",
+    "toilets:wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1863572513,
+  "lat": 33.1937265,
+  "lon": -87.5271878,
+  "timestamp": "2012-08-12T21:47:23Z",
+  "version": 2,
+  "changeset": 12707509,
+  "user": "toralf",
+  "uid": 18483,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1870413419,
+  "lat": 30.4305193,
+  "lon": -88.1413578,
+  "timestamp": "2012-08-17T18:12:35Z",
+  "version": 1,
+  "changeset": 12765381,
+  "user": "Matt Toups",
+  "uid": 41187,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1870413803,
+  "lat": 30.4330514,
+  "lon": -88.1385246,
+  "timestamp": "2012-08-17T18:12:40Z",
+  "version": 1,
+  "changeset": 12765381,
+  "user": "Matt Toups",
+  "uid": 41187,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 1910869700,
+  "lat": 30.4068471,
+  "lon": -87.6835177,
+  "timestamp": "2012-09-12T00:14:24Z",
+  "version": 1,
+  "changeset": 13076729,
+  "user": "CrackedLCD",
+  "uid": 622746,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2397807406,
+  "lat": 34.8338418,
+  "lon": -87.9481125,
+  "timestamp": "2013-07-26T22:11:14Z",
+  "version": 1,
+  "changeset": 17107722,
+  "user": "DPerkins",
+  "uid": 179941,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2421542645,
+  "lat": 33.8480408,
+  "lon": -85.7570424,
+  "timestamp": "2013-08-17T08:24:51Z",
+  "version": 1,
+  "changeset": 17380792,
+  "user": "auburntiger2011",
+  "uid": 438427,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2497916290,
+  "lat": 33.4868026,
+  "lon": -86.7796996,
+  "timestamp": "2022-07-28T03:46:33Z",
+  "version": 2,
+  "changeset": 124163946,
+  "user": "TheDruid",
+  "uid": 5778773,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2497916291,
+  "lat": 33.4857073,
+  "lon": -86.7782964,
+  "timestamp": "2013-10-15T21:43:49Z",
+  "version": 1,
+  "changeset": 18376866,
+  "user": "andy22rh",
+  "uid": 1134736,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2497916292,
+  "lat": 33.4866934,
+  "lon": -86.7801925,
+  "timestamp": "2013-10-15T21:43:49Z",
+  "version": 1,
+  "changeset": 18376866,
+  "user": "andy22rh",
+  "uid": 1134736,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2511057847,
+  "lat": 34.4224699,
+  "lon": -86.3953717,
+  "timestamp": "2013-10-28T02:32:40Z",
+  "version": 1,
+  "changeset": 18577724,
+  "user": "richlv",
+  "uid": 47892,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 2934653170,
+  "lat": 34.7450664,
+  "lon": -86.5121699,
+  "timestamp": "2017-06-11T16:33:08Z",
+  "version": 2,
+  "changeset": 49446484,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:occupancy": "single"
+  }
+},
+{
+  "type": "node",
+  "id": 3048394288,
+  "lat": 33.2705500,
+  "lon": -87.4176424,
+  "timestamp": "2014-10-20T23:23:14Z",
+  "version": 3,
+  "changeset": 26224937,
+  "user": "Matthias Buchmeier",
+  "uid": 383306,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3055529502,
+  "lat": 33.2766887,
+  "lon": -87.4203351,
+  "timestamp": "2026-01-18T14:44:26Z",
+  "version": 2,
+  "changeset": 177376759,
+  "user": "Xylantiel",
+  "uid": 19045140,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3084650301,
+  "lat": 33.6193548,
+  "lon": -86.8028231,
+  "timestamp": "2024-04-29T19:53:49Z",
+  "version": 2,
+  "changeset": 150679460,
+  "user": "HiDDENKiLLZ",
+  "uid": 21375618,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3219650544,
+  "lat": 33.2739724,
+  "lon": -87.4202417,
+  "timestamp": "2014-12-05T01:09:25Z",
+  "version": 1,
+  "changeset": 27253062,
+  "user": "Matthias Buchmeier",
+  "uid": 383306,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3252679461,
+  "lat": 33.5098370,
+  "lon": -86.8084030,
+  "timestamp": "2018-12-11T20:10:44Z",
+  "version": 2,
+  "changeset": 65387716,
+  "user": "wheelmap_visitor",
+  "uid": 290680,
+  "tags": {
+    "amenity": "toilets",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3264318362,
+  "lat": 33.5611633,
+  "lon": -86.7539988,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 4,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "indoor": "yes",
+    "level": "1",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3264332361,
+  "lat": 33.5613760,
+  "lon": -86.7531510,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 2,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3264386163,
+  "lat": 33.5619910,
+  "lon": -86.7525590,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 2,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3264386167,
+  "lat": 33.5627160,
+  "lon": -86.7512880,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 2,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3264406961,
+  "lat": 33.5631970,
+  "lon": -86.7506530,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 3,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes",
+    "level": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 3558943709,
+  "lat": 32.4500103,
+  "lon": -88.3967600,
+  "timestamp": "2024-06-02T18:10:08Z",
+  "version": 3,
+  "changeset": 152171620,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "indoor": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3633297133,
+  "lat": 33.2284899,
+  "lon": -86.4830935,
+  "timestamp": "2018-06-17T23:16:11Z",
+  "version": 2,
+  "changeset": 59925571,
+  "user": "LeifRasmussen",
+  "uid": 4312767,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "yes",
+    "operator": "Town of Wilsonville",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 3633324539,
+  "lat": 33.1757660,
+  "lon": -86.5164502,
+  "timestamp": "2015-07-03T19:37:24Z",
+  "version": 1,
+  "changeset": 32397488,
+  "user": "Bryan Perry",
+  "uid": 3030876,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3708271894,
+  "lat": 30.3749130,
+  "lon": -87.6807817,
+  "timestamp": "2015-08-21T16:43:26Z",
+  "version": 1,
+  "changeset": 33487974,
+  "user": "Sarr_Cat",
+  "uid": 2859402,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3708283354,
+  "lat": 30.3765212,
+  "lon": -87.6807905,
+  "timestamp": "2015-08-21T16:47:17Z",
+  "version": 1,
+  "changeset": 33488054,
+  "user": "Sarr_Cat",
+  "uid": 2859402,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 3848819438,
+  "lat": 30.6822358,
+  "lon": -88.2455292,
+  "timestamp": "2015-11-21T11:45:02Z",
+  "version": 1,
+  "changeset": 35485265,
+  "user": "mhenson",
+  "uid": 121264,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4106724290,
+  "lat": 30.5777367,
+  "lon": -87.4219641,
+  "timestamp": "2016-04-08T01:38:52Z",
+  "version": 1,
+  "changeset": 38395256,
+  "user": "Dbrenth",
+  "uid": 3372065,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4305414300,
+  "lat": 32.9069757,
+  "lon": -86.6376635,
+  "timestamp": "2023-04-10T15:07:21Z",
+  "version": 3,
+  "changeset": 134735749,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:position": "seated;urinal",
+    "toilets:wheelchair": "designated"
+  }
+},
+{
+  "type": "node",
+  "id": 4305414307,
+  "lat": 32.9052076,
+  "lon": -86.6342165,
+  "timestamp": "2016-07-16T05:15:32Z",
+  "version": 1,
+  "changeset": 40772992,
+  "user": "Caboosey",
+  "uid": 171516,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4305433432,
+  "lat": 34.0745942,
+  "lon": -86.8636103,
+  "timestamp": "2017-03-05T18:18:48Z",
+  "version": 2,
+  "changeset": 46602717,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "drinking_water": "yes",
+    "fee": "no",
+    "female": "yes",
+    "indoor": "yes",
+    "male": "yes",
+    "operator": "Alabama Department of Transportation"
+  }
+},
+{
+  "type": "node",
+  "id": 4338681661,
+  "lat": 32.5040680,
+  "lon": -85.6100889,
+  "timestamp": "2016-08-06T16:36:58Z",
+  "version": 1,
+  "changeset": 41290178,
+  "user": "Caboosey",
+  "uid": 171516,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4415194897,
+  "lat": 34.3526095,
+  "lon": -85.6765703,
+  "timestamp": "2016-09-23T17:02:54Z",
+  "version": 1,
+  "changeset": 42380743,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4415250181,
+  "lat": 34.5012582,
+  "lon": -85.6342893,
+  "timestamp": "2016-09-23T17:50:31Z",
+  "version": 1,
+  "changeset": 42382227,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4419040608,
+  "lat": 34.3950626,
+  "lon": -85.6255806,
+  "timestamp": "2016-09-26T14:02:04Z",
+  "version": 1,
+  "changeset": 42446047,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4419040679,
+  "lat": 34.5006709,
+  "lon": -85.6185579,
+  "timestamp": "2019-04-01T16:42:33Z",
+  "version": 2,
+  "changeset": 68761531,
+  "user": "kd4adc",
+  "uid": 9568735,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4569134986,
+  "lat": 32.3186841,
+  "lon": -86.7851957,
+  "timestamp": "2025-12-16T21:24:05Z",
+  "version": 2,
+  "changeset": 176024240,
+  "user": "PizzaTreeIsland",
+  "uid": 17308617,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4569162382,
+  "lat": 32.3388755,
+  "lon": -86.7708321,
+  "timestamp": "2019-07-21T17:13:36Z",
+  "version": 3,
+  "changeset": 72487497,
+  "user": "thetornado76",
+  "uid": 1624486,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "fee": "no",
+    "name": "Public Bathrooms",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4569162388,
+  "lat": 32.3383270,
+  "lon": -86.7676308,
+  "timestamp": "2016-12-23T18:25:52Z",
+  "version": 1,
+  "changeset": 44630278,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "amenity": "toilets",
+    "name": "Public Bathroom",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4569188208,
+  "lat": 32.3496756,
+  "lon": -86.6768606,
+  "timestamp": "2016-12-23T18:41:34Z",
+  "version": 1,
+  "changeset": 44630635,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "amenity": "toilets",
+    "name": "Public Bathroom",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4571717466,
+  "lat": 33.1887391,
+  "lon": -87.3249713,
+  "timestamp": "2018-01-28T16:28:57Z",
+  "version": 2,
+  "changeset": 55833769,
+  "user": "Jack the Ripper",
+  "uid": 1946151,
+  "tags": {
+    "amenity": "toilets",
+    "fee": "no",
+    "operator": "Tuscaloosa County Rest Area - I 59 Northbound"
+  }
+},
+{
+  "type": "node",
+  "id": 4598296439,
+  "lat": 34.8033462,
+  "lon": -86.9661568,
+  "timestamp": "2017-04-07T18:36:25Z",
+  "version": 3,
+  "changeset": 47548075,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "toilets:occupancy": "multi",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4636021744,
+  "lat": 33.1814688,
+  "lon": -86.6297413,
+  "timestamp": "2025-09-12T10:35:10Z",
+  "version": 2,
+  "changeset": 171824576,
+  "user": "the Sandinator",
+  "uid": 950776,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4636094675,
+  "lat": 33.3660991,
+  "lon": -86.5937582,
+  "timestamp": "2019-07-28T08:01:14Z",
+  "version": 2,
+  "changeset": 72731744,
+  "user": "thetornado76",
+  "uid": 1624486,
+  "tags": {
+    "access": "private",
+    "amenity": "toilets",
+    "changing_table": "no",
+    "fee": "no",
+    "name": "Day Camp Field Pavillion",
+    "operator": "YMCA",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4676748181,
+  "lat": 34.7241729,
+  "lon": -86.6729465,
+  "timestamp": "2017-02-09T15:05:05Z",
+  "version": 1,
+  "changeset": 45949512,
+  "user": "autiger98",
+  "uid": 5283054,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4687219143,
+  "lat": 34.7483673,
+  "lon": -86.5145638,
+  "timestamp": "2017-06-11T16:33:08Z",
+  "version": 3,
+  "changeset": 49446484,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "female": "yes",
+    "indoor": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:occupancy": "multi"
+  }
+},
+{
+  "type": "node",
+  "id": 4691550376,
+  "lat": 32.4029238,
+  "lon": -87.0371020,
+  "timestamp": "2017-02-18T01:07:44Z",
+  "version": 1,
+  "changeset": 46182360,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "name": "Bloch Park Public Toilet",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4691556072,
+  "lat": 32.3975896,
+  "lon": -87.0422821,
+  "timestamp": "2017-02-18T01:23:03Z",
+  "version": 1,
+  "changeset": 46182501,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "name": "Bloch Park Marina Public Toilets",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4691558458,
+  "lat": 32.4045154,
+  "lon": -87.0434578,
+  "timestamp": "2017-02-18T01:17:31Z",
+  "version": 1,
+  "changeset": 46182452,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "name": "Public Toilets",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4702874283,
+  "lat": 32.6020905,
+  "lon": -86.9908450,
+  "timestamp": "2017-02-24T04:05:50Z",
+  "version": 1,
+  "changeset": 46356836,
+  "user": "Boghdus",
+  "uid": 5008357,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4749452336,
+  "lat": 34.8133340,
+  "lon": -86.9788738,
+  "timestamp": "2020-01-07T07:52:04Z",
+  "version": 5,
+  "changeset": 79282127,
+  "user": "PantherStrix",
+  "uid": 1468248,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:occupancy": "multi",
+    "toilets:position": "seated;urinal"
+  }
+},
+{
+  "type": "node",
+  "id": 4760950295,
+  "lat": 32.5960989,
+  "lon": -85.4828030,
+  "timestamp": "2017-03-29T01:59:19Z",
+  "version": 1,
+  "changeset": 47246269,
+  "user": "Chris Hathcock",
+  "uid": 509420,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4764625414,
+  "lat": 33.4829548,
+  "lon": -85.8097030,
+  "timestamp": "2017-03-30T17:16:43Z",
+  "version": 1,
+  "changeset": 47299323,
+  "user": "Alan Bragg",
+  "uid": 443130,
+  "tags": {
+    "amenity": "toilets",
+    "level": "0"
+  }
+},
+{
+  "type": "node",
+  "id": 4764949270,
+  "lat": 34.8033576,
+  "lon": -86.9663097,
+  "timestamp": "2017-04-07T18:36:26Z",
+  "version": 2,
+  "changeset": 47548075,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:occupancy": "multi",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4767533562,
+  "lat": 31.1612079,
+  "lon": -85.4682372,
+  "timestamp": "2017-03-31T15:03:15Z",
+  "version": 1,
+  "changeset": 47328693,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4767533611,
+  "lat": 31.1665204,
+  "lon": -85.4667703,
+  "timestamp": "2024-07-10T03:49:09Z",
+  "version": 4,
+  "changeset": 153766241,
+  "user": "justin5822",
+  "uid": 13548748,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4767533616,
+  "lat": 31.1669474,
+  "lon": -85.4674310,
+  "timestamp": "2024-07-10T03:49:09Z",
+  "version": 2,
+  "changeset": 153766241,
+  "user": "justin5822",
+  "uid": 13548748,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4781292320,
+  "lat": 31.1617059,
+  "lon": -85.3190798,
+  "timestamp": "2017-04-07T14:26:52Z",
+  "version": 1,
+  "changeset": 47541488,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4781349003,
+  "lat": 31.2425724,
+  "lon": -85.4427111,
+  "timestamp": "2017-04-07T15:08:37Z",
+  "version": 1,
+  "changeset": 47542902,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4781371147,
+  "lat": 34.7080151,
+  "lon": -86.5876425,
+  "timestamp": "2017-04-07T15:25:48Z",
+  "version": 1,
+  "changeset": 47543429,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "indoor": "yes",
+    "level": "0",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4781371149,
+  "lat": 34.7072549,
+  "lon": -86.5878383,
+  "timestamp": "2017-04-07T15:25:48Z",
+  "version": 1,
+  "changeset": 47543429,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "description": "Separate Family Restrooms.",
+    "indoor": "yes",
+    "level": "1",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4786525864,
+  "lat": 31.2191812,
+  "lon": -85.4674504,
+  "timestamp": "2017-04-10T15:46:01Z",
+  "version": 1,
+  "changeset": 47628224,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4804249187,
+  "lat": 34.4048944,
+  "lon": -86.2010931,
+  "timestamp": "2017-04-19T17:12:55Z",
+  "version": 1,
+  "changeset": 47946029,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4806288982,
+  "lat": 34.8023889,
+  "lon": -87.3230311,
+  "timestamp": "2017-04-20T18:34:22Z",
+  "version": 1,
+  "changeset": 47980813,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4806288983,
+  "lat": 34.8046761,
+  "lon": -87.3223995,
+  "timestamp": "2017-04-20T18:34:22Z",
+  "version": 1,
+  "changeset": 47980813,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4811574083,
+  "lat": 34.5023290,
+  "lon": -85.6251981,
+  "timestamp": "2017-04-23T14:24:37Z",
+  "version": 1,
+  "changeset": 48061940,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4811574086,
+  "lat": 34.4999163,
+  "lon": -85.6216736,
+  "timestamp": "2017-04-23T14:24:37Z",
+  "version": 1,
+  "changeset": 48061940,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347735,
+  "lat": 30.2663207,
+  "lon": -87.6382731,
+  "timestamp": "2017-04-26T15:34:39Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347741,
+  "lat": 30.2668969,
+  "lon": -87.6356197,
+  "timestamp": "2017-04-26T15:34:39Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347747,
+  "lat": 30.2703277,
+  "lon": -87.6315830,
+  "timestamp": "2017-04-26T15:34:39Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347757,
+  "lat": 30.2685822,
+  "lon": -87.6378352,
+  "timestamp": "2017-04-26T15:34:39Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347764,
+  "lat": 30.2670377,
+  "lon": -87.6408922,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347769,
+  "lat": 30.2626563,
+  "lon": -87.6446192,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347776,
+  "lat": 30.2624901,
+  "lon": -87.6458282,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347782,
+  "lat": 30.2606645,
+  "lon": -87.6465993,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347784,
+  "lat": 30.2651404,
+  "lon": -87.6429166,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4818347790,
+  "lat": 30.2649284,
+  "lon": -87.6400815,
+  "timestamp": "2017-04-26T15:34:40Z",
+  "version": 1,
+  "changeset": 48166927,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4845930685,
+  "lat": 33.2846402,
+  "lon": -86.8419303,
+  "timestamp": "2017-05-10T15:00:15Z",
+  "version": 1,
+  "changeset": 48564394,
+  "user": "deadpool_pewpew",
+  "uid": 5847383,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4874928172,
+  "lat": 34.7078654,
+  "lon": -85.5603889,
+  "timestamp": "2024-09-07T18:32:45Z",
+  "version": 3,
+  "changeset": 156324830,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "fee": "no",
+    "indoor": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4876179917,
+  "lat": 32.8396690,
+  "lon": -85.1972586,
+  "timestamp": "2017-05-25T14:00:40Z",
+  "version": 1,
+  "changeset": 48975112,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4876205811,
+  "lat": 33.8732586,
+  "lon": -86.2717960,
+  "timestamp": "2025-06-06T18:19:58Z",
+  "version": 2,
+  "changeset": 167280282,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4876205818,
+  "lat": 33.8514455,
+  "lon": -86.3064970,
+  "timestamp": "2024-02-29T03:29:14Z",
+  "version": 2,
+  "changeset": 148035008,
+  "user": "treestryder",
+  "uid": 159516,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2024-02-28"
+  }
+},
+{
+  "type": "node",
+  "id": 4885874031,
+  "lat": 31.0897809,
+  "lon": -86.5505813,
+  "timestamp": "2017-05-30T15:55:53Z",
+  "version": 1,
+  "changeset": 49108138,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "name": "A Loop Toilets",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 4904242322,
+  "lat": 34.7468586,
+  "lon": -86.5142594,
+  "timestamp": "2017-06-08T15:55:34Z",
+  "version": 1,
+  "changeset": 49371752,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 4969476262,
+  "lat": 34.3191138,
+  "lon": -86.4792909,
+  "timestamp": "2017-07-18T10:54:19Z",
+  "version": 3,
+  "changeset": 50375958,
+  "user": "mueschel",
+  "uid": 616774,
+  "tags": {
+    "amenity": "toilets",
+    "name": "Arab City Park Restrooms"
+  }
+},
+{
+  "type": "node",
+  "id": 4977430586,
+  "lat": 33.2099034,
+  "lon": -87.5964343,
+  "timestamp": "2017-07-18T13:42:26Z",
+  "version": 1,
+  "changeset": 50379820,
+  "user": "Euerle92",
+  "uid": 6238696,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5184099391,
+  "lat": 34.4084065,
+  "lon": -85.6528801,
+  "timestamp": "2017-10-23T15:50:44Z",
+  "version": 1,
+  "changeset": 53182726,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5613681913,
+  "lat": 31.3488179,
+  "lon": -85.8690733,
+  "timestamp": "2019-11-29T18:07:35Z",
+  "version": 5,
+  "changeset": 77740325,
+  "user": "Caleb C",
+  "uid": 4869003,
+  "tags": {
+    "amenity": "toilets",
+    "description": "A family park with three play areas a water area two ponds walking trails. ",
+    "fee": "no",
+    "name": "Johnny Henderson Family Park",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5714059718,
+  "lat": 34.1534927,
+  "lon": -86.8454429,
+  "timestamp": "2026-02-20T19:49:36Z",
+  "version": 2,
+  "changeset": 178833624,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5715217708,
+  "lat": 33.8747617,
+  "lon": -86.8622702,
+  "timestamp": "2025-02-08T01:44:46Z",
+  "version": 2,
+  "changeset": 162266063,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5728782015,
+  "lat": 30.2538435,
+  "lon": -87.6848714,
+  "timestamp": "2018-06-29T17:19:26Z",
+  "version": 1,
+  "changeset": 60284939,
+  "user": "sfuller1",
+  "uid": 7685048,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5742160851,
+  "lat": 31.2511218,
+  "lon": -85.4309806,
+  "timestamp": "2018-07-05T21:35:27Z",
+  "version": 2,
+  "changeset": 60448434,
+  "user": "jleathe",
+  "uid": 7523014,
+  "tags": {
+    "access": "private",
+    "amenity": "toilets",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 5759191167,
+  "lat": 34.9934969,
+  "lon": -86.9889431,
+  "timestamp": "2018-07-13T19:03:47Z",
+  "version": 1,
+  "changeset": 60697028,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 5905460207,
+  "lat": 33.5581877,
+  "lon": -86.7077460,
+  "timestamp": "2025-05-27T17:21:10Z",
+  "version": 2,
+  "changeset": 166836835,
+  "user": "mebeggs",
+  "uid": 2817238,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5943155352,
+  "lat": 33.5041384,
+  "lon": -86.7991133,
+  "timestamp": "2018-10-01T14:27:35Z",
+  "version": 2,
+  "changeset": 63096415,
+  "user": "jrose_aph",
+  "uid": 4713383,
+  "tags": {
+    "door": "hinged",
+    "level": "0",
+    "name": "Women's Restroom Door"
+  }
+},
+{
+  "type": "node",
+  "id": 5943180475,
+  "lat": 33.5040881,
+  "lon": -86.7990781,
+  "timestamp": "2018-10-01T14:27:34Z",
+  "version": 1,
+  "changeset": 63096415,
+  "user": "jrose_aph",
+  "uid": 4713383,
+  "tags": {
+    "door": "hinged",
+    "level": "0",
+    "name": "Men's Restroom Door"
+  }
+},
+{
+  "type": "node",
+  "id": 6084128203,
+  "lat": 30.5246217,
+  "lon": -87.9140162,
+  "timestamp": "2018-11-23T05:10:57Z",
+  "version": 1,
+  "changeset": 64802505,
+  "user": "Luke S",
+  "uid": 1902919,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6315299693,
+  "lat": 33.3578583,
+  "lon": -86.7047561,
+  "timestamp": "2019-03-04T02:55:50Z",
+  "version": 1,
+  "changeset": 67752189,
+  "user": "map93",
+  "uid": 5492566,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 6357413339,
+  "lat": 31.2906519,
+  "lon": -85.3694218,
+  "timestamp": "2019-03-24T03:02:01Z",
+  "version": 1,
+  "changeset": 68459874,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 6448911646,
+  "lat": 32.3727436,
+  "lon": -86.3132319,
+  "timestamp": "2019-05-05T03:43:15Z",
+  "version": 1,
+  "changeset": 69893622,
+  "user": "3yoda",
+  "uid": 632378,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 6554209822,
+  "lat": 33.4673043,
+  "lon": -87.6302466,
+  "timestamp": "2019-06-18T00:46:45Z",
+  "version": 1,
+  "changeset": 71347842,
+  "user": "Jackson Olmstead",
+  "uid": 8745617,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 6570586585,
+  "lat": 30.6704326,
+  "lon": -88.1014118,
+  "timestamp": "2019-06-25T16:50:36Z",
+  "version": 2,
+  "changeset": 71606344,
+  "user": "Jaypep1",
+  "uid": 6591908,
+  "tags": {
+    "amenity": "toilets",
+    "opening_hours": "24/7",
+    "operator": "greyhound"
+  }
+},
+{
+  "type": "node",
+  "id": 6965044218,
+  "lat": 33.4594951,
+  "lon": -85.8736613,
+  "timestamp": "2022-05-01T17:52:31Z",
+  "version": 2,
+  "changeset": 120430501,
+  "user": "WTR4",
+  "uid": 3556438,
+  "tags": {
+    "amenity": "toilets",
+    "toilets:disposal": "pitlatrine"
+  }
+},
+{
+  "type": "node",
+  "id": 7477074507,
+  "lat": 33.6470380,
+  "lon": -86.8232746,
+  "timestamp": "2025-05-11T17:26:15Z",
+  "version": 3,
+  "changeset": 166119445,
+  "user": "CurlingMan13",
+  "uid": 6641970,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7477074508,
+  "lat": 33.6470844,
+  "lon": -86.8222753,
+  "timestamp": "2025-05-11T17:26:15Z",
+  "version": 3,
+  "changeset": 166119445,
+  "user": "CurlingMan13",
+  "uid": 6641970,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "unisex": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7633370969,
+  "lat": 30.5234583,
+  "lon": -87.9016480,
+  "timestamp": "2020-06-18T20:19:09Z",
+  "version": 1,
+  "changeset": 86841537,
+  "user": "Churchmouse",
+  "uid": 11362384,
+  "tags": {
+    "amenity": "toilets",
+    "male": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7633370970,
+  "lat": 30.5234592,
+  "lon": -87.9016836,
+  "timestamp": "2020-06-18T20:19:09Z",
+  "version": 1,
+  "changeset": 86841537,
+  "user": "Churchmouse",
+  "uid": 11362384,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7908786426,
+  "lat": 34.8398526,
+  "lon": -87.9446774,
+  "timestamp": "2020-09-15T13:42:09Z",
+  "version": 1,
+  "changeset": 90930033,
+  "user": "Loren S",
+  "uid": 1819522,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 8195362281,
+  "lat": 32.5527868,
+  "lon": -87.8767335,
+  "timestamp": "2020-12-04T23:12:29Z",
+  "version": 1,
+  "changeset": 95318802,
+  "user": "AJ Moon",
+  "uid": 186317,
+  "tags": {
+    "access": "permissive",
+    "amenity": "toilets",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8440843521,
+  "lat": 33.7725090,
+  "lon": -86.4718107,
+  "timestamp": "2021-02-20T14:50:30Z",
+  "version": 1,
+  "changeset": 99645550,
+  "user": "micahcochran",
+  "uid": 397719,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 8725438261,
+  "lat": 32.5993012,
+  "lon": -85.4632251,
+  "timestamp": "2021-05-12T14:56:58Z",
+  "version": 1,
+  "changeset": 104581540,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 8848864687,
+  "lat": 34.6825097,
+  "lon": -86.5890668,
+  "timestamp": "2021-06-26T17:52:36Z",
+  "version": 3,
+  "changeset": 107012179,
+  "user": "forest_man",
+  "uid": 3234213,
+  "tags": {
+    "amenity": "toilets",
+    "fee": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8857028401,
+  "lat": 34.7212125,
+  "lon": -86.6126012,
+  "timestamp": "2023-05-29T01:22:53Z",
+  "version": 5,
+  "changeset": 136675790,
+  "user": "Tris Wilson",
+  "uid": 11619424,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2023-05-28",
+    "fee": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8866695208,
+  "lat": 30.3724951,
+  "lon": -87.6568303,
+  "timestamp": "2021-06-25T20:06:02Z",
+  "version": 1,
+  "changeset": 106982235,
+  "user": "ward95636",
+  "uid": 8161636,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 8866695209,
+  "lat": 30.3723134,
+  "lon": -87.6574673,
+  "timestamp": "2021-06-25T20:06:02Z",
+  "version": 1,
+  "changeset": 106982235,
+  "user": "ward95636",
+  "uid": 8161636,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9168432077,
+  "lat": 32.6053849,
+  "lon": -85.4498629,
+  "timestamp": "2021-10-12T22:22:17Z",
+  "version": 1,
+  "changeset": 112437339,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9201100718,
+  "lat": 34.1641939,
+  "lon": -85.6555895,
+  "timestamp": "2021-10-25T20:36:47Z",
+  "version": 1,
+  "changeset": 112966392,
+  "user": "SeanJPR",
+  "uid": 14348824,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9658586656,
+  "lat": 34.0105064,
+  "lon": -85.9965326,
+  "timestamp": "2022-04-11T13:45:26Z",
+  "version": 1,
+  "changeset": 119580476,
+  "user": "DLance",
+  "uid": 12842151,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9658714063,
+  "lat": 34.0380877,
+  "lon": -86.0252616,
+  "timestamp": "2022-04-11T14:49:00Z",
+  "version": 1,
+  "changeset": 119582918,
+  "user": "DLance",
+  "uid": 12842151,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9660996547,
+  "lat": 34.5737474,
+  "lon": -86.2209166,
+  "timestamp": "2022-04-12T14:28:22Z",
+  "version": 1,
+  "changeset": 119624621,
+  "user": "DLance",
+  "uid": 12842151,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 9966687365,
+  "lat": 32.5528373,
+  "lon": -85.4778653,
+  "timestamp": "2022-08-20T21:34:42Z",
+  "version": 1,
+  "changeset": 125163409,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 10016636117,
+  "lat": 33.4885324,
+  "lon": -86.7762765,
+  "timestamp": "2022-09-11T19:02:49Z",
+  "version": 1,
+  "changeset": 126061486,
+  "user": "ethanmad",
+  "uid": 13403755,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "survey:date": "2022-09-11"
+  }
+},
+{
+  "type": "node",
+  "id": 10164172857,
+  "lat": 32.5890704,
+  "lon": -85.4895065,
+  "timestamp": "2022-11-07T00:59:59Z",
+  "version": 1,
+  "changeset": 128575268,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 10573401045,
+  "lat": 31.0883461,
+  "lon": -86.5475008,
+  "timestamp": "2023-01-21T20:37:06Z",
+  "version": 1,
+  "changeset": 131553156,
+  "user": "bal_agates",
+  "uid": 374193,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 10573401047,
+  "lat": 31.0886837,
+  "lon": -86.5487333,
+  "timestamp": "2023-01-21T20:37:06Z",
+  "version": 1,
+  "changeset": 131553156,
+  "user": "bal_agates",
+  "uid": 374193,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 10722514055,
+  "lat": 34.3415755,
+  "lon": -86.7611412,
+  "timestamp": "2023-03-09T00:57:19Z",
+  "version": 1,
+  "changeset": 133460222,
+  "user": "napperMapper",
+  "uid": 18646281,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "male": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10722514056,
+  "lat": 34.3415715,
+  "lon": -86.7611782,
+  "timestamp": "2023-03-09T00:57:19Z",
+  "version": 1,
+  "changeset": 133460222,
+  "user": "napperMapper",
+  "uid": 18646281,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10795907279,
+  "lat": 32.9068296,
+  "lon": -86.6375607,
+  "timestamp": "2023-04-10T15:07:21Z",
+  "version": 2,
+  "changeset": 134735749,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "toilets:position": "seated;urinal",
+    "toilets:wheelchair": "designated"
+  }
+},
+{
+  "type": "node",
+  "id": 10835710505,
+  "lat": 34.7045155,
+  "lon": -86.5995276,
+  "timestamp": "2023-04-23T22:48:34Z",
+  "version": 1,
+  "changeset": 135279566,
+  "user": "Tris Wilson",
+  "uid": 11619424,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "fee": "no",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 11043013442,
+  "lat": 33.2180390,
+  "lon": -87.5894525,
+  "timestamp": "2023-07-12T21:35:28Z",
+  "version": 1,
+  "changeset": 138439375,
+  "user": "YoYoJeffery",
+  "uid": 10676623,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11091784669,
+  "lat": 33.1877240,
+  "lon": -87.0180492,
+  "timestamp": "2023-08-05T16:03:41Z",
+  "version": 1,
+  "changeset": 139486475,
+  "user": "YoYoJeffery",
+  "uid": 10676623,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11091784683,
+  "lat": 33.1882950,
+  "lon": -86.9995569,
+  "timestamp": "2023-08-05T16:03:41Z",
+  "version": 1,
+  "changeset": 139486475,
+  "user": "YoYoJeffery",
+  "uid": 10676623,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11165199005,
+  "lat": 34.7667402,
+  "lon": -87.7118288,
+  "timestamp": "2023-09-03T14:59:24Z",
+  "version": 1,
+  "changeset": 140762799,
+  "user": "JeremyWaller",
+  "uid": 20165418,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11289279692,
+  "lat": 30.4231653,
+  "lon": -88.2404931,
+  "timestamp": "2023-10-25T17:28:13Z",
+  "version": 1,
+  "changeset": 143127046,
+  "user": "cmitchell",
+  "uid": 10176409,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11300449061,
+  "lat": 34.6472372,
+  "lon": -86.0307841,
+  "timestamp": "2023-10-30T18:00:02Z",
+  "version": 1,
+  "changeset": 143379415,
+  "user": "Xanadu_Contractor",
+  "uid": 14384558,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11300449062,
+  "lat": 34.6470524,
+  "lon": -86.0307300,
+  "timestamp": "2023-10-30T18:00:02Z",
+  "version": 1,
+  "changeset": 143379415,
+  "user": "Xanadu_Contractor",
+  "uid": 14384558,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11406812591,
+  "lat": 33.9382034,
+  "lon": -86.4927521,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 3,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "toilets:handwashing": "yes",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 11416172894,
+  "lat": 33.9392013,
+  "lon": -86.4908295,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 2,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "male": "yes",
+    "unisex": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11416172906,
+  "lat": 33.9393170,
+  "lon": -86.4906740,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 2,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "female": "yes",
+    "male": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11418198795,
+  "lat": 33.5487288,
+  "lon": -86.5955377,
+  "timestamp": "2023-12-14T20:08:38Z",
+  "version": 1,
+  "changeset": 145125910,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 11660903275,
+  "lat": 33.1751125,
+  "lon": -87.4506594,
+  "timestamp": "2024-02-24T22:52:30Z",
+  "version": 1,
+  "changeset": 147873547,
+  "user": "treestryder",
+  "uid": 159516,
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "drinking_water": "yes",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11709540259,
+  "lat": 33.5614021,
+  "lon": -86.7527696,
+  "timestamp": "2024-08-25T03:26:30Z",
+  "version": 2,
+  "changeset": 155719713,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes",
+    "level": "1"
+  }
+},
+{
+  "type": "node",
+  "id": 11709540260,
+  "lat": 33.5624744,
+  "lon": -86.7511428,
+  "timestamp": "2025-12-16T21:23:55Z",
+  "version": 8,
+  "changeset": 176024236,
+  "user": "PizzaTreeIsland",
+  "uid": 17308617,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "fee": "no",
+    "female": "yes",
+    "indoor": "yes",
+    "level": "0;1",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:position": "seated;urinal",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11817300954,
+  "lat": 33.9465636,
+  "lon": -86.4731975,
+  "timestamp": "2025-10-02T18:54:48Z",
+  "version": 2,
+  "changeset": 172762274,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2025-10-02",
+    "male": "yes",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11817300955,
+  "lat": 33.9465815,
+  "lon": -86.4731658,
+  "timestamp": "2025-10-02T19:03:29Z",
+  "version": 2,
+  "changeset": 172762544,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2025-10-02",
+    "female": "yes",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11818561543,
+  "lat": 34.7696455,
+  "lon": -86.9830553,
+  "timestamp": "2024-04-15T12:39:05Z",
+  "version": 1,
+  "changeset": 150036377,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 11912030880,
+  "lat": 33.5624087,
+  "lon": -86.7509616,
+  "timestamp": "2024-05-17T09:50:59Z",
+  "version": 2,
+  "changeset": 151445136,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "level": "1",
+    "male": "yes",
+    "ref": "T-2621",
+    "toilets:disposal": "flush",
+    "unisex": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12026563660,
+  "lat": 33.3793740,
+  "lon": -86.9981924,
+  "timestamp": "2024-07-02T00:23:07Z",
+  "version": 2,
+  "changeset": 153433488,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12026563661,
+  "lat": 33.3800966,
+  "lon": -86.9972622,
+  "timestamp": "2024-07-02T01:46:08Z",
+  "version": 2,
+  "changeset": 153434437,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12026563666,
+  "lat": 33.3808510,
+  "lon": -86.9999859,
+  "timestamp": "2024-07-01T18:42:06Z",
+  "version": 1,
+  "changeset": 153424831,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12026563667,
+  "lat": 33.3801418,
+  "lon": -87.0018599,
+  "timestamp": "2024-07-01T18:42:06Z",
+  "version": 1,
+  "changeset": 153424831,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12026613074,
+  "lat": 33.3818465,
+  "lon": -86.9988672,
+  "timestamp": "2024-07-01T18:42:06Z",
+  "version": 1,
+  "changeset": 153424831,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12026613076,
+  "lat": 33.3816862,
+  "lon": -86.9988462,
+  "timestamp": "2024-07-01T18:42:06Z",
+  "version": 1,
+  "changeset": 153424831,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12042234381,
+  "lat": 30.6941628,
+  "lon": -88.1952064,
+  "timestamp": "2024-07-08T18:14:14Z",
+  "version": 1,
+  "changeset": 153715279,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12154386890,
+  "lat": 30.7398641,
+  "lon": -87.9196885,
+  "timestamp": "2024-09-03T21:43:38Z",
+  "version": 1,
+  "changeset": 156160962,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12154394155,
+  "lat": 30.7352471,
+  "lon": -87.9075949,
+  "timestamp": "2024-09-03T21:43:38Z",
+  "version": 1,
+  "changeset": 156160962,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12195090938,
+  "lat": 34.0928618,
+  "lon": -88.0048255,
+  "timestamp": "2024-09-23T17:22:49Z",
+  "version": 1,
+  "changeset": 157006170,
+  "user": "Xanadu_Contractor",
+  "uid": 14384558,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "check_date": "2024-09-23",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12195423499,
+  "lat": 32.8448649,
+  "lon": -86.5914863,
+  "timestamp": "2024-09-23T20:01:37Z",
+  "version": 1,
+  "changeset": 157011884,
+  "user": "Xanadu_Contractor",
+  "uid": 14384558,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "check_date": "2024-09-23",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12207192488,
+  "lat": 31.3723780,
+  "lon": -87.0514478,
+  "timestamp": "2024-09-28T16:41:09Z",
+  "version": 1,
+  "changeset": 157219373,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2024-09-28",
+    "male": "yes",
+    "toilets:access": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "toilets:paper_supplied": "yes",
+    "toilets:position": "seated;urinal",
+    "toilets:wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12219655309,
+  "lat": 31.4276307,
+  "lon": -85.6193072,
+  "timestamp": "2024-10-04T00:08:25Z",
+  "version": 1,
+  "changeset": 157440292,
+  "user": "Xanadu_Contractor",
+  "uid": 14384558,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "check_date": "2024-10-03",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12230060126,
+  "lat": 34.6220603,
+  "lon": -87.7960782,
+  "timestamp": "2024-10-06T17:16:53Z",
+  "version": 1,
+  "changeset": 157550039,
+  "user": "TopoNick",
+  "uid": 20983092,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12230085117,
+  "lat": 34.6220675,
+  "lon": -87.7961955,
+  "timestamp": "2024-10-06T17:17:20Z",
+  "version": 1,
+  "changeset": 157550039,
+  "user": "TopoNick",
+  "uid": 20983092,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12230116265,
+  "lat": 34.6228987,
+  "lon": -87.8023038,
+  "timestamp": "2024-10-06T18:14:52Z",
+  "version": 1,
+  "changeset": 157552701,
+  "user": "TopoNick",
+  "uid": 20983092,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12232083850,
+  "lat": 34.9770445,
+  "lon": -86.0799852,
+  "timestamp": "2024-10-07T16:30:45Z",
+  "version": 2,
+  "changeset": 157590202,
+  "user": "TopoNick",
+  "uid": 20983092,
+  "tags": {
+    "amenity": "toilets",
+    "portable": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12232114160,
+  "lat": 34.9770212,
+  "lon": -86.0800376,
+  "timestamp": "2024-10-07T16:30:46Z",
+  "version": 2,
+  "changeset": 157590202,
+  "user": "TopoNick",
+  "uid": 20983092,
+  "tags": {
+    "amenity": "toilets",
+    "portable": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12247189142,
+  "lat": 33.7464612,
+  "lon": -85.6854650,
+  "timestamp": "2024-10-12T22:11:41Z",
+  "version": 1,
+  "changeset": 157814669,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12272075560,
+  "lat": 33.9425025,
+  "lon": -86.4905922,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 2,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12272075562,
+  "lat": 33.9424730,
+  "lon": -86.4906490,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 2,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12272075563,
+  "lat": 33.9424588,
+  "lon": -86.4906779,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 2,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "check_date": "2025-10-07",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12282896304,
+  "lat": 33.3664243,
+  "lon": -86.5982763,
+  "timestamp": "2024-10-23T23:30:58Z",
+  "version": 1,
+  "changeset": 158274634,
+  "user": "quincylvania",
+  "uid": 4515353,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 12365233856,
+  "lat": 30.6760486,
+  "lon": -88.0938828,
+  "timestamp": "2024-11-22T15:30:14Z",
+  "version": 1,
+  "changeset": 159464092,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "tags": {
+    "amenity": "toilets",
+    "portable": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12434655359,
+  "lat": 33.9885946,
+  "lon": -86.4573070,
+  "timestamp": "2024-12-26T04:13:37Z",
+  "version": 2,
+  "changeset": 160622655,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12590566257,
+  "lat": 33.5219305,
+  "lon": -86.8102985,
+  "timestamp": "2025-02-15T18:35:02Z",
+  "version": 1,
+  "changeset": 162546861,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "indoor": "yes",
+    "level": "1",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12590566258,
+  "lat": 33.5219085,
+  "lon": -86.8102656,
+  "timestamp": "2025-02-15T18:35:02Z",
+  "version": 1,
+  "changeset": 162546861,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "indoor": "yes",
+    "level": "1",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:handwashing": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12590566259,
+  "lat": 33.5222617,
+  "lon": -86.8095555,
+  "timestamp": "2025-02-15T18:35:02Z",
+  "version": 1,
+  "changeset": 162546861,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "changing_table": "yes",
+    "female": "yes",
+    "indoor": "yes",
+    "level": "2",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12592442932,
+  "lat": 33.5246631,
+  "lon": -86.8067369,
+  "timestamp": "2025-02-16T06:36:18Z",
+  "version": 1,
+  "changeset": 162559649,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12592460008,
+  "lat": 33.5258596,
+  "lon": -86.8051341,
+  "timestamp": "2025-02-16T06:32:56Z",
+  "version": 1,
+  "changeset": 162559596,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12594101691,
+  "lat": 33.5229666,
+  "lon": -86.8112448,
+  "timestamp": "2025-02-16T22:46:09Z",
+  "version": 1,
+  "changeset": 162589892,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12594106157,
+  "lat": 33.5208542,
+  "lon": -86.8154277,
+  "timestamp": "2025-02-16T22:50:09Z",
+  "version": 1,
+  "changeset": 162589979,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 12708707587,
+  "lat": 33.7026172,
+  "lon": -86.6963205,
+  "timestamp": "2025-03-29T00:31:24Z",
+  "version": 1,
+  "changeset": 164231542,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "toilets:disposal": "pitlatrine"
+  }
+},
+{
+  "type": "node",
+  "id": 12708754107,
+  "lat": 33.7017485,
+  "lon": -86.6924857,
+  "timestamp": "2025-03-29T00:49:38Z",
+  "version": 1,
+  "changeset": 164231762,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "toilets:disposal": "pitlatrine"
+  }
+},
+{
+  "type": "node",
+  "id": 12709928155,
+  "lat": 33.7020755,
+  "lon": -86.6910539,
+  "timestamp": "2025-03-29T15:10:38Z",
+  "version": 1,
+  "changeset": 164253251,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "permissive",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12796018248,
+  "lat": 33.9620354,
+  "lon": -86.4610907,
+  "timestamp": "2025-10-02T19:06:51Z",
+  "version": 2,
+  "changeset": 172762626,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "employees",
+    "amenity": "toilets",
+    "check_date": "2025-10-02",
+    "female": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12796018249,
+  "lat": 33.9620488,
+  "lon": -86.4611142,
+  "timestamp": "2025-10-02T19:06:51Z",
+  "version": 2,
+  "changeset": 172762626,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "employees",
+    "amenity": "toilets",
+    "check_date": "2025-10-02",
+    "male": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12879726604,
+  "lat": 34.1016857,
+  "lon": -86.5819330,
+  "timestamp": "2025-06-01T20:54:46Z",
+  "version": 1,
+  "changeset": 167067700,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13039634111,
+  "lat": 32.6416823,
+  "lon": -87.8682891,
+  "timestamp": "2025-07-31T15:45:00Z",
+  "version": 1,
+  "changeset": 169777311,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13089611201,
+  "lat": 32.3254690,
+  "lon": -86.2322680,
+  "timestamp": "2025-08-22T17:10:39Z",
+  "version": 1,
+  "changeset": 170843681,
+  "user": "LocalLoco",
+  "uid": 6299060,
+  "tags": {
+    "addr:housenumber": "3801",
+    "addr:street": "Eastern Boulevard",
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13193095000,
+  "lat": 33.4071926,
+  "lon": -86.8512090,
+  "timestamp": "2025-10-04T16:06:37Z",
+  "version": 1,
+  "changeset": 172837236,
+  "user": "Dihydrogenmonoxide",
+  "uid": 23360120,
+  "tags": {
+    "amenity": "toilets",
+    "name": "Public restroom"
+  }
+},
+{
+  "type": "node",
+  "id": 13228296852,
+  "lat": 30.4774336,
+  "lon": -88.3881799,
+  "timestamp": "2025-10-12T19:06:36Z",
+  "version": 1,
+  "changeset": 173195863,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "amenity": "toilets",
+    "leisure": "pitch",
+    "male": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13228296853,
+  "lat": 30.4770516,
+  "lon": -88.3883224,
+  "timestamp": "2025-10-12T19:06:36Z",
+  "version": 1,
+  "changeset": 173195863,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "tags": {
+    "amenity": "toilets",
+    "leisure": "pitch",
+    "male": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13460653905,
+  "lat": 32.7783192,
+  "lon": -86.8866424,
+  "timestamp": "2026-01-16T15:45:13Z",
+  "version": 1,
+  "changeset": 177303993,
+  "user": "CoryS89",
+  "uid": 18330996,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13541303979,
+  "lat": 34.0740989,
+  "lon": -86.7808065,
+  "timestamp": "2026-02-10T16:57:35Z",
+  "version": 1,
+  "changeset": 178369773,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "access": "students",
+    "amenity": "toilets",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 13585831902,
+  "lat": 33.7960476,
+  "lon": -86.4827352,
+  "timestamp": "2026-02-20T22:51:02Z",
+  "version": 1,
+  "changeset": 178838293,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13593635412,
+  "lat": 33.3067063,
+  "lon": -86.2777531,
+  "timestamp": "2026-02-23T19:15:40Z",
+  "version": 1,
+  "changeset": 178958192,
+  "user": "Heifer03",
+  "uid": 8845370,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13687730777,
+  "lat": 33.3087926,
+  "lon": -87.4767864,
+  "timestamp": "2026-03-29T04:09:59Z",
+  "version": 1,
+  "changeset": 180565985,
+  "user": "Xylantiel",
+  "uid": 19045140,
+  "tags": {
+    "amenity": "toilets"
+  }
+},
+{
+  "type": "node",
+  "id": 13762056810,
+  "lat": 33.6066617,
+  "lon": -86.6385669,
+  "timestamp": "2026-04-25T21:52:02Z",
+  "version": 1,
+  "changeset": 181824599,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "node",
+  "id": 13762056811,
+  "lat": 33.6068737,
+  "lon": -86.6379897,
+  "timestamp": "2026-04-25T21:52:02Z",
+  "version": 1,
+  "changeset": 181824599,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 177286120,
+  "timestamp": "2016-11-25T01:12:49Z",
+  "version": 2,
+  "changeset": 43934694,
+  "user": "Jack the Ripper",
+  "uid": 1946151,
+  "center": {
+    "lat": 33.6695180,
+    "lon": -85.3721703
+  },
+  "nodes": [
+    1877414532,
+    4519803833,
+    1877414502,
+    1877414530,
+    1877414544,
+    1877414536,
+    1877414476,
+    1877414532
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "public",
+    "operator": "Cleburne Welcome Center"
+  }
+},
+{
+  "type": "way",
+  "id": 190638586,
+  "timestamp": "2016-07-16T05:19:35Z",
+  "version": 2,
+  "changeset": 40773017,
+  "user": "Caboosey",
+  "uid": 171516,
+  "center": {
+    "lat": 31.8846276,
+    "lon": -86.6102335
+  },
+  "nodes": [
+    2012764474,
+    2012764777,
+    2012764716,
+    2012764823,
+    2012764474
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 190638589,
+  "timestamp": "2016-07-16T05:19:35Z",
+  "version": 2,
+  "changeset": 40773017,
+  "user": "Caboosey",
+  "uid": 171516,
+  "center": {
+    "lat": 31.8832995,
+    "lon": -86.6084258
+  },
+  "nodes": [
+    2012764712,
+    2012764620,
+    2012764500,
+    2012764468,
+    2012764712
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "source": "Bing"
+  }
+},
+{
+  "type": "way",
+  "id": 272974434,
+  "timestamp": "2023-06-08T23:38:28Z",
+  "version": 3,
+  "changeset": 137115363,
+  "user": "Chris Lawrence",
+  "uid": 36121,
+  "center": {
+    "lat": 31.3891477,
+    "lon": -85.5832937
+  },
+  "nodes": [
+    2778743879,
+    2778743880,
+    2778743881,
+    2778743882,
+    2778743879
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "civic"
+  }
+},
+{
+  "type": "way",
+  "id": 289929762,
+  "timestamp": "2025-10-20T04:17:50Z",
+  "version": 2,
+  "changeset": 173517103,
+  "user": "chart2006",
+  "uid": 21992029,
+  "center": {
+    "lat": 34.7425119,
+    "lon": -86.5173296
+  },
+  "nodes": [
+    13245128877,
+    2934653167,
+    1020207241,
+    13245128878,
+    13245128877
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "source:geometry": "Bing 2011"
+  }
+},
+{
+  "type": "way",
+  "id": 319935891,
+  "timestamp": "2015-01-01T21:06:59Z",
+  "version": 1,
+  "changeset": 27849182,
+  "user": "Kirbert",
+  "uid": 2077000,
+  "center": {
+    "lat": 31.7512454,
+    "lon": -88.1444508
+  },
+  "nodes": [
+    3264290436,
+    3264290437,
+    3264290438,
+    3264290439,
+    3264290436
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 320772891,
+  "timestamp": "2025-07-08T21:33:22Z",
+  "version": 2,
+  "changeset": 168669129,
+  "user": "justin5822",
+  "uid": 13548748,
+  "center": {
+    "lat": 31.2765066,
+    "lon": -85.1175707
+  },
+  "nodes": [
+    3274179072,
+    3274179073,
+    3274179074,
+    3274179071,
+    3274179072
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 333378284,
+  "timestamp": "2026-01-16T16:14:14Z",
+  "version": 2,
+  "changeset": 177305022,
+  "user": "CoryS89",
+  "uid": 18330996,
+  "center": {
+    "lat": 31.0089859,
+    "lon": -85.4071606
+  },
+  "nodes": [
+    3404904160,
+    3404904161,
+    13460696090,
+    13460696089,
+    13460696088,
+    13460696087,
+    3404904162,
+    3404904163,
+    3404904160
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 352602492,
+  "timestamp": "2015-06-09T14:22:22Z",
+  "version": 1,
+  "changeset": 31845612,
+  "user": "jfoote",
+  "uid": 2767782,
+  "center": {
+    "lat": 30.6246303,
+    "lon": -88.0757670
+  },
+  "nodes": [
+    3583622006,
+    3583622007,
+    3583622008,
+    3583622009,
+    3583622006
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 352857700,
+  "timestamp": "2024-03-28T18:09:33Z",
+  "version": 3,
+  "changeset": 149281987,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6773103,
+    "lon": -88.0655050
+  },
+  "nodes": [
+    3586356414,
+    3586356417,
+    11769490261,
+    3586356416,
+    3586356415,
+    3586356414
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 352858314,
+  "timestamp": "2015-06-10T17:17:59Z",
+  "version": 1,
+  "changeset": 31876881,
+  "user": "jfoote",
+  "uid": 2767782,
+  "center": {
+    "lat": 30.6476142,
+    "lon": -88.0615625
+  },
+  "nodes": [
+    3586326780,
+    3586326781,
+    3586326782,
+    3586326783,
+    3586326784,
+    3586326785,
+    3586326786,
+    3586326787,
+    3586326780
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 353215450,
+  "timestamp": "2018-09-14T05:55:33Z",
+  "version": 3,
+  "changeset": 62572033,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2945759,
+    "lon": -87.5748966
+  },
+  "nodes": [
+    3589840096,
+    3589840097,
+    3589840095,
+    3589840094,
+    3589840096
+  ],
+  "tags": {
+    "addr:city": "Orange Beach",
+    "addr:housenumber": "26425",
+    "addr:postcode": "36561",
+    "addr:state": "AL",
+    "addr:street": "Canal Road",
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Restrooms"
+  }
+},
+{
+  "type": "way",
+  "id": 353239867,
+  "timestamp": "2015-06-12T15:07:53Z",
+  "version": 1,
+  "changeset": 31923512,
+  "user": "jfoote",
+  "uid": 2767782,
+  "center": {
+    "lat": 30.5700538,
+    "lon": -88.1842370
+  },
+  "nodes": [
+    3590189562,
+    3590189563,
+    3590189564,
+    3590189565,
+    3590189562
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 353239868,
+  "timestamp": "2015-06-12T15:07:53Z",
+  "version": 1,
+  "changeset": 31923512,
+  "user": "jfoote",
+  "uid": 2767782,
+  "center": {
+    "lat": 30.5696506,
+    "lon": -88.1848224
+  },
+  "nodes": [
+    3590189566,
+    3590189567,
+    3590189568,
+    3590189569,
+    3590189566
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 353287735,
+  "timestamp": "2016-11-06T23:07:16Z",
+  "version": 2,
+  "changeset": 43453835,
+  "user": "tekadev",
+  "uid": 4807135,
+  "center": {
+    "lat": 30.7071595,
+    "lon": -88.1567826
+  },
+  "nodes": [
+    3590705629,
+    3590705630,
+    3590705631,
+    3590705632,
+    3590705629
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Restrooms"
+  }
+},
+{
+  "type": "way",
+  "id": 362137756,
+  "timestamp": "2023-02-17T20:32:49Z",
+  "version": 2,
+  "changeset": 132693698,
+  "user": "VLD270",
+  "uid": 16062948,
+  "center": {
+    "lat": 30.6592581,
+    "lon": -88.1879541
+  },
+  "nodes": [
+    3665030158,
+    3665030159,
+    3665030162,
+    3665030163,
+    3665030158
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building:part": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 362490308,
+  "timestamp": "2024-09-03T21:43:38Z",
+  "version": 2,
+  "changeset": 156160962,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.7416583,
+    "lon": -87.9161826
+  },
+  "nodes": [
+    3667900555,
+    3667900556,
+    3667900557,
+    3667900558,
+    3667900555
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 362490947,
+  "timestamp": "2021-11-22T13:43:21Z",
+  "version": 2,
+  "changeset": 114099245,
+  "user": "Weatherman1228",
+  "uid": 10328910,
+  "center": {
+    "lat": 30.7474713,
+    "lon": -87.9231208
+  },
+  "nodes": [
+    3667904511,
+    3667904512,
+    3667904513,
+    3667904514,
+    3667904511
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "toilets:disposal": "pitlatrine",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 362672574,
+  "timestamp": "2021-06-24T13:51:26Z",
+  "version": 2,
+  "changeset": 106904505,
+  "user": "wireguy",
+  "uid": 9564652,
+  "center": {
+    "lat": 30.2294731,
+    "lon": -88.0232988
+  },
+  "nodes": [
+    3669387118,
+    3669387119,
+    3669387120,
+    3669387121,
+    3669387118
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 384881070,
+  "timestamp": "2018-06-17T23:18:00Z",
+  "version": 2,
+  "changeset": 59925571,
+  "user": "LeifRasmussen",
+  "uid": 4312767,
+  "center": {
+    "lat": 33.3705520,
+    "lon": -86.3555869
+  },
+  "nodes": [
+    3882354746,
+    3882354747,
+    3882354748,
+    3882354749,
+    3882354746
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 401953007,
+  "timestamp": "2019-07-28T08:01:14Z",
+  "version": 2,
+  "changeset": 72731744,
+  "user": "thetornado76",
+  "uid": 1624486,
+  "center": {
+    "lat": 34.7363068,
+    "lon": -87.6538726
+  },
+  "nodes": [
+    4043591161,
+    4043591162,
+    4043591163,
+    4043591164,
+    4043591161
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes",
+    "changing_table": "yes",
+    "operator": "City of Muscle Shoals",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 401957024,
+  "timestamp": "2016-03-06T13:43:59Z",
+  "version": 1,
+  "changeset": 37645453,
+  "user": "Vaughn20",
+  "uid": 1405884,
+  "center": {
+    "lat": 34.7319991,
+    "lon": -87.6633705
+  },
+  "nodes": [
+    4043624374,
+    4043624375,
+    4043624376,
+    4043624377,
+    4043624374
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes",
+    "operator": "C",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 405037051,
+  "timestamp": "2016-03-22T00:40:58Z",
+  "version": 1,
+  "changeset": 37989381,
+  "user": "Alan Bragg",
+  "uid": 443130,
+  "center": {
+    "lat": 31.7767444,
+    "lon": -85.1486057
+  },
+  "nodes": [
+    4072640636,
+    4072640622,
+    4072640624,
+    4072640604,
+    4072640636
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 405115457,
+  "timestamp": "2016-03-22T13:11:13Z",
+  "version": 1,
+  "changeset": 37998803,
+  "user": "Alan Bragg",
+  "uid": 443130,
+  "center": {
+    "lat": 31.6446107,
+    "lon": -85.0978268
+  },
+  "nodes": [
+    4073363315,
+    4073363240,
+    4073363258,
+    4073363306,
+    4073363315
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 405127173,
+  "timestamp": "2016-03-22T14:45:55Z",
+  "version": 1,
+  "changeset": 38000426,
+  "user": "Alan Bragg",
+  "uid": 443130,
+  "center": {
+    "lat": 32.1814718,
+    "lon": -85.0125017
+  },
+  "nodes": [
+    4073472336,
+    4073472316,
+    4073489089,
+    4073472300,
+    4073472336
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 405639348,
+  "timestamp": "2016-03-25T11:35:25Z",
+  "version": 1,
+  "changeset": 38060686,
+  "user": "Alan Bragg",
+  "uid": 443130,
+  "center": {
+    "lat": 31.6437130,
+    "lon": -85.1006340
+  },
+  "nodes": [
+    4078037783,
+    4078037785,
+    4078037781,
+    4078037780,
+    4078037783
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 405661378,
+  "timestamp": "2026-03-22T16:40:12Z",
+  "version": 3,
+  "changeset": 180261068,
+  "user": "westsider28",
+  "uid": 288562,
+  "center": {
+    "lat": 34.6909270,
+    "lon": -86.5833835
+  },
+  "nodes": [
+    4666856603,
+    4719596663,
+    4078216876,
+    4078216875,
+    4666856603
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 431335298,
+  "timestamp": "2024-09-10T01:14:42Z",
+  "version": 3,
+  "changeset": 156418439,
+  "user": "altcoin",
+  "uid": 14077399,
+  "center": {
+    "lat": 31.3722923,
+    "lon": -87.0514510
+  },
+  "nodes": [
+    4305422752,
+    4305422753,
+    4305422754,
+    4305422755,
+    4305422756,
+    4305422757,
+    4305422758,
+    12167167467,
+    4305422759,
+    4305422760,
+    12167167469,
+    4305422761,
+    4305422762,
+    12167167474,
+    4305422763,
+    4305422752
+  ],
+  "tags": {
+    "building": "toilets"
+  }
+},
+{
+  "type": "way",
+  "id": 435978694,
+  "timestamp": "2023-06-24T01:27:17Z",
+  "version": 2,
+  "changeset": 137706718,
+  "user": "unknown127",
+  "uid": 1906113,
+  "center": {
+    "lat": 32.4979050,
+    "lon": -85.6131889
+  },
+  "nodes": [
+    4338681662,
+    4338681663,
+    4338681664,
+    4338681665,
+    4338681662
+  ],
+  "tags": {
+    "building": "toilets"
+  }
+},
+{
+  "type": "way",
+  "id": 444215443,
+  "timestamp": "2016-09-25T02:35:06Z",
+  "version": 1,
+  "changeset": 42414968,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8109264,
+    "lon": -87.6261538
+  },
+  "nodes": [
+    4417024466,
+    4417024467,
+    4417024468,
+    4417024469,
+    4417024470,
+    4417024471,
+    4417024472,
+    4417024473,
+    4417024466
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 444596143,
+  "timestamp": "2016-09-27T15:45:33Z",
+  "version": 1,
+  "changeset": 42473480,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 33.4923176,
+    "lon": -85.8104436
+  },
+  "nodes": [
+    4420612317,
+    4420612318,
+    4420612319,
+    4420612320,
+    4420612317
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 444604816,
+  "timestamp": "2025-01-21T16:26:28Z",
+  "version": 2,
+  "changeset": 161606952,
+  "user": "Mateusz Konieczny - bot account",
+  "uid": 3199858,
+  "center": {
+    "lat": 34.7926746,
+    "lon": -87.6335468
+  },
+  "nodes": [
+    4420685805,
+    4420685806,
+    4420685807,
+    4420685808,
+    4420685805
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 444953616,
+  "timestamp": "2017-05-18T19:29:34Z",
+  "version": 3,
+  "changeset": 48801901,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.8399262,
+    "lon": -87.6456506
+  },
+  "nodes": [
+    4424129676,
+    4424129677,
+    4424129678,
+    4424129679,
+    4444314203,
+    4424129680,
+    4424129681,
+    4424129682,
+    4424129683,
+    4424129676
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:occupancy": "multi"
+  }
+},
+{
+  "type": "way",
+  "id": 445244157,
+  "timestamp": "2016-10-01T21:03:36Z",
+  "version": 1,
+  "changeset": 42570830,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.8097916,
+    "lon": -87.6680827
+  },
+  "nodes": [
+    4426977191,
+    4426977192,
+    4426977193,
+    4426977194,
+    4426977191
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 445262241,
+  "timestamp": "2016-10-02T02:42:39Z",
+  "version": 1,
+  "changeset": 42573737,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7865843,
+    "lon": -87.6733840
+  },
+  "nodes": [
+    4427187704,
+    4427187705,
+    4427187706,
+    4427187707,
+    4427187708,
+    4427187709,
+    4427187710,
+    4427187711,
+    4427187704
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 445548520,
+  "timestamp": "2016-10-03T20:46:02Z",
+  "version": 1,
+  "changeset": 42615141,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8061530,
+    "lon": -87.6325427
+  },
+  "nodes": [
+    4429579691,
+    4429579692,
+    4429579693,
+    4429579694,
+    4429579691
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 445836685,
+  "timestamp": "2016-10-05T00:14:19Z",
+  "version": 1,
+  "changeset": 42645349,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8393264,
+    "lon": -87.6762727
+  },
+  "nodes": [
+    4431821399,
+    4431821400,
+    4431821401,
+    4431821402,
+    4431821399
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 445836699,
+  "timestamp": "2016-10-05T00:14:20Z",
+  "version": 1,
+  "changeset": 42645349,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8375238,
+    "lon": -87.6758389
+  },
+  "nodes": [
+    4431821469,
+    4431821470,
+    4431821471,
+    4431821472,
+    4431821473,
+    4431821474,
+    4431821475,
+    4431821476,
+    4431821469
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 446362357,
+  "timestamp": "2024-04-11T02:11:03Z",
+  "version": 4,
+  "changeset": 149844295,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8488701,
+    "lon": -86.9688733
+  },
+  "nodes": [
+    4436482754,
+    4436482755,
+    4436482756,
+    4436482757,
+    5056372007,
+    4436482754
+  ],
+  "tags": {
+    "addr:city": "Athens",
+    "addr:housenumber": "19779",
+    "addr:postcode": "35614",
+    "addr:street": "Piney Chapel Road",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 446855917,
+  "timestamp": "2016-10-10T14:57:59Z",
+  "version": 1,
+  "changeset": 42779288,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8209576,
+    "lon": -87.6783692
+  },
+  "nodes": [
+    4440794552,
+    4440794553,
+    4440794554,
+    4440794555,
+    4440794552
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 446933576,
+  "timestamp": "2021-01-09T04:08:14Z",
+  "version": 3,
+  "changeset": 97197758,
+  "user": "MetallicA AlabamA",
+  "uid": 12455521,
+  "center": {
+    "lat": 34.8007333,
+    "lon": -87.6496494
+  },
+  "nodes": [
+    4441483945,
+    4441483946,
+    4441483949,
+    4441483952,
+    4441483951,
+    4441483950,
+    4441483947,
+    4441483948,
+    4441483945
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 447751229,
+  "timestamp": "2016-10-14T19:27:05Z",
+  "version": 1,
+  "changeset": 42904467,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8375478,
+    "lon": -87.6351343
+  },
+  "nodes": [
+    4448215080,
+    4448215086,
+    4448215081,
+    4448215082,
+    4448215080
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "indoor": "room"
+  }
+},
+{
+  "type": "way",
+  "id": 449737681,
+  "timestamp": "2016-10-27T18:20:29Z",
+  "version": 1,
+  "changeset": 43224870,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8123765,
+    "lon": -87.6288936
+  },
+  "nodes": [
+    4466742173,
+    4466742174,
+    4466742175,
+    4466742176,
+    4466742173
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 452554010,
+  "timestamp": "2016-11-10T23:10:16Z",
+  "version": 2,
+  "changeset": 43547534,
+  "user": "Kirbert",
+  "uid": 2077000,
+  "center": {
+    "lat": 31.6579952,
+    "lon": -85.5093089
+  },
+  "nodes": [
+    4493363889,
+    4493363890,
+    4493363891,
+    4493363892,
+    4493363889
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Bath House"
+  }
+},
+{
+  "type": "way",
+  "id": 452554747,
+  "timestamp": "2016-11-10T23:06:02Z",
+  "version": 2,
+  "changeset": 43547483,
+  "user": "Kirbert",
+  "uid": 2077000,
+  "center": {
+    "lat": 31.6627942,
+    "lon": -85.5069284
+  },
+  "nodes": [
+    4493365797,
+    4493365805,
+    4493365808,
+    4493365798,
+    4493365799,
+    4493365800,
+    4493365797
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Bath House"
+  }
+},
+{
+  "type": "way",
+  "id": 452555035,
+  "timestamp": "2016-11-10T23:02:45Z",
+  "version": 1,
+  "changeset": 43547439,
+  "user": "Kirbert",
+  "uid": 2077000,
+  "center": {
+    "lat": 31.6614467,
+    "lon": -85.5084110
+  },
+  "nodes": [
+    4493369520,
+    4493369521,
+    4493369522,
+    4493369523,
+    4493369520
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 453571761,
+  "timestamp": "2016-11-15T19:09:50Z",
+  "version": 1,
+  "changeset": 43678713,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7828471,
+    "lon": -87.6832595
+  },
+  "nodes": [
+    4502833585,
+    4502833586,
+    4502833587,
+    4502833588,
+    4502833585
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 453571762,
+  "timestamp": "2016-11-15T19:09:50Z",
+  "version": 1,
+  "changeset": 43678713,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7834305,
+    "lon": -87.6807912
+  },
+  "nodes": [
+    4502875589,
+    4502875590,
+    4502875591,
+    4502875592,
+    4502875589
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 456128604,
+  "timestamp": "2023-12-29T15:24:10Z",
+  "version": 2,
+  "changeset": 145666274,
+  "user": "RollTideRoll_asdfjkll",
+  "uid": 4879795,
+  "center": {
+    "lat": 32.8445666,
+    "lon": -87.9520649
+  },
+  "nodes": [
+    4524070802,
+    4524070805,
+    4524070804,
+    11465909278,
+    11465909277,
+    4524070807,
+    11465909279,
+    11465909280,
+    4524070812,
+    4524070810,
+    4524070808,
+    4524070803,
+    4524070802
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "public",
+    "opening_hours": "24/7",
+    "operator": "Greene County Rest Area - I 59 Northbound"
+  }
+},
+{
+  "type": "way",
+  "id": 456130776,
+  "timestamp": "2023-12-30T00:25:44Z",
+  "version": 2,
+  "changeset": 145681363,
+  "user": "RollTideRoll_asdfjkll",
+  "uid": 4879795,
+  "center": {
+    "lat": 32.8575339,
+    "lon": -87.9412074
+  },
+  "nodes": [
+    4524095684,
+    4524095685,
+    4524095687,
+    4524095690,
+    4524095691,
+    4524095689,
+    11467346627,
+    11467346628,
+    11467346626,
+    11467346625,
+    4524095686,
+    4524095688,
+    4524095684
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "public",
+    "opening_hours": "24/7",
+    "operator": "Greene County Rest Area - I 59 Southbound"
+  }
+},
+{
+  "type": "way",
+  "id": 464430812,
+  "timestamp": "2017-01-07T21:38:47Z",
+  "version": 1,
+  "changeset": 44989196,
+  "user": "auburntiger2011",
+  "uid": 438427,
+  "center": {
+    "lat": 33.6093828,
+    "lon": -85.8177018
+  },
+  "nodes": [
+    1839015202,
+    1839015199,
+    4595323269,
+    4595323270,
+    1839015201,
+    1839015202
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 467486897,
+  "timestamp": "2017-01-20T17:39:37Z",
+  "version": 1,
+  "changeset": 45332493,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8091370,
+    "lon": -87.6230867
+  },
+  "nodes": [
+    4621002042,
+    4621002043,
+    4621002044,
+    4621002045,
+    4621002042
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 467486917,
+  "timestamp": "2017-01-20T17:39:39Z",
+  "version": 1,
+  "changeset": 45332493,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8122551,
+    "lon": -87.6255799
+  },
+  "nodes": [
+    4621002469,
+    4621002470,
+    4621002471,
+    4621002472,
+    4621002469
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 467486924,
+  "timestamp": "2017-01-20T17:39:40Z",
+  "version": 1,
+  "changeset": 45332493,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8103620,
+    "lon": -87.6226559
+  },
+  "nodes": [
+    4621002636,
+    4621002637,
+    4621002638,
+    4621002639,
+    4621002636
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 467616626,
+  "timestamp": "2017-01-21T16:32:25Z",
+  "version": 1,
+  "changeset": 45353431,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8041554,
+    "lon": -87.6939820
+  },
+  "nodes": [
+    4622174298,
+    4622174299,
+    4622174300,
+    4622174301,
+    4622174298
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 472099423,
+  "timestamp": "2017-02-04T14:23:46Z",
+  "version": 1,
+  "changeset": 45806641,
+  "user": "Bu11s3y3",
+  "uid": 5201442,
+  "center": {
+    "lat": 33.3590717,
+    "lon": -86.5189927
+  },
+  "nodes": [
+    4663326843,
+    4663326844,
+    4663326845,
+    4663326846,
+    4663326843
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "yes",
+    "name": "Restrooms"
+  }
+},
+{
+  "type": "way",
+  "id": 472170486,
+  "timestamp": "2017-02-04T19:37:32Z",
+  "version": 1,
+  "changeset": 45813552,
+  "user": "Bu11s3y3",
+  "uid": 5201442,
+  "center": {
+    "lat": 33.2602152,
+    "lon": -86.7400803
+  },
+  "nodes": [
+    4664104182,
+    4664104183,
+    4664104184,
+    4664104185,
+    4664104182
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Pool House"
+  }
+},
+{
+  "type": "way",
+  "id": 472712288,
+  "timestamp": "2017-02-06T19:17:18Z",
+  "version": 1,
+  "changeset": 45864102,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.5974111,
+    "lon": -86.9761510
+  },
+  "nodes": [
+    4669108179,
+    4669108180,
+    4669108181,
+    4669108182,
+    4669108184,
+    4669108179
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 473244908,
+  "timestamp": "2017-02-08T04:52:26Z",
+  "version": 1,
+  "changeset": 45904951,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8547962,
+    "lon": -87.5404919
+  },
+  "nodes": [
+    4674014303,
+    4674014304,
+    4674014305,
+    4674014306,
+    4674014303
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 473244910,
+  "timestamp": "2017-02-08T04:52:27Z",
+  "version": 1,
+  "changeset": 45904951,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8544131,
+    "lon": -87.5388094
+  },
+  "nodes": [
+    4674014317,
+    4674014318,
+    4674014319,
+    4674014320,
+    4674014317
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 474931736,
+  "timestamp": "2017-02-16T00:40:21Z",
+  "version": 1,
+  "changeset": 46122768,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.6141627,
+    "lon": -86.9807481
+  },
+  "nodes": [
+    4687846291,
+    4687846292,
+    4687846293,
+    4687846295,
+    4687846294,
+    4687846291
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 475094982,
+  "timestamp": "2017-02-16T15:37:48Z",
+  "version": 1,
+  "changeset": 46140259,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.7352633,
+    "lon": -86.7027681
+  },
+  "nodes": [
+    2303737458,
+    4689015065,
+    4689015062,
+    4689015068,
+    4689015063,
+    4689015064,
+    2303737458
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "area": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 477501451,
+  "timestamp": "2017-03-23T23:41:05Z",
+  "version": 2,
+  "changeset": 47110702,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.5737286,
+    "lon": -86.9334698
+  },
+  "nodes": [
+    4708429447,
+    4708429448,
+    4708429449,
+    4751805559,
+    4708429450,
+    4708429447
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 477530528,
+  "timestamp": "2017-02-27T17:19:51Z",
+  "version": 1,
+  "changeset": 46447107,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.5852462,
+    "lon": -86.9334597
+  },
+  "nodes": [
+    4708646018,
+    4708646019,
+    4708646020,
+    4708646021,
+    4708646018
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 478956267,
+  "timestamp": "2018-06-22T15:59:50Z",
+  "version": 2,
+  "changeset": 60080155,
+  "user": "apbrown41592",
+  "uid": 8436398,
+  "center": {
+    "lat": 34.6415142,
+    "lon": -86.5392239
+  },
+  "nodes": [
+    4721300356,
+    5711728692,
+    4721300357,
+    4721300358,
+    4721300359,
+    4721300356
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 478959066,
+  "timestamp": "2018-06-25T21:03:21Z",
+  "version": 2,
+  "changeset": 60162131,
+  "user": "apbrown41592",
+  "uid": 8436398,
+  "center": {
+    "lat": 34.5998425,
+    "lon": -86.5458214
+  },
+  "nodes": [
+    4721326696,
+    4721326697,
+    4721326691,
+    4721326693,
+    4721326699,
+    4721326689,
+    4721326696
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 478959088,
+  "timestamp": "2018-06-22T15:35:50Z",
+  "version": 2,
+  "changeset": 60079492,
+  "user": "apbrown41592",
+  "uid": 8436398,
+  "center": {
+    "lat": 34.6077331,
+    "lon": -86.5405918
+  },
+  "nodes": [
+    4721326888,
+    4721326889,
+    4721326890,
+    4721326891,
+    4721326888
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 480317303,
+  "timestamp": "2017-04-23T14:24:38Z",
+  "version": 2,
+  "changeset": 48061940,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.4999345,
+    "lon": -85.6216041
+  },
+  "nodes": [
+    4733195988,
+    4733195989,
+    4733195990,
+    4733195991,
+    4733195988
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Comfort Station 2"
+  }
+},
+{
+  "type": "way",
+  "id": 480317304,
+  "timestamp": "2017-04-23T14:24:38Z",
+  "version": 2,
+  "changeset": 48061940,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.5023137,
+    "lon": -85.6251438
+  },
+  "nodes": [
+    4733195992,
+    4733195993,
+    4733195994,
+    4733195995,
+    4733195992
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Comfort Station 1"
+  }
+},
+{
+  "type": "way",
+  "id": 481115860,
+  "timestamp": "2017-03-17T21:36:27Z",
+  "version": 1,
+  "changeset": 46942655,
+  "user": "Kpburns",
+  "uid": 5181576,
+  "center": {
+    "lat": 34.7784974,
+    "lon": -86.5631378
+  },
+  "nodes": [
+    939327771,
+    4740606309,
+    4740606310,
+    4740606311,
+    939327771
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "area": "yes",
+    "ele": "220.0;218.6;217.3",
+    "landuse": "recreation_ground",
+    "name": "Picnic site;Shelter;Toilets",
+    "tourism": "picnic_site"
+  }
+},
+{
+  "type": "way",
+  "id": 482068490,
+  "timestamp": "2017-04-08T13:01:16Z",
+  "version": 2,
+  "changeset": 47567367,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.8010170,
+    "lon": -86.9828435
+  },
+  "nodes": [
+    4749452331,
+    4749452330,
+    4749452329,
+    4749452328,
+    4749452331
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "toilets:occupancy": "multi",
+    "toilets:wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 485776320,
+  "timestamp": "2019-07-21T17:05:23Z",
+  "version": 2,
+  "changeset": 72487374,
+  "user": "thetornado76",
+  "uid": 1624486,
+  "center": {
+    "lat": 32.4998357,
+    "lon": -85.0089377
+  },
+  "nodes": [
+    4785424903,
+    4785424904,
+    4785424905,
+    4785424906,
+    4785424903
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "changing_table": "no",
+    "fee": "no",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 486979021,
+  "timestamp": "2017-07-10T17:20:30Z",
+  "version": 2,
+  "changeset": 50182102,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.8919591,
+    "lon": -86.4458473
+  },
+  "nodes": [
+    4795108129,
+    4795108126,
+    4795108127,
+    4795108128,
+    4795108129
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 488062021,
+  "timestamp": "2017-04-19T17:12:55Z",
+  "version": 1,
+  "changeset": 47946029,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 34.4030017,
+    "lon": -86.2043838
+  },
+  "nodes": [
+    4804249191,
+    4804249190,
+    4804249189,
+    4804249188,
+    4804249191
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 488724794,
+  "timestamp": "2017-04-22T18:03:06Z",
+  "version": 1,
+  "changeset": 48040324,
+  "user": "Chris Hathcock",
+  "uid": 509420,
+  "center": {
+    "lat": 32.6198559,
+    "lon": -85.4994117
+  },
+  "nodes": [
+    4810117585,
+    4810117586,
+    4810117587,
+    4810117588,
+    4810117585
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 488885278,
+  "timestamp": "2025-01-21T16:26:29Z",
+  "version": 2,
+  "changeset": 161606952,
+  "user": "Mateusz Konieczny - bot account",
+  "uid": 3199858,
+  "center": {
+    "lat": 34.7803968,
+    "lon": -87.6565323
+  },
+  "nodes": [
+    1363988252,
+    4811693423,
+    4811693424,
+    4811693425,
+    1363988252
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 496926711,
+  "timestamp": "2017-05-30T14:11:45Z",
+  "version": 1,
+  "changeset": 49105729,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7378940,
+    "lon": -87.6601496
+  },
+  "nodes": [
+    4885720073,
+    4885720074,
+    4885720075,
+    4885720076,
+    4885720073
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 496941651,
+  "timestamp": "2017-05-30T15:55:54Z",
+  "version": 1,
+  "changeset": 49108138,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 31.1146996,
+    "lon": -86.5539680
+  },
+  "nodes": [
+    4885874021,
+    4885874022,
+    4885874023,
+    4885874024,
+    4885874021
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 496941652,
+  "timestamp": "2017-05-30T15:55:54Z",
+  "version": 1,
+  "changeset": 49108138,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 31.1146859,
+    "lon": -86.5538553
+  },
+  "nodes": [
+    4885874025,
+    4885874026,
+    4885874027,
+    4885874028,
+    4885874025
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 498349287,
+  "timestamp": "2017-06-25T18:10:13Z",
+  "version": 2,
+  "changeset": 49819808,
+  "user": "EdSS",
+  "uid": 1824494,
+  "center": {
+    "lat": 34.5716437,
+    "lon": -86.9342693
+  },
+  "nodes": [
+    4935916178,
+    4935916181,
+    4935916180,
+    4935916173,
+    4935916172,
+    4935916174,
+    4935916178
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 512132397,
+  "timestamp": "2020-06-18T15:17:18Z",
+  "version": 2,
+  "changeset": 86832100,
+  "user": "Churchmouse",
+  "uid": 11362384,
+  "center": {
+    "lat": 30.5190244,
+    "lon": -87.8956886
+  },
+  "nodes": [
+    5008043871,
+    5008043870,
+    5008043869,
+    5008043868,
+    5008043871
+  ],
+  "tags": {
+    "building": "toilets"
+  }
+},
+{
+  "type": "way",
+  "id": 521426753,
+  "timestamp": "2017-09-05T04:17:50Z",
+  "version": 1,
+  "changeset": 51736124,
+  "user": "map93",
+  "uid": 5492566,
+  "center": {
+    "lat": 33.7379886,
+    "lon": -85.8185877
+  },
+  "nodes": [
+    5080694650,
+    5080694651,
+    5080694652,
+    5080694653,
+    5080694650
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 524239560,
+  "timestamp": "2017-09-12T20:59:38Z",
+  "version": 1,
+  "changeset": 51986847,
+  "user": "fixedd",
+  "uid": 2082492,
+  "center": {
+    "lat": 33.7850392,
+    "lon": -86.0649308
+  },
+  "nodes": [
+    5101969172,
+    5101969173,
+    5101969174,
+    5101969175,
+    5101969172
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 556506468,
+  "timestamp": "2018-01-28T16:18:42Z",
+  "version": 1,
+  "changeset": 55833493,
+  "user": "Jack the Ripper",
+  "uid": 1946151,
+  "center": {
+    "lat": 33.1910686,
+    "lon": -87.3252516
+  },
+  "nodes": [
+    5368354094,
+    5368354095,
+    5368354096,
+    5368354097,
+    5368354098,
+    5368354099,
+    5368354100,
+    5368354101,
+    5368354102,
+    5368354103,
+    5368354104,
+    5368354105,
+    5368354094
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "building:levels": "1",
+    "operator": "Tuscaloosa County Rest Area (Southbound)"
+  }
+},
+{
+  "type": "way",
+  "id": 557843765,
+  "timestamp": "2018-02-02T03:16:20Z",
+  "version": 1,
+  "changeset": 55983792,
+  "user": "AaaaaaronP",
+  "uid": 7459800,
+  "center": {
+    "lat": 34.4252759,
+    "lon": -86.9367630
+  },
+  "nodes": [
+    5379747521,
+    5379747522,
+    5379747523,
+    5379747545,
+    5379747524,
+    5379747521
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "note": "Closed during the winter.",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 570524328,
+  "timestamp": "2018-03-17T19:29:37Z",
+  "version": 1,
+  "changeset": 57274345,
+  "user": "rp_gis",
+  "uid": 687324,
+  "center": {
+    "lat": 33.1675410,
+    "lon": -86.8093397
+  },
+  "nodes": [
+    5485178822,
+    5485178823,
+    5485178824,
+    5485178825,
+    5485178822
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 592193857,
+  "timestamp": "2018-05-30T21:24:20Z",
+  "version": 1,
+  "changeset": 59410716,
+  "user": "mikehuse",
+  "uid": 1444279,
+  "center": {
+    "lat": 34.4808905,
+    "lon": -87.3077285
+  },
+  "nodes": [
+    5652533678,
+    5652533679,
+    5652533680,
+    5652533681,
+    5652533678
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 600797742,
+  "timestamp": "2018-06-22T15:35:46Z",
+  "version": 1,
+  "changeset": 60079492,
+  "user": "apbrown41592",
+  "uid": 8436398,
+  "center": {
+    "lat": 34.6086454,
+    "lon": -86.5420372
+  },
+  "nodes": [
+    5711692414,
+    5711692415,
+    5711692416,
+    5711692417,
+    5711692414
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 601305348,
+  "timestamp": "2018-06-24T13:08:20Z",
+  "version": 1,
+  "changeset": 60120462,
+  "user": "leahjane09",
+  "uid": 8454253,
+  "center": {
+    "lat": 33.8744633,
+    "lon": -86.8628337
+  },
+  "nodes": [
+    5715217699,
+    5715217700,
+    5715217701,
+    5715217702,
+    5715217699
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 601322988,
+  "timestamp": "2018-06-24T14:34:10Z",
+  "version": 1,
+  "changeset": 60122447,
+  "user": "leahjane09",
+  "uid": 8454253,
+  "center": {
+    "lat": 34.0805309,
+    "lon": -86.9597154
+  },
+  "nodes": [
+    5715348857,
+    5715348858,
+    5715348859,
+    5715348860,
+    5715348861,
+    5715348862,
+    5715348863,
+    5715348864,
+    5715348857
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 601414603,
+  "timestamp": "2018-06-25T00:21:43Z",
+  "version": 1,
+  "changeset": 60132156,
+  "user": "leahjane09",
+  "uid": 8454253,
+  "center": {
+    "lat": 34.1534918,
+    "lon": -86.8454368
+  },
+  "nodes": [
+    5716209307,
+    5716209308,
+    5716209309,
+    5716209310,
+    5716209307
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 601414610,
+  "timestamp": "2018-06-25T00:21:44Z",
+  "version": 1,
+  "changeset": 60132156,
+  "user": "leahjane09",
+  "uid": 8454253,
+  "center": {
+    "lat": 34.1572129,
+    "lon": -86.8447284
+  },
+  "nodes": [
+    5716209352,
+    5716209353,
+    5716209354,
+    5716209355,
+    5716209352
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 603831407,
+  "timestamp": "2024-09-20T22:16:25Z",
+  "version": 3,
+  "changeset": 156889513,
+  "user": "CurlingMan13",
+  "uid": 6641970,
+  "center": {
+    "lat": 30.3027165,
+    "lon": -87.6422089
+  },
+  "nodes": [
+    5730988113,
+    5730988114,
+    5730988115,
+    5731057890,
+    5730988116,
+    5730988113
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 608367296,
+  "timestamp": "2018-07-16T13:22:46Z",
+  "version": 1,
+  "changeset": 60764347,
+  "user": "leahjane09",
+  "uid": 8454253,
+  "center": {
+    "lat": 34.1794544,
+    "lon": -86.8443059
+  },
+  "nodes": [
+    5763847024,
+    5763847025,
+    5763847026,
+    5763847027,
+    5763847024
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 609023422,
+  "timestamp": "2018-07-18T19:55:25Z",
+  "version": 1,
+  "changeset": 60848182,
+  "user": "apbrown41592",
+  "uid": 8436398,
+  "center": {
+    "lat": 34.7887116,
+    "lon": -86.8005164
+  },
+  "nodes": [
+    5768973484,
+    5768973485,
+    5768973486,
+    5768973487,
+    5768973484
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 617982573,
+  "timestamp": "2018-09-14T05:55:32Z",
+  "version": 2,
+  "changeset": 62572033,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2930214,
+    "lon": -87.5747760
+  },
+  "nodes": [
+    5841485084,
+    5841485585,
+    5841485586,
+    5841485587,
+    5841485084
+  ],
+  "tags": {
+    "addr:city": "Orange Beach",
+    "addr:housenumber": "26425",
+    "addr:postcode": "36561",
+    "addr:state": "AL",
+    "addr:street": "Canal Road",
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Restrooms"
+  }
+},
+{
+  "type": "way",
+  "id": 619357546,
+  "timestamp": "2023-02-12T14:33:25Z",
+  "version": 2,
+  "changeset": 132448184,
+  "user": "Weatherman1228",
+  "uid": 10328910,
+  "center": {
+    "lat": 30.2745174,
+    "lon": -87.6069918
+  },
+  "nodes": [
+    5852973988,
+    5852973989,
+    5852973990,
+    5852973991,
+    5852973988
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 619357549,
+  "timestamp": "2018-08-24T05:44:12Z",
+  "version": 1,
+  "changeset": 61940424,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2740381,
+    "lon": -87.6493471
+  },
+  "nodes": [
+    5852974006,
+    5852974007,
+    5852974008,
+    5852974009,
+    5852974006
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 619372794,
+  "timestamp": "2018-08-24T07:27:44Z",
+  "version": 1,
+  "changeset": 61943153,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2771318,
+    "lon": -87.5512207
+  },
+  "nodes": [
+    5853123660,
+    5853123661,
+    5853123662,
+    5853123663,
+    5853123660
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 629526328,
+  "timestamp": "2018-10-01T14:27:34Z",
+  "version": 1,
+  "changeset": 63096415,
+  "user": "jrose_aph",
+  "uid": 4713383,
+  "center": {
+    "lat": 33.5040863,
+    "lon": -86.7990569
+  },
+  "nodes": [
+    5943180476,
+    5943180478,
+    5943180477,
+    5943081929,
+    5943081928,
+    5943180475,
+    5943180476
+  ],
+  "tags": {
+    "indoor": "room",
+    "level": "0",
+    "male": "yes",
+    "name": "Men's Restroom",
+    "toilets": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 629526329,
+  "timestamp": "2018-10-01T14:27:35Z",
+  "version": 1,
+  "changeset": 63096415,
+  "user": "jrose_aph",
+  "uid": 4713383,
+  "center": {
+    "lat": 33.5041399,
+    "lon": -86.7990742
+  },
+  "nodes": [
+    5943155348,
+    5943180479,
+    5943180480,
+    5943180478,
+    5943180476,
+    5943081933,
+    5943155352,
+    5943155348
+  ],
+  "tags": {
+    "female": "yes",
+    "indoor": "room",
+    "level": "0",
+    "name": "Women's Restroom",
+    "toilets": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 631077547,
+  "timestamp": "2018-10-05T18:07:36Z",
+  "version": 1,
+  "changeset": 63239054,
+  "user": "Euerle92",
+  "uid": 6238696,
+  "center": {
+    "lat": 33.2668293,
+    "lon": -87.5361252
+  },
+  "nodes": [
+    5959547570,
+    5959547584,
+    5959547571,
+    5959547572,
+    5959547573,
+    5959547570
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 631901661,
+  "timestamp": "2018-10-08T15:21:51Z",
+  "version": 1,
+  "changeset": 63315403,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7650244,
+    "lon": -87.7132864
+  },
+  "nodes": [
+    5966776145,
+    5966776146,
+    5966776147,
+    5966776148,
+    5966776145
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 637855333,
+  "timestamp": "2018-10-25T12:48:04Z",
+  "version": 2,
+  "changeset": 63866280,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.7905537,
+    "lon": -87.6751694
+  },
+  "nodes": [
+    6012643589,
+    6012629700,
+    6012643890,
+    6012643590,
+    6012629701,
+    6012629702,
+    6012643589
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 645408619,
+  "timestamp": "2018-11-18T05:33:52Z",
+  "version": 2,
+  "changeset": 64611931,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8036266,
+    "lon": -87.3286530
+  },
+  "nodes": [
+    6067107408,
+    6067107409,
+    6067021445,
+    6067107410,
+    6067107408
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 646103358,
+  "timestamp": "2018-11-19T16:15:15Z",
+  "version": 2,
+  "changeset": 64663522,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8221550,
+    "lon": -87.3160328
+  },
+  "nodes": [
+    6071741310,
+    6071741311,
+    6071733394,
+    6071741219,
+    6071741310
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 648220871,
+  "timestamp": "2021-05-18T22:14:51Z",
+  "version": 2,
+  "changeset": 104916718,
+  "user": "DK342",
+  "uid": 13280282,
+  "center": {
+    "lat": 34.8376856,
+    "lon": -87.2922283
+  },
+  "nodes": [
+    6086072286,
+    6086008475,
+    6086008476,
+    6086072287,
+    6086072286
+  ],
+  "tags": {
+    "building": "toilets"
+  }
+},
+{
+  "type": "way",
+  "id": 666007648,
+  "timestamp": "2025-09-06T12:54:12Z",
+  "version": 2,
+  "changeset": 171541006,
+  "user": "Sir Gerbil",
+  "uid": 23239367,
+  "center": {
+    "lat": 30.3474457,
+    "lon": -87.6241835
+  },
+  "nodes": [
+    6235223864,
+    6235223865,
+    6235223866,
+    6235223867,
+    6235223864
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 674150330,
+  "timestamp": "2019-03-03T00:14:28Z",
+  "version": 1,
+  "changeset": 67726210,
+  "user": "map93",
+  "uid": 5492566,
+  "center": {
+    "lat": 33.3247675,
+    "lon": -86.7593577
+  },
+  "nodes": [
+    6313343094,
+    6313343095,
+    6313343096,
+    6313343097,
+    6313343094
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 674680659,
+  "timestamp": "2025-07-10T12:38:43Z",
+  "version": 3,
+  "changeset": 168741601,
+  "user": "Hypsometric",
+  "uid": 3307068,
+  "center": {
+    "lat": 30.2417456,
+    "lon": -87.7374022
+  },
+  "nodes": [
+    6318489075,
+    6318489076,
+    6318489077,
+    6318489078,
+    6318489075
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 678165480,
+  "timestamp": "2019-03-20T14:29:30Z",
+  "version": 1,
+  "changeset": 68338382,
+  "user": "ThatDudeAstro",
+  "uid": 9539214,
+  "center": {
+    "lat": 33.3950127,
+    "lon": -86.8103818
+  },
+  "nodes": [
+    6349822911,
+    6349822912,
+    6349822913,
+    6349822914,
+    6349822911
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 678269551,
+  "timestamp": "2019-03-20T21:07:56Z",
+  "version": 1,
+  "changeset": 68353486,
+  "user": "ThatDudeAstro",
+  "uid": 9539214,
+  "center": {
+    "lat": 33.3740667,
+    "lon": -86.8418927
+  },
+  "nodes": [
+    6350965795,
+    6350965796,
+    6350965811,
+    6350965458,
+    6350965797,
+    6350965798,
+    6350965799,
+    6350965800,
+    6350965801,
+    6350965795
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Consession, restrooms, Park Office"
+  }
+},
+{
+  "type": "way",
+  "id": 678269561,
+  "timestamp": "2019-03-21T21:24:28Z",
+  "version": 2,
+  "changeset": 68388828,
+  "user": "RollTideRoll_asdfjkll",
+  "uid": 4879795,
+  "center": {
+    "lat": 33.3727066,
+    "lon": -86.8427081
+  },
+  "nodes": [
+    6350965853,
+    6350965854,
+    6353076235,
+    6350965855,
+    6350965856,
+    6350965860,
+    6350965857,
+    6350965425,
+    6350965858,
+    6353076234,
+    6350965859,
+    6350965853
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Consession, Restroom"
+  }
+},
+{
+  "type": "way",
+  "id": 678461070,
+  "timestamp": "2019-03-21T18:14:38Z",
+  "version": 1,
+  "changeset": 68383371,
+  "user": "TortoiseWrath",
+  "uid": 1913816,
+  "center": {
+    "lat": 33.1968116,
+    "lon": -87.5435423
+  },
+  "nodes": [
+    6352767685,
+    6352767686,
+    6352767687,
+    6352767688,
+    6352767685
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 678965966,
+  "timestamp": "2019-03-24T03:02:02Z",
+  "version": 1,
+  "changeset": 68459874,
+  "user": "jtacrimson",
+  "uid": 5270590,
+  "center": {
+    "lat": 31.2897012,
+    "lon": -85.3702908
+  },
+  "nodes": [
+    6357413221,
+    6357413354,
+    6357413222,
+    6357413223,
+    6357413384,
+    6357413221
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 679051477,
+  "timestamp": "2025-09-22T17:48:43Z",
+  "version": 2,
+  "changeset": 172308375,
+  "user": "Sir Gerbil",
+  "uid": 23239367,
+  "center": {
+    "lat": 30.2478847,
+    "lon": -87.6901047
+  },
+  "nodes": [
+    6358415234,
+    6358415235,
+    6358415236,
+    6358415237,
+    6358415234
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "name": "Bath House"
+  }
+},
+{
+  "type": "way",
+  "id": 681706114,
+  "timestamp": "2019-04-04T19:24:23Z",
+  "version": 1,
+  "changeset": 68896504,
+  "user": "ThatDudeAstro",
+  "uid": 9539214,
+  "center": {
+    "lat": 33.3829218,
+    "lon": -86.8221547
+  },
+  "nodes": [
+    6384147856,
+    6384147857,
+    6384147858,
+    6384147859,
+    6384147860,
+    6384147861,
+    6384147862,
+    6384147863,
+    6384147856
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 681706164,
+  "timestamp": "2019-04-04T19:24:25Z",
+  "version": 1,
+  "changeset": 68896504,
+  "user": "ThatDudeAstro",
+  "uid": 9539214,
+  "center": {
+    "lat": 33.3835119,
+    "lon": -86.8244528
+  },
+  "nodes": [
+    6384148796,
+    6384148797,
+    6384148798,
+    6384148799,
+    6384148800,
+    6384148801,
+    6384148802,
+    6384148803,
+    6384148804,
+    6384148805,
+    6384148806,
+    6384148807,
+    6384148808,
+    6384148809,
+    6384148810,
+    6384148796
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Consessions and Restrooms"
+  }
+},
+{
+  "type": "way",
+  "id": 683143683,
+  "timestamp": "2021-10-19T03:30:51Z",
+  "version": 2,
+  "changeset": 112676231,
+  "user": "justin5822",
+  "uid": 13548748,
+  "center": {
+    "lat": 31.2386611,
+    "lon": -85.4410391
+  },
+  "nodes": [
+    6398606339,
+    6398606340,
+    9181647361,
+    6398606341,
+    6398606342,
+    9181647367,
+    6398606339
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 695762134,
+  "timestamp": "2019-06-08T04:44:39Z",
+  "version": 1,
+  "changeset": 71042996,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2696832,
+    "lon": -87.5823941
+  },
+  "nodes": [
+    6533265478,
+    6533265479,
+    6533265480,
+    6533265481,
+    6533265478
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 698435524,
+  "timestamp": "2019-06-20T04:42:52Z",
+  "version": 1,
+  "changeset": 71425259,
+  "user": "OB DISPATCH",
+  "uid": 7727952,
+  "center": {
+    "lat": 30.2820014,
+    "lon": -87.6139835
+  },
+  "nodes": [
+    6559201741,
+    6559201742,
+    6559201743,
+    6559201744,
+    6559201741
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 725870335,
+  "timestamp": "2019-09-18T13:56:03Z",
+  "version": 1,
+  "changeset": 74629069,
+  "user": "Monkey D Luffy",
+  "uid": 4570922,
+  "center": {
+    "lat": 34.8720025,
+    "lon": -87.6277457
+  },
+  "nodes": [
+    6805710820,
+    6805710819,
+    6805710818,
+    6805710817,
+    6805710820
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 753562979,
+  "timestamp": "2019-12-07T19:18:31Z",
+  "version": 1,
+  "changeset": 78094267,
+  "user": "BhamMapper123",
+  "uid": 10525453,
+  "center": {
+    "lat": 33.7772825,
+    "lon": -86.8120450
+  },
+  "nodes": [
+    7040804309,
+    7040804310,
+    7040804311,
+    7040804312,
+    7040804309
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 753562981,
+  "timestamp": "2019-12-07T19:18:31Z",
+  "version": 1,
+  "changeset": 78094267,
+  "user": "BhamMapper123",
+  "uid": 10525453,
+  "center": {
+    "lat": 33.7786672,
+    "lon": -86.8121982
+  },
+  "nodes": [
+    7040804317,
+    7040804318,
+    7040804319,
+    7040804320,
+    7040804317
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 758204123,
+  "timestamp": "2019-12-23T21:00:44Z",
+  "version": 1,
+  "changeset": 78789615,
+  "user": "atobrandon",
+  "uid": 10567130,
+  "center": {
+    "lat": 31.4126356,
+    "lon": -86.0616230
+  },
+  "nodes": [
+    7080671776,
+    7080671777,
+    7080671778,
+    7080671779,
+    7080671776
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 758209015,
+  "timestamp": "2019-12-23T21:26:39Z",
+  "version": 1,
+  "changeset": 78790241,
+  "user": "atobrandon",
+  "uid": 10567130,
+  "center": {
+    "lat": 31.4134331,
+    "lon": -86.0620151
+  },
+  "nodes": [
+    7080732850,
+    7080732851,
+    7080732852,
+    7080732853,
+    7080732850
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 758214044,
+  "timestamp": "2019-12-23T21:49:59Z",
+  "version": 1,
+  "changeset": 78790755,
+  "user": "atobrandon",
+  "uid": 10567130,
+  "center": {
+    "lat": 31.4164022,
+    "lon": -86.0648789
+  },
+  "nodes": [
+    7080806534,
+    7080806535,
+    7080806536,
+    7080806537,
+    7080806534
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 763195986,
+  "timestamp": "2020-01-14T18:13:57Z",
+  "version": 1,
+  "changeset": 79577486,
+  "user": "collinjstep",
+  "uid": 10656795,
+  "center": {
+    "lat": 32.5913547,
+    "lon": -86.5060214
+  },
+  "nodes": [
+    7131691779,
+    7131691780,
+    7131691781,
+    7131691782,
+    7131691779
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "changing_table": "no",
+    "name": "Shooting Sports Bathhouse",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 765814468,
+  "timestamp": "2020-01-22T20:35:57Z",
+  "version": 1,
+  "changeset": 79937362,
+  "user": "Chris112233",
+  "uid": 5354676,
+  "center": {
+    "lat": 32.5366154,
+    "lon": -86.2068314
+  },
+  "nodes": [
+    7152287690,
+    7152287691,
+    7152287692,
+    7152287693,
+    7152287690
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 796343803,
+  "timestamp": "2020-04-26T02:25:42Z",
+  "version": 1,
+  "changeset": 84126704,
+  "user": "map93",
+  "uid": 5492566,
+  "center": {
+    "lat": 33.3231919,
+    "lon": -86.7619504
+  },
+  "nodes": [
+    7447622799,
+    7447622800,
+    7447622801,
+    7447622802,
+    7447622799
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 830912757,
+  "timestamp": "2020-07-27T21:54:13Z",
+  "version": 1,
+  "changeset": 88586943,
+  "user": "JRH50",
+  "uid": 11392834,
+  "center": {
+    "lat": 30.7045641,
+    "lon": -88.2501798
+  },
+  "nodes": [
+    7758306502,
+    7758306503,
+    7758306504,
+    7758306505,
+    7758306502
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 832977151,
+  "timestamp": "2024-08-28T16:15:14Z",
+  "version": 2,
+  "changeset": 155889088,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.7865508,
+    "lon": -88.1016496
+  },
+  "nodes": [
+    7776066406,
+    7776066407,
+    7776066408,
+    7776066409,
+    7776066406
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 833388215,
+  "timestamp": "2020-08-03T02:45:12Z",
+  "version": 1,
+  "changeset": 88855215,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6899347,
+    "lon": -88.0377752
+  },
+  "nodes": [
+    7779735314,
+    7779735315,
+    7779735316,
+    7779735317,
+    7779735314
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 833669026,
+  "timestamp": "2020-08-03T21:49:06Z",
+  "version": 1,
+  "changeset": 88896205,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6906932,
+    "lon": -88.1131846
+  },
+  "nodes": [
+    7782238694,
+    7782238699,
+    7782238695,
+    7782238700,
+    7782238696,
+    7782238697,
+    7782238694
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 833669031,
+  "timestamp": "2020-08-03T21:49:06Z",
+  "version": 1,
+  "changeset": 88896205,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6899462,
+    "lon": -88.1135339
+  },
+  "nodes": [
+    7782238719,
+    7782238720,
+    7782238721,
+    7782238722,
+    7782238719
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 835573098,
+  "timestamp": "2020-08-09T20:04:31Z",
+  "version": 1,
+  "changeset": 89163757,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6568259,
+    "lon": -88.1842762
+  },
+  "nodes": [
+    7799261551,
+    7799261552,
+    7799261553,
+    7799262249,
+    7799262244,
+    7799261554,
+    7799262263,
+    7799262271,
+    7799261551
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 835640572,
+  "timestamp": "2020-08-10T04:26:08Z",
+  "version": 1,
+  "changeset": 89173122,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6934901,
+    "lon": -88.0736591
+  },
+  "nodes": [
+    7799816900,
+    7799816910,
+    7799816901,
+    7799816902,
+    7799816903,
+    7799816900
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 835819933,
+  "timestamp": "2020-08-10T15:47:46Z",
+  "version": 1,
+  "changeset": 89207264,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6984077,
+    "lon": -88.0860844
+  },
+  "nodes": [
+    7801488915,
+    7801488916,
+    7801488919,
+    7801488917,
+    7801488918,
+    7801488915
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 835828667,
+  "timestamp": "2020-08-10T16:24:02Z",
+  "version": 1,
+  "changeset": 89208385,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.7001834,
+    "lon": -88.0734058
+  },
+  "nodes": [
+    7801535147,
+    7801535148,
+    7801535149,
+    7801535150,
+    7801535147
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 838419768,
+  "timestamp": "2020-08-19T04:28:00Z",
+  "version": 1,
+  "changeset": 89604912,
+  "user": "GingaT",
+  "uid": 10451306,
+  "center": {
+    "lat": 30.6620048,
+    "lon": -88.0854801
+  },
+  "nodes": [
+    7824860793,
+    7824860797,
+    7824860800,
+    7824860794,
+    7824860795,
+    7824860796,
+    7824860793
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 843745802,
+  "timestamp": "2024-02-07T13:13:52Z",
+  "version": 2,
+  "changeset": 147176346,
+  "user": "George McMann",
+  "uid": 17648479,
+  "center": {
+    "lat": 33.2868785,
+    "lon": -87.4984180
+  },
+  "nodes": [
+    7870760956,
+    7870760957,
+    7870760958,
+    7870760959,
+    7870760956
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "source": "microsoft/BuildingFootprints"
+  }
+},
+{
+  "type": "way",
+  "id": 846619977,
+  "timestamp": "2024-05-19T22:15:19Z",
+  "version": 2,
+  "changeset": 151554170,
+  "user": "Heifer03",
+  "uid": 8845370,
+  "center": {
+    "lat": 34.7045400,
+    "lon": -86.6055342
+  },
+  "nodes": [
+    7899281037,
+    7899281038,
+    7899281039,
+    7899281040,
+    7899281041,
+    7899281042,
+    7899281037
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 852984048,
+  "timestamp": "2020-09-29T18:29:56Z",
+  "version": 1,
+  "changeset": 91724574,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "center": {
+    "lat": 33.4727409,
+    "lon": -85.8242207
+  },
+  "nodes": [
+    7955985259,
+    7955985260,
+    7955985265,
+    7955985266,
+    7955985271,
+    4764625412,
+    7955985259
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building:part": "yes",
+    "female": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 852984049,
+  "timestamp": "2020-09-29T18:29:56Z",
+  "version": 1,
+  "changeset": 91724574,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "center": {
+    "lat": 33.4727078,
+    "lon": -85.8241978
+  },
+  "nodes": [
+    7955985267,
+    7955985268,
+    7955985264,
+    4764625411,
+    7955985270,
+    7955985269,
+    7955985267
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building:part": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 854784576,
+  "timestamp": "2021-06-28T21:13:10Z",
+  "version": 2,
+  "changeset": 107111053,
+  "user": "alexf4d",
+  "uid": 13654233,
+  "center": {
+    "lat": 33.3022894,
+    "lon": -86.7617860
+  },
+  "nodes": [
+    7972137958,
+    7972137959,
+    7972137960,
+    7972137961,
+    7972137958
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 856179106,
+  "timestamp": "2025-09-29T18:57:51Z",
+  "version": 2,
+  "changeset": 172627731,
+  "user": "gergeric",
+  "uid": 23344759,
+  "center": {
+    "lat": 33.3874070,
+    "lon": -86.8986203
+  },
+  "nodes": [
+    7983304385,
+    7983304386,
+    7983304387,
+    7983304423,
+    7983304388,
+    7983304385
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 869906455,
+  "timestamp": "2020-11-10T22:57:14Z",
+  "version": 1,
+  "changeset": 93887242,
+  "user": "BalletMomto4",
+  "uid": 7232254,
+  "center": {
+    "lat": 33.2903295,
+    "lon": -86.8697486
+  },
+  "nodes": [
+    8105153571,
+    8105153572,
+    8105153573,
+    8105153574,
+    8105153571
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 870061919,
+  "timestamp": "2020-11-11T07:53:10Z",
+  "version": 1,
+  "changeset": 93907385,
+  "user": "BalletMomto4",
+  "uid": 7232254,
+  "center": {
+    "lat": 33.1873812,
+    "lon": -86.8271853
+  },
+  "nodes": [
+    8106392756,
+    8106392757,
+    8106392758,
+    8106392759,
+    8106392756
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "layer": "1"
+  }
+},
+{
+  "type": "way",
+  "id": 870061926,
+  "timestamp": "2020-11-11T07:53:10Z",
+  "version": 1,
+  "changeset": 93907385,
+  "user": "BalletMomto4",
+  "uid": 7232254,
+  "center": {
+    "lat": 33.1859758,
+    "lon": -86.8292000
+  },
+  "nodes": [
+    8106392800,
+    8106392801,
+    8106392802,
+    8106392803,
+    8106392800
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 902090739,
+  "timestamp": "2021-01-30T21:19:17Z",
+  "version": 1,
+  "changeset": 98429718,
+  "user": "Chris Hathcock",
+  "uid": 509420,
+  "center": {
+    "lat": 32.6589208,
+    "lon": -85.3837683
+  },
+  "nodes": [
+    8379229402,
+    8379229403,
+    8379229404,
+    8379229405,
+    8379229402
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 908238339,
+  "timestamp": "2021-03-27T01:19:14Z",
+  "version": 2,
+  "changeset": 101822995,
+  "user": "micahcochran",
+  "uid": 397719,
+  "center": {
+    "lat": 33.9226928,
+    "lon": -85.6067826
+  },
+  "nodes": [
+    2199947708,
+    8433343951,
+    8433343952,
+    8433343953,
+    2199947708
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 915091440,
+  "timestamp": "2021-03-09T15:47:15Z",
+  "version": 1,
+  "changeset": 100720530,
+  "user": "SherbetS",
+  "uid": 12163682,
+  "center": {
+    "lat": 32.3160680,
+    "lon": -87.0969298
+  },
+  "nodes": [
+    8500448783,
+    8500448784,
+    8500448785,
+    8500448786,
+    8500448783
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 921937096,
+  "timestamp": "2021-03-25T06:22:36Z",
+  "version": 1,
+  "changeset": 101691820,
+  "user": "BalletMomto4",
+  "uid": 7232254,
+  "center": {
+    "lat": 34.5278656,
+    "lon": -85.6201062
+  },
+  "nodes": [
+    8559152830,
+    8559152831,
+    8559152832,
+    8559152833,
+    8559152830
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 958272302,
+  "timestamp": "2021-06-25T19:34:56Z",
+  "version": 1,
+  "changeset": 106981105,
+  "user": "ward95636",
+  "uid": 8161636,
+  "center": {
+    "lat": 30.3751118,
+    "lon": -87.6599023
+  },
+  "nodes": [
+    8866657888,
+    8866657889,
+    8866657890,
+    8866657891,
+    8866657888
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 958278093,
+  "timestamp": "2021-06-25T20:06:02Z",
+  "version": 1,
+  "changeset": 106982235,
+  "user": "ward95636",
+  "uid": 8161636,
+  "center": {
+    "lat": 30.3712288,
+    "lon": -87.6571041
+  },
+  "nodes": [
+    8866695190,
+    8866695191,
+    8866695192,
+    8866695193,
+    8866695190
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 987764093,
+  "timestamp": "2021-09-28T16:53:47Z",
+  "version": 1,
+  "changeset": 111828586,
+  "user": "Cullens",
+  "uid": 13207665,
+  "center": {
+    "lat": 32.3151290,
+    "lon": -86.4437529
+  },
+  "nodes": [
+    9130093864,
+    9130093865,
+    9130093866,
+    9130093868,
+    9130093867,
+    9130093864
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 988062364,
+  "timestamp": "2021-09-29T16:57:29Z",
+  "version": 1,
+  "changeset": 111877202,
+  "user": "Cullens",
+  "uid": 13207665,
+  "center": {
+    "lat": 33.6602281,
+    "lon": -86.7042738
+  },
+  "nodes": [
+    9132787966,
+    9132787967,
+    9132787968,
+    9132787969,
+    9132787966
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 990973390,
+  "timestamp": "2022-11-09T20:17:37Z",
+  "version": 2,
+  "changeset": 128702698,
+  "user": "justin5822",
+  "uid": 13548748,
+  "center": {
+    "lat": 31.1427436,
+    "lon": -85.4040095
+  },
+  "nodes": [
+    9156254666,
+    9156254667,
+    9156254664,
+    9156254665,
+    9156254666
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 996479207,
+  "timestamp": "2021-10-25T20:36:47Z",
+  "version": 1,
+  "changeset": 112966392,
+  "user": "SeanJPR",
+  "uid": 14348824,
+  "center": {
+    "lat": 34.1638700,
+    "lon": -85.6580278
+  },
+  "nodes": [
+    9201100375,
+    9201100376,
+    9201100377,
+    9201100378,
+    9201100375
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1017210053,
+  "timestamp": "2023-08-18T17:08:17Z",
+  "version": 2,
+  "changeset": 140066884,
+  "user": "VLD175",
+  "uid": 12744433,
+  "center": {
+    "lat": 34.6896343,
+    "lon": -86.5734924
+  },
+  "nodes": [
+    9382487158,
+    9382487159,
+    9382487160,
+    9382452311,
+    9382452310,
+    9382487158
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building:part": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 1017210054,
+  "timestamp": "2023-08-18T17:08:17Z",
+  "version": 2,
+  "changeset": 140066884,
+  "user": "VLD175",
+  "uid": 12744433,
+  "center": {
+    "lat": 34.6895942,
+    "lon": -86.5734899
+  },
+  "nodes": [
+    9382487159,
+    9382487161,
+    9382487162,
+    9382487160,
+    9382487159
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building:part": "yes",
+    "female": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 1017210055,
+  "timestamp": "2023-08-18T17:08:17Z",
+  "version": 2,
+  "changeset": 140066884,
+  "user": "VLD175",
+  "uid": 12744433,
+  "center": {
+    "lat": 34.6895692,
+    "lon": -86.5731655
+  },
+  "nodes": [
+    9382487193,
+    9382487163,
+    9382487168,
+    9382487169,
+    9382487164,
+    9382487165,
+    9382487193
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building:part": "yes",
+    "female": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 1017210056,
+  "timestamp": "2023-08-18T17:08:17Z",
+  "version": 2,
+  "changeset": 140066884,
+  "user": "VLD175",
+  "uid": 12744433,
+  "center": {
+    "lat": 34.6895723,
+    "lon": -86.5731230
+  },
+  "nodes": [
+    9382487166,
+    9382487167,
+    9382487168,
+    9382487169,
+    9382487170,
+    9382487171,
+    9382487166
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building:part": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 1021305636,
+  "timestamp": "2022-01-14T23:06:38Z",
+  "version": 1,
+  "changeset": 116167281,
+  "user": "EZY 57",
+  "uid": 14854521,
+  "center": {
+    "lat": 34.8799771,
+    "lon": -86.8810141
+  },
+  "nodes": [
+    9419517789,
+    9419517790,
+    9419517791,
+    9419517792,
+    9419517789
+  ],
+  "tags": {
+    "building": "house",
+    "name": "BATHROOM"
+  }
+},
+{
+  "type": "way",
+  "id": 1021444829,
+  "timestamp": "2022-01-15T16:09:44Z",
+  "version": 1,
+  "changeset": 116187617,
+  "user": "EZY 57",
+  "uid": 14854521,
+  "center": {
+    "lat": 34.8763561,
+    "lon": -86.8663198
+  },
+  "nodes": [
+    9420772598,
+    9420772599,
+    9420772600,
+    9420772601,
+    9420772598
+  ],
+  "tags": {
+    "building": "yes",
+    "name": "Bathroom"
+  }
+},
+{
+  "type": "way",
+  "id": 1051050270,
+  "timestamp": "2022-04-11T14:49:00Z",
+  "version": 1,
+  "changeset": 119582918,
+  "user": "DLance",
+  "uid": 12842151,
+  "center": {
+    "lat": 34.0380776,
+    "lon": -86.0252742
+  },
+  "nodes": [
+    9658714059,
+    9658714060,
+    9658714061,
+    9658714062,
+    9658714059
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1076398034,
+  "timestamp": "2022-07-08T11:07:21Z",
+  "version": 3,
+  "changeset": 123357495,
+  "user": "Petsamo",
+  "uid": 3290218,
+  "center": {
+    "lat": 31.3524290,
+    "lon": -87.1788653
+  },
+  "nodes": [
+    9870801758,
+    9870801759,
+    9870801760,
+    9870801761,
+    9870801758
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "toilets",
+    "female": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1083363432,
+  "timestamp": "2022-08-03T01:05:05Z",
+  "version": 1,
+  "changeset": 124413530,
+  "user": "Petsamo",
+  "uid": 3290218,
+  "center": {
+    "lat": 31.3523390,
+    "lon": -87.1787990
+  },
+  "nodes": [
+    9870801757,
+    9870801756,
+    9928358688,
+    9928358689,
+    9870801757
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1087771905,
+  "timestamp": "2022-08-20T20:15:47Z",
+  "version": 1,
+  "changeset": 125161492,
+  "user": "RollTideRoll_asdfjkll",
+  "uid": 4879795,
+  "center": {
+    "lat": 33.1185483,
+    "lon": -86.7672854
+  },
+  "nodes": [
+    9966602736,
+    9966602735,
+    9966602734,
+    9966602733,
+    9966602736
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "fee": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1110441789,
+  "timestamp": "2022-11-05T02:12:48Z",
+  "version": 1,
+  "changeset": 128506672,
+  "user": "vlamp",
+  "uid": 410660,
+  "center": {
+    "lat": 30.7456209,
+    "lon": -87.9163558
+  },
+  "nodes": [
+    10158512880,
+    10158512881,
+    10158512878,
+    10158512879,
+    10158512880
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1135726892,
+  "timestamp": "2025-05-04T20:19:30Z",
+  "version": 3,
+  "changeset": 165817913,
+  "user": "maxolasersquad",
+  "uid": 55916,
+  "center": {
+    "lat": 30.4772673,
+    "lon": -88.3883684
+  },
+  "nodes": [
+    10586970106,
+    10586970009,
+    10586969610,
+    10586969609,
+    10586969310,
+    10586969308,
+    10586970008,
+    10586969608,
+    10586969414,
+    10586969607,
+    10586969411,
+    10586969309,
+    10586969413,
+    10586969412,
+    10586970007,
+    10586970106
+  ],
+  "tags": {
+    "addr:city": "Grand Bay",
+    "addr:housenumber": "10226",
+    "addr:postcode": "36541",
+    "addr:state": "AL",
+    "addr:street": "Hall Road",
+    "amenity": "toilets",
+    "building": "public",
+    "drinking_water": "yes",
+    "information": "office",
+    "name": "Grand Bay Welcome Center",
+    "opening_hours": "08:00-03:00",
+    "toilets": "yes",
+    "toilets:access": "yes",
+    "toilets:wheelchair": "yes",
+    "tourism": "information",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1148556496,
+  "timestamp": "2023-02-22T15:18:43Z",
+  "version": 1,
+  "changeset": 132887045,
+  "user": "Kinectika",
+  "uid": 18518963,
+  "center": {
+    "lat": 34.9864494,
+    "lon": -86.8490886
+  },
+  "nodes": [
+    10686126083,
+    10686126084,
+    10686126085,
+    10686126086,
+    10686126082,
+    10686126083
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1174829993,
+  "timestamp": "2023-05-21T17:08:00Z",
+  "version": 1,
+  "changeset": 136380518,
+  "user": "Joshua Garner",
+  "uid": 2135234,
+  "center": {
+    "lat": 33.5240031,
+    "lon": -86.0854480
+  },
+  "nodes": [
+    10916513277,
+    10916513278,
+    10916513279,
+    10916513280,
+    10916513277
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1174866377,
+  "timestamp": "2023-05-21T20:35:17Z",
+  "version": 1,
+  "changeset": 136386744,
+  "user": "Joshua Garner",
+  "uid": 2135234,
+  "center": {
+    "lat": 33.5244054,
+    "lon": -86.0892330
+  },
+  "nodes": [
+    10916773096,
+    10916773097,
+    10916773098,
+    10916773099,
+    10916569405,
+    10916773096
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1211986040,
+  "timestamp": "2023-09-30T04:39:57Z",
+  "version": 1,
+  "changeset": 141936523,
+  "user": "Dmazybo",
+  "uid": 20226902,
+  "center": {
+    "lat": 33.2918055,
+    "lon": -86.8583221
+  },
+  "nodes": [
+    11228398096,
+    11228398097,
+    11228398098,
+    11228398099,
+    11228398096
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1211986060,
+  "timestamp": "2023-09-30T04:39:57Z",
+  "version": 1,
+  "changeset": 141936523,
+  "user": "Dmazybo",
+  "uid": 20226902,
+  "center": {
+    "lat": 33.2970023,
+    "lon": -86.8454143
+  },
+  "nodes": [
+    11228413951,
+    11228413952,
+    11228413953,
+    11228413954,
+    11228413951
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1228546393,
+  "timestamp": "2025-10-02T18:54:48Z",
+  "version": 5,
+  "changeset": 172762274,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 33.9465725,
+    "lon": -86.4731817
+  },
+  "nodes": [
+    11393278173,
+    11393278106,
+    11393278151,
+    11393253663,
+    11393278140,
+    11393278127,
+    11393278159,
+    11393278184,
+    11393278161,
+    11393278134,
+    11393278081,
+    11393278104,
+    11393253668,
+    11393278125,
+    11393253667,
+    11393278115,
+    11393278094,
+    11393278132,
+    11393278089,
+    11393278129,
+    11393278173
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "check_date": "2025-10-02",
+    "fee": "no",
+    "female": "yes",
+    "male": "yes",
+    "toilets:handwashing": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1229889487,
+  "timestamp": "2023-12-09T13:18:26Z",
+  "version": 1,
+  "changeset": 144934426,
+  "user": "WTR4",
+  "uid": 3556438,
+  "center": {
+    "lat": 33.7821053,
+    "lon": -85.5567387
+  },
+  "nodes": [
+    11405324064,
+    11405324065,
+    11405324066,
+    11405324067,
+    11405324064
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "pitlatrine",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1231189600,
+  "timestamp": "2024-01-28T02:08:02Z",
+  "version": 4,
+  "changeset": 146764536,
+  "user": "b-jazz",
+  "uid": 5800005,
+  "center": {
+    "lat": 33.5505555,
+    "lon": -86.5964951
+  },
+  "nodes": [
+    11418198824,
+    11418128555,
+    11541853058,
+    11541860071,
+    11541844439,
+    11541844427,
+    11541853065,
+    11541860079,
+    11418198806,
+    11418128496,
+    2453425346,
+    11418198824
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1231414675,
+  "timestamp": "2025-12-03T04:40:40Z",
+  "version": 2,
+  "changeset": 175428795,
+  "user": "ResistivKai",
+  "uid": 20032884,
+  "center": {
+    "lat": 32.8951314,
+    "lon": -87.7812540
+  },
+  "nodes": [
+    3057792009,
+    11420613608,
+    11420613607,
+    11420613606,
+    3057792009
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1233671064,
+  "timestamp": "2025-10-07T20:10:51Z",
+  "version": 3,
+  "changeset": 172976350,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 33.9410448,
+    "lon": -86.4901147
+  },
+  "nodes": [
+    11447715975,
+    11454125041,
+    11454125059,
+    11447716004,
+    11447715996,
+    11447715994,
+    11447715975
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "check_date": "2025-10-07"
+  }
+},
+{
+  "type": "way",
+  "id": 1234755692,
+  "timestamp": "2025-10-02T19:03:29Z",
+  "version": 2,
+  "changeset": 172762544,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 33.9491616,
+    "lon": -86.4689159
+  },
+  "nodes": [
+    11461201385,
+    11461201424,
+    11461201398,
+    11461201428,
+    11461201538,
+    11461199261,
+    11461201385
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "check_date": "2025-10-02"
+  }
+},
+{
+  "type": "way",
+  "id": 1247237894,
+  "timestamp": "2024-02-07T12:57:00Z",
+  "version": 1,
+  "changeset": 147175632,
+  "user": "George McMann",
+  "uid": 17648479,
+  "center": {
+    "lat": 33.2889699,
+    "lon": -87.4921666
+  },
+  "nodes": [
+    11594762712,
+    11594762713,
+    11594762714,
+    11594762715,
+    11594762712
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1257661261,
+  "timestamp": "2024-03-05T03:38:59Z",
+  "version": 1,
+  "changeset": 148232097,
+  "user": "DylanTillman339",
+  "uid": 21118492,
+  "center": {
+    "lat": 32.5526417,
+    "lon": -86.1983180
+  },
+  "nodes": [
+    11692585018,
+    11692585019,
+    11692585020,
+    11692585021,
+    11692585022,
+    11692585023,
+    11692585018
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1257661300,
+  "timestamp": "2024-03-05T03:38:59Z",
+  "version": 1,
+  "changeset": 148232097,
+  "user": "DylanTillman339",
+  "uid": 21118492,
+  "center": {
+    "lat": 32.5525731,
+    "lon": -86.2081067
+  },
+  "nodes": [
+    11692585328,
+    11692585337,
+    11692585421,
+    11692585338,
+    11692585339,
+    11692585328
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1277948064,
+  "timestamp": "2024-04-29T00:05:55Z",
+  "version": 1,
+  "changeset": 150640239,
+  "user": "HiDDENKiLLZ",
+  "uid": 21375618,
+  "center": {
+    "lat": 33.8825834,
+    "lon": -86.8297934
+  },
+  "nodes": [
+    11863340253,
+    11863340254,
+    11863340255,
+    11863340256,
+    11863340253
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1284731571,
+  "timestamp": "2024-05-19T22:15:19Z",
+  "version": 1,
+  "changeset": 151554170,
+  "user": "Heifer03",
+  "uid": 8845370,
+  "center": {
+    "lat": 34.7028492,
+    "lon": -86.6016676
+  },
+  "nodes": [
+    11918640124,
+    11918640125,
+    11918640126,
+    11918640127,
+    11918640124
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1286947391,
+  "timestamp": "2024-05-27T01:49:06Z",
+  "version": 1,
+  "changeset": 151874503,
+  "user": "Pydrus",
+  "uid": 21304590,
+  "center": {
+    "lat": 30.5208503,
+    "lon": -87.9040099
+  },
+  "nodes": [
+    11936016315,
+    11936016316,
+    11936016317,
+    11936016318,
+    11936016315
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1295396091,
+  "timestamp": "2024-06-23T18:39:06Z",
+  "version": 1,
+  "changeset": 153081204,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.8226192,
+    "lon": -88.0884377
+  },
+  "nodes": [
+    12003645257,
+    12003645258,
+    12003645259,
+    12003645260,
+    12003645257
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1295826163,
+  "timestamp": "2024-06-24T20:01:33Z",
+  "version": 1,
+  "changeset": 153128744,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.8629886,
+    "lon": -88.0537029
+  },
+  "nodes": [
+    12007547396,
+    12007547397,
+    12007547398,
+    12007547399,
+    12007547396
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1299869722,
+  "timestamp": "2024-07-07T20:36:08Z",
+  "version": 1,
+  "changeset": 153678094,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.7850185,
+    "lon": -88.2816020
+  },
+  "nodes": [
+    12040594915,
+    12040594916,
+    12040594917,
+    12040594918,
+    12040594915
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1303123081,
+  "timestamp": "2024-07-22T17:16:28Z",
+  "version": 1,
+  "changeset": 154273160,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6653437,
+    "lon": -88.1105695
+  },
+  "nodes": [
+    12068512224,
+    12068512225,
+    12068512226,
+    12068512227,
+    12068512224
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "toilets:disposal": "pitlatrine",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1312309733,
+  "timestamp": "2024-08-30T19:59:27Z",
+  "version": 1,
+  "changeset": 155989963,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6559181,
+    "lon": -88.1825187
+  },
+  "nodes": [
+    12146685095,
+    12146685096,
+    12146685097,
+    12146685098,
+    12146685095
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1336866678,
+  "timestamp": "2024-11-22T15:30:14Z",
+  "version": 1,
+  "changeset": 159464092,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6751734,
+    "lon": -88.0947442
+  },
+  "nodes": [
+    12365233914,
+    12365233915,
+    12365233979,
+    12365233916,
+    12365233917,
+    12365233980,
+    12365233914
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1338546770,
+  "timestamp": "2024-11-28T06:18:49Z",
+  "version": 1,
+  "changeset": 159686853,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 33.9994605,
+    "lon": -86.5742769
+  },
+  "nodes": [
+    12381744633,
+    12381744632,
+    12381744635,
+    12381744634,
+    12381744633
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1353848101,
+  "timestamp": "2025-07-11T20:42:21Z",
+  "version": 2,
+  "changeset": 168813716,
+  "user": "Scarlet Martin",
+  "uid": 23064180,
+  "center": {
+    "lat": 31.1060123,
+    "lon": -87.5633591
+  },
+  "nodes": [
+    12528336695,
+    12528337047,
+    12528336710,
+    12528336764,
+    12528336757,
+    12528336773,
+    12528337108,
+    12528336767,
+    12528336695
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1372413737,
+  "timestamp": "2025-05-09T17:56:53Z",
+  "version": 2,
+  "changeset": 166040076,
+  "user": "fryeguy",
+  "uid": 18178485,
+  "center": {
+    "lat": 30.3718277,
+    "lon": -87.6552149
+  },
+  "nodes": [
+    12707627416,
+    12707627417,
+    12707627418,
+    12707627419,
+    12707627462,
+    12707627416
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1372554208,
+  "timestamp": "2025-03-29T00:59:54Z",
+  "version": 1,
+  "changeset": 164231931,
+  "user": "ResistivKai",
+  "uid": 20032884,
+  "center": {
+    "lat": 33.2066668,
+    "lon": -87.5922841
+  },
+  "nodes": [
+    12708761366,
+    12708761367,
+    12708761368,
+    12708761369,
+    12708761366
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush"
+  }
+},
+{
+  "type": "way",
+  "id": 1379118737,
+  "timestamp": "2025-04-20T13:56:24Z",
+  "version": 1,
+  "changeset": 165195515,
+  "user": "fryeguy",
+  "uid": 18178485,
+  "center": {
+    "lat": 30.6351025,
+    "lon": -87.8790652
+  },
+  "nodes": [
+    12770394467,
+    12770394468,
+    12770394469,
+    12770394470,
+    12770394467
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1385069770,
+  "timestamp": "2025-05-09T12:39:07Z",
+  "version": 1,
+  "changeset": 166026439,
+  "user": "fryeguy",
+  "uid": 18178485,
+  "center": {
+    "lat": 30.6490090,
+    "lon": -87.8807622
+  },
+  "nodes": [
+    12823434032,
+    12823434033,
+    12823434034,
+    12823434035,
+    12823434032
+  ],
+  "tags": {
+    "access": "private",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1390274824,
+  "timestamp": "2026-04-15T16:13:05Z",
+  "version": 3,
+  "changeset": 181375375,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 34.5917056,
+    "lon": -85.9994425
+  },
+  "nodes": [
+    12869795473,
+    12869795474,
+    12869795475,
+    12869795476,
+    12869795473
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "building:levels": "1",
+    "building:material": "wood",
+    "female": "yes",
+    "male": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1390477231,
+  "timestamp": "2025-05-28T15:06:09Z",
+  "version": 1,
+  "changeset": 166880576,
+  "user": "MattCW",
+  "uid": 14715934,
+  "center": {
+    "lat": 34.9521439,
+    "lon": -85.7059131
+  },
+  "nodes": [
+    12871269180,
+    12871269181,
+    12871269182,
+    12871269183,
+    12871269180
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1391368506,
+  "timestamp": "2025-06-01T20:54:46Z",
+  "version": 2,
+  "changeset": 167067700,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 34.1025031,
+    "lon": -86.5811809
+  },
+  "nodes": [
+    12879037124,
+    12879037120,
+    12879037119,
+    12879037127,
+    12879037124
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1391417649,
+  "timestamp": "2025-06-01T20:54:46Z",
+  "version": 2,
+  "changeset": 167067700,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 34.1014910,
+    "lon": -86.5821927
+  },
+  "nodes": [
+    12879474020,
+    12879474021,
+    12879474022,
+    12879474024,
+    12879474020
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1413279503,
+  "timestamp": "2025-07-08T14:50:20Z",
+  "version": 1,
+  "changeset": 168654389,
+  "user": "chart2006",
+  "uid": 21992029,
+  "center": {
+    "lat": 34.7440665,
+    "lon": -86.5077108
+  },
+  "nodes": [
+    12987846759,
+    12987846761,
+    12987846762,
+    12987846758,
+    12987846759
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "changing_table": "no",
+    "unisex": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "way",
+  "id": 1413319412,
+  "timestamp": "2025-07-08T18:48:08Z",
+  "version": 1,
+  "changeset": 168663628,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.7005875,
+    "lon": -88.2106726
+  },
+  "nodes": [
+    12988249502,
+    12988249503,
+    12988249504,
+    12988249505,
+    12988249502
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1413367671,
+  "timestamp": "2025-07-08T22:54:55Z",
+  "version": 1,
+  "changeset": 168670757,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.7810040,
+    "lon": -88.1035557
+  },
+  "nodes": [
+    12988623762,
+    12988623763,
+    12988623885,
+    12988623764,
+    12988623765,
+    12988623884,
+    12988623762
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1413916962,
+  "timestamp": "2025-07-10T18:15:25Z",
+  "version": 1,
+  "changeset": 168755788,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6451539,
+    "lon": -88.1562199
+  },
+  "nodes": [
+    12992930626,
+    12992930627,
+    12992930628,
+    12992930629,
+    12992930626
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1413961923,
+  "timestamp": "2025-07-10T21:49:35Z",
+  "version": 1,
+  "changeset": 168762482,
+  "user": "Spyder_Monkey",
+  "uid": 21177877,
+  "center": {
+    "lat": 30.6928789,
+    "lon": -88.1602932
+  },
+  "nodes": [
+    12993277434,
+    12993277435,
+    12993277436,
+    12993277437,
+    12993277434
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1414155697,
+  "timestamp": "2025-07-11T20:42:21Z",
+  "version": 1,
+  "changeset": 168813716,
+  "user": "Scarlet Martin",
+  "uid": 23064180,
+  "center": {
+    "lat": 31.1041739,
+    "lon": -87.5588954
+  },
+  "nodes": [
+    12994921249,
+    12994921250,
+    12994921251,
+    12994921252,
+    12994921249
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1414155712,
+  "timestamp": "2025-07-11T20:42:21Z",
+  "version": 1,
+  "changeset": 168813716,
+  "user": "Scarlet Martin",
+  "uid": 23064180,
+  "center": {
+    "lat": 31.1045853,
+    "lon": -87.5655780
+  },
+  "nodes": [
+    12994921417,
+    12994921418,
+    12994921419,
+    12994921420,
+    12994921417
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1415691637,
+  "timestamp": "2025-07-18T17:41:33Z",
+  "version": 1,
+  "changeset": 169121144,
+  "user": "Scarlet Martin",
+  "uid": 23064180,
+  "center": {
+    "lat": 31.1130382,
+    "lon": -87.3647190
+  },
+  "nodes": [
+    13009525893,
+    13009525894,
+    13009525895,
+    13009525896,
+    13009525893
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1415691638,
+  "timestamp": "2025-07-18T17:41:33Z",
+  "version": 1,
+  "changeset": 169121144,
+  "user": "Scarlet Martin",
+  "uid": 23064180,
+  "center": {
+    "lat": 31.1081423,
+    "lon": -87.3650874
+  },
+  "nodes": [
+    13009525897,
+    13009525898,
+    13009525899,
+    13009525900,
+    13009525897
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1426752453,
+  "timestamp": "2025-09-03T01:00:01Z",
+  "version": 2,
+  "changeset": 171384862,
+  "user": "ereiamjh3",
+  "uid": 700254,
+  "center": {
+    "lat": 30.5485409,
+    "lon": -87.8944045
+  },
+  "nodes": [
+    13115551750,
+    13115551749,
+    13115551748,
+    13115551747,
+    13115551750
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "female": "no",
+    "male": "no",
+    "unisex": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1431563532,
+  "timestamp": "2025-09-20T19:38:39Z",
+  "version": 1,
+  "changeset": 172220252,
+  "user": "ereiamjh3",
+  "uid": 700254,
+  "center": {
+    "lat": 30.5410297,
+    "lon": -87.8889048
+  },
+  "nodes": [
+    13158612538,
+    13158612537,
+    13158612536,
+    13158612535,
+    13158612538
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "drinking_water": "yes",
+    "toilets:disposal": "flush",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1432081105,
+  "timestamp": "2025-09-22T17:48:43Z",
+  "version": 1,
+  "changeset": 172308375,
+  "user": "Sir Gerbil",
+  "uid": 23239367,
+  "center": {
+    "lat": 30.2585150,
+    "lon": -87.6338600
+  },
+  "nodes": [
+    13163067240,
+    13163067241,
+    13163067242,
+    13163067243,
+    13163067240
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1456770914,
+  "timestamp": "2025-12-07T21:30:52Z",
+  "version": 1,
+  "changeset": 175640888,
+  "user": "anaveragemindset",
+  "uid": 23584289,
+  "center": {
+    "lat": 34.5858550,
+    "lon": -87.0779615
+  },
+  "nodes": [
+    13360351386,
+    13360351387,
+    13360351388,
+    13360351389,
+    13360351386
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1468147395,
+  "timestamp": "2026-01-19T05:41:04Z",
+  "version": 1,
+  "changeset": 177407147,
+  "user": "PGio",
+  "uid": 23571695,
+  "center": {
+    "lat": 30.6458340,
+    "lon": -87.9053335
+  },
+  "nodes": [
+    13465470149,
+    13465470150,
+    13465470151,
+    13465470152,
+    13465470153,
+    13465470154,
+    13465470149
+  ],
+  "tags": {
+    "access": "customers",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1473988380,
+  "timestamp": "2026-02-03T20:32:20Z",
+  "version": 1,
+  "changeset": 178067094,
+  "user": "proptied",
+  "uid": 23779787,
+  "center": {
+    "lat": 34.0558675,
+    "lon": -87.1458749
+  },
+  "nodes": [
+    13522780290,
+    13522780291,
+    13522780292,
+    13522780293,
+    13522780290
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "dryer": "yes",
+    "shower": "yes",
+    "washing_machine": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1473988381,
+  "timestamp": "2026-02-03T20:32:20Z",
+  "version": 1,
+  "changeset": 178067094,
+  "user": "proptied",
+  "uid": 23779787,
+  "center": {
+    "lat": 34.0542309,
+    "lon": -87.1446303
+  },
+  "nodes": [
+    13522780294,
+    13522780295,
+    13522780296,
+    13522780297,
+    13522780294
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "dryer": "yes",
+    "shower": "yes",
+    "washing_machine": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1478790386,
+  "timestamp": "2026-02-15T12:50:15Z",
+  "version": 1,
+  "changeset": 178580233,
+  "user": "JRH50",
+  "uid": 11392834,
+  "center": {
+    "lat": 33.2327040,
+    "lon": -88.2957281
+  },
+  "nodes": [
+    13566436032,
+    13566436033,
+    13566436034,
+    13566436035,
+    13566436032
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1481187896,
+  "timestamp": "2026-02-20T18:54:10Z",
+  "version": 1,
+  "changeset": 178831933,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 33.8585109,
+    "lon": -86.4764550
+  },
+  "nodes": [
+    13585376954,
+    13585376955,
+    13585376952,
+    13585376953,
+    13585376954
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes",
+    "female": "yes",
+    "male": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1481637243,
+  "timestamp": "2026-02-22T01:00:35Z",
+  "version": 1,
+  "changeset": 178881940,
+  "user": "PGio",
+  "uid": 23571695,
+  "center": {
+    "lat": 30.8836607,
+    "lon": -87.7784791
+  },
+  "nodes": [
+    13588647605,
+    13588647606,
+    13588647607,
+    13588647608,
+    13588647605
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1483597075,
+  "timestamp": "2026-02-26T21:47:26Z",
+  "version": 1,
+  "changeset": 179105612,
+  "user": "JF-GISP",
+  "uid": 23875216,
+  "center": {
+    "lat": 33.3086362,
+    "lon": -86.8096211
+  },
+  "nodes": [
+    13604026337,
+    13603936478,
+    13603936477,
+    13604026338,
+    13604026339,
+    13604026337
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes",
+    "unisex": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1484811842,
+  "timestamp": "2026-04-11T16:16:50Z",
+  "version": 2,
+  "changeset": 181197426,
+  "user": "DunDan8",
+  "uid": 23831274,
+  "center": {
+    "lat": 31.2240546,
+    "lon": -85.3916709
+  },
+  "nodes": [
+    13613609018,
+    13613609015,
+    13613609016,
+    13613609017,
+    13613609018
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1490859497,
+  "timestamp": "2026-03-19T23:09:34Z",
+  "version": 1,
+  "changeset": 180132864,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 34.1317455,
+    "lon": -86.7102700
+  },
+  "nodes": [
+    13663618578,
+    13663618577,
+    13663618576,
+    13663618571,
+    13663618578
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1490862787,
+  "timestamp": "2026-03-19T23:31:50Z",
+  "version": 1,
+  "changeset": 180133217,
+  "user": "ooosssay",
+  "uid": 20614726,
+  "center": {
+    "lat": 34.1314253,
+    "lon": -86.7078357
+  },
+  "nodes": [
+    13663636981,
+    13663636975,
+    13663636976,
+    13663636973,
+    13663636982,
+    13663636974,
+    13663636977,
+    13663636978,
+    13663636979,
+    13663636972,
+    13663636981
+  ],
+  "tags": {
+    "amenity": "toilets",
+    "area": "yes",
+    "building": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1493550726,
+  "timestamp": "2026-03-28T05:09:54Z",
+  "version": 1,
+  "changeset": 180528995,
+  "user": "hofoen",
+  "uid": 52797,
+  "center": {
+    "lat": 34.0116315,
+    "lon": -86.0262356
+  },
+  "nodes": [
+    13685895821,
+    13685895820,
+    13685895819,
+    13685895818,
+    13685895817,
+    13685895816,
+    13685895821
+  ],
+  "tags": {
+    "amenity": "place_of_worship",
+    "building": "chapel",
+    "name": "Forrest Cemetery Chapel and Comfort Station",
+    "religion": "christian",
+    "wikidata": "Q17510838",
+    "wikipedia": "en:Forrest Cemetery Chapel and Comfort Station"
+  }
+}
+
+  ]
+}

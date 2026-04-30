@@ -1,0 +1,404 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.412718146246,
+          27.7654741074537
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "Name": "Apollo Beach Park & Recreation Center",
+        "Address": "664 Golf and Sea Blvd",
+        "City": "Apollo Beach",
+        "State": "FL",
+        "Zip": 33572,
+        "Municipality": "Inactive",
+        "GlobalID": "c3b26809-9ed2-4516-a13f-7c710d3ac937"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4273247029317,
+          27.7101537349884
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "Name": "Ruskin Park & Recreation Center",
+        "Address": "901 6th St SE",
+        "City": "Ruskin",
+        "State": "FL",
+        "Zip": 33570,
+        "Municipality": "Inactive",
+        "GlobalID": "16ac70c9-ce44-4e54-a4f2-22ef0c7f8266"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5480334432973,
+          27.9752136104153
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "Name": "Skyway Sports Complex",
+        "Address": "3901 George Rd",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33634,
+        "Municipality": "Demob",
+        "GlobalID": "8b1add13-ce8d-45fd-9a31-f1bc7dd76d0b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5652578558179,
+          27.9935608336764
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "Name": "Sandy Perrone Park",
+        "Address": "5120 Kelly Rd",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33615,
+        "Municipality": "Inactive",
+        "GlobalID": "0cbfd6c7-0921-42fd-a630-bd0a50220c73"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4540551788584,
+          27.9309329964951
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "Name": "Marjorie Park Marina",
+        "Address": "97 Columbia Dr",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33606,
+        "Municipality": "Inactive",
+        "GlobalID": "f81a1447-5572-4d94-81aa-f9e1d9def0a1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4295832235005,
+          27.9485873827981
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "Name": "Desoto Park",
+        "Address": "2617 Corrine St",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33605,
+        "Municipality": "Inactive",
+        "GlobalID": "1556582c-1042-4b23-a787-60ce6371c42a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5152605407415,
+          27.8842548533584
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "Name": "Gandy Civic Center",
+        "Address": "4207 W Oklahoma Ave",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33616,
+        "Municipality": "Inactive",
+        "GlobalID": "2ac3a7f6-cd93-4d90-a4bb-d35d7fa800a3"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5659339696921,
+          27.9986366603775
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "Name": "Town N Country Library",
+        "Address": "7606 Paula Dr Ste 120",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33615,
+        "Municipality": "Inactive",
+        "GlobalID": "b87b3135-12f7-42cf-97c3-4a791b2f9666"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3543007110642,
+          27.8478838189502
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "Name": "Gibsonton Walmart",
+        "Address": "9205 Gibsonton Dr",
+        "City": "Gibsonton",
+        "State": "FL",
+        "Zip": 33534,
+        "Municipality": "Inactive",
+        "GlobalID": "54cd26fa-719e-4d11-bbb8-fc27413bde5a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1009,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4586683348342,
+          27.693889048548
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1009,
+        "Name": "Sun City Heritage Park",
+        "Address": "3030 S US 41",
+        "City": "Ruskin",
+        "State": "FL",
+        "Zip": 33570,
+        "Municipality": "Demob",
+        "GlobalID": "834d2047-907c-4019-925d-8746e0831b65"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1013,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3603867936616,
+          27.8986349985268
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1013,
+        "Name": "Progress Village Senior Center",
+        "Address": "8701 Progress Blvd",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33619,
+        "Municipality": "Inactive",
+        "GlobalID": "cacf4006-5b7b-40c5-b555-c5b1bfa42595"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1014,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5633720875264,
+          27.9974332779349
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1014,
+        "Name": "Hillsborough Ave / Hanley Rd",
+        "Address": "7501 W. Hillsborough Ave",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33619,
+        "Municipality": "Inactive",
+        "GlobalID": "c741f383-b3d8-4da8-be8a-99325dbcfba7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1015,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2078464903949,
+          27.9577583615729
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1015,
+        "Name": "Keith Waller Park",
+        "Address": "1318 Sydney Dover Rd",
+        "City": "Dover",
+        "State": "FL",
+        "Zip": 33527,
+        "Municipality": "Inactive",
+        "GlobalID": "0c5747d7-9880-49dc-aa7f-274cc4e91092"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1016,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4320719020828,
+          28.074606061841
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1016,
+        "Name": "UA-CDC (Victor Crist)",
+        "Address": "14013 N 22nd St",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33607,
+        "Municipality": "Inactive",
+        "GlobalID": "8a3132f6-6b91-484d-91af-f488a2fae7f9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1017,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3827924100503,
+          27.8546341149511
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1017,
+        "Name": "Harwell Rental",
+        "Address": "9851 S Hwy 41",
+        "City": "Gibsonton",
+        "State": "FL",
+        "Zip": 33534,
+        "Municipality": "Inactive",
+        "GlobalID": "4136e309-5ef5-4452-b2d7-58c438c9948d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1018,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3018750928765,
+          27.7088638844437
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1018,
+        "Name": "Wimauma Civic Center",
+        "Address": "5705 Hillsborough Street",
+        "City": "Wimauma",
+        "State": "FL",
+        "Zip": 33598,
+        "Municipality": "Inactive",
+        "GlobalID": "5f5818ef-230f-4e62-bfc3-08f1cbf09c3e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1019,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5502294278945,
+          27.9748120019027
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1019,
+        "Name": "Skyway Park",
+        "Address": "3901 George Rd (Town N' Country)",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33634,
+        "Municipality": "Demob",
+        "GlobalID": "3a2f029a-8441-41a0-a9d7-41c3c5dd2353"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1020,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.4347489143684,
+          28.0552753091004
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1020,
+        "Name": "University Mall",
+        "Address": "2200 E Fowler Ave",
+        "City": "Tampa",
+        "State": "FL",
+        "Zip": 33612,
+        "Municipality": "Inactive",
+        "GlobalID": "cb2fa2b4-66b5-4366-9e45-5b9dbbfab775"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1021,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.2786730976068,
+          28.0004874762757
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1021,
+        "Name": "Seffner Mango Park",
+        "Address": "410 N Kingsway Rd",
+        "City": "Seffner",
+        "State": "FL",
+        "Zip": 33584,
+        "Municipality": "Demob",
+        "GlobalID": "709a50a1-d347-43a8-92e2-9d37ea9e0993"
+      }
+    }
+  ]
+}

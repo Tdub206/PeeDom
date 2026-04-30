@@ -4,9 +4,9 @@ import { revalidatePath } from 'next/cache';
 import {
   notificationPreferencesSchema,
   updateBusinessProfileSchema,
-} from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../lib/business/schemas';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export type UpdateBusinessProfileResult =
   | { ok: true }

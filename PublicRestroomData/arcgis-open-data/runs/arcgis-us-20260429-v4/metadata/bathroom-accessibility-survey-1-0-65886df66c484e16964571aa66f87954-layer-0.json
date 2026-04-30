@@ -1,0 +1,2804 @@
+{
+  "item": {
+    "id": "65886df66c484e16964571aa66f87954",
+    "owner": "rhavel",
+    "created": 1775068384000,
+    "modified": 1776883001000,
+    "guid": null,
+    "name": "survey123_50b2ba5a896c48e9ac15dcdc6f584974",
+    "title": "Bathroom Accessibility Survey 1.0",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "50b2ba5a896c48e9ac15dcdc6f584974",
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "OwnerView",
+      "Public Data Collection",
+      "Service",
+      "Singlelayer",
+      "Source",
+      "Survey123",
+      "Survey123 Hub",
+      "Hosted Service"
+    ],
+    "description": null,
+    "tags": [
+      "Survey123"
+    ],
+    "snippet": null,
+    "thumbnail": "thumbnail/ago_downloaded.png",
+    "documentation": null,
+    "extent": [
+      [
+        -180,
+        -90
+      ],
+      [
+        180,
+        90
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "4326",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 57,
+    "scoreCompleteness": 33,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777478400000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "survey",
+    "type": "Feature Layer",
+    "serviceItemId": "65886df66c484e16964571aa66f87954",
+    "sourceSchemaChangesAllowed": true,
+    "hasViews": true,
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "ownershipBasedAccessControlForFeatures": {
+      "allowOthersToQuery": true,
+      "allowOthersToDelete": true,
+      "allowOthersToUpdate": true,
+      "allowAnonymousToQuery": true,
+      "allowAnonymousToUpdate": false,
+      "allowAnonymousToDelete": false
+    },
+    "editFieldsInfo": {
+      "creationDateField": "CreationDate",
+      "creatorField": "Creator",
+      "editDateField": "EditDate",
+      "editorField": "Editor"
+    },
+    "editingInfo": {
+      "lastEditDate": 1776889173357,
+      "schemaLastEditDate": 1776888941785,
+      "dataLastEditDate": 1776889173357
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "supportsOBACForAnonymousUsers": true,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": -180,
+      "ymin": -90,
+      "xmax": 180,
+      "ymax": 90,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "drawingInfo": {
+      "labelingInfo": null,
+      "renderer": {
+        "label": "Survey Point",
+        "symbol": {
+          "angle": 0,
+          "color": [
+            255,
+            0,
+            0,
+            255
+          ],
+          "outline": {
+            "color": [
+              255,
+              255,
+              0,
+              255
+            ],
+            "width": 1
+          },
+          "size": 8,
+          "style": "esriSMSCircle",
+          "type": "esriSMS",
+          "xoffset": 0,
+          "yoffset": 0
+        },
+        "type": "simple"
+      },
+      "transparency": 0
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "propagateVisibleFields": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "objectid",
+    "uniqueIdField": {
+      "name": "objectid",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "globalid",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "objectid",
+        "type": "esriFieldTypeOID",
+        "alias": "ObjectID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "globalid",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "location_of_building_city",
+        "type": "esriFieldTypeString",
+        "alias": "Location of Building: City",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_location_of_building_city",
+          "codedValues": [
+            {
+              "name": "Iowa City",
+              "code": "Iowa City"
+            },
+            {
+              "name": "Coralville",
+              "code": "Coralville"
+            },
+            {
+              "name": "Hills",
+              "code": "Hills"
+            },
+            {
+              "name": "University Heights",
+              "code": "University Heights"
+            },
+            {
+              "name": "Lone Tree",
+              "code": "Lone Tree"
+            },
+            {
+              "name": "North Liberty",
+              "code": "North Liberty"
+            },
+            {
+              "name": "Oxford",
+              "code": "Oxford"
+            },
+            {
+              "name": "Shueyville",
+              "code": "Shueyville"
+            },
+            {
+              "name": "Solon",
+              "code": "Solon"
+            },
+            {
+              "name": "Swisher",
+              "code": "Swisher"
+            },
+            {
+              "name": "Tiffin",
+              "code": "Tiffin"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "building_name",
+        "type": "esriFieldTypeString",
+        "alias": "Building Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "type_of_bathroom_select_one",
+        "type": "esriFieldTypeString",
+        "alias": "Type of bathroom (select one):",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_type_of_bathroom_select_one",
+          "codedValues": [
+            {
+              "name": "Men's",
+              "code": "Men's"
+            },
+            {
+              "name": "Women's",
+              "code": "Women's"
+            },
+            {
+              "name": "Unisex/Gender Neutral",
+              "code": "Unisex/Gender Neutral"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_this_location_have_a_bathr",
+        "type": "esriFieldTypeString",
+        "alias": "Does this location have a bathroom(s) available to use?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_this_location_have_a_bathr",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "location_of_bathroom_ie_2nd_flo",
+        "type": "esriFieldTypeString",
+        "alias": "Location of bathroom (i.e. 2nd Floor)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_bathroom_require_a_cod",
+        "type": "esriFieldTypeString",
+        "alias": "Does the bathroom require a code or key?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_bathroom_require_a_cod",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "what_is_it_like_to_get_to_the_b",
+        "type": "esriFieldTypeString",
+        "alias": "What is it like to get to the bathroom?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_door_into_the_bathroom_w",
+        "type": "esriFieldTypeString",
+        "alias": "Is the door into the bathroom wide enough?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_door_into_the_bathroom_w",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "give_width_in_inches",
+        "type": "esriFieldTypeString",
+        "alias": "Give width in inches.",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "are_there_double_doors_into_the",
+        "type": "esriFieldTypeString",
+        "alias": "Are there double doors into the bathroom?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_there_double_doors_into_the",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_bathroom_single_user",
+        "type": "esriFieldTypeString",
+        "alias": "Is the bathroom single-user?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_bathroom_single_user",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_door_to_the_bathroom_l",
+        "type": "esriFieldTypeString",
+        "alias": "Does the door to the bathroom lock from the inside?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_door_to_the_bathroom_l",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_lock_work_securely",
+        "type": "esriFieldTypeString",
+        "alias": "Does the lock work securely?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_lock_work_securely",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_wastebin_in_the_bath",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a wastebin in the bathroom?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_wastebin_in_the_bath",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_wastebin_in_the_stal",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a wastebin in the stall(s)?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_wastebin_in_the_stal",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "if_yes_which_stalls",
+        "type": "esriFieldTypeString",
+        "alias": "If yes, which stall(s)?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "how_many_stalls_are_there",
+        "type": "esriFieldTypeString",
+        "alias": "How many stalls are there?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_how_many_stalls_are_there",
+          "codedValues": [
+            {
+              "name": "0",
+              "code": "0"
+            },
+            {
+              "name": "1",
+              "code": "choice_6"
+            },
+            {
+              "name": "2",
+              "code": "2"
+            },
+            {
+              "name": "3",
+              "code": "3"
+            },
+            {
+              "name": "4",
+              "code": "4"
+            },
+            {
+              "name": "5+",
+              "code": "5+"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "do_the_stalls_have_doors",
+        "type": "esriFieldTypeString",
+        "alias": "Do the stalls have doors?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_do_the_stalls_have_doors",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "do_they_lock_securely",
+        "type": "esriFieldTypeString",
+        "alias": "Do they lock securely?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_do_they_lock_securely",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "are_the_gaps_in_the_stall_too_l",
+        "type": "esriFieldTypeString",
+        "alias": "Are the gaps in the stall too large for comfort?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_the_gaps_in_the_stall_too_l",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_29",
+        "type": "esriFieldTypeString",
+        "alias": "What kind of knob does the door to ENTER the bathroom have?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_29",
+          "codedValues": [
+            {
+              "name": "Lever",
+              "code": "Lever"
+            },
+            {
+              "name": "Round knob",
+              "code": "Round knob"
+            },
+            {
+              "name": "Vertical handle",
+              "code": "Vertical handle"
+            },
+            {
+              "name": "Automatic push-button",
+              "code": "Automatic push-button"
+            },
+            {
+              "name": "Push bar/handle",
+              "code": "Push bar/handle"
+            },
+            {
+              "name": "Pull bar/handle",
+              "code": "Pull bar/handle"
+            },
+            {
+              "name": "Hands-free foot pull",
+              "code": "Hands-free foot pull"
+            },
+            {
+              "name": "No handle; push door to open",
+              "code": "No handle; push door to open"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_29_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - What kind of knob does the door to ENTER the bathroom have?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "field_30",
+        "type": "esriFieldTypeString",
+        "alias": "What kind of knob does the door to LEAVE the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_30",
+          "codedValues": [
+            {
+              "name": "Lever",
+              "code": "Lever"
+            },
+            {
+              "name": "Round knob",
+              "code": "Round knob"
+            },
+            {
+              "name": "Vertical handle",
+              "code": "Vertical handle"
+            },
+            {
+              "name": "Automatic push-button",
+              "code": "Automatic push-button"
+            },
+            {
+              "name": "Push bar/handle",
+              "code": "Push bar/handle"
+            },
+            {
+              "name": "Pull bar/handle",
+              "code": "Pull bar/handle"
+            },
+            {
+              "name": "Hands-free foot pull",
+              "code": "Hands-free foot pull"
+            },
+            {
+              "name": "No handle; push door to open",
+              "code": "No handle; push door to open"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_30_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - What kind of knob does the door to LEAVE the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "are_there_menstrual_supplies_in",
+        "type": "esriFieldTypeString",
+        "alias": "Are there menstrual supplies in the bathroom?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_there_menstrual_supplies_in",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "are_the_menstrual_supplies_free",
+        "type": "esriFieldTypeString",
+        "alias": "Are the menstrual supplies free?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_the_menstrual_supplies_free",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "what_type_of_menstrual_supplies",
+        "type": "esriFieldTypeString",
+        "alias": "What type of menstrual supplies are available?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_what_type_of_menstrual_supplies",
+          "codedValues": [
+            {
+              "name": "Pads",
+              "code": "Pads"
+            },
+            {
+              "name": "Tampons",
+              "code": "Tampons"
+            },
+            {
+              "name": "Both",
+              "code": "Both"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_bathroom_have_a_changi",
+        "type": "esriFieldTypeString",
+        "alias": "Does the bathroom have a changing table?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_bathroom_have_a_changi",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_bathroom_have_a_sharps",
+        "type": "esriFieldTypeString",
+        "alias": "Does the bathroom have a sharps container?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_bathroom_have_a_sharps",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "does_the_bathroom_feel_safe_to",
+        "type": "esriFieldTypeString",
+        "alias": "Does the bathroom feel safe to use?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_bathroom_feel_safe_to",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "any_additional_comments",
+        "type": "esriFieldTypeString",
+        "alias": "Any additional comments?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_stall_door_wide_enough",
+        "type": "esriFieldTypeString",
+        "alias": "Is the stall door wide enough?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_stall_door_wide_enough",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_37",
+        "type": "esriFieldTypeString",
+        "alias": "Give width in inches.",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "what_kind_of_latch_is_on_the_st",
+        "type": "esriFieldTypeString",
+        "alias": "What kind of latch is on the stall door?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_what_kind_of_latch_is_on_the_st",
+          "codedValues": [
+            {
+              "name": "Sliding latch",
+              "code": "Sliding latch"
+            },
+            {
+              "name": "Small turn knob",
+              "code": "Small turn knob"
+            },
+            {
+              "name": "Large turn knob with handle",
+              "code": "Large turn knob with handle"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "what_kind_of_latch_is_on__other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - What kind of latch is on the stall door?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "does_the_stall_door_close_by_it",
+        "type": "esriFieldTypeString",
+        "alias": "Does the stall door close by itself?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_does_the_stall_door_close_by_it",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_handle_on_the_inside",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a handle on the inside of the door to help pull it closed?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_handle_on_the_inside",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_space_to_bring_a_perso",
+        "type": "esriFieldTypeString",
+        "alias": "Is there space to bring a personal attendant to the stall?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_space_to_bring_a_perso",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "are_there_grab_bars_in_the_stal",
+        "type": "esriFieldTypeString",
+        "alias": "Are there grab bars in the stall?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_there_grab_bars_in_the_stal",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "how_many_grab_bars_are_present",
+        "type": "esriFieldTypeString",
+        "alias": "How many grab bars are present?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_how_many_grab_bars_are_present",
+          "codedValues": [
+            {
+              "name": "1",
+              "code": "1"
+            },
+            {
+              "name": "2",
+              "code": "2"
+            },
+            {
+              "name": "3",
+              "code": "3"
+            },
+            {
+              "name": "4+",
+              "code": "4+"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "location_of_grab_bars",
+        "type": "esriFieldTypeString",
+        "alias": "Location of grab bars?",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "location_of_grab_bars_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - Location of grab bars?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "facing_the_toilet_is_the_grab_b",
+        "type": "esriFieldTypeString",
+        "alias": "Facing the toilet, is the grab bar on the left side or the right side of the toilet?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_facing_the_toilet_is_the_grab_b",
+          "codedValues": [
+            {
+              "name": "Left",
+              "code": "Left"
+            },
+            {
+              "name": "Right",
+              "code": "Right"
+            },
+            {
+              "name": "Both sides",
+              "code": "Both sides"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_toilet_paper_holder_too",
+        "type": "esriFieldTypeString",
+        "alias": "Is the toilet paper holder too far from the toilet to reach without losing one’s balance?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_toilet_paper_holder_too",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "how_high_is_the_toilet_seat_in",
+        "type": "esriFieldTypeString",
+        "alias": "How high is the toilet seat in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "for_the_lowest_urinal_how_high",
+        "type": "esriFieldTypeString",
+        "alias": "For the lowest urinal, how high is the bottom of the urinal from the ground in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "how_high_is_the_handle_in_inche",
+        "type": "esriFieldTypeString",
+        "alias": "How high is the handle in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "if_a_multi_stall_bathroom_how_m",
+        "type": "esriFieldTypeString",
+        "alias": "If a multi-stall bathroom, how many stalls have ADA accessible features like grab bars, 32” stall door width, etc.?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_if_a_multi_stall_bathroom_how_m",
+          "codedValues": [
+            {
+              "name": "1",
+              "code": "1"
+            },
+            {
+              "name": "2",
+              "code": "2"
+            },
+            {
+              "name": "3",
+              "code": "3"
+            },
+            {
+              "name": "4",
+              "code": "4"
+            },
+            {
+              "name": "5+",
+              "code": "5+"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_soap_dispenser_at_ch",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a soap dispenser at chair height?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_soap_dispenser_at_ch",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "if_so_are_the_hot_water_pipes_w",
+        "type": "esriFieldTypeString",
+        "alias": "If so, are the hot water pipes wrapped to prevent burns?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_if_so_are_the_hot_water_pipes_w",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "what_kind_of_faucet_handles_doe",
+        "type": "esriFieldTypeString",
+        "alias": "What kind of faucet handles does the sink have?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_what_kind_of_faucet_handles_doe",
+          "codedValues": [
+            {
+              "name": "Lever",
+              "code": "Lever"
+            },
+            {
+              "name": "Separate turn knobs",
+              "code": "Separate turn knobs"
+            },
+            {
+              "name": "Automatic",
+              "code": "Automatic"
+            },
+            {
+              "name": "Other",
+              "code": "other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "what_kind_of_faucet_handl_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - What kind of faucet handles does the sink have?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "field_53",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a soap dispenser at chair height?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_field_53",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "if_not_what_is_the_height_of_th",
+        "type": "esriFieldTypeString",
+        "alias": "If not, what is the height of the soap dispenser in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_hand_dryer_or_paper",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a hand dryer or paper towel dispenser at chair height?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_hand_dryer_or_paper",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_60",
+        "type": "esriFieldTypeString",
+        "alias": "If not, what is the height of the hand dryer or towels dispenser in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "are_menstrual_supplies_at_chair",
+        "type": "esriFieldTypeString",
+        "alias": "Are menstrual supplies at chair height?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_are_menstrual_supplies_at_chair",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_62",
+        "type": "esriFieldTypeString",
+        "alias": "If not, what is the height of the menstrual supplies in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_a_mirror_at_chair_heig",
+        "type": "esriFieldTypeString",
+        "alias": "Is there a mirror at chair height?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_a_mirror_at_chair_heig",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "field_64",
+        "type": "esriFieldTypeString",
+        "alias": "If not, what is the height of the mirror in inches?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "is_there_an_audible_or_visual_f",
+        "type": "esriFieldTypeString",
+        "alias": "Is there an audible or visual fire alarm system?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_there_an_audible_or_visual_f",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_accessible_stall_marked",
+        "type": "esriFieldTypeString",
+        "alias": "Is the accessible stall marked as accessible?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_accessible_stall_marked",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "is_the_outer_bathroom_door_mark",
+        "type": "esriFieldTypeString",
+        "alias": "Is the outer bathroom door marked as accessible?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "cvd_is_the_outer_bathroom_door_mark",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "are_there_any_obstructions_in_f",
+        "type": "esriFieldTypeString",
+        "alias": "Are there any obstructions in front of the sink, the various dispensers, the accessible stall, the toilet, etc.? Please specify",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "field_69",
+        "type": "esriFieldTypeString",
+        "alias": "Any additional comments?",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "_10_what_kind_of_knob_does_the",
+        "type": "esriFieldTypeString",
+        "alias": "10. What kind of knob does the door to ENTER the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "_10_what_kind_of_knob_does_the_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - 10. What kind of knob does the door to ENTER the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      },
+      {
+        "name": "_11_what_kind_of_knob_does_the",
+        "type": "esriFieldTypeString",
+        "alias": "11. What kind of knob does the door to LEAVE the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "_11_what_kind_of_knob_does_the_other",
+        "type": "esriFieldTypeString",
+        "alias": "Other - 11. What kind of knob does the door to LEAVE the bathroom have? - Copy",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": ""
+      }
+    ],
+    "indexes": [
+      {
+        "name": "GlobalIDIndex",
+        "fields": "globalid",
+        "isAscending": false,
+        "isUnique": true,
+        "description": "GlobalID index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "survey123_50b2ba5a896c48e9ac15dcdc6f584974_SURVEY_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "PK__survey12__5242E63279F32967",
+        "fields": "objectid",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreationDateIndex",
+        "fields": "CreationDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "CreationDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreatorIndex",
+        "fields": "Creator",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Creator Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditDateIndex",
+        "fields": "EditDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "EditDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditorIndex",
+        "fields": "Editor",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Editor Field index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolNone",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Create,Delete,Query,Update,Editing,Extract,Sync"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "objectid": 9,
+        "globalid": "374bb7a8-9e0b-4666-89c2-e3a86e4849b0",
+        "location_of_building_city": null,
+        "building_name": "Ace Hardware",
+        "type_of_bathroom_select_one": null,
+        "does_this_location_have_a_bathr": "No",
+        "location_of_bathroom_ie_2nd_flo": "Example: 2nd Floor",
+        "does_the_bathroom_require_a_cod": null,
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": null,
+        "CreationDate": 1776269068214,
+        "Creator": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "EditDate": 1776269068214,
+        "Editor": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": null,
+        "are_there_double_doors_into_the": null,
+        "is_the_bathroom_single_user": null,
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": null,
+        "is_there_a_wastebin_in_the_stal": null,
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": null,
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": null,
+        "field_29_other": null,
+        "field_30": null,
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": null,
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": null,
+        "does_the_bathroom_have_a_sharps": null,
+        "does_the_bathroom_feel_safe_to": null,
+        "any_additional_comments": "No public bathrooms on site.",
+        "is_the_stall_door_wide_enough": null,
+        "field_37": null,
+        "what_kind_of_latch_is_on_the_st": null,
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": null,
+        "is_there_a_handle_on_the_inside": null,
+        "is_there_space_to_bring_a_perso": null,
+        "are_there_grab_bars_in_the_stal": null,
+        "how_many_grab_bars_are_present": null,
+        "location_of_grab_bars": null,
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": null,
+        "is_the_toilet_paper_holder_too": null,
+        "how_high_is_the_toilet_seat_in": null,
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": null,
+        "if_a_multi_stall_bathroom_how_m": null,
+        "is_there_a_soap_dispenser_at_ch": null,
+        "if_so_are_the_hot_water_pipes_w": null,
+        "what_kind_of_faucet_handles_doe": null,
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": null,
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": null,
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": null,
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": null,
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": null,
+        "is_the_accessible_stall_marked": null,
+        "is_the_outer_bathroom_door_mark": null,
+        "are_there_any_obstructions_in_f": null,
+        "field_69": "No public bathrooms on site.",
+        "_10_what_kind_of_knob_does_the": null,
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": null,
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 10,
+        "globalid": "07cc9d7f-61f7-41e9-8ab0-14493c5f91a7",
+        "location_of_building_city": null,
+        "building_name": "McDonald's",
+        "type_of_bathroom_select_one": "Men's",
+        "does_this_location_have_a_bathr": "Yes",
+        "location_of_bathroom_ie_2nd_flo": "1st floor, to the right.",
+        "does_the_bathroom_require_a_cod": "No",
+        "what_is_it_like_to_get_to_the_b": "Flat hallway with minimal turns.",
+        "is_the_door_into_the_bathroom_w": "Yes",
+        "CreationDate": 1776269479884,
+        "Creator": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "EditDate": 1776888941613,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": "36",
+        "are_there_double_doors_into_the": "No",
+        "is_the_bathroom_single_user": "No",
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": "Yes",
+        "is_there_a_wastebin_in_the_stal": "No",
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": "1",
+        "do_the_stalls_have_doors": "Yes",
+        "do_they_lock_securely": "Yes",
+        "are_the_gaps_in_the_stall_too_l": "No",
+        "field_29": "No handle; push door to open",
+        "field_29_other": null,
+        "field_30": "No handle; push door to open",
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": "No",
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": "Yes",
+        "does_the_bathroom_have_a_sharps": "No",
+        "does_the_bathroom_feel_safe_to": "Yes",
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": "Yes",
+        "field_37": "35",
+        "what_kind_of_latch_is_on_the_st": "Small turn knob",
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": "Yes",
+        "is_there_a_handle_on_the_inside": "Yes",
+        "is_there_space_to_bring_a_perso": "Yes",
+        "are_there_grab_bars_in_the_stal": "Yes",
+        "how_many_grab_bars_are_present": "3",
+        "location_of_grab_bars": "Side_wall,Rear_wall",
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": "Right",
+        "is_the_toilet_paper_holder_too": "No",
+        "how_high_is_the_toilet_seat_in": "18",
+        "for_the_lowest_urinal_how_high": "15",
+        "how_high_is_the_handle_in_inche": "40",
+        "if_a_multi_stall_bathroom_how_m": "1",
+        "is_there_a_soap_dispenser_at_ch": "Yes",
+        "if_so_are_the_hot_water_pipes_w": "No",
+        "what_kind_of_faucet_handles_doe": "Automatic",
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": "Yes",
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": "Yes",
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": "No",
+        "field_62": "No supplies",
+        "is_there_a_mirror_at_chair_heig": "Yes",
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": "Yes",
+        "is_the_accessible_stall_marked": "No",
+        "is_the_outer_bathroom_door_mark": "No",
+        "are_there_any_obstructions_in_f": "None",
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 11,
+        "globalid": "ada91abb-94a3-4f0d-851b-30a7261a489d",
+        "location_of_building_city": null,
+        "building_name": "McDonald's",
+        "type_of_bathroom_select_one": "Women's",
+        "does_this_location_have_a_bathr": "Yes",
+        "location_of_bathroom_ie_2nd_flo": "1st floor, to the right.",
+        "does_the_bathroom_require_a_cod": "No",
+        "what_is_it_like_to_get_to_the_b": "Flat hallway, minimal turns.",
+        "is_the_door_into_the_bathroom_w": "Yes",
+        "CreationDate": 1776269679483,
+        "Creator": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "EditDate": 1776888941613,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": "36",
+        "are_there_double_doors_into_the": "No",
+        "is_the_bathroom_single_user": "No",
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": "Yes",
+        "is_there_a_wastebin_in_the_stal": "Yes",
+        "if_yes_which_stalls": "Both stalls",
+        "how_many_stalls_are_there": "2",
+        "do_the_stalls_have_doors": "Yes",
+        "do_they_lock_securely": "Yes",
+        "are_the_gaps_in_the_stall_too_l": "No",
+        "field_29": "No handle; push door to open",
+        "field_29_other": null,
+        "field_30": "No handle; push door to open",
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": "No",
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": "Yes",
+        "does_the_bathroom_have_a_sharps": "No",
+        "does_the_bathroom_feel_safe_to": "Yes",
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": "Yes",
+        "field_37": "36",
+        "what_kind_of_latch_is_on_the_st": "Small turn knob",
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": "No",
+        "is_there_a_handle_on_the_inside": "Yes",
+        "is_there_space_to_bring_a_perso": "Yes",
+        "are_there_grab_bars_in_the_stal": "Yes",
+        "how_many_grab_bars_are_present": "3",
+        "location_of_grab_bars": "Side_wall,Rear_wall",
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": "Left",
+        "is_the_toilet_paper_holder_too": "No",
+        "how_high_is_the_toilet_seat_in": "19",
+        "for_the_lowest_urinal_how_high": "N/A",
+        "how_high_is_the_handle_in_inche": "N/A",
+        "if_a_multi_stall_bathroom_how_m": "1",
+        "is_there_a_soap_dispenser_at_ch": "Yes",
+        "if_so_are_the_hot_water_pipes_w": "No",
+        "what_kind_of_faucet_handles_doe": "Automatic",
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": "Yes",
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": "Yes",
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": "No",
+        "field_62": "No supplies.",
+        "is_there_a_mirror_at_chair_heig": "Yes",
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": "Yes",
+        "is_the_accessible_stall_marked": "No",
+        "is_the_outer_bathroom_door_mark": "No",
+        "are_there_any_obstructions_in_f": null,
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 12,
+        "globalid": "68eb2a8a-2ef4-4eea-8abb-89721a9505c3",
+        "location_of_building_city": null,
+        "building_name": "Artifacts",
+        "type_of_bathroom_select_one": null,
+        "does_this_location_have_a_bathr": "No",
+        "location_of_bathroom_ie_2nd_flo": "Example: 2nd Floor",
+        "does_the_bathroom_require_a_cod": null,
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": null,
+        "CreationDate": 1776269932154,
+        "Creator": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "EditDate": 1776269932154,
+        "Editor": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": null,
+        "are_there_double_doors_into_the": null,
+        "is_the_bathroom_single_user": null,
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": null,
+        "is_there_a_wastebin_in_the_stal": null,
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": null,
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": null,
+        "field_29_other": null,
+        "field_30": null,
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": null,
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": null,
+        "does_the_bathroom_have_a_sharps": null,
+        "does_the_bathroom_feel_safe_to": null,
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": null,
+        "field_37": null,
+        "what_kind_of_latch_is_on_the_st": null,
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": null,
+        "is_there_a_handle_on_the_inside": null,
+        "is_there_space_to_bring_a_perso": null,
+        "are_there_grab_bars_in_the_stal": null,
+        "how_many_grab_bars_are_present": null,
+        "location_of_grab_bars": null,
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": null,
+        "is_the_toilet_paper_holder_too": null,
+        "how_high_is_the_toilet_seat_in": null,
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": null,
+        "if_a_multi_stall_bathroom_how_m": null,
+        "is_there_a_soap_dispenser_at_ch": null,
+        "if_so_are_the_hot_water_pipes_w": null,
+        "what_kind_of_faucet_handles_doe": null,
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": null,
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": null,
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": null,
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": null,
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": null,
+        "is_the_accessible_stall_marked": null,
+        "is_the_outer_bathroom_door_mark": null,
+        "are_there_any_obstructions_in_f": null,
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": null,
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": null,
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 13,
+        "globalid": "9e9a9aa8-aa11-4e15-8ed0-88bd2b4aa1b3",
+        "location_of_building_city": null,
+        "building_name": "The Second Act",
+        "type_of_bathroom_select_one": null,
+        "does_this_location_have_a_bathr": "No",
+        "location_of_bathroom_ie_2nd_flo": "Example: 2nd Floor",
+        "does_the_bathroom_require_a_cod": null,
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": null,
+        "CreationDate": 1776269965001,
+        "Creator": "ssintern2@johnsoncountyiowa.gov_johnsoncounty",
+        "EditDate": 1776888444017,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": null,
+        "are_there_double_doors_into_the": null,
+        "is_the_bathroom_single_user": null,
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": null,
+        "is_there_a_wastebin_in_the_stal": null,
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": null,
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": null,
+        "field_29_other": null,
+        "field_30": null,
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": null,
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": null,
+        "does_the_bathroom_have_a_sharps": null,
+        "does_the_bathroom_feel_safe_to": null,
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": null,
+        "field_37": null,
+        "what_kind_of_latch_is_on_the_st": null,
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": null,
+        "is_there_a_handle_on_the_inside": null,
+        "is_there_space_to_bring_a_perso": null,
+        "are_there_grab_bars_in_the_stal": null,
+        "how_many_grab_bars_are_present": null,
+        "location_of_grab_bars": null,
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": null,
+        "is_the_toilet_paper_holder_too": null,
+        "how_high_is_the_toilet_seat_in": null,
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": null,
+        "if_a_multi_stall_bathroom_how_m": null,
+        "is_there_a_soap_dispenser_at_ch": null,
+        "if_so_are_the_hot_water_pipes_w": null,
+        "what_kind_of_faucet_handles_doe": null,
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": null,
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": null,
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": null,
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": null,
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": null,
+        "is_the_accessible_stall_marked": null,
+        "is_the_outer_bathroom_door_mark": null,
+        "are_there_any_obstructions_in_f": null,
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": null,
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": null,
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 14,
+        "globalid": "64737059-999b-4d8b-81c2-47e73168dd6e",
+        "location_of_building_city": null,
+        "building_name": "Java House Downtown",
+        "type_of_bathroom_select_one": "Men's",
+        "does_this_location_have_a_bathr": "Yes",
+        "location_of_bathroom_ie_2nd_flo": "1st floor",
+        "does_the_bathroom_require_a_cod": "No",
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": "Yes",
+        "CreationDate": 1776439560425,
+        "Creator": "",
+        "EditDate": 1776888941613,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": "36",
+        "are_there_double_doors_into_the": "No",
+        "is_the_bathroom_single_user": "No",
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": "Yes",
+        "is_there_a_wastebin_in_the_stal": "Yes",
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": "1",
+        "do_the_stalls_have_doors": "Yes",
+        "do_they_lock_securely": "Yes",
+        "are_the_gaps_in_the_stall_too_l": "No",
+        "field_29": "No handle; push door to open",
+        "field_29_other": null,
+        "field_30": "Pull bar/handle",
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": "No",
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": "No",
+        "does_the_bathroom_have_a_sharps": "No",
+        "does_the_bathroom_feel_safe_to": "Yes",
+        "any_additional_comments": "Loud music in bathroom",
+        "is_the_stall_door_wide_enough": "Yes",
+        "field_37": "36",
+        "what_kind_of_latch_is_on_the_st": "Sliding latch",
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": "Yes",
+        "is_there_a_handle_on_the_inside": "Yes",
+        "is_there_space_to_bring_a_perso": "Yes",
+        "are_there_grab_bars_in_the_stal": "Yes",
+        "how_many_grab_bars_are_present": "2",
+        "location_of_grab_bars": "Side_wall,Rear_wall",
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": "Left",
+        "is_the_toilet_paper_holder_too": "No",
+        "how_high_is_the_toilet_seat_in": "18",
+        "for_the_lowest_urinal_how_high": "13",
+        "how_high_is_the_handle_in_inche": "Automatic ",
+        "if_a_multi_stall_bathroom_how_m": "1",
+        "is_there_a_soap_dispenser_at_ch": "Yes",
+        "if_so_are_the_hot_water_pipes_w": "No",
+        "what_kind_of_faucet_handles_doe": "Automatic",
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": "No",
+        "if_not_what_is_the_height_of_th": "47",
+        "is_there_a_hand_dryer_or_paper": "Yes",
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": "No",
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": "Yes",
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": "Yes",
+        "is_the_accessible_stall_marked": "No",
+        "is_the_outer_bathroom_door_mark": "No",
+        "are_there_any_obstructions_in_f": "Wet floor sign to the left of the sinks. ",
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": "Pull bar/handle",
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 15,
+        "globalid": "325e06e6-470c-48f1-89f4-f091cca72910",
+        "location_of_building_city": null,
+        "building_name": "The Java House - Washington",
+        "type_of_bathroom_select_one": "Women's",
+        "does_this_location_have_a_bathr": "Yes",
+        "location_of_bathroom_ie_2nd_flo": "Back of the building",
+        "does_the_bathroom_require_a_cod": "No",
+        "what_is_it_like_to_get_to_the_b": "Walk through tables to the back. Push open door.",
+        "is_the_door_into_the_bathroom_w": "Yes",
+        "CreationDate": 1776439944050,
+        "Creator": "",
+        "EditDate": 1776888941613,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": "35.5",
+        "are_there_double_doors_into_the": "No",
+        "is_the_bathroom_single_user": "No",
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": "Yes",
+        "is_there_a_wastebin_in_the_stal": "Yes",
+        "if_yes_which_stalls": "All stalls",
+        "how_many_stalls_are_there": "3",
+        "do_the_stalls_have_doors": "Yes",
+        "do_they_lock_securely": "Yes",
+        "are_the_gaps_in_the_stall_too_l": "No",
+        "field_29": "No handle; push door to open",
+        "field_29_other": null,
+        "field_30": "Vertical handle",
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": "No",
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": "Yes",
+        "does_the_bathroom_have_a_sharps": "No",
+        "does_the_bathroom_feel_safe_to": "Yes",
+        "any_additional_comments": "Some stall doors are hard to open and close",
+        "is_the_stall_door_wide_enough": "Yes",
+        "field_37": "34",
+        "what_kind_of_latch_is_on_the_st": "Sliding latch",
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": "Yes",
+        "is_there_a_handle_on_the_inside": "No",
+        "is_there_space_to_bring_a_perso": "Yes",
+        "are_there_grab_bars_in_the_stal": "Yes",
+        "how_many_grab_bars_are_present": "2",
+        "location_of_grab_bars": "Side_wall,Rear_wall",
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": "Right",
+        "is_the_toilet_paper_holder_too": "No",
+        "how_high_is_the_toilet_seat_in": "18",
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": "36",
+        "if_a_multi_stall_bathroom_how_m": "1",
+        "is_there_a_soap_dispenser_at_ch": "Yes",
+        "if_so_are_the_hot_water_pipes_w": "Yes",
+        "what_kind_of_faucet_handles_doe": "Automatic",
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": "No",
+        "if_not_what_is_the_height_of_th": "48",
+        "is_there_a_hand_dryer_or_paper": "Yes",
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": "No",
+        "field_62": "N/a",
+        "is_there_a_mirror_at_chair_heig": "Yes",
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": "Yes",
+        "is_the_accessible_stall_marked": "No",
+        "is_the_outer_bathroom_door_mark": "Yes",
+        "are_there_any_obstructions_in_f": "No",
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": "Vertical handle",
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 16,
+        "globalid": "1cd4b41d-603a-415e-82dc-270e8300a9e9",
+        "location_of_building_city": null,
+        "building_name": "Mosaic Iowa City",
+        "type_of_bathroom_select_one": null,
+        "does_this_location_have_a_bathr": "No",
+        "location_of_bathroom_ie_2nd_flo": "Example: 2nd Floor",
+        "does_the_bathroom_require_a_cod": null,
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": null,
+        "CreationDate": 1776440208434,
+        "Creator": "",
+        "EditDate": 1776440208434,
+        "Editor": "",
+        "give_width_in_inches": null,
+        "are_there_double_doors_into_the": null,
+        "is_the_bathroom_single_user": null,
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": null,
+        "is_there_a_wastebin_in_the_stal": null,
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": null,
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": null,
+        "field_29_other": null,
+        "field_30": null,
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": null,
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": null,
+        "does_the_bathroom_have_a_sharps": null,
+        "does_the_bathroom_feel_safe_to": null,
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": null,
+        "field_37": null,
+        "what_kind_of_latch_is_on_the_st": null,
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": null,
+        "is_there_a_handle_on_the_inside": null,
+        "is_there_space_to_bring_a_perso": null,
+        "are_there_grab_bars_in_the_stal": null,
+        "how_many_grab_bars_are_present": null,
+        "location_of_grab_bars": null,
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": null,
+        "is_the_toilet_paper_holder_too": null,
+        "how_high_is_the_toilet_seat_in": null,
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": null,
+        "if_a_multi_stall_bathroom_how_m": null,
+        "is_there_a_soap_dispenser_at_ch": null,
+        "if_so_are_the_hot_water_pipes_w": null,
+        "what_kind_of_faucet_handles_doe": null,
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": null,
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": null,
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": null,
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": null,
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": null,
+        "is_the_accessible_stall_marked": null,
+        "is_the_outer_bathroom_door_mark": null,
+        "are_there_any_obstructions_in_f": null,
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": null,
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": null,
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 17,
+        "globalid": "9d2ccbbc-2cca-4111-8d29-b1d2bac205eb",
+        "location_of_building_city": null,
+        "building_name": "The Dandylion",
+        "type_of_bathroom_select_one": "Unisex/Gender Neutral",
+        "does_this_location_have_a_bathr": "Yes",
+        "location_of_bathroom_ie_2nd_flo": "Back of the building",
+        "does_the_bathroom_require_a_cod": "No",
+        "what_is_it_like_to_get_to_the_b": "Walk past some tables to the back of the restaurant",
+        "is_the_door_into_the_bathroom_w": "Yes",
+        "CreationDate": 1776440672520,
+        "Creator": "",
+        "EditDate": 1776888941613,
+        "Editor": "rhavel@johnsoncountyiowa.gov_johnsoncounty",
+        "give_width_in_inches": "34.5",
+        "are_there_double_doors_into_the": "No",
+        "is_the_bathroom_single_user": "Yes",
+        "does_the_door_to_the_bathroom_l": "Yes",
+        "does_the_lock_work_securely": "Yes",
+        "is_there_a_wastebin_in_the_bath": "Yes",
+        "is_there_a_wastebin_in_the_stal": "No",
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": "0",
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": "Vertical handle",
+        "field_29_other": null,
+        "field_30": "No handle; push door to open",
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": "No",
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": "No",
+        "does_the_bathroom_have_a_sharps": "No",
+        "does_the_bathroom_feel_safe_to": "Yes",
+        "any_additional_comments": "There is a table that could be used for changing but is not an official changing table",
+        "is_the_stall_door_wide_enough": "Yes",
+        "field_37": "34.5",
+        "what_kind_of_latch_is_on_the_st": "other",
+        "what_kind_of_latch_is_on__other": "No stalls",
+        "does_the_stall_door_close_by_it": "Yes",
+        "is_there_a_handle_on_the_inside": "No",
+        "is_there_space_to_bring_a_perso": "Yes",
+        "are_there_grab_bars_in_the_stal": "Yes",
+        "how_many_grab_bars_are_present": "3",
+        "location_of_grab_bars": "Side_wall,Rear_wall",
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": "Right",
+        "is_the_toilet_paper_holder_too": "No",
+        "how_high_is_the_toilet_seat_in": "17",
+        "for_the_lowest_urinal_how_high": "N/A",
+        "how_high_is_the_handle_in_inche": "34",
+        "if_a_multi_stall_bathroom_how_m": "1",
+        "is_there_a_soap_dispenser_at_ch": "Yes",
+        "if_so_are_the_hot_water_pipes_w": "Yes",
+        "what_kind_of_faucet_handles_doe": "Lever",
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": "No",
+        "if_not_what_is_the_height_of_th": "40",
+        "is_there_a_hand_dryer_or_paper": "No",
+        "field_60": "54",
+        "are_menstrual_supplies_at_chair": "No",
+        "field_62": "N/A",
+        "is_there_a_mirror_at_chair_heig": "No",
+        "field_64": "46",
+        "is_there_an_audible_or_visual_f": "Yes",
+        "is_the_accessible_stall_marked": "Yes",
+        "is_the_outer_bathroom_door_mark": "Yes",
+        "are_there_any_obstructions_in_f": "No",
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": "Vertical handle",
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": "No handle; push door to open",
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    },
+    {
+      "attributes": {
+        "objectid": 18,
+        "globalid": "20dde796-5313-41bd-8e20-a1b2cc32d72e",
+        "location_of_building_city": null,
+        "building_name": "Pitaya ",
+        "type_of_bathroom_select_one": null,
+        "does_this_location_have_a_bathr": "No",
+        "location_of_bathroom_ie_2nd_flo": "Example: 2nd Floor",
+        "does_the_bathroom_require_a_cod": null,
+        "what_is_it_like_to_get_to_the_b": null,
+        "is_the_door_into_the_bathroom_w": null,
+        "CreationDate": 1776441056499,
+        "Creator": "",
+        "EditDate": 1776441056499,
+        "Editor": "",
+        "give_width_in_inches": null,
+        "are_there_double_doors_into_the": null,
+        "is_the_bathroom_single_user": null,
+        "does_the_door_to_the_bathroom_l": null,
+        "does_the_lock_work_securely": null,
+        "is_there_a_wastebin_in_the_bath": null,
+        "is_there_a_wastebin_in_the_stal": null,
+        "if_yes_which_stalls": null,
+        "how_many_stalls_are_there": null,
+        "do_the_stalls_have_doors": null,
+        "do_they_lock_securely": null,
+        "are_the_gaps_in_the_stall_too_l": null,
+        "field_29": null,
+        "field_29_other": null,
+        "field_30": null,
+        "field_30_other": null,
+        "are_there_menstrual_supplies_in": null,
+        "are_the_menstrual_supplies_free": null,
+        "what_type_of_menstrual_supplies": null,
+        "does_the_bathroom_have_a_changi": null,
+        "does_the_bathroom_have_a_sharps": null,
+        "does_the_bathroom_feel_safe_to": null,
+        "any_additional_comments": null,
+        "is_the_stall_door_wide_enough": null,
+        "field_37": null,
+        "what_kind_of_latch_is_on_the_st": null,
+        "what_kind_of_latch_is_on__other": null,
+        "does_the_stall_door_close_by_it": null,
+        "is_there_a_handle_on_the_inside": null,
+        "is_there_space_to_bring_a_perso": null,
+        "are_there_grab_bars_in_the_stal": null,
+        "how_many_grab_bars_are_present": null,
+        "location_of_grab_bars": null,
+        "location_of_grab_bars_other": null,
+        "facing_the_toilet_is_the_grab_b": null,
+        "is_the_toilet_paper_holder_too": null,
+        "how_high_is_the_toilet_seat_in": null,
+        "for_the_lowest_urinal_how_high": null,
+        "how_high_is_the_handle_in_inche": null,
+        "if_a_multi_stall_bathroom_how_m": null,
+        "is_there_a_soap_dispenser_at_ch": null,
+        "if_so_are_the_hot_water_pipes_w": null,
+        "what_kind_of_faucet_handles_doe": null,
+        "what_kind_of_faucet_handl_other": null,
+        "field_53": null,
+        "if_not_what_is_the_height_of_th": null,
+        "is_there_a_hand_dryer_or_paper": null,
+        "field_60": null,
+        "are_menstrual_supplies_at_chair": null,
+        "field_62": null,
+        "is_there_a_mirror_at_chair_heig": null,
+        "field_64": null,
+        "is_there_an_audible_or_visual_f": null,
+        "is_the_accessible_stall_marked": null,
+        "is_the_outer_bathroom_door_mark": null,
+        "are_there_any_obstructions_in_f": null,
+        "field_69": null,
+        "_10_what_kind_of_knob_does_the": null,
+        "_10_what_kind_of_knob_does_the_other": null,
+        "_11_what_kind_of_knob_does_the": null,
+        "_11_what_kind_of_knob_does_the_other": null
+      }
+    }
+  ]
+}

@@ -9,6 +9,7 @@ export interface JsonObject {
 export type PublicImportSkipReason =
   | 'missing_point_geometry'
   | 'missing_name'
+  | 'not_restroom'
   | 'not_active_lifecycle'
   | 'not_public'
   | 'not_open';
@@ -156,6 +157,7 @@ const DEFAULT_ACCESSIBILITY_FEATURES: AccessibilityFeatures = {
 const SKIP_REASONS: PublicImportSkipReason[] = [
   'missing_point_geometry',
   'missing_name',
+  'not_restroom',
   'not_active_lifecycle',
   'not_public',
   'not_open',
@@ -165,6 +167,7 @@ function buildEmptySkipCounts(): Record<PublicImportSkipReason, number> {
   return {
     missing_point_geometry: 0,
     missing_name: 0,
+    not_restroom: 0,
     not_active_lifecycle: 0,
     not_public: 0,
     not_open: 0,

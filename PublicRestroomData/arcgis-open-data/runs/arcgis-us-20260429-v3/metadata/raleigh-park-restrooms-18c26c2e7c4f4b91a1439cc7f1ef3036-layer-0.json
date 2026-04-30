@@ -1,0 +1,2489 @@
+{
+  "item": {
+    "id": "18c26c2e7c4f4b91a1439cc7f1ef3036",
+    "owner": "RaleighPRCR",
+    "created": 1718022022000,
+    "modified": 1760100632000,
+    "guid": null,
+    "name": "Raleigh_Park_Restrooms",
+    "title": "Raleigh Park Restrooms",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS API for JavaScript",
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Service",
+      "Singlelayer",
+      "Hosted Service",
+      "View Service"
+    ],
+    "description": "<p>This dataset provides a spatial representation of&nbsp;<strong>comfort stations (restrooms)</strong>&nbsp;within City of Raleigh Parks and Greenways. Each feature is represented as a non-survey grade point feature. This dataset is suitable for cartographic representation and as an input for further analysis.&nbsp;</p><p>This layer is a hosted view of the RaleighPRCR <a target='_blank' href='https://ral.maps.arcgis.com/home/item.html?id=945e256ea92140bd8f25913b1f1f7b18' rel='nofollow ugc noopener noreferrer'>Raleigh Park Asset_MASTER</a></p>",
+    "tags": [
+      "restrooms",
+      "comfort stations",
+      "parks",
+      "Parks and Recreation"
+    ],
+    "snippet": "A public read-only view of the Raleigh Park Assets master layer filtered to show restrooms/comfort stations. ",
+    "thumbnail": "thumbnail/thumbnail1729087213972.png",
+    "documentation": null,
+    "extent": [
+      [
+        -78.8084626666845,
+        35.69200624827196
+      ],
+      [
+        -78.35182812922457,
+        35.966893813133225
+      ]
+    ],
+    "categories": [
+      "/Categories/People/Public safety",
+      "/Categories/Parks and Recreation"
+    ],
+    "spatialReference": "103122",
+    "accessInformation": "City of Raleigh Parks, Recreation and Cultural Resources",
+    "classification": null,
+    "licenseInfo": "<p style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1.5rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'>THE CITY OF RALEIGH MAKES NO REPRESENTATIONS OR WARRANTY AS TO THE COMPLETENESS, ACCURACY, TIMELINESS, OR CONTENT OF ANY DATA MADE AVAILABLE THROUGH THIS SITE. THE CITY OF RALEIGH EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.&nbsp;</p><p style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1.5rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'><strong>Right to Modify and/or Discontinue Feeds</strong></p><p style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1.5rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'>The City of Raleigh reserves the right to modify and/or discontinue providing any or all of the data feeds at any time and to require the termination of any and all displaying, distributing or otherwise using any or all of the data for any reason including, without limitation, violation of any provision of these Terms of Use.</p><p style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1.5rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'><strong>Terms of Use and Moderation Disclaimer</strong></p><p style='background-color:rgb(255, 255, 255); border:0px solid currentcolor; box-sizing:border-box; color:rgb(74, 74, 74); font-family:&quot;Avenir Next&quot;, Avenir, &quot;Helvetica Neue&quot;, sans-serif; font-size:16px; font-style:normal; font-variant-caps:normal; font-variant-ligatures:normal; font-weight:400; letter-spacing:normal; margin:0px 0px 1.5rem; text-align:start; text-decoration-color:initial; text-decoration-style:initial; text-indent:0px; text-transform:none; word-spacing:0px;'>Communications made through data.raleighnc.gov will in no way constitute a legal or official notice to the City of Raleigh or its departments or any official or employee of the City of Raleigh for any purpose. Use of the data.raleighnc.gov website constitutes acceptance of this policy. Any information posted here may be considered a public record and may be subject to disclosure to third parties. The City reserves the right to amend these terms of service at any time and without further notice.</p>",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Raleigh_Park_Restrooms/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 67599,
+    "contentStatus": "deprecated",
+    "scoreCompleteness": 96,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777518000000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Raleigh Park Restrooms",
+    "type": "Feature Layer",
+    "serviceItemId": "18c26c2e7c4f4b91a1439cc7f1ef3036",
+    "cacheMaxAge": 30,
+    "isView": true,
+    "isUpdatableView": true,
+    "sourceSchemaChangesAllowed": true,
+    "displayField": "LOCATIONNAME",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1771254627900,
+      "schemaLastEditDate": 1770041000125,
+      "dataLastEditDate": 1771254627900
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": true,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 2046025.1863494087,
+      "ymin": 707351.6323653562,
+      "xmax": 2159447.8724220693,
+      "ymax": 830892.4871243965,
+      "spatialReference": {
+        "wkid": 103122,
+        "latestWkid": 6543
+      }
+    },
+    "spatialReference": {
+      "wkid": 103122,
+      "latestWkid": 6543
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSMS",
+          "style": "esriSMSCircle",
+          "color": [
+            147,
+            78,
+            45,
+            255
+          ],
+          "size": 4,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "outline": {
+            "color": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "width": 0.7
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "viewSourceHasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": true,
+    "enableZDefaults": true,
+    "zDefault": 0,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GlobalID",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATIONNAME",
+        "type": "esriFieldTypeString",
+        "alias": "Location Name",
+        "sqlType": "sqlTypeOther",
+        "length": 100,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "LOCATIONNAME",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "310 W Martin St",
+              "code": "310 W Martin"
+            },
+            {
+              "name": "3602 Woodlea Dr",
+              "code": "3602 Woodlea Dr"
+            },
+            {
+              "name": "3800 Rock Quarry Road",
+              "code": "3800 Rock Quarry Road"
+            },
+            {
+              "name": "Abbotts Creek",
+              "code": "Abbotts Creek"
+            },
+            {
+              "name": "Abbotts Creek Greenway Trail",
+              "code": "Abbotts Creek Greenway Trail"
+            },
+            {
+              "name": "Alvis Farm",
+              "code": "Alvis Farm"
+            },
+            {
+              "name": "Anderson Point",
+              "code": "Anderson Point"
+            },
+            {
+              "name": "Annie Louise Wilkerson, MD Nature Preserve",
+              "code": "Annie Louise Wilkerson, MD Nature Preserve"
+            },
+            {
+              "name": "Apollo Heights",
+              "code": "Apollo Heights"
+            },
+            {
+              "name": "Avent Ferry Rd",
+              "code": "Avent Ferry Rd"
+            },
+            {
+              "name": "Baileywick",
+              "code": "Baileywick"
+            },
+            {
+              "name": "Baileywick Greenway Trail",
+              "code": "Baileywick Greenway Trail"
+            },
+            {
+              "name": "Barmettler",
+              "code": "Barmettler"
+            },
+            {
+              "name": "Barwell Road",
+              "code": "Barwell Road"
+            },
+            {
+              "name": "Beaver Dam Greenway Trail",
+              "code": "Beaver Dam Greenway Trail"
+            },
+            {
+              "name": "Beckana",
+              "code": "Beckana"
+            },
+            {
+              "name": "Berkshire Downs West",
+              "code": "Berkshire Downs West"
+            },
+            {
+              "name": "Biltmore Hills",
+              "code": "Biltmore Hills"
+            },
+            {
+              "name": "Birch Ridge Greenway Connector",
+              "code": "Birch Ridge Greenway Connector"
+            },
+            {
+              "name": "Bragg Street",
+              "code": "Bragg Street"
+            },
+            {
+              "name": "Brentwood",
+              "code": "Brentwood"
+            },
+            {
+              "name": "Brier Creek",
+              "code": "Brier Creek"
+            },
+            {
+              "name": "Brookhaven",
+              "code": "Brookhaven"
+            },
+            {
+              "name": "Buck Jones",
+              "code": "Buck Jones"
+            },
+            {
+              "name": "Buffaloe Road Athletic",
+              "code": "Buffaloe Road Athletic"
+            },
+            {
+              "name": "Canoe Launch at Falls Lake",
+              "code": "Canoe Launch at Falls Lake"
+            },
+            {
+              "name": "Caraleigh",
+              "code": "Caraleigh"
+            },
+            {
+              "name": "Carolina Pines",
+              "code": "Carolina Pines"
+            },
+            {
+              "name": "Cedar Hills",
+              "code": "Cedar Hills"
+            },
+            {
+              "name": "Centennial Bikeway Trail Connector",
+              "code": "Centennial Bikeway Connector"
+            },
+            {
+              "name": "Chamberlain",
+              "code": "Chamberlain"
+            },
+            {
+              "name": "Charlotte H Green",
+              "code": "Charlotte H Green"
+            },
+            {
+              "name": "Chatham & Stevens",
+              "code": "Chatham & Stevens"
+            },
+            {
+              "name": "Chavis Way",
+              "code": "Chavis Way"
+            },
+            {
+              "name": "Chester & Oberlin",
+              "code": "Chester & Oberlin"
+            },
+            {
+              "name": "City Cemetery",
+              "code": "City Cemetery"
+            },
+            {
+              "name": "City Plaza",
+              "code": "City Plaza"
+            },
+            {
+              "name": "City of Raleigh Museum",
+              "code": "City of Raleigh Museum"
+            },
+            {
+              "name": "Civic Center Parking Lot",
+              "code": "Civic Center Parking Lot"
+            },
+            {
+              "name": "Claremont",
+              "code": "Claremont"
+            },
+            {
+              "name": "Compiegne",
+              "code": "Compiegne"
+            },
+            {
+              "name": "Convention Center",
+              "code": "Convention Center"
+            },
+            {
+              "name": "Cowper Drive Median",
+              "code": "Cowper Drive Median"
+            },
+            {
+              "name": "Crabtree Creek Greenway Trail",
+              "code": "Crabtree Creek Greenway Trail"
+            },
+            {
+              "name": "Culpepper Circle",
+              "code": "Culpepper Circle"
+            },
+            {
+              "name": "Dacian",
+              "code": "Dacian"
+            },
+            {
+              "name": "Davie Street",
+              "code": "Davie Street"
+            },
+            {
+              "name": "Dixon",
+              "code": "Dixon"
+            },
+            {
+              "name": "Dogwood",
+              "code": "Dogwood"
+            },
+            {
+              "name": "Dorothea Dix Park",
+              "code": "Dorothea Dix Park"
+            },
+            {
+              "name": "Drewry Hills",
+              "code": "Drewry Hills"
+            },
+            {
+              "name": "Drewry Hills #2",
+              "code": "Drewry Hills #2"
+            },
+            {
+              "name": "Durant Annex",
+              "code": "Durant Annex"
+            },
+            {
+              "name": "Durant Nature",
+              "code": "Durant Nature"
+            },
+            {
+              "name": "East & West Gardner Street",
+              "code": "East & West Gardner Street"
+            },
+            {
+              "name": "East Fork Mine Creek Greenway Trail",
+              "code": "East Fork Mine Creek Greenway Trail"
+            },
+            {
+              "name": "Eastgate",
+              "code": "Eastgate"
+            },
+            {
+              "name": "Edna Metz Wells",
+              "code": "Edna Metz Wells"
+            },
+            {
+              "name": "Edwards Mill  Greenway Connector",
+              "code": "Edwards Mill  Greenway Connector"
+            },
+            {
+              "name": "Eliza Pool",
+              "code": "Eliza Pool"
+            },
+            {
+              "name": "Erinsbrook Drive Property",
+              "code": "Erinsbrook Drive Property"
+            },
+            {
+              "name": "Exchange Plaza",
+              "code": "Exchange Plaza"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 10",
+              "code": "FEMA HMGP Phase 1 - 10"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 1a",
+              "code": "FEMA HMGP Phase 1 - 1a"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 1b",
+              "code": "FEMA HMGP Phase 1 - 1b"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 2",
+              "code": "FEMA HMGP Phase 1 - 2"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 3 Ann St",
+              "code": "FEMA HMGP Phase 1 - 3 Ann St"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 3 Nobel",
+              "code": "FEMA HMGP Phase 1 - 3 Nobel"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 3a",
+              "code": "FEMA HMGP Phase 1 - 3a"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 3b",
+              "code": "FEMA HMGP Phase 1 - 3b"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 3c",
+              "code": "FEMA HMGP Phase 1 - 3c"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 4a",
+              "code": "FEMA HMGP Phase 1 - 4a"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 4b",
+              "code": "FEMA HMGP Phase 1 - 4b"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 5",
+              "code": "FEMA HMGP Phase 1 - 5"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 6",
+              "code": "FEMA HMGP Phase 1 - 6"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 7",
+              "code": "FEMA HMGP Phase 1 - 7"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 8",
+              "code": "FEMA HMGP Phase 1 - 8"
+            },
+            {
+              "name": "FEMA HMGP Phase 1 - 9",
+              "code": "FEMA HMGP Phase 1 - 9"
+            },
+            {
+              "name": "FEMA HMGP Phase 3 - 1",
+              "code": "FEMA HMGP Phase 3 - 1"
+            },
+            {
+              "name": "FEMA HMGP Phase 3 - 2",
+              "code": "FEMA HMGP Phase 3 - 2"
+            },
+            {
+              "name": "Fallon",
+              "code": "Fallon"
+            },
+            {
+              "name": "Fayetteville St",
+              "code": "Fayetteville St"
+            },
+            {
+              "name": "Fenton",
+              "code": "Fenton"
+            },
+            {
+              "name": "Fisher Street",
+              "code": "Fisher Street"
+            },
+            {
+              "name": "Five Points Center for Active Adults",
+              "code": "Five Points Center for Active Adults"
+            },
+            {
+              "name": "Forest",
+              "code": "Forest"
+            },
+            {
+              "name": "Forest Ridge",
+              "code": "Forest Ridge"
+            },
+            {
+              "name": "Forestville Road Property",
+              "code": "Forestville Road Property"
+            },
+            {
+              "name": "Fred Fletcher",
+              "code": "Fred Fletcher"
+            },
+            {
+              "name": "Furches",
+              "code": "Furches"
+            },
+            {
+              "name": "Gardner Street Greenway Trail",
+              "code": "Gardner Street Greenway Trail"
+            },
+            {
+              "name": "Glen Eden",
+              "code": "Glen Eden"
+            },
+            {
+              "name": "Glenwood & Wake",
+              "code": "Glenwood & Wake"
+            },
+            {
+              "name": "Green Road",
+              "code": "Green Road"
+            },
+            {
+              "name": "Greystone Recreation Center",
+              "code": "Greystone Recreation Center"
+            },
+            {
+              "name": "Halifax",
+              "code": "Halifax"
+            },
+            {
+              "name": "Hare Snipe Creek Greenway Trail",
+              "code": "Hare Snipe Creek Greenway Trail"
+            },
+            {
+              "name": "Hertford Village",
+              "code": "Hertford Village"
+            },
+            {
+              "name": "Highhill Road Property",
+              "code": "Highhill Road Property"
+            },
+            {
+              "name": "Hill Street",
+              "code": "Hill Street"
+            },
+            {
+              "name": "Hodges Mill Creek Property",
+              "code": "Hodges Mill Creek Property"
+            },
+            {
+              "name": "Honeycutt",
+              "code": "Honeycutt"
+            },
+            {
+              "name": "Honeycutt Creek Greenway Trail",
+              "code": "Honeycutt Creek Greenway Trail"
+            },
+            {
+              "name": "Horseshoe Farm",
+              "code": "Horseshoe Farm"
+            },
+            {
+              "name": "House Creek Greenway Trail",
+              "code": "House Creek Greenway Trail"
+            },
+            {
+              "name": "Hwy 50 - Beaverdam",
+              "code": "Hwy 50 - Beaverdam"
+            },
+            {
+              "name": "Hymettus Woods",
+              "code": "Hymettus Woods"
+            },
+            {
+              "name": "Idolbrook",
+              "code": "Idolbrook"
+            },
+            {
+              "name": "Isabella Cannon",
+              "code": "Isabella Cannon"
+            },
+            {
+              "name": "Jackson",
+              "code": "Jackson"
+            },
+            {
+              "name": "Jaycee",
+              "code": "Jaycee"
+            },
+            {
+              "name": "John Chavis Memorial Park",
+              "code": "John Chavis Memorial Park"
+            },
+            {
+              "name": "John P Top Greene",
+              "code": "John P Top Greene"
+            },
+            {
+              "name": "John Winters",
+              "code": "John Winters"
+            },
+            {
+              "name": "Joslin Garden",
+              "code": "Joslin Garden"
+            },
+            {
+              "name": "Junious N. Sorrell",
+              "code": "Junious N. Sorrell"
+            },
+            {
+              "name": "Kaplan",
+              "code": "Kaplan"
+            },
+            {
+              "name": "Kentwood",
+              "code": "Kentwood"
+            },
+            {
+              "name": "Kimbrough",
+              "code": "Kimbrough"
+            },
+            {
+              "name": "King Charles & Bertie",
+              "code": "King Charles & Bertie"
+            },
+            {
+              "name": "King William",
+              "code": "King William"
+            },
+            {
+              "name": "Kingwood Forest",
+              "code": "Kingwood Forest"
+            },
+            {
+              "name": "Kiwanis",
+              "code": "Kiwanis"
+            },
+            {
+              "name": "Kyle Drive Property",
+              "code": "Kyle Drive Property"
+            },
+            {
+              "name": "Lake Johnson",
+              "code": "Lake Johnson"
+            },
+            {
+              "name": "Lake Lynn",
+              "code": "Lake Lynn"
+            },
+            {
+              "name": "Lake Wheeler",
+              "code": "Lake Wheeler"
+            },
+            {
+              "name": "Lassiter Mill",
+              "code": "Lassiter Mill"
+            },
+            {
+              "name": "Latta University Historic",
+              "code": "Latta University Historic"
+            },
+            {
+              "name": "Laurel Hills",
+              "code": "Laurel Hills"
+            },
+            {
+              "name": "LeVelle Moton",
+              "code": "LeVelle Moton"
+            },
+            {
+              "name": "Leesville",
+              "code": "Leesville"
+            },
+            {
+              "name": "Lenoir Street",
+              "code": "Lenoir Street"
+            },
+            {
+              "name": "Lions",
+              "code": "Lions"
+            },
+            {
+              "name": "Little Rock Greenway Trail",
+              "code": "Little Rock Greenway Trail"
+            },
+            {
+              "name": "Lockwood",
+              "code": "Lockwood"
+            },
+            {
+              "name": "Long Acres",
+              "code": "Long Acres"
+            },
+            {
+              "name": "Longstreet",
+              "code": "Longstreet"
+            },
+            {
+              "name": "Longview",
+              "code": "Longview"
+            },
+            {
+              "name": "Longview Lake",
+              "code": "Longview Lake"
+            },
+            {
+              "name": "Lt. Col. George F. Marshall Memorial Park",
+              "code": "Lt. Col. George F. Marshall Memorial Park"
+            },
+            {
+              "name": "Market Plaza",
+              "code": "Market Plaza"
+            },
+            {
+              "name": "Marsh Creek",
+              "code": "Marsh Creek"
+            },
+            {
+              "name": "Marsh Creek Greenway Trail",
+              "code": "Marsh Creek Greenway Trail"
+            },
+            {
+              "name": "Marshall",
+              "code": "Marshall"
+            },
+            {
+              "name": "Martin L King Jr Memorial",
+              "code": "Martin L King Jr Memorial"
+            },
+            {
+              "name": "Martin Marietta Center for the Performing Arts",
+              "code": "Martin Marietta Center for the Performing Arts"
+            },
+            {
+              "name": "Martin St Greenway Connector",
+              "code": "Martin St Greenway Connector"
+            },
+            {
+              "name": "Mary Belle Pate",
+              "code": "Mary Belle Pate"
+            },
+            {
+              "name": "Maybrook Forest",
+              "code": "Maybrook Forest"
+            },
+            {
+              "name": "Mayview",
+              "code": "Mayview"
+            },
+            {
+              "name": "Meadowbrook",
+              "code": "Meadowbrook"
+            },
+            {
+              "name": "Method",
+              "code": "Method"
+            },
+            {
+              "name": "Milburnie",
+              "code": "Milburnie"
+            },
+            {
+              "name": "Millbrook-Exchange",
+              "code": "Millbrook-Exchange"
+            },
+            {
+              "name": "Mine Creek Greenway Trail",
+              "code": "Mine Creek Greenway Trail"
+            },
+            {
+              "name": "Moore Square",
+              "code": "Moore Square"
+            },
+            {
+              "name": "Mordecai Annex",
+              "code": "Mordecai Annex"
+            },
+            {
+              "name": "Mordecai Springs",
+              "code": "Mordecai Springs"
+            },
+            {
+              "name": "Mordecai Square",
+              "code": "Mordecai Square"
+            },
+            {
+              "name": "Mount Herman",
+              "code": "Mount Herman"
+            },
+            {
+              "name": "Mount Hope Cemetery",
+              "code": "Mount Hope Cemetery"
+            },
+            {
+              "name": "Municipal Building",
+              "code": "Municipal Building"
+            },
+            {
+              "name": "Municipal Building Green",
+              "code": "Municipal Building Green"
+            },
+            {
+              "name": "Nash Square",
+              "code": "Nash Square"
+            },
+            {
+              "name": "Neuse River Greenway Trail",
+              "code": "Neuse River Greenway Trail"
+            },
+            {
+              "name": "Neuse River Park",
+              "code": "Neuse River Park"
+            },
+            {
+              "name": "New Bern Place",
+              "code": "New Bern Place"
+            },
+            {
+              "name": "North Hills",
+              "code": "North Hills"
+            },
+            {
+              "name": "O'Rorke-Catholic Cemetery",
+              "code": "O'Rorke-Catholic Cemetery"
+            },
+            {
+              "name": "Oakwood",
+              "code": "Oakwood"
+            },
+            {
+              "name": "Oakwood Common",
+              "code": "Oakwood Common"
+            },
+            {
+              "name": "Optimist",
+              "code": "Optimist"
+            },
+            {
+              "name": "Parnell",
+              "code": "Parnell"
+            },
+            {
+              "name": "Pasquotank & Granville",
+              "code": "Pasquotank & Granville"
+            },
+            {
+              "name": "Peach Road",
+              "code": "Peach Road"
+            },
+            {
+              "name": "Pearl Road",
+              "code": "Pearl Road"
+            },
+            {
+              "name": "Pender Street Park",
+              "code": "Pender Street Park"
+            },
+            {
+              "name": "Pollock",
+              "code": "Pollock"
+            },
+            {
+              "name": "Poole Road Canoe Launch",
+              "code": "Poole Road Canoe Launch"
+            },
+            {
+              "name": "Poole Road Property",
+              "code": "Poole Road Property"
+            },
+            {
+              "name": "Pope House",
+              "code": "Pope House"
+            },
+            {
+              "name": "Poplar Spring",
+              "code": "Poplar Spring"
+            },
+            {
+              "name": "Powell Drive",
+              "code": "Powell Drive"
+            },
+            {
+              "name": "Pullen",
+              "code": "Pullen"
+            },
+            {
+              "name": "Quail Hollow",
+              "code": "Quail Hollow"
+            },
+            {
+              "name": "Quarry Street",
+              "code": "Quarry Street"
+            },
+            {
+              "name": "Raymond G. Lanier",
+              "code": "Raymond G. Lanier"
+            },
+            {
+              "name": "Reedy Creek Greenway Trail",
+              "code": "Reedy Creek Greenway Trail"
+            },
+            {
+              "name": "Richland Creek Greenway Trail",
+              "code": "Richland Creek Greenway Trail"
+            },
+            {
+              "name": "Ridge Road",
+              "code": "Ridge Road"
+            },
+            {
+              "name": "River Bend",
+              "code": "River Bend"
+            },
+            {
+              "name": "Roanoke",
+              "code": "Roanoke"
+            },
+            {
+              "name": "Roberts",
+              "code": "Roberts"
+            },
+            {
+              "name": "Rocky Branch Greenway Trail",
+              "code": "Rocky Branch Greenway Trail"
+            },
+            {
+              "name": "Rocky Branch Greenway Trail Extension",
+              "code": "Rocky Branch Greenway Trail Extension"
+            },
+            {
+              "name": "Rose Garden & Raleigh Little Theatre",
+              "code": "Rose Garden & Raleigh Little Theatre"
+            },
+            {
+              "name": "Rothgeb",
+              "code": "Rothgeb"
+            },
+            {
+              "name": "Sanderford Road",
+              "code": "Sanderford Road"
+            },
+            {
+              "name": "Shelley Lake - Sertoma",
+              "code": "Shelley Lake - Sertoma"
+            },
+            {
+              "name": "Sherwood Forest",
+              "code": "Sherwood Forest"
+            },
+            {
+              "name": "Simms Branch Greenway Trail",
+              "code": "Simms Branch Greenway Trail"
+            },
+            {
+              "name": "Six Oaks",
+              "code": "Six Oaks"
+            },
+            {
+              "name": "Smallwood",
+              "code": "Smallwood"
+            },
+            {
+              "name": "Smoky Hollow",
+              "code": "Smoky Hollow"
+            },
+            {
+              "name": "Snelling Branch Greenway Trail",
+              "code": "Snelling Branch Greenway Trail"
+            },
+            {
+              "name": "Southgate",
+              "code": "Southgate"
+            },
+            {
+              "name": "Spring",
+              "code": "Spring"
+            },
+            {
+              "name": "Spring Forest Greenway Trail",
+              "code": "Spring Forest Greenway Trail"
+            },
+            {
+              "name": "Spring Forest Road",
+              "code": "Spring Forest Road"
+            },
+            {
+              "name": "Strickland",
+              "code": "Strickland"
+            },
+            {
+              "name": "Sunnybrook Road Property",
+              "code": "Sunnybrook Road Property"
+            },
+            {
+              "name": "Tarboro Road",
+              "code": "Tarboro Road"
+            },
+            {
+              "name": "Thornton Road Property",
+              "code": "Thornton Road Property"
+            },
+            {
+              "name": "Tucker House",
+              "code": "Tucker House"
+            },
+            {
+              "name": "Vallie Henderson",
+              "code": "Vallie Henderson"
+            },
+            {
+              "name": "Varnell",
+              "code": "Varnell"
+            },
+            {
+              "name": "Wakefield Greenway Trail",
+              "code": "Wakefield Greenway Trail"
+            },
+            {
+              "name": "Walnut Creek Athletic Complex",
+              "code": "Walnut Creek Athletic Complex"
+            },
+            {
+              "name": "Walnut Creek Greenway Trail",
+              "code": "Walnut Creek Greenway Trail"
+            },
+            {
+              "name": "Walnut Creek South",
+              "code": "Walnut Creek South"
+            },
+            {
+              "name": "Walnut Creek Wetland Park",
+              "code": "Walnut Creek Wetland Park"
+            },
+            {
+              "name": "Walnut Terrace",
+              "code": "Walnut Terrace"
+            },
+            {
+              "name": "Watkins Road Property",
+              "code": "Watkins Road Property"
+            },
+            {
+              "name": "West Lake",
+              "code": "West Lake"
+            },
+            {
+              "name": "West Park",
+              "code": "West Park"
+            },
+            {
+              "name": "Williams",
+              "code": "Williams"
+            },
+            {
+              "name": "Windemere Beaver Dam",
+              "code": "Windemere Beaver Dam"
+            },
+            {
+              "name": "Winthrop Drive",
+              "code": "Winthrop Drive"
+            },
+            {
+              "name": "Wooten Meadow",
+              "code": "Wooten Meadow"
+            },
+            {
+              "name": "Worthdale",
+              "code": "Worthdale"
+            },
+            {
+              "name": "Yadkin Circle",
+              "code": "Yadkin Circle"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "PARKID",
+        "type": "esriFieldTypeInteger",
+        "alias": "Park ID",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "range",
+          "name": "Assets_PARKID_db9d616b31d7473487704af92e4dbab0",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "range": [
+            0,
+            300
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "CATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "Category",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Category",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Active",
+              "code": "active"
+            },
+            {
+              "name": "Building",
+              "code": "building"
+            },
+            {
+              "name": "Furnishings",
+              "code": "furnishing"
+            },
+            {
+              "name": "Historical",
+              "code": "historical"
+            },
+            {
+              "name": "Nature",
+              "code": "nature"
+            },
+            {
+              "name": "Social",
+              "code": "social"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUBCATEGORY",
+        "type": "esriFieldTypeString",
+        "alias": "Subcategory",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Subcategory",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Amusements",
+              "code": "amusements"
+            },
+            {
+              "name": "Aquatics",
+              "code": "aquatics"
+            },
+            {
+              "name": "Arts",
+              "code": "arts"
+            },
+            {
+              "name": "Centers",
+              "code": "centers"
+            },
+            {
+              "name": "Courts",
+              "code": "courts"
+            },
+            {
+              "name": "Education",
+              "code": "education"
+            },
+            {
+              "name": "Gardens",
+              "code": "gardens"
+            },
+            {
+              "name": "Grounds",
+              "code": "grounds"
+            },
+            {
+              "name": "Health and Safety",
+              "code": "health safety"
+            },
+            {
+              "name": "Historic Features",
+              "code": "historic features"
+            },
+            {
+              "name": "Indoor Area (general)",
+              "code": "indoor"
+            },
+            {
+              "name": "Interpretive and Trail Signage",
+              "code": "signage"
+            },
+            {
+              "name": "Natural Features",
+              "code": "natural features"
+            },
+            {
+              "name": "Nature Connection",
+              "code": "nature connection"
+            },
+            {
+              "name": "Outdoor Area (general)",
+              "code": "outdoor"
+            },
+            {
+              "name": "Playgrounds",
+              "code": "playgrounds"
+            },
+            {
+              "name": "Recreation",
+              "code": "recreation"
+            },
+            {
+              "name": "Sports Fields",
+              "code": "fields"
+            },
+            {
+              "name": "Structure",
+              "code": "structure"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "ASSETS",
+        "type": "esriFieldTypeString",
+        "alias": "Asset",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "AmenityPoints",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Youth Baseball Field",
+              "code": "Youth Baseball Field"
+            },
+            {
+              "name": "Wood / Welding Shop",
+              "code": "Wood / Welding Shop"
+            },
+            {
+              "name": "Wildlife Viewing",
+              "code": "Wildlife Viewing"
+            },
+            {
+              "name": "Welcome Center",
+              "code": "Welcome Center"
+            },
+            {
+              "name": "Wading Pool",
+              "code": "Wading Pool"
+            },
+            {
+              "name": "Volleyball Court",
+              "code": "Volleyball Court"
+            },
+            {
+              "name": "Visitor Center",
+              "code": "Visitor Center"
+            },
+            {
+              "name": "Trash Receptacle",
+              "code": "Trash Receptacle"
+            },
+            {
+              "name": "Train Station",
+              "code": "Train Station"
+            },
+            {
+              "name": "Trail Marker",
+              "code": "Trail Marker"
+            },
+            {
+              "name": "Therapy Pool",
+              "code": "Therapy Pool"
+            },
+            {
+              "name": "Theatre Building",
+              "code": "Theatre Building"
+            },
+            {
+              "name": "Tennis Court",
+              "code": "Tennis Court"
+            },
+            {
+              "name": "Tennis Center",
+              "code": "Tennis Center"
+            },
+            {
+              "name": "Teen Center",
+              "code": "Teen Center"
+            },
+            {
+              "name": "Swimming Pool",
+              "code": "Swimming Pool"
+            },
+            {
+              "name": "Storage / Warehouse",
+              "code": "Storage / Warehouse"
+            },
+            {
+              "name": "Sprayground",
+              "code": "Sprayground"
+            },
+            {
+              "name": "Splashpad",
+              "code": "Splashpad"
+            },
+            {
+              "name": "Special Events Area",
+              "code": "Special Events Area"
+            },
+            {
+              "name": "Softball Field",
+              "code": "Softball Field"
+            },
+            {
+              "name": "Soccer Field",
+              "code": "Soccer Field"
+            },
+            {
+              "name": "Skate Park",
+              "code": "Skate Park"
+            },
+            {
+              "name": "Significant Surface Change",
+              "code": "Significant Surface Change"
+            },
+            {
+              "name": "Shot Put/Discus",
+              "code": "Shot Put/Discus"
+            },
+            {
+              "name": "Sensory Garden",
+              "code": "Sensory Garden"
+            },
+            {
+              "name": "Running Track",
+              "code": "Running Track"
+            },
+            {
+              "name": "Rock Scramble",
+              "code": "Rock Scramble"
+            },
+            {
+              "name": "Rentable Space",
+              "code": "Rentable Space"
+            },
+            {
+              "name": "Recycling Station",
+              "code": "Recycling Station"
+            },
+            {
+              "name": "Pool Slide",
+              "code": "Pool Slide"
+            },
+            {
+              "name": "Pollinator Garden",
+              "code": "Pollinator Garden"
+            },
+            {
+              "name": "Playground Ages 5-12",
+              "code": "Playground Ages 5-12"
+            },
+            {
+              "name": "Playground Ages 2-5",
+              "code": "Playground Ages 2-5"
+            },
+            {
+              "name": "Playground Ages 2-12",
+              "code": "Playground Ages 2-12"
+            },
+            {
+              "name": "Picnic Table",
+              "code": "Picnic Table"
+            },
+            {
+              "name": "Picnic Shelter",
+              "code": "Picnic Shelter"
+            },
+            {
+              "name": "Pickleball Court",
+              "code": "Pickleball Court"
+            },
+            {
+              "name": "Pet Water Station",
+              "code": "Pet Water Station"
+            },
+            {
+              "name": "Performance Stage",
+              "code": "Performance Stage"
+            },
+            {
+              "name": "Pedal Boats",
+              "code": "Pedal Boats"
+            },
+            {
+              "name": "Parking Lot",
+              "code": "Parking Lot"
+            },
+            {
+              "name": "Outdoor Classroom",
+              "code": "Outdoor Classroom"
+            },
+            {
+              "name": "Outdoor Chess Table",
+              "code": "Outdoor Chess Table"
+            },
+            {
+              "name": "Other (Please Indicate)",
+              "code": "Other"
+            },
+            {
+              "name": "Office Administration",
+              "code": "Office Administration"
+            },
+            {
+              "name": "Neighborhood Center",
+              "code": "Neighborhood Center"
+            },
+            {
+              "name": "Nature-Based Playground",
+              "code": "Nature-Based Playground"
+            },
+            {
+              "name": "Nature Trailhead",
+              "code": "Nature Trailhead"
+            },
+            {
+              "name": "Nature Education Signage",
+              "code": "Nature Education Signage"
+            },
+            {
+              "name": "Natural Stream Crossing",
+              "code": "Natural Stream Crossing"
+            },
+            {
+              "name": "Museum",
+              "code": "Museum"
+            },
+            {
+              "name": "Multipurpose Court",
+              "code": "Multipurpose Court"
+            },
+            {
+              "name": "Mountain Bike Trailhead",
+              "code": "Mountain Bike Trailhead"
+            },
+            {
+              "name": "Miscellaneous Shelter",
+              "code": "Miscellaneous Shelter"
+            },
+            {
+              "name": "Meeting Space",
+              "code": "Meeting Space"
+            },
+            {
+              "name": "Lifeguard Stand",
+              "code": "Lifegaurd Stand"
+            },
+            {
+              "name": "Library Room",
+              "code": "Library Room"
+            },
+            {
+              "name": "Lake",
+              "code": "Lake"
+            },
+            {
+              "name": "Kiddie Boat Ride",
+              "code": "Kiddie Boat Ride"
+            },
+            {
+              "name": "Information Kiosk",
+              "code": "Information Kiosk"
+            },
+            {
+              "name": "Informal (open) Play Field",
+              "code": "Informal (open) Play Field"
+            },
+            {
+              "name": "In-Line Skating",
+              "code": "In-Line Skating"
+            },
+            {
+              "name": "Horseshoe Pit",
+              "code": "Horseshoe Pit"
+            },
+            {
+              "name": "Hopscotch",
+              "code": "Hopscotch"
+            },
+            {
+              "name": "Historical Structure (other)",
+              "code": "Historical Structure"
+            },
+            {
+              "name": "Historical Site",
+              "code": "Historical Site"
+            },
+            {
+              "name": "Historical Signage",
+              "code": "Historical Signage"
+            },
+            {
+              "name": "Historical Exhibit",
+              "code": "Historical Exhibit"
+            },
+            {
+              "name": "Handball",
+              "code": "Handball"
+            },
+            {
+              "name": "Hammock",
+              "code": "Hammock"
+            },
+            {
+              "name": "Grill",
+              "code": "Grill"
+            },
+            {
+              "name": "Greenway Trail Signage?",
+              "code": "Greenway Trail Signage?"
+            },
+            {
+              "name": "Greenhouse",
+              "code": "Greenhouse"
+            },
+            {
+              "name": "Gazebo",
+              "code": "Gazebo"
+            },
+            {
+              "name": "Futsal Court",
+              "code": "Futsal Court"
+            },
+            {
+              "name": "Football Field",
+              "code": "Football Field"
+            },
+            {
+              "name": "Fitness Station",
+              "code": "Fitness Station"
+            },
+            {
+              "name": "Fitness Center / Weight Room",
+              "code": "Fitness Center / Weight Room"
+            },
+            {
+              "name": "Fishing Access",
+              "code": "Fishing Access"
+            },
+            {
+              "name": "Environmental Education Center",
+              "code": "Environmental Education Center"
+            },
+            {
+              "name": "Ecology Observation Station",
+              "code": "Ecology Observation Station"
+            },
+            {
+              "name": "EV Charging Station",
+              "code": "EV Charging Station"
+            },
+            {
+              "name": "Drinking Fountain",
+              "code": "Drinking Fountain"
+            },
+            {
+              "name": "Dog Refuse Collection",
+              "code": "Dog Refuse Collection"
+            },
+            {
+              "name": "Dog Park",
+              "code": "Dog Park"
+            },
+            {
+              "name": "Dock",
+              "code": "Dock"
+            },
+            {
+              "name": "Diving Well and Board",
+              "code": "Diving Well and Board"
+            },
+            {
+              "name": "Disc Golf Tee",
+              "code": "Disc Golf Tee"
+            },
+            {
+              "name": "Disc Golf Course",
+              "code": "Disc Golf Course"
+            },
+            {
+              "name": "Decorative Fountain",
+              "code": "Decorative Fountain"
+            },
+            {
+              "name": "Concessions",
+              "code": "Concessions"
+            },
+            {
+              "name": "Computer Lab",
+              "code": "Computer Lab"
+            },
+            {
+              "name": "Community Garden",
+              "code": "Community Garden"
+            },
+            {
+              "name": "Community Center",
+              "code": "Community Center"
+            },
+            {
+              "name": "Comfort Station",
+              "code": "Comfort Station"
+            },
+            {
+              "name": "Citizen Science Station",
+              "code": "Citizen Science Station"
+            },
+            {
+              "name": "Cistern",
+              "code": "Cistern"
+            },
+            {
+              "name": "Children's Rock Climbing",
+              "code": "Children's Rock Climbing"
+            },
+            {
+              "name": "Challenge Course",
+              "code": "Challenge Course"
+            },
+            {
+              "name": "Cemetery",
+              "code": "Cemetery"
+            },
+            {
+              "name": "Carousel House",
+              "code": "Carousel House"
+            },
+            {
+              "name": "Canoe Launch",
+              "code": "Canoe Launch"
+            },
+            {
+              "name": "Campground",
+              "code": "Campground"
+            },
+            {
+              "name": "Campfire Circle",
+              "code": "Campfire Circle"
+            },
+            {
+              "name": "Bocceball",
+              "code": "Bocceball"
+            },
+            {
+              "name": "Boat Rental",
+              "code": "Boat Rental"
+            },
+            {
+              "name": "Boat Ramp",
+              "code": "Boat Ramp"
+            },
+            {
+              "name": "Boat Rack",
+              "code": "Boat Rack"
+            },
+            {
+              "name": "Boat House",
+              "code": "Boat House"
+            },
+            {
+              "name": "Bleachers",
+              "code": "Bleachers"
+            },
+            {
+              "name": "Bike Repair Station",
+              "code": "Bike Repair Station"
+            },
+            {
+              "name": "Bike Rental Station",
+              "code": "Bike Rental Station"
+            },
+            {
+              "name": "Bike Rack",
+              "code": "Bike Rack"
+            },
+            {
+              "name": "Bench",
+              "code": "Bench"
+            },
+            {
+              "name": "Beach",
+              "code": "Beach"
+            },
+            {
+              "name": "Batting Cage",
+              "code": "Batting Cage"
+            },
+            {
+              "name": "Basketball Half Court",
+              "code": "Basketball Half Court"
+            },
+            {
+              "name": "Basketball Full Court",
+              "code": "Basketball Full Court"
+            },
+            {
+              "name": "Baseball Field",
+              "code": "Baseball Field"
+            },
+            {
+              "name": "Barn",
+              "code": "Barn"
+            },
+            {
+              "name": "BMX Track",
+              "code": "BMX Track"
+            },
+            {
+              "name": "Aviary",
+              "code": "Aviary"
+            },
+            {
+              "name": "Arts Center",
+              "code": "Arts Center"
+            },
+            {
+              "name": "Aquatics Center",
+              "code": "Aquatics Center"
+            },
+            {
+              "name": "Amuesment Train",
+              "code": "Amuesment Train"
+            },
+            {
+              "name": "Amphitheater",
+              "code": "Amphitheater"
+            },
+            {
+              "name": "Active Adult Center",
+              "code": "Active Adult Center"
+            },
+            {
+              "name": "Accessible Parking Space",
+              "code": "Accessible Parking Space"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "ESTABLISH",
+        "type": "esriFieldTypeDate",
+        "alias": "Date Established",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "DESCRIPTION",
+        "type": "esriFieldTypeString",
+        "alias": "Description",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATION",
+        "type": "esriFieldTypeString",
+        "alias": "Indoor/Outdoor",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Location_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Outdoor Covered",
+              "code": "Outdoor Covered"
+            },
+            {
+              "name": "Outdoor Uncovered",
+              "code": "Outdoor Uncovered"
+            },
+            {
+              "name": "Indoor",
+              "code": "Indoor"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "STATUS",
+        "type": "esriFieldTypeString",
+        "alias": "Status",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Status_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Existing, removed, construction",
+          "codedValues": [
+            {
+              "name": "Existing",
+              "code": "Existing"
+            },
+            {
+              "name": "Not Maintained",
+              "code": "Not Maintained"
+            },
+            {
+              "name": "Removed",
+              "code": "Removed"
+            },
+            {
+              "name": "Under Construction",
+              "code": "Under Construction"
+            },
+            {
+              "name": "Proposed",
+              "code": "Proposed"
+            },
+            {
+              "name": "Closed",
+              "code": "Closed"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Lighting",
+        "type": "esriFieldTypeString",
+        "alias": "Lighting",
+        "sqlType": "sqlTypeOther",
+        "length": 10,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Yes_No_Domain",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Yes No Domain",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            },
+            {
+              "name": "N/A",
+              "code": "NA"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "VISITOR",
+        "type": "esriFieldTypeString",
+        "alias": "Visitor Restrictions",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Assets_Visitors_201122aa-dd5b-46d7-82ba-14df75906474",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "codedValues": [
+            {
+              "name": "Open to Public",
+              "code": "Public"
+            },
+            {
+              "name": "Staff Only",
+              "code": "Staff Only"
+            },
+            {
+              "name": "Limited Public Access",
+              "code": "Limited"
+            },
+            {
+              "name": "Authorized Only",
+              "code": "Authorized"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "ACCESSIBILITY",
+        "type": "esriFieldTypeString",
+        "alias": "Accessibility Description",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOTES",
+        "type": "esriFieldTypeString",
+        "alias": "Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__RALEIGH___F4B70D856169DFF9",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_370.RALEIGH_PARK_ASSETS_AMENITYPOINTS2_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "FDO_GlobalID",
+        "fields": "GlobalID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "SUBCATEGORY_Index",
+        "fields": "SUBCATEGORY",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "SUBCATEGORY_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "LOCATIONNAME_Index",
+        "fields": "LOCATIONNAME",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "LOCATIONNAME_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "ASSETS_Index",
+        "fields": "ASSETS",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "ASSETS_Index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "AmenityPoints",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query",
+    "viewDefinitionQuery": "ASSETS = 'Comfort Station' AND STATUS IN ('Existing','Under Construction','Proposed','Not Maintained') AND VISITOR IN ('Public','Limited')",
+    "definitionQuery": "ASSETS = 'Comfort Station' AND STATUS IN ('Existing','Under Construction','Proposed','Not Maintained') AND VISITOR IN ('Public','Limited')"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 32,
+        "LOCATIONNAME": "Durant Nature",
+        "PARKID": 18,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Durant Nature Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "cf6dcfe0-b002-43b8-9c3f-42664886c0d5"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 39,
+        "LOCATIONNAME": "Honeycutt",
+        "PARKID": 147,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Honeycutt Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "5eb40c78-3de6-488e-af24-7c3f5fe32657"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 69,
+        "LOCATIONNAME": "Brier Creek",
+        "PARKID": 135,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Brier Creek Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "de82beaa-6c2a-4112-aeeb-33daade1d6b2"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 70,
+        "LOCATIONNAME": "Lake Wheeler",
+        "PARKID": 159,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Wheeler Comfort Station (main bldg)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "9d666b60-00ba-4cc6-a3ab-7d0dee07d2c1"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 96,
+        "LOCATIONNAME": "Marsh Creek",
+        "PARKID": 5,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Marsh Creek Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "4b5ab3e4-c18d-459e-8456-f71445f2f807"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 119,
+        "LOCATIONNAME": "Roberts",
+        "PARKID": 43,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "South of picnic shelter/north of baseball field",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "e243c38f-55a7-45e6-928b-2452f2cf3a54"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 141,
+        "LOCATIONNAME": "Baileywick",
+        "PARKID": 156,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Baileywick Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "f318d282-121e-4876-b4cd-7862b352cf45"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 146,
+        "LOCATIONNAME": "Martin L King Jr Memorial",
+        "PARKID": 106,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Martin L King Jr Memorial Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "2cc38715-00e3-44a3-bac3-2b98ee4120d9"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 147,
+        "LOCATIONNAME": "Buffaloe Road Athletic",
+        "PARKID": 144,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Buffaloe Road Comfort Station (East)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "1184986a-439e-432a-b76e-e384adc5be43"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 199,
+        "LOCATIONNAME": "Worthdale",
+        "PARKID": 12,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Worthdale Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "05e2fa59-c7d6-484d-a5ac-94bf0f546076"
+      }
+    }
+  ]
+}

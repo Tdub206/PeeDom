@@ -1,0 +1,22 @@
+# Firebase App Hosting configuration for the production business console.
+# The backend itself is created once in Firebase, then future rollouts can
+# ship from the repo root with `firebase deploy`.
+
+env:
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://business.stallpass.app
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    secret: NEXT_PUBLIC_SUPABASE_URL
+    availability:
+      - BUILD
+      - RUNTIME
+
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    secret: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    availability:
+      - BUILD
+      - RUNTIME

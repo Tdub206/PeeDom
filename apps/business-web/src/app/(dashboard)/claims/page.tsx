@@ -5,8 +5,8 @@ import {
   getBusinessClaims,
   getClaimableBathrooms,
   type BusinessClaimListItem,
-} from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { CreateClaimForm } from './create-claim-form';
 
 export const metadata: Metadata = {

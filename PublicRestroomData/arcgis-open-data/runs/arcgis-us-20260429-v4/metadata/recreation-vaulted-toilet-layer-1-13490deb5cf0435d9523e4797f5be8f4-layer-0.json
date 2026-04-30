@@ -1,0 +1,5649 @@
+{
+  "item": {
+    "id": "13490deb5cf0435d9523e4797f5be8f4",
+    "owner": "SRS@denverwater.org_DW",
+    "created": 1724263005000,
+    "modified": 1777394682000,
+    "guid": null,
+    "name": "Recreation_Vaulted_Toilet",
+    "title": "Recreation Vaulted Toilet Layer 1",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Public Data Collection",
+      "Service",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      "Recreation",
+      "GIS",
+      "Toilets"
+    ],
+    "snippet": "A layer of vaulted toilet locations maintained by Denver Water at some of our recreation facilities. This layer is built and published for assessing damage to the vaulted toilets in Survey123.",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        -180,
+        2.2420967849762508
+      ],
+      [
+        180,
+        89.99999999999639
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "2877",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "",
+    "culture": "en-us",
+    "properties": {
+      "indexJobId": ""
+    },
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/czCXlxn6hYtK4vdg/arcgis/rest/services/Recreation_Vaulted_Toilet/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 2012,
+    "scoreCompleteness": 66,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777525200000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Toilet_Assmt_Wrkg",
+    "type": "Feature Layer",
+    "serviceItemId": "13490deb5cf0435d9523e4797f5be8f4",
+    "sourceSchemaChangesAllowed": true,
+    "hasViews": true,
+    "displayField": "EmplName",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": false,
+    "serverGens": {
+      "minServerGen": 5051519,
+      "serverGen": 5051519
+    },
+    "editingInfo": {
+      "lastEditDate": 1741032958894,
+      "schemaLastEditDate": 1741032435717,
+      "dataLastEditDate": 1741032958894
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 2797035.4706926346,
+      "ymin": 1416130.6642551422,
+      "xmax": 33622777.19970656,
+      "ymax": 39956184.836626805,
+      "spatialReference": {
+        "wkid": 2877,
+        "latestWkid": 2877
+      }
+    },
+    "spatialReference": {
+      "wkid": 2877,
+      "latestWkid": 2877
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "uniqueValue",
+        "field1": "TYPE",
+        "uniqueValueInfos": [
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "013808f45d5395e1b9e9d06a3067375a",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABm0lEQVQ4ja2UQU7CQBiF32CJYEwM7mh3bl3C0iNQl8IJ8BieA04ALi07tyztFdy1TYyRuBGMkZo35R+nhRZJfAmZTKf5eH///42Df5ZTdThF5APopFBteVYDxjdww4OA94iHKTAkjHtlnfH5FHGoMvB4L3CCKEiBXpXzzDVGE0T+AJ5fCiRMQe2DGfHdCaLAhjqFMnMw12/oNQ5Wer0YnmARfumfDZ0i8vvwghxw881yunpo6TXwXvTaHZ1lf66SotcRXzNA6WYROL9eoNGuYRl/6/3T7XtZ9W1xKQ63YCxPHFFN9wiXd6dm/zz+yHtENloayDmzR4Oyv9MqWeO8U8/Bi1pvTJUONoHLZI1mu6ab4vaO8Rc5ZQetTl3DpNvx7HNnl0UKaWKAjNOuLtOhiC7FtYyRLQX122Vmk3GymyNOpOQ9CiXfpmRmk3GqclkmBZhMGyCDzmza0Zv7b7mOPnZftzqcIp314W0DKWaymGcZ6l17wgZVl4NAs+ToOJl7sCB9fdnOSoHUJugBwUyADC1Hg908+IItgA/SD9qWrFRyGCXmAAAAAElFTkSuQmCC",
+              "contentType": "image/png",
+              "width": 15,
+              "height": 15,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Double",
+            "label": "Double",
+            "description": "Double"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "b9aedd729cfe5bd01623f8fb44557a34",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABeklEQVQ4ja2UO07DQBiEx8g11A7iBJSh4QQ0WUpOgEwZ+QS5AQE6WzkBJc4dqFzmBEG4zwGyaLz+2Uf8kKVMs14/Ps+//87GOLPiwaeZVtCYA0j+7x1R4COqpgEznQJIW5ivC6TINIEF1lExDlzqEhqLQefmRzmWWuE9Uv1AwqIRmCu+y28caOyVGThTt2Ysd2ZM74HqB6j2ATTTCuuoDB1y3Tx9PZvxemXG/KllZMGLGjn/a4G2m54eN0ByCfwezPzls7f4RFwaYAeM5YkjanYFrB7svPjugMKWbPdZK66VqD4A8xsffiJtTPVubC48QSyZTVm0DRpT3PeAjgiTbm93bZf3QZetagtknJiAQHQooktxLdvI09HtMrPJODnNESdS8qAiVJJvt2TmMh9yOaBCLiyQQWc2neipDTBr15G6e/XnjTS2eLOHhN8UZjLIs2zqzjlhg4eDQE1yWP7J/mzENWOZjrN+IGWCXjZgQm2z6qabkw9YHzxJf+l+jfILV3WPAAAAAElFTkSuQmCC",
+              "contentType": "image/png",
+              "width": 15,
+              "height": 15,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Single",
+            "label": "Single",
+            "description": "Single"
+          }
+        ],
+        "fieldDelimiter": ",",
+        "authoringInfo": {
+          "colorRamp": {
+            "type": "multipart",
+            "colorRamps": [
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  185,
+                  179,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  185,
+                  179,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  182,
+                  252,
+                  182,
+                  255
+                ],
+                "toColor": [
+                  182,
+                  252,
+                  182,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  198,
+                  182,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  198,
+                  182,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  194,
+                  251,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  194,
+                  251,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  251,
+                  194,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  251,
+                  194,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  194,
+                  233,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  194,
+                  233,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  199,
+                  252,
+                  222,
+                  255
+                ],
+                "toColor": [
+                  199,
+                  252,
+                  222,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  212,
+                  215,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  212,
+                  215,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  233,
+                  179,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  233,
+                  179,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  215,
+                  224,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  215,
+                  224,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  182,
+                  195,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  182,
+                  195,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  229,
+                  199,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  229,
+                  199,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  231,
+                  207,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  231,
+                  207,
+                  255
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": true,
+    "enableZDefaults": true,
+    "zDefault": 0,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GlobalID",
+    "typeIdField": "TYPE",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "ASSETID",
+        "type": "esriFieldTypeString",
+        "alias": "Asset ID",
+        "sqlType": "sqlTypeOther",
+        "length": 20,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "COMMENT",
+        "type": "esriFieldTypeString",
+        "alias": "Comment",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Assessment_Date",
+        "type": "esriFieldTypeDate",
+        "alias": "Assessment Date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "EmplName",
+        "type": "esriFieldTypeString",
+        "alias": "Assessor Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "NAME",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Assessor Name",
+          "codedValues": [
+            {
+              "name": "Ben",
+              "code": "Ben"
+            },
+            {
+              "name": "Brandon",
+              "code": "Brandon"
+            },
+            {
+              "name": "Cassidy",
+              "code": "Cassidy"
+            },
+            {
+              "name": "Dani",
+              "code": "Dani"
+            },
+            {
+              "name": "Dave",
+              "code": "Dave"
+            },
+            {
+              "name": "Dom",
+              "code": "Dom"
+            },
+            {
+              "name": "Gross Res Intern",
+              "code": "GrossIntern"
+            },
+            {
+              "name": "Waterton Intern",
+              "code": "WatertonIntern"
+            },
+            {
+              "name": "Other",
+              "code": "Other"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "DWPROPERTY",
+        "type": "esriFieldTypeString",
+        "alias": "DW Site",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "DW_AOI",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "DW Sites",
+          "codedValues": [
+            {
+              "name": "Antero Res",
+              "code": "AnteroRes"
+            },
+            {
+              "name": "Cheesman Res",
+              "code": "CheesmanRes"
+            },
+            {
+              "name": "Gross Res",
+              "code": "GrossRes"
+            },
+            {
+              "name": "N Fork South Platte",
+              "code": "NSouthPlatte"
+            },
+            {
+              "name": "South Platte",
+              "code": "SouthPlatte"
+            },
+            {
+              "name": "Strontia Springs Res",
+              "code": "StrontiaSpringsRes"
+            },
+            {
+              "name": "Williams Fork Res",
+              "code": "WFRes"
+            },
+            {
+              "name": "Kassler",
+              "code": "Kassler"
+            },
+            {
+              "name": "Waterton Canyon",
+              "code": "Waterton"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Precise_Location_Description",
+        "type": "esriFieldTypeString",
+        "alias": "Precise Location Description",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HYPERLINK",
+        "type": "esriFieldTypeString",
+        "alias": "Front Photo",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "TYPE",
+        "type": "esriFieldTypeString",
+        "alias": "Type",
+        "sqlType": "sqlTypeOther",
+        "length": 25,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ToiletType",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "ToiletType",
+          "codedValues": [
+            {
+              "name": "Single",
+              "code": "Single"
+            },
+            {
+              "name": "Double",
+              "code": "Double"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "SUBTYPE",
+        "type": "esriFieldTypeString",
+        "alias": "Subtype",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "DoorType",
+        "type": "esriFieldTypeString",
+        "alias": "Door Entrance",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "DoorEntr",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Door Entrance",
+          "codedValues": [
+            {
+              "name": "Left Side Entrance",
+              "code": "Left Side Entrance"
+            },
+            {
+              "name": "Right Side Entrance",
+              "code": "Right Side Entrance"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Model_Number",
+        "type": "esriFieldTypeString",
+        "alias": "Model Number",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Interior_Walls_white",
+        "type": "esriFieldTypeString",
+        "alias": "Interior Walls (white)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "MetalDoor",
+        "type": "esriFieldTypeString",
+        "alias": "Interior/Exterior Metal Door/Trim Paint Color",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "DoorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Door Color",
+          "codedValues": [
+            {
+              "name": "Sun Bronze 7623C",
+              "code": "7623C"
+            },
+            {
+              "name": "Rich Earth 409C",
+              "code": "409C"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "MetalTrim",
+        "type": "esriFieldTypeString",
+        "alias": "Interior/Exterior Metal Trim",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Wall_Vent",
+        "type": "esriFieldTypeString",
+        "alias": "Wall Vent",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch Up",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Floor_Concrete",
+        "type": "esriFieldTypeString",
+        "alias": "Floor Concrete",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "CON_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Concrete Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Minor Concrete Repair",
+              "code": "MinorRepair"
+            },
+            {
+              "name": "Major Concrete Repair",
+              "code": "MajorRepair"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Floor_Paint__grey_",
+        "type": "esriFieldTypeString",
+        "alias": "Floor Paint (grey)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "DoorMaint",
+        "type": "esriFieldTypeString",
+        "alias": "Door Maintenance Needed",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_4",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 4",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "DoorHandle",
+        "type": "esriFieldTypeString",
+        "alias": "Door Handle Status",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Deadbolt",
+        "type": "esriFieldTypeString",
+        "alias": "Deadbolt Status",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "DoorSwing",
+        "type": "esriFieldTypeString",
+        "alias": "Door Swing Status",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_7",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 7",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Door_Sweep",
+        "type": "esriFieldTypeString",
+        "alias": "Door Sweep",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_6_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 6.2",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair (replace screws)",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Toilet_Seat",
+        "type": "esriFieldTypeString",
+        "alias": "Toilet Seat",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Safety_Handrail",
+        "type": "esriFieldTypeString",
+        "alias": "Safety Handrail",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_4",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 4",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "TP_Mount",
+        "type": "esriFieldTypeString",
+        "alias": "TP Mount(s)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_10",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 10",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "Add additional mount",
+              "code": "AddMount"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Interior_Trash_12Wx8H",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Interior \"Trash\" 12Wx8H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Interior_Plastic_Holder",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Interior 8.5x11 Plastic Holder for Temp Signs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Exterior_Front_Handicap",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Exterior Front Handicap/M/F 12Wx24H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "SIGN_WRK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Sign Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace with Genderless",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Exterior_Door_Restroom",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Exterior Door \"Restroom\" w/ Braille 9Wx6H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Exterior_Door_ADA",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Exterior Door ADA/M/F 12Wx24H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "SIGN_WRK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Sign Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace with Genderless",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Sign_Exterior_L_side_ADA",
+        "type": "esriFieldTypeString",
+        "alias": "Sign Exterior L-side ADA/M/F 12Wx24H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "SIGN_WRK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Sign Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace with Genderless",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Front_4_side_trapezoid",
+        "type": "esriFieldTypeString",
+        "alias": "Window Front 4-sided trapezoid (42\"x14\")",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Front_4_sided_XL",
+        "type": "esriFieldTypeString",
+        "alias": "Window Front 4-sided XL (5'x2') quadrilateral",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Rear_4_side_trapezoid",
+        "type": "esriFieldTypeString",
+        "alias": "Window Rear 4-sided trapezoid (42\"x14\")",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Rear_4_side_XL",
+        "type": "esriFieldTypeString",
+        "alias": "Window Rear 4-sided XL (5'x2') quadrilateral",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Exterior_Wall_Painting",
+        "type": "esriFieldTypeString",
+        "alias": "Exterior Wall Painting",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Exterior_Wall_Paint_Color",
+        "type": "esriFieldTypeString",
+        "alias": "Exterior Wall Paint Color",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ExteriorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Exterior Color",
+          "codedValues": [
+            {
+              "name": "Sand Beige (warm 50% grey)",
+              "code": "SandBeige"
+            },
+            {
+              "name": "Rich Earth (409C)",
+              "code": "409C"
+            },
+            {
+              "name": "Pueblo Gold (7514C)",
+              "code": "7514C"
+            },
+            {
+              "name": "Cool Grey 6C (light grey)",
+              "code": "6C"
+            },
+            {
+              "name": "Sage Green",
+              "code": "Sage"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Roof_Painting",
+        "type": "esriFieldTypeString",
+        "alias": "Roof Painting",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Roof_Paint_Color",
+        "type": "esriFieldTypeString",
+        "alias": "Roof Paint Color",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ExteriorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Exterior Color",
+          "codedValues": [
+            {
+              "name": "Sand Beige (warm 50% grey)",
+              "code": "SandBeige"
+            },
+            {
+              "name": "Rich Earth (409C)",
+              "code": "409C"
+            },
+            {
+              "name": "Pueblo Gold (7514C)",
+              "code": "7514C"
+            },
+            {
+              "name": "Cool Grey 6C (light grey)",
+              "code": "6C"
+            },
+            {
+              "name": "Sage Green",
+              "code": "Sage"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Ventilation_Stack_black",
+        "type": "esriFieldTypeString",
+        "alias": "Ventilation Stack (black)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Vault_Access_Door",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Vault Access Trap-Door",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_9",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 9",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            },
+            {
+              "name": "Master Lock needed",
+              "code": "MasterLck"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Interior_Walls",
+        "type": "esriFieldTypeString",
+        "alias": "L Interior Walls",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Int_Ext_Metal_Door",
+        "type": "esriFieldTypeString",
+        "alias": "L Interior/Exterior Metal Door/Trim Paint Color",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "DoorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Door Color",
+          "codedValues": [
+            {
+              "name": "Sun Bronze 7623C",
+              "code": "7623C"
+            },
+            {
+              "name": "Rich Earth 409C",
+              "code": "409C"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Int_Ext_Metal_Trim",
+        "type": "esriFieldTypeString",
+        "alias": "L Interior/Exterior Metal Trim",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Wall_Vent",
+        "type": "esriFieldTypeString",
+        "alias": "L Wall Vent",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch Up",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Floor_Concrete",
+        "type": "esriFieldTypeString",
+        "alias": "L Floor Concrete",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "CON_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Concrete Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Minor Concrete Repair",
+              "code": "MinorRepair"
+            },
+            {
+              "name": "Major Concrete Repair",
+              "code": "MajorRepair"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Floor_Paint",
+        "type": "esriFieldTypeString",
+        "alias": "L Floor Paint",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Door",
+        "type": "esriFieldTypeString",
+        "alias": "L Door",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Door_with_Louver",
+        "type": "esriFieldTypeString",
+        "alias": "L Door with Louver",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Door_Swing",
+        "type": "esriFieldTypeString",
+        "alias": "L Door Swing",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_7",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 7",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Door_Sweep",
+        "type": "esriFieldTypeString",
+        "alias": "L Door Sweep (Dust Guard)",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_6_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 6.2",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair (replace screws)",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Door_Handle_Lock",
+        "type": "esriFieldTypeString",
+        "alias": "L Door Handle/Lock",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Deadbolt",
+        "type": "esriFieldTypeString",
+        "alias": "L Deadbolt",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Toilet_Seat",
+        "type": "esriFieldTypeString",
+        "alias": "L Toilet Seat",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Safety_Handrail",
+        "type": "esriFieldTypeString",
+        "alias": "L Safety Handrail",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_4",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 4",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_TP_Mounts",
+        "type": "esriFieldTypeString",
+        "alias": "L TP Mounts",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_10",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 10",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "Add additional mount",
+              "code": "AddMount"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Sign_Interior_Trash_12x8",
+        "type": "esriFieldTypeString",
+        "alias": "L Sign Internal \"Trash\" 12Wx8H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Sign_Interior_Plastic",
+        "type": "esriFieldTypeString",
+        "alias": "L Sign Internal 8#5x11 Plastic Holder for Temp Signs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Sign_Exterior_ADA_12x24",
+        "type": "esriFieldTypeString",
+        "alias": "L Sign Exterior ADA/F 12Wx24H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "SIGN_WRK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Sign Work Required 2",
+          "codedValues": [
+            {
+              "name": "Replace with Genderless",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Sign_Exterior_Door",
+        "type": "esriFieldTypeString",
+        "alias": "L Sign Exterior Door \"Restroom\" w/ Braille 9Wx6H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Interior_Walls",
+        "type": "esriFieldTypeString",
+        "alias": "R Interior Walls",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Int_Ext_Metal_Door",
+        "type": "esriFieldTypeString",
+        "alias": "R Interior/Exterior Metal Door/Trim Paint Color",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "DoorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Door Color",
+          "codedValues": [
+            {
+              "name": "Sun Bronze 7623C",
+              "code": "7623C"
+            },
+            {
+              "name": "Rich Earth 409C",
+              "code": "409C"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Int_Ext_Metal_Trim",
+        "type": "esriFieldTypeString",
+        "alias": "R Interior/Exterior Metal Trim",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Wall_Vent",
+        "type": "esriFieldTypeString",
+        "alias": "R Wall Vent",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch Up",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Floor_Concrete",
+        "type": "esriFieldTypeString",
+        "alias": "R Floor Concrete",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "CON_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Concrete Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Minor Concrete Repair",
+              "code": "MinorRepair"
+            },
+            {
+              "name": "Major Concrete Repair",
+              "code": "MajorRepair"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Floor_Paint",
+        "type": "esriFieldTypeString",
+        "alias": "R Floor Paint",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Door",
+        "type": "esriFieldTypeString",
+        "alias": "R Door",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Door_with_Louver",
+        "type": "esriFieldTypeString",
+        "alias": "R Door with Louver",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Door_Swing",
+        "type": "esriFieldTypeString",
+        "alias": "R Door Swing",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_7",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 7",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Door_Sweep",
+        "type": "esriFieldTypeString",
+        "alias": "R Door Sweep",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_6_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 6.2",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair (replace screws)",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Door_Handle_Lock",
+        "type": "esriFieldTypeString",
+        "alias": "R Door Handle/Lock",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Deadbolt",
+        "type": "esriFieldTypeString",
+        "alias": "R Deadbolt",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Toilet_Seat",
+        "type": "esriFieldTypeString",
+        "alias": "R Toilet Seat",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Safety_Handrail",
+        "type": "esriFieldTypeString",
+        "alias": "R Safety Handrail",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_4",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 4",
+          "codedValues": [
+            {
+              "name": "No Work Needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_TP_Mounts",
+        "type": "esriFieldTypeString",
+        "alias": "R TP Mounts",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_10",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 10",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Repair",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            },
+            {
+              "name": "Add additional mount",
+              "code": "AddMount"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Sign_Interior_Trash",
+        "type": "esriFieldTypeString",
+        "alias": "R Sign Internal \"Trash\" 12Wx8H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Sign_Interior_Plastic",
+        "type": "esriFieldTypeString",
+        "alias": "R Sign Internal 8#5x11 Plastic Holder for Temp Signs",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Sign_Exterior_ADA_M",
+        "type": "esriFieldTypeString",
+        "alias": "R Sign Exterior ADA/M 12Wx24H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "SIGN_WRK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Sign Work Required 2",
+          "codedValues": [
+            {
+              "name": "Replace with Genderless",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Sign_Exterior_Door_Restroom",
+        "type": "esriFieldTypeString",
+        "alias": "R Sign Exterior Door \"Restroom\" w/ Braille 9Wx6H",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Front_5_sided",
+        "type": "esriFieldTypeString",
+        "alias": "Window Front 5-sided",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Left_Front_Rect",
+        "type": "esriFieldTypeString",
+        "alias": "Window Left-Front Rectanglular",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Left_Rear_Rect",
+        "type": "esriFieldTypeString",
+        "alias": "Window Left-Rear Rectangular",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Rear_5_sided",
+        "type": "esriFieldTypeString",
+        "alias": "Window Rear 5-sided",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Right_Rear_Rect",
+        "type": "esriFieldTypeString",
+        "alias": "Window Right-Rear Rectangular",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Window_Right_Front_Rect",
+        "type": "esriFieldTypeString",
+        "alias": "Window Right-Front Rectangular",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Ventilation_Stack",
+        "type": "esriFieldTypeString",
+        "alias": "L Ventilation Stack",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Ventilation_Stack",
+        "type": "esriFieldTypeString",
+        "alias": "R Ventilation Stack",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_1",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 1",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "R_Rear_Vault_Trap_Door",
+        "type": "esriFieldTypeString",
+        "alias": "R Rear Vault Access Trap-Door",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_9",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 9",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            },
+            {
+              "name": "Master Lock needed",
+              "code": "MasterLck"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "L_Rear_Vault_Trap_Door",
+        "type": "esriFieldTypeString",
+        "alias": "L Rear Vault Access Trap-Door",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_9",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 9",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            },
+            {
+              "name": "Master Lock needed",
+              "code": "MasterLck"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Door_Left_Hand",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Door (for \"Left Hand Reverse\" 36\"x80\")",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_3",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 3",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Minor Repairs/Hole Filling or Patching",
+              "code": "Minor"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Door_Swing",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Door Swing",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_8",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 8",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Adjustment Needed",
+              "code": "AdjNeed"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Door_Dust_Guard",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Door Dust Guard",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_5",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 5",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Repair (replace screws)",
+              "code": "Repair"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Door_Handle_Lock",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Door Handle/Lock",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Deadbolt",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Deadbolt",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WORK_REQ_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Replace",
+              "code": "Replace"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Rear_Closet_Interior_Walls",
+        "type": "esriFieldTypeString",
+        "alias": "Rear Closet Interior Walls",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_5",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 5",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Exterior_Wall_Paint_Color1",
+        "type": "esriFieldTypeString",
+        "alias": "Exterior Wall Paint Color1",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ExteriorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Exterior Color",
+          "codedValues": [
+            {
+              "name": "Sand Beige (warm 50% grey)",
+              "code": "SandBeige"
+            },
+            {
+              "name": "Rich Earth (409C)",
+              "code": "409C"
+            },
+            {
+              "name": "Pueblo Gold (7514C)",
+              "code": "7514C"
+            },
+            {
+              "name": "Cool Grey 6C (light grey)",
+              "code": "6C"
+            },
+            {
+              "name": "Sage Green",
+              "code": "Sage"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Exterior_Wall_Painting1",
+        "type": "esriFieldTypeString",
+        "alias": "Exterior Wall Painting1",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Roof_Paint_Color1",
+        "type": "esriFieldTypeString",
+        "alias": "Roof Paint Color1",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "ExteriorColor",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Exterior Color",
+          "codedValues": [
+            {
+              "name": "Sand Beige (warm 50% grey)",
+              "code": "SandBeige"
+            },
+            {
+              "name": "Rich Earth (409C)",
+              "code": "409C"
+            },
+            {
+              "name": "Pueblo Gold (7514C)",
+              "code": "7514C"
+            },
+            {
+              "name": "Cool Grey 6C (light grey)",
+              "code": "6C"
+            },
+            {
+              "name": "Sage Green",
+              "code": "Sage"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Roof_Painting1",
+        "type": "esriFieldTypeString",
+        "alias": "Roof Painting1",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "PAINT_WRK_2",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Paint Work Required 2",
+          "codedValues": [
+            {
+              "name": "No work needed",
+              "code": "NoWork"
+            },
+            {
+              "name": "Caulk Cracks",
+              "code": "Caulk"
+            },
+            {
+              "name": "Touch-up Paint",
+              "code": "TouchUp"
+            },
+            {
+              "name": "Full Repaint",
+              "code": "FullRepaint"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Other",
+        "type": "esriFieldTypeString",
+        "alias": "Other",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Assess_Notes",
+        "type": "esriFieldTypeString",
+        "alias": "Assess_Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 500,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LATITUDE",
+        "type": "esriFieldTypeDouble",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LONGITUDE",
+        "type": "esriFieldTypeDouble",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__RECREATI__F4B70D851B152007",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_663.RECREATION_VAULTED_TOILET_REC_TOILET_ASSMT_WRKG_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "GlobalID_idx",
+        "fields": "GlobalID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "DWPROPERTY_Index",
+        "fields": "DWPROPERTY",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "DWPROPERTY_Index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [
+      {
+        "id": "Double",
+        "name": "Double",
+        "domains": {
+          "EmplName": {
+            "type": "inherited"
+          },
+          "DWPROPERTY": {
+            "type": "inherited"
+          },
+          "TYPE": {
+            "type": "inherited"
+          },
+          "DoorType": {
+            "type": "inherited"
+          },
+          "Interior_Walls_white": {
+            "type": "inherited"
+          },
+          "MetalDoor": {
+            "type": "inherited"
+          },
+          "MetalTrim": {
+            "type": "inherited"
+          },
+          "Wall_Vent": {
+            "type": "inherited"
+          },
+          "Floor_Concrete": {
+            "type": "inherited"
+          },
+          "Floor_Paint__grey_": {
+            "type": "inherited"
+          },
+          "DoorMaint": {
+            "type": "inherited"
+          },
+          "DoorHandle": {
+            "type": "inherited"
+          },
+          "Deadbolt": {
+            "type": "inherited"
+          },
+          "DoorSwing": {
+            "type": "inherited"
+          },
+          "Door_Sweep": {
+            "type": "inherited"
+          },
+          "Toilet_Seat": {
+            "type": "inherited"
+          },
+          "Safety_Handrail": {
+            "type": "inherited"
+          },
+          "TP_Mount": {
+            "type": "inherited"
+          },
+          "Sign_Interior_Trash_12Wx8H": {
+            "type": "inherited"
+          },
+          "Sign_Interior_Plastic_Holder": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Front_Handicap": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Door_Restroom": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Door_ADA": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_L_side_ADA": {
+            "type": "inherited"
+          },
+          "Window_Front_4_side_trapezoid": {
+            "type": "inherited"
+          },
+          "Window_Front_4_sided_XL": {
+            "type": "inherited"
+          },
+          "Window_Rear_4_side_trapezoid": {
+            "type": "inherited"
+          },
+          "Window_Rear_4_side_XL": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Painting": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Paint_Color": {
+            "type": "inherited"
+          },
+          "Roof_Painting": {
+            "type": "inherited"
+          },
+          "Roof_Paint_Color": {
+            "type": "inherited"
+          },
+          "Ventilation_Stack_black": {
+            "type": "inherited"
+          },
+          "Rear_Vault_Access_Door": {
+            "type": "inherited"
+          },
+          "L_Interior_Walls": {
+            "type": "inherited"
+          },
+          "L_Int_Ext_Metal_Door": {
+            "type": "inherited"
+          },
+          "L_Int_Ext_Metal_Trim": {
+            "type": "inherited"
+          },
+          "L_Wall_Vent": {
+            "type": "inherited"
+          },
+          "L_Floor_Concrete": {
+            "type": "inherited"
+          },
+          "L_Floor_Paint": {
+            "type": "inherited"
+          },
+          "L_Door": {
+            "type": "inherited"
+          },
+          "L_Door_with_Louver": {
+            "type": "inherited"
+          },
+          "L_Door_Swing": {
+            "type": "inherited"
+          },
+          "L_Door_Sweep": {
+            "type": "inherited"
+          },
+          "L_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "L_Deadbolt": {
+            "type": "inherited"
+          },
+          "L_Toilet_Seat": {
+            "type": "inherited"
+          },
+          "L_Safety_Handrail": {
+            "type": "inherited"
+          },
+          "L_TP_Mounts": {
+            "type": "inherited"
+          },
+          "L_Sign_Interior_Trash_12x8": {
+            "type": "inherited"
+          },
+          "L_Sign_Interior_Plastic": {
+            "type": "inherited"
+          },
+          "L_Sign_Exterior_ADA_12x24": {
+            "type": "inherited"
+          },
+          "L_Sign_Exterior_Door": {
+            "type": "inherited"
+          },
+          "R_Interior_Walls": {
+            "type": "inherited"
+          },
+          "R_Int_Ext_Metal_Door": {
+            "type": "inherited"
+          },
+          "R_Int_Ext_Metal_Trim": {
+            "type": "inherited"
+          },
+          "R_Wall_Vent": {
+            "type": "inherited"
+          },
+          "R_Floor_Concrete": {
+            "type": "inherited"
+          },
+          "R_Floor_Paint": {
+            "type": "inherited"
+          },
+          "R_Door": {
+            "type": "inherited"
+          },
+          "R_Door_with_Louver": {
+            "type": "inherited"
+          },
+          "R_Door_Swing": {
+            "type": "inherited"
+          },
+          "R_Door_Sweep": {
+            "type": "inherited"
+          },
+          "R_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "R_Deadbolt": {
+            "type": "inherited"
+          },
+          "R_Toilet_Seat": {
+            "type": "inherited"
+          },
+          "R_Safety_Handrail": {
+            "type": "inherited"
+          },
+          "R_TP_Mounts": {
+            "type": "inherited"
+          },
+          "R_Sign_Interior_Trash": {
+            "type": "inherited"
+          },
+          "R_Sign_Interior_Plastic": {
+            "type": "inherited"
+          },
+          "R_Sign_Exterior_ADA_M": {
+            "type": "inherited"
+          },
+          "R_Sign_Exterior_Door_Restroom": {
+            "type": "inherited"
+          },
+          "Window_Front_5_sided": {
+            "type": "inherited"
+          },
+          "Window_Left_Front_Rect": {
+            "type": "inherited"
+          },
+          "Window_Left_Rear_Rect": {
+            "type": "inherited"
+          },
+          "Window_Rear_5_sided": {
+            "type": "inherited"
+          },
+          "Window_Right_Rear_Rect": {
+            "type": "inherited"
+          },
+          "Window_Right_Front_Rect": {
+            "type": "inherited"
+          },
+          "L_Ventilation_Stack": {
+            "type": "inherited"
+          },
+          "R_Ventilation_Stack": {
+            "type": "inherited"
+          },
+          "R_Rear_Vault_Trap_Door": {
+            "type": "inherited"
+          },
+          "L_Rear_Vault_Trap_Door": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Left_Hand": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Swing": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Dust_Guard": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Deadbolt": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Interior_Walls": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Paint_Color1": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Painting1": {
+            "type": "inherited"
+          },
+          "Roof_Paint_Color1": {
+            "type": "inherited"
+          },
+          "Roof_Painting1": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Double",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "HYPERLINK": null,
+                "LATITUDE": null,
+                "ASSETID": null,
+                "COMMENT": null,
+                "Assessment_Date": null,
+                "EmplName": null,
+                "DWPROPERTY": null,
+                "Precise_Location_Description": null,
+                "TYPE": "Double",
+                "SUBTYPE": null,
+                "DoorType": null,
+                "Model_Number": null,
+                "Interior_Walls_white": null,
+                "MetalDoor": null,
+                "MetalTrim": null,
+                "Wall_Vent": null,
+                "Floor_Concrete": null,
+                "Floor_Paint__grey_": null,
+                "DoorMaint": null,
+                "DoorHandle": null,
+                "Deadbolt": null,
+                "DoorSwing": null,
+                "Door_Sweep": null,
+                "Toilet_Seat": null,
+                "Safety_Handrail": null,
+                "TP_Mount": null,
+                "Sign_Interior_Trash_12Wx8H": null,
+                "Sign_Interior_Plastic_Holder": null,
+                "Sign_Exterior_Front_Handicap": null,
+                "Sign_Exterior_Door_Restroom": null,
+                "Sign_Exterior_Door_ADA": null,
+                "Sign_Exterior_L_side_ADA": null,
+                "Window_Front_4_side_trapezoid": null,
+                "Window_Front_4_sided_XL": null,
+                "Window_Rear_4_side_trapezoid": null,
+                "Window_Rear_4_side_XL": null,
+                "Exterior_Wall_Painting": null,
+                "Exterior_Wall_Paint_Color": null,
+                "Roof_Painting": null,
+                "Roof_Paint_Color": null,
+                "Ventilation_Stack_black": null,
+                "Rear_Vault_Access_Door": null,
+                "L_Interior_Walls": null,
+                "L_Int_Ext_Metal_Door": null,
+                "L_Int_Ext_Metal_Trim": null,
+                "L_Wall_Vent": null,
+                "L_Floor_Concrete": null,
+                "L_Floor_Paint": null,
+                "L_Door": null,
+                "L_Door_with_Louver": null,
+                "L_Door_Swing": null,
+                "L_Door_Sweep": null,
+                "L_Door_Handle_Lock": null,
+                "L_Deadbolt": null,
+                "L_Toilet_Seat": null,
+                "L_Safety_Handrail": null,
+                "L_TP_Mounts": null,
+                "L_Sign_Interior_Trash_12x8": null,
+                "L_Sign_Interior_Plastic": null,
+                "L_Sign_Exterior_ADA_12x24": null,
+                "L_Sign_Exterior_Door": null,
+                "R_Interior_Walls": null,
+                "R_Int_Ext_Metal_Door": null,
+                "R_Int_Ext_Metal_Trim": null,
+                "R_Wall_Vent": null,
+                "R_Floor_Concrete": null,
+                "R_Floor_Paint": null,
+                "R_Door": null,
+                "R_Door_with_Louver": null,
+                "R_Door_Swing": null,
+                "R_Door_Sweep": null,
+                "R_Door_Handle_Lock": null,
+                "R_Deadbolt": null,
+                "R_Toilet_Seat": null,
+                "R_Safety_Handrail": null,
+                "R_TP_Mounts": null,
+                "R_Sign_Interior_Trash": null,
+                "R_Sign_Interior_Plastic": null,
+                "R_Sign_Exterior_ADA_M": null,
+                "R_Sign_Exterior_Door_Restroom": null,
+                "Window_Front_5_sided": null,
+                "Window_Left_Front_Rect": null,
+                "Window_Left_Rear_Rect": null,
+                "Window_Rear_5_sided": null,
+                "Window_Right_Rear_Rect": null,
+                "Window_Right_Front_Rect": null,
+                "L_Ventilation_Stack": null,
+                "R_Ventilation_Stack": null,
+                "R_Rear_Vault_Trap_Door": null,
+                "L_Rear_Vault_Trap_Door": null,
+                "Rear_Closet_Door_Left_Hand": null,
+                "Rear_Closet_Door_Swing": null,
+                "Rear_Closet_Door_Dust_Guard": null,
+                "Rear_Closet_Door_Handle_Lock": null,
+                "Rear_Closet_Deadbolt": null,
+                "Rear_Closet_Interior_Walls": null,
+                "Exterior_Wall_Paint_Color1": null,
+                "Exterior_Wall_Painting1": null,
+                "Roof_Paint_Color1": null,
+                "Roof_Painting1": null,
+                "Other": null,
+                "Assess_Notes": null,
+                "LONGITUDE": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Single",
+        "name": "Single",
+        "domains": {
+          "EmplName": {
+            "type": "inherited"
+          },
+          "DWPROPERTY": {
+            "type": "inherited"
+          },
+          "TYPE": {
+            "type": "inherited"
+          },
+          "DoorType": {
+            "type": "inherited"
+          },
+          "Interior_Walls_white": {
+            "type": "inherited"
+          },
+          "MetalDoor": {
+            "type": "inherited"
+          },
+          "MetalTrim": {
+            "type": "inherited"
+          },
+          "Wall_Vent": {
+            "type": "inherited"
+          },
+          "Floor_Concrete": {
+            "type": "inherited"
+          },
+          "Floor_Paint__grey_": {
+            "type": "inherited"
+          },
+          "DoorMaint": {
+            "type": "inherited"
+          },
+          "DoorHandle": {
+            "type": "inherited"
+          },
+          "Deadbolt": {
+            "type": "inherited"
+          },
+          "DoorSwing": {
+            "type": "inherited"
+          },
+          "Door_Sweep": {
+            "type": "inherited"
+          },
+          "Toilet_Seat": {
+            "type": "inherited"
+          },
+          "Safety_Handrail": {
+            "type": "inherited"
+          },
+          "TP_Mount": {
+            "type": "inherited"
+          },
+          "Sign_Interior_Trash_12Wx8H": {
+            "type": "inherited"
+          },
+          "Sign_Interior_Plastic_Holder": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Front_Handicap": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Door_Restroom": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_Door_ADA": {
+            "type": "inherited"
+          },
+          "Sign_Exterior_L_side_ADA": {
+            "type": "inherited"
+          },
+          "Window_Front_4_side_trapezoid": {
+            "type": "inherited"
+          },
+          "Window_Front_4_sided_XL": {
+            "type": "inherited"
+          },
+          "Window_Rear_4_side_trapezoid": {
+            "type": "inherited"
+          },
+          "Window_Rear_4_side_XL": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Painting": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Paint_Color": {
+            "type": "inherited"
+          },
+          "Roof_Painting": {
+            "type": "inherited"
+          },
+          "Roof_Paint_Color": {
+            "type": "inherited"
+          },
+          "Ventilation_Stack_black": {
+            "type": "inherited"
+          },
+          "Rear_Vault_Access_Door": {
+            "type": "inherited"
+          },
+          "L_Interior_Walls": {
+            "type": "inherited"
+          },
+          "L_Int_Ext_Metal_Door": {
+            "type": "inherited"
+          },
+          "L_Int_Ext_Metal_Trim": {
+            "type": "inherited"
+          },
+          "L_Wall_Vent": {
+            "type": "inherited"
+          },
+          "L_Floor_Concrete": {
+            "type": "inherited"
+          },
+          "L_Floor_Paint": {
+            "type": "inherited"
+          },
+          "L_Door": {
+            "type": "inherited"
+          },
+          "L_Door_with_Louver": {
+            "type": "inherited"
+          },
+          "L_Door_Swing": {
+            "type": "inherited"
+          },
+          "L_Door_Sweep": {
+            "type": "inherited"
+          },
+          "L_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "L_Deadbolt": {
+            "type": "inherited"
+          },
+          "L_Toilet_Seat": {
+            "type": "inherited"
+          },
+          "L_Safety_Handrail": {
+            "type": "inherited"
+          },
+          "L_TP_Mounts": {
+            "type": "inherited"
+          },
+          "L_Sign_Interior_Trash_12x8": {
+            "type": "inherited"
+          },
+          "L_Sign_Interior_Plastic": {
+            "type": "inherited"
+          },
+          "L_Sign_Exterior_ADA_12x24": {
+            "type": "inherited"
+          },
+          "L_Sign_Exterior_Door": {
+            "type": "inherited"
+          },
+          "R_Interior_Walls": {
+            "type": "inherited"
+          },
+          "R_Int_Ext_Metal_Door": {
+            "type": "inherited"
+          },
+          "R_Int_Ext_Metal_Trim": {
+            "type": "inherited"
+          },
+          "R_Wall_Vent": {
+            "type": "inherited"
+          },
+          "R_Floor_Concrete": {
+            "type": "inherited"
+          },
+          "R_Floor_Paint": {
+            "type": "inherited"
+          },
+          "R_Door": {
+            "type": "inherited"
+          },
+          "R_Door_with_Louver": {
+            "type": "inherited"
+          },
+          "R_Door_Swing": {
+            "type": "inherited"
+          },
+          "R_Door_Sweep": {
+            "type": "inherited"
+          },
+          "R_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "R_Deadbolt": {
+            "type": "inherited"
+          },
+          "R_Toilet_Seat": {
+            "type": "inherited"
+          },
+          "R_Safety_Handrail": {
+            "type": "inherited"
+          },
+          "R_TP_Mounts": {
+            "type": "inherited"
+          },
+          "R_Sign_Interior_Trash": {
+            "type": "inherited"
+          },
+          "R_Sign_Interior_Plastic": {
+            "type": "inherited"
+          },
+          "R_Sign_Exterior_ADA_M": {
+            "type": "inherited"
+          },
+          "R_Sign_Exterior_Door_Restroom": {
+            "type": "inherited"
+          },
+          "Window_Front_5_sided": {
+            "type": "inherited"
+          },
+          "Window_Left_Front_Rect": {
+            "type": "inherited"
+          },
+          "Window_Left_Rear_Rect": {
+            "type": "inherited"
+          },
+          "Window_Rear_5_sided": {
+            "type": "inherited"
+          },
+          "Window_Right_Rear_Rect": {
+            "type": "inherited"
+          },
+          "Window_Right_Front_Rect": {
+            "type": "inherited"
+          },
+          "L_Ventilation_Stack": {
+            "type": "inherited"
+          },
+          "R_Ventilation_Stack": {
+            "type": "inherited"
+          },
+          "R_Rear_Vault_Trap_Door": {
+            "type": "inherited"
+          },
+          "L_Rear_Vault_Trap_Door": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Left_Hand": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Swing": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Dust_Guard": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Door_Handle_Lock": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Deadbolt": {
+            "type": "inherited"
+          },
+          "Rear_Closet_Interior_Walls": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Paint_Color1": {
+            "type": "inherited"
+          },
+          "Exterior_Wall_Painting1": {
+            "type": "inherited"
+          },
+          "Roof_Paint_Color1": {
+            "type": "inherited"
+          },
+          "Roof_Painting1": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Single",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "HYPERLINK": null,
+                "LATITUDE": null,
+                "ASSETID": null,
+                "COMMENT": null,
+                "Assessment_Date": null,
+                "EmplName": null,
+                "DWPROPERTY": null,
+                "Precise_Location_Description": null,
+                "TYPE": "Single",
+                "SUBTYPE": null,
+                "DoorType": null,
+                "Model_Number": null,
+                "Interior_Walls_white": null,
+                "MetalDoor": null,
+                "MetalTrim": null,
+                "Wall_Vent": null,
+                "Floor_Concrete": null,
+                "Floor_Paint__grey_": null,
+                "DoorMaint": null,
+                "DoorHandle": null,
+                "Deadbolt": null,
+                "DoorSwing": null,
+                "Door_Sweep": null,
+                "Toilet_Seat": null,
+                "Safety_Handrail": null,
+                "TP_Mount": null,
+                "Sign_Interior_Trash_12Wx8H": null,
+                "Sign_Interior_Plastic_Holder": null,
+                "Sign_Exterior_Front_Handicap": null,
+                "Sign_Exterior_Door_Restroom": null,
+                "Sign_Exterior_Door_ADA": null,
+                "Sign_Exterior_L_side_ADA": null,
+                "Window_Front_4_side_trapezoid": null,
+                "Window_Front_4_sided_XL": null,
+                "Window_Rear_4_side_trapezoid": null,
+                "Window_Rear_4_side_XL": null,
+                "Exterior_Wall_Painting": null,
+                "Exterior_Wall_Paint_Color": null,
+                "Roof_Painting": null,
+                "Roof_Paint_Color": null,
+                "Ventilation_Stack_black": null,
+                "Rear_Vault_Access_Door": null,
+                "L_Interior_Walls": null,
+                "L_Int_Ext_Metal_Door": null,
+                "L_Int_Ext_Metal_Trim": null,
+                "L_Wall_Vent": null,
+                "L_Floor_Concrete": null,
+                "L_Floor_Paint": null,
+                "L_Door": null,
+                "L_Door_with_Louver": null,
+                "L_Door_Swing": null,
+                "L_Door_Sweep": null,
+                "L_Door_Handle_Lock": null,
+                "L_Deadbolt": null,
+                "L_Toilet_Seat": null,
+                "L_Safety_Handrail": null,
+                "L_TP_Mounts": null,
+                "L_Sign_Interior_Trash_12x8": null,
+                "L_Sign_Interior_Plastic": null,
+                "L_Sign_Exterior_ADA_12x24": null,
+                "L_Sign_Exterior_Door": null,
+                "R_Interior_Walls": null,
+                "R_Int_Ext_Metal_Door": null,
+                "R_Int_Ext_Metal_Trim": null,
+                "R_Wall_Vent": null,
+                "R_Floor_Concrete": null,
+                "R_Floor_Paint": null,
+                "R_Door": null,
+                "R_Door_with_Louver": null,
+                "R_Door_Swing": null,
+                "R_Door_Sweep": null,
+                "R_Door_Handle_Lock": null,
+                "R_Deadbolt": null,
+                "R_Toilet_Seat": null,
+                "R_Safety_Handrail": null,
+                "R_TP_Mounts": null,
+                "R_Sign_Interior_Trash": null,
+                "R_Sign_Interior_Plastic": null,
+                "R_Sign_Exterior_ADA_M": null,
+                "R_Sign_Exterior_Door_Restroom": null,
+                "Window_Front_5_sided": null,
+                "Window_Left_Front_Rect": null,
+                "Window_Left_Rear_Rect": null,
+                "Window_Rear_5_sided": null,
+                "Window_Right_Rear_Rect": null,
+                "Window_Right_Front_Rect": null,
+                "L_Ventilation_Stack": null,
+                "R_Ventilation_Stack": null,
+                "R_Rear_Vault_Trap_Door": null,
+                "L_Rear_Vault_Trap_Door": null,
+                "Rear_Closet_Door_Left_Hand": null,
+                "Rear_Closet_Door_Swing": null,
+                "Rear_Closet_Door_Dust_Guard": null,
+                "Rear_Closet_Door_Handle_Lock": null,
+                "Rear_Closet_Deadbolt": null,
+                "Rear_Closet_Interior_Walls": null,
+                "Exterior_Wall_Paint_Color1": null,
+                "Exterior_Wall_Painting1": null,
+                "Roof_Paint_Color1": null,
+                "Roof_Painting1": null,
+                "Other": null,
+                "Assess_Notes": null,
+                "LONGITUDE": null
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "templates": [],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Create,Delete,Query,Update,Editing,Extract,Sync,ChangeTracking",
+    "layerOverrides": [
+      "allowGeometryUpdates"
+    ]
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "ASSETID": "WF_TLT1",
+        "COMMENT": null,
+        "OBJECTID": 1,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "WFRes",
+        "Precise_Location_Description": "Labeled \"E\". Day use fishing access lot.",
+        "HYPERLINK": null,
+        "TYPE": "Single",
+        "SUBTYPE": "Single R 12x24 Door Sign",
+        "DoorType": "Right Side Entrance",
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": "None",
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": null,
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": null,
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 40.00009725,
+        "LONGITUDE": -106.18561087,
+        "GlobalID": "486bb2e6-c7fa-4b15-8902-cf3f54dc9a28"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WF_TLT2",
+        "COMMENT": null,
+        "OBJECTID": 2,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "WFRes",
+        "Precise_Location_Description": "Near site 42, CXT Both Sides",
+        "HYPERLINK": null,
+        "TYPE": "Double",
+        "SUBTYPE": "Double With Closet",
+        "DoorType": null,
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": "None",
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": "None",
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 40.00721188,
+        "LONGITUDE": -106.22237117,
+        "GlobalID": "3fee7a36-295d-4889-9902-023d9d3527da"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT3",
+        "COMMENT": null,
+        "OBJECTID": 3,
+        "Assessment_Date": 1733760900000,
+        "EmplName": "Dave",
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Lake Lehow",
+        "HYPERLINK": null,
+        "TYPE": "Single",
+        "SUBTYPE": "Single R 12x24 Door Sign",
+        "DoorType": "Right Side Entrance",
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": "None",
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": null,
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": null,
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.49332149,
+        "LONGITUDE": -105.09034762,
+        "GlobalID": "b12f704b-50d2-4a16-8168-9580301690ae"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT4",
+        "COMMENT": null,
+        "OBJECTID": 4,
+        "Assessment_Date": 1733759760000,
+        "EmplName": "Dave",
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Lake Lehow Parking",
+        "HYPERLINK": null,
+        "TYPE": "Double",
+        "SUBTYPE": "Double With Closet, No 9x6 Entrance Signs",
+        "DoorType": null,
+        "Model_Number": "7-1236",
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": "None",
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": "None",
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": "None",
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": "None",
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.49248661,
+        "LONGITUDE": -105.08997264,
+        "GlobalID": "bb7d397f-56b7-4541-b2b2-34c455a279ec"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT5",
+        "COMMENT": null,
+        "OBJECTID": 5,
+        "Assessment_Date": 1733351400000,
+        "EmplName": "Dani",
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Waterton Canyon Trailhead",
+        "HYPERLINK": null,
+        "TYPE": "Double",
+        "SUBTYPE": "Double No Closet, With 9x6 Entrance Signs",
+        "DoorType": null,
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": "Caulk,TouchUp",
+        "Exterior_Wall_Paint_Color": "SandBeige",
+        "Roof_Painting": "TouchUp,Caulk",
+        "Roof_Paint_Color": "409C",
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": "Caulk,TouchUp",
+        "L_Int_Ext_Metal_Door": "7623C",
+        "L_Int_Ext_Metal_Trim": "NoWork",
+        "L_Wall_Vent": "NoWork",
+        "L_Floor_Concrete": "MinorRepair",
+        "L_Floor_Paint": "FullRepaint",
+        "L_Door": "FullRepaint",
+        "L_Door_with_Louver": "None",
+        "L_Door_Swing": "NoWork",
+        "L_Door_Sweep": "NoWork",
+        "L_Door_Handle_Lock": "NoWork",
+        "L_Deadbolt": "NoWork",
+        "L_Toilet_Seat": "Replace",
+        "L_Safety_Handrail": "NoWork",
+        "L_TP_Mounts": "Repair",
+        "L_Sign_Interior_Trash_12x8": "NoWork",
+        "L_Sign_Interior_Plastic": "NoWork",
+        "L_Sign_Exterior_ADA_12x24": "Replace",
+        "L_Sign_Exterior_Door": "NoWork",
+        "R_Interior_Walls": "Caulk,FullRepaint",
+        "R_Int_Ext_Metal_Door": "7623C",
+        "R_Int_Ext_Metal_Trim": "TouchUp",
+        "R_Wall_Vent": "NoWork",
+        "R_Floor_Concrete": "NoWork",
+        "R_Floor_Paint": "FullRepaint",
+        "R_Door": "Replace",
+        "R_Door_with_Louver": "None",
+        "R_Door_Swing": "AdjNeed",
+        "R_Door_Sweep": "NoWork",
+        "R_Door_Handle_Lock": "NoWork",
+        "R_Deadbolt": "NoWork",
+        "R_Toilet_Seat": "NoWork",
+        "R_Safety_Handrail": "NoWork",
+        "R_TP_Mounts": "NoWork",
+        "R_Sign_Interior_Trash": "NoWork",
+        "R_Sign_Interior_Plastic": "NoWork",
+        "R_Sign_Exterior_ADA_M": "Replace",
+        "R_Sign_Exterior_Door_Restroom": "NoWork",
+        "Window_Front_5_sided": "None",
+        "Window_Left_Front_Rect": "NoWork",
+        "Window_Left_Rear_Rect": "NoWork",
+        "Window_Rear_5_sided": "None",
+        "Window_Right_Rear_Rect": "NoWork",
+        "Window_Right_Front_Rect": "NoWork",
+        "L_Ventilation_Stack": "NoWork",
+        "R_Ventilation_Stack": "NoWork",
+        "R_Rear_Vault_Trap_Door": "MasterLck,AdjNeed",
+        "L_Rear_Vault_Trap_Door": "AdjNeed,MasterLck",
+        "Rear_Closet_Door_Left_Hand": "None",
+        "Rear_Closet_Door_Swing": "None",
+        "Rear_Closet_Door_Dust_Guard": "None",
+        "Rear_Closet_Door_Handle_Lock": "None",
+        "Rear_Closet_Deadbolt": "None",
+        "Rear_Closet_Interior_Walls": "None",
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.49114541,
+        "LONGITUDE": -105.09544055,
+        "GlobalID": "528b80cf-6451-4123-917b-8bc47c4e4b81"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT6",
+        "COMMENT": null,
+        "OBJECTID": 6,
+        "Assessment_Date": 1732572120000,
+        "EmplName": "Dave",
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Bighorn Sheep Rest Area",
+        "HYPERLINK": null,
+        "TYPE": "Double",
+        "SUBTYPE": "⁠Double No Closet, With 9x6 Entrance Signs",
+        "DoorType": null,
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": "None",
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": "None",
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": "None",
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": "None",
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": "None",
+        "Rear_Closet_Door_Swing": "None",
+        "Rear_Closet_Door_Dust_Guard": "None",
+        "Rear_Closet_Door_Handle_Lock": "None",
+        "Rear_Closet_Deadbolt": "None",
+        "Rear_Closet_Interior_Walls": "None",
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.43511081,
+        "LONGITUDE": -105.12332977,
+        "GlobalID": "41534a21-c86e-4980-9dc4-64ab696a4b53"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT7",
+        "COMMENT": null,
+        "OBJECTID": 7,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Rattlesnake Rest Area",
+        "HYPERLINK": null,
+        "TYPE": "Single",
+        "SUBTYPE": "Single L 12x24 Door Sign",
+        "DoorType": "Left Side Entrance",
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": "None",
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": null,
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": null,
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.45511645,
+        "LONGITUDE": -105.12360321,
+        "GlobalID": "03cab743-fa9c-4624-8ac6-7c41813b2f0b"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "WC_TLT8",
+        "COMMENT": null,
+        "OBJECTID": 8,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "Waterton",
+        "Precise_Location_Description": "Great Blue Heron Rest Area",
+        "HYPERLINK": null,
+        "TYPE": "Double",
+        "SUBTYPE": "Double No Closet, No 9x6 Entrance Signs",
+        "DoorType": null,
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": "None",
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": "None",
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": "None",
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": "None",
+        "Window_Front_5_sided": "None",
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": "None",
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": "None",
+        "Rear_Closet_Door_Swing": "None",
+        "Rear_Closet_Door_Dust_Guard": "None",
+        "Rear_Closet_Door_Handle_Lock": "None",
+        "Rear_Closet_Deadbolt": "None",
+        "Rear_Closet_Interior_Walls": "None",
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.48628713,
+        "LONGITUDE": -105.10044921,
+        "GlobalID": "ccca8856-fae7-4370-a68f-6a9ea349a2f1"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "SP_TLT9",
+        "COMMENT": null,
+        "OBJECTID": 9,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "SouthPlatte",
+        "Precise_Location_Description": "Foxton Rd",
+        "HYPERLINK": null,
+        "TYPE": "Single",
+        "SUBTYPE": "Single R 9x6 Door Sign",
+        "DoorType": "Right Side Entrance",
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": null,
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": null,
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.4362974,
+        "LONGITUDE": -105.23409777,
+        "GlobalID": "c6f9fd6f-7692-4864-bc34-8c22c57ba4b6"
+      }
+    },
+    {
+      "attributes": {
+        "ASSETID": "CHS_TLT10",
+        "COMMENT": null,
+        "OBJECTID": 10,
+        "Assessment_Date": null,
+        "EmplName": null,
+        "DWPROPERTY": "CheesmanRes",
+        "Precise_Location_Description": "Cheesman Reservoir Parking",
+        "HYPERLINK": null,
+        "TYPE": "Single",
+        "SUBTYPE": "Single L 9x6 Door Sign",
+        "DoorType": "Left Side Entrance",
+        "Model_Number": null,
+        "Interior_Walls_white": null,
+        "MetalDoor": null,
+        "MetalTrim": null,
+        "Wall_Vent": null,
+        "Floor_Concrete": null,
+        "Floor_Paint__grey_": null,
+        "DoorMaint": null,
+        "DoorHandle": null,
+        "Deadbolt": null,
+        "DoorSwing": null,
+        "Door_Sweep": null,
+        "Toilet_Seat": null,
+        "Safety_Handrail": null,
+        "TP_Mount": null,
+        "Sign_Interior_Trash_12Wx8H": null,
+        "Sign_Interior_Plastic_Holder": null,
+        "Sign_Exterior_Front_Handicap": null,
+        "Sign_Exterior_Door_Restroom": null,
+        "Sign_Exterior_Door_ADA": null,
+        "Sign_Exterior_L_side_ADA": null,
+        "Window_Front_4_side_trapezoid": null,
+        "Window_Front_4_sided_XL": "None",
+        "Window_Rear_4_side_trapezoid": null,
+        "Window_Rear_4_side_XL": "None",
+        "Exterior_Wall_Painting": null,
+        "Exterior_Wall_Paint_Color": null,
+        "Roof_Painting": null,
+        "Roof_Paint_Color": null,
+        "Ventilation_Stack_black": null,
+        "Rear_Vault_Access_Door": null,
+        "L_Interior_Walls": null,
+        "L_Int_Ext_Metal_Door": null,
+        "L_Int_Ext_Metal_Trim": null,
+        "L_Wall_Vent": null,
+        "L_Floor_Concrete": null,
+        "L_Floor_Paint": null,
+        "L_Door": null,
+        "L_Door_with_Louver": null,
+        "L_Door_Swing": null,
+        "L_Door_Sweep": null,
+        "L_Door_Handle_Lock": null,
+        "L_Deadbolt": null,
+        "L_Toilet_Seat": null,
+        "L_Safety_Handrail": null,
+        "L_TP_Mounts": null,
+        "L_Sign_Interior_Trash_12x8": null,
+        "L_Sign_Interior_Plastic": null,
+        "L_Sign_Exterior_ADA_12x24": null,
+        "L_Sign_Exterior_Door": null,
+        "R_Interior_Walls": null,
+        "R_Int_Ext_Metal_Door": null,
+        "R_Int_Ext_Metal_Trim": null,
+        "R_Wall_Vent": null,
+        "R_Floor_Concrete": null,
+        "R_Floor_Paint": null,
+        "R_Door": null,
+        "R_Door_with_Louver": null,
+        "R_Door_Swing": null,
+        "R_Door_Sweep": null,
+        "R_Door_Handle_Lock": null,
+        "R_Deadbolt": null,
+        "R_Toilet_Seat": null,
+        "R_Safety_Handrail": null,
+        "R_TP_Mounts": null,
+        "R_Sign_Interior_Trash": null,
+        "R_Sign_Interior_Plastic": null,
+        "R_Sign_Exterior_ADA_M": null,
+        "R_Sign_Exterior_Door_Restroom": null,
+        "Window_Front_5_sided": null,
+        "Window_Left_Front_Rect": null,
+        "Window_Left_Rear_Rect": null,
+        "Window_Rear_5_sided": null,
+        "Window_Right_Rear_Rect": null,
+        "Window_Right_Front_Rect": null,
+        "L_Ventilation_Stack": null,
+        "R_Ventilation_Stack": null,
+        "R_Rear_Vault_Trap_Door": null,
+        "L_Rear_Vault_Trap_Door": null,
+        "Rear_Closet_Door_Left_Hand": null,
+        "Rear_Closet_Door_Swing": null,
+        "Rear_Closet_Door_Dust_Guard": null,
+        "Rear_Closet_Door_Handle_Lock": null,
+        "Rear_Closet_Deadbolt": null,
+        "Rear_Closet_Interior_Walls": null,
+        "Exterior_Wall_Paint_Color1": null,
+        "Exterior_Wall_Painting1": null,
+        "Roof_Paint_Color1": null,
+        "Roof_Painting1": null,
+        "Other": null,
+        "Assess_Notes": null,
+        "LATITUDE": 39.22096765,
+        "LONGITUDE": -105.27954558,
+        "GlobalID": "2f74e445-b8f8-4d8d-8d90-5e7f0ea33518"
+      }
+    }
+  ]
+}

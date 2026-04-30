@@ -1,0 +1,345 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.25084097993868,
+          52.2923273234654
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 12,
+        "Adres": "Landweg 5, 1276 AS Huizen",
+        "Naam_toilet": "Wijkcentrum Meentamorfose"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.25414621638806,
+          52.3020507503219
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 14,
+        "Adres": "Holleblok 2, 1273EG Huizen",
+        "Naam_toilet": "Wijkcentrum Holleblok"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.25351346614638,
+          52.2855949372698
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 17:00 uur, zaterdag en zondag van 13:00 tot 17:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 13,
+        "Adres": "'t Merk 12, 1276 DA Huizen",
+        "Naam_toilet": "Kinderboerderij de Warande"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23195906816645,
+          52.2998574151857
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 4,
+        "Adres": "Schoolstraat 6, 1271 SC Huizen",
+        "Naam_toilet": "Wijkcentrum 't Vuronger"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.26848094819746,
+          52.2972079801846
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 15:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 17,
+        "Adres": "Draaikom 2, 1274 NS Huizen",
+        "Naam_toilet": "Wijkcentrum de Draaikom"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.24610696568166,
+          52.2980304957574
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "dinsdag van 12:00 tot 14:00 uur, donderdag en vrijdag van 12:00 tot 21:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 11,
+        "Adres": "Gooierserf 124, 1276 KV Huizen ",
+        "Naam_toilet": "Jongerencentrum Connect "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.24237788763768,
+          52.2984608434561
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met donderdag van 8.30 tot 17:00 uur, vrijdag van 8.30 tot 16:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 10,
+        "Adres": "Graaf Wichman 10, 1276 KB Huizen",
+        "Naam_toilet": "Gemeentehuis"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23859510319793,
+          52.3046061414012
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "maandag tot en met zaterdag van 7:30- tot 21:00 uur, zondag van 12:00 tot 18:00 uur",
+        "Aanvullende_informatie": "kosteloos, sleutel op te vragen bij personeel ",
+        "Nummer": 3,
+        "Adres": "Warandebergstraat 20, 1271 ZC Huizen",
+        "Naam_toilet": "Lidl "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23398396712937,
+          52.2948879945935
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 6:00 tot 20:00 uur, zaterdag van 7:00 tot 19:00 uur",
+        "Aanvullende_informatie": "kosteloos, op verzoek bij personeel",
+        "Nummer": 7,
+        "Adres": "Nieuwe Bussummerweg 2, 1272 CJ Huizen",
+        "Naam_toilet": "Tankstation Vlaanderen"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23844129564967,
+          52.3079410902023
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 7:00 tot 22:30 uur, zaterdag en zondag van 8:30 tot 18:00 uur",
+        "Aanvullende_informatie": "kosteloos, vooral bedoeld voor mensen met beperking en bezoekers evenemententerrein in rolstoel",
+        "Nummer": 1,
+        "Adres": "IJsselmeerstraat 5b, 1271 AA Huizen ",
+        "Naam_toilet": "Coronel Sports"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23353352587227,
+          52.2988216644145
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 9:00 tot 12:00 uur en van 13:00 tot 17:00 uur",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 5,
+        "Adres": "Waterstraat 2, 1271 RP Huizen",
+        "Naam_toilet": "De Brassershoeve"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.23559354442678,
+          52.2981671628485
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met donderdag van 9:00 tot 18:00 uur, vrijdag van 9:00 tot 21:00 uur, zaterdag van 9:00 tot 17:00 uur, zondag van 12:00 tot 17:00 uur",
+        "Aanvullende_informatie": "tegen betaling",
+        "Nummer": 6,
+        "Adres": "Achterbaan 2, 1271 TZ Huizen",
+        "Naam_toilet": "Hema "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.24129089172631,
+          52.306590892033
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met zondag van 12:00 tot 22:00 uur",
+        "Aanvullende_informatie": "kosteloos, vooral bedoeld voor mensen met beperking en bezoekers evenemententerrein in rolstoel",
+        "Nummer": 2,
+        "Adres": "Havenstraat 81, 1271 AD Huizen",
+        "Naam_toilet": "Haven van Huizen"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.2608716872528,
+          52.2939929749181
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "maandag tot en met vrijdag van 6:00 tot 21:00 uur, zaterdag van 7:00-21:00 uur, zondag van 8:00 tot 21:00 uur",
+        "Aanvullende_informatie": "kosteloos, sleutel ophalen bij kassa",
+        "Nummer": 16,
+        "Adres": "Bovenmaatweg 1, 1274 RA Huizen",
+        "Naam_toilet": "Shell tankstation"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.2418488749128,
+          52.2988141622323
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "Invalidentoilet_aanwezig": "Nee",
+        "Openingstijden_webkaart": "dinsdag tot en met donderdag van 17:00 tot 0:00 uur, vrijdag en zaterdag van 17:00 tot 03:00 uur, zondag van 17:00 tot 22:00 uur",
+        "Aanvullende_informatie": "kosteloos, toilet is alleen via trap bereikbaar",
+        "Nummer": 9,
+        "Adres": "Plein 2000 7, 1271 KK Huizen",
+        "Naam_toilet": "Grand café 't Heertje"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.24115618464615,
+          52.2988630820552
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "maandag tot en met zondag van circa 18:30 tot 21.00 uur, ook op woensdag- zaterdag- en zondagmiddag rondom voorstellingen",
+        "Aanvullende_informatie": "kosteloos, geopend rondom bioscoopvoorstellingen",
+        "Nummer": 8,
+        "Adres": "Plein 2000 5, 1271 KK Huizen ",
+        "Naam_toilet": "Kinepolis Huizen"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.25936908264899,
+          52.3060352406865
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "Invalidentoilet_aanwezig": "Ja",
+        "Openingstijden_webkaart": "tussen 1 mei en 1 okt  van 10:00 tot 18:00 uur bij mooi weer (20 graden of hoger)",
+        "Aanvullende_informatie": "kosteloos",
+        "Nummer": 15,
+        "Adres": "Zomerkade, Huizen",
+        "Naam_toilet": "Strandwacht Zomerkade"
+      }
+    }
+  ]
+}

@@ -76,6 +76,7 @@ function buildEmptySkipCounts(): Record<PublicImportSkipReason, number> {
   return {
     missing_point_geometry: 0,
     missing_name: 0,
+    not_restroom: 0,
     not_active_lifecycle: 0,
     not_public: 0,
     not_open: 0,

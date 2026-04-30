@@ -1,0 +1,431 @@
+{
+  "artifact_version": 1,
+  "source_key": "osm-overpass-us",
+  "run_label": "us-all-20260429",
+  "generated_at": "2026-04-30T04:48:34.140Z",
+  "storage_bucket": null,
+  "storage_prefix": null,
+  "states_requested": null,
+  "include_expanded_text_matches": true,
+  "refresh_requested": false,
+  "endpoint": null,
+  "raw_directory": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw",
+  "normalized_output_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\normalized\\osm-overpass-us.stallpass-import.json",
+  "raw_state_files": [
+    {
+      "file_name": "US-AK.overpass.json",
+      "state_code": "AK",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-AK.overpass.json",
+      "storage_uri": null,
+      "sha256": "b98678e29f1f9920f6727184b0215e308482d8ac937150c3f8f680ed4db8e965",
+      "size_bytes": 227047
+    },
+    {
+      "file_name": "US-AL.overpass.json",
+      "state_code": "AL",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-AL.overpass.json",
+      "storage_uri": null,
+      "sha256": "345a112da05687870726631ad2678653df010d30a3c83f80205631aced7e74f7",
+      "size_bytes": 163720
+    },
+    {
+      "file_name": "US-AR.overpass.json",
+      "state_code": "AR",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-AR.overpass.json",
+      "storage_uri": null,
+      "sha256": "84713b317d27aac6f522cae9d7c163571d4005bfef8c7d455cb74bd86bf99479",
+      "size_bytes": 177781
+    },
+    {
+      "file_name": "US-AZ.overpass.json",
+      "state_code": "AZ",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-AZ.overpass.json",
+      "storage_uri": null,
+      "sha256": "4937e7678a1e03babe0b55f1920792de0877af224f5de69e4c05c9e6ac300e2d",
+      "size_bytes": 710008
+    },
+    {
+      "file_name": "US-CA.overpass.json",
+      "state_code": "CA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-CA.overpass.json",
+      "storage_uri": null,
+      "sha256": "bfa5fa62a0df18688093f182fd21266cb742c62237487ff3be6f090a7947f813",
+      "size_bytes": 4550811
+    },
+    {
+      "file_name": "US-CO.overpass.json",
+      "state_code": "CO",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-CO.overpass.json",
+      "storage_uri": null,
+      "sha256": "8469989ad422bbfa1a0a7e225c74a10479c95737d3dedd6ad5c116cb74eb7d4c",
+      "size_bytes": 1859438
+    },
+    {
+      "file_name": "US-CT.overpass.json",
+      "state_code": "CT",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-CT.overpass.json",
+      "storage_uri": null,
+      "sha256": "18a2a464cb89dae4524bb6edecdff479dacd9deeb6add68b2c901d0e05ded832",
+      "size_bytes": 172340
+    },
+    {
+      "file_name": "US-DC.overpass.json",
+      "state_code": "DC",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-DC.overpass.json",
+      "storage_uri": null,
+      "sha256": "5c3094d330c3d497d6c2410c77f2bc66f42e39a0f65616d5f89ace010b35d520",
+      "size_bytes": 61361
+    },
+    {
+      "file_name": "US-DE.overpass.json",
+      "state_code": "DE",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-DE.overpass.json",
+      "storage_uri": null,
+      "sha256": "219fdad2a5a81edd65c41c6b6dbbfbf5ad12c88e49823d9c5d0c1ab525314b2c",
+      "size_bytes": 47129
+    },
+    {
+      "file_name": "US-FL.overpass.json",
+      "state_code": "FL",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-FL.overpass.json",
+      "storage_uri": null,
+      "sha256": "cd7cea2886f13298628424902d19e2e759dc54843949cd954b9430db50f0916e",
+      "size_bytes": 1248938
+    },
+    {
+      "file_name": "US-GA.overpass.json",
+      "state_code": "GA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-GA.overpass.json",
+      "storage_uri": null,
+      "sha256": "056f1345e10520c797c2cf7b40f62f9de84907f3478d529dcaf6d700093558c8",
+      "size_bytes": 434548
+    },
+    {
+      "file_name": "US-HI.overpass.json",
+      "state_code": "HI",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-HI.overpass.json",
+      "storage_uri": null,
+      "sha256": "0de6a34ab3688e556a1ed0d728aa76bcf5c82d2901771f834ff8299c8be1deb1",
+      "size_bytes": 332338
+    },
+    {
+      "file_name": "US-IA.overpass.json",
+      "state_code": "IA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-IA.overpass.json",
+      "storage_uri": null,
+      "sha256": "611994e5b46f9af16a4b90930121c9e6a7273bd1712d2890c508b0a1fae17996",
+      "size_bytes": 390261
+    },
+    {
+      "file_name": "US-ID.overpass.json",
+      "state_code": "ID",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-ID.overpass.json",
+      "storage_uri": null,
+      "sha256": "b617eb5aa255adb63cd48142e82aad4862277bc975ebec1959e9ac560a5d7e80",
+      "size_bytes": 371867
+    },
+    {
+      "file_name": "US-IL.overpass.json",
+      "state_code": "IL",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-IL.overpass.json",
+      "storage_uri": null,
+      "sha256": "24bc6994929664c77044d293ff513f375f85b3685944ea3260b5379e5782744f",
+      "size_bytes": 848912
+    },
+    {
+      "file_name": "US-IN.overpass.json",
+      "state_code": "IN",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-IN.overpass.json",
+      "storage_uri": null,
+      "sha256": "c9c9284bcee62222ba7cee4a0761338290bdb074026f04e5d77262bc07808dae",
+      "size_bytes": 405195
+    },
+    {
+      "file_name": "US-KS.overpass.json",
+      "state_code": "KS",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-KS.overpass.json",
+      "storage_uri": null,
+      "sha256": "f80002433eae7347809b30a1d84db32733bd6309673fc72598236c4a47de52a5",
+      "size_bytes": 350044
+    },
+    {
+      "file_name": "US-KY.overpass.json",
+      "state_code": "KY",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-KY.overpass.json",
+      "storage_uri": null,
+      "sha256": "0009645d84be14cf8959b85034af7b7465bbe112b6026edd4841d5eccc6494b8",
+      "size_bytes": 536448
+    },
+    {
+      "file_name": "US-LA.overpass.json",
+      "state_code": "LA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-LA.overpass.json",
+      "storage_uri": null,
+      "sha256": "e42f08ad229df4a56865e270caae920848aea1bfba324ebc8d9aa807124ae2d6",
+      "size_bytes": 87825
+    },
+    {
+      "file_name": "US-MA.overpass.json",
+      "state_code": "MA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MA.overpass.json",
+      "storage_uri": null,
+      "sha256": "399069ce1e45bada7575cb7128393bb4f486fb1632a93c83a278655dea9cace2",
+      "size_bytes": 289467
+    },
+    {
+      "file_name": "US-MD.overpass.json",
+      "state_code": "MD",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MD.overpass.json",
+      "storage_uri": null,
+      "sha256": "2c885cb449ceea73f0cd3d09ef793e026db2a2c483904b5f1c9f6ecec61c5f93",
+      "size_bytes": 428058
+    },
+    {
+      "file_name": "US-ME.overpass.json",
+      "state_code": "ME",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-ME.overpass.json",
+      "storage_uri": null,
+      "sha256": "02d3d5167ba28f5f03becc22eb0e7dc620b2c7f0691ef7d3236ceb73331fd0ba",
+      "size_bytes": 178757
+    },
+    {
+      "file_name": "US-MI.overpass.json",
+      "state_code": "MI",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MI.overpass.json",
+      "storage_uri": null,
+      "sha256": "0b3271cdaa953f488db8d420a5a578d3eb643104aa158b36175b552593b96b93",
+      "size_bytes": 1246368
+    },
+    {
+      "file_name": "US-MN.overpass.json",
+      "state_code": "MN",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MN.overpass.json",
+      "storage_uri": null,
+      "sha256": "17c71399c89b5ef3a646c49e5adca0348362936bd05bf9f0ca8d1b380c4aa916",
+      "size_bytes": 1065413
+    },
+    {
+      "file_name": "US-MO.overpass.json",
+      "state_code": "MO",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MO.overpass.json",
+      "storage_uri": null,
+      "sha256": "c1956e8137a545abe21f619a3212e2ebbd68b14338d0a13bebd0c7050473022d",
+      "size_bytes": 674961
+    },
+    {
+      "file_name": "US-MS.overpass.json",
+      "state_code": "MS",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MS.overpass.json",
+      "storage_uri": null,
+      "sha256": "b7614da698e79c8c2a5e9a5ad63503caf4c9df052fe60f20d66dd30a5d6e49e7",
+      "size_bytes": 52033
+    },
+    {
+      "file_name": "US-MT.overpass.json",
+      "state_code": "MT",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-MT.overpass.json",
+      "storage_uri": null,
+      "sha256": "ce8e4ffafa426cf19158798fe017a6f2678d6a51b00b46f3d173c74205ce1c2c",
+      "size_bytes": 388216
+    },
+    {
+      "file_name": "US-NC.overpass.json",
+      "state_code": "NC",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NC.overpass.json",
+      "storage_uri": null,
+      "sha256": "516e6e42b851a21a82120b7c27cbbd3315f56ca7bbe848c0aeafcc2349dd98d7",
+      "size_bytes": 678836
+    },
+    {
+      "file_name": "US-ND.overpass.json",
+      "state_code": "ND",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-ND.overpass.json",
+      "storage_uri": null,
+      "sha256": "e1a0224cc1a2ced9f1ae68129cf03ac365f8a88fec750d144c53ab530e068be7",
+      "size_bytes": 67409
+    },
+    {
+      "file_name": "US-NE.overpass.json",
+      "state_code": "NE",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NE.overpass.json",
+      "storage_uri": null,
+      "sha256": "49ab00b8e3a203e5bbd6c40eeef94536e5e295995b13b9787aeceae6e7cacf42",
+      "size_bytes": 163804
+    },
+    {
+      "file_name": "US-NH.overpass.json",
+      "state_code": "NH",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NH.overpass.json",
+      "storage_uri": null,
+      "sha256": "149a7a66a5458982ab099c4efa4b146b181d7be9fa786bc0650d02147ba227fe",
+      "size_bytes": 137251
+    },
+    {
+      "file_name": "US-NJ.overpass.json",
+      "state_code": "NJ",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NJ.overpass.json",
+      "storage_uri": null,
+      "sha256": "3a18aced242b0f7f58279d84a40a44abd209f791b007e05d9800fef413444ad1",
+      "size_bytes": 356505
+    },
+    {
+      "file_name": "US-NM.overpass.json",
+      "state_code": "NM",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NM.overpass.json",
+      "storage_uri": null,
+      "sha256": "8941c913dbf54634c5e19410fcd0f78b8a58b7939da0663c3e0637205095063c",
+      "size_bytes": 402054
+    },
+    {
+      "file_name": "US-NV.overpass.json",
+      "state_code": "NV",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NV.overpass.json",
+      "storage_uri": null,
+      "sha256": "71e48bfb2977c33f38d39f250129b437ab109dfa5a92600aa7dfb96267c53b49",
+      "size_bytes": 374226
+    },
+    {
+      "file_name": "US-NY.overpass.json",
+      "state_code": "NY",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-NY.overpass.json",
+      "storage_uri": null,
+      "sha256": "6c307a7c179aba92f73b728918d18657af74a61888f972f8708a074a529efd00",
+      "size_bytes": 992045
+    },
+    {
+      "file_name": "US-OH.overpass.json",
+      "state_code": "OH",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-OH.overpass.json",
+      "storage_uri": null,
+      "sha256": "da5748dfa98f6d38f52d22d961824a49524b467e84083a81a0160431eae02ae2",
+      "size_bytes": 949993
+    },
+    {
+      "file_name": "US-OK.overpass.json",
+      "state_code": "OK",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-OK.overpass.json",
+      "storage_uri": null,
+      "sha256": "0dd8dc0d8eeb1c547bafe6a7afdd2986a8d671fe9619f14ab00f62fe718c60b5",
+      "size_bytes": 193023
+    },
+    {
+      "file_name": "US-OR.overpass.json",
+      "state_code": "OR",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-OR.overpass.json",
+      "storage_uri": null,
+      "sha256": "14d0a45d900c0da402efb510447374f23c57f32eb552751474241fbc9caafdb6",
+      "size_bytes": 980902
+    },
+    {
+      "file_name": "US-PA.overpass.json",
+      "state_code": "PA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-PA.overpass.json",
+      "storage_uri": null,
+      "sha256": "00908b5aee91276c5389275a71b29f1e96f5639c2f2ac18d81df6baf4d80594c",
+      "size_bytes": 850593
+    },
+    {
+      "file_name": "US-RI.overpass.json",
+      "state_code": "RI",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-RI.overpass.json",
+      "storage_uri": null,
+      "sha256": "4e6ad8cdf46384d02e560543e8ce0c0ae087e8c87b7e2c996c42133010b0cb01",
+      "size_bytes": 31400
+    },
+    {
+      "file_name": "US-SC.overpass.json",
+      "state_code": "SC",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-SC.overpass.json",
+      "storage_uri": null,
+      "sha256": "1c81dcdf2c0cbb97c2897c3c65e427e3add57b49728dd1c395bbc06fefeee7a7",
+      "size_bytes": 230841
+    },
+    {
+      "file_name": "US-SD.overpass.json",
+      "state_code": "SD",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-SD.overpass.json",
+      "storage_uri": null,
+      "sha256": "923d95d89b0508a7e7d7b97dfaadd017c03a6ccdfa23abae2599f3e3ac010024",
+      "size_bytes": 166130
+    },
+    {
+      "file_name": "US-TN.overpass.json",
+      "state_code": "TN",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-TN.overpass.json",
+      "storage_uri": null,
+      "sha256": "f7c5fba08f861567faeffbbe843386ac29e7ec3707a3bb9ed142170a4a097efe",
+      "size_bytes": 299020
+    },
+    {
+      "file_name": "US-TX.overpass.json",
+      "state_code": "TX",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-TX.overpass.json",
+      "storage_uri": null,
+      "sha256": "71fe56771f7c525a9b2b12d768d235049d832e0782a0c8d1f8524379a5470ad2",
+      "size_bytes": 1096496
+    },
+    {
+      "file_name": "US-UT.overpass.json",
+      "state_code": "UT",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-UT.overpass.json",
+      "storage_uri": null,
+      "sha256": "373e09091b14d26d66c58ad5820b52634a0cac4ed5a5d9690ee0e0badc9a36a8",
+      "size_bytes": 1055884
+    },
+    {
+      "file_name": "US-VA.overpass.json",
+      "state_code": "VA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-VA.overpass.json",
+      "storage_uri": null,
+      "sha256": "d78a7454affb254c19b0261e0c492af79cba322bf7b9d3e1e20e17264f470126",
+      "size_bytes": 601479
+    },
+    {
+      "file_name": "US-VT.overpass.json",
+      "state_code": "VT",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-VT.overpass.json",
+      "storage_uri": null,
+      "sha256": "df3e4e276954c32ca37b48a99c9733b0477f2e454624c1162a175449c782e277",
+      "size_bytes": 100159
+    },
+    {
+      "file_name": "US-WA.overpass.json",
+      "state_code": "WA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-WA.overpass.json",
+      "storage_uri": null,
+      "sha256": "c56dd85be8aad4de859c194459f20db329a8fd6759db698f52804a3399b2bb97",
+      "size_bytes": 2019449
+    },
+    {
+      "file_name": "US-WI.overpass.json",
+      "state_code": "WI",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-WI.overpass.json",
+      "storage_uri": null,
+      "sha256": "d3978bf81801c6967401e70fc1ba065b20fe053e4c5d33051fa02f3642d1d6dc",
+      "size_bytes": 872853
+    },
+    {
+      "file_name": "US-WV.overpass.json",
+      "state_code": "WV",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-WV.overpass.json",
+      "storage_uri": null,
+      "sha256": "ab310d080109b558621db634424f9399a3e5a5e2650aa47b50577b6298034aa9",
+      "size_bytes": 199282
+    },
+    {
+      "file_name": "US-WY.overpass.json",
+      "state_code": "WY",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\raw\\US-WY.overpass.json",
+      "storage_uri": null,
+      "sha256": "7ef10b3699419cb40885a8fafaa2548e22cafc69219904583964e0063db66428",
+      "size_bytes": 242132
+    }
+  ],
+  "normalized_artifact": {
+    "file_name": "osm-overpass-us.stallpass-import.json",
+    "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\us-all-20260429\\normalized\\osm-overpass-us.stallpass-import.json",
+    "storage_uri": null,
+    "sha256": "5471cd7f503c255603bed5ee96cf34f8411c3e94ca60885a8d83dbf7b23b3893",
+    "size_bytes": 181708093
+  }
+}

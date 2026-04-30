@@ -1,0 +1,662 @@
+{
+  "item": {
+    "id": "35217c2d3b944142b75d43978b37343d",
+    "owner": "andj_kalundborg",
+    "created": 1745482610000,
+    "modified": 1777505056000,
+    "guid": null,
+    "name": null,
+    "title": "toilet",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": null,
+    "tags": [],
+    "snippet": null,
+    "thumbnail": "thumbnail/ago_downloaded.png",
+    "documentation": null,
+    "extent": [
+      [
+        10.857812539046375,
+        55.493495783664486
+      ],
+      [
+        11.290981672896075,
+        55.75236815008917
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102100",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "da",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services-eu1.arcgis.com/LhoSe4DXejOc59yf/arcgis/rest/services/toilet/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 15181,
+    "scoreCompleteness": 16,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777503600000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "toilet_multipoints",
+    "type": "Feature Layer",
+    "serviceItemId": "35217c2d3b944142b75d43978b37343d",
+    "cacheMaxAge": 30,
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1777505053742,
+      "schemaLastEditDate": 1777505053742,
+      "dataLastEditDate": 1777505053742
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": true,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryMultipoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 1208686.162975463,
+      "ymin": 7458238.731121495,
+      "xmax": 1256906.3303829753,
+      "ymax": 7509276.271621199,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "RedSphere.png",
+          "imageData": "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",
+          "contentType": "image/png",
+          "width": 15,
+          "height": 15
+        }
+      }
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeNone",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "ObjectId",
+    "uniqueIdField": {
+      "name": "ObjectId",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "facil_ty",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "facil_ty",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "navn",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "navn",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "beskrivels",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "beskrivels",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "lang_beskr",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "lang_beskr",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ansvar_org",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "ansvar_org",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "kontak_ved",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "kontak_ved",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "handicap",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "handicap",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "vandhane",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "vandhane",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "betaling",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "betaling",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "book",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "book",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "link",
+        "type": "esriFieldTypeString",
+        "actualType": "nvarchar",
+        "alias": "link",
+        "sqlType": "sqlTypeNVarchar",
+        "length": 4000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "ObjectId",
+        "type": "esriFieldTypeOID",
+        "actualType": "int",
+        "alias": "ObjectId",
+        "sqlType": "sqlTypeInteger",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__TOILET_T__9A6192911D0543A6",
+        "fields": "ObjectId",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_1155.TOILET_TOILET_MULTIPOINTS_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "facil_ty": null,
+            "navn": null,
+            "beskrivels": null,
+            "lang_beskr": null,
+            "ansvar_org": null,
+            "kontak_ved": null,
+            "handicap": null,
+            "vandhane": null,
+            "betaling": null,
+            "book": null,
+            "link": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": true,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 2000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 4000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Fugledegård Toilet",
+        "beskrivels": "Offentligt toilet, lukket i perioder med frost",
+        "lang_beskr": null,
+        "ansvar_org": "Naturpark Åmosen",
+        "kontak_ved": null,
+        "handicap": "Delvist handicapegnet",
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 1
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Multtoilet ved Loch Ness",
+        "beskrivels": "Multtoilet ved Loch Ness søen, adgang til vand i bygningen ved siden af. ",
+        "lang_beskr": "Ved det store, åbne græsareal med bålpladser m.m. er der i udkanten placeret et lille multtoilet. Der er papir, men medbring selv papir for en sikkerheds skyld. Der er adgang til vand i bygningen lige ved siden af toilettet. ",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://www.lochnessvenner.dk/",
+        "ObjectId": 2
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Bjerge Sydstrand - Beach voll",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=933&target=print",
+        "ObjectId": 3
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Mullerup strand -Blå Flag",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=938&target=print",
+        "ObjectId": 4
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Røsnæs Fyr",
+        "beskrivels": "Toiletbygning med handicaptoilet",
+        "lang_beskr": "Døgnåbent handicaptoilet ved Røsnæs Fyr. Der er pusleplads på toilettet. ",
+        "ansvar_org": "Naturstyrelsen Midtsjælland",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 5
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "P-plads Torvet, Kalundborg",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=1120&target=print",
+        "ObjectId": 6
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "P-plads Vænget, Kalundborg",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=1121&target=print",
+        "ObjectId": 7
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Toiletter ved Røsnæs Havn",
+        "beskrivels": "Tre toiletter hvoraf det ene er et handicaptoilet ved fælleshuset ved Røsnæs Havn. ",
+        "lang_beskr": "I fælleshuset på Røsnæs Havn er der særskilt indgang til toiletfaciliteterne. Der er to almindelige toiletter og et stort handicaptoilet i bygningen. Døren ind til toiletterne er 80 cm. bred. Der er vand og papir på alle toiletter. Der er pusleplads på handicaptoilettet. ",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://www.havneguide.dk/havn/roesnaes-havn",
+        "ObjectId": 8
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Bjerge Nordstrand",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=947&target=print",
+        "ObjectId": 9
+      }
+    },
+    {
+      "attributes": {
+        "facil_ty": "Toilet",
+        "navn": "Handicapvenligt multtoilet ved Gørlev Sø",
+        "beskrivels": "Handicaptoilet ved parkeringspladsen ved Gørlev Sø. ",
+        "lang_beskr": "Multtoilettet ved parkeringspladsen og hundeskoven ved Gørlev Sø er handicapvenligt. Da det er et multtoilet, er der ikke adgang til vand. Det er papir på toilettet, men medbring selv papir og håndsprit for en sikkerhedsskyld. Døren har en bredde på 80 cm. Efterlad multtoilettet opryddet og i hygiejnisk stand til glæde for den næste. Tag dit affald med dig. Multtoilettet er dit og mit – så pas godt på det.",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Nej",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://friluftsguiden.dk/?print_page_id=31154&target=print",
+        "ObjectId": 10
+      }
+    }
+  ]
+}

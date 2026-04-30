@@ -1,0 +1,2952 @@
+{
+  "item": {
+    "id": "add3e1dd49a446c2a5ac896f030c0b67",
+    "owner": "WaterwaysIre",
+    "created": 1767612314000,
+    "modified": 1776093331000,
+    "guid": null,
+    "name": "Facilities_(Public_View)",
+    "title": "Facilities (Public View)",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Service",
+      "Singlelayer",
+      "Hosted Service",
+      "View Service"
+    ],
+    "description": "<p>Included Facility Types:</p><p>Toilets – Public restrooms available at mooring points or service blocks</p><p>Showers – Shower facilities for boaters and visitors</p><p>Laundry – Washing and drying stations at selected service areas</p><p>Shore Power – Electrical hook-up points for vessels</p><p>Water Points – Fresh water refill stations</p><p>Pump-Outs – Waste disposal stations for onboard sanitation systems</p>",
+    "tags": [
+      "Navigation",
+      "Facilities",
+      "Pump-outs",
+      "Toilets",
+      "Showers",
+      "Laundry",
+      "Water",
+      "Shore Power",
+      "Canoe Launching Points"
+    ],
+    "snippet": "The Facilities layer provides spatial data on infrastructure and services available to waterway users. It is designed to assist both recreational and operational users by offering a clear overview of facility locations and types. The data is maintained by Waterways Ireland and supports public engagement, asset management, and service planning.",
+    "thumbnail": "thumbnail/thumbnail1767969530739.png",
+    "documentation": null,
+    "extent": [
+      [
+        -8.664383484563727,
+        52.514181025002365
+      ],
+      [
+        -6.154519531010752,
+        55.161100442678695
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "2157",
+    "accessInformation": null,
+    "classification": null,
+    "licenseInfo": null,
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/dYoxQ9gPdVpFX6Th/arcgis/rest/services/Facilities_(Public_View)/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 3503,
+    "scoreCompleteness": 80,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777528800000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 1,
+    "name": "Facilities",
+    "type": "Feature Layer",
+    "serviceItemId": "add3e1dd49a446c2a5ac896f030c0b67",
+    "cacheMaxAge": 3600,
+    "isView": true,
+    "isUpdatableView": true,
+    "sourceSchemaChangesAllowed": true,
+    "displayField": "OBJECTID",
+    "description": "Included Facility Types:Toilets – Public restrooms available at mooring points or service blocksShowers – Shower facilities for boaters and visitorsLaundry – Washing and drying stations at selected service areasCanoe Launching Points (Canoe Steps) – Designated access points for launching or retrieving canoesShore Power – Electrical hook-up points for vesselsWater Points – Fresh water refill stationsPump-Outs – Waste disposal stations for onboard sanitation systems",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editFieldsInfo": {
+      "creationDateField": "created_date",
+      "creatorField": "created_user",
+      "editDateField": "last_edited_date",
+      "editorField": "last_edited_user"
+    },
+    "editingInfo": {
+      "lastEditDate": 1776852726418,
+      "schemaLastEditDate": 1776164209912,
+      "dataLastEditDate": 1776852726418
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 463076,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 557659.911846802,
+      "ymin": 641723.5823655284,
+      "xmax": 717639.1410527824,
+      "ymax": 934865.7234973145,
+      "spatialReference": {
+        "wkid": 2157,
+        "latestWkid": 2157
+      }
+    },
+    "spatialReference": {
+      "wkid": 2157,
+      "latestWkid": 2157
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "uniqueValue",
+        "field1": "Type",
+        "uniqueValueGroups": [
+          {
+            "heading": "",
+            "classes": [
+              {
+                "label": "Canoe Launching Point",
+                "description": "Canoe Launching Point",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "deae81d51953904366af20dc70fb0857",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZ1JREFUOI211D1IG2Ecx/HvJXfxJKdEq/hS6CAURBGXiDo4VLQiDiIdOopuLrqJL4ub4Kjg5OTkKA4iXQQFKeoghSLWQQQ1QbiSM2leuMs9XbxoaBNyd/ibntcPfx7+PDJvFNkZbJ19m3unavOhYLBWCCS3kCQhspapP6aTCzN9ozsFuFpWViZ+HkZ8Fqrtdn5aBV5gJRD0iwKgykoDvHoKtxmvrmW8tb0wj6UNlmNXOM/oGe6JtDAVHSJnmQgh+PV4x3LsqrDvGXYyuLfOiZn7Z901fNI7QU1IRatSy55zDXc0feB3+ol4MkE8mUC3897heilA1fNYAo5vL5m8/l72TkXwbnSMgbauSo66gwEeDJ3tH0cAnCdi3uERNczX950ANGt1ZMwciw+XldZRGu7WGpmKDpHKZhAIbvR4xWhZ2MnI/uZ/+9Q1fNr/hYgaRlVCrrGycCLzh7xtA3Bv6CX71DX8+eLAE+REkhBFsGXnU4DmSwWyecsogrOWtbH9sW9WCchhr6hpW4aeSa0VwdM9w0vAko9ii+L72yyVv6CbgQ8Xje4fAAAAAElFTkSuQmCC",
+                  "contentType": "image/png",
+                  "width": 16,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Canoe Launching Point"
+                  ]
+                ]
+              },
+              {
+                "label": "Laundry",
+                "description": "Laundry",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "a54bcb75a937eedc5e45c15f75ab8d23",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABMAAAAWCAYAAAAinad/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVQ4ja2U0W3CQBBEZ85GSQu4DaeHSBG4hUj5gDKAMpI/WoD80ANuA2pIiG+itWVjbIOBZD+sk+/8dnY9tyH+McJyMXjdxI5ZdCvAK9gdls9pBRu8bSaU3gV3sxpSJuTJgDmM8JE97w0GfgyggNVD5NT5bN8H8C4YWjX1dy1YoRK9sK5owSDOxP6SKV0B+0OEZ3tGjgROOiQt6JVe1TNkSEFEnaAi2wxQkp9rOKkNCxBL7piRSCmlEscghgXPrRyypOnLFszJxyo9Ry2UuTUc5iWoCnKE3p6V5Ql70e3oNAdQfEik8IgM3NWGDmtgn6sgrMHjOkgZp3Tanpy7CLPsJaAGCvGVHILHEdR57kyZ5JpSox/6/MHDilJ86VynNUif2B+rZZidiJdP5INdrzXyCeDNa1o0IUV1+sgXAeKq5N672b56xTY4AWnzr7WXw8xLdGqpuDbselUwm5I2Le8d29/LlyOsBNq0vFedffcLorSqrpOeh2gAAAAASUVORK5CYII=",
+                  "contentType": "image/png",
+                  "width": 14,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Laundry"
+                  ]
+                ]
+              },
+              {
+                "label": "Pump-out",
+                "description": "Pump-out",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "0540631c5157494b6180d1f1af4119cf",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXklEQVQ4jd2VUW6CQBCGZ1ZA4w3qNfAO0EbbIyi8cIzGY9QHrEewGgN3KNegNzBVyk4zIEoCa9bqU+cFNpl8+/+z/4IBdy6jvjAnsS0wH6iaJXXSbOkkWkDLi9YANCIQymZEAsuPEgP2z7vwJVUCzUlsMwx0isDOsMe9cyVQYD44KUOaoaRWW4Tio2yhsenHxROB0v3iMWhYvrJGSKUjAuQx2IfQHbYDCV8J8To8gd33VwOe618VHvfGAIne+D3Lew8A0ALUmGFVWejM+/5qw7AqTg0gw/bvT+sqk/XsWV7U2GRXxucUoVbLDENBn3zynD3TjwNWozMGoxXY+f76oe5ZNUjl7dECsg1zEg/Plt3kJuAtZfzjGSIkWkASaHenWwDIizVDu9NtoZBqMJRypgRK6qQ8K927jFSGXwnMlk5iedGGvyIXSUd1MhfKAzpZPizc8V1/AZVSgPZh69Yv4J3AYH57R6AAAAAASUVORK5CYII=",
+                  "contentType": "image/png",
+                  "width": 15,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Pump-out"
+                  ]
+                ]
+              },
+              {
+                "label": "Shore Power",
+                "description": "Shore Power",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "8f0bc74f8ffcc61481d0958c014686ed",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACR0lEQVQ4jcVVW3KiUBTscxWsmh3oNljExCmSLMHIB1mGuIzwQZIlTI01yh7CNnQHVmSUM9UXQRRMZT5Sc/6kuH379AP7+KLp/xdgZ5J66METFCNAfD4T1awQkzl4X2yT+/U/AztBGorqE9TCAYoNBEOFeKKKPQZwg+U8T8bRp4CdSeqJ0QiqPgQZoAs9mF9/Xr9nZ1sUGgEyc4OV38fu7pJ9C1gICvgCjXvI59UBe2FPn0SLbJeMHwHEg+nySVXCvQ7eAIyuAjtBGpIpQXfP9vD5hQpPRepnfMedrkYQ+G6wjJqy1MAOGVFTQUamXRd2aZk/39y6D6s1ZXEmaS3ZiXEPXmmUnrltL6SeJ6LtMRpDZWYxgHNgKSMFGtWh+ZDyKCSkHG6weiOBanWeEaMzo4XXobH4jFS1Cmfw8PtWAZsOGjaYLlGBo9TaAvOMO11BRbqAQcLD5k81ZmblUXhMQG0WU1MUZz6UB7BpAYtqxvBT0xNrXVhmTAMkdII0q1Pz8qOWzGabu0DXLeBCTMZGNQ04ahhZTRVXU1MZr9LB2MH7gjUtG4W4tWa1WVHMty+n1HwLfo720NDu1zC+Bt4m92t2n3ms9OzAXTQl4BzUnQH8UGmcv95kneblyZhr+6wpTWL4a/2FUZSoyZSgNiXH1Hz4rehjd2e7z5qyUUbj4mDiy4/QcX2PoDyTt3AuZlu2bsTuUxY2iuFnTsuhS0e9mY5k/HgJ2gmMhizsPtmxUTb8ig0jRfdpVFPTTwNzjutfPfzRfNl/3l9eh1jaS2PZtQAAAABJRU5ErkJggg==",
+                  "contentType": "image/png",
+                  "width": 16,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Shore Power"
+                  ]
+                ]
+              },
+              {
+                "label": "Showers",
+                "description": "Showers",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "22b5fd36b62dd991b39f0061ee716b3c",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABxElEQVQ4jaVTUW6jMBCdMQak3iC5Btyh2arpHiFNPsIxtj1G+Ei2R2hTreAO5RrpDSqFBr9qbEgpC6irnR/bY/vNvOdnTf8Zui/pL/JIcTWVuYF3eH+4LL4F4K/yNRvcEWMCUjbHDApWWaHpePO2/XkYBPDlMrAh7ikDik4cPvmLPOl2o5uW7WV3+JUZezfldRuEFV6CZfZc7mbzrx14FBHqjEJqKrWXwwO0r4Nltm9AtOUJtBDL9KRC143sEVJjVCqigpRQnAiIdC10dBdehApus6jRQmiwwroR9RzSNdHfAHVZqTIaCiYa9AHD3ICVExAUnQGZCisy4eBxeT8IcPx9tfcXuTWQfSF2gqLixGqh2FYfBPBrT4iByu1lLCMDRfkwK4JVtnG+COTonR7ih5ajQJwyITpTsqPrQvdS2P1I/EWeCoXw9s8cwEYAJUcM0SGy49hnYs/ML1aPr5VpdcbV9Li9ip0HZsMA7Jk5gX+dEK61OsYnhNT8THEhEcRIca+R2vzk+cRYcliWciFYZtcyV8rIMyf9HRAOVkR59/piswfDsVwe98HuU8TuXp1LmrX7TJ2K3apjYQHGKn4L4F8qduMDvAfyj5q2++wAAAAASUVORK5CYII=",
+                  "contentType": "image/png",
+                  "width": 12,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Showers"
+                  ]
+                ]
+              },
+              {
+                "label": "Toilets",
+                "description": "Toilets",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "4f84fe8a0b53ee6c0afd25c6339992d3",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABoklEQVQ4ja2U0W3CMBCG/3MSQN0A1kh3KEWgjgDNA4wBjFEeoIzQghDZoayRbIBoAr7qnMQkRS1I7T3EJ9/5s8/+Ly7+2Vz5eP3QJ0f3XCSz/fwpKifUB5seK/LLMS8IhwQeghETOHIomRYxAxQYmMZHrg8BtMpAVmoMhp9SQxbMDIz5xcZBkHVeP7xPlw+7DMhosnHQvAveWsVu4h8ZvviKtRnNyTJSbEZC08SVlvmRATIhhiEC6akhCVHhk8oCJicDGTAIu2TR7smJZTMp25bMUBHlREWnVn2wycs+SSznqMrdFpbOH2YXj4ITdvk6e2d5fG0zJecGcy9mzjCx7i2QC6C8Tu15i9/Mcw5xeivwqjHi/aKqz+tARlxI4C/mWo/MpXdLfkUiPwE80zW6VXSSBUoLierz464zsVMh5nO5As826taC7QeYfZk8Uk2iEwu04mbErNXKdQ5x3opnUQtP6ymTeq9UID3NbKqwwGT+OPGCMILGTl5dXlT6Ew78dN624v187ay8IByVfw6a1SxZdqpAse+qFzBweX95XiW3sC++Qc77SMwfkgAAAABJRU5ErkJggg==",
+                  "contentType": "image/png",
+                  "width": 15,
+                  "height": 12,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Toilets"
+                  ]
+                ]
+              },
+              {
+                "label": "Water",
+                "description": "Water",
+                "symbol": {
+                  "type": "esriPMS",
+                  "url": "52cd2ac9359db1efb7b90da7e14c604e",
+                  "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAWCAYAAADwza0nAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJUlEQVQ4ja2T3W3CQBCEZ4N/JDowbRw9gCKjlBDwAz0lDyYpARIh0wNuw3QQCUi80fqIY5/vkIkyT+vVfvJods/DH+XZmsNkPfoqfVXyoDi/TvLe4CfCDQiKiBEkWX5Kp+NeIBjKWl8D/cedkmnT+kf6UDhBgYj4rWO9DPfDZD1uwl4HIkSX1ntVi1VCZMI1SAN+Av9Cp9V0JkWQZPsmDGBUg36yW4JZmZBIEm3CMntOJ88VSOBlNUWQ6GuoBc+zQsDLrAbryBkHuESQQ4h/Zs11xMEia+/CIfsB3AwScqdd1uHYQcahmWhTwSKTw4j/2eoN8lpfDBXOt1arrM/PARIixt3G+gtjSRrUaVrfXUf6EDQoJ+WyaOq4uq+eXW31+KIbffUNMeR6JfNBW9sAAAAASUVORK5CYII=",
+                  "contentType": "image/png",
+                  "width": 10,
+                  "height": 16,
+                  "angle": 0,
+                  "xoffset": 0,
+                  "yoffset": 0
+                },
+                "values": [
+                  [
+                    "Water"
+                  ]
+                ]
+              }
+            ]
+          }
+        ],
+        "uniqueValueInfos": [
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "deae81d51953904366af20dc70fb0857",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAZ1JREFUOI211D1IG2Ecx/HvJXfxJKdEq/hS6CAURBGXiDo4VLQiDiIdOopuLrqJL4ub4Kjg5OTkKA4iXQQFKeoghSLWQQQ1QbiSM2leuMs9XbxoaBNyd/ibntcPfx7+PDJvFNkZbJ19m3unavOhYLBWCCS3kCQhspapP6aTCzN9ozsFuFpWViZ+HkZ8Fqrtdn5aBV5gJRD0iwKgykoDvHoKtxmvrmW8tb0wj6UNlmNXOM/oGe6JtDAVHSJnmQgh+PV4x3LsqrDvGXYyuLfOiZn7Z901fNI7QU1IRatSy55zDXc0feB3+ol4MkE8mUC3897heilA1fNYAo5vL5m8/l72TkXwbnSMgbauSo66gwEeDJ3tH0cAnCdi3uERNczX950ANGt1ZMwciw+XldZRGu7WGpmKDpHKZhAIbvR4xWhZ2MnI/uZ/+9Q1fNr/hYgaRlVCrrGycCLzh7xtA3Bv6CX71DX8+eLAE+REkhBFsGXnU4DmSwWyecsogrOWtbH9sW9WCchhr6hpW4aeSa0VwdM9w0vAko9ii+L72yyVv6CbgQ8Xje4fAAAAAElFTkSuQmCC",
+              "contentType": "image/png",
+              "width": 16,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Canoe Launching Point",
+            "label": "Canoe Launching Point"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "a54bcb75a937eedc5e45c15f75ab8d23",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABMAAAAWCAYAAAAinad/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABcElEQVQ4ja2U0W3CQBBEZ85GSQu4DaeHSBG4hUj5gDKAMpI/WoD80ANuA2pIiG+itWVjbIOBZD+sk+/8dnY9tyH+McJyMXjdxI5ZdCvAK9gdls9pBRu8bSaU3gV3sxpSJuTJgDmM8JE97w0GfgyggNVD5NT5bN8H8C4YWjX1dy1YoRK9sK5owSDOxP6SKV0B+0OEZ3tGjgROOiQt6JVe1TNkSEFEnaAi2wxQkp9rOKkNCxBL7piRSCmlEscghgXPrRyypOnLFszJxyo9Ry2UuTUc5iWoCnKE3p6V5Ql70e3oNAdQfEik8IgM3NWGDmtgn6sgrMHjOkgZp3Tanpy7CLPsJaAGCvGVHILHEdR57kyZ5JpSox/6/MHDilJ86VynNUif2B+rZZidiJdP5INdrzXyCeDNa1o0IUV1+sgXAeKq5N672b56xTY4AWnzr7WXw8xLdGqpuDbselUwm5I2Le8d29/LlyOsBNq0vFedffcLorSqrpOeh2gAAAAASUVORK5CYII=",
+              "contentType": "image/png",
+              "width": 14,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Laundry",
+            "label": "Laundry"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "0540631c5157494b6180d1f1af4119cf",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABXklEQVQ4jd2VUW6CQBCGZ1ZA4w3qNfAO0EbbIyi8cIzGY9QHrEewGgN3KNegNzBVyk4zIEoCa9bqU+cFNpl8+/+z/4IBdy6jvjAnsS0wH6iaJXXSbOkkWkDLi9YANCIQymZEAsuPEgP2z7vwJVUCzUlsMwx0isDOsMe9cyVQYD44KUOaoaRWW4Tio2yhsenHxROB0v3iMWhYvrJGSKUjAuQx2IfQHbYDCV8J8To8gd33VwOe618VHvfGAIne+D3Lew8A0ALUmGFVWejM+/5qw7AqTg0gw/bvT+sqk/XsWV7U2GRXxucUoVbLDENBn3zynD3TjwNWozMGoxXY+f76oe5ZNUjl7dECsg1zEg/Plt3kJuAtZfzjGSIkWkASaHenWwDIizVDu9NtoZBqMJRypgRK6qQ8K927jFSGXwnMlk5iedGGvyIXSUd1MhfKAzpZPizc8V1/AZVSgPZh69Yv4J3AYH57R6AAAAAASUVORK5CYII=",
+              "contentType": "image/png",
+              "width": 15,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Pump-out",
+            "label": "Pump-out"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "8f0bc74f8ffcc61481d0958c014686ed",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACR0lEQVQ4jcVVW3KiUBTscxWsmh3oNljExCmSLMHIB1mGuIzwQZIlTI01yh7CNnQHVmSUM9UXQRRMZT5Sc/6kuH379AP7+KLp/xdgZ5J66METFCNAfD4T1awQkzl4X2yT+/U/AztBGorqE9TCAYoNBEOFeKKKPQZwg+U8T8bRp4CdSeqJ0QiqPgQZoAs9mF9/Xr9nZ1sUGgEyc4OV38fu7pJ9C1gICvgCjXvI59UBe2FPn0SLbJeMHwHEg+nySVXCvQ7eAIyuAjtBGpIpQXfP9vD5hQpPRepnfMedrkYQ+G6wjJqy1MAOGVFTQUamXRd2aZk/39y6D6s1ZXEmaS3ZiXEPXmmUnrltL6SeJ6LtMRpDZWYxgHNgKSMFGtWh+ZDyKCSkHG6weiOBanWeEaMzo4XXobH4jFS1Cmfw8PtWAZsOGjaYLlGBo9TaAvOMO11BRbqAQcLD5k81ZmblUXhMQG0WU1MUZz6UB7BpAYtqxvBT0xNrXVhmTAMkdII0q1Pz8qOWzGabu0DXLeBCTMZGNQ04ahhZTRVXU1MZr9LB2MH7gjUtG4W4tWa1WVHMty+n1HwLfo720NDu1zC+Bt4m92t2n3ms9OzAXTQl4BzUnQH8UGmcv95kneblyZhr+6wpTWL4a/2FUZSoyZSgNiXH1Hz4rehjd2e7z5qyUUbj4mDiy4/QcX2PoDyTt3AuZlu2bsTuUxY2iuFnTsuhS0e9mY5k/HgJ2gmMhizsPtmxUTb8ig0jRfdpVFPTTwNzjutfPfzRfNl/3l9eh1jaS2PZtQAAAABJRU5ErkJggg==",
+              "contentType": "image/png",
+              "width": 16,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Shore Power",
+            "label": "Shore Power"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "22b5fd36b62dd991b39f0061ee716b3c",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABAAAAAWCAYAAADJqhx8AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABxElEQVQ4jaVTUW6jMBCdMQak3iC5Btyh2arpHiFNPsIxtj1G+Ei2R2hTreAO5RrpDSqFBr9qbEgpC6irnR/bY/vNvOdnTf8Zui/pL/JIcTWVuYF3eH+4LL4F4K/yNRvcEWMCUjbHDApWWaHpePO2/XkYBPDlMrAh7ikDik4cPvmLPOl2o5uW7WV3+JUZezfldRuEFV6CZfZc7mbzrx14FBHqjEJqKrWXwwO0r4Nltm9AtOUJtBDL9KRC143sEVJjVCqigpRQnAiIdC10dBdehApus6jRQmiwwroR9RzSNdHfAHVZqTIaCiYa9AHD3ICVExAUnQGZCisy4eBxeT8IcPx9tfcXuTWQfSF2gqLixGqh2FYfBPBrT4iByu1lLCMDRfkwK4JVtnG+COTonR7ih5ajQJwyITpTsqPrQvdS2P1I/EWeCoXw9s8cwEYAJUcM0SGy49hnYs/ML1aPr5VpdcbV9Li9ip0HZsMA7Jk5gX+dEK61OsYnhNT8THEhEcRIca+R2vzk+cRYcliWciFYZtcyV8rIMyf9HRAOVkR59/piswfDsVwe98HuU8TuXp1LmrX7TJ2K3apjYQHGKn4L4F8qduMDvAfyj5q2++wAAAAASUVORK5CYII=",
+              "contentType": "image/png",
+              "width": 12,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Showers",
+            "label": "Showers"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "4f84fe8a0b53ee6c0afd25c6339992d3",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABoklEQVQ4ja2U0W3CMBCG/3MSQN0A1kh3KEWgjgDNA4wBjFEeoIzQghDZoayRbIBoAr7qnMQkRS1I7T3EJ9/5s8/+Ly7+2Vz5eP3QJ0f3XCSz/fwpKifUB5seK/LLMS8IhwQeghETOHIomRYxAxQYmMZHrg8BtMpAVmoMhp9SQxbMDIz5xcZBkHVeP7xPlw+7DMhosnHQvAveWsVu4h8ZvviKtRnNyTJSbEZC08SVlvmRATIhhiEC6akhCVHhk8oCJicDGTAIu2TR7smJZTMp25bMUBHlREWnVn2wycs+SSznqMrdFpbOH2YXj4ITdvk6e2d5fG0zJecGcy9mzjCx7i2QC6C8Tu15i9/Mcw5xeivwqjHi/aKqz+tARlxI4C/mWo/MpXdLfkUiPwE80zW6VXSSBUoLierz464zsVMh5nO5As826taC7QeYfZk8Uk2iEwu04mbErNXKdQ5x3opnUQtP6ymTeq9UID3NbKqwwGT+OPGCMILGTl5dXlT6Ew78dN624v187ay8IByVfw6a1SxZdqpAse+qFzBweX95XiW3sC++Qc77SMwfkgAAAABJRU5ErkJggg==",
+              "contentType": "image/png",
+              "width": 15,
+              "height": 12,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Toilets",
+            "label": "Toilets"
+          },
+          {
+            "symbol": {
+              "type": "esriPMS",
+              "url": "52cd2ac9359db1efb7b90da7e14c604e",
+              "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA4AAAAWCAYAAADwza0nAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJUlEQVQ4ja2T3W3CQBCEZ4N/JDowbRw9gCKjlBDwAz0lDyYpARIh0wNuw3QQCUi80fqIY5/vkIkyT+vVfvJods/DH+XZmsNkPfoqfVXyoDi/TvLe4CfCDQiKiBEkWX5Kp+NeIBjKWl8D/cedkmnT+kf6UDhBgYj4rWO9DPfDZD1uwl4HIkSX1ntVi1VCZMI1SAN+Av9Cp9V0JkWQZPsmDGBUg36yW4JZmZBIEm3CMntOJ88VSOBlNUWQ6GuoBc+zQsDLrAbryBkHuESQQ4h/Zs11xMEia+/CIfsB3AwScqdd1uHYQcahmWhTwSKTw4j/2eoN8lpfDBXOt1arrM/PARIixt3G+gtjSRrUaVrfXUf6EDQoJ+WyaOq4uq+eXW31+KIbffUNMeR6JfNBW9sAAAAASUVORK5CYII=",
+              "contentType": "image/png",
+              "width": 10,
+              "height": 16,
+              "angle": 0,
+              "xoffset": 0,
+              "yoffset": 0
+            },
+            "value": "Water",
+            "label": "Water"
+          }
+        ],
+        "fieldDelimiter": ",",
+        "authoringInfo": {
+          "colorRamp": {
+            "type": "multipart",
+            "colorRamps": [
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  225,
+                  210,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  225,
+                  210,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  179,
+                  252,
+                  185,
+                  255
+                ],
+                "toColor": [
+                  179,
+                  252,
+                  185,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  220,
+                  187,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  220,
+                  187,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  179,
+                  250,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  179,
+                  250,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  189,
+                  205,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  189,
+                  205,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  250,
+                  252,
+                  182,
+                  255
+                ],
+                "toColor": [
+                  250,
+                  252,
+                  182,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  245,
+                  179,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  245,
+                  179,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  220,
+                  252,
+                  210,
+                  255
+                ],
+                "toColor": [
+                  220,
+                  252,
+                  210,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  215,
+                  233,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  215,
+                  233,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  179,
+                  183,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  179,
+                  183,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  182,
+                  212,
+                  252,
+                  255
+                ],
+                "toColor": [
+                  182,
+                  212,
+                  252,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  182,
+                  231,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  182,
+                  231,
+                  255
+                ]
+              },
+              {
+                "type": "algorithmic",
+                "algorithm": "esriCIELabAlgorithm",
+                "fromColor": [
+                  252,
+                  191,
+                  179,
+                  255
+                ],
+                "toColor": [
+                  252,
+                  191,
+                  179,
+                  255
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "viewSourceHasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasM": false,
+    "hasZ": true,
+    "enableZDefaults": true,
+    "zDefault": 0,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GlobalID",
+    "typeIdField": "Type",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "Name",
+        "type": "esriFieldTypeString",
+        "alias": "Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Type",
+        "type": "esriFieldTypeString",
+        "alias": "Type",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Facilities Type",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Type of Facilities",
+          "codedValues": [
+            {
+              "name": "Toilets",
+              "code": "Toilets"
+            },
+            {
+              "name": "Showers",
+              "code": "Showers"
+            },
+            {
+              "name": "Water",
+              "code": "Water"
+            },
+            {
+              "name": "Laundry",
+              "code": "Laundry"
+            },
+            {
+              "name": "Pump-out",
+              "code": "Pump-out"
+            },
+            {
+              "name": "Canoe Launching Point",
+              "code": "Canoe Launching Point"
+            },
+            {
+              "name": "Shore Power",
+              "code": "Shore Power"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Operator_Name",
+        "type": "esriFieldTypeString",
+        "alias": "Operator Name",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Operator",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Operator",
+          "codedValues": [
+            {
+              "name": "Other Public Body",
+              "code": "Other Public Body"
+            },
+            {
+              "name": "Privately Owned",
+              "code": "Privately Owned"
+            },
+            {
+              "name": "Waterways Ireland",
+              "code": "Waterways Ireland"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Car_Parking_Available",
+        "type": "esriFieldTypeString",
+        "alias": "Car Parking Available",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Car Parking Available",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Car Parking Available",
+          "codedValues": [
+            {
+              "name": "Car Parking Available",
+              "code": "Car Parking Available"
+            },
+            {
+              "name": "No Car Parking Available",
+              "code": "No Car Parking Available"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Car_Parking_Details",
+        "type": "esriFieldTypeString",
+        "alias": "Car Parking Details",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Payment_Method",
+        "type": "esriFieldTypeString",
+        "alias": "Payment Method",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Facilities Payment Method",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Payment Method",
+          "codedValues": [
+            {
+              "name": "Smart Card",
+              "code": "Smart Card"
+            },
+            {
+              "name": "Cash to Operator",
+              "code": "Cash to Operator"
+            },
+            {
+              "name": "NA",
+              "code": "NA"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Payment_Amount",
+        "type": "esriFieldTypeString",
+        "alias": "Payment Amount",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Operating_Hours",
+        "type": "esriFieldTypeString",
+        "alias": "Operating Hours",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Accessibility",
+        "type": "esriFieldTypeString",
+        "alias": "Accessibility",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Accessibility",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Accessibility",
+          "codedValues": [
+            {
+              "name": "Full",
+              "code": "Full"
+            },
+            {
+              "name": "Limited",
+              "code": "Limited"
+            },
+            {
+              "name": "None",
+              "code": "None"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Provision_Refuse_Service",
+        "type": "esriFieldTypeString",
+        "alias": "Provision Refuse Service",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Yes_No",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Yes or No ",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Refuse_Service_Provider",
+        "type": "esriFieldTypeString",
+        "alias": "Refuse Service Provider",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Additional_Details",
+        "type": "esriFieldTypeString",
+        "alias": "Additional Details",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Latitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "Latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Longitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "Longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Navigation",
+        "type": "esriFieldTypeString",
+        "alias": "Navigation",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "isViewOverride": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "NAVIGATION",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Navigation",
+          "codedValues": [
+            {
+              "name": "Barrow Navigation",
+              "code": "Barrow Navigation"
+            },
+            {
+              "name": "Erne System",
+              "code": "Erne System"
+            },
+            {
+              "name": "Grand Barrow",
+              "code": "Grand Barrow"
+            },
+            {
+              "name": "Grand Canal",
+              "code": "Grand Canal"
+            },
+            {
+              "name": "Lower Bann",
+              "code": "Lower Bann"
+            },
+            {
+              "name": "Royal Canal",
+              "code": "Royal Canal"
+            },
+            {
+              "name": "Shannon-Erne",
+              "code": "Shannon-Erne"
+            },
+            {
+              "name": "Shannon Navigation",
+              "code": "Shannon Navigation"
+            },
+            {
+              "name": "Ulster Canal",
+              "code": "Ulster Canal"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Waterway",
+        "type": "esriFieldTypeString",
+        "alias": "Waterway",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "isViewOverride": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WATERWAY",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Waterway",
+          "codedValues": [
+            {
+              "name": "Athlone Canal",
+              "code": "Athlone Canal"
+            },
+            {
+              "name": "Barrow Line",
+              "code": "Barrow Line"
+            },
+            {
+              "name": "Barrow Navigation",
+              "code": "Barrow Navigation"
+            },
+            {
+              "name": "Camlin River",
+              "code": "Camlin River"
+            },
+            {
+              "name": "Clonaheenogue Canal",
+              "code": "Clonaheenogue Canal"
+            },
+            {
+              "name": "Cloondara Canal",
+              "code": "Cloondara Canal"
+            },
+            {
+              "name": "Connaught Harbour",
+              "code": "Connaught Harbour"
+            },
+            {
+              "name": "Edenderry Branch",
+              "code": "Edenderry Branch"
+            },
+            {
+              "name": "Erne System",
+              "code": "Erne System"
+            },
+            {
+              "name": "Errina-Plassey Canal",
+              "code": "Errina-Plassey Canal"
+            },
+            {
+              "name": "Grand Canal Circular Line",
+              "code": "Grand Canal Circular Line"
+            },
+            {
+              "name": "Grand Canal Main Line",
+              "code": "Grand Canal Main Line"
+            },
+            {
+              "name": "Kilbeggan Branch",
+              "code": "Kilbeggan Branch"
+            },
+            {
+              "name": "Kilglass Branch",
+              "code": "Kilglass Branch"
+            },
+            {
+              "name": "Lecarrow Canal",
+              "code": "Lecarrow Canal"
+            },
+            {
+              "name": "Longford Branch",
+              "code": "Longford Branch"
+            },
+            {
+              "name": "Lough Key Branch",
+              "code": "Lough Key Branch"
+            },
+            {
+              "name": "Lough Owel Feeder",
+              "code": "Lough Owel Feeder"
+            },
+            {
+              "name": "Lower Bann",
+              "code": "Lower Bann"
+            },
+            {
+              "name": "Milltown Feeder",
+              "code": "Milltown Feeder"
+            },
+            {
+              "name": "Mountmellick Branch",
+              "code": "Mountmellick Branch"
+            },
+            {
+              "name": "Naas Branch and Corbally Extension",
+              "code": "Naas Branch and Corbally Extension"
+            },
+            {
+              "name": "Old Barrow Line",
+              "code": "Old Barrow Line"
+            },
+            {
+              "name": "Park Canal",
+              "code": "Park Canal"
+            },
+            {
+              "name": "River Inny Branch",
+              "code": "River Inny Branch"
+            },
+            {
+              "name": "Royal Canal Main Line",
+              "code": "Royal Canal Main Line"
+            },
+            {
+              "name": "Scariff Branch",
+              "code": "Scariff Branch"
+            },
+            {
+              "name": "Shannon-Erne Waterway",
+              "code": "Shannon-Erne Waterway"
+            },
+            {
+              "name": "Shannon Navigation Main Line",
+              "code": "Shannon Navigation Main Line"
+            },
+            {
+              "name": "Suck Navigation",
+              "code": "Suck Navigation"
+            },
+            {
+              "name": "Tullamore Harbour",
+              "code": "Tullamore Harbour"
+            },
+            {
+              "name": "Ulster Canal",
+              "code": "Ulster Canal"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Waterway_Section",
+        "type": "esriFieldTypeString",
+        "alias": "Waterway Section",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "isViewOverride": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "WATERWAY_SECTION",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Waterway Section",
+          "codedValues": [
+            {
+              "name": "Albert Level",
+              "code": "Albert Level"
+            },
+            {
+              "name": "Ardnacrusha Level",
+              "code": "Ardnacrusha Level"
+            },
+            {
+              "name": "Ardreigh Level",
+              "code": "Ardreigh Level"
+            },
+            {
+              "name": "Athlone Canal",
+              "code": "Athlone Canal"
+            },
+            {
+              "name": "Bagenalstown Level",
+              "code": "Bagenalstown Level"
+            },
+            {
+              "name": "Ballingrane Level",
+              "code": "Ballingrane Level"
+            },
+            {
+              "name": "Ballyellen Lower",
+              "code": "Ballyellen Lower"
+            },
+            {
+              "name": "Ballyellen Upper",
+              "code": "Ballyellen Upper"
+            },
+            {
+              "name": "Ballykeenan Level",
+              "code": "Ballykeenan Level"
+            },
+            {
+              "name": "Ballyleague Section",
+              "code": "Ballyleague Section"
+            },
+            {
+              "name": "Ballytiglea Level",
+              "code": "Ballytiglea Level"
+            },
+            {
+              "name": "Battlebridge Level",
+              "code": "Battlebridge Level"
+            },
+            {
+              "name": "Belturbet Line River Erne",
+              "code": "Belturbet Line River Erne"
+            },
+            {
+              "name": "Bestfield Level",
+              "code": "Bestfield Level"
+            },
+            {
+              "name": "Borris Level",
+              "code": "Borris Level"
+            },
+            {
+              "name": "Bun Loop",
+              "code": "Bun Loop"
+            },
+            {
+              "name": "Camlin River Loop",
+              "code": "Camlin River Loop"
+            },
+            {
+              "name": "Carlow Level",
+              "code": "Carlow Level"
+            },
+            {
+              "name": "Carnroe Level",
+              "code": "Carnroe Level"
+            },
+            {
+              "name": "Carriglead Level",
+              "code": "Carriglead Level"
+            },
+            {
+              "name": "Clashganna Level",
+              "code": "Clashganna Level"
+            },
+            {
+              "name": "Clogrennan Level",
+              "code": "Clogrennan Level"
+            },
+            {
+              "name": "Clonaheenogue Canal",
+              "code": "Clonaheenogue Canal"
+            },
+            {
+              "name": "Clones Line",
+              "code": "Clones Line"
+            },
+            {
+              "name": "Coleraine Level",
+              "code": "Coleraine Level"
+            },
+            {
+              "name": "Connaught Harbour",
+              "code": "Connaught Harbour"
+            },
+            {
+              "name": "Corbally Extension",
+              "code": "Corbally Extension"
+            },
+            {
+              "name": "Cutts Level",
+              "code": "Cutts Level"
+            },
+            {
+              "name": "Drumleague Level",
+              "code": "Drumleague Level"
+            },
+            {
+              "name": "Edenderry Branch",
+              "code": "Edenderry Branch"
+            },
+            {
+              "name": "Erne Level",
+              "code": "Erne Level"
+            },
+            {
+              "name": "Fenniscourt Level",
+              "code": "Fenniscourt Level"
+            },
+            {
+              "name": "Finn River",
+              "code": "Finn River"
+            },
+            {
+              "name": "Galloon Loop",
+              "code": "Galloon Loop"
+            },
+            {
+              "name": "Grand Canal Dock Section",
+              "code": "Grand Canal Dock Section"
+            },
+            {
+              "name": "Grand Canal Level",
+              "code": "Grand Canal Level"
+            },
+            {
+              "name": "Inishmore Loop",
+              "code": "Inishmore Loop"
+            },
+            {
+              "name": "Inter-Lough Channel",
+              "code": "Inter-Lough Channel"
+            },
+            {
+              "name": "Kesh River Branch",
+              "code": "Kesh River Branch"
+            },
+            {
+              "name": "Kilbeggan Branch",
+              "code": "Kilbeggan Branch"
+            },
+            {
+              "name": "Kilglass Branch",
+              "code": "Kilglass Branch"
+            },
+            {
+              "name": "Kiltybarden Branch",
+              "code": "Kiltybarden Branch"
+            },
+            {
+              "name": "Lecarrow Canal",
+              "code": "Lecarrow Canal"
+            },
+            {
+              "name": "Level 1",
+              "code": "Level 1"
+            },
+            {
+              "name": "Level 10",
+              "code": "Level 10"
+            },
+            {
+              "name": "Level 11",
+              "code": "Level 11"
+            },
+            {
+              "name": "Level 12",
+              "code": "Level 12"
+            },
+            {
+              "name": "Level 13",
+              "code": "Level 13"
+            },
+            {
+              "name": "Level 14",
+              "code": "Level 14"
+            },
+            {
+              "name": "Level 15",
+              "code": "Level 15"
+            },
+            {
+              "name": "Level 16",
+              "code": "Level 16"
+            },
+            {
+              "name": "Level 17",
+              "code": "Level 17"
+            },
+            {
+              "name": "Level 18",
+              "code": "Level 18"
+            },
+            {
+              "name": "Level 19",
+              "code": "Level 19"
+            },
+            {
+              "name": "Level 2",
+              "code": "Level 2"
+            },
+            {
+              "name": "Level 20",
+              "code": "Level 20"
+            },
+            {
+              "name": "Level 21",
+              "code": "Level 21"
+            },
+            {
+              "name": "Level 22",
+              "code": "Level 22"
+            },
+            {
+              "name": "Level 23",
+              "code": "Level 23"
+            },
+            {
+              "name": "Level 24",
+              "code": "Level 24"
+            },
+            {
+              "name": "Level 25",
+              "code": "Level 25"
+            },
+            {
+              "name": "Level 26",
+              "code": "Level 26"
+            },
+            {
+              "name": "Level 27",
+              "code": "Level 27"
+            },
+            {
+              "name": "Level 28",
+              "code": "Level 28"
+            },
+            {
+              "name": "Level 29",
+              "code": "Level 29"
+            },
+            {
+              "name": "Level 3",
+              "code": "Level 3"
+            },
+            {
+              "name": "Level 30",
+              "code": "Level 30"
+            },
+            {
+              "name": "Level 31",
+              "code": "Level 31"
+            },
+            {
+              "name": "Level 32",
+              "code": "Level 32"
+            },
+            {
+              "name": "Level 33",
+              "code": "Level 33"
+            },
+            {
+              "name": "Level 34",
+              "code": "Level 34"
+            },
+            {
+              "name": "Level 35",
+              "code": "Level 35"
+            },
+            {
+              "name": "Level 36",
+              "code": "Level 36"
+            },
+            {
+              "name": "Level 37",
+              "code": "Level 37"
+            },
+            {
+              "name": "Level 38",
+              "code": "Level 38"
+            },
+            {
+              "name": "Level 39",
+              "code": "Level 39"
+            },
+            {
+              "name": "Level 4",
+              "code": "Level 4"
+            },
+            {
+              "name": "Level 40",
+              "code": "Level 40"
+            },
+            {
+              "name": "Level 41",
+              "code": "Level 41"
+            },
+            {
+              "name": "Level 42",
+              "code": "Level 42"
+            },
+            {
+              "name": "Level 43",
+              "code": "Level 43"
+            },
+            {
+              "name": "Level 44",
+              "code": "Level 44"
+            },
+            {
+              "name": "Level 45",
+              "code": "Level 45"
+            },
+            {
+              "name": "Level 46",
+              "code": "Level 46"
+            },
+            {
+              "name": "Level 5",
+              "code": "Level 5"
+            },
+            {
+              "name": "Level 6",
+              "code": "Level 6"
+            },
+            {
+              "name": "Level 7",
+              "code": "Level 7"
+            },
+            {
+              "name": "Level 8",
+              "code": "Level 8"
+            },
+            {
+              "name": "Level 9",
+              "code": "Level 9"
+            },
+            {
+              "name": "Level C1",
+              "code": "Level C1"
+            },
+            {
+              "name": "Level C2",
+              "code": "Level C2"
+            },
+            {
+              "name": "Level C3",
+              "code": "Level C3"
+            },
+            {
+              "name": "Level C4",
+              "code": "Level C4"
+            },
+            {
+              "name": "Level C5",
+              "code": "Level C5"
+            },
+            {
+              "name": "Level C6",
+              "code": "Level C6"
+            },
+            {
+              "name": "Level C7",
+              "code": "Level C7"
+            },
+            {
+              "name": "Level N1",
+              "code": "Level N1"
+            },
+            {
+              "name": "Level N2",
+              "code": "Level N2"
+            },
+            {
+              "name": "Level N3",
+              "code": "Level N3"
+            },
+            {
+              "name": "Level N4",
+              "code": "Level N4"
+            },
+            {
+              "name": "Level N5",
+              "code": "Level N5"
+            },
+            {
+              "name": "Levitstown Level",
+              "code": "Levitstown Level"
+            },
+            {
+              "name": "Lock 1 Corraquill Level",
+              "code": "Lock 1 Corraquill Level"
+            },
+            {
+              "name": "Lock 10 Kilclare Level",
+              "code": "Lock 10 Kilclare Level"
+            },
+            {
+              "name": "Lock 11 Kilclare Lower Level",
+              "code": "Lock 11 Kilclare Lower Level"
+            },
+            {
+              "name": "Lock 12 Lisconor Level",
+              "code": "Lock 12 Lisconor Level"
+            },
+            {
+              "name": "Lock 13 Newbrook Level",
+              "code": "Lock 13 Newbrook Level"
+            },
+            {
+              "name": "Lock 14 Drumduff Level",
+              "code": "Lock 14 Drumduff Level"
+            },
+            {
+              "name": "Lock 15 Tirmactiernan Level",
+              "code": "Lock 15 Tirmactiernan Level"
+            },
+            {
+              "name": "Lock 16 Killarcan Level",
+              "code": "Lock 16 Killarcan Level"
+            },
+            {
+              "name": "Lock 2 Ballyconnell Level",
+              "code": "Lock 2 Ballyconnell Level"
+            },
+            {
+              "name": "Lock 3 Skelan Level",
+              "code": "Lock 3 Skelan Level"
+            },
+            {
+              "name": "Lock 4 Aghoo Level",
+              "code": "Lock 4 Aghoo Level"
+            },
+            {
+              "name": "Lock 5 Ardrum Level",
+              "code": "Lock 5 Ardrum Level"
+            },
+            {
+              "name": "Lock 6 Ballinamore Level",
+              "code": "Lock 6 Ballinamore Level"
+            },
+            {
+              "name": "Lock 7 Drumduff Level",
+              "code": "Lock 7 Drumduff Level"
+            },
+            {
+              "name": "Longford Branch",
+              "code": "Longford Branch"
+            },
+            {
+              "name": "Lough Allen Level",
+              "code": "Lough Allen Level"
+            },
+            {
+              "name": "Lough Derg Level",
+              "code": "Lough Derg Level"
+            },
+            {
+              "name": "Lough Key Branch",
+              "code": "Lough Key Branch"
+            },
+            {
+              "name": "Lough Owel Feeder",
+              "code": "Lough Owel Feeder"
+            },
+            {
+              "name": "Lough Ree Section",
+              "code": "Lough Ree Section"
+            },
+            {
+              "name": "Lower Lough Erne",
+              "code": "Lower Lough Erne"
+            },
+            {
+              "name": "Maganey Level",
+              "code": "Maganey Level"
+            },
+            {
+              "name": "Milford Level",
+              "code": "Milford Level"
+            },
+            {
+              "name": "Milltown Feeder",
+              "code": "Milltown Feeder"
+            },
+            {
+              "name": "Mountmellick Branch",
+              "code": "Mountmellick Branch"
+            },
+            {
+              "name": "Movanagher Level",
+              "code": "Movanagher Level"
+            },
+            {
+              "name": "New Ross Level",
+              "code": "New Ross Level"
+            },
+            {
+              "name": "Parteen Level",
+              "code": "Parteen Level"
+            },
+            {
+              "name": "Pollboy Level",
+              "code": "Pollboy Level"
+            },
+            {
+              "name": "Portna Level",
+              "code": "Portna Level"
+            },
+            {
+              "name": "Rathellin Level",
+              "code": "Rathellin Level"
+            },
+            {
+              "name": "Rathvindon Level",
+              "code": "Rathvindon Level"
+            },
+            {
+              "name": "River Inny Branch",
+              "code": "River Inny Branch"
+            },
+            {
+              "name": "Rooskey Level",
+              "code": "Rooskey Level"
+            },
+            {
+              "name": "Sarsfield Level",
+              "code": "Sarsfield Level"
+            },
+            {
+              "name": "Scariff Branch",
+              "code": "Scariff Branch"
+            },
+            {
+              "name": "Shannon Level",
+              "code": "Shannon Level"
+            },
+            {
+              "name": "Slyguff Level",
+              "code": "Slyguff Level"
+            },
+            {
+              "name": "Spencer Level",
+              "code": "Spencer Level"
+            },
+            {
+              "name": "St Mullins Level",
+              "code": "St Mullins Level"
+            },
+            {
+              "name": "Summit Level",
+              "code": "Summit Level"
+            },
+            {
+              "name": "Termonbarry Level",
+              "code": "Termonbarry Level"
+            },
+            {
+              "name": "Tinnehinch Lower Level",
+              "code": "Tinnehinch Lower Level"
+            },
+            {
+              "name": "Tinnehinch Upper Level",
+              "code": "Tinnehinch Upper Level"
+            },
+            {
+              "name": "Toomebridge Level",
+              "code": "Toomebridge Level"
+            },
+            {
+              "name": "Tullamore Harbour",
+              "code": "Tullamore Harbour"
+            },
+            {
+              "name": "Upper Lough Erne",
+              "code": "Upper Lough Erne"
+            },
+            {
+              "name": "Victoria Level",
+              "code": "Victoria Level"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "County",
+        "type": "esriFieldTypeString",
+        "alias": "County",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "isViewOverride": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Counties_32",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Counties (32)",
+          "codedValues": [
+            {
+              "name": "Antrim",
+              "code": "Antrim"
+            },
+            {
+              "name": "Armagh",
+              "code": "Armagh"
+            },
+            {
+              "name": "Carlow",
+              "code": "Carlow"
+            },
+            {
+              "name": "Cavan",
+              "code": "Cavan"
+            },
+            {
+              "name": "Clare",
+              "code": "Clare"
+            },
+            {
+              "name": "Cork",
+              "code": "Cork"
+            },
+            {
+              "name": "Derry",
+              "code": "Derry"
+            },
+            {
+              "name": "Donegal",
+              "code": "Donegal"
+            },
+            {
+              "name": "Down",
+              "code": "Down"
+            },
+            {
+              "name": "Dublin",
+              "code": "Dublin"
+            },
+            {
+              "name": "Fermanagh",
+              "code": "Fermanagh"
+            },
+            {
+              "name": "Galway",
+              "code": "Galway"
+            },
+            {
+              "name": "Kerry",
+              "code": "Kerry"
+            },
+            {
+              "name": "Kildare",
+              "code": "Kildare"
+            },
+            {
+              "name": "Kilkenny",
+              "code": "Kilkenny"
+            },
+            {
+              "name": "Laois",
+              "code": "Laois"
+            },
+            {
+              "name": "Leitrim",
+              "code": "Leitrim"
+            },
+            {
+              "name": "Limerick",
+              "code": "Limerick"
+            },
+            {
+              "name": "Longford",
+              "code": "Longford"
+            },
+            {
+              "name": "Louth",
+              "code": "Louth"
+            },
+            {
+              "name": "Mayo",
+              "code": "Mayo"
+            },
+            {
+              "name": "Meath",
+              "code": "Meath"
+            },
+            {
+              "name": "Monaghan",
+              "code": "Monaghan"
+            },
+            {
+              "name": "Offaly",
+              "code": "Offaly"
+            },
+            {
+              "name": "Roscommon",
+              "code": "Roscommon"
+            },
+            {
+              "name": "Sligo",
+              "code": "Sligo"
+            },
+            {
+              "name": "Tipperary",
+              "code": "Tipperary"
+            },
+            {
+              "name": "Tyrone",
+              "code": "Tyrone"
+            },
+            {
+              "name": "Waterford",
+              "code": "Waterford"
+            },
+            {
+              "name": "Westmeath",
+              "code": "Westmeath"
+            },
+            {
+              "name": "Wexford",
+              "code": "Wexford"
+            },
+            {
+              "name": "Wicklow",
+              "code": "Wicklow"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Townland",
+        "type": "esriFieldTypeString",
+        "alias": "Townland",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": true,
+        "isViewOverride": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__FACILITI__F4B70D853E47C81A",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "UUID_293",
+        "fields": "GlobalID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "UUID_OID_293",
+        "fields": "GlobalID,OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_3430.FACILITIES1_FACILITIES_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "Type_Index",
+        "fields": "Type",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Type_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Navigation_Index",
+        "fields": "Navigation",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Navigation_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Name_Index",
+        "fields": "Name",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Name_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Waterway_Index",
+        "fields": "Waterway",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Waterway_Index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "Waterway_Section_Index",
+        "fields": "Waterway_Section",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Waterway_Section_Index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [
+      {
+        "id": "Canoe Launching Point",
+        "name": "Canoe Launching Point",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Canoe Launching Point",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Canoe Launching Point",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Laundry",
+        "name": "Laundry",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Laundry",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Laundry",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Pump-out",
+        "name": "Pump-out",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Pump-out",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Pump-out",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Shore Power",
+        "name": "Shore Power",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Shore Power",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Shore Power",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Showers",
+        "name": "Showers",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Showers",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Showers",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Toilets",
+        "name": "Toilets",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Toilets",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Toilets",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "Water",
+        "name": "Water",
+        "domains": {
+          "Type": {
+            "type": "inherited"
+          },
+          "Operator_Name": {
+            "type": "inherited"
+          },
+          "Car_Parking_Available": {
+            "type": "inherited"
+          },
+          "Payment_Method": {
+            "type": "inherited"
+          },
+          "Accessibility": {
+            "type": "inherited"
+          },
+          "Provision_Refuse_Service": {
+            "type": "inherited"
+          },
+          "Region": {
+            "type": "inherited"
+          },
+          "Navigation": {
+            "type": "inherited"
+          },
+          "Waterway": {
+            "type": "inherited"
+          },
+          "Waterway_Section": {
+            "type": "inherited"
+          },
+          "Finance_Code": {
+            "type": "inherited"
+          },
+          "Regional_Manager": {
+            "type": "inherited"
+          },
+          "Senior_Engineer": {
+            "type": "inherited"
+          },
+          "County": {
+            "type": "inherited"
+          }
+        },
+        "templates": [
+          {
+            "name": "Water",
+            "description": "",
+            "drawingTool": "esriFeatureEditToolPoint",
+            "prototype": {
+              "attributes": {
+                "Name": null,
+                "Longitude": null,
+                "Type": "Water",
+                "Operator_Name": null,
+                "Car_Parking_Available": null,
+                "Car_Parking_Details": null,
+                "Payment_Method": null,
+                "Payment_Amount": null,
+                "Operating_Hours": null,
+                "Accessibility": null,
+                "Provision_Refuse_Service": null,
+                "Refuse_Service_Provider": null,
+                "AssociatedAssetCategory": null,
+                "AssociatedAssetName": null,
+                "AssociatedAssetID": null,
+                "Additional_Details": null,
+                "Latitude": null
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "templates": [],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": true,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "Name": "Portrunny Harbour - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": null,
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 units",
+        "Operating_Hours": "",
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Mooring for duration of pump out only.",
+        "Latitude": 53.59146618,
+        "Longitude": -8.06034466,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Shannon Navigation Main Line",
+        "Waterway_Section": "Lough Ree Section",
+        "County": "Roscommon",
+        "Townland": "Lackan",
+        "GlobalID": "07b16b12-4b56-48b7-9c8f-d4cc945984b0",
+        "OBJECTID": 1
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Ballina - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Other Public Body",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": null,
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": null,
+        "Operating_Hours": null,
+        "Accessibility": "Limited",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": null,
+        "Latitude": 52.80877332,
+        "Longitude": -8.43834497,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Shannon Navigation Main Line",
+        "Waterway_Section": "Parteen Level",
+        "County": "Tipperary",
+        "Townland": "Ballina",
+        "GlobalID": "f077385e-d986-4618-80c9-8c1d1a282f16",
+        "OBJECTID": 2
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Graiguenamanagh - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Other Public Body",
+        "Car_Parking_Available": null,
+        "Car_Parking_Details": null,
+        "Payment_Method": "NA",
+        "Payment_Amount": "0",
+        "Operating_Hours": "Same as Lock hours",
+        "Accessibility": "Limited",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Carlow County Council",
+        "Latitude": 52.53924116,
+        "Longitude": -6.9539535,
+        "Navigation": "Barrow Navigation",
+        "Waterway": "Barrow Navigation",
+        "Waterway_Section": "Tinnehinch Upper Level",
+        "County": "Carlow",
+        "Townland": "Tinnahinch",
+        "GlobalID": "27ed4993-11d5-4b23-b8ce-86ec0d062404",
+        "OBJECTID": 3
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Keshcarrigan - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": null,
+        "Car_Parking_Details": null,
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 units",
+        "Operating_Hours": null,
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": null,
+        "Latitude": 54.02022047,
+        "Longitude": -7.94122909,
+        "Navigation": "Shannon-Erne",
+        "Waterway": "Shannon-Erne Waterway",
+        "Waterway_Section": "Summit Level",
+        "County": "Leitrim",
+        "Townland": "Keshcarrigan",
+        "GlobalID": "b4d5cbe7-0363-4549-9478-cc5c635e0097",
+        "OBJECTID": 4
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Drumaheglis Marina - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Other Public Body",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": "Ballymoney Borough Council +44 (0)28 2766 6466",
+        "Payment_Method": "NA",
+        "Payment_Amount": "0",
+        "Operating_Hours": null,
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": "Yes",
+        "Refuse_Service_Provider": "Ballymoney Borough Council +44 (0)28 2766 6466",
+        "Additional_Details": null,
+        "Latitude": 55.06633999,
+        "Longitude": -6.5882587,
+        "Navigation": "Lower Bann",
+        "Waterway": "Lower Bann",
+        "Waterway_Section": "Cutts Level",
+        "County": "Antrim",
+        "Townland": "Drumaheglis",
+        "GlobalID": "12a1e69c-0789-4f84-bee8-6a9ee994168e",
+        "OBJECTID": 5
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Lough Key Forest Park - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": "Exit fee applies during peak times. Privately owned by Lough Key Forest Park +353 (0)71 96 73122.",
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 smart card units",
+        "Operating_Hours": "Unlimited",
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Mooring is not permitted. Usage is for the duration of the service only.",
+        "Latitude": 53.98576362,
+        "Longitude": -8.23361475,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Lough Key Branch",
+        "Waterway_Section": "Lough Key Branch",
+        "County": "Roscommon",
+        "Townland": "Rockingham Demesne",
+        "GlobalID": "e53390e0-b4fd-436d-9bb5-ee07b8ae2c8f",
+        "OBJECTID": 6
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Drumshanbo - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": "3 or 4 vehicles max (steep access & restricted to lock opening  hours only",
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 units",
+        "Operating_Hours": "24 hours",
+        "Accessibility": "Limited",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Accessibility: access via 1:12 max ramp",
+        "Latitude": 54.04866078,
+        "Longitude": -8.05059216,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Shannon Navigation Main Line",
+        "Waterway_Section": "Lough Allen Level",
+        "County": "Leitrim",
+        "Townland": "Blackrock",
+        "GlobalID": "b89eaffb-bae2-4e49-962e-3c968042cae0",
+        "OBJECTID": 7
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Belturbet - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": null,
+        "Car_Parking_Details": null,
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "1 Unit",
+        "Operating_Hours": "24 hours",
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Valid Duration of Stay During Pump Out Only",
+        "Latitude": 54.10373154,
+        "Longitude": -7.44133942,
+        "Navigation": "Erne System",
+        "Waterway": "Erne System",
+        "Waterway_Section": "Belturbet Line River Erne",
+        "County": "Cavan",
+        "Townland": "Corporation Lands",
+        "GlobalID": "688a44c7-c014-4a02-b917-c301a004c128",
+        "OBJECTID": 8
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Boyle Harbour - Pump-out",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": "1.8m height restricted, approx 8 spaces",
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 units",
+        "Operating_Hours": "24 hours",
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Accessibility: level access from carpark. Payment amount is 2 smart card units; Mooring is not permitted. Usage is for the duration of the service only.",
+        "Latitude": 53.98264418,
+        "Longitude": -8.29086708,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Lough Key Branch",
+        "Waterway_Section": "Lough Key Branch",
+        "County": "Roscommon",
+        "Townland": "Deerpark",
+        "GlobalID": "d250888d-4ccd-4197-880c-a7ac540b8c08",
+        "OBJECTID": 9
+      }
+    },
+    {
+      "attributes": {
+        "Name": "Carrick-on-Shannon - Pump-out (Old)",
+        "Type": "Pump-out",
+        "Operator_Name": "Waterways Ireland",
+        "Car_Parking_Available": "Car Parking Available",
+        "Car_Parking_Details": "Large Council Carpark (Leitrim Co Co) but heavily used during summer months.",
+        "Payment_Method": "Smart Card",
+        "Payment_Amount": "2 units",
+        "Operating_Hours": "24 hours",
+        "Accessibility": "Full",
+        "Provision_Refuse_Service": null,
+        "Refuse_Service_Provider": null,
+        "Additional_Details": "Accessibility: Level access from carpark",
+        "Latitude": 53.94307299,
+        "Longitude": -8.09505183,
+        "Navigation": "Shannon Navigation",
+        "Waterway": "Shannon Navigation Main Line",
+        "Waterway_Section": "Albert Level",
+        "County": "Leitrim",
+        "Townland": "Townparks",
+        "GlobalID": "6f27c616-a85f-4e43-b230-066c193caaa4",
+        "OBJECTID": 10
+      }
+    }
+  ]
+}

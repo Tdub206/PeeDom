@@ -1,0 +1,110 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9006498948292,
+          43.6665323242217
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "BathroomType": "Shelter bathroom"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9019894055493,
+          43.6672708947542
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "BathroomType": "Pit toilet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.901882269838,
+          43.6672451982356
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "BathroomType": "Pit toilet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9047026999204,
+          43.6679434601061
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "BathroomType": "Splash Park bathroom"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9074672984749,
+          43.6692892207807
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "BathroomType": "Shelter bathroom"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9062335055713,
+          43.6697952451323
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "BathroomType": "Pit toilet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9117628527907,
+          43.6699657438096
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "BathroomType": "Visitor Center bathrooms"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "artifact_version": 1,
+  "source_key": "osm-overpass-us",
+  "run_label": "codex-overpass-smoke",
+  "generated_at": "2026-04-29T08:21:28.772Z",
+  "storage_bucket": null,
+  "storage_prefix": null,
+  "states_requested": [
+    "WA"
+  ],
+  "include_expanded_text_matches": true,
+  "refresh_requested": false,
+  "endpoint": null,
+  "raw_directory": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\codex-overpass-smoke\\raw",
+  "normalized_output_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\codex-overpass-smoke\\normalized\\osm-overpass-us.stallpass-import.json",
+  "raw_state_files": [
+    {
+      "file_name": "US-WA.overpass.json",
+      "state_code": "WA",
+      "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\codex-overpass-smoke\\raw\\US-WA.overpass.json",
+      "storage_uri": null,
+      "sha256": "770431b28cc81b246311b2eab08e9a00a424e1caec0ce4f284abaac5d77e3f86",
+      "size_bytes": 2019198
+    }
+  ],
+  "normalized_artifact": {
+    "file_name": "osm-overpass-us.stallpass-import.json",
+    "local_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\overpass-us\\runs\\codex-overpass-smoke\\normalized\\osm-overpass-us.stallpass-import.json",
+    "storage_uri": null,
+    "sha256": "e5bb1fc3179860857d6af3f617e46a9b26111b5516c3fad6ea98c8c1ead650e6",
+    "size_bytes": 12513754
+  }
+}

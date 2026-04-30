@@ -2,11 +2,11 @@
 
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { getApprovedLocationById } from '@/lib/business/queries';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getApprovedLocationById } from '../../../lib/business/queries';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
-export const createFeaturedCampaignSchema = z
+const createFeaturedCampaignSchema = z
   .object({
     bathroom_id: z.string().uuid('Pick a location before launching.'),
     placement_type: z.enum(['search_top', 'map_priority', 'nearby_featured'], {
@@ -26,7 +26,6 @@ export const createFeaturedCampaignSchema = z
     message: 'End date must be after start date.',
   });
 
-export type CreateFeaturedCampaignInput = z.infer<typeof createFeaturedCampaignSchema>;
 export type CreateFeaturedCampaignResult = { ok: true } | { ok: false; error: string };
 
 type FeaturedPlacementInsert =

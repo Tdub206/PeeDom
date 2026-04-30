@@ -1,0 +1,1370 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.886224008439,
+          39.7192140202222
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "LOCATION": "Lowry Sports Complex",
+        "LOC_CODE": "L21",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": "Synthetic Fields",
+        "GLOBALID": "3c0b97e6-6837-41bb-a77f-e82ac575df0d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.892030918284,
+          39.7169170369426
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "LOCATION": "Lowry Sports Complex",
+        "LOC_CODE": "L21",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": "Tennis/Basketball",
+        "GLOBALID": "e60512b0-e924-44a4-91b4-59334044fdaf"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.767033561195,
+          39.7888143418118
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "LOCATION": "Town Center",
+        "LOC_CODE": "558",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "55568289-728b-49b2-878e-e997bd474bfc"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.957138239894,
+          39.7307518989996
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "LOCATION": "Congress Park",
+        "LOC_CODE": "314",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2012",
+        "NOTES": null,
+        "GLOBALID": "becffd24-9f82-4aa2-b618-8df80c785bfd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.896148978517,
+          39.7525022056861
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "LOCATION": "Greenway Park",
+        "LOC_CODE": "556",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2003",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "75e3f300-3374-4b4f-a4d5-6ac7e455b561"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.919090536691,
+          39.6964368753702
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "LOCATION": "Garland Park",
+        "LOC_CODE": "728",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": "West",
+        "GLOBALID": "4f297dd3-0738-4521-b99b-54089c552eea"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.878461239769,
+          39.7607605302842
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "LOCATION": "Central Park",
+        "LOC_CODE": "561",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "East",
+        "GLOBALID": "ed7f8e29-3df9-40cf-98f6-17e4c4acb18c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.010202831018,
+          39.7522047820337
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "LOCATION": "Centennial Park",
+        "LOC_CODE": "901",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "Permitted use only",
+        "GLOBALID": "48cd0a1c-b62a-4714-aac3-e9adeafebdb4"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.89008207363,
+          39.7192539525263
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "LOCATION": "Jackie Robinson Fields",
+        "LOC_CODE": "L10",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "In press box. Permitted use only.",
+        "GLOBALID": "21ce1490-4d06-4f47-96a4-dde6070bf72f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.841288062521,
+          39.7854290727065
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "LOCATION": "Silverman Park",
+        "LOC_CODE": "534",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "13cf8d95-417b-4e45-9b09-8e1fe268da9b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.953268183206,
+          39.6768489504931
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "LOCATION": "Observatory Park",
+        "LOC_CODE": "818",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "8895314f-b08f-4cf7-a204-ab1160fa4643"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.911800989732,
+          39.6864572258703
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "LOCATION": "Cook Park",
+        "LOC_CODE": "763",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "c884028f-37c8-411d-9a1a-5f4bb2ddc979"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.970782976161,
+          39.7034080751342
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "LOCATION": "Washington Park",
+        "LOC_CODE": "711",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "Boat House",
+        "GLOBALID": "9e39961c-0d85-449d-973d-daafea5487c7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.937392612649,
+          39.6594518440998
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "LOCATION": "Eisenhower Park",
+        "LOC_CODE": "630",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2008",
+        "NOTES": null,
+        "GLOBALID": "c0dd6ccd-a41c-4fab-bdc7-fb98b22a8a94"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.048061157299,
+          39.7522995284155
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "LOCATION": "Sloan's Lake Park",
+        "LOC_CODE": "019",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2011",
+        "NOTES": "Boat House",
+        "GLOBALID": "972708b2-6633-4f9f-84d7-4ba73c988295"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.927685700969,
+          39.7199357899365
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "LOCATION": "Robinson Park",
+        "LOC_CODE": "414",
+        "HEATED": "No ",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "261b26e5-d901-478f-bb45-3077ebc938f3"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.947105178721,
+          39.7130609180061
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "LOCATION": "Pulaski Park",
+        "LOC_CODE": "319",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "a545506e-0a16-4a25-be5e-6a61fd696e7a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.023242001554,
+          39.7239873432011
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "LOCATION": "Barnum East",
+        "LOC_CODE": "803",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2016",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "2f12aa08-8ea7-4671-85b5-67376010ddab"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.042411359697,
+          39.6786449288864
+        ]
+      },
+      "properties": {
+        "OBJECTID": 20,
+        "LOCATION": "Harvey Park",
+        "LOC_CODE": "130",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2008",
+        "NOTES": null,
+        "GLOBALID": "120cce79-e73f-4959-bda7-600e012099f2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.029236591716,
+          39.7236788843025
+        ]
+      },
+      "properties": {
+        "OBJECTID": 21,
+        "LOCATION": "Barnum Park",
+        "LOC_CODE": "804",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "f8d65b33-31d2-4c66-b2fc-47e50bdfe387"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.953093018172,
+          39.6679872691598
+        ]
+      },
+      "properties": {
+        "OBJECTID": 22,
+        "LOCATION": "McWilliams Park",
+        "LOC_CODE": "814",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "82492655-1ed0-425a-b966-a3e80108edf8"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.045599412761,
+          39.6531618780848
+        ]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "LOCATION": "Bear Creek Park",
+        "LOC_CODE": "139",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2008",
+        "NOTES": null,
+        "GLOBALID": "96b5e12e-8aca-41dc-8e7d-b6e9abf46d2b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.827632297774,
+          39.7844205850456
+        ]
+      },
+      "properties": {
+        "OBJECTID": 25,
+        "LOCATION": "Montbello Central",
+        "LOC_CODE": "541",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": "In press box.  Permitted use only.",
+        "GLOBALID": "ccedbeba-0c1f-481b-a4dd-5db04ef2474a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.964327578446,
+          39.6870589199941
+        ]
+      },
+      "properties": {
+        "OBJECTID": 26,
+        "LOCATION": "Veterans Park",
+        "LOC_CODE": "720",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "3874587c-1e9b-4654-8b6d-753431325609"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.003316750368,
+          39.6841953765082
+        ]
+      },
+      "properties": {
+        "OBJECTID": 27,
+        "LOCATION": "Ruby Hill Park",
+        "LOC_CODE": "827",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": "Ballfields",
+        "GLOBALID": "4d2c7fed-d516-4f40-914e-9c0aa722e625"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.010596158998,
+          39.7755511559616
+        ]
+      },
+      "properties": {
+        "OBJECTID": 28,
+        "LOCATION": "Chaffee",
+        "LOC_CODE": "003",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "ed9b2415-eb67-4de1-8266-7930b6f0a903"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.970265214418,
+          39.6976985066281
+        ]
+      },
+      "properties": {
+        "OBJECTID": 29,
+        "LOCATION": "Washington Park",
+        "LOC_CODE": "711",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": "Central",
+        "GLOBALID": "fcaa0576-ee05-494b-b6bf-f12e531b2c02"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.021051312211,
+          39.7505845700494
+        ]
+      },
+      "properties": {
+        "OBJECTID": 30,
+        "LOCATION": "Jefferson Park",
+        "LOC_CODE": "016",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "a4286c82-e9d9-46f2-b490-615dc42d58f5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.916101637892,
+          39.7145347802384
+        ]
+      },
+      "properties": {
+        "OBJECTID": 31,
+        "LOCATION": "Crestmoor Park",
+        "LOC_CODE": "403",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": null,
+        "GLOBALID": "cfed4dc7-483f-4f17-b020-871470fa3b48"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.049341247639,
+          39.7633753815093
+        ]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "LOCATION": "Pferdesteller",
+        "LOC_CODE": "017",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "d236dec4-5ffc-4b1a-9cd0-ea659c012485"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.047299729092,
+          39.7812334617336
+        ]
+      },
+      "properties": {
+        "OBJECTID": 33,
+        "LOCATION": "Berkeley Lake Park",
+        "LOC_CODE": "002",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": "East",
+        "GLOBALID": "b501c29b-29b4-4674-a5e8-e906b4aed153"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.045162846344,
+          39.7448423993239
+        ]
+      },
+      "properties": {
+        "OBJECTID": 34,
+        "LOCATION": "Sloan's Lake Park",
+        "LOC_CODE": "019",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2003",
+        "YEAR_REHAB": null,
+        "NOTES": "South Playground",
+        "GLOBALID": "29084184-b1b5-4fc5-a25e-dcc88292ad5a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.970329463957,
+          39.6934439214787
+        ]
+      },
+      "properties": {
+        "OBJECTID": 35,
+        "LOCATION": "Washington Park",
+        "LOC_CODE": "711",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": "South Tennis Courts",
+        "GLOBALID": "700611d8-21ef-488b-987f-816607cde402"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.90748777229,
+          39.6671229260811
+        ]
+      },
+      "properties": {
+        "OBJECTID": 36,
+        "LOCATION": "Bible Park",
+        "LOC_CODE": "602",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": "North",
+        "GLOBALID": "5c342484-aa18-43f7-b971-cc874669c197"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.854065398386,
+          39.6569618454044
+        ]
+      },
+      "properties": {
+        "OBJECTID": 37,
+        "LOCATION": "Kennedy Ballfields",
+        "LOC_CODE": "617",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2010",
+        "NOTES": "In press box.  Permitted use only.",
+        "GLOBALID": "a929a258-3a92-4eb3-8a7a-550ca4284812"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.934962172267,
+          39.7631111955895
+        ]
+      },
+      "properties": {
+        "OBJECTID": 38,
+        "LOCATION": "City of Axum",
+        "LOC_CODE": "417",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2002",
+        "NOTES": null,
+        "GLOBALID": "60b81e60-bdf9-489d-801b-281e0a9980bf"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.956516893395,
+          39.7496014104706
+        ]
+      },
+      "properties": {
+        "OBJECTID": 39,
+        "LOCATION": "City Park",
+        "LOC_CODE": "201",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": "Tennis",
+        "GLOBALID": "6d02e6ab-3e9c-438d-89ce-8243f73d8b74"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.024006163774,
+          39.7358838803521
+        ]
+      },
+      "properties": {
+        "OBJECTID": 40,
+        "LOCATION": "Rude Park",
+        "LOC_CODE": "024",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "527710cc-e85c-48e7-9a2d-c3fe5ead8d17"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.983007639528,
+          39.7513817250375
+        ]
+      },
+      "properties": {
+        "OBJECTID": 41,
+        "LOCATION": "Lawson (Sonny) Park",
+        "LOC_CODE": "208",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "Permitted use only",
+        "GLOBALID": "492081b9-9461-46d3-a501-8fcde23e2825"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.004805272888,
+          39.7556530785651
+        ]
+      },
+      "properties": {
+        "OBJECTID": 42,
+        "LOCATION": "Commons Park",
+        "LOC_CODE": "902",
+        "HEATED": "No",
+        "YEAR_BUILT": "2000",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "cf960cca-6735-4820-ae1c-d9ee72a2552d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.886074019137,
+          39.7608606356571
+        ]
+      },
+      "properties": {
+        "OBJECTID": 43,
+        "LOCATION": "Central Park",
+        "LOC_CODE": "561",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "West",
+        "GLOBALID": "3201ab9d-0ab2-4374-ac43-903aeecd1f36"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.952399174075,
+          39.7458990413676
+        ]
+      },
+      "properties": {
+        "OBJECTID": 44,
+        "LOCATION": "City Park",
+        "LOC_CODE": "201",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "City Park Pavilion",
+        "GLOBALID": "081d7d4a-2e92-4f51-ba18-34b27475124b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.031411828704,
+          39.7806865093042
+        ]
+      },
+      "properties": {
+        "OBJECTID": 45,
+        "LOCATION": "Rocky Mountain Lake Park",
+        "LOC_CODE": "007",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "2 seperate structures for men/women",
+        "GLOBALID": "902e5611-2461-456c-aacb-10189899f627"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.901778241228,
+          39.7528483506749
+        ]
+      },
+      "properties": {
+        "OBJECTID": 47,
+        "LOCATION": "Thomas (Fred) Memorial Park",
+        "LOC_CODE": "L16",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "a7dc845b-aaa4-42a7-8518-589e4c6baeaa"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.036269116358,
+          39.6950404290567
+        ]
+      },
+      "properties": {
+        "OBJECTID": 48,
+        "LOCATION": "Garfield Lake Park",
+        "LOC_CODE": "807",
+        "HEATED": "No",
+        "YEAR_BUILT": "2009",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "8cce9f31-82e5-40cf-80a5-4323965c7a2c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.944240864962,
+          39.7484641527147
+        ]
+      },
+      "properties": {
+        "OBJECTID": 49,
+        "LOCATION": "City Park",
+        "LOC_CODE": "201",
+        "HEATED": "No",
+        "YEAR_BUILT": "2010",
+        "YEAR_REHAB": null,
+        "NOTES": "Museum",
+        "GLOBALID": "b6a0069b-70d0-4ef9-8bf2-07a54b2b04fb"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.996338462585,
+          39.7476076391179
+        ]
+      },
+      "properties": {
+        "OBJECTID": 50,
+        "LOCATION": "Skyline Park",
+        "LOC_CODE": "332",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "75d00f0d-bd32-4965-852d-8bade49170ab"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.906518857353,
+          39.6650250925508
+        ]
+      },
+      "properties": {
+        "OBJECTID": 51,
+        "LOCATION": "Bible Park",
+        "LOC_CODE": "602",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": "South",
+        "GLOBALID": "cfd90fbc-8896-4e62-bc44-314c9fae4c76"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.05068023201,
+          39.78139349343
+        ]
+      },
+      "properties": {
+        "OBJECTID": 52,
+        "LOCATION": "Berkeley Lake Park",
+        "LOC_CODE": "002",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": "West",
+        "GLOBALID": "59bdc666-4dd8-4d9c-9d7a-cf898127d351"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.915087909847,
+          39.6943554039071
+        ]
+      },
+      "properties": {
+        "OBJECTID": 53,
+        "LOCATION": "Garland Park",
+        "LOC_CODE": "728",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": "East",
+        "GLOBALID": "64618655-a5ad-4e54-96b9-9c9915f8621f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 54,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.895050457577,
+          39.6396023193201
+        ]
+      },
+      "properties": {
+        "OBJECTID": 54,
+        "LOCATION": "Rosamond Park",
+        "LOC_CODE": "621",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "daf6f0d5-a153-4347-aa06-da4c41dc7b13"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 55,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.044711818612,
+          39.7543127961589
+        ]
+      },
+      "properties": {
+        "OBJECTID": 55,
+        "LOCATION": "Sloan's Lake Park",
+        "LOC_CODE": "019",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": "North Tennis Courts",
+        "GLOBALID": "de631bca-6755-42ea-931a-9e2726ec26c6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.994532843981,
+          39.7006274397686
+        ]
+      },
+      "properties": {
+        "OBJECTID": 56,
+        "LOCATION": "Vanderbilt Park",
+        "LOC_CODE": "835",
+        "HEATED": "No",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "97072e9c-6981-4702-a342-1e17d1693678"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 370,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.887283629407,
+          39.7232369839145
+        ]
+      },
+      "properties": {
+        "OBJECTID": 370,
+        "LOCATION": "Great Lawn",
+        "LOC_CODE": "L07",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "a999aafa-46b6-4899-b4a9-54da801f197a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 371,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.806781172269,
+          39.7920881824977
+        ]
+      },
+      "properties": {
+        "OBJECTID": 371,
+        "LOCATION": "Parkfield",
+        "LOC_CODE": "516",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "6d679da3-847b-4545-94a9-6e348134dfa0"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 690,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.004242465307,
+          39.6881419019366
+        ]
+      },
+      "properties": {
+        "OBJECTID": 690,
+        "LOCATION": "Ruby Hill Park",
+        "LOC_CODE": "827",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2011",
+        "YEAR_REHAB": null,
+        "NOTES": "Ruby Hill Pavilion",
+        "GLOBALID": "7afa640d-1e1d-47ba-a533-2df42fa51722"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 691,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.003001584006,
+          39.6865991693177
+        ]
+      },
+      "properties": {
+        "OBJECTID": 691,
+        "LOCATION": "Ruby Hill Park",
+        "LOC_CODE": "827",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2017",
+        "YEAR_REHAB": "<Null>",
+        "NOTES": "Levitt Pavilion",
+        "GLOBALID": "d84ca684-916e-4cb8-8622-351425215b1c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1011,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.989545841067,
+          39.7395610129812
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1011,
+        "LOCATION": "Civic Center Park",
+        "LOC_CODE": "213",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "In McNichols Building",
+        "GLOBALID": "68a6c8ff-a8f2-4638-a4df-9a2c68c75ca1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1331,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.878647533148,
+          39.7971955702386
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1331,
+        "LOCATION": "Northfield Athletic Complex",
+        "LOC_CODE": "584",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2016",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "f0e5ecd7-f78d-4d6b-879d-6a7294e3cabf"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1651,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.890633110205,
+          39.7923209550659
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1651,
+        "LOCATION": "Prairie Meadows",
+        "LOC_CODE": "576",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2019",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "0c93f14a-313e-4f01-917d-100d0c086674"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1971,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.031224839345,
+          39.7363189760141
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1971,
+        "LOCATION": "Sanchez Park",
+        "LOC_CODE": "028",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2020",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "39b5c24f-3aa8-41ab-a880-fcb31d6efaee"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 1972,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.982432343882,
+          39.7523200284289
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1972,
+        "LOCATION": "Lawson (Sonny) Park",
+        "LOC_CODE": "208",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2022",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "08fd6585-f89f-4711-af85-34c72f051dfa"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2372,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.876938925918,
+          39.806494198172
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2372,
+        "LOCATION": "North Commons Lawn",
+        "LOC_CODE": "590",
+        "HEATED": null,
+        "YEAR_BUILT": "2018",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "11d04b93-7bb7-42c0-bc9c-a643f7c98dfa"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2373,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.954962417779,
+          39.7806892155973
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2373,
+        "LOCATION": "I-70 Cover Park",
+        "LOC_CODE": "262",
+        "HEATED": null,
+        "YEAR_BUILT": "2022",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "2adbb133-5f1c-4aab-a6e8-e34a8124bff2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2773,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.870061576822,
+          39.801085837109
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2773,
+        "LOCATION": "North Sports Fields",
+        "LOC_CODE": "594",
+        "HEATED": null,
+        "YEAR_BUILT": "2021",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "0ada58e2-e13e-4f97-b111-77f4d66d7ac6"
+      }
+    }
+  ]
+}

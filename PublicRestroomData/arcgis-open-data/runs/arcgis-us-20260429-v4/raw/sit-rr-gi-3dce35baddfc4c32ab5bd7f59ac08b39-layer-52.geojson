@@ -1,0 +1,3021 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275975729095,
+          44.5676381913663
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "BldID": "0019",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0220",
+        "LocaAll": "0220",
+        "BldNamAbr": "Rog",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Rogers Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.282011795578,
+          44.565759359284
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "BldID": "0023",
+        "Notes": " ",
+        "LocaADA": "0173, 0273, 0373, M0173",
+        "LocaADA_Not": " ",
+        "LocaAll": "0173, 0273, 0373, M0173 ",
+        "BldNamAbr": "LInC",
+        "Limits": " ",
+        "CntADA": 4,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Learning Innovation Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274344670429,
+          44.5661397905402
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "BldID": "0027",
+        "Notes": " ",
+        "LocaADA": "0109",
+        "LocaADA_Not": " ",
+        "LocaAll": "0109",
+        "BldNamAbr": "ComH",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Community Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274158678679,
+          44.5650521049195
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "BldID": "0028",
+        "Notes": " ",
+        "LocaADA": "0205",
+        "LocaADA_Not": " ",
+        "LocaAll": "0205  ",
+        "BldNamAbr": "Furm",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Furman Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274684398023,
+          44.5658717112525
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "BldID": "0029",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0120A",
+        "LocaAll": "0120A",
+        "BldNamAbr": "HRWG",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 2,
+        "CntAll": 1,
+        "BldNam": "Hattie Redmond Women and Gender Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274819696662,
+          44.5651256127168
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "BldID": "0030",
+        "Notes": " ",
+        "LocaADA": "0307B",
+        "LocaADA_Not": " ",
+        "LocaAll": "0307B  ",
+        "BldNamAbr": "Phar",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Pharmacy",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275128286992,
+          44.5648546614927
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "BldID": "0033",
+        "Notes": " ",
+        "LocaADA": "0205",
+        "LocaADA_Not": " ",
+        "LocaAll": "0018H",
+        "BldNamAbr": "GVC",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Gladys Valley Gymnastics Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.276094102632,
+          44.564913829236
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "BldID": "0036",
+        "Notes": " ",
+        "LocaADA": "1565, 2566, 2569,3565, 5565",
+        "LocaADA_Not": " ",
+        "LocaAll": "1565, 2566, 2569,3565, 5565",
+        "BldNamAbr": "VLib",
+        "Limits": " ",
+        "CntADA": 3,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Valley Library",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277220993439,
+          44.5655261866415
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "BldID": "0038",
+        "Notes": " ",
+        "LocaADA": "0059B, 0115B, 0159B,0215B, 0259B, 0315B, 0359B",
+        "LocaADA_Not": " ",
+        "LocaAll": "0059B, 0115B, 0159B, 0215B, 0259B, 0315B, 0359B",
+        "BldNamAbr": "StAg",
+        "Limits": " ",
+        "CntADA": 7,
+        "CntADA_Not": 0,
+        "CntAll": 7,
+        "BldNam": "Strand Agriculture Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277577971443,
+          44.5648053258082
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "BldID": "0039",
+        "Notes": " ",
+        "LocaADA": "0003, 0119, 0219, 0319,0419",
+        "LocaADA_Not": " ",
+        "LocaAll": "0003, 0119, 0219, 0319,0419",
+        "BldNamAbr": "SEC",
+        "Limits": " ",
+        "CntADA": 5,
+        "CntADA_Not": 0,
+        "CntAll": 5,
+        "BldNam": "Student Experience Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274635265811,
+          44.56382992228
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "BldID": "0061",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "B0112",
+        "LocaAll": "B0112",
+        "BldNamAbr": "KAd",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Kerr Administration Bldg",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280673262816,
+          44.5687326927288
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "BldID": "0068",
+        "Notes": " ",
+        "LocaADA": "0290B, 0290C",
+        "LocaADA_Not": " ",
+        "LocaAll": "0160, 0264, 0290B, 0290C, 0364",
+        "BldNamAbr": "Burt",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Burt Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280266102362,
+          44.5685018028056
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "BldID": "0070",
+        "Notes": " ",
+        "LocaADA": "0110A",
+        "LocaADA_Not": " ",
+        "LocaAll": "0030, 0110A  ",
+        "BldNamAbr": "Wlkn",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Wilkinson Hall/Gilfillan Aud",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284025085607,
+          44.5665040350391
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "BldID": "0071",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0137",
+        "LocaAll": "0137",
+        "BldNamAbr": "LPSC",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Linus Pauling Science Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280277011287,
+          44.5670051393699
+        ]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "BldID": "0077",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0135, 0234, 0334, 0337",
+        "LocaAll": "0135, 0234, 0334, 0337",
+        "BldNamAbr": "HFC",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 4,
+        "BldNam": "Hallie Ford Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.27918207654,
+          44.5664681720174
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "BldID": "0081",
+        "Notes": " ",
+        "LocaADA": "0021, 0106A",
+        "LocaADA_Not": " ",
+        "LocaAll": "0021, 0028A, 0028B, 0106A ",
+        "BldNamAbr": "Mlm",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Milam Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.27866343153,
+          44.5649364397669
+        ]
+      },
+      "properties": {
+        "OBJECTID": 20,
+        "BldID": "0083",
+        "Notes": " ",
+        "LocaADA": "0053, 0065, 0015",
+        "LocaADA_Not": " ",
+        "LocaAll": "0053, 0065, 0015 ",
+        "BldNamAbr": "MU",
+        "Limits": " ",
+        "CntADA": 3,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Memorial Union Bldg",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279578273116,
+          44.5640214186501
+        ]
+      },
+      "properties": {
+        "OBJECTID": 21,
+        "BldID": "0085",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0103",
+        "LocaAll": "0103",
+        "BldNamAbr": "KiMIH",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Native American Longhouse Eena Haws",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.282252046497,
+          44.5648785382023
+        ]
+      },
+      "properties": {
+        "OBJECTID": 22,
+        "BldID": "0090",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0191, 0193",
+        "LocaAll": "0191, 0193, 365, 453",
+        "BldNamAbr": "Aust",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 2,
+        "CntAll": 4,
+        "BldNam": "Austin Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277193468062,
+          44.5639660032813
+        ]
+      },
+      "properties": {
+        "OBJECTID": 23,
+        "BldID": "0102",
+        "Notes": " ",
+        "LocaADA": "0142, 0121A",
+        "LocaADA_Not": " ",
+        "LocaAll": "0142, 0121A",
+        "BldNamAbr": "Wald",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Waldo Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279245776809,
+          44.5642420036611
+        ]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "BldID": "0106",
+        "Notes": "0120C is out of order as of June 2016",
+        "LocaADA": "0146",
+        "LocaADA_Not": "0120C",
+        "LocaAll": "0146, 0120C",
+        "BldNamAbr": "More",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 1,
+        "CntAll": 2,
+        "BldNam": "Moreland Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281991156621,
+          44.5625410512787
+        ]
+      },
+      "properties": {
+        "OBJECTID": 27,
+        "BldID": "0171",
+        "Notes": " ",
+        "LocaADA": "0108",
+        "LocaADA_Not": " ",
+        "LocaAll": "0108  ",
+        "BldNamAbr": "ORMP",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Outdoor Rec Maintenance Pavilion",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277627720809,
+          44.5604927269383
+        ]
+      },
+      "properties": {
+        "OBJECTID": 28,
+        "BldID": "0197",
+        "Notes": "per UHDS 11/16/2017",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0126",
+        "BldNamAbr": "ArnD",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Arnold Dining Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278930852501,
+          44.5597800788223
+        ]
+      },
+      "properties": {
+        "OBJECTID": 29,
+        "BldID": "0201",
+        "Notes": " ",
+        "LocaADA": "0107",
+        "LocaADA_Not": " ",
+        "LocaAll": "0107",
+        "BldNamAbr": "CHAC",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "CH2M HIll Alumni Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278581115634,
+          44.5604692790057
+        ]
+      },
+      "properties": {
+        "OBJECTID": 30,
+        "BldID": "0206",
+        "Notes": " ",
+        "LocaADA": "0125",
+        "LocaADA_Not": " ",
+        "LocaAll": "0125",
+        "BldNamAbr": "BRC",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Beth Ray Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.276135613158,
+          44.5600591349019
+        ]
+      },
+      "properties": {
+        "OBJECTID": 31,
+        "BldID": "0207",
+        "Notes": "per UHDS 11/16/2017",
+        "LocaADA": " ",
+        "LocaADA_Not": null,
+        "LocaAll": "0169, 0257, 0357, 0557",
+        "BldNamAbr": "ILLC",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 4,
+        "BldNam": "International Living Learning Ctr.",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285139730954,
+          44.5574020492727
+        ]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "BldID": "0545",
+        "Notes": " ",
+        "LocaADA": "0256",
+        "LocaADA_Not": " ",
+        "LocaAll": "0256, 0122, 0124, 0175B",
+        "BldNamAbr": "OCB",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Oak Creek Building",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279266829122,
+          44.5604887150131
+        ]
+      },
+      "properties": {
+        "OBJECTID": 33,
+        "BldID": "0813",
+        "Notes": " ",
+        "LocaADA": "0109, 0110",
+        "LocaADA_Not": " ",
+        "LocaAll": "0109, 0110  ",
+        "BldNamAbr": "CCCC",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Centro Cultural Cesar Chavez",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279598103576,
+          44.5687655758399
+        ]
+      },
+      "properties": {
+        "OBJECTID": 34,
+        "BldID": "0817",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0024",
+        "BldNamAbr": "DGeo",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Dawes House",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278092851537,
+          44.5682910080245
+        ]
+      },
+      "properties": {
+        "OBJECTID": 35,
+        "BldID": "0835",
+        "Notes": " ",
+        "LocaADA": "0106, 0114",
+        "LocaADA_Not": " ",
+        "LocaAll": "0106, 0114",
+        "BldNamAbr": "BCC",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Harris Black Cultural Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280977328145,
+          44.5648557873929
+        ]
+      },
+      "properties": {
+        "OBJECTID": 36,
+        "BldID": "0826",
+        "Notes": " ",
+        "LocaADA": "0113, 0114",
+        "LocaADA_Not": " ",
+        "LocaAll": "0113, 0114",
+        "BldNamAbr": "APCC",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Asian & Pacific Cultural Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274783830382,
+          44.5609375774322
+        ]
+      },
+      "properties": {
+        "OBJECTID": 37,
+        "BldID": "0853",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0110",
+        "LocaAll": "0110",
+        "BldNamAbr": "Pride",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Pride Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280636874305,
+          44.5599841896363
+        ]
+      },
+      "properties": {
+        "OBJECTID": 41,
+        "BldID": "0120",
+        "Notes": "not ground truthed",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "C0003, P0300A, P0301A, P0302A, P0303A, P0304A, P0305A , P0306A, P0307A3, P0308A, P0309A, P0311A, P0312A",
+        "BldNamAbr": "Resr",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 13,
+        "BldNam": "Reser Stadium",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280249306668,
+          44.5639960590903
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46,
+        "BldID": "0109",
+        "Notes": "per UHDS 11/16/2017",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "B100, D109, EG03, EG04",
+        "BldNamAbr": "Wfd",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Weatherford Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275395406482,
+          44.5634518539766
+        ]
+      },
+      "properties": {
+        "OBJECTID": 47,
+        "BldID": "0053",
+        "Notes": " ",
+        "LocaADA": "0120",
+        "LocaADA_Not": " ",
+        "LocaAll": "0120  ",
+        "BldNamAbr": "McAF",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "McAlexander Fieldhouse",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 55,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278185682756,
+          44.5676505511676
+        ]
+      },
+      "properties": {
+        "OBJECTID": 55,
+        "BldID": "0062",
+        "Notes": " ",
+        "LocaADA": "0120, 0109B, 0200J, 0206B, 0310A",
+        "LocaADA_Not": " ",
+        "LocaAll": "0120, 0109B, 0200J, 0206B, 0310A",
+        "BldNamAbr": "PSHC",
+        "Limits": " ",
+        "CntADA": 5,
+        "CntADA_Not": 0,
+        "CntAll": 5,
+        "BldNam": "Plageman Student Health CR",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278656524026,
+          44.5628297871962
+        ]
+      },
+      "properties": {
+        "OBJECTID": 60,
+        "BldID": "0145",
+        "Notes": " ",
+        "LocaADA": "0109A",
+        "LocaADA_Not": " ",
+        "LocaAll": "0109A",
+        "BldNamAbr": "DxRC",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Dixon Recreation Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 61,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277874318074,
+          44.5628490252151
+        ]
+      },
+      "properties": {
+        "OBJECTID": 61,
+        "BldID": "0108",
+        "Notes": "not ground truthed",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0159, A207, A208, A211, BM112",
+        "BldNamAbr": "Goss",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 5,
+        "BldNam": "Goss Stadium",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 63,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281681678501,
+          44.5612108792959
+        ]
+      },
+      "properties": {
+        "OBJECTID": 63,
+        "BldID": "0156",
+        "Notes": "not ground truthed",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0105, 0106, 0108M, 0109M, 0203, 0208M, 0209M, 0212",
+        "BldNamAbr": "WVSC",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 8,
+        "BldNam": "Valley Sports Performance Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 72,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.282499430479,
+          44.5599902070808
+        ]
+      },
+      "properties": {
+        "OBJECTID": 72,
+        "BldID": "0143",
+        "Notes": " ",
+        "LocaADA": "0225",
+        "LocaADA_Not": " ",
+        "LocaAll": "0225 ",
+        "BldNamAbr": "VFbC",
+        "Limits": "  ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Valley Football Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 75,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279750079672,
+          44.5684933197994
+        ]
+      },
+      "properties": {
+        "OBJECTID": 75,
+        "BldID": "0807",
+        "Notes": " ",
+        "LocaADA": "0110",
+        "LocaADA_Not": " ",
+        "LocaAll": "0110",
+        "BldNamAbr": "EOAS",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Earth, Ocean and Atmospheric",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 80,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.283407086392,
+          44.5670743378903
+        ]
+      },
+      "properties": {
+        "OBJECTID": 80,
+        "BldID": "0075",
+        "Notes": " ",
+        "LocaADA": "0071",
+        "LocaADA_Not": "0123, 0167A, 0307,169",
+        "LocaAll": "0071, 0123, 0167A, 0307, 0169",
+        "BldNamAbr": "With",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 4,
+        "CntAll": 5,
+        "BldNam": "Withycombe Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 82,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281289876779,
+          44.566407137428
+        ]
+      },
+      "properties": {
+        "OBJECTID": 82,
+        "BldID": "0092",
+        "Notes": " ",
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0105, 0105A, 0201",
+        "BldNamAbr": "Hov",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 3,
+        "BldNam": "Hovland Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 86,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.272581002757,
+          44.56119431967
+        ]
+      },
+      "properties": {
+        "OBJECTID": 86,
+        "BldID": "0862",
+        "Notes": " ",
+        "LocaADA": "0111A, 0101, 0102",
+        "LocaADA_Not": " ",
+        "LocaAll": "0111A, 0101, 0102",
+        "BldNamAbr": "PrSB",
+        "Limits": " ",
+        "CntADA": 3,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Property Services",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 87,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.276635689016,
+          44.5677772098282
+        ]
+      },
+      "properties": {
+        "OBJECTID": 87,
+        "BldID": "0015",
+        "Notes": "updated re: Gabe Sep2019",
+        "LocaADA": "0121",
+        "LocaADA_Not": " ",
+        "LocaAll": "0121, 0221",
+        "BldNamAbr": "Gilb",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Gilbert Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 89,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.269124568301,
+          44.5650497281287
+        ]
+      },
+      "properties": {
+        "OBJECTID": 89,
+        "BldID": "0194",
+        "Notes": "per UHDS 11/16/2017",
+        "LocaADA": "0107, 0109, 0207, 0209, 0307, 0309",
+        "LocaADA_Not": " ",
+        "LocaAll": "0107, 0109, 0207, 0209, 0307, 0309",
+        "BldNamAbr": "Chmp",
+        "Limits": " ",
+        "CntADA": 6,
+        "CntADA_Not": 0,
+        "CntAll": 6,
+        "BldNam": "Champinefu Lodge",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 90,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.268842744228,
+          44.5644274909124
+        ]
+      },
+      "properties": {
+        "OBJECTID": 90,
+        "BldID": "0220",
+        "Notes": "per UHDS 11/16/2017",
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0115, 0215",
+        "BldNamAbr": "OxHs",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Oxford House",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 91,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280596412915,
+          44.5611385681272
+        ]
+      },
+      "properties": {
+        "OBJECTID": 91,
+        "BldID": "0121",
+        "Notes": " ",
+        "LocaADA": "0100",
+        "LocaADA_Not": " ",
+        "LocaAll": "0100",
+        "BldNamAbr": "Gill",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Gill Coliseum",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 92,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277336375655,
+          44.567039396936
+        ]
+      },
+      "properties": {
+        "OBJECTID": 92,
+        "BldID": "0018",
+        "Notes": " ",
+        "LocaADA": "0210",
+        "LocaADA_Not": " ",
+        "LocaAll": "0210",
+        "BldNamAbr": "Bexl",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Bexell Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 93,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.279226767369,
+          44.5677345964878
+        ]
+      },
+      "properties": {
+        "OBJECTID": 93,
+        "BldID": "0008",
+        "Notes": " ",
+        "LocaADA": "0108",
+        "LocaADA_Not": " ",
+        "LocaAll": "0108",
+        "BldNamAbr": "John",
+        "Limits": "  ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Johnson Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 94,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.276185716677,
+          44.5639858168026
+        ]
+      },
+      "properties": {
+        "OBJECTID": 94,
+        "BldID": "0100",
+        "Notes": " ",
+        "LocaADA": "143, 510B",
+        "LocaADA_Not": "312C, 339A, 510D",
+        "LocaAll": "0143, 0215, 0312C, 0339A, 0412D, 0432A, 0432B, 0510B, 0510C, 0510D, 0522A, 0522B",
+        "BldNamAbr": "Snel",
+        "Limits": " ",
+        "CntADA": 2,
+        "CntADA_Not": 3,
+        "CntAll": 12,
+        "BldNam": "Snell Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 95,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285513007861,
+          44.5604338337917
+        ]
+      },
+      "properties": {
+        "OBJECTID": 95,
+        "BldID": "0153",
+        "Notes": null,
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "A113A, 122L, 158D, 159B, 173A, 173C, 184, 186, 260A, 260B, 295, 297, 1001, 1003, 2007, 2009",
+        "BldNamAbr": "Magr",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 16,
+        "BldNam": "Magruder Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 96,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.27462225878,
+          44.5615112478608
+        ]
+      },
+      "properties": {
+        "OBJECTID": 96,
+        "BldID": "0060",
+        "Notes": "",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0103, 0106, 0203",
+        "BldNamAbr": "Adam",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Adams Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 97,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.281981765265,
+          44.5665067952911
+        ]
+      },
+      "properties": {
+        "OBJECTID": 97,
+        "BldID": "0079",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "1078A, 1078B, 2078A, 2078B, 3086, 3086A, 4078, 4078A",
+        "BldNamAbr": "ALS",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 8,
+        "BldNam": "Ag & Life Sciences",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 98,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275238691566,
+          44.5670658364169
+        ]
+      },
+      "properties": {
+        "OBJECTID": 98,
+        "BldID": "0009",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0146, 0259",
+        "BldNamAbr": "Bat",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Batcheller Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 99,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.282357847893,
+          44.5672453797849
+        ]
+      },
+      "properties": {
+        "OBJECTID": 99,
+        "BldID": "0074",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0123, 0124",
+        "BldNamAbr": "EGrn",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "East Greenhouse",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 100,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.276106143446,
+          44.5664576221641
+        ]
+      },
+      "properties": {
+        "OBJECTID": 100,
+        "BldID": "0034",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0208, 0316",
+        "BldNamAbr": "Kidd",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Kidder Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 101,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274270496007,
+          44.5673801569039
+        ]
+      },
+      "properties": {
+        "OBJECTID": 101,
+        "BldID": "0002",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0101, 0116, 0118, 0119, 120",
+        "BldNamAbr": "Mfd",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 5,
+        "BldNam": "Merryfield Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 102,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.286580351533,
+          44.5665582020774
+        ]
+      },
+      "properties": {
+        "OBJECTID": 102,
+        "BldID": "0135",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0100A, 0100C",
+        "BldNamAbr": "MoPl",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Motor Pool",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 104,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.289101823233,
+          44.5649699286288
+        ]
+      },
+      "properties": {
+        "OBJECTID": 104,
+        "BldID": "0098",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "A0124D, B126B",
+        "BldNamAbr": "RC",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Radiation Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 105,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.287691027843,
+          44.5670299276181
+        ]
+      },
+      "properties": {
+        "OBJECTID": 105,
+        "BldID": "0101",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0103, 0104",
+        "BldNamAbr": "SL",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Seed Lab",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 106,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.288255177108,
+          44.567658351105
+        ]
+      },
+      "properties": {
+        "OBJECTID": 106,
+        "BldID": "0139",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "1070E, 1070F",
+        "BldNamAbr": "WGrn",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "West Greenhouse (W6&7)",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 107,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275424783521,
+          44.561559807845
+        ]
+      },
+      "properties": {
+        "OBJECTID": 107,
+        "BldID": "0058",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0125, 0126, W121, W223",
+        "BldNamAbr": "Casc",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Cascade Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 108,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285982587584,
+          44.5635108965829
+        ]
+      },
+      "properties": {
+        "OBJECTID": 108,
+        "BldID": "0148",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0007, 0103, 0203",
+        "BldNamAbr": "Rich",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Richardson Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 109,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.286291729347,
+          44.5672776528934
+        ]
+      },
+      "properties": {
+        "OBJECTID": 109,
+        "BldID": "0130",
+        "Notes": null,
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "1225",
+        "BldNamAbr": "WGrn",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "West Greenhouse W13-16 Crop/GC",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 110,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275992098541,
+          44.5671494174567
+        ]
+      },
+      "properties": {
+        "OBJECTID": 110,
+        "BldID": "0014",
+        "Notes": "per Gabe 11/06/2017",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0208A",
+        "BldNamAbr": "Shep",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Shepard Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 111,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.277442898391,
+          44.5678452486501
+        ]
+      },
+      "properties": {
+        "OBJECTID": 111,
+        "BldID": "0017",
+        "Notes": "per Gabe 11/07/2017",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "605",
+        "BldNamAbr": "Wngr",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Weniger",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 112,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280976316345,
+          44.5674186139235
+        ]
+      },
+      "properties": {
+        "OBJECTID": 112,
+        "BldID": "0073",
+        "Notes": null,
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "1124, 1500, 2124, 2500, 3124, 3500, 4124, 4500",
+        "BldNamAbr": "Cord",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 8,
+        "BldNam": "Cordley Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 113,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284019629846,
+          44.5643425010641
+        ]
+      },
+      "properties": {
+        "OBJECTID": 113,
+        "BldID": "0118",
+        "Notes": null,
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0208, 0210, 311",
+        "BldNamAbr": "Reed",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Reed Lodge",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 114,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.283380943038,
+          44.5643406127159
+        ]
+      },
+      "properties": {
+        "OBJECTID": 114,
+        "BldID": "0116",
+        "Notes": "per Gabe 4/3/2019",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "102, 304",
+        "BldNamAbr": "HkLg",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 0,
+        "CntAll": 2,
+        "BldNam": "Heckart Lodge",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 115,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.287504342886,
+          44.5625445304592
+        ]
+      },
+      "properties": {
+        "OBJECTID": 115,
+        "BldID": "0212",
+        "Notes": null,
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "0141, 0142",
+        "BldNamAbr": "Emme",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "A.A. Red Emmerson Advanced Wood Products Laboratory",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 116,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274846835834,
+          44.5671937470106
+        ]
+      },
+      "properties": {
+        "OBJECTID": 116,
+        "BldID": "0007",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "214B",
+        "BldNamAbr": "Covl",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Covell Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 117,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280407400786,
+          44.5650906058472
+        ]
+      },
+      "properties": {
+        "OBJECTID": 117,
+        "BldID": "0087",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": " ",
+        "LocaAll": "144",
+        "BldNamAbr": "Fair",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Fairbanks Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 118,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274894556613,
+          44.5676653752461
+        ]
+      },
+      "properties": {
+        "OBJECTID": 118,
+        "BldID": "0006",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "202, 203, 204, 305, 306",
+        "BldNamAbr": "Graf",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 5,
+        "BldNam": "Graf Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 119,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.272122338328,
+          44.5640719372362
+        ]
+      },
+      "properties": {
+        "OBJECTID": 119,
+        "BldID": "0193",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "109, 110",
+        "BldNamAbr": "McDn",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "McNary Dining Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 120,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.275312351683,
+          44.566381251139
+        ]
+      },
+      "properties": {
+        "OBJECTID": 120,
+        "BldID": "0020",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0113, 0116, 203",
+        "BldNamAbr": "MCC",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Milne Computer Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 121,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285697432247,
+          44.5642695089647
+        ]
+      },
+      "properties": {
+        "OBJECTID": 121,
+        "BldID": "0213",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "B09, 126, 233, 234",
+        "BldNamAbr": "PFSC",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 4,
+        "BldNam": "George W. Peavy Forest Science Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 122,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284291643396,
+          44.5593340694739
+        ]
+      },
+      "properties": {
+        "OBJECTID": 122,
+        "BldID": "2063",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0106, 0211",
+        "BldNamAbr": "SAMC",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Samaritan Athletic Medicine Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 123,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.290778158376,
+          44.5575237832797
+        ]
+      },
+      "properties": {
+        "OBJECTID": 123,
+        "BldID": "0865",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0106, 0106A",
+        "BldNamAbr": "WnB",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Western Building",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 124,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.290474657463,
+          44.5588141603544
+        ]
+      },
+      "properties": {
+        "OBJECTID": 124,
+        "BldID": "0864",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0103, 0104, 0105, 0106",
+        "BldNamAbr": "WnS",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 4,
+        "BldNam": "Western Shops",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 125,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285054242637,
+          44.5603030337022
+        ]
+      },
+      "properties": {
+        "OBJECTID": 125,
+        "BldID": "0215",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "1134",
+        "BldNamAbr": "MLH",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Magruder Lecture Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 126,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285987468985,
+          44.567095806925
+        ]
+      },
+      "properties": {
+        "OBJECTID": 126,
+        "BldID": "0131",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "1114A, 1224B",
+        "BldNamAbr": "WGrn",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "West Greenhouse (W21)",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 127,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.28890067043,
+          44.5595960324158
+        ]
+      },
+      "properties": {
+        "OBJECTID": 127,
+        "BldID": "0178",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0006",
+        "BldNamAbr": "ApBB",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Apiary (Bee) Bldg",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 128,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280248540329,
+          44.5673908618364
+        ]
+      },
+      "properties": {
+        "OBJECTID": 128,
+        "BldID": "0069",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0214, 0215",
+        "BldNamAbr": "Bates",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Bates Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 129,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284126014893,
+          44.557627602214
+        ]
+      },
+      "properties": {
+        "OBJECTID": 129,
+        "BldID": "0221",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0100B",
+        "BldNamAbr": "CMTD",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "CEOAS Machine & Technical Development",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 130,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.303460460394,
+          44.5523268876475
+        ]
+      },
+      "properties": {
+        "OBJECTID": 130,
+        "BldID": "0520",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "1106C, 1106B, 1105, 2007, 2005, 2006",
+        "BldNamAbr": "CoaR",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 6,
+        "BldNam": "Coast Range Building",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 131,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284095474571,
+          44.557333667085
+        ]
+      },
+      "properties": {
+        "OBJECTID": 131,
+        "BldID": "0224",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0100C",
+        "BldNamAbr": "COL",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Coastal Oceanography Lab",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 132,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284342586327,
+          44.5576446047416
+        ]
+      },
+      "properties": {
+        "OBJECTID": 132,
+        "BldID": "0223",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0101",
+        "BldNamAbr": "CES",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Cruise and Expedition Staging",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 133,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.289173256154,
+          44.5641222581521
+        ]
+      },
+      "properties": {
+        "OBJECTID": 133,
+        "BldID": "0078",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0111, 0113",
+        "BldNamAbr": "EC",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Energy Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 134,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.289082894527,
+          44.5659097720041
+        ]
+      },
+      "properties": {
+        "OBJECTID": 134,
+        "BldID": "0141",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0102",
+        "BldNamAbr": "EHSA",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Environmental Health & Safety Annex",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 135,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.293142513952,
+          44.5664810305581
+        ]
+      },
+      "properties": {
+        "OBJECTID": 135,
+        "BldID": "0351",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0104",
+        "BldNamAbr": "FmSv",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Farm Service",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 136,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.280508737549,
+          44.5664203420375
+        ]
+      },
+      "properties": {
+        "OBJECTID": 136,
+        "BldID": "0084",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0205A",
+        "BldNamAbr": "Gilm",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Gilmore Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 137,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.278558342055,
+          44.5672312764256
+        ]
+      },
+      "properties": {
+        "OBJECTID": 137,
+        "BldID": "0003",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "1174",
+        "BldNamAbr": "KEC",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Kelley Engineering Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 138,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284341470267,
+          44.557191920641
+        ]
+      },
+      "properties": {
+        "OBJECTID": 138,
+        "BldID": "0222",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0108",
+        "BldNamAbr": "MTB",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Marine Technician Building\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 139,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.286862942194,
+          44.5661847735378
+        ]
+      },
+      "properties": {
+        "OBJECTID": 139,
+        "BldID": "0136",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "106A",
+        "BldNamAbr": "MPA",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Motor Pool Annex\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 140,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285676348303,
+          44.5587921569065
+        ]
+      },
+      "properties": {
+        "OBJECTID": 140,
+        "BldID": "0173",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0101",
+        "BldNamAbr": "AEL",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Nancy Squires Aerospace Engineering Lab\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 141,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.28269307478,
+          44.5661794785723
+        ]
+      },
+      "properties": {
+        "OBJECTID": 141,
+        "BldID": "0021",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0208, 0306, 0306A",
+        "BldNamAbr": "Nash",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 3,
+        "BldNam": "Nash Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 142,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284355114179,
+          44.557796719506
+        ]
+      },
+      "properties": {
+        "OBJECTID": 142,
+        "BldID": "0226",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0102",
+        "BldNamAbr": "OML",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Ocean Mixing Lab\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 143,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284031373682,
+          44.557910382645
+        ]
+      },
+      "properties": {
+        "OBJECTID": 143,
+        "BldID": "0227",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0102",
+        "BldNamAbr": "BL",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Buoy Lab\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 144,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.284079631889,
+          44.5570997523542
+        ]
+      },
+      "properties": {
+        "OBJECTID": 144,
+        "BldID": "0225",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0105",
+        "BldNamAbr": "OILR",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Oceanography Instrumentation Lab\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 145,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.285805595176,
+          44.559033963478
+        ]
+      },
+      "properties": {
+        "OBJECTID": 145,
+        "BldID": "0172",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0102C",
+        "BldNamAbr": "OcSB",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Oceanography Staging Bldg \r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 146,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.27525914687,
+          44.562994894427
+        ]
+      },
+      "properties": {
+        "OBJECTID": 146,
+        "BldID": "0054",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0101, 0102",
+        "BldNamAbr": "RCB",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 2,
+        "BldNam": "Rehearsal Classroom Building\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 147,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.304029784567,
+          44.5508809624754
+        ]
+      },
+      "properties": {
+        "OBJECTID": 147,
+        "BldID": "0519",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0213",
+        "BldNamAbr": null,
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Research Way Building\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 148,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.274770563626,
+          44.562545733347
+        ]
+      },
+      "properties": {
+        "OBJECTID": 148,
+        "BldID": "0064",
+        "Notes": null,
+        "LocaADA": null,
+        "LocaADA_Not": null,
+        "LocaAll": "0105, 0107B, 0132, 0138, 0140, 0141, 142A",
+        "BldNamAbr": "PRAx",
+        "Limits": null,
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 7,
+        "BldNam": "Patricia Reser Center-Creative Arts\r\n",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    }
+  ]
+}

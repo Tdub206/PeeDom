@@ -43,7 +43,9 @@ export function usePushNotifications(): void {
     isRegisteringRef.current = true;
 
     try {
-      const result = await requestPushToken();
+      const result = await requestPushToken({
+        requestPermission: false,
+      });
 
       if (result.status === 'registered') {
         if (result.token !== profile.push_token) {

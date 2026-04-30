@@ -2,9 +2,9 @@ import { redirect } from 'next/navigation';
 import {
   LogOut,
 } from 'lucide-react';
-import { getCurrentUserProfile } from '@/lib/auth/queries';
-import { getApprovedLocations, getPendingClaimsCount } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getCurrentUserProfile } from '../../lib/auth/queries';
+import { getApprovedLocations, getPendingClaimsCount } from '../../lib/business/queries';
+import { createSupabaseServerClient } from '../../lib/supabase/server';
 import { DashboardNav } from './dashboard-nav';
 import { DashboardTopbar } from './dashboard-topbar';
 import { SignOutButton } from './sign-out-button';

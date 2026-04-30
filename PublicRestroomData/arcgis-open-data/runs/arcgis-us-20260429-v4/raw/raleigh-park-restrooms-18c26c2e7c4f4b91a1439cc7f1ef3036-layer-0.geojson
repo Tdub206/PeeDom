@@ -1,0 +1,1797 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5763163064783,
+          35.8928522494228
+        ]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "LOCATIONNAME": "Durant Nature",
+        "PARKID": 18,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Durant Nature Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "cf6dcfe0-b002-43b8-9c3f-42664886c0d5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6248446507229,
+          35.9030827478194
+        ]
+      },
+      "properties": {
+        "OBJECTID": 39,
+        "LOCATIONNAME": "Honeycutt",
+        "PARKID": 147,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Honeycutt Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "5eb40c78-3de6-488e-af24-7c3f5fe32657"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.8067071710679,
+          35.900720460481
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69,
+        "LOCATIONNAME": "Brier Creek",
+        "PARKID": 135,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Brier Creek Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "de82beaa-6c2a-4112-aeeb-33daade1d6b2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6997836389913,
+          35.6939105537127
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70,
+        "LOCATIONNAME": "Lake Wheeler",
+        "PARKID": 159,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Wheeler Comfort Station (main bldg)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "9d666b60-00ba-4cc6-a3ab-7d0dee07d2c1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 96,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5683916908345,
+          35.8231140905273
+        ]
+      },
+      "properties": {
+        "OBJECTID": 96,
+        "LOCATIONNAME": "Marsh Creek",
+        "PARKID": 5,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Marsh Creek Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "4b5ab3e4-c18d-459e-8456-f71445f2f807"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 119,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.617893339564,
+          35.7755340667123
+        ]
+      },
+      "properties": {
+        "OBJECTID": 119,
+        "LOCATIONNAME": "Roberts",
+        "PARKID": 43,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "South of picnic shelter/north of baseball field",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "e243c38f-55a7-45e6-928b-2452f2cf3a54"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 141,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6686206540525,
+          35.9072763158492
+        ]
+      },
+      "properties": {
+        "OBJECTID": 141,
+        "LOCATIONNAME": "Baileywick",
+        "PARKID": 156,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Baileywick Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "f318d282-121e-4876-b4cd-7862b352cf45"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 146,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6179692597819,
+          35.7680900954497
+        ]
+      },
+      "properties": {
+        "OBJECTID": 146,
+        "LOCATIONNAME": "Martin L King Jr Memorial",
+        "PARKID": 106,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Martin L King Jr Memorial Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "2cc38715-00e3-44a3-bac3-2b98ee4120d9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 147,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5349452059984,
+          35.840650093825
+        ]
+      },
+      "properties": {
+        "OBJECTID": 147,
+        "LOCATIONNAME": "Buffaloe Road Athletic",
+        "PARKID": 144,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Buffaloe Road Comfort Station (East)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "1184986a-439e-432a-b76e-e384adc5be43"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 199,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5846789231971,
+          35.7632027289784
+        ]
+      },
+      "properties": {
+        "OBJECTID": 199,
+        "LOCATIONNAME": "Worthdale",
+        "PARKID": 12,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Worthdale Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "05e2fa59-c7d6-484d-a5ac-94bf0f546076"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 202,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6994891591818,
+          35.6962063948962
+        ]
+      },
+      "properties": {
+        "OBJECTID": 202,
+        "LOCATIONNAME": "Lake Wheeler",
+        "PARKID": 159,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Wheeler Comfort Station (N)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "4a170af5-a633-4bd0-a171-545b53f41639"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 203,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6977264740472,
+          35.6945868431702
+        ]
+      },
+      "properties": {
+        "OBJECTID": 203,
+        "LOCATIONNAME": "Lake Wheeler",
+        "PARKID": 159,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Wheeler Comfort Station (South of Pine Shelter)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "78aefb48-98f1-439d-aed9-05735ef32a0d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 205,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6964991146785,
+          35.7760534831632
+        ]
+      },
+      "properties": {
+        "OBJECTID": 205,
+        "LOCATIONNAME": "Kentwood",
+        "PARKID": 56,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Kentwood Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "d6bedcd6-7cc1-410c-a168-18884566b416"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 261,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6576699405136,
+          35.8380188156807
+        ]
+      },
+      "properties": {
+        "OBJECTID": 261,
+        "LOCATIONNAME": "North Hills",
+        "PARKID": 41,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "North Hills Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "b289eb69-45c7-4e7d-98cd-25df657a1c6d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 263,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6275548900395,
+          35.7459193638109
+        ]
+      },
+      "properties": {
+        "OBJECTID": 263,
+        "LOCATIONNAME": "Biltmore Hills",
+        "PARKID": 11,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Biltmore Hills Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "9711a46e-d6b4-42bd-bc86-725ad827fdbb"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 288,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5407536020797,
+          35.840355784535
+        ]
+      },
+      "properties": {
+        "OBJECTID": 288,
+        "LOCATIONNAME": "Buffaloe Road Athletic",
+        "PARKID": 144,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Buffaloe Road Comfort Station (West)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "12e14244-433a-46b0-8f45-e6d84a832387"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 313,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6623234107967,
+          35.7832603749492
+        ]
+      },
+      "properties": {
+        "OBJECTID": 313,
+        "LOCATIONNAME": "Pullen",
+        "PARKID": 32,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Pullen Red Diamond Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "5adbebba-26c1-4f65-8018-0ee657851c6f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 325,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5922836953056,
+          35.8408942198954
+        ]
+      },
+      "properties": {
+        "OBJECTID": 325,
+        "LOCATIONNAME": "Green Road",
+        "PARKID": 93,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Green Road Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "b961230d-2e30-4b68-873a-f571c4538177"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 337,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5365555933168,
+          35.8392634700812
+        ]
+      },
+      "properties": {
+        "OBJECTID": 337,
+        "LOCATIONNAME": "Buffaloe Road Athletic",
+        "PARKID": 144,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "South of Parking Lot/North of Crosswalk",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "3c8896b3-44d8-461e-8a03-28bc22df47a2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 364,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6239364928581,
+          35.8395975509522
+        ]
+      },
+      "properties": {
+        "OBJECTID": 364,
+        "LOCATIONNAME": "Eastgate",
+        "PARKID": 54,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Eastgate Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "2f02c559-bcf7-46cf-ae6d-819e6fd9c8df"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 409,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5810197011049,
+          35.9657810278051
+        ]
+      },
+      "properties": {
+        "OBJECTID": 409,
+        "LOCATIONNAME": "Forest Ridge",
+        "PARKID": 173,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "6716 Ridge Park Rd.",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "c927f6ff-1bfe-447f-a9f9-76e4274ad12c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 421,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.714214199588,
+          35.8852211143448
+        ]
+      },
+      "properties": {
+        "OBJECTID": 421,
+        "LOCATIONNAME": "Leesville",
+        "PARKID": 163,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Leesville Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "76521526-a3ba-4478-9b26-e71bea4e96b1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 467,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6474272623962,
+          35.8636485231489
+        ]
+      },
+      "properties": {
+        "OBJECTID": 467,
+        "LOCATIONNAME": "Optimist",
+        "PARKID": 6,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Optimist Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "44c6b7d9-9636-49c6-921d-d29824234c16"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 504,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6633960000946,
+          35.7984619973298
+        ]
+      },
+      "properties": {
+        "OBJECTID": 504,
+        "LOCATIONNAME": "Jaycee",
+        "PARKID": 90,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Jaycee Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "09280a4c-304b-4458-8181-e6ecbe3b74f1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 517,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5344913275712,
+          35.8862916895879
+        ]
+      },
+      "properties": {
+        "OBJECTID": 517,
+        "LOCATIONNAME": "Horseshoe Farm",
+        "PARKID": 14,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Horshoe Farm CS-East side of parking lot",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "27b4503b-6ee4-46f0-9d7e-9e8d211f1f88"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 546,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5406873764095,
+          35.7722072508649
+        ]
+      },
+      "properties": {
+        "OBJECTID": 546,
+        "LOCATIONNAME": "Anderson Point",
+        "PARKID": 19,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Anderson Point Comfort Station (parking lot)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "898b2bad-4194-410d-9587-a1c2c173b1bf"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 547,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5435403160466,
+          35.770802675281
+        ]
+      },
+      "properties": {
+        "OBJECTID": 547,
+        "LOCATIONNAME": "Anderson Point",
+        "PARKID": 19,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Anderson Point Comfort Station (playground)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "d327be64-5a5b-49ea-ba9d-d4e259990db9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 568,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6328876213401,
+          35.7931499561032
+        ]
+      },
+      "properties": {
+        "OBJECTID": 568,
+        "LOCATIONNAME": "Mordecai Square",
+        "PARKID": 136,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Mordecai Sq Square Comfort Station (W)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "Open Tuesday through Saturday from 9 am to 4 pm and Sunday from 1 pm to 4 pm",
+        "GlobalID": "a8a81dd5-d2d7-417e-b71f-c49f40fa41c4"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 569,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6327800093465,
+          35.7931085196328
+        ]
+      },
+      "properties": {
+        "OBJECTID": 569,
+        "LOCATIONNAME": "Mordecai Square",
+        "PARKID": 136,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Mordecai Comfort Station (E)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "Open Tuesday through Saturday from 9 am to 4 pm and Sunday from 1 pm to 4 pm",
+        "GlobalID": "45aab3aa-8eb2-40c6-8739-70e4b6c4d50e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 570,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.623992661449,
+          35.7908542950599
+        ]
+      },
+      "properties": {
+        "OBJECTID": 570,
+        "LOCATIONNAME": "Oakwood",
+        "PARKID": 42,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Oakwood Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "ad7a1ab3-db11-4bc6-a979-22522205e847"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 579,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7143121832217,
+          35.7625534145381
+        ]
+      },
+      "properties": {
+        "OBJECTID": 579,
+        "LOCATIONNAME": "Lake Johnson",
+        "PARKID": 169,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Johnson Comfort Station (main dock)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "dac952b6-f32f-496a-9d3a-316a28c0f06d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 580,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7181615025927,
+          35.7697442639006
+        ]
+      },
+      "properties": {
+        "OBJECTID": 580,
+        "LOCATIONNAME": "Lake Johnson",
+        "PARKID": 169,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lake Johnson Comfort Station (track)",
+        "LOCATION": "Indoor",
+        "STATUS": "Not Maintained",
+        "Lighting": null,
+        "VISITOR": "Limited",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "3cf3ce25-1736-4ce9-bea6-9a73b4b7ee3a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 641,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6799643965751,
+          35.7519484474424
+        ]
+      },
+      "properties": {
+        "OBJECTID": 641,
+        "LOCATIONNAME": "Mary Belle Pate",
+        "PARKID": 2,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restrooms close for winter and reopen in the spring",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "0fc4d614-d460-4535-969c-7305f97dbe72"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 790,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5997024406907,
+          35.9242216813485
+        ]
+      },
+      "properties": {
+        "OBJECTID": 790,
+        "LOCATIONNAME": "Annie Louise Wilkerson, MD Nature Preserve",
+        "PARKID": 146,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restroom near picnic shelter",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "f604695a-988f-4b6a-80d3-8955bf90d3b5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 816,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.663296459545,
+          35.7799241085786
+        ]
+      },
+      "properties": {
+        "OBJECTID": 816,
+        "LOCATIONNAME": "Pullen",
+        "PARKID": 32,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Pullen Comfort Station (E)",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "6032b7dd-9fcb-4bea-af1f-bb76d8bc998c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3098,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6301509825383,
+          35.8595909013979
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3098,
+        "LOCATIONNAME": "Cedar Hills",
+        "PARKID": 51,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Cedar Hills Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "f43966fc-8664-4e5f-a567-12f33a2ba4c2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3101,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6354143991206,
+          35.7771901365941
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3101,
+        "LOCATIONNAME": "Moore Square",
+        "PARKID": 138,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Moore Square Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "acf66453-8560-4489-a025-f694da80204a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3102,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6651364975536,
+          35.8591268261596
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3102,
+        "LOCATIONNAME": "Shelley Lake - Sertoma",
+        "PARKID": 29,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Shelley Lake Parking Lot Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "d2b72207-8181-4c2d-882a-410cfc3a444e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3103,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6242755354844,
+          35.7750677000508
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3103,
+        "LOCATIONNAME": "Davie Street",
+        "PARKID": 26,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Davie Street Comfort Station Combo",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "df4da02e-baee-44d7-a752-c351a66767c8"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3105,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6142519286534,
+          35.7977901078022
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3105,
+        "LOCATIONNAME": "Lions",
+        "PARKID": 4,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Lions Comfort Station Combo",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "3a85bbd6-65b1-4a6b-996a-252e0d7b656c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3106,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6664079236814,
+          35.7482345992385
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3106,
+        "LOCATIONNAME": "Carolina Pines",
+        "PARKID": 145,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Carolina Pines Comfort Station Combo",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "4b49f0da-7e18-42cf-8e0c-aa780e69a11e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3107,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5291108692337,
+          35.8597021611276
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3107,
+        "LOCATIONNAME": "River Bend",
+        "PARKID": 171,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "River Bend Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "e375d1a9-0120-4deb-a17a-c62c7d196f27"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3108,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6116640114689,
+          35.7430006774589
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3108,
+        "LOCATIONNAME": "Sanderford Road",
+        "PARKID": 33,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Sanderford Comfort Station",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "644566a3-ea24-4074-835e-7848b55ba7be"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3109,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6658491039295,
+          35.8706310994119
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3109,
+        "LOCATIONNAME": "Williams",
+        "PARKID": 52,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Williams Park Comfort Station Combo",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "fbc4ac8e-f687-4fb6-a03a-082ea57344da"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3110,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.569359712079,
+          35.8592127138435
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3110,
+        "LOCATIONNAME": "Spring Forest Road",
+        "PARKID": 89,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Spring Forrest Road Park Comfort Station Combo",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "af6e36af-3f85-466b-a929-6a47a032a6a2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3268,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6637896906644,
+          35.7675560740094
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3268,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Temporary Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "fa788123-1e49-4527-a40f-9fdae61eb390"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3269,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6618397892909,
+          35.7704036892018
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3269,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Temporary Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "3dee0cd1-bd07-4e0a-a99a-a631a3c29baf"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3270,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6508173821289,
+          35.7684777369644
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3270,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Temporary Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "a24a7d52-0f2b-4376-a31c-37e5fc2e4884"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3271,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6613139745874,
+          35.7720337114167
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3271,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Temporary Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "a238d4bf-85d5-4011-ba8e-f644ab29de92"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3272,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6613234460155,
+          35.7725799367426
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3272,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Temporary Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "57136d24-db1c-4b65-97b6-9bbdf761e7f9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3319,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6251547066201,
+          35.760378628881
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3319,
+        "LOCATIONNAME": "Walnut Creek Wetland Park",
+        "PARKID": 185,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Exterior entrance in back of Education Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "76e37064-b634-4e10-bd20-45fad497add2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3457,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6299896613002,
+          35.7698065999757
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3457,
+        "LOCATIONNAME": "John Chavis Memorial Park",
+        "PARKID": 16,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Entrance outside of Community Center Building",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "64f37ffb-af0d-43d2-abbd-4032f9308919"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3458,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7137658930322,
+          35.7786443595899
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3458,
+        "LOCATIONNAME": "Powell Drive",
+        "PARKID": 92,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Powell Drive restroom located in main building",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "8e4608d0-7393-414c-8b53-451b2af152e9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3459,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.7167235439774,
+          35.7677753790556
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3459,
+        "LOCATIONNAME": "Lake Johnson",
+        "PARKID": 169,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restroom Located inside Thomas G Crowder Woodland Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "875feaf4-8cae-42d8-b088-4791a1246459"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3460,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6983550635401,
+          35.8302924652124
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3460,
+        "LOCATIONNAME": "Laurel Hills",
+        "PARKID": 91,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restroom located inside Laurel Hills Community Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "staffed",
+        "GlobalID": "3a6d8c10-ccd0-48e7-98f1-1f28aee38795"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3461,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5641898072864,
+          35.8242461873008
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3461,
+        "LOCATIONNAME": "Marsh Creek",
+        "PARKID": 5,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restroom located inside Marsh Creek Community Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "639d28f1-9e60-4b87-b588-e686ea881f18"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3462,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6324731440976,
+          35.7933721709776
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3462,
+        "LOCATIONNAME": "Mordecai Square",
+        "PARKID": 136,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restroom located inside Visitor Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": null,
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "Open Tuesday through Saturday from 9 am to 4 pm and Sunday from 1 pm to 4 pm",
+        "GlobalID": "60c0f82d-3ba1-4af9-a1fb-16f5c23cf8e6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3463,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6548367538584,
+          35.7706575624653
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3463,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": 1717200000000,
+        "DESCRIPTION": "Restroom located on West exterior of Doctor's Stone House Structure",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "at Visitor Center",
+        "GlobalID": "1ecf4cd9-ae3e-4a65-af89-97aeca0da8b5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3464,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6315489116622,
+          35.8151306574728
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3464,
+        "LOCATIONNAME": "Kiwanis",
+        "PARKID": 38,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Restrooms entrance on North side exterior of Neighborhood Center",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "768106bd-4127-4e06-ac39-c397983bf2a9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3580,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5997164387251,
+          35.8284429576692
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3580,
+        "LOCATIONNAME": "Brentwood",
+        "PARKID": 84,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Brentwood Playground",
+        "LOCATION": "Outdoor Uncovered",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "51fa0c45-2c24-488c-846a-4bb9b719f430"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3627,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6542994812089,
+          35.7668666134499
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3627,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": 1743438691704,
+        "DESCRIPTION": "Permanent Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": "ADA compliant single occupancy ",
+        "NOTES": "at Gipson Play Plaza",
+        "GlobalID": "d955c41e-87c3-4103-ac98-4a125163d565"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4889,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5771528558654,
+          35.7616554638929
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4889,
+        "LOCATIONNAME": "Walnut Creek Athletic Complex",
+        "PARKID": null,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": null,
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "NA",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "e8931f5e-ef5f-482d-a5c7-0da62d7cc1bd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4915,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.5804649811489,
+          35.7604465064356
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4915,
+        "LOCATIONNAME": "Walnut Creek Athletic Complex",
+        "PARKID": null,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": null,
+        "LOCATION": "Outdoor Uncovered",
+        "STATUS": "Existing",
+        "Lighting": "NA",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": null,
+        "GlobalID": "632acc01-3c71-4b9c-93d6-bf7ffac91584"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5165,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.6531105384738,
+          35.7672056756133
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5165,
+        "LOCATIONNAME": "Dorothea Dix Park",
+        "PARKID": 176,
+        "CATEGORY": "furnishing",
+        "SUBCATEGORY": "health safety",
+        "ASSETS": "Comfort Station",
+        "ESTABLISH": null,
+        "DESCRIPTION": "Permanent Restroom",
+        "LOCATION": "Indoor",
+        "STATUS": "Existing",
+        "Lighting": "Yes",
+        "VISITOR": "Public",
+        "ACCESSIBILITY": null,
+        "NOTES": "at House of Many Porches",
+        "GlobalID": "df318d4f-6af8-4e6c-91f0-bf346d9f162c"
+      }
+    }
+  ]
+}

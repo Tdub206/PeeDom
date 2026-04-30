@@ -14,8 +14,8 @@ import {
   Tag,
   Users,
 } from 'lucide-react';
-import { getApprovedLocationById, type ApprovedLocation } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getApprovedLocationById, type ApprovedLocation } from '../../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../../lib/supabase/server';
 import { PhotoUploadForm } from './photo-upload-form';
 import { VisibilitySettingsForm } from './visibility-settings-form';
 

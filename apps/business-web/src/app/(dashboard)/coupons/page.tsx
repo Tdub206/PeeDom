@@ -14,8 +14,8 @@ import {
   getBusinessCoupons,
   type ApprovedLocation,
   type BusinessCouponRow,
-} from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+} from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { CreateCouponForm } from './create-coupon-form';
 
 export const metadata: Metadata = {

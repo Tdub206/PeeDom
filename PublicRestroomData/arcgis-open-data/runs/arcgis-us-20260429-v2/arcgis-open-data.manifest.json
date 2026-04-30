@@ -1,0 +1,1416 @@
+{
+  "run_label": "arcgis-us-20260429-v2",
+  "generated_at": "2026-04-30T06:55:03.000Z",
+  "search_endpoint": "https://www.arcgis.com/sharing/rest/search",
+  "search_terms": [
+    "public restroom",
+    "restroom",
+    "bathroom",
+    "toilet",
+    "comfort station"
+  ],
+  "summary": {
+    "discovered_items": 500,
+    "candidate_items": 64,
+    "accepted_layers": 40,
+    "downloaded_layers": 40,
+    "normalized_records": 388,
+    "skipped_records": 2624
+  },
+  "discovered_items": [
+    {
+      "item_id": "c979c7a7398b4be684ef9feb2e4dbe02",
+      "title": "planning_public_bathrooms",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "etldevelopers_boston",
+      "access": "public",
+      "url": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/planning_public_bathrooms/FeatureServer"
+    },
+    {
+      "item_id": "52425f2197bd4336bc7b4e9be2bc0b0c",
+      "title": "public_bathrooms",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "etldevelopers_boston",
+      "access": "public",
+      "url": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/public_bathrooms/FeatureServer"
+    },
+    {
+      "item_id": "1b37d19453af4f0f9bec3077622f871f",
+      "title": "Listing - portable toilet waste/holding tank waste transporters",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "MDPublisher",
+      "access": "public",
+      "url": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/Portable_Toilet_Waste/FeatureServer"
+    },
+    {
+      "item_id": "00e2fe5b93584f8bb80dbcf0f77ff04d",
+      "title": "Portable Toilet Licenses",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "Innovation_andTechnology",
+      "access": "public",
+      "url": "https://services1.arcgis.com/j8dqo2DJE7mVUBU1/arcgis/rest/services/Portable_Toilet_Licenses/FeatureServer"
+    },
+    {
+      "item_id": "6eb3dcefaf594178b9a20df9436738d1",
+      "title": "Opengestelde toiletten",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "Gemeente_Huizen",
+      "access": "public",
+      "url": "https://services-eu1.arcgis.com/VIvzN69YXjbXJsgR/arcgis/rest/services/Opengestelde_toiletten_WFL1/FeatureServer"
+    },
+    {
+      "item_id": "13490deb5cf0435d9523e4797f5be8f4",
+      "title": "Recreation Vaulted Toilet Layer 1",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "SRS@denverwater.org_DW",
+      "access": "public",
+      "url": "https://services.arcgis.com/czCXlxn6hYtK4vdg/arcgis/rest/services/Recreation_Vaulted_Toilet/FeatureServer"
+    },
+    {
+      "item_id": "5fbbda15bc254a0ead86fa34edb12e56",
+      "title": "ACTGOV Public Toilet Assets",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "cityoperationsactgov",
+      "access": "public",
+      "url": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_Public_Toilet_Assets/FeatureServer"
+    },
+    {
+      "item_id": "e3304497b6844247a3159b454c3875bf",
+      "title": "Park Restrooms",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "SeattleParks_SeattleCityGIS",
+      "access": "public",
+      "url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parks_Restrooms/FeatureServer"
+    },
+    {
+      "item_id": "ab353e08ce4b4a8aa51cc7f806556dc2",
+      "title": "Toilet Point",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "AgolPower",
+      "access": "public",
+      "url": "https://services1.arcgis.com/KGdHCCUjGBpOPPac/arcgis/rest/services/Toilet_Point/FeatureServer"
+    },
+    {
+      "item_id": "fabde757c4c94dec802b481dd88a1852",
+      "title": "Public Washrooms - City",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "City_of_Vancouver_DEV",
+      "access": "public",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom_DEV/FeatureServer"
+    },
+    {
+      "item_id": "51ea8348684347d4afa05379141577ea",
+      "title": "Public Washrooms - City",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "City_of_Vancouver",
+      "access": "public",
+      "url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom/FeatureServer"
+    },
+    {
+      "item_id": "18c26c2e7c4f4b91a1439cc7f1ef3036",
+      "title": "Raleigh Park Restrooms",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "RaleighPRCR",
+      "access": "public",
+      "url": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Raleigh_Park_Restrooms/FeatureServer"
+    },
+    {
+      "item_id": "408a4f58ea5e43dd8b9fc81d04d45d0a",
+      "title": "Non-Portable Restrooms View Layer",
+      "item_score": 18,
+      "type": "Feature Service",
+      "owner": "tiffany.wu",
+      "access": "public",
+      "url": "https://services1.arcgis.com/HbzrdBZjOwNHp70P/arcgis/rest/services/Non_Portable_Restrooms_View_Layer/FeatureServer"
+    },
+    {
+      "item_id": "097295d6772c4766b8e9057e5a4fcb87",
+      "title": "Restrooms",
+      "item_score": 15,
+      "type": "Feature Service",
+      "owner": "arking.nww",
+      "access": "public",
+      "url": "https://services3.arcgis.com/aRSRPMqAe0fNWYeU/arcgis/rest/services/Toilets/FeatureServer"
+    },
+    {
+      "item_id": "b9de1f7f26e845ffadffd0599a1c361e",
+      "title": "King County Metro Comfort Stations",
+      "item_score": 13,
+      "type": "Feature Service",
+      "owner": "KingCounty",
+      "access": "public",
+      "url": "https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/COMFORTSTATION_POINT_2900/FeatureServer"
+    },
+    {
+      "item_id": "5ebdac8de0cb4cba8372da19ef8ed1c7",
+      "title": "Park Restrooms",
+      "item_score": 13,
+      "type": "Feature Service",
+      "owner": "The_City_and_County_of_Denver",
+      "access": "public",
+      "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_PARK_RESTROOMS_P/FeatureServer"
+    },
+    {
+      "item_id": "fe3b64af7c6d4a54bb4dea8b5f67645d",
+      "title": "Restroom",
+      "item_score": 13,
+      "type": "Feature Service",
+      "owner": "dcoley_sarco",
+      "access": "public",
+      "url": "https://ags3.scgov.net/server/rest/services/Hosted/Restroom/FeatureServer"
+    },
+    {
+      "item_id": "24a3e00dc12a424f82b491b1b12345ee",
+      "title": "GRSM_RESTROOMS",
+      "item_score": 13,
+      "type": "Feature Service",
+      "owner": "GRSM_GIS",
+      "access": "public",
+      "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/GRSM_RESTROOMS/FeatureServer"
+    },
+    {
+      "item_id": "bbd9b25db1fc4556ba750b590fd809bb",
+      "title": "Comfort Station",
+      "item_score": 13,
+      "type": "Feature Service",
+      "owner": "ggee@kauai.gov",
+      "access": "public",
+      "url": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/arcgis/rest/services/Comfort_Station/FeatureServer"
+    },
+    {
+      "item_id": "35217c2d3b944142b75d43978b37343d",
+      "title": "toilet",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "andj_kalundborg",
+      "access": "public",
+      "url": "https://services-eu1.arcgis.com/LhoSe4DXejOc59yf/arcgis/rest/services/toilet/FeatureServer"
+    },
+    {
+      "item_id": "a16f124a28f54fff94d79c1bcead81b9",
+      "title": "Surf Coast Shire Public Toilets",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "surfcoastshire",
+      "access": "public",
+      "url": "https://services-ap1.arcgis.com/gzhjuYmPupMv4d06/arcgis/rest/services/Surf_Coast_Shire_Public_Toilets/FeatureServer"
+    },
+    {
+      "item_id": "3dce35baddfc4c32ab5bd7f59ac08b39",
+      "title": "Sit_RR_GI",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "underjas@oregonstate.edu_oregonstate",
+      "access": "public",
+      "url": "https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/Sit_RR_GI/FeatureServer"
+    },
+    {
+      "item_id": "2567db44159741318a514eabcb840601",
+      "title": "Public_restrooms_apf",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "afauteux_UMass_Amherst",
+      "access": "public",
+      "url": "https://services.arcgis.com/2gdL2gxYNFY2TOUb/arcgis/rest/services/Public_restrooms_apf/FeatureServer"
+    },
+    {
+      "item_id": "bdd1d1ba64c448b997950730a96fe715",
+      "title": "Public Bathroom Locations",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "rdurussel",
+      "access": "public",
+      "url": "https://services5.arcgis.com/VLNRSjNptnA6FSK6/arcgis/rest/services/Walleye_Fest_Public_Bathroom_Locations/FeatureServer"
+    },
+    {
+      "item_id": "76bfc28857c44df39471cc5453bff739",
+      "title": "CADI_Baseline_WebMap_WFL1",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "qaadegbi_NCSU",
+      "access": "public",
+      "url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer"
+    },
+    {
+      "item_id": "f03ae21c6f3a4b51b23c03f68dd10ec7",
+      "title": "Toilet_v2",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nirosha.hapuarachchi@darwin.nt.gov.au_darwin",
+      "access": "public",
+      "url": "https://services6.arcgis.com/tVfesLETUHNU9Vna/arcgis/rest/services/Toilet_v2/FeatureServer"
+    },
+    {
+      "item_id": "ee2f5b419f984de5bb4de0f16310e263",
+      "title": "WTP_Restrooms",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "AppHeadwaters",
+      "access": "public",
+      "url": "https://services1.arcgis.com/4eROrpGHWqjIe4IK/arcgis/rest/services/WTP_Restrooms/FeatureServer"
+    },
+    {
+      "item_id": "1489943658ee41829a9aa5079ff43e5e",
+      "title": "Jacksonville Beach Infrastructure_WFL1",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "acummings_jaxbeach",
+      "access": "public",
+      "url": "https://services1.arcgis.com/Yd24wKbBcPMKoWvP/arcgis/rest/services/Jacksonville_Beach_Infrastructure_WFL1/FeatureServer"
+    },
+    {
+      "item_id": "0814f2c6dcdf4b5ea4f27d5fc951ab3d",
+      "title": "Choose_toilet",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nico.johansson@edu.novia.fi_Novia",
+      "access": "public",
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Choose_toilet/FeatureServer"
+    },
+    {
+      "item_id": "bf71cf77d82d4d00ba670d69aa64ab79",
+      "title": "Toilet",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nico.johansson@edu.novia.fi_Novia",
+      "access": "public",
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet/FeatureServer"
+    },
+    {
+      "item_id": "889bd900f9f342ada51f131f13ac5f43",
+      "title": "Toilet_description",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nico.johansson@edu.novia.fi_Novia",
+      "access": "public",
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet_description/FeatureServer"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "rterryKID",
+      "access": "public",
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer"
+    },
+    {
+      "item_id": "b4685e872856464aa74892bb94532eec",
+      "title": "Select_toilet",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nico.johansson@edu.novia.fi_Novia",
+      "access": "public",
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Select_toilet/FeatureServer"
+    },
+    {
+      "item_id": "79b33cdce7224c9ba3e256118e4a37b8",
+      "title": "ToiletsinCountryParks_SHP",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "24229679",
+      "access": "public",
+      "url": "https://services7.arcgis.com/E361BcjVtoi3PB9e/arcgis/rest/services/ToiletsinCountryParks_SHP/FeatureServer"
+    },
+    {
+      "item_id": "8944e7101d2f4525a5e7bf1bb8ad2261",
+      "title": "For a Good Time Call_Bathroom Graffiti In Portland - DATA VERS",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "joshua.weill_portlandcc",
+      "access": "public",
+      "url": "https://services8.arcgis.com/tblHe99qQFMcNzpC/arcgis/rest/services/For_a_Good_Time_Call_Bathroom_Graffiti_In_Portland/FeatureServer"
+    },
+    {
+      "item_id": "4b875ddb701e4908aa379efaadb83354",
+      "title": "Maclehose Toilet",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "SDSGIS_12",
+      "access": "public",
+      "url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Maclehose Toilet/FeatureServer"
+    },
+    {
+      "item_id": "51e979ee45d24294885c72a0e35f70e5",
+      "title": "Toilet in Maclehose",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "SDSGIS_12",
+      "access": "public",
+      "url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Toilet in Maclehose/FeatureServer"
+    },
+    {
+      "item_id": "00785c4fdb7b48b59362d7af5b0ba1f3",
+      "title": "ND-SMC Bathroom SurveyView",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "MatthewSisk",
+      "access": "public",
+      "url": "https://services.arcgis.com/7h4RfkpNzKg2iVL3/arcgis/rest/services/ND-SMC_Bathroom_SurveyView/FeatureServer"
+    },
+    {
+      "item_id": "add3e1dd49a446c2a5ac896f030c0b67",
+      "title": "Facilities (Public View)",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "WaterwaysIre",
+      "access": "public",
+      "url": "https://services.arcgis.com/dYoxQ9gPdVpFX6Th/arcgis/rest/services/Facilities_(Public_View)/FeatureServer"
+    },
+    {
+      "item_id": "4bda7f40ef7d46e3af16b911c46569bf",
+      "title": "D4 WIM with Comfort Station",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "clark.siler_fdot9",
+      "access": "public",
+      "url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/service_1d215d4de4ce411aac9ca14ca18974ae/FeatureServer"
+    },
+    {
+      "item_id": "6a1ab6609aaa495097760169bf3543da",
+      "title": "Comfort Stations",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "SillarsS@hillsboroughcounty.org_hillsborough",
+      "access": "public",
+      "url": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Comfort_Stations/FeatureServer"
+    },
+    {
+      "item_id": "f667dcf6bb684c4ea9dfabd3183fdcbe",
+      "title": "AIMSTrailDataRO - Restrooms/Comfort Stations",
+      "item_score": 10,
+      "type": "Feature Service",
+      "owner": "nstephens@carolinemd.org_CCMD",
+      "access": "public",
+      "url": "https://dnr.geodata.md.gov/dnrdata/rest/services/AIMS/AIMSTrailDataRO/FeatureServer"
+    },
+    {
+      "item_id": "01fdc06b84ec4e458fbfacde04c64723",
+      "title": "OpenStreetMap - Voorzieningen & Faciliteiten",
+      "item_score": 7,
+      "type": "Feature Service",
+      "owner": "Esri_NL_Content",
+      "access": "public",
+      "url": "https://services.arcgis.com/nSZVuSZjHpEZZbRo/arcgis/rest/services/OSM_voorzieningen_en_faciliteiten/FeatureServer"
+    },
+    {
+      "item_id": "6b61dad1b7cf442194e22c2738e66d3e",
+      "title": "Park Buildings",
+      "item_score": 7,
+      "type": "Feature Service",
+      "owner": "OfficeOfGIS_LasVegas",
+      "access": "public",
+      "url": "https://services1.arcgis.com/F1v0ufATbBQScMtY/arcgis/rest/services/Buildings_PRD/FeatureServer"
+    },
+    {
+      "item_id": "8006c80b5f33417299fbc44b7a5b7069",
+      "title": "Web CSF Facilities",
+      "item_score": 7,
+      "type": "Feature Service",
+      "owner": "mshepardson",
+      "access": "public",
+      "url": "https://services.arcgis.com/DknzyjEEie5tEW0u/arcgis/rest/services/Web_CSF_Facilities/FeatureServer"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1",
+      "item_score": 7,
+      "type": "Feature Service",
+      "owner": "olmitrzy@svsu.edu_SVSU",
+      "access": "public",
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer"
+    },
+    {
+      "item_id": "d374bf9ad49c40b6a7e37c1d7a7e9d2f",
+      "title": "Oregon State Public Restroom Menstrual Product Availability JCEMF _form",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "carbajaj@oregonstate.edu_OSUGISci",
+      "access": "public",
+      "url": "https://services1.arcgis.com/CD5mKowwN6nIaqd8/arcgis/rest/services/survey123_2665965830054b0895f3df714aec5878_form/FeatureServer"
+    },
+    {
+      "item_id": "e9db7e99850544d2811846ff575b80ec",
+      "title": "Oregon State Public Restroom Menstrual Product Availability JCEMF _results",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "carbajaj@oregonstate.edu_OSUGISci",
+      "access": "public",
+      "url": "https://services1.arcgis.com/CD5mKowwN6nIaqd8/arcgis/rest/services/survey123_2665965830054b0895f3df714aec5878_results/FeatureServer"
+    },
+    {
+      "item_id": "65886df66c484e16964571aa66f87954",
+      "title": "Bathroom Accessibility Survey 1.0",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "rhavel",
+      "access": "public",
+      "url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974/FeatureServer"
+    },
+    {
+      "item_id": "d2fa161ac8d34fa8a915cdbf624a861a",
+      "title": "Bathroom Accessibility Survey 1.0_form",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "rhavel",
+      "access": "public",
+      "url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974_form/FeatureServer"
+    },
+    {
+      "item_id": "a7d325886e604d86b93048c284ff19b6",
+      "title": "Best Restrooms on West and East Bank Campus_results",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "meede011_UMN",
+      "access": "public",
+      "url": "https://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/survey123_e2f92eee8f5a410f884cc5c6812a0be9_results/FeatureServer"
+    },
+    {
+      "item_id": "c4c84d7981b645ffb5cf4ab9c1643d6c",
+      "title": "Best Restrooms on West and East Bank Campus",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "meede011_UMN",
+      "access": "public",
+      "url": "https://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/survey123_e2f92eee8f5a410f884cc5c6812a0be9/FeatureServer"
+    },
+    {
+      "item_id": "f31da1dfa6b84736b55d16306775f193",
+      "title": "2024 Comfort Station Inspections_results",
+      "item_score": 6,
+      "type": "Feature Service",
+      "owner": "cdbuckley_wayne",
+      "access": "public",
+      "url": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/survey123_d9d721b31ef0413d9fea9c80ffa183f5_results/FeatureServer"
+    },
+    {
+      "item_id": "3d9c29bab754466490a0d4c921dffae2",
+      "title": "Trails Points of Interest AppID_0000",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "ckl_agol_admin",
+      "access": "public",
+      "url": "https://services3.arcgis.com/RQBDTPtsbT0jebs7/arcgis/rest/services/Trails_PointS_of_Interest_AGOL/FeatureServer"
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "aroth_tr",
+      "access": "public",
+      "url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer"
+    },
+    {
+      "item_id": "17605167b7ec4d969156a4f5709d097d",
+      "title": "BLM Natl EXPLORE Recreational Shooting Points",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "lwilliams@blm.gov_BLM_EGIS",
+      "access": "public",
+      "url": "https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Qualified_Shooting/FeatureServer"
+    },
+    {
+      "item_id": "2162049f5ce7442eac5afd2bb4f1f8eb",
+      "title": "MCSAW Facilities",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "David.Fairchild@dot.state.fl.us_fdot",
+      "access": "public",
+      "url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/MCSAW_Facilities/FeatureServer"
+    },
+    {
+      "item_id": "2ded309ac43b428094e653ccaacbbd99",
+      "title": "MCSAW-Facilities",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "David.Fairchild@dot.state.fl.us_fdot",
+      "access": "public",
+      "url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/MCSAW_Facilities_(view)/FeatureServer"
+    },
+    {
+      "item_id": "89ec643ba09c420b95be30f60cde4718",
+      "title": "PODS_FeedingSites_Milton",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "ingrid.jourgensen.hc",
+      "access": "public",
+      "url": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/PODS_FeedingSites_Milton/FeatureServer"
+    },
+    {
+      "item_id": "4d71a86fefbf41a5adfa628303da4685",
+      "title": "EPP_CircleComfortStation_WSL23",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "grcavana@flemingcollege.ca_Fleming",
+      "access": "public",
+      "url": "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/EPP_CircleComfortStation_WSL23/FeatureServer"
+    },
+    {
+      "item_id": "fa1624a4b8f1445b98a6834cd6a28db1",
+      "title": "EPP_CircleComfortStation_WSL22",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "grcavana@flemingcollege.ca_Fleming",
+      "access": "public",
+      "url": "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/EPP_CircleComfortStation_WSL22/FeatureServer"
+    },
+    {
+      "item_id": "1dc4d880cd564824844663239774b48b",
+      "title": "EPP_CircleComfortStation_WSL21",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "grcavana@flemingcollege.ca_Fleming",
+      "access": "public",
+      "url": "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/EPP_CircleComfortStation_WSL21/FeatureServer"
+    },
+    {
+      "item_id": "90bd1550e3a44bc1957792084ca10953",
+      "title": "EPP_CircleComfortStation_WSL20",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "grcavana@flemingcollege.ca_Fleming",
+      "access": "public",
+      "url": "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/EPP_CircleComfortStation_WSL20/FeatureServer"
+    },
+    {
+      "item_id": "5b9d06f667df44828238e752b8146dfa",
+      "title": "EPP_CircleComfortStation_WSL19",
+      "item_score": 5,
+      "type": "Feature Service",
+      "owner": "grcavana@flemingcollege.ca_Fleming",
+      "access": "public",
+      "url": "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/EPP_CircleComfortStation_WSL19/FeatureServer"
+    }
+  ],
+  "downloaded_layers": [
+    {
+      "item_id": "c979c7a7398b4be684ef9feb2e4dbe02",
+      "title": "planning_public_bathrooms",
+      "layer_id": 0,
+      "layer_name": "planning_public_bathrooms_points",
+      "layer_score": 16,
+      "service_url": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/planning_public_bathrooms/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/planning_public_bathrooms/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\planning-public-bathrooms-c979c7a7398b4be684ef9feb2e4dbe02-layer-0.geojson",
+      "raw_feature_count": 202,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 202
+    },
+    {
+      "item_id": "6eb3dcefaf594178b9a20df9436738d1",
+      "title": "Opengestelde toiletten",
+      "layer_id": 0,
+      "layer_name": "Opengestelde toilet",
+      "layer_score": 10,
+      "service_url": "https://services-eu1.arcgis.com/VIvzN69YXjbXJsgR/arcgis/rest/services/Opengestelde_toiletten_WFL1/FeatureServer/0",
+      "download_url": "https://services-eu1.arcgis.com/VIvzN69YXjbXJsgR/arcgis/rest/services/Opengestelde_toiletten_WFL1/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\opengestelde-toiletten-6eb3dcefaf594178b9a20df9436738d1-layer-0.geojson",
+      "raw_feature_count": 17,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 17
+    },
+    {
+      "item_id": "13490deb5cf0435d9523e4797f5be8f4",
+      "title": "Recreation Vaulted Toilet Layer 1",
+      "layer_id": 0,
+      "layer_name": "Toilet_Assmt_Wrkg",
+      "layer_score": 10,
+      "service_url": "https://services.arcgis.com/czCXlxn6hYtK4vdg/arcgis/rest/services/Recreation_Vaulted_Toilet/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/czCXlxn6hYtK4vdg/arcgis/rest/services/Recreation_Vaulted_Toilet/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\recreation-vaulted-toilet-layer-1-13490deb5cf0435d9523e4797f5be8f4-layer-0.geojson",
+      "raw_feature_count": 38,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 38
+    },
+    {
+      "item_id": "5fbbda15bc254a0ead86fa34edb12e56",
+      "title": "ACTGOV Public Toilet Assets",
+      "layer_id": 1,
+      "layer_name": "ACTGOV Public Toilet Assets",
+      "layer_score": 16,
+      "service_url": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_Public_Toilet_Assets/FeatureServer/1",
+      "download_url": "https://services1.arcgis.com/E5n4f1VY84i0xSjy/arcgis/rest/services/ACTGOV_Public_Toilet_Assets/FeatureServer/1",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\actgov-public-toilet-assets-5fbbda15bc254a0ead86fa34edb12e56-layer-1.geojson",
+      "raw_feature_count": 227,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 227
+    },
+    {
+      "item_id": "e3304497b6844247a3159b454c3875bf",
+      "title": "Park Restrooms",
+      "layer_id": 0,
+      "layer_name": "Park Restrooms",
+      "layer_score": 15,
+      "service_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parks_Restrooms/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/ZOyb2t4B0UYuYNYH/arcgis/rest/services/Parks_Restrooms/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\park-restrooms-e3304497b6844247a3159b454c3875bf-layer-0.geojson",
+      "raw_feature_count": 156,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 156
+    },
+    {
+      "item_id": "ab353e08ce4b4a8aa51cc7f806556dc2",
+      "title": "Toilet Point",
+      "layer_id": 62,
+      "layer_name": "Toilet Point",
+      "layer_score": 16,
+      "service_url": "https://services1.arcgis.com/KGdHCCUjGBpOPPac/arcgis/rest/services/Toilet_Point/FeatureServer/62",
+      "download_url": "https://services1.arcgis.com/KGdHCCUjGBpOPPac/arcgis/rest/services/Toilet_Point/FeatureServer/62",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toilet-point-ab353e08ce4b4a8aa51cc7f806556dc2-layer-62.geojson",
+      "raw_feature_count": 71,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 71
+    },
+    {
+      "item_id": "fabde757c4c94dec802b481dd88a1852",
+      "title": "Public Washrooms - City",
+      "layer_id": 0,
+      "layer_name": "saWashroom",
+      "layer_score": 14,
+      "service_url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom_DEV/FeatureServer/0",
+      "download_url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom_DEV/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\public-washrooms-city-fabde757c4c94dec802b481dd88a1852-layer-0.geojson",
+      "raw_feature_count": 14,
+      "normalized_included_records": 2,
+      "normalized_skipped_records": 12
+    },
+    {
+      "item_id": "51ea8348684347d4afa05379141577ea",
+      "title": "Public Washrooms - City",
+      "layer_id": 0,
+      "layer_name": "saWashroom",
+      "layer_score": 14,
+      "service_url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom/FeatureServer/0",
+      "download_url": "https://services3.arcgis.com/qrcTTRTwUoS8N47o/arcgis/rest/services/saWashroom/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\public-washrooms-city-51ea8348684347d4afa05379141577ea-layer-0.geojson",
+      "raw_feature_count": 13,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 13
+    },
+    {
+      "item_id": "18c26c2e7c4f4b91a1439cc7f1ef3036",
+      "title": "Raleigh Park Restrooms",
+      "layer_id": 0,
+      "layer_name": "Raleigh Park Restrooms",
+      "layer_score": 15,
+      "service_url": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Raleigh_Park_Restrooms/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Raleigh_Park_Restrooms/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\raleigh-park-restrooms-18c26c2e7c4f4b91a1439cc7f1ef3036-layer-0.geojson",
+      "raw_feature_count": 64,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 64
+    },
+    {
+      "item_id": "097295d6772c4766b8e9057e5a4fcb87",
+      "title": "Restrooms",
+      "layer_id": 0,
+      "layer_name": "Restrooms",
+      "layer_score": 8,
+      "service_url": "https://services3.arcgis.com/aRSRPMqAe0fNWYeU/arcgis/rest/services/Toilets/FeatureServer/0",
+      "download_url": "https://services3.arcgis.com/aRSRPMqAe0fNWYeU/arcgis/rest/services/Toilets/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\restrooms-097295d6772c4766b8e9057e5a4fcb87-layer-0.geojson",
+      "raw_feature_count": 56,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 56
+    },
+    {
+      "item_id": "5ebdac8de0cb4cba8372da19ef8ed1c7",
+      "title": "Park Restrooms",
+      "layer_id": 93,
+      "layer_name": "PARK_RESTROOMS_P",
+      "layer_score": 9,
+      "service_url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_PARK_RESTROOMS_P/FeatureServer/93",
+      "download_url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_PARK_RESTROOMS_P/FeatureServer/93",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\park-restrooms-5ebdac8de0cb4cba8372da19ef8ed1c7-layer-93.geojson",
+      "raw_feature_count": 65,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 65
+    },
+    {
+      "item_id": "fe3b64af7c6d4a54bb4dea8b5f67645d",
+      "title": "Restroom",
+      "layer_id": 0,
+      "layer_name": "Restroom",
+      "layer_score": 17,
+      "service_url": "https://ags3.scgov.net/server/rest/services/Hosted/Restroom/FeatureServer/0",
+      "download_url": "https://ags3.scgov.net/server/rest/services/Hosted/Restroom/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\restroom-fe3b64af7c6d4a54bb4dea8b5f67645d-layer-0.geojson",
+      "raw_feature_count": 83,
+      "normalized_included_records": 82,
+      "normalized_skipped_records": 1
+    },
+    {
+      "item_id": "24a3e00dc12a424f82b491b1b12345ee",
+      "title": "GRSM_RESTROOMS",
+      "layer_id": 0,
+      "layer_name": "RESTROOMS",
+      "layer_score": 15,
+      "service_url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/GRSM_RESTROOMS/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/GRSM_RESTROOMS/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\grsm-restrooms-24a3e00dc12a424f82b491b1b12345ee-layer-0.geojson",
+      "raw_feature_count": 83,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 83
+    },
+    {
+      "item_id": "bbd9b25db1fc4556ba750b590fd809bb",
+      "title": "Comfort Station",
+      "layer_id": 89,
+      "layer_name": "Comfort Station",
+      "layer_score": 8,
+      "service_url": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/arcgis/rest/services/Comfort_Station/FeatureServer/89",
+      "download_url": "https://services1.arcgis.com/0DaVqrPt2eyXUS9g/arcgis/rest/services/Comfort_Station/FeatureServer/89",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\comfort-station-bbd9b25db1fc4556ba750b590fd809bb-layer-89.geojson",
+      "raw_feature_count": 3,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 3
+    },
+    {
+      "item_id": "35217c2d3b944142b75d43978b37343d",
+      "title": "toilet",
+      "layer_id": 0,
+      "layer_name": "toilet_multipoints",
+      "layer_score": 13,
+      "service_url": "https://services-eu1.arcgis.com/LhoSe4DXejOc59yf/arcgis/rest/services/toilet/FeatureServer/0",
+      "download_url": "https://services-eu1.arcgis.com/LhoSe4DXejOc59yf/arcgis/rest/services/toilet/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toilet-35217c2d3b944142b75d43978b37343d-layer-0.geojson",
+      "raw_feature_count": 21,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 21
+    },
+    {
+      "item_id": "a16f124a28f54fff94d79c1bcead81b9",
+      "title": "Surf Coast Shire Public Toilets",
+      "layer_id": 0,
+      "layer_name": "Public_Toilets",
+      "layer_score": 14,
+      "service_url": "https://services-ap1.arcgis.com/gzhjuYmPupMv4d06/arcgis/rest/services/Surf_Coast_Shire_Public_Toilets/FeatureServer/0",
+      "download_url": "https://services-ap1.arcgis.com/gzhjuYmPupMv4d06/arcgis/rest/services/Surf_Coast_Shire_Public_Toilets/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\surf-coast-shire-public-toilets-a16f124a28f54fff94d79c1bcead81b9-layer-0.geojson",
+      "raw_feature_count": 54,
+      "normalized_included_records": 1,
+      "normalized_skipped_records": 53
+    },
+    {
+      "item_id": "3dce35baddfc4c32ab5bd7f59ac08b39",
+      "title": "Sit_RR_GI",
+      "layer_id": 52,
+      "layer_name": "Sit_RR_GI",
+      "layer_score": 8,
+      "service_url": "https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/Sit_RR_GI/FeatureServer/52",
+      "download_url": "https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/Sit_RR_GI/FeatureServer/52",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\sit-rr-gi-3dce35baddfc4c32ab5bd7f59ac08b39-layer-52.geojson",
+      "raw_feature_count": 104,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 104
+    },
+    {
+      "item_id": "2567db44159741318a514eabcb840601",
+      "title": "Public_restrooms_apf",
+      "layer_id": 0,
+      "layer_name": "Public_restrooms_af",
+      "layer_score": 8,
+      "service_url": "https://services.arcgis.com/2gdL2gxYNFY2TOUb/arcgis/rest/services/Public_restrooms_apf/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/2gdL2gxYNFY2TOUb/arcgis/rest/services/Public_restrooms_apf/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\public-restrooms-apf-2567db44159741318a514eabcb840601-layer-0.geojson",
+      "raw_feature_count": 9,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 9
+    },
+    {
+      "item_id": "bdd1d1ba64c448b997950730a96fe715",
+      "title": "Public Bathroom Locations",
+      "layer_id": 2,
+      "layer_name": "Bathrooms",
+      "layer_score": 16,
+      "service_url": "https://services5.arcgis.com/VLNRSjNptnA6FSK6/arcgis/rest/services/Walleye_Fest_Public_Bathroom_Locations/FeatureServer/2",
+      "download_url": "https://services5.arcgis.com/VLNRSjNptnA6FSK6/arcgis/rest/services/Walleye_Fest_Public_Bathroom_Locations/FeatureServer/2",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\public-bathroom-locations-bdd1d1ba64c448b997950730a96fe715-layer-2.geojson",
+      "raw_feature_count": 4,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 4
+    },
+    {
+      "item_id": "76bfc28857c44df39471cc5453bff739",
+      "title": "CADI_Baseline_WebMap_WFL1",
+      "layer_id": 0,
+      "layer_name": "Existing Public Restrooms",
+      "layer_score": 16,
+      "service_url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\cadi-baseline-webmap-wfl1-76bfc28857c44df39471cc5453bff739-layer-0.geojson",
+      "raw_feature_count": 103,
+      "normalized_included_records": 99,
+      "normalized_skipped_records": 4
+    },
+    {
+      "item_id": "76bfc28857c44df39471cc5453bff739",
+      "title": "CADI_Baseline_WebMap_WFL1",
+      "layer_id": 1,
+      "layer_name": "CADI_Baseline_Priority_Zones",
+      "layer_score": 9,
+      "service_url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer/1",
+      "download_url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer/1",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\cadi-baseline-webmap-wfl1-76bfc28857c44df39471cc5453bff739-layer-1.geojson",
+      "raw_feature_count": 298,
+      "normalized_included_records": 54,
+      "normalized_skipped_records": 244
+    },
+    {
+      "item_id": "f03ae21c6f3a4b51b23c03f68dd10ec7",
+      "title": "Toilet_v2",
+      "layer_id": 7,
+      "layer_name": "toilet",
+      "layer_score": 14,
+      "service_url": "https://services6.arcgis.com/tVfesLETUHNU9Vna/arcgis/rest/services/Toilet_v2/FeatureServer/7",
+      "download_url": "https://services6.arcgis.com/tVfesLETUHNU9Vna/arcgis/rest/services/Toilet_v2/FeatureServer/7",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toilet-v2-f03ae21c6f3a4b51b23c03f68dd10ec7-layer-7.geojson",
+      "raw_feature_count": 24,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 24
+    },
+    {
+      "item_id": "ee2f5b419f984de5bb4de0f16310e263",
+      "title": "WTP_Restrooms",
+      "layer_id": 0,
+      "layer_name": "WTP_Restrooms",
+      "layer_score": 8,
+      "service_url": "https://services1.arcgis.com/4eROrpGHWqjIe4IK/arcgis/rest/services/WTP_Restrooms/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/4eROrpGHWqjIe4IK/arcgis/rest/services/WTP_Restrooms/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\wtp-restrooms-ee2f5b419f984de5bb4de0f16310e263-layer-0.geojson",
+      "raw_feature_count": 2,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 2
+    },
+    {
+      "item_id": "0814f2c6dcdf4b5ea4f27d5fc951ab3d",
+      "title": "Choose_toilet",
+      "layer_id": 0,
+      "layer_name": "Choose_toilet",
+      "layer_score": 8,
+      "service_url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Choose_toilet/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Choose_toilet/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\choose-toilet-0814f2c6dcdf4b5ea4f27d5fc951ab3d-layer-0.geojson",
+      "raw_feature_count": 1,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 1
+    },
+    {
+      "item_id": "bf71cf77d82d4d00ba670d69aa64ab79",
+      "title": "Toilet",
+      "layer_id": 0,
+      "layer_name": "Toilet",
+      "layer_score": 14,
+      "service_url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toilet-bf71cf77d82d4d00ba670d69aa64ab79-layer-0.geojson",
+      "raw_feature_count": 19,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 19
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1",
+      "layer_id": 0,
+      "layer_name": "Bathrooms",
+      "layer_score": 8,
+      "service_url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/0",
+      "download_url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\running-toilet-5k-route-map-wfl1-3bbfd1d6ee8a40e499a745afa3283852-layer-0.geojson",
+      "raw_feature_count": 3,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 3
+    },
+    {
+      "item_id": "79b33cdce7224c9ba3e256118e4a37b8",
+      "title": "ToiletsinCountryParks_SHP",
+      "layer_id": 0,
+      "layer_name": "ToiletsinCountryParks_SHP",
+      "layer_score": 15,
+      "service_url": "https://services7.arcgis.com/E361BcjVtoi3PB9e/arcgis/rest/services/ToiletsinCountryParks_SHP/FeatureServer/0",
+      "download_url": "https://services7.arcgis.com/E361BcjVtoi3PB9e/arcgis/rest/services/ToiletsinCountryParks_SHP/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toiletsincountryparks-shp-79b33cdce7224c9ba3e256118e4a37b8-layer-0.geojson",
+      "raw_feature_count": 166,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 166
+    },
+    {
+      "item_id": "8944e7101d2f4525a5e7bf1bb8ad2261",
+      "title": "For a Good Time Call_Bathroom Graffiti In Portland - DATA VERS",
+      "layer_id": 0,
+      "layer_name": "For a Good Time Call: Bathroom Graffiti In Portland",
+      "layer_score": 8,
+      "service_url": "https://services8.arcgis.com/tblHe99qQFMcNzpC/arcgis/rest/services/For_a_Good_Time_Call_Bathroom_Graffiti_In_Portland/FeatureServer/0",
+      "download_url": "https://services8.arcgis.com/tblHe99qQFMcNzpC/arcgis/rest/services/For_a_Good_Time_Call_Bathroom_Graffiti_In_Portland/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\for-a-good-time-call-bathroom-graffiti-in-portland-data-vers-8944e7101d2f4525a5e7bf1bb8ad2261-layer-0.geojson",
+      "raw_feature_count": 12,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 12
+    },
+    {
+      "item_id": "4b875ddb701e4908aa379efaadb83354",
+      "title": "Maclehose Toilet",
+      "layer_id": 0,
+      "layer_name": "outputLayer",
+      "layer_score": 7,
+      "service_url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Maclehose Toilet/FeatureServer/0",
+      "download_url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Maclehose Toilet/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\maclehose-toilet-4b875ddb701e4908aa379efaadb83354-layer-0.geojson",
+      "raw_feature_count": 42,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 42
+    },
+    {
+      "item_id": "51e979ee45d24294885c72a0e35f70e5",
+      "title": "Toilet in Maclehose",
+      "layer_id": 0,
+      "layer_name": "outputLayer",
+      "layer_score": 7,
+      "service_url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Toilet in Maclehose/FeatureServer/0",
+      "download_url": "https://services8.arcgis.com/2rQ45ntRYmuX6ms0/arcgis/rest/services/Toilet in Maclehose/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\toilet-in-maclehose-51e979ee45d24294885c72a0e35f70e5-layer-0.geojson",
+      "raw_feature_count": 120,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 120
+    },
+    {
+      "item_id": "00785c4fdb7b48b59362d7af5b0ba1f3",
+      "title": "ND-SMC Bathroom SurveyView",
+      "layer_id": 0,
+      "layer_name": "surveyPoint",
+      "layer_score": 9,
+      "service_url": "https://services.arcgis.com/7h4RfkpNzKg2iVL3/arcgis/rest/services/ND-SMC_Bathroom_SurveyView/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/7h4RfkpNzKg2iVL3/arcgis/rest/services/ND-SMC_Bathroom_SurveyView/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\nd-smc-bathroom-surveyview-00785c4fdb7b48b59362d7af5b0ba1f3-layer-0.geojson",
+      "raw_feature_count": 248,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 248
+    },
+    {
+      "item_id": "add3e1dd49a446c2a5ac896f030c0b67",
+      "title": "Facilities (Public View)",
+      "layer_id": 1,
+      "layer_name": "Facilities",
+      "layer_score": 9,
+      "service_url": "https://services.arcgis.com/dYoxQ9gPdVpFX6Th/arcgis/rest/services/Facilities_(Public_View)/FeatureServer/1",
+      "download_url": "https://services.arcgis.com/dYoxQ9gPdVpFX6Th/arcgis/rest/services/Facilities_(Public_View)/FeatureServer/1",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\facilities-public-view-add3e1dd49a446c2a5ac896f030c0b67-layer-1.geojson",
+      "raw_feature_count": 298,
+      "normalized_included_records": 68,
+      "normalized_skipped_records": 230
+    },
+    {
+      "item_id": "4bda7f40ef7d46e3af16b911c46569bf",
+      "title": "D4 WIM with Comfort Station",
+      "layer_id": 0,
+      "layer_name": "surveyPoint",
+      "layer_score": 9,
+      "service_url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/service_1d215d4de4ce411aac9ca14ca18974ae/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/O1JpcwDW8sjYuddV/arcgis/rest/services/service_1d215d4de4ce411aac9ca14ca18974ae/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\d4-wim-with-comfort-station-4bda7f40ef7d46e3af16b911c46569bf-layer-0.geojson",
+      "raw_feature_count": 16,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 16
+    },
+    {
+      "item_id": "6a1ab6609aaa495097760169bf3543da",
+      "title": "Comfort Stations",
+      "layer_id": 0,
+      "layer_name": "Comfort Stations",
+      "layer_score": 8,
+      "service_url": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Comfort_Stations/FeatureServer/0",
+      "download_url": "https://services.arcgis.com/apTfC6SUmnNfnxuF/arcgis/rest/services/Comfort_Stations/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\comfort-stations-6a1ab6609aaa495097760169bf3543da-layer-0.geojson",
+      "raw_feature_count": 19,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 19
+    },
+    {
+      "item_id": "6b61dad1b7cf442194e22c2738e66d3e",
+      "title": "Park Buildings",
+      "layer_id": 14,
+      "layer_name": "Buildings_PRD",
+      "layer_score": 15,
+      "service_url": "https://services1.arcgis.com/F1v0ufATbBQScMtY/arcgis/rest/services/Buildings_PRD/FeatureServer/14",
+      "download_url": "https://services1.arcgis.com/F1v0ufATbBQScMtY/arcgis/rest/services/Buildings_PRD/FeatureServer/14",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\park-buildings-6b61dad1b7cf442194e22c2738e66d3e-layer-14.geojson",
+      "raw_feature_count": 202,
+      "normalized_included_records": 82,
+      "normalized_skipped_records": 120
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1",
+      "layer_id": 5,
+      "layer_name": "Bathrooms",
+      "layer_score": 17,
+      "service_url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/5",
+      "download_url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/5",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\bay-city-state-park-digital-map-wfl1-51c7309620344f12995f4aa96d4e0074-layer-5.geojson",
+      "raw_feature_count": 7,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 7
+    },
+    {
+      "item_id": "65886df66c484e16964571aa66f87954",
+      "title": "Bathroom Accessibility Survey 1.0",
+      "layer_id": 0,
+      "layer_name": "survey",
+      "layer_score": 9,
+      "service_url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\bathroom-accessibility-survey-1-0-65886df66c484e16964571aa66f87954-layer-0.geojson",
+      "raw_feature_count": 21,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 21
+    },
+    {
+      "item_id": "f31da1dfa6b84736b55d16306775f193",
+      "title": "2024 Comfort Station Inspections_results",
+      "layer_id": 0,
+      "layer_name": "survey",
+      "layer_score": 7,
+      "service_url": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/survey123_d9d721b31ef0413d9fea9c80ffa183f5_results/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/b6rkZNtCd6Mx2gvB/arcgis/rest/services/survey123_d9d721b31ef0413d9fea9c80ffa183f5_results/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\2024-comfort-station-inspections-results-f31da1dfa6b84736b55d16306775f193-layer-0.geojson",
+      "raw_feature_count": 30,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 30
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures",
+      "layer_id": 1,
+      "layer_name": "Public_Restrooms",
+      "layer_score": 9,
+      "service_url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/1",
+      "download_url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/1",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\structures-453559f0f467421bb947d9fe01007ae8-layer-1.geojson",
+      "raw_feature_count": 4,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 4
+    },
+    {
+      "item_id": "17605167b7ec4d969156a4f5709d097d",
+      "title": "BLM Natl EXPLORE Recreational Shooting Points",
+      "layer_id": 0,
+      "layer_name": "Sheet1",
+      "layer_score": 7,
+      "service_url": "https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Qualified_Shooting/FeatureServer/0",
+      "download_url": "https://services1.arcgis.com/KbxwQRRfWyEYLgp4/arcgis/rest/services/BLM_Qualified_Shooting/FeatureServer/0",
+      "raw_geojson_path": "C:\\Users\\T\\Desktop\\PeeDom\\PublicRestroomData\\arcgis-open-data\\runs\\arcgis-us-20260429-v2\\raw\\blm-natl-explore-recreational-shooting-points-17605167b7ec4d969156a4f5709d097d-layer-0.geojson",
+      "raw_feature_count": 93,
+      "normalized_included_records": 0,
+      "normalized_skipped_records": 93
+    }
+  ],
+  "rejected_records": [
+    {
+      "item_id": "52425f2197bd4336bc7b4e9be2bc0b0c",
+      "title": "public_bathrooms",
+      "reason": "layer_processing_failed:HTTP 404 for https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/public_bathrooms/FeatureServer/0/query?objectIds=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391%2C392%2C393%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401%2C402%2C403%2C404%2C405%2C406%2C407%2C408%2C409%2C410%2C411%2C412%2C413%2C414%2C415%2C416%2C417%2C418%2C419%2C420%2C421%2C422%2C423%2C424%2C425%2C426%2C427%2C428%2C429%2C430%2C431%2C432%2C433%2C434%2C435%2C436%2C437%2C438%2C439%2C440%2C441%2C442%2C443%2C444%2C445%2C446%2C447%2C448%2C449%2C450%2C451%2C452%2C453%2C454%2C455%2C456%2C457%2C458%2C459%2C460%2C461%2C462%2C463%2C464%2C465%2C466%2C467%2C468%2C469%2C470%2C471%2C472%2C473%2C474%2C475%2C476%2C477%2C478%2C479%2C480%2C481%2C482%2C483%2C484%2C485%2C486%2C487%2C488%2C489%2C490%2C491%2C492%2C493%2C494%2C495%2C496%2C497%2C498%2C499%2C500&outFields=*&returnGeometry=true&outSR=4326&f=geojson",
+      "score": null,
+      "url": "https://services.arcgis.com/sFnw0xNflSi8J0uh/arcgis/rest/services/public_bathrooms/FeatureServer/0"
+    },
+    {
+      "item_id": "1b37d19453af4f0f9bec3077622f871f",
+      "title": "Listing - portable toilet waste/holding tank waste transporters",
+      "reason": "no_feature_layers",
+      "score": 18,
+      "url": "https://services.arcgis.com/8Pc9XBTAsYuxx9Ny/arcgis/rest/services/Portable_Toilet_Waste/FeatureServer"
+    },
+    {
+      "item_id": "00e2fe5b93584f8bb80dbcf0f77ff04d",
+      "title": "Portable Toilet Licenses",
+      "reason": "no_feature_layers",
+      "score": 18,
+      "url": "https://services1.arcgis.com/j8dqo2DJE7mVUBU1/arcgis/rest/services/Portable_Toilet_Licenses/FeatureServer"
+    },
+    {
+      "item_id": "408a4f58ea5e43dd8b9fc81d04d45d0a",
+      "title": "Non-Portable Restrooms View Layer",
+      "reason": "layer_processing_failed:HTTP 404 for https://services1.arcgis.com/HbzrdBZjOwNHp70P/arcgis/rest/services/Non_Portable_Restrooms_View_Layer/FeatureServer/0/query?objectIds=77%2C78%2C79%2C98%2C99%2C100%2C132%2C141%2C152%2C153%2C154%2C155%2C188%2C189%2C204%2C205%2C206%2C244%2C245%2C246%2C250%2C251%2C252%2C253%2C254%2C255%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C335%2C336%2C337%2C338%2C339%2C365%2C366%2C404%2C405%2C406%2C407%2C469%2C58%2C59%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C387%2C388%2C389%2C390%2C391%2C416%2C417%2C420%2C421%2C442%2C443%2C444%2C456%2C2%2C85%2C86%2C91%2C92%2C93%2C101%2C102%2C103%2C104%2C162%2C163%2C164%2C165%2C166%2C220%2C221%2C222%2C226%2C227%2C363%2C364%2C373%2C374%2C375%2C392%2C445%2C446%2C447%2C448%2C478%2C479%2C480%2C28%2C29%2C30%2C31%2C32%2C33%2C63%2C87%2C112%2C113%2C136%2C137%2C158%2C182%2C183%2C195%2C233%2C234%2C268%2C269%2C297%2C298%2C299%2C300%2C309%2C310%2C311%2C312%2C376%2C377%2C378%2C394%2C395%2C396%2C400%2C401%2C402%2C403%2C465%2C466%2C481%2C5%2C56%2C57%2C80%2C81%2C82%2C114%2C192%2C193%2C194%2C196%2C197%2C247%2C248%2C249%2C259%2C453%2C454%2C455%2C472%2C473%2C474%2C475%2C476%2C477%2C88%2C89%2C90%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C223%2C224%2C225%2C256%2C257%2C258%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C359%2C360%2C459%2C460%2C422%2C423%2C424%2C10%2C11%2C12%2C17%2C18%2C25%2C26%2C34%2C35%2C36%2C74%2C75%2C76%2C84%2C110%2C111%2C128%2C129%2C145%2C146%2C159%2C160%2C161%2C184%2C185%2C198%2C199%2C200%2C201%2C202%2C203%2C207%2C208%2C215%2C216%2C217%2C228%2C229%2C230%2C231%2C232%2C239%2C240%2C303%2C304%2C305%2C306%2C307%2C308%2C323%2C324%2C325%2C326%2C327%2C328%2C333%2C334%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C379%2C380%2C381%2C382%2C397%2C398%2C399%2C408%2C409%2C410%2C436%2C437%2C438%2C449%2C450%2C451%2C452%2C470%2C471%2C495%2C496%2C497%2C498%2C499%2C500%2C3%2C4%2C6%2C7%2C13%2C14%2C15%2C16%2C19%2C20%2C21%2C22%2C23%2C24%2C60%2C61%2C62%2C73%2C135%2C147%2C148%2C149%2C167%2C172%2C173%2C191%2C237%2C238%2C329%2C330%2C331%2C340%2C348%2C349%2C350%2C351%2C361%2C362%2C383%2C384%2C385%2C386%2C414%2C415%2C425%2C426%2C427%2C428%2C429%2C430%2C431%2C432%2C433%2C434%2C435%2C439%2C440%2C441%2C457%2C458%2C487%2C488%2C70%2C71%2C94%2C95%2C96%2C97%2C130%2C131%2C168%2C169%2C170%2C171%2C174%2C175%2C176%2C177%2C178%2C179%2C235%2C236%2C270%2C271%2C272%2C273%2C293%2C294%2C295%2C317%2C318%2C319%2C320%2C321%2C322%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C461%2C462%2C463%2C464%2C483%2C484%2C486%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C64%2C65%2C66%2C68%2C69%2C83%2C105%2C106%2C107%2C109%2C138%2C139%2C142%2C144%2C150%2C151%2C180%2C181%2C186%2C187%2C209%2C210%2C211%2C212%2C213%2C214%2C218%2C219%2C241%2C242%2C243%2C274%2C275%2C291%2C292%2C301%2C302%2C313%2C314%2C315%2C316%2C367%2C368%2C369%2C370%2C371%2C372%2C411%2C412%2C413%2C418%2C419%2C489%2C490%2C491%2C492%2C493%2C494&outFields=*&returnGeometry=true&outSR=4326&f=geojson",
+      "score": null,
+      "url": "https://services1.arcgis.com/HbzrdBZjOwNHp70P/arcgis/rest/services/Non_Portable_Restrooms_View_Layer/FeatureServer/0"
+    },
+    {
+      "item_id": "b9de1f7f26e845ffadffd0599a1c361e",
+      "title": "King County Metro Comfort Stations",
+      "reason": "layer_processing_failed:HTTP 404 for https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/COMFORTSTATION_POINT_2900/FeatureServer/0/query?objectIds=1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%2C13%2C14%2C15%2C16%2C17%2C18%2C19%2C20%2C21%2C22%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39%2C40%2C41%2C42%2C43%2C44%2C45%2C46%2C47%2C48%2C49%2C50%2C51%2C52%2C53%2C54%2C55%2C56%2C57%2C58%2C59%2C60%2C61%2C62%2C63%2C64%2C65%2C66%2C67%2C68%2C69%2C70%2C71%2C72%2C73%2C74%2C75%2C76%2C77%2C78%2C79%2C80%2C81%2C82%2C83%2C84%2C85%2C86%2C87%2C88%2C89%2C90%2C91%2C92%2C93%2C94%2C95%2C96%2C97%2C98%2C99%2C100%2C101%2C102%2C103%2C104%2C105%2C106%2C107%2C108%2C109%2C110%2C111%2C112%2C113%2C114%2C115%2C116%2C117%2C118%2C119%2C120%2C121%2C122%2C123%2C124%2C125%2C126%2C127%2C128%2C129%2C130%2C131%2C132%2C133%2C134%2C135%2C136%2C137%2C138%2C139%2C140%2C141%2C142%2C143%2C144%2C145%2C146%2C147%2C148%2C149%2C150%2C151%2C152%2C153%2C154%2C155%2C156%2C157%2C158%2C159%2C160%2C161%2C162%2C163%2C164%2C165%2C166%2C167%2C168%2C169%2C170%2C171%2C172%2C173%2C174%2C175%2C176%2C177%2C178%2C179%2C180%2C181%2C182%2C183%2C184%2C185%2C186%2C187%2C188%2C189%2C190%2C191%2C192%2C193%2C194%2C195%2C196%2C197%2C198%2C199%2C200%2C201%2C202%2C203%2C204%2C205%2C206%2C207%2C208%2C209%2C210%2C211%2C212%2C213%2C214%2C215%2C216%2C217%2C218%2C219%2C220%2C221%2C222%2C223%2C224%2C225%2C226%2C227%2C228%2C229%2C230%2C231%2C232%2C233%2C234%2C235%2C236%2C237%2C238%2C239%2C240%2C241%2C242%2C243%2C244%2C245%2C246%2C247%2C248%2C249%2C250%2C251%2C252%2C253%2C254%2C255%2C256%2C257%2C258%2C259%2C260%2C261%2C262%2C263%2C264%2C265%2C266%2C267%2C268%2C269%2C270%2C271%2C272%2C273%2C274%2C275%2C276%2C277%2C278%2C279%2C280%2C281%2C282%2C283%2C284%2C285%2C286%2C287%2C288%2C289%2C290%2C291%2C292%2C293%2C294%2C295%2C296%2C297%2C298%2C299%2C300%2C301%2C302%2C303%2C304%2C305%2C306%2C307%2C308%2C309%2C310%2C311%2C312%2C313%2C314%2C315%2C316%2C317%2C318%2C319%2C320%2C321%2C322%2C323%2C324%2C325%2C326%2C327%2C328%2C329%2C330%2C331%2C332%2C333%2C334%2C335%2C336%2C337%2C338%2C339%2C340%2C341%2C342%2C343%2C344%2C345%2C346%2C347%2C348%2C349%2C350%2C351%2C352%2C353%2C354%2C355%2C356%2C357%2C358%2C359%2C360%2C361%2C362%2C363%2C364%2C365%2C366%2C367%2C368%2C369%2C370%2C371%2C372%2C373%2C374%2C375%2C376%2C377%2C378%2C379%2C380%2C381%2C382%2C383%2C384%2C385%2C386%2C387%2C388%2C389%2C390%2C391%2C392%2C393%2C394%2C395%2C396%2C397%2C398%2C399%2C400%2C401%2C402%2C403%2C404%2C405%2C406%2C407%2C408%2C409%2C410%2C411%2C412%2C413%2C414%2C415%2C416%2C417%2C418%2C419%2C420%2C421%2C422%2C423%2C424%2C425%2C426%2C427%2C428%2C429%2C430%2C431%2C432%2C433%2C434%2C435%2C436%2C437&outFields=*&returnGeometry=true&outSR=4326&f=geojson",
+      "score": null,
+      "url": "https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/COMFORTSTATION_POINT_2900/FeatureServer/0"
+    },
+    {
+      "item_id": "1489943658ee41829a9aa5079ff43e5e",
+      "title": "Jacksonville Beach Infrastructure_WFL1 / Jacksonville Beach Infrastructure",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services1.arcgis.com/Yd24wKbBcPMKoWvP/arcgis/rest/services/Jacksonville_Beach_Infrastructure_WFL1/FeatureServer/0"
+    },
+    {
+      "item_id": "889bd900f9f342ada51f131f13ac5f43",
+      "title": "Toilet_description / Toilet",
+      "reason": "empty_layer",
+      "score": 8,
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet_description/FeatureServer/0"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Aid Stations",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/1"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Vendors",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/2"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Parking",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/3"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Start/Finish",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/4"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Mile Markers",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/5"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Water Station",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/6"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Mile 1",
+      "reason": "layer_score_below_threshold",
+      "score": 0,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/7"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Mile 2",
+      "reason": "layer_score_below_threshold",
+      "score": 0,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/8"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Mile 3",
+      "reason": "layer_score_below_threshold",
+      "score": 0,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/9"
+    },
+    {
+      "item_id": "3bbfd1d6ee8a40e499a745afa3283852",
+      "title": "Running Toilet 5k Route Map_WFL1 / Traffic_Control",
+      "reason": "layer_score_below_threshold",
+      "score": 0,
+      "url": "https://services2.arcgis.com/ve9Fqe6V0e0tSKdl/arcgis/rest/services/Running_Toilet_5k_Route_Map_WFL1/FeatureServer/10"
+    },
+    {
+      "item_id": "b4685e872856464aa74892bb94532eec",
+      "title": "Select_toilet / Select_toilet",
+      "reason": "empty_layer",
+      "score": 8,
+      "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Select_toilet/FeatureServer/0"
+    },
+    {
+      "item_id": "f667dcf6bb684c4ea9dfabd3183fdcbe",
+      "title": "AIMSTrailDataRO - Restrooms/Comfort Stations",
+      "reason": "no_feature_layers",
+      "score": 10,
+      "url": "https://dnr.geodata.md.gov/dnrdata/rest/services/AIMS/AIMSTrailDataRO/FeatureServer"
+    },
+    {
+      "item_id": "01fdc06b84ec4e458fbfacde04c64723",
+      "title": "OpenStreetMap - Voorzieningen & Faciliteiten / Punten",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services.arcgis.com/nSZVuSZjHpEZZbRo/arcgis/rest/services/OSM_voorzieningen_en_faciliteiten/FeatureServer/0"
+    },
+    {
+      "item_id": "01fdc06b84ec4e458fbfacde04c64723",
+      "title": "OpenStreetMap - Voorzieningen & Faciliteiten / Lijnen",
+      "reason": "layer_score_below_threshold",
+      "score": 0,
+      "url": "https://services.arcgis.com/nSZVuSZjHpEZZbRo/arcgis/rest/services/OSM_voorzieningen_en_faciliteiten/FeatureServer/1"
+    },
+    {
+      "item_id": "01fdc06b84ec4e458fbfacde04c64723",
+      "title": "OpenStreetMap - Voorzieningen & Faciliteiten / Vlakken",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services.arcgis.com/nSZVuSZjHpEZZbRo/arcgis/rest/services/OSM_voorzieningen_en_faciliteiten/FeatureServer/2"
+    },
+    {
+      "item_id": "8006c80b5f33417299fbc44b7a5b7069",
+      "title": "Web CSF Facilities / Web_CSF_Facilities_points",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services.arcgis.com/DknzyjEEie5tEW0u/arcgis/rest/services/Web_CSF_Facilities/FeatureServer/0"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Archery",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/0"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Volleyball",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/1"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Stage",
+      "reason": "layer_score_below_threshold",
+      "score": -1,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/2"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Playground",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/3"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Firepits",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/4"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Potential Historial Sites",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/6"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / Hiking_Trails_attributes",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/7"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / DNR Parks Unit Boundary",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/8"
+    },
+    {
+      "item_id": "51c7309620344f12995f4aa96d4e0074",
+      "title": "Bay City State Park Digital Map_WFL1 / PLSSHistoricalLines",
+      "reason": "layer_score_below_threshold",
+      "score": 1,
+      "url": "https://services7.arcgis.com/3JfQmYWcDtfvNoIM/arcgis/rest/services/Bay_City_State_Park_Digital_Map_WFL1/FeatureServer/9"
+    },
+    {
+      "item_id": "d374bf9ad49c40b6a7e37c1d7a7e9d2f",
+      "title": "Oregon State Public Restroom Menstrual Product Availability JCEMF _form / survey",
+      "reason": "layer_score_below_threshold",
+      "score": 3,
+      "url": "https://services1.arcgis.com/CD5mKowwN6nIaqd8/arcgis/rest/services/survey123_2665965830054b0895f3df714aec5878_form/FeatureServer/0"
+    },
+    {
+      "item_id": "e9db7e99850544d2811846ff575b80ec",
+      "title": "Oregon State Public Restroom Menstrual Product Availability JCEMF _results / survey",
+      "reason": "layer_score_below_threshold",
+      "score": 3,
+      "url": "https://services1.arcgis.com/CD5mKowwN6nIaqd8/arcgis/rest/services/survey123_2665965830054b0895f3df714aec5878_results/FeatureServer/0"
+    },
+    {
+      "item_id": "d2fa161ac8d34fa8a915cdbf624a861a",
+      "title": "Bathroom Accessibility Survey 1.0_form / survey",
+      "reason": "layer_score_below_threshold",
+      "score": 3,
+      "url": "https://services1.arcgis.com/kinOpEPqSpu5VOlu/arcgis/rest/services/survey123_50b2ba5a896c48e9ac15dcdc6f584974_form/FeatureServer/0"
+    },
+    {
+      "item_id": "a7d325886e604d86b93048c284ff19b6",
+      "title": "Best Restrooms on West and East Bank Campus_results / survey",
+      "reason": "layer_score_below_threshold",
+      "score": 3,
+      "url": "https://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/survey123_e2f92eee8f5a410f884cc5c6812a0be9_results/FeatureServer/0"
+    },
+    {
+      "item_id": "c4c84d7981b645ffb5cf4ab9c1643d6c",
+      "title": "Best Restrooms on West and East Bank Campus / survey",
+      "reason": "layer_score_below_threshold",
+      "score": 3,
+      "url": "https://services.arcgis.com/8df8p0NlLFEShl0r/arcgis/rest/services/survey123_e2f92eee8f5a410f884cc5c6812a0be9/FeatureServer/0"
+    },
+    {
+      "item_id": "3d9c29bab754466490a0d4c921dffae2",
+      "title": "Trails Points of Interest AppID_0000 / Trails - Point of Interest",
+      "reason": "layer_score_below_threshold",
+      "score": -2,
+      "url": "https://services3.arcgis.com/RQBDTPtsbT0jebs7/arcgis/rest/services/Trails_PointS_of_Interest_AGOL/FeatureServer/0"
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures / Bridges",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/0"
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures / Decorative_Poles",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/2"
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures / Downtown_Buildings",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/3"
+    },
+    {
+      "item_id": "453559f0f467421bb947d9fe01007ae8",
+      "title": "structures / Buildings",
+      "reason": "layer_score_below_threshold",
+      "score": 2,
+      "url": "https://services3.arcgis.com/G71IOdqVWODMAQU5/arcgis/rest/services/structures/FeatureServer/4"
+    }
+  ]
+}

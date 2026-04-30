@@ -85,6 +85,7 @@ const US_STATES: UsState[] = [
 const SKIP_REASONS: PublicImportSkipReason[] = [
   'missing_point_geometry',
   'missing_name',
+  'not_restroom',
   'not_active_lifecycle',
   'not_public',
   'not_open',
@@ -282,6 +283,7 @@ function mergeResults(results: ImportedPublicBathroomParseResult[]): ImportedPub
   const skipCounts: Record<PublicImportSkipReason, number> = {
     missing_point_geometry: 0,
     missing_name: 0,
+    not_restroom: 0,
     not_active_lifecycle: 0,
     not_public: 0,
     not_open: 0,

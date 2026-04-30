@@ -13,9 +13,9 @@ import {
   ThumbsUp,
   TrendingUp,
 } from 'lucide-react';
-import { calculateDashboardTotals } from '@/lib/business/dashboard-metrics';
-import { getApprovedLocations, getPendingClaimsCount, type ApprovedLocation } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { calculateDashboardTotals } from '../../../lib/business/dashboard-metrics';
+import { getApprovedLocations, getPendingClaimsCount, type ApprovedLocation } from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Hub',

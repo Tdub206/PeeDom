@@ -1,5 +1,5 @@
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import type { BusinessSupabaseClient } from '@/lib/supabase/server';
+import type { BusinessWebDatabase } from '../supabase/database';
+import type { BusinessSupabaseClient } from '../supabase/server';
 
 export type CurrentUserProfile = Pick<
   BusinessWebDatabase['public']['Tables']['profiles']['Row'],

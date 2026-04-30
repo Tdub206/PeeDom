@@ -1,0 +1,802 @@
+{
+  "item": {
+    "id": "3dce35baddfc4c32ab5bd7f59ac08b39",
+    "owner": "underjas@oregonstate.edu_oregonstate",
+    "created": 1475102361000,
+    "modified": 1777487221000,
+    "guid": null,
+    "name": "overwrite_service_RR",
+    "title": "Sit_RR_GI",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Hosted Service"
+    ],
+    "description": "<div style='text-align:Left;'><div><div><p><span>The dataset displays the location of the public or residential all gender single user restrooms on the OSU Corvallis campus.</span></p><p><span>Note: The following fields contain incomplete data and are not to be used</span></p><ul><li><p><span>LocaADA</span></p></li><li><p><span>LocaADA_Not</span></p></li><li><p><span>CntADA</span></p></li><li><p><span>CntADA_Not</span></p></li></ul><p><span /></p></div></div></div>",
+    "tags": [
+      "Oregon State University",
+      "Benton County",
+      "OSU",
+      "Corvallis",
+      "Public",
+      "Residential",
+      "Restrooms",
+      "All Gender",
+      "Single User",
+      "Unisex"
+    ],
+    "snippet": "This point dataset was created to show the locations of public and residential all-gender, single-user restrooms on the OSU campus. These data were created from the AiM database and field collection.\n\nLast Updated: 8/28/2017",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        -123.30486812353999,
+        44.55088096247545
+      ],
+      [
+        -123.26823556052554,
+        44.56902428253849
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "2913",
+    "accessInformation": "Campus Geospatial Information Services\nCampus.GIS@oregonstate.edu",
+    "classification": null,
+    "licenseInfo": "<div style='text-align:Left;'><div><div><p style='margin:0 0 7 0;'><span>These data are intended for cartographic use and general spatial analysis only. Care was taken in the creation of this information but it is provided \"as is\". OSU Capital Planning and Development cannot accept any responsibility for errors, omissions, or positional accuracy in the digital data or the underlying records. Liability is limited to replacing only the defective digital media. Users of this data shall protect and hold harmless OSU Capital Planning and Development if errors in the information cause injury to a third party. There are no warranties, express or implied, including the warranty of merchantability or fitness for a particular purpose, accompanying this product. However, notification of any errors will be appreciated.</span></p><p><span /></p><p><span /></p></div></div></div>",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/dePSdaG71BplHMCO/arcgis/rest/services/Sit_RR_GI/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 8083,
+    "scoreCompleteness": 95,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777528800000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 52,
+    "name": "Sit_RR_GI",
+    "type": "Feature Layer",
+    "serviceItemId": "3dce35baddfc4c32ab5bd7f59ac08b39",
+    "cacheMaxAge": 30,
+    "displayField": "BldID",
+    "description": "The dataset displays the location of the public or residential all gender single user restrooms on the OSU Corvallis campus.Note: The following fields contain incomplete data and are not to be usedLocaADALocaADA_NotCntADACntADA_Not",
+    "copyrightText": "Campus Geospatial Information Services\nCampus.GIS@oregonstate.edu",
+    "defaultVisibility": true,
+    "editFieldsInfo": {
+      "creationDateField": "created_date",
+      "creatorField": "created_user",
+      "editDateField": "last_edited_date",
+      "editorField": "last_edited_user"
+    },
+    "editingInfo": {
+      "lastEditDate": 1777487218474,
+      "schemaLastEditDate": 1777487218474,
+      "dataLastEditDate": 1777487218474
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 7471279.936679795,
+      "ymin": 335046.37959317863,
+      "xmax": 7480616.408792645,
+      "ymax": 341342.4822834581,
+      "spatialReference": {
+        "wkid": 2913,
+        "latestWkid": 2913,
+        "vcsWkid": 105703,
+        "latestVcsWkid": 6360
+      }
+    },
+    "spatialReference": {
+      "wkid": 2913,
+      "latestWkid": 2913,
+      "vcsWkid": 105703,
+      "latestVcsWkid": 6360
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "16ad8d0d80b59b0f67c8d698052a414d",
+          "imageData": "iVBORw0KGgoAAAANSUhEUgAAAA8AAAAYCAYAAAAlBadpAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACqklEQVQ4jaWUXUhTYRjHn53tbMczdyaKhwwFu+lmQXZTOCIw6MKLrmTqKI+wPqykuqkgSJh00Y0MBDMZ1cUYOFZa4YXZRd30gRcRgeuiGxOti8H0nLntPV+b8Zx5lroPhR44nO3/Pr/3eZ+P99jgP8xWRWfO3T3TxjS7D+OfuXtziwAg7wcz/U97H7KNdQLN0DxlowwxMDuYzK2TSOxy/D4A6GVw//P+Uw6WfuQ6VN9F19G7d3QzPNvI3hmI+rvF5dT5uZF3yzthhrZTBtjRcgIkTYK17GoJ9jQcA8kpwYr1lwezAIAOPIEB+6Z6btTzxYiXjl6BtJaG0NIYpDXJgHdqGq95fFM9t15cmwkhbGPdTIBxM9DqbDOc0moRQuvkvSWtk/fCgjYPLt4lAEARttishmNvex9wNGc8viN98OxnGHztfcYaaq3ONlj4PQ8WCo5jqgjrVprCXCAhJgwHtB/iUtX+bhW2kmbBdCKSD1wL1+Vp8Pw7brMXviQ/G4UzN1zbLqKW0xKlalMUtaoRDSQtDa3bMGd3G+9QYgxCJ8dLv5WMApqsf8WhMWB9M/eAiA4BczQdg99GKh5ZluQkUNTLUuTY8JvVixF/RHEpws7+mmZqSkYBNaO+jQVii7smLCpMDwVmBgU82l5DrZAvQG6dJKSVVLDSbMs5idym6+hxtokt20DNqCBvymFzNPfCEAvEJwei/qsOl8NjtRd7j5ZX85BNZb/HAvFwrVulZzeUIXt99iPXwpVEIhIo6IXg3mtZdp9nb85+wuLlm/ICRscWkg0SiQrTrw/0McDWZVMOAaNjVF3fmqzkZ6skYuuE6QvzsiR3K2klYrYGDgKjqSQ/SomkGyzwqppPVRijDb+/Hn589klZrvvCaBa7dbTWek144vTEn1rrfwE8jCIxrXSHNAAAAABJRU5ErkJggg==",
+          "contentType": "image/png",
+          "width": 11,
+          "height": 18,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BldID",
+        "type": "esriFieldTypeString",
+        "alias": "BldID",
+        "sqlType": "sqlTypeOther",
+        "length": 13,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Notes",
+        "type": "esriFieldTypeString",
+        "alias": "Notes",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LocaADA",
+        "type": "esriFieldTypeString",
+        "alias": "LocaADA",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LocaADA_Not",
+        "type": "esriFieldTypeString",
+        "alias": "LocaADA_Not",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LocaAll",
+        "type": "esriFieldTypeString",
+        "alias": "LocaAll",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BldNamAbr",
+        "type": "esriFieldTypeString",
+        "alias": "BldNamAbr",
+        "sqlType": "sqlTypeOther",
+        "length": 13,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Limits",
+        "type": "esriFieldTypeString",
+        "alias": "Limits",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CntADA",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "CntADA",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CntADA_Not",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "CntADA_Not",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CntAll",
+        "type": "esriFieldTypeSmallInteger",
+        "alias": "CntAll",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "BldNam",
+        "type": "esriFieldTypeString",
+        "alias": "BldNam",
+        "sqlType": "sqlTypeOther",
+        "length": 150,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "created_user",
+        "type": "esriFieldTypeString",
+        "alias": "created_user",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "created_date",
+        "type": "esriFieldTypeDate",
+        "alias": "created_date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "last_edited_user",
+        "type": "esriFieldTypeString",
+        "alias": "last_edited_user",
+        "sqlType": "sqlTypeOther",
+        "length": 255,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "last_edited_date",
+        "type": "esriFieldTypeDate",
+        "alias": "last_edited_date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__SIT_RR_G__F4B70D85D7BAF6C5",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_2262.SIT_RR_GI_SIT_RR_GI_Shape_sidx",
+        "fields": "SHAPE",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "I19BldID",
+        "fields": "BldID",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "created_dateIndex",
+        "fields": "created_date",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "created_date Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "created_userIndex",
+        "fields": "created_user",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "created_user Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "last_edited_dateIndex",
+        "fields": "last_edited_date",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "last_edited_date Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "last_edited_userIndex",
+        "fields": "last_edited_user",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "last_edited_user Field index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "Sit_RR_GI",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "BldNam": null,
+            "BldID": null,
+            "Notes": null,
+            "LocaADA": null,
+            "LocaADA_Not": null,
+            "LocaAll": null,
+            "BldNamAbr": null,
+            "Limits": null,
+            "CntADA": null,
+            "CntADA_Not": null,
+            "CntAll": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "BldID": "0019",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0220",
+        "LocaAll": "0220",
+        "BldNamAbr": "Rog",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 1,
+        "CntAll": 1,
+        "BldNam": "Rogers Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "BldID": "0023",
+        "Notes": " ",
+        "LocaADA": "0173, 0273, 0373, M0173",
+        "LocaADA_Not": " ",
+        "LocaAll": "0173, 0273, 0373, M0173 ",
+        "BldNamAbr": "LInC",
+        "Limits": " ",
+        "CntADA": 4,
+        "CntADA_Not": 0,
+        "CntAll": 4,
+        "BldNam": "Learning Innovation Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "BldID": "0027",
+        "Notes": " ",
+        "LocaADA": "0109",
+        "LocaADA_Not": " ",
+        "LocaAll": "0109",
+        "BldNamAbr": "ComH",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Community Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "BldID": "0028",
+        "Notes": " ",
+        "LocaADA": "0205",
+        "LocaADA_Not": " ",
+        "LocaAll": "0205  ",
+        "BldNamAbr": "Furm",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Furman Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "BldID": "0029",
+        "Notes": " ",
+        "LocaADA": " ",
+        "LocaADA_Not": "0120A",
+        "LocaAll": "0120A",
+        "BldNamAbr": "HRWG",
+        "Limits": " ",
+        "CntADA": 0,
+        "CntADA_Not": 2,
+        "CntAll": 1,
+        "BldNam": "Hattie Redmond Women and Gender Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "BldID": "0030",
+        "Notes": " ",
+        "LocaADA": "0307B",
+        "LocaADA_Not": " ",
+        "LocaAll": "0307B  ",
+        "BldNamAbr": "Phar",
+        "Limits": " ",
+        "CntADA": 1,
+        "CntADA_Not": 0,
+        "CntAll": 1,
+        "BldNam": "Pharmacy",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "BldID": "0033",
+        "Notes": " ",
+        "LocaADA": "0205",
+        "LocaADA_Not": " ",
+        "LocaAll": "0018H",
+        "BldNamAbr": "GVC",
+        "Limits": " ",
+        "CntADA": null,
+        "CntADA_Not": null,
+        "CntAll": 1,
+        "BldNam": "Gladys Valley Gymnastics Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "BldID": "0036",
+        "Notes": " ",
+        "LocaADA": "1565, 2566, 2569,3565, 5565",
+        "LocaADA_Not": " ",
+        "LocaAll": "1565, 2566, 2569,3565, 5565",
+        "BldNamAbr": "VLib",
+        "Limits": " ",
+        "CntADA": 3,
+        "CntADA_Not": 0,
+        "CntAll": 3,
+        "BldNam": "Valley Library",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "BldID": "0038",
+        "Notes": " ",
+        "LocaADA": "0059B, 0115B, 0159B,0215B, 0259B, 0315B, 0359B",
+        "LocaADA_Not": " ",
+        "LocaAll": "0059B, 0115B, 0159B, 0215B, 0259B, 0315B, 0359B",
+        "BldNamAbr": "StAg",
+        "Limits": " ",
+        "CntADA": 7,
+        "CntADA_Not": 0,
+        "CntAll": 7,
+        "BldNam": "Strand Agriculture Hall",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 11,
+        "BldID": "0039",
+        "Notes": " ",
+        "LocaADA": "0003, 0119, 0219, 0319,0419",
+        "LocaADA_Not": " ",
+        "LocaAll": "0003, 0119, 0219, 0319,0419",
+        "BldNamAbr": "SEC",
+        "Limits": " ",
+        "CntADA": 5,
+        "CntADA_Not": 0,
+        "CntAll": 5,
+        "BldNam": "Student Experience Center",
+        "created_user": "underjas@oregonstate.edu_oregonstate",
+        "created_date": 1777487218145,
+        "last_edited_user": "underjas@oregonstate.edu_oregonstate",
+        "last_edited_date": 1777487218145
+      }
+    }
+  ]
+}

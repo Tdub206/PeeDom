@@ -1,8 +1,8 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { NextRequest, NextResponse } from 'next/server';
-import { buildBusinessAiSystemPrompt, BUSINESS_AI_MAX_TOKENS } from '@/lib/business/business-ai';
-import { businessAiRequestSchema } from '@/lib/business/schemas';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { buildBusinessAiSystemPrompt, BUSINESS_AI_MAX_TOKENS } from '../../../lib/business/business-ai';
+import { businessAiRequestSchema } from '../../../lib/business/schemas';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const supabase = await createSupabaseServerClient();

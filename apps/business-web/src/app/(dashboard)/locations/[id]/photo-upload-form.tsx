@@ -7,7 +7,7 @@ import {
   BATHROOM_PHOTO_ACCEPT,
   MAX_BATHROOM_PHOTO_BYTES,
   MAX_BATHROOM_PHOTO_MB,
-} from '@/lib/business/photo-storage';
+} from '../../../../lib/business/photo-storage';
 import { deleteBathroomPhoto, uploadBathroomPhoto } from './photo-actions';
 
 interface ExistingPhoto {

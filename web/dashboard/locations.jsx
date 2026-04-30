@@ -18,12 +18,12 @@ function LocationsPage() {
   return (
     <div className="sp-page">
       <SectionHead eyebrow="Locations" title="Your managed bathrooms"
-        sub="Every approved StallPass claim tied to your account."
+        sub="These are the approved locations connected to your account."
         action={<Btn variant="primary" size="sm"><IcoPlus size={14}/> Claim location</Btn>}/>
 
       {locations.length === 0
         ? <Card><EmptyState icon={<IcoBuilding size={22}/>} title="No locations yet"
-            sub="Once your claims are approved, they'll appear here automatically."
+            sub="Approved claims will show up here automatically."
             action={<Btn variant="primary"><IcoPlus size={14}/> Submit a claim</Btn>}/></Card>
         : <div className="sp-stack">
             {locations.map(loc => (
@@ -37,7 +37,7 @@ function LocationsPage() {
                     <div className="sp-loc-chips">
                       <Badge tone={loc.verified ? 'success' : 'warning'}>{loc.verified ? 'Verified' : 'Pending verification'}</Badge>
                       <Badge tone={loc.visibleOnMap ? 'brand' : 'neutral'}>{loc.visibleOnMap ? 'Live on map' : 'Hidden from map'}</Badge>
-                      <Badge tone={loc.premiumAccess ? 'warning' : 'neutral'}>{loc.premiumAccess ? 'Premium access' : 'Public access'}</Badge>
+                      <Badge tone={loc.premiumAccess ? 'warning' : 'neutral'}>{loc.premiumAccess ? 'Premium only' : 'Public access'}</Badge>
                       {loc.requiresCode && <Badge tone="neutral"><IcoLock size={10}/> Code required</Badge>}
                     </div>
                   </div>
@@ -89,7 +89,7 @@ function LocationDetail({ loc, onBack, onUpdate }) {
     <div className="sp-page">
       {/* Back button */}
       <button className="sp-btn sp-btn-ghost" style={{marginBottom:16, paddingLeft:0}} onClick={onBack}>
-        ← Back to locations
+        <- Back to locations
       </button>
 
       {/* Header */}
@@ -113,7 +113,7 @@ function LocationDetail({ loc, onBack, onUpdate }) {
         <div className="sp-stack">
           <Card>
             <div style={{fontFamily:'var(--font-head)', fontWeight:700, fontSize:'0.95rem', color:'var(--ink)', marginBottom:4}}>Listing details</div>
-            <div style={{fontSize:'0.8rem', color:'var(--ink-muted)', marginBottom:14}}>Click any field to edit inline</div>
+            <div style={{fontSize:'0.8rem', color:'var(--ink-muted)', marginBottom:14}}>Click any field to edit it</div>
             <EditRow label="Business name"  value={data.businessName}  onSave={field('businessName')}/>
             <EditRow label="Location name"  value={data.placeName}     onSave={field('placeName')}/>
             <EditRow label="Street address" value={data.address}       onSave={field('address')}/>
@@ -146,7 +146,7 @@ function LocationDetail({ loc, onBack, onUpdate }) {
                   </div>
                 ))}
                 <div style={{background:'var(--surface-muted)', borderRadius:8, padding:'4px 10px', fontSize:'0.78rem', fontWeight:600, color:'var(--ink-muted)'}}>
-                  +{Object.keys(data.hours).length - 3} more…
+                  +{Object.keys(data.hours).length - 3} more...
                 </div>
               </div>
             )}
@@ -161,7 +161,7 @@ function LocationDetail({ loc, onBack, onUpdate }) {
             {[
               { key:'visibleOnMap', label:'Visible on free map', sub:'Appears to all StallPass users when enabled.' },
               { key:'premiumAccess', label:'Require premium access', sub:'Only StallPass Premium members can see this location.' },
-              { key:'requiresCode', label:'Requires access code', sub:'Guests will need a code shown in-app to enter.' },
+              { key:'requiresCode', label:'Requires access code', sub:'People will need a code shown in the app to enter.' },
             ].map(item => (
               <div key={item.key} style={{display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12, paddingBottom:14, borderBottom:'1px solid var(--surface-strong)', marginBottom:14}}>
                 <div>

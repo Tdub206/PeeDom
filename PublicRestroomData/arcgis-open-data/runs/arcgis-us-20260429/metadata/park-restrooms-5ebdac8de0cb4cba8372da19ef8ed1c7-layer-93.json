@@ -1,0 +1,610 @@
+{
+  "item": {
+    "id": "5ebdac8de0cb4cba8372da19ef8ed1c7",
+    "owner": "The_City_and_County_of_Denver",
+    "created": 1570040246000,
+    "modified": 1777467106000,
+    "guid": null,
+    "name": "ODC_PARK_RESTROOMS_P_Publish",
+    "title": "Park Restrooms",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "<div style='text-align:Left;'><div><div><p><p style='margin:0 0 0 0;'><span>This dataset is a point representation of permanent restroom facilities in parks and other areas maintained by the Department of Parks and Recreation in the City and County of Denver. </span></p><p><span /></p></div></div></div></p>",
+    "tags": [
+      "ODC"
+    ],
+    "snippet": "This dataset should be used as reference to locate permanent restroom facilities in parks and other areas maintained by the Department of Parks and Recreation in the City and County of Denver. The data should be used for planning and design purposes and cartographic purposes only.",
+    "thumbnail": "thumbnail/layer_icon2.png",
+    "documentation": null,
+    "extent": [
+      [
+        -105.05158283803729,
+        39.638883227786835
+      ],
+      [
+        -104.76685524057952,
+        39.807284465819826
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "2877",
+    "accessInformation": "The City and County of Denver",
+    "classification": null,
+    "licenseInfo": "USE CONSTRAINTS — The City and County of Denver is not responsible and shall not be liable to any user or recipient for damages of any kind arising out of the use of data or information provided by the City and County of Denver, including the installation of the data or information, its use, or the results obtained from its use. ANY DATA OR INFORMATION PROVIDED BY THE City and County of Denver IS PROVIDED AS IS WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, AND THE RECIPIENT HEREBY WAIVES ANY AND ALL SUCH WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY WARANTY AS TO THE ACCURACY OR COMPLETENESS OF THE INFORMATION AND THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Data or information provided by the City and County of Denver shall be used and relied upon only at the user's sole risk, and the user agrees to indemnify and hold harmless the City and County of Denver, its officials, officers and employees from any liability arising out of the use, reproduction or dissemination of the data/information provided. NOT FOR ENGINEERING PURPOSES.",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/arcgis/rest/services/ODC_PARK_RESTROOMS_P/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 4493,
+    "contentStatus": "public_authoritative",
+    "orgId": "zdB7qR0BtYrg0Xpl",
+    "scoreCompleteness": 78,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777510800000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 93,
+    "name": "PARK_RESTROOMS_P",
+    "type": "Feature Layer",
+    "serviceItemId": "5ebdac8de0cb4cba8372da19ef8ed1c7",
+    "cacheMaxAge": 30,
+    "displayField": "LOCATION",
+    "description": "This dataset is a point representation of permanent restroom facilities in parks and other areas maintained by the Department of Parks and Recreation in the City and County of Denver. ",
+    "copyrightText": "Denver Parks and Recreation",
+    "defaultVisibility": false,
+    "editingInfo": {
+      "lastEditDate": 1777466822582,
+      "schemaLastEditDate": 1777466822582,
+      "dataLastEditDate": 1777466822582
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 3126283.573901698,
+      "ymin": 1658420.8993875682,
+      "xmax": 3205980.687767923,
+      "ymax": 1719247.1317002177,
+      "spatialReference": {
+        "wkid": 2877,
+        "latestWkid": 2877
+      }
+    },
+    "spatialReference": {
+      "wkid": 2877,
+      "latestWkid": 2877
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSMS",
+          "style": "esriSMSCircle",
+          "color": [
+            61,
+            115,
+            160,
+            255
+          ],
+          "size": 4,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "outline": {
+            "color": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "width": 0.7
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GLOBALID",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOCATION",
+        "type": "esriFieldTypeString",
+        "alias": "LOCATION",
+        "sqlType": "sqlTypeOther",
+        "length": 250,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "LOC_CODE",
+        "type": "esriFieldTypeString",
+        "alias": "LOC_CODE",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "HEATED",
+        "type": "esriFieldTypeString",
+        "alias": "HEATED",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "Yes_No_Domain",
+          "mergePolicy": "esriMPTDefaultValue",
+          "splitPolicy": "esriSPTDefaultValue",
+          "description": "Yes or No Values",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "YEAR_BUILT",
+        "type": "esriFieldTypeString",
+        "alias": "YEAR_BUILT",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "YEAR_REHAB",
+        "type": "esriFieldTypeString",
+        "alias": "YEAR_REHAB",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "NOTES",
+        "type": "esriFieldTypeString",
+        "alias": "NOTES",
+        "sqlType": "sqlTypeOther",
+        "length": 250,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GLOBALID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GLOBALID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__ODC_PARK__F4B70D851954C540",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_7647.ODC_PARK_RESTROOMS_P_PARK_RESTROOMS_P2_Shape_sidx",
+        "fields": "SHAPE",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "FDO_GLOBALID",
+        "fields": "GLOBALID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "PARK_RESTROOMS_P",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "NOTES": null,
+            "LOCATION": null,
+            "LOC_CODE": null,
+            "HEATED": null,
+            "YEAR_BUILT": null,
+            "YEAR_REHAB": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query,Extract"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "LOCATION": "Lowry Sports Complex",
+        "LOC_CODE": "L21",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": "Synthetic Fields",
+        "GLOBALID": "3c0b97e6-6837-41bb-a77f-e82ac575df0d"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "LOCATION": "Lowry Sports Complex",
+        "LOC_CODE": "L21",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": "Tennis/Basketball",
+        "GLOBALID": "e60512b0-e924-44a4-91b4-59334044fdaf"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "LOCATION": "Town Center",
+        "LOC_CODE": "558",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2008",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "55568289-728b-49b2-878e-e997bd474bfc"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "LOCATION": "Congress Park",
+        "LOC_CODE": "314",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2012",
+        "NOTES": null,
+        "GLOBALID": "becffd24-9f82-4aa2-b618-8df80c785bfd"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "LOCATION": "Greenway Park",
+        "LOC_CODE": "556",
+        "HEATED": "Yes",
+        "YEAR_BUILT": "2003",
+        "YEAR_REHAB": null,
+        "NOTES": null,
+        "GLOBALID": "75e3f300-3374-4b4f-a4d5-6ac7e455b561"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "LOCATION": "Garland Park",
+        "LOC_CODE": "728",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": "West",
+        "GLOBALID": "4f297dd3-0738-4521-b99b-54089c552eea"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "LOCATION": "Central Park",
+        "LOC_CODE": "561",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "East",
+        "GLOBALID": "ed7f8e29-3df9-40cf-98f6-17e4c4acb18c"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "LOCATION": "Centennial Park",
+        "LOC_CODE": "901",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "Permitted use only",
+        "GLOBALID": "48cd0a1c-b62a-4714-aac3-e9adeafebdb4"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "LOCATION": "Jackie Robinson Fields",
+        "LOC_CODE": "L10",
+        "HEATED": "Yes",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": null,
+        "NOTES": "In press box. Permitted use only.",
+        "GLOBALID": "21ce1490-4d06-4f47-96a4-dde6070bf72f"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "LOCATION": "Silverman Park",
+        "LOC_CODE": "534",
+        "HEATED": "No",
+        "YEAR_BUILT": null,
+        "YEAR_REHAB": "2009",
+        "NOTES": null,
+        "GLOBALID": "13cf8d95-417b-4e45-9b09-8e1fe268da9b"
+      }
+    }
+  ]
+}

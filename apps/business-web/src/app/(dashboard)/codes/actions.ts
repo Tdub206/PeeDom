@@ -1,10 +1,10 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { getApprovedLocationById } from '@/lib/business/queries';
-import { submitBusinessOwnerCodeSchema } from '@/lib/business/schemas';
-import type { BusinessWebDatabase } from '@/lib/supabase/database';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getApprovedLocationById } from '../../../lib/business/queries';
+import { submitBusinessOwnerCodeSchema } from '../../../lib/business/schemas';
+import type { BusinessWebDatabase } from '../../../lib/supabase/database';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export type SubmitBusinessOwnerCodeResult =
   | { ok: true; codeId: string; createdAt: string }

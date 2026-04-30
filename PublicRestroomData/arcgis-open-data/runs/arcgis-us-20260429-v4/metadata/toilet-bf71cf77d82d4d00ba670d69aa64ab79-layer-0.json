@@ -1,0 +1,799 @@
+{
+  "item": {
+    "id": "bf71cf77d82d4d00ba670d69aa64ab79",
+    "owner": "nico.johansson@edu.novia.fi_Novia",
+    "created": 1777002598000,
+    "modified": 1777003749000,
+    "guid": null,
+    "name": "Toilet",
+    "title": "Toilet",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Public Data Collection",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      ""
+    ],
+    "snippet": "",
+    "thumbnail": "thumbnail/blob.png",
+    "documentation": null,
+    "extent": [
+      [
+        19.129767705770668,
+        59.72080135357469
+      ],
+      [
+        31.58656202021061,
+        70.09225771300923
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102100",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "",
+    "culture": "",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services.arcgis.com/ag9JycR9d8sRNQBp/arcgis/rest/services/Toilet/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 30,
+    "scoreCompleteness": 16,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777442400000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Toilet",
+    "type": "Feature Layer",
+    "serviceItemId": "bf71cf77d82d4d00ba670d69aa64ab79",
+    "displayField": "",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editFieldsInfo": {
+      "creationDateField": "CreationDate",
+      "creatorField": "Creator",
+      "editDateField": "EditDate",
+      "editorField": "Editor"
+    },
+    "editingInfo": {
+      "lastEditDate": 1777013626147,
+      "schemaLastEditDate": 1777003553423,
+      "dataLastEditDate": 1777013626147
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": false,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": true,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsQueryAttachments": true,
+      "supportsQueryAttachmentsCountOnly": true,
+      "supportsQueryAttachmentOrderByFields": true,
+      "supportsQueryAttachmentWithTypeWildcard": true,
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAttachmentsWithReturnUrl": true,
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 2129516,
+      "ymin": 8337838,
+      "xmax": 3516200,
+      "ymax": 11098810,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "RedSphere.png",
+          "imageData": "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",
+          "contentType": "image/png",
+          "width": 15,
+          "height": 15
+        }
+      }
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": true,
+    "attachmentProperties": [
+      {
+        "name": "id",
+        "fieldName": "ATTACHMENTID",
+        "isEnabled": true
+      },
+      {
+        "name": "globalId",
+        "fieldName": "AttachmentGlobalID",
+        "isEnabled": true
+      },
+      {
+        "name": "name",
+        "fieldName": "ATT_NAME",
+        "isEnabled": true
+      },
+      {
+        "name": "size",
+        "fieldName": "DATA_SIZE",
+        "isEnabled": true
+      },
+      {
+        "name": "contentType",
+        "fieldName": "CONTENT_TYPE",
+        "isEnabled": true
+      },
+      {
+        "name": "keywords",
+        "fieldName": "Keywords",
+        "isEnabled": true
+      },
+      {
+        "name": "exifInfo",
+        "fieldName": "ExifInfo",
+        "isEnabled": true
+      }
+    ],
+    "htmlPopupType": "esriServerHTMLPopupTypeNone",
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "GlobalID",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "GlobalID",
+        "type": "esriFieldTypeGlobalID",
+        "alias": "GlobalID",
+        "sqlType": "sqlTypeOther",
+        "length": 38,
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "CreationDate",
+        "type": "esriFieldTypeDate",
+        "alias": "CreationDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Creator",
+        "type": "esriFieldTypeString",
+        "alias": "Creator",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "EditDate",
+        "type": "esriFieldTypeDate",
+        "alias": "EditDate",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "Editor",
+        "type": "esriFieldTypeString",
+        "alias": "Editor",
+        "sqlType": "sqlTypeOther",
+        "length": 128,
+        "nullable": true,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Additional_comments",
+        "type": "esriFieldTypeString",
+        "alias": "Additional comments?",
+        "sqlType": "sqlTypeOther",
+        "length": 1000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "Cleanliness_level",
+        "type": "esriFieldTypeString",
+        "alias": "Cleanliness level",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "19dbd9be875-layer-2_Cleanliness_level_7c1a9fa1-247d-4eff-9e65-1fd299471298",
+          "codedValues": [
+            {
+              "name": "High",
+              "code": "High"
+            },
+            {
+              "name": "Medium",
+              "code": "Medium"
+            },
+            {
+              "name": "Low",
+              "code": "Low"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Changing_table",
+        "type": "esriFieldTypeString",
+        "alias": "Changing table?",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "19dbd9be875-layer-2_Changing_table_dd6c4c22-58c9-486d-a3bb-78e42fe6c313",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Wheelchair_accessibility",
+        "type": "esriFieldTypeString",
+        "alias": "Wheelchair accessibility?",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "19dbd9be875-layer-2_Wheelchair_accessibility_56fbc896-6260-47db-a016-5b035c6f6db3",
+          "codedValues": [
+            {
+              "name": "Yes",
+              "code": "Yes"
+            },
+            {
+              "name": "No",
+              "code": "No"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Opening_hours",
+        "type": "esriFieldTypeString",
+        "alias": "Opening hours?",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "19dbd9be875-layer-2_Opening_hours_2c785d3c-d586-4152-8e72-b6fc25ab590c",
+          "codedValues": [
+            {
+              "name": "Open 24/7",
+              "code": "Open 24/7"
+            },
+            {
+              "name": "Not open 24/7",
+              "code": "Not open 24/7"
+            }
+          ]
+        },
+        "defaultValue": null
+      },
+      {
+        "name": "Free_or_paid",
+        "type": "esriFieldTypeString",
+        "alias": "Free or paid?",
+        "sqlType": "sqlTypeOther",
+        "length": 256,
+        "nullable": true,
+        "editable": true,
+        "domain": {
+          "type": "codedValue",
+          "name": "19dbd9be875-layer-2_Free_or_paid_402858df-9970-4489-b8f1-fb7f59b6eed4",
+          "codedValues": [
+            {
+              "name": "Free",
+              "code": "Free"
+            },
+            {
+              "name": "Paid",
+              "code": "Paid"
+            }
+          ]
+        },
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "Toilet_TOILET_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "Shape Index",
+        "indexType": "Spatial"
+      },
+      {
+        "name": "PK__Toilet_T__F4B70D858B4F98B8",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "clustered, unique, primary key",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreationDateIndex",
+        "fields": "CreationDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "CreationDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "CreatorIndex",
+        "fields": "Creator",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Creator Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditDateIndex",
+        "fields": "EditDate",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "EditDate Field index",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "EditorIndex",
+        "fields": "Editor",
+        "isAscending": false,
+        "isUnique": false,
+        "description": "Editor Field index",
+        "indexType": "Attribute"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "New Feature",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "Additional_comments": null,
+            "Cleanliness_level": null,
+            "Changing_table": null,
+            "Wheelchair_accessibility": null,
+            "Opening_hours": null,
+            "Free_or_paid": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf,imageCollection",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 1000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Create,Delete,Query,Update,Editing,Sync"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "GlobalID": "81bcb300-92c3-4202-9206-a346f4ef4845",
+        "CreationDate": 1777011210093,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011210093,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Low",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "GlobalID": "1b0a7731-21ef-4cc7-9692-2a343a34c8d1",
+        "CreationDate": 1777011384325,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011384325,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Second floor.",
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "GlobalID": "6397b80a-7d72-4d7e-893b-73151348a68d",
+        "CreationDate": 1777011470352,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011470352,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "GlobalID": "42913d13-19a5-4248-b8fe-3966a9313b88",
+        "CreationDate": 1777011513890,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011513890,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Second floor.",
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": "No",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Paid"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "GlobalID": "e11c4021-2773-42c4-b23a-e96fe9465089",
+        "CreationDate": 1777011564681,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011564681,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "Medium",
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "GlobalID": "beede3a0-912a-44fc-be39-223390407439",
+        "CreationDate": 1777011594624,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011594624,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "GlobalID": "3ac86ef4-268d-471c-84a6-b42f69db4481",
+        "CreationDate": 1777011639850,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011639850,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": null,
+        "Changing_table": null,
+        "Wheelchair_accessibility": null,
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "GlobalID": "87ba431b-03fe-4fcd-bf28-141c10a96d64",
+        "CreationDate": 1777011710931,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011710931,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "High",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "GlobalID": "eabc0996-6cf9-4f99-8d06-b4b4f6be1e83",
+        "CreationDate": 1777011765480,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011765480,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": null,
+        "Cleanliness_level": "High",
+        "Changing_table": null,
+        "Wheelchair_accessibility": "Yes",
+        "Opening_hours": "Not open 24/7",
+        "Free_or_paid": "Free"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "GlobalID": "26d93576-abe7-4dca-8142-1045b0da646a",
+        "CreationDate": 1777011815184,
+        "Creator": "nico.johansson@edu.novia.fi_Novia",
+        "EditDate": 1777011815184,
+        "Editor": "nico.johansson@edu.novia.fi_Novia",
+        "Additional_comments": "Outdoor toilet.",
+        "Cleanliness_level": "Medium",
+        "Changing_table": "No",
+        "Wheelchair_accessibility": "No",
+        "Opening_hours": "Open 24/7",
+        "Free_or_paid": "Free"
+      }
+    }
+  ]
+}

@@ -86,6 +86,22 @@ describe('push notifications library', () => {
     });
   });
 
+  it('does not prompt when silent registration is requested without existing permission', async () => {
+    const { requestPushToken } = await import('@/lib/push-notifications');
+
+    getPermissionsAsync.mockResolvedValueOnce({ status: 'undetermined' });
+
+    await expect(
+      requestPushToken({
+        requestPermission: false,
+      })
+    ).resolves.toEqual({
+      status: 'permission_denied',
+    });
+
+    expect(requestPermissionsAsync).not.toHaveBeenCalled();
+  });
+
   it('returns not_device on simulators', async () => {
     jest.resetModules();
     jest.doMock('expo-device', () => ({

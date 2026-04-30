@@ -60,8 +60,11 @@ function BathroomConfidenceCardComponent({ profile }: BathroomConfidenceCardProp
       </View>
 
       <View className="mt-4 gap-2">
-        {profile.flags.slice(0, 6).map((flag) => (
-          <Text className={['text-sm leading-5', getFlagToneClassName(flag)].join(' ')} key={flag.label}>
+        {profile.flags.slice(0, 6).map((flag, index) => (
+          <Text
+            className={['text-sm leading-5', getFlagToneClassName(flag)].join(' ')}
+            key={`${flag.label}-${flag.tone}-${index}`}
+          >
             {flag.label}
           </Text>
         ))}

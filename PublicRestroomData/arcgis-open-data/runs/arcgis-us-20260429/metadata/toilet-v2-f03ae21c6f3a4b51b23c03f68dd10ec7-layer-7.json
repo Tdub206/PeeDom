@@ -1,0 +1,682 @@
+{
+  "item": {
+    "id": "f03ae21c6f3a4b51b23c03f68dd10ec7",
+    "owner": "nirosha.hapuarachchi@darwin.nt.gov.au_darwin",
+    "created": 1712553250000,
+    "modified": 1777268342000,
+    "guid": null,
+    "name": "Toilet_v2",
+    "title": "Toilet_v2",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Service",
+      "Singlelayer",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      ""
+    ],
+    "snippet": "",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        130.82056332094055,
+        -12.466456391249437
+      ],
+      [
+        130.90198618891156,
+        -12.375628477172427
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "4326",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "",
+    "culture": "en-au",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services6.arcgis.com/tVfesLETUHNU9Vna/arcgis/rest/services/Toilet_v2/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 975,
+    "scoreCompleteness": 33,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777500000000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 7,
+    "name": "toilet",
+    "type": "Feature Layer",
+    "serviceItemId": "f03ae21c6f3a4b51b23c03f68dd10ec7",
+    "cacheMaxAge": 30,
+    "displayField": "asset_name",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1712554882587,
+      "schemaLastEditDate": 1712554881036,
+      "dataLastEditDate": 1712554882587
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": 130.8205607045888,
+      "ymin": -12.466456640329108,
+      "xmax": 130.9019888065398,
+      "ymax": -12.375628229487395,
+      "spatialReference": {
+        "wkid": 4326,
+        "latestWkid": 4326
+      }
+    },
+    "spatialReference": {
+      "wkid": 4326,
+      "latestWkid": 4326
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriSMS",
+          "style": "esriSMSCircle",
+          "color": [
+            211,
+            252,
+            181,
+            255
+          ],
+          "size": 4,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0,
+          "outline": {
+            "color": [
+              0,
+              0,
+              0,
+              255
+            ],
+            "width": 0.7
+          }
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_id",
+        "type": "esriFieldTypeString",
+        "alias": "asset_id",
+        "sqlType": "sqlTypeOther",
+        "length": 11,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_name",
+        "type": "esriFieldTypeString",
+        "alias": "asset_name",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_class",
+        "type": "esriFieldTypeString",
+        "alias": "asset_class",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_sub_class",
+        "type": "esriFieldTypeString",
+        "alias": "asset_sub_class",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_type",
+        "type": "esriFieldTypeString",
+        "alias": "asset_type",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "asset_sub_type",
+        "type": "esriFieldTypeString",
+        "alias": "asset_sub_type",
+        "sqlType": "sqlTypeOther",
+        "length": 30,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "link",
+        "type": "esriFieldTypeString",
+        "alias": "link",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "type",
+        "type": "esriFieldTypeString",
+        "alias": "type",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "open_hour",
+        "type": "esriFieldTypeString",
+        "alias": "open_hour",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "comment",
+        "type": "esriFieldTypeString",
+        "alias": "comment",
+        "sqlType": "sqlTypeOther",
+        "length": 254,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "x",
+        "type": "esriFieldTypeString",
+        "alias": "x",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "y",
+        "type": "esriFieldTypeString",
+        "alias": "y",
+        "sqlType": "sqlTypeOther",
+        "length": 200,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__TOILET_V__F4B70D8589C52424",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_23734.TOILET_V2_TOILET2_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "toilet",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {}
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "asset_id": "BLDG000012",
+        "asset_name": "Austin Lane",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10b",
+        "link": "https://www.toiletmap.gov.au/4163",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84241202300007",
+        "y": "-12.462892534499957"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "asset_id": "BLDG000098",
+        "asset_name": "Nightcliff Shopping Centre ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/37189",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 9pm",
+        "comment": null,
+        "x": "130.85055616300002",
+        "y": "-12.387199564999946"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "asset_id": "BLDG000057",
+        "asset_name": "Jingili Water Gardens",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4180",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Daylight hours",
+        "comment": "Amenities: <br>- Change room",
+        "x": "130.8677054430001",
+        "y": "-12.386694161999941"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "asset_id": "BLDG000020",
+        "asset_name": "Bicentennial Park",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10b",
+        "link": "https://www.toiletmap.gov.au/18670",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.83714758000002",
+        "y": "-12.462673137999957"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "asset_id": "BLDG000086",
+        "asset_name": "Nightcliff Foreshore ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Unknown",
+        "link": "https://www.toiletmap.gov.au/4179",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.85861601450006",
+        "y": "-12.37607712999997"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "asset_id": "BLDG000032",
+        "asset_name": "Civic Park ",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/50495",
+        "type": "Toilets: <br>- Accessible toilet<br>- Unisex toilet",
+        "open_hour": "OPEN: 24/7",
+        "comment": null,
+        "x": "130.84456693600004",
+        "y": "-12.465048185499967"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "asset_id": "BLDG000010",
+        "asset_name": "Anula Oval",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4187",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 7pm",
+        "comment": "Amenities:<br>- Baby change table",
+        "x": "130.89106491000007",
+        "y": "-12.391276647999973"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "asset_id": "BLDG000041",
+        "asset_name": "East Point Reserve",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/4173",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: 6am - 9pm",
+        "comment": null,
+        "x": "130.82056332100007",
+        "y": "-12.40695769049995"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "asset_id": "BLDG000014",
+        "asset_name": "Bagot Park, Oval and Velodrome",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10",
+        "link": null,
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Fri 4-10pm, Sat-Sun 7am–10pm ",
+        "comment": "Amenities:<br>- Baby change table<br>- Change room",
+        "x": "130.85846609200007",
+        "y": "-12.395942978999955"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "asset_id": "BLDG000052",
+        "asset_name": "Gardens Park Golf Links",
+        "asset_class": "Buildings",
+        "asset_sub_class": "Public Convenience",
+        "asset_type": "Public",
+        "asset_sub_type": "Class 10a",
+        "link": "https://www.toiletmap.gov.au/42227",
+        "type": "Toilets: <br>- Accessible toilet<br>- Female toilet<br>- Male toilet",
+        "open_hour": "OPEN: Daylight hours",
+        "comment": null,
+        "x": "130.83213750400012",
+        "y": "-12.449187399999943"
+      }
+    }
+  ]
+}

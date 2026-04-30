@@ -1,6 +1,6 @@
 import { createServerClient, type SetAllCookies } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
-import { getPublicEnv } from '@/lib/env';
+import { getPublicEnv } from '../env';
 
 // Session refresh + auth gate. Runs on every matched request via
 // the top-level `middleware.ts`. Two jobs:

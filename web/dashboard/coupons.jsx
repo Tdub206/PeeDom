@@ -16,7 +16,7 @@ function CouponsPage() {
   return (
     <div className="sp-page">
       <SectionHead eyebrow="Coupons" title="Discounts &amp; offers"
-        sub="Create and manage the coupons that appear inside StallPass for guests at your locations."
+        sub="Create and manage the offers people see in StallPass for your locations."
         action={<Btn variant="primary" onClick={() => setShowForm(true)}><IcoPlus size={14}/> New coupon</Btn>}/>
 
       {/* Active */}
@@ -31,7 +31,7 @@ function CouponsPage() {
         </div>
         {coupons.filter(c => c.active).length === 0 && (
           <Card><EmptyState icon={<IcoTicket size={22}/>} title="No active coupons"
-            sub="Create your first offer and it will appear to StallPass guests visiting your locations."
+            sub="Create your first offer and people using StallPass will see it for your locations."
             action={<Btn variant="primary" onClick={() => setShowForm(true)}><IcoPlus size={14}/> Create coupon</Btn>}/></Card>
         )}
       </div>
@@ -145,7 +145,7 @@ function CreateCouponModal({ onClose, onSave }) {
         </div>
         <div className="sp-field">
           <label className="sp-label">Description (optional)</label>
-          <input className="sp-input" value={form.description} onChange={e => set('description', e.target.value)} placeholder="Short guest-facing description"/>
+          <input className="sp-input" value={form.description} onChange={e => set('description', e.target.value)} placeholder="Short description people will see"/>
         </div>
         <div className="sp-grid-2">
           <div className="sp-field">

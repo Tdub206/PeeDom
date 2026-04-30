@@ -1,0 +1,845 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.038711162924,
+          46.4209255732141
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "Place": "Greenbelt Boat Ramp "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.380376608569,
+          46.6296161790784
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "Place": "Wawawai Landing Boat Ramp"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.07136427873,
+          46.4212922175025
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "Place": "Hells Canyon Marina "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.030550914131,
+          46.5824348641927
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "Place": "Lower Granite Dam Esplanade"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.219295764055,
+          46.5956971805301
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "Place": "Lyons Ferry State Park Day Use Area"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.218518371056,
+          46.5942959018204
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "Place": "Lyons Ferry State Park Boat Ramp"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.432948236754,
+          46.6650526142054
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "Place": "Lower Granite Dam North Shore Downstream Tailrace"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.219777565859,
+          46.585720671227
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "Place": "Lyons Ferry Marina Restaurant"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.218855090552,
+          46.5846452773184
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "Place": "Lyons Ferry Marina Campground"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.176234810706,
+          46.5469341244032
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "Place": "Tucannon HMU"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.099140062895,
+          46.5632971275031
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "Place": "Texas Rapids Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.090604994603,
+          46.5773116439086
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "Place": "Riparia Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.04338205246,
+          46.5791945667341
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "Place": "Little Goose Dam South Shore"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.003683920324,
+          46.5851789954005
+        ]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "Place": "Little Goose Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.749531432262,
+          46.6824308409524
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "Place": "Willow Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.034254352633,
+          46.5875349861917
+        ]
+      },
+      "properties": {
+        "OBJECTID": 23,
+        "Place": "Little Goose Dam North Shore Tailrace"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.661124925566,
+          46.6995833281764
+        ]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "Place": "Rice Bar HMU"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.501223392014,
+          46.6800438093261
+        ]
+      },
+      "properties": {
+        "OBJECTID": 25,
+        "Place": "Lambi Creek "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.494320543392,
+          46.6842570899148
+        ]
+      },
+      "properties": {
+        "OBJECTID": 26,
+        "Place": "Illia Dunes Downsteam Parking Lot"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.49321577441,
+          46.6858631110404
+        ]
+      },
+      "properties": {
+        "OBJECTID": 27,
+        "Place": "Illia Dunes Upstream Lot - Downstream Toilet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.493151125461,
+          46.685896167761
+        ]
+      },
+      "properties": {
+        "OBJECTID": 28,
+        "Place": "Illia Dunes Upstream Lot - Upstream Toilet"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.471358789987,
+          46.6964452919365
+        ]
+      },
+      "properties": {
+        "OBJECTID": 29,
+        "Place": "Illia Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.447821507207,
+          46.6829995529679
+        ]
+      },
+      "properties": {
+        "OBJECTID": 30,
+        "Place": "Boyer Park Campground"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.446466794188,
+          46.6801788235592
+        ]
+      },
+      "properties": {
+        "OBJECTID": 31,
+        "Place": "Boyer Park Day Use Area"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.417829467495,
+          46.6524141613979
+        ]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "Place": "Offield Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.373628284476,
+          46.6363126126062
+        ]
+      },
+      "properties": {
+        "OBJECTID": 33,
+        "Place": "Wawawai County Park Campground"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.376288150184,
+          46.6367152595636
+        ]
+      },
+      "properties": {
+        "OBJECTID": 34,
+        "Place": "Wawawai County Park Day Use Area"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.27055425884,
+          46.5590388627195
+        ]
+      },
+      "properties": {
+        "OBJECTID": 35,
+        "Place": "Blyton Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.235488482256,
+          46.4762474352072
+        ]
+      },
+      "properties": {
+        "OBJECTID": 36,
+        "Place": "Nisqually John Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.357844435939,
+          46.6037363094011
+        ]
+      },
+      "properties": {
+        "OBJECTID": 37,
+        "Place": "Granite Point - Seasonal Portable Latrine"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.194831122224,
+          46.4162113924871
+        ]
+      },
+      "properties": {
+        "OBJECTID": 38,
+        "Place": "Chief Timothy Park Boat Launch"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.192482472179,
+          46.4152567359691
+        ]
+      },
+      "properties": {
+        "OBJECTID": 39,
+        "Place": "Chief Timothy Park Day Use Area"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.189468107074,
+          46.4150905027179
+        ]
+      },
+      "properties": {
+        "OBJECTID": 40,
+        "Place": "Chief Timothy Park Campground - Downstream"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.185419882009,
+          46.4150446082929
+        ]
+      },
+      "properties": {
+        "OBJECTID": 41,
+        "Place": "Chief Timothy Park Campground - Upstream"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.114783015851,
+          46.4183464013461
+        ]
+      },
+      "properties": {
+        "OBJECTID": 42,
+        "Place": "Evans Pond "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.087745454706,
+          46.4150153019272
+        ]
+      },
+      "properties": {
+        "OBJECTID": 43,
+        "Place": "Golf Course Pond "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.059680510446,
+          46.3567001101295
+        ]
+      },
+      "properties": {
+        "OBJECTID": 44,
+        "Place": "Hells Gate State Park Campground - Loop B"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.05977785475,
+          46.3592226065275
+        ]
+      },
+      "properties": {
+        "OBJECTID": 45,
+        "Place": "Hells Gate State Park Campground - Loop A"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.059480516042,
+          46.3541181305889
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46,
+        "Place": "Hells Gate State Park Campground - Loop C"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.059662560813,
+          46.3624874727163
+        ]
+      },
+      "properties": {
+        "OBJECTID": 47,
+        "Place": "Hells Gate State Park Day Use Area"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.050716037835,
+          46.3564359133391
+        ]
+      },
+      "properties": {
+        "OBJECTID": 48,
+        "Place": "Hells Gate HMU Tammany Creek Parking Lot"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.055912826307,
+          46.3655672689681
+        ]
+      },
+      "properties": {
+        "OBJECTID": 49,
+        "Place": "Hells Gate State Park Equestrian Center"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.048926490862,
+          46.4261268108246
+        ]
+      },
+      "properties": {
+        "OBJECTID": 50,
+        "Place": "Granite Lake Park "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.033331020405,
+          46.4232504066771
+        ]
+      },
+      "properties": {
+        "OBJECTID": 53,
+        "Place": "Lewis & Clark Interpretive Center (Confluence) Parking Lot"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.03777145354,
+          46.4106059346302
+        ]
+      },
+      "properties": {
+        "OBJECTID": 56,
+        "Place": "Chestnut Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 57,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.034814743052,
+          46.4040757843978
+        ]
+      },
+      "properties": {
+        "OBJECTID": 57,
+        "Place": "Southway Boat Ramp "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 58,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.046626329112,
+          46.3897424831854
+        ]
+      },
+      "properties": {
+        "OBJECTID": 58,
+        "Place": "Swallows Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 59,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.047481987495,
+          46.3866325988269
+        ]
+      },
+      "properties": {
+        "OBJECTID": 59,
+        "Place": "Swallows Park Boat Ramp "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.054971381605,
+          46.3697514429486
+        ]
+      },
+      "properties": {
+        "OBJECTID": 60,
+        "Place": "Hells Gate State Park Marina"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 62,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0509528892,
+          46.3413482642994
+        ]
+      },
+      "properties": {
+        "OBJECTID": 62,
+        "Place": "Chief Looking Glass Park"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 63,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.030323732845,
+          46.3383167534154
+        ]
+      },
+      "properties": {
+        "OBJECTID": 63,
+        "Place": "Asotin Slough Boat Ramp "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 64,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.028672350251,
+          46.3370142308127
+        ]
+      },
+      "properties": {
+        "OBJECTID": 64,
+        "Place": "Asotin Slough HMU "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 65,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.016064239964,
+          46.4202538629018
+        ]
+      },
+      "properties": {
+        "OBJECTID": 65,
+        "Place": "Clearwater Landing "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 66,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.996378148977,
+          46.4220006146824
+        ]
+      },
+      "properties": {
+        "OBJECTID": 66,
+        "Place": "Clearwater Park Baseball Fields "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 67,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.983988085739,
+          46.4303472526997
+        ]
+      },
+      "properties": {
+        "OBJECTID": 67,
+        "Place": "Steelhead Landing Boat Ramp "
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.807100682127,
+          46.6320633024534
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68,
+        "Place": "Central Ferry West HMU"
+      }
+    }
+  ]
+}

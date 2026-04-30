@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react';
 import { AlertTriangle, CheckCircle2, Loader2, LockKeyhole, Save, ShieldCheck, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { createSupabaseBrowserClient } from '@/lib/supabase/client';
+import { createSupabaseBrowserClient } from '../../../lib/supabase/client';
 import {
   updateBusinessNotificationPreferences,
   updateBusinessProfile,

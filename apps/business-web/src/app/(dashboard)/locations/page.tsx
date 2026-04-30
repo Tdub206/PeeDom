@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Building2 } from 'lucide-react';
-import { getApprovedLocations, type ApprovedLocation } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { getApprovedLocations, type ApprovedLocation } from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Locations',

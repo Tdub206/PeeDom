@@ -1,0 +1,2827 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2117186649813,
+          35.6157742743372
+        ]
+      },
+      "properties": {
+        "OBJECTID": 1,
+        "LOC_NAME": "Round Bottom Horse Camp Pit Toilets",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Beech Gap Trail",
+        "ROAD": "Round Bottom Campground",
+        "NOTES": null,
+        "ELEVATION": 3051,
+        "X_COORD": 299685,
+        "Y_COORD": 3943585,
+        "LON": -83.21171469,
+        "LAT": 35.61576738,
+        "DMSLAT": "35° 36' 56.763\"",
+        "DMSLON": "-83° 12' 42.173\"",
+        "DDMLAT": "35° 36.9460426' ",
+        "DDMLON": "-83° 12.7028816' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d524e0ab-4fa1-4cea-926f-ac00c5fbbf6b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4957798448262,
+          35.5565851508241
+        ]
+      },
+      "properties": {
+        "OBJECTID": 2,
+        "LOC_NAME": "Clingmans Dome",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Clingmans Dome Trail",
+        "ROAD": "Clingmans Dome Road Parking #3",
+        "NOTES": null,
+        "ELEVATION": 6311,
+        "X_COORD": 273786,
+        "Y_COORD": 3937634,
+        "LON": -83.49577576,
+        "LAT": 35.55657826,
+        "DMSLAT": "35° 33' 23.682\"",
+        "DMSLON": "-83° 29' 44.793\"",
+        "DDMLAT": "35° 33.3946957' ",
+        "DDMLON": "-83° 29.7465456' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "0ac5f3bc-185f-4abf-a0ea-b599ce266e0e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4248231272471,
+          35.6109565649233
+        ]
+      },
+      "properties": {
+        "OBJECTID": 3,
+        "LOC_NAME": "Newfound Gap",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Appalachian Trail",
+        "ROAD": "Newfound Gap Parking Area",
+        "NOTES": null,
+        "ELEVATION": 5043,
+        "X_COORD": 280367,
+        "Y_COORD": 3943506,
+        "LON": -83.42481913,
+        "LAT": 35.61094968,
+        "DMSLAT": "35° 36' 39.419\"",
+        "DMSLON": "-83° 25' 29.349\"",
+        "DDMLAT": "35° 36.6569809' ",
+        "DDMLON": "-83° 25.4891477' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "f4d5fd57-868d-4988-b200-d858b0cbc318"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3865345215077,
+          35.7032912845962
+        ]
+      },
+      "properties": {
+        "OBJECTID": 4,
+        "LOC_NAME": "Greenbrier Pavilion Pit Toilets",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Grapeyard Ridge Trail",
+        "ROAD": "Greenbrier Pavilion Parking",
+        "NOTES": null,
+        "ELEVATION": 1755,
+        "X_COORD": 284085,
+        "Y_COORD": 3953664,
+        "LON": -83.38653052,
+        "LAT": 35.7032844,
+        "DMSLAT": "35° 42' 11.824\"",
+        "DMSLON": "-83° 23' 11.510\"",
+        "DDMLAT": "35° 42.1970637' ",
+        "DDMLON": "-83° 23.1918313' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "227f5df6-b1b1-41a6-b430-1f8f12eed7be"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4415774347709,
+          35.6548611723705
+        ]
+      },
+      "properties": {
+        "OBJECTID": 5,
+        "LOC_NAME": "Leconte Pit Toilet",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Rainbow Falls Trail",
+        "ROAD": "Nfg Pullout Parking At Mp 9.48",
+        "NOTES": null,
+        "ELEVATION": 6355,
+        "X_COORD": 278970,
+        "Y_COORD": 3948414,
+        "LON": -83.44157338,
+        "LAT": 35.65485427,
+        "DMSLAT": "35° 39' 17.475\"",
+        "DMSLON": "-83° 26' 29.664\"",
+        "DDMLAT": "35° 39.2912561' ",
+        "DDMLON": "-83° 26.4944030' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "b0050dff-6381-4dd5-aa29-b8f857834640"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4923880485855,
+          35.6366382655753
+        ]
+      },
+      "properties": {
+        "OBJECTID": 6,
+        "LOC_NAME": "Chimneys Picnic Area Pit Toilet",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cove Hardwood Nature Trail",
+        "ROAD": "Chimney Picnic Area #1",
+        "NOTES": null,
+        "ELEVATION": 2739,
+        "X_COORD": 274318,
+        "Y_COORD": 3946508,
+        "LON": -83.49238397,
+        "LAT": 35.63663142,
+        "DMSLAT": "35° 38' 11.873\"",
+        "DMSLON": "-83° 29' 32.582\"",
+        "DDMLAT": "35° 38.1978850' ",
+        "DDMLON": "-83° 29.5430383' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "b8f9ded0-0889-4bbd-9a4c-e1c0670e1cc6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5019435544444,
+          35.6878894768189
+        ]
+      },
+      "properties": {
+        "OBJECTID": 7,
+        "LOC_NAME": "Twin Creeks Picnic Pavilion Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Twin Creeks Trail",
+        "ROAD": "Twin Creeks Picnic Pavilion Access Road",
+        "NOTES": null,
+        "ELEVATION": 1908,
+        "X_COORD": 273598,
+        "Y_COORD": 3952216,
+        "LON": -83.5019395,
+        "LAT": 35.68788264,
+        "DMSLAT": "35° 41' 16.378\"",
+        "DMSLON": "-83° 30' 6.982\"",
+        "DDMLAT": "35° 41.2729586' ",
+        "DDMLON": "-83° 30.1163701' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d40d40aa-892a-4435-bab7-1e617041623f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8519689511314,
+          35.5911167428302
+        ]
+      },
+      "properties": {
+        "OBJECTID": 8,
+        "LOC_NAME": "Abrams Falls Pit Toilettes",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Abrams Falls Trail",
+        "ROAD": "Abrams Falls Parking Lot",
+        "NOTES": null,
+        "ELEVATION": 1709,
+        "X_COORD": 241604,
+        "Y_COORD": 3942343,
+        "LON": -83.8519648,
+        "LAT": 35.59110989,
+        "DMSLAT": "35° 35' 27.996\"",
+        "DMSLON": "-83° 51' 7.073\"",
+        "DDMLAT": "35° 35.4665932' ",
+        "DDMLON": "-83° 51.1178878' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "ef10888c-a1ac-4ac7-aeb5-a264e2c8571e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9330097760226,
+          35.6112799447606
+        ]
+      },
+      "properties": {
+        "OBJECTID": 9,
+        "LOC_NAME": "Abrams Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cooper Road Trail",
+        "ROAD": "Abrams Creek Campground Road",
+        "NOTES": null,
+        "ELEVATION": 1128,
+        "X_COORD": 234326,
+        "Y_COORD": 3944796,
+        "LON": -83.93300563,
+        "LAT": 35.61127314,
+        "DMSLAT": "35° 36' 40.583\"",
+        "DMSLON": "-83° 55' 58.820\"",
+        "DDMLAT": "35° 36.6763885' ",
+        "DDMLON": "-83° 55.9803380' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "14554cad-3adf-4388-a910-b6cbf5168ba5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9346738781458,
+          35.638515649323
+        ]
+      },
+      "properties": {
+        "OBJECTID": 10,
+        "LOC_NAME": "Look Rock Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Look Rock Developed Trail",
+        "ROAD": "Look Rock Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2560,
+        "X_COORD": 234266,
+        "Y_COORD": 3947822,
+        "LON": -83.93466972,
+        "LAT": 35.63850883,
+        "DMSLAT": "35° 38' 18.632\"",
+        "DMSLON": "-83° 56' 4.811\"",
+        "DDMLAT": "35° 38.3105296' ",
+        "DDMLON": "-83° 56.0801830' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "49b65a34-6907-415a-9395-7850a728e4b2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.437009921969,
+          35.461058032271
+        ]
+      },
+      "properties": {
+        "OBJECTID": 11,
+        "LOC_NAME": "Deep Creek Changing Station - Mens",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Picnic Area Road",
+        "NOTES": null,
+        "ELEVATION": 1811,
+        "X_COORD": 278852,
+        "Y_COORD": 3926903,
+        "LON": -83.4370059,
+        "LAT": 35.46105124,
+        "DMSLAT": "35° 27' 39.784\"",
+        "DMSLON": "-83° 26' 13.221\"",
+        "DDMLAT": "35° 27.6630742' ",
+        "DDMLON": "-83° 26.2203538' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "9dbd945c-b842-4eb9-8e4f-4166c311d51e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4372159220133,
+          35.4607859332062
+        ]
+      },
+      "properties": {
+        "OBJECTID": 12,
+        "LOC_NAME": "Deep Creek Changing Station - Womens",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Picnic Area Parking Area #3",
+        "NOTES": null,
+        "ELEVATION": 1810,
+        "X_COORD": 278832,
+        "Y_COORD": 3926874,
+        "LON": -83.43721186,
+        "LAT": 35.46077909,
+        "DMSLAT": "35° 27' 38.805\"",
+        "DMSLON": "-83° 26' 13.963\"",
+        "DDMLAT": "35° 27.6467452' ",
+        "DDMLON": "-83° 26.2327119' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d30f20ff-522e-43b7-9ccb-ec9c396e6960"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4345542212765,
+          35.4615203334639
+        ]
+      },
+      "properties": {
+        "OBJECTID": 13,
+        "LOC_NAME": "Deep Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Campground Loop 1",
+        "NOTES": null,
+        "ELEVATION": 1846,
+        "X_COORD": 279076,
+        "Y_COORD": 3926949,
+        "LON": -83.43455024,
+        "LAT": 35.46151348,
+        "DMSLAT": "35° 27' 41.449\"",
+        "DMSLON": "-83° 26' 4.381\"",
+        "DDMLAT": "35° 27.6908089' ",
+        "DDMLON": "-83° 26.0730143' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "36bbe62e-b2f0-436c-beec-d80b37443e1f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4341404211028,
+          35.4606282322943
+        ]
+      },
+      "properties": {
+        "OBJECTID": 14,
+        "LOC_NAME": "Deep Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Campground Loop 1",
+        "NOTES": null,
+        "ELEVATION": 1876,
+        "X_COORD": 279111,
+        "Y_COORD": 3926849,
+        "LON": -83.43413641,
+        "LAT": 35.46062142,
+        "DMSLAT": "35° 27' 38.237\"",
+        "DMSLON": "-83° 26' 2.891\"",
+        "DDMLAT": "35° 27.6372850' ",
+        "DDMLON": "-83° 26.0481845' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "038bfc89-4edc-433b-a9cb-333fef280fc5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.435033121357,
+          35.4605030322332
+        ]
+      },
+      "properties": {
+        "OBJECTID": 15,
+        "LOC_NAME": "Deep Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Campground Loop 1",
+        "NOTES": null,
+        "ELEVATION": 1847,
+        "X_COORD": 279030,
+        "Y_COORD": 3926837,
+        "LON": -83.43502913,
+        "LAT": 35.46049622,
+        "DMSLAT": "35° 27' 37.786\"",
+        "DMSLON": "-83° 26' 6.105\"",
+        "DDMLAT": "35° 27.6297734' ",
+        "DDMLON": "-83° 26.1017478' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a66e848b-0b42-43bc-ac46-e36ba7761387"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4347960214485,
+          35.4632435338132
+        ]
+      },
+      "properties": {
+        "OBJECTID": 16,
+        "LOC_NAME": "Deep Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Deep Creek Horse Trail",
+        "ROAD": "Deep Creek Campground Parking Area C #3",
+        "NOTES": null,
+        "ELEVATION": 1819,
+        "X_COORD": 279059,
+        "Y_COORD": 3927141,
+        "LON": -83.43479203,
+        "LAT": 35.46323669,
+        "DMSLAT": "35° 27' 47.652\"",
+        "DMSLON": "-83° 26' 5.251\"",
+        "DDMLAT": "35° 27.7942014' ",
+        "DDMLON": "-83° 26.0875219' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "cb6f1eae-0d6e-4b58-b78f-0ba48f3bd865"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1057668423849,
+          35.7600156074824
+        ]
+      },
+      "properties": {
+        "OBJECTID": 17,
+        "LOC_NAME": "Big Creek Portable",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Chestnut Branch Trail",
+        "ROAD": "Big Creek Ranger Station Parking",
+        "NOTES": null,
+        "ELEVATION": 1618,
+        "X_COORD": 309626,
+        "Y_COORD": 3959375,
+        "LON": -83.10576295,
+        "LAT": 35.76000872,
+        "DMSLAT": "35° 45' 36.031\"",
+        "DMSLON": "-83° 6' 20.747\"",
+        "DDMLAT": "35° 45.6005231' ",
+        "DDMLON": "-83° 6.3457769' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "669dff68-da19-4b83-aa4c-8e517aeca8db"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2091796725113,
+          35.7552312033976
+        ]
+      },
+      "properties": {
+        "OBJECTID": 18,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Gabes Mountain Trail",
+        "ROAD": "Cosby Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2262,
+        "X_COORD": 300263,
+        "Y_COORD": 3959050,
+        "LON": -83.20917574,
+        "LAT": 35.75522426,
+        "DMSLAT": "35° 45' 18.807\"",
+        "DMSLON": "-83° 12' 33.033\"",
+        "DDMLAT": "35° 45.3134557' ",
+        "DDMLON": "-83° 12.5505442' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a56e08d1-eaf6-4b01-bcec-d9542f16f2cd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.208657472291,
+          35.754110702186
+        ]
+      },
+      "properties": {
+        "OBJECTID": 19,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Gabes Mountain Trail",
+        "ROAD": "Cosby Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2289,
+        "X_COORD": 300307,
+        "Y_COORD": 3958925,
+        "LON": -83.20865353,
+        "LAT": 35.75410384,
+        "DMSLAT": "35° 45' 14.774\"",
+        "DMSLON": "-83° 12' 31.153\"",
+        "DDMLAT": "35° 45.2462304' ",
+        "DDMLON": "-83° 12.5192120' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "dfab0f02-78ca-42f1-905d-3719835a8da3"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2116851732346,
+          35.7550089012523
+        ]
+      },
+      "properties": {
+        "OBJECTID": 20,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Gabes Mountain Trail",
+        "ROAD": "Cosby Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2296,
+        "X_COORD": 300036,
+        "Y_COORD": 3959031,
+        "LON": -83.21168123,
+        "LAT": 35.75500197,
+        "DMSLAT": "35° 45' 18.007\"",
+        "DMSLON": "-83° 12' 42.052\"",
+        "DDMLAT": "35° 45.3001184' ",
+        "DDMLON": "-83° 12.7008736' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "e2b78f45-6cf0-4179-ae39-b27a3fdd7766"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4515419361875,
+          35.6295551667256
+        ]
+      },
+      "properties": {
+        "OBJECTID": 21,
+        "LOC_NAME": "Alum Cave Parking Area Restroom",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Alum Cave trailhead",
+        "ROAD": "Alum Cave Bluffs Trailhead Parking",
+        "NOTES": null,
+        "ELEVATION": 3851,
+        "X_COORD": 277998,
+        "Y_COORD": 3945629,
+        "LON": -83.45153787,
+        "LAT": 35.62954825,
+        "DMSLAT": "35° 37' 46.374\"",
+        "DMSLON": "-83° 27' 5.536\"",
+        "DDMLAT": "35° 37.7728952' ",
+        "DDMLON": "-83° 27.0922720' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "116958df-2738-4533-9887-0e797d513b87"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 22,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3371944990333,
+          35.5685924595811
+        ]
+      },
+      "properties": {
+        "OBJECTID": 22,
+        "LOC_NAME": "Collins Creek Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Loop Trail",
+        "ROAD": "Collins Creek Picnic Area Lower Loop Parking G",
+        "NOTES": null,
+        "ELEVATION": 2475,
+        "X_COORD": 288194,
+        "Y_COORD": 3938614,
+        "LON": -83.33719049,
+        "LAT": 35.56858561,
+        "DMSLAT": "35° 34' 6.908\"",
+        "DMSLON": "-83° 20' 13.886\"",
+        "DDMLAT": "35° 34.1151365' ",
+        "DDMLON": "-83° 20.2314296' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "831efcea-9232-40ac-87b4-1597d1b6881d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 23,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3378331992522,
+          35.5691259586668
+        ]
+      },
+      "properties": {
+        "OBJECTID": 23,
+        "LOC_NAME": "Collins Creek Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Loop Trail",
+        "ROAD": "Collins Creek Picnic Area Upper Loop Parking A",
+        "NOTES": null,
+        "ELEVATION": 2475,
+        "X_COORD": 288138,
+        "Y_COORD": 3938674,
+        "LON": -83.33782923,
+        "LAT": 35.56911911,
+        "DMSLAT": "35° 34' 8.829\"",
+        "DMSLON": "-83° 20' 16.185\"",
+        "DDMLAT": "35° 34.1471468' ",
+        "DDMLON": "-83° 20.2697539' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "63c465e2-4d43-49fd-a445-d034c0c67d2a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 24,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3379208992299,
+          35.5683121594941
+        ]
+      },
+      "properties": {
+        "OBJECTID": 24,
+        "LOC_NAME": "Collins Creek Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Loop Trail",
+        "ROAD": "Collins Creek Picnic Area Upper Loop Parking E",
+        "NOTES": null,
+        "ELEVATION": 2484,
+        "X_COORD": 288128,
+        "Y_COORD": 3938584,
+        "LON": -83.3379169,
+        "LAT": 35.56830533,
+        "DMSLAT": "35° 34' 5.899\"",
+        "DMSLON": "-83° 20' 16.501\"",
+        "DDMLAT": "35° 34.0983197' ",
+        "DDMLON": "-83° 20.2750139' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a08b847a-3bf8-4b80-a81b-b3704ad5a2fe"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 25,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9319343774694,
+          35.6405774498589
+        ]
+      },
+      "properties": {
+        "OBJECTID": 25,
+        "LOC_NAME": "Look Rock Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Look Rock Developed Trail",
+        "ROAD": "Look Rock Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2478,
+        "X_COORD": 234521,
+        "Y_COORD": 3948044,
+        "LON": -83.9319302,
+        "LAT": 35.64057064,
+        "DMSLAT": "35° 38' 26.054\"",
+        "DMSLON": "-83° 55' 54.949\"",
+        "DDMLAT": "35° 38.4342384' ",
+        "DDMLON": "-83° 55.9158122' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "df68c4a8-e06d-44c6-abc2-8b09cdd0b299"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 26,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9331609777563,
+          35.6393892495642
+        ]
+      },
+      "properties": {
+        "OBJECTID": 26,
+        "LOC_NAME": "Look Rock Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Look Rock Developed Trail",
+        "ROAD": "Look Rock Campground Road B",
+        "NOTES": null,
+        "ELEVATION": 2484,
+        "X_COORD": 234406,
+        "Y_COORD": 3947915,
+        "LON": -83.93315677,
+        "LAT": 35.63938244,
+        "DMSLAT": "35° 38' 21.777\"",
+        "DMSLON": "-83° 55' 59.364\"",
+        "DDMLAT": "35° 38.3629466' ",
+        "DDMLON": "-83° 55.9894061' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "5ddcf4be-e1fb-481f-9f2e-d3719398d4cc"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 27,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.9410131798856,
+          35.636647948683
+        ]
+      },
+      "properties": {
+        "OBJECTID": 27,
+        "LOC_NAME": "Look Rock Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Look Rock Developed Trail",
+        "ROAD": "Look Rock Picnic Area Road A",
+        "NOTES": null,
+        "ELEVATION": 2558,
+        "X_COORD": 233685,
+        "Y_COORD": 3947632,
+        "LON": -83.94100902,
+        "LAT": 35.63664114,
+        "DMSLAT": "35° 38' 11.908\"",
+        "DMSLON": "-83° 56' 27.632\"",
+        "DDMLAT": "35° 38.1984682' ",
+        "DDMLON": "-83° 56.4605413' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "9adc8b30-c06b-4ecc-b1a5-e486e4ecb427"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 28,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8421227478963,
+          35.5851522429886
+        ]
+      },
+      "properties": {
+        "OBJECTID": 28,
+        "LOC_NAME": "Cable Mill Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Wet Bottom Trail",
+        "ROAD": "Cable Mill Parking Area B",
+        "NOTES": null,
+        "ELEVATION": 1761,
+        "X_COORD": 242477,
+        "Y_COORD": 3941655,
+        "LON": -83.84211862,
+        "LAT": 35.58514545,
+        "DMSLAT": "35° 35' 6.524\"",
+        "DMSLON": "-83° 50' 31.627\"",
+        "DDMLAT": "35° 35.1087269' ",
+        "DDMLON": "-83° 50.5271170' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "05898b12-4ffe-439e-8410-82cdbe7e992b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 29,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7776029302471,
+          35.6054945497746
+        ]
+      },
+      "properties": {
+        "OBJECTID": 29,
+        "LOC_NAME": "Cades Cove Riding Stables Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Horse Trail",
+        "ROAD": "Cades Cove Stable Parking",
+        "NOTES": null,
+        "ELEVATION": 1889,
+        "X_COORD": 248389,
+        "Y_COORD": 3943745,
+        "LON": -83.77759883,
+        "LAT": 35.6054877,
+        "DMSLAT": "35° 36' 19.756\"",
+        "DMSLON": "-83° 46' 39.356\"",
+        "DDMLAT": "35° 36.3292619' ",
+        "DDMLON": "-83° 46.6559299' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "81ed43f7-0c62-44dd-b5dd-bda0b25ee99f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 30,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7739836289117,
+          35.6008665479607
+        ]
+      },
+      "properties": {
+        "OBJECTID": 30,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Nature Trail",
+        "ROAD": "Cades Cove Campground Segment A",
+        "NOTES": null,
+        "ELEVATION": 1938,
+        "X_COORD": 248702,
+        "Y_COORD": 3943222,
+        "LON": -83.7739795,
+        "LAT": 35.60085971,
+        "DMSLAT": "35° 36' 3.095\"",
+        "DMSLON": "-83° 46' 26.326\"",
+        "DDMLAT": "35° 36.0515827' ",
+        "DDMLON": "-83° 46.4387698' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a4ba1b59-bb25-43a1-b95e-0be5a05fd01c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 31,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7758824294849,
+          35.6011628479463
+        ]
+      },
+      "properties": {
+        "OBJECTID": 31,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Nature Trail",
+        "ROAD": "Cades Cove Campground Segment F",
+        "NOTES": null,
+        "ELEVATION": 1922,
+        "X_COORD": 248531,
+        "Y_COORD": 3943260,
+        "LON": -83.77587829,
+        "LAT": 35.60115602,
+        "DMSLAT": "35° 36' 4.162\"",
+        "DMSLON": "-83° 46' 33.162\"",
+        "DDMLAT": "35° 36.0693612' ",
+        "DDMLON": "-83° 46.5526977' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "e4e00da8-21e2-4dec-baad-d676039adf8b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 32,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7723253286899,
+          35.6052692499384
+        ]
+      },
+      "properties": {
+        "OBJECTID": 32,
+        "LOC_NAME": "Cades Cove Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Horse Trail",
+        "ROAD": "Cades Cove Picnic Area Road",
+        "NOTES": null,
+        "ELEVATION": 1933,
+        "X_COORD": 248866,
+        "Y_COORD": 3943707,
+        "LON": -83.77232115,
+        "LAT": 35.60526241,
+        "DMSLAT": "35° 36' 18.945\"",
+        "DMSLON": "-83° 46' 20.356\"",
+        "DDMLAT": "35° 36.3157448' ",
+        "DDMLON": "-83° 46.3392691' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "86caaf7b-bb67-4411-8d13-22dc1f9e7c75"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 33,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7749718293575,
+          35.603487448464
+        ]
+      },
+      "properties": {
+        "OBJECTID": 33,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Horse Trail",
+        "ROAD": "Cades Cove Campground Segment G",
+        "NOTES": null,
+        "ELEVATION": 1906,
+        "X_COORD": 248621,
+        "Y_COORD": 3943516,
+        "LON": -83.7749677,
+        "LAT": 35.60348058,
+        "DMSLAT": "35° 36' 12.530\"",
+        "DMSLON": "-83° 46' 29.884\"",
+        "DDMLAT": "35° 36.2088347' ",
+        "DDMLON": "-83° 46.4980619' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "fcdbbea0-36dc-41f8-9deb-f888ac40aedd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 34,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7730365287848,
+          35.6033769485183
+        ]
+      },
+      "properties": {
+        "OBJECTID": 34,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Nature Trail",
+        "ROAD": "Cades Cove Campground Segment F",
+        "NOTES": null,
+        "ELEVATION": 1929,
+        "X_COORD": 248796,
+        "Y_COORD": 3943498,
+        "LON": -83.77303244,
+        "LAT": 35.60337014,
+        "DMSLAT": "35° 36' 12.132\"",
+        "DMSLON": "-83° 46' 22.917\"",
+        "DDMLAT": "35° 36.2022082' ",
+        "DDMLON": "-83° 46.3819467' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d20d94ca-63e2-486a-9cb6-11d80ede3a13"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 35,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.772280528531,
+          35.6028309474353
+        ]
+      },
+      "properties": {
+        "OBJECTID": 35,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Nature Trail",
+        "ROAD": "Cades Cove Group Camps Road",
+        "NOTES": null,
+        "ELEVATION": 1937,
+        "X_COORD": 248863,
+        "Y_COORD": 3943436,
+        "LON": -83.77227638,
+        "LAT": 35.60282414,
+        "DMSLAT": "35° 36' 10.167\"",
+        "DMSLON": "-83° 46' 20.195\"",
+        "DDMLAT": "35° 36.1694481' ",
+        "DDMLON": "-83° 46.3365830' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "f95ca708-b938-4438-a92b-f8654028f31f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 36,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.77180012849,
+          35.6044949497991
+        ]
+      },
+      "properties": {
+        "OBJECTID": 36,
+        "LOC_NAME": "Cades Cove Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cades Cove Nature Trail",
+        "ROAD": "Cades Cove Group Camps Road",
+        "NOTES": null,
+        "ELEVATION": 1949,
+        "X_COORD": 248911,
+        "Y_COORD": 3943619,
+        "LON": -83.77179602,
+        "LAT": 35.60448811,
+        "DMSLAT": "35° 36' 16.157\"",
+        "DMSLON": "-83° 46' 18.466\"",
+        "DDMLAT": "35° 36.2692865' ",
+        "DDMLON": "-83° 46.3077613' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "5d29d3c1-234f-4996-b5fe-f5be61afd21f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 37,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.7706861282288,
+          35.6055757500672
+        ]
+      },
+      "properties": {
+        "OBJECTID": 37,
+        "LOC_NAME": "Cades Cove Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Crib Gap Trail",
+        "ROAD": "Cades Cove Picnic Area Road",
+        "NOTES": null,
+        "ELEVATION": 1953,
+        "X_COORD": 249016,
+        "Y_COORD": 3943736,
+        "LON": -83.770682,
+        "LAT": 35.60556891,
+        "DMSLAT": "35° 36' 20.048\"",
+        "DMSLON": "-83° 46' 14.455\"",
+        "DDMLAT": "35° 36.3341348' ",
+        "DDMLON": "-83° 46.2409201' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "61dceacd-bbee-49ac-b22b-175c63d9356c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 38,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.649400597224,
+          35.6806535704462
+        ]
+      },
+      "properties": {
+        "OBJECTID": 38,
+        "LOC_NAME": "Metcalf Bottoms Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Metcalf Bottoms Trail",
+        "ROAD": "Metcalf Bottoms Picnic Area Road North",
+        "NOTES": null,
+        "ELEVATION": 1676,
+        "X_COORD": 260230,
+        "Y_COORD": 3951763,
+        "LON": -83.64939649,
+        "LAT": 35.6806467,
+        "DMSLAT": "35° 40' 50.328\"",
+        "DMSLON": "-83° 38' 57.827\"",
+        "DDMLAT": "35° 40.8388022' ",
+        "DDMLON": "-83° 38.9637895' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "98af3ef8-271a-43c7-afcc-da4309c777b2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 39,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6481249967152,
+          35.6783988690305
+        ]
+      },
+      "properties": {
+        "OBJECTID": 39,
+        "LOC_NAME": "Metcalf Bottoms Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Metcalf Bottoms Trail",
+        "ROAD": "Metcalf Bottoms Parking",
+        "NOTES": null,
+        "ELEVATION": 1681,
+        "X_COORD": 260338,
+        "Y_COORD": 3951510,
+        "LON": -83.64812089,
+        "LAT": 35.67839198,
+        "DMSLAT": "35° 40' 42.211\"",
+        "DMSLON": "-83° 38' 53.235\"",
+        "DDMLAT": "35° 40.7035189' ",
+        "DDMLON": "-83° 38.8872535' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "01f5ba1e-4f83-4d2a-838d-93a336a5d13e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 40,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6510097977334,
+          35.6812896695136
+        ]
+      },
+      "properties": {
+        "OBJECTID": 40,
+        "LOC_NAME": "Metcalf Bottoms Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Metcalf Bottoms Trail",
+        "ROAD": "Metcalf Bottoms Picnic Area Road North",
+        "NOTES": null,
+        "ELEVATION": 1671,
+        "X_COORD": 260086,
+        "Y_COORD": 3951838,
+        "LON": -83.65100569,
+        "LAT": 35.68128284,
+        "DMSLAT": "35° 40' 52.618\"",
+        "DMSLON": "-83° 39' 3.620\"",
+        "DDMLAT": "35° 40.8769703' ",
+        "DDMLON": "-83° 39.0603415' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "6a1e2525-48e6-41e1-b027-04a774029ecb"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 41,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6469219962847,
+          35.6770949688086
+        ]
+      },
+      "properties": {
+        "OBJECTID": 41,
+        "LOC_NAME": "Metcalf Bottoms Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Metcalf Bottoms Trail",
+        "ROAD": "Metcalf Bottoms Picnic Area Road South",
+        "NOTES": null,
+        "ELEVATION": 1682,
+        "X_COORD": 260443,
+        "Y_COORD": 3951362,
+        "LON": -83.64691788,
+        "LAT": 35.67708809,
+        "DMSLAT": "35° 40' 37.517\"",
+        "DMSLON": "-83° 38' 48.904\"",
+        "DDMLAT": "35° 40.6252852' ",
+        "DDMLON": "-83° 38.8150728' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "c9952040-e6ff-4a32-996d-7588c8c5314a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 42,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6494913971916,
+          35.6796694692389
+        ]
+      },
+      "properties": {
+        "OBJECTID": 42,
+        "LOC_NAME": "Metcalf Bottoms Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Metcalf Bottoms Trail",
+        "ROAD": "Metcalf Bottoms Picnic Area Road North",
+        "NOTES": null,
+        "ELEVATION": 1676,
+        "X_COORD": 260218,
+        "Y_COORD": 3951654,
+        "LON": -83.64948733,
+        "LAT": 35.67966261,
+        "DMSLAT": "35° 40' 46.785\"",
+        "DMSLON": "-83° 38' 58.154\"",
+        "DDMLAT": "35° 40.7797567' ",
+        "DDMLON": "-83° 38.9692400' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "6800e47f-6788-4f7d-8537-0df7dd8ecafe"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 43,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5834195766525,
+          35.6598892677768
+        ]
+      },
+      "properties": {
+        "OBJECTID": 43,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2123,
+        "X_COORD": 266142,
+        "Y_COORD": 3949300,
+        "LON": -83.58341548,
+        "LAT": 35.65988244,
+        "DMSLAT": "35° 39' 35.577\"",
+        "DMSLON": "-83° 35' 0.296\"",
+        "DDMLAT": "35° 39.5929462' ",
+        "DDMLON": "-83° 35.0049288' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "cbafb111-9638-4e18-b8d1-1800679b281a"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 44,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5821946762397,
+          35.6589858686384
+        ]
+      },
+      "properties": {
+        "OBJECTID": 44,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2136,
+        "X_COORD": 266250,
+        "Y_COORD": 3949197,
+        "LON": -83.58219059,
+        "LAT": 35.65897898,
+        "DMSLAT": "35° 39' 32.324\"",
+        "DMSLON": "-83° 34' 55.886\"",
+        "DDMLAT": "35° 39.5387389' ",
+        "DDMLON": "-83° 34.9314352' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "2820e093-ec69-4d8d-af93-a1fdd6e578d5"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 45,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5822008761654,
+          35.6577120683743
+        ]
+      },
+      "properties": {
+        "OBJECTID": 45,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road C",
+        "NOTES": null,
+        "ELEVATION": 2138,
+        "X_COORD": 266246,
+        "Y_COORD": 3949056,
+        "LON": -83.58219682,
+        "LAT": 35.65770524,
+        "DMSLAT": "35° 39' 27.739\"",
+        "DMSLON": "-83° 34' 55.909\"",
+        "DDMLAT": "35° 39.4623145' ",
+        "DDMLON": "-83° 34.9318094' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "e6db85a4-f0bc-4a94-8202-f464973ddc30"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 46,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5817026759579,
+          35.6566820681807
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road E",
+        "NOTES": null,
+        "ELEVATION": 2147,
+        "X_COORD": 266288,
+        "Y_COORD": 3948940,
+        "LON": -83.58169858,
+        "LAT": 35.65667523,
+        "DMSLAT": "35° 39' 24.031\"",
+        "DMSLON": "-83° 34' 54.115\"",
+        "DDMLAT": "35° 39.4005139' ",
+        "DDMLON": "-83° 34.9019148' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "81270ddb-19cd-4f71-8352-9beab2c6b9d1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 47,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5814301758094,
+          35.6555331679536
+        ]
+      },
+      "properties": {
+        "OBJECTID": 47,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road F",
+        "NOTES": null,
+        "ELEVATION": 2152,
+        "X_COORD": 266309,
+        "Y_COORD": 3948812,
+        "LON": -83.58142612,
+        "LAT": 35.65552627,
+        "DMSLAT": "35° 39' 19.895\"",
+        "DMSLON": "-83° 34' 53.134\"",
+        "DDMLAT": "35° 39.3315759' ",
+        "DDMLON": "-83° 34.8855673' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "ded959cf-878a-474a-824c-0e44d1956d19"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 48,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5825258764132,
+          35.6602655668903
+        ]
+      },
+      "properties": {
+        "OBJECTID": 48,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Parking C",
+        "NOTES": null,
+        "ELEVATION": 2131,
+        "X_COORD": 266224,
+        "Y_COORD": 3949340,
+        "LON": -83.58252184,
+        "LAT": 35.66025873,
+        "DMSLAT": "35° 39' 36.931\"",
+        "DMSLON": "-83° 34' 57.079\"",
+        "DDMLAT": "35° 39.6155239' ",
+        "DDMLON": "-83° 34.9513106' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "335c74f7-5043-420b-9777-2757b22bece8"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 49,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5875345779558,
+          35.6615220689511
+        ]
+      },
+      "properties": {
+        "OBJECTID": 49,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road G",
+        "NOTES": null,
+        "ELEVATION": 2101,
+        "X_COORD": 265774,
+        "Y_COORD": 3949491,
+        "LON": -83.58753047,
+        "LAT": 35.66151516,
+        "DMSLAT": "35° 39' 41.455\"",
+        "DMSLON": "-83° 35' 15.110\"",
+        "DDMLAT": "35° 39.6909094' ",
+        "DDMLON": "-83° 35.2518280' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d6cb3e79-4488-479c-bd0d-26b3eb7bb389"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 50,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5864324776354,
+          35.6615630670035
+        ]
+      },
+      "properties": {
+        "OBJECTID": 50,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road G",
+        "NOTES": null,
+        "ELEVATION": 2105,
+        "X_COORD": 265874,
+        "Y_COORD": 3949493,
+        "LON": -83.58642842,
+        "LAT": 35.66155615,
+        "DMSLAT": "35° 39' 41.602\"",
+        "DMSLON": "-83° 35' 11.142\"",
+        "DDMLAT": "35° 39.6933692' ",
+        "DDMLON": "-83° 35.1857053' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d089c464-0524-407c-ac48-3eb1d80be94c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 51,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5835227764514,
+          35.6560179679707
+        ]
+      },
+      "properties": {
+        "OBJECTID": 51,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road J",
+        "NOTES": null,
+        "ELEVATION": 2146,
+        "X_COORD": 266121,
+        "Y_COORD": 3948871,
+        "LON": -83.58351866,
+        "LAT": 35.65601109,
+        "DMSLAT": "35° 39' 21.640\"",
+        "DMSLON": "-83° 35' 0.667\"",
+        "DDMLAT": "35° 39.3606652' ",
+        "DDMLON": "-83° 35.0111198' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "448abed2-164d-433d-bf51-2030950b4bc2"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 52,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5830257762167,
+          35.6545266666816
+        ]
+      },
+      "properties": {
+        "OBJECTID": 52,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Little River Trail",
+        "ROAD": "Elkmont Campground Road L",
+        "NOTES": null,
+        "ELEVATION": 2168,
+        "X_COORD": 266162,
+        "Y_COORD": 3948704,
+        "LON": -83.58302168,
+        "LAT": 35.65451984,
+        "DMSLAT": "35° 39' 16.271\"",
+        "DMSLON": "-83° 34' 58.878\"",
+        "DDMLAT": "35° 39.2711901' ",
+        "DDMLON": "-83° 34.9813006' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "e543a70a-4f50-42f7-864d-554b8a2e37f9"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 53,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5829194761455,
+          35.6538551665467
+        ]
+      },
+      "properties": {
+        "OBJECTID": 53,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Little River Trail",
+        "ROAD": "Elkmont Campground Road M",
+        "NOTES": null,
+        "ELEVATION": 2178,
+        "X_COORD": 266169,
+        "Y_COORD": 3948630,
+        "LON": -83.58291544,
+        "LAT": 35.65384827,
+        "DMSLAT": "35° 39' 13.854\"",
+        "DMSLON": "-83° 34' 58.496\"",
+        "DDMLAT": "35° 39.2308959' ",
+        "DDMLON": "-83° 34.9749267' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "2b852aa3-58c4-4864-9f8d-0b0eaeebc1dc"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 54,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5859846773924,
+          35.659692967634
+        ]
+      },
+      "properties": {
+        "OBJECTID": 54,
+        "LOC_NAME": "Elkmont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Elkmont Nature Trail",
+        "ROAD": "Elkmont Campground Road I",
+        "NOTES": null,
+        "ELEVATION": 2162,
+        "X_COORD": 265909,
+        "Y_COORD": 3949285,
+        "LON": -83.58598064,
+        "LAT": 35.6596861,
+        "DMSLAT": "35° 39' 34.870\"",
+        "DMSLON": "-83° 35' 9.530\"",
+        "DDMLAT": "35° 39.5811662' ",
+        "DDMLON": "-83° 35.1588383' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "8d9d4183-bcac-46d5-ba48-9a9c29222ea7"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 55,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5369985645966,
+          35.68579417499
+        ]
+      },
+      "properties": {
+        "OBJECTID": 55,
+        "LOC_NAME": "Sugarlands Visitor Center Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Fighting Creek Nature Trail",
+        "ROAD": "Sugarlands Visitor Center Parking B",
+        "NOTES": null,
+        "ELEVATION": 1471,
+        "X_COORD": 270419,
+        "Y_COORD": 3952065,
+        "LON": -83.53699447,
+        "LAT": 35.68578732,
+        "DMSLAT": "35° 41' 8.834\"",
+        "DMSLON": "-83° 32' 13.180\"",
+        "DDMLAT": "35° 41.1472390' ",
+        "DDMLON": "-83° 32.2196685' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "36f74a6d-c0ff-465e-a740-92df68130b87"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 56,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5317850633689,
+          35.6908211762386
+        ]
+      },
+      "properties": {
+        "OBJECTID": 56,
+        "LOC_NAME": "Sugarlands Riding Stables Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Two Mile Lead Concession Horse Trail",
+        "ROAD": "Sugarlands Riding Stables Parking Area",
+        "NOTES": null,
+        "ELEVATION": 1447,
+        "X_COORD": 270905,
+        "Y_COORD": 3952610,
+        "LON": -83.531781,
+        "LAT": 35.69081432,
+        "DMSLAT": "35° 41' 26.932\"",
+        "DMSLON": "-83° 31' 54.412\"",
+        "DDMLAT": "35° 41.4488590' ",
+        "DDMLON": "-83° 31.9068599' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "5b60cfa3-31a1-4ea1-8baf-3d32aed2d96c"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 57,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4521138423413,
+          35.7298904875001
+        ]
+      },
+      "properties": {
+        "OBJECTID": 57,
+        "LOC_NAME": "Smoky Mountain Riding Stables Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Little Dudley Concession Horse Trail",
+        "ROAD": "Dudley Creek Road",
+        "NOTES": null,
+        "ELEVATION": 1543,
+        "X_COORD": 278224,
+        "Y_COORD": 3956762,
+        "LON": -83.45210976,
+        "LAT": 35.72988361,
+        "DMSLAT": "35° 43' 47.581\"",
+        "DMSLON": "-83° 27' 7.595\"",
+        "DDMLAT": "35° 43.7930167' ",
+        "DDMLON": "-83° 27.1265857' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "bdf0e4ab-c8b6-4c1d-9c71-9f5466467c18"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 58,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3838273212345,
+          35.7120271865144
+        ]
+      },
+      "properties": {
+        "OBJECTID": 58,
+        "LOC_NAME": "Greenbrier Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Old Settlers Trail",
+        "ROAD": "Greenbrier Picnic Area  Parking",
+        "NOTES": null,
+        "ELEVATION": 1635,
+        "X_COORD": 284353,
+        "Y_COORD": 3954628,
+        "LON": -83.38382333,
+        "LAT": 35.71202033,
+        "DMSLAT": "35° 42' 43.273\"",
+        "DMSLON": "-83° 23' 1.764\"",
+        "DDMLAT": "35° 42.7212197' ",
+        "DDMLON": "-83° 23.0293996' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d493f61d-5619-45b4-a005-480dbf5b62dd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 59,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2098062726238,
+          35.7540279021233
+        ]
+      },
+      "properties": {
+        "OBJECTID": 59,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Gabes Mountain Trail",
+        "ROAD": "Cosby Campground Road A",
+        "NOTES": null,
+        "ELEVATION": 2316,
+        "X_COORD": 300203,
+        "Y_COORD": 3958918,
+        "LON": -83.20980232,
+        "LAT": 35.75402099,
+        "DMSLAT": "35° 45' 14.476\"",
+        "DMSLON": "-83° 12' 35.288\"",
+        "DDMLAT": "35° 45.2412591' ",
+        "DDMLON": "-83° 12.5881393' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "34f01bc5-0055-44c7-8197-985f32a249d6"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 60,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2093905724219,
+          35.7526917018627
+        ]
+      },
+      "properties": {
+        "OBJECTID": 60,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Snake Den Ridge Trail",
+        "ROAD": "Cosby Campground Road B",
+        "NOTES": null,
+        "ELEVATION": 2363,
+        "X_COORD": 300238,
+        "Y_COORD": 3958769,
+        "LON": -83.20938662,
+        "LAT": 35.75268479,
+        "DMSLAT": "35° 45' 9.665\"",
+        "DMSLON": "-83° 12' 33.792\"",
+        "DDMLAT": "35° 45.1610875' ",
+        "DDMLON": "-83° 12.5631970' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a317ceca-e250-4dc4-a643-2af7bf3fed42"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 61,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2078505719396,
+          35.7521940008204
+        ]
+      },
+      "properties": {
+        "OBJECTID": 61,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Snake Den Ridge Trail",
+        "ROAD": "Cosby Campground Road B",
+        "NOTES": null,
+        "ELEVATION": 2368,
+        "X_COORD": 300376,
+        "Y_COORD": 3958711,
+        "LON": -83.20784659,
+        "LAT": 35.7521871,
+        "DMSLAT": "35° 45' 7.874\"",
+        "DMSLON": "-83° 12' 28.248\"",
+        "DDMLAT": "35° 45.1312262' ",
+        "DDMLON": "-83° 12.4707956' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a54f8d9d-4c79-4e60-a666-1392a5f173bd"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 62,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2063436714868,
+          35.7520311018464
+        ]
+      },
+      "properties": {
+        "OBJECTID": 62,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Low Gap Trail Access",
+        "ROAD": "Cosby Campground Road B",
+        "NOTES": null,
+        "ELEVATION": 2349,
+        "X_COORD": 300511,
+        "Y_COORD": 3958690,
+        "LON": -83.20633972,
+        "LAT": 35.7520242,
+        "DMSLAT": "35° 45' 7.287\"",
+        "DMSLON": "-83° 12' 22.823\"",
+        "DDMLAT": "35° 45.1214522' ",
+        "DDMLON": "-83° 12.3803833' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "b66a7403-a562-40b8-84c0-80f2710e4015"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 63,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2085001723983,
+          35.7566865027263
+        ]
+      },
+      "properties": {
+        "OBJECTID": 63,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Low Gap Trail",
+        "ROAD": "Cosby Picnic Area Road",
+        "NOTES": null,
+        "ELEVATION": 2197,
+        "X_COORD": 300328,
+        "Y_COORD": 3959211,
+        "LON": -83.20849616,
+        "LAT": 35.75667956,
+        "DMSLAT": "35° 45' 24.046\"",
+        "DMSLON": "-83° 12' 30.586\"",
+        "DDMLAT": "35° 45.4007733' ",
+        "DDMLON": "-83° 12.5097696' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "481dd1c2-8cfd-456d-904a-fd65d4f0b426"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 64,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.2069876717247,
+          35.7528445019896
+        ]
+      },
+      "properties": {
+        "OBJECTID": 64,
+        "LOC_NAME": "Cosby Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Low Gap Trail",
+        "ROAD": "Cosby Campground Road B",
+        "NOTES": null,
+        "ELEVATION": 2331,
+        "X_COORD": 300455,
+        "Y_COORD": 3958781,
+        "LON": -83.20698366,
+        "LAT": 35.75283763,
+        "DMSLAT": "35° 45' 10.215\"",
+        "DMSLON": "-83° 12' 25.141\"",
+        "DDMLAT": "35° 45.1702580' ",
+        "DDMLON": "-83° 12.4190198' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "8b5596e6-0888-4f40-ada5-c0618b3b4637"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 65,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1092773429251,
+          35.7517361056254
+        ]
+      },
+      "properties": {
+        "OBJECTID": 65,
+        "LOC_NAME": "Big Creek Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Baxter Creek Trail",
+        "ROAD": "Big Creek Campground Loop Road",
+        "NOTES": null,
+        "ELEVATION": 1704,
+        "X_COORD": 309288,
+        "Y_COORD": 3958464,
+        "LON": -83.1092734,
+        "LAT": 35.75172916,
+        "DMSLAT": "35° 45' 6.225\"",
+        "DMSLON": "-83° 6' 33.384\"",
+        "DDMLAT": "35° 45.1037494' ",
+        "DDMLON": "-83° 6.5564039' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "ca79cb62-232b-46a3-a0d5-23ad5a5f5ed1"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 66,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1114087434631,
+          35.7502399052307
+        ]
+      },
+      "properties": {
+        "OBJECTID": 66,
+        "LOC_NAME": "Big Creek Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Big Creek Trail",
+        "ROAD": "Big Creek Campground Loop Road",
+        "NOTES": null,
+        "ELEVATION": 1727,
+        "X_COORD": 309092,
+        "Y_COORD": 3958302,
+        "LON": -83.11140485,
+        "LAT": 35.75023296,
+        "DMSLAT": "35° 45' 0.839\"",
+        "DMSLON": "-83° 6' 41.057\"",
+        "DDMLAT": "35° 45.0139773' ",
+        "DDMLON": "-83° 6.6842909' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "915a3bf6-3587-4856-ac20-463771156c62"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 67,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1078905426367,
+          35.7537458070974
+        ]
+      },
+      "properties": {
+        "OBJECTID": 67,
+        "LOC_NAME": "Big Creek Hc Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Big Creek Horse",
+        "ROAD": "Big Creek Horse Camp Parking",
+        "NOTES": null,
+        "ELEVATION": 1677,
+        "X_COORD": 309419,
+        "Y_COORD": 3958684,
+        "LON": -83.10788661,
+        "LAT": 35.75373889,
+        "DMSLAT": "35° 45' 13.460\"",
+        "DMSLON": "-83° 6' 28.392\"",
+        "DDMLAT": "35° 45.2243333' ",
+        "DDMLON": "-83° 6.4731968' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "12b20712-123c-4789-9a12-94130186bc87"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0860620289708,
+          35.6313821815274
+        ]
+      },
+      "properties": {
+        "OBJECTID": 68,
+        "LOC_NAME": "Cataloochee Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cataloochee Horse Trail",
+        "ROAD": "Cataloochee Campground Loop Road",
+        "NOTES": null,
+        "ELEVATION": 2628,
+        "X_COORD": 311104,
+        "Y_COORD": 3945068,
+        "LON": -83.08605813,
+        "LAT": 35.63137531,
+        "DMSLAT": "35° 37' 52.951\"",
+        "DMSLON": "-83° 5' 9.809\"",
+        "DDMLAT": "35° 37.8825184' ",
+        "DDMLON": "-83° 5.1634876' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "0a87a8dd-5f22-498f-9b1e-da9e172d300d"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 69,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3088662879056,
+          35.5208133507535
+        ]
+      },
+      "properties": {
+        "OBJECTID": 69,
+        "LOC_NAME": "Mingus Mill Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Floyd Cemetery Access Trail",
+        "ROAD": "Mingus Mill Access Road",
+        "NOTES": null,
+        "ELEVATION": 2072,
+        "X_COORD": 290638,
+        "Y_COORD": 3933253,
+        "LON": -83.30886227,
+        "LAT": 35.52080645,
+        "DMSLAT": "35° 31' 14.903\"",
+        "DMSLON": "-83° 18' 31.904\"",
+        "DDMLAT": "35° 31.2483871' ",
+        "DDMLON": "-83° 18.5317360' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "1f9f74e7-a3f6-4184-baea-b5217fa8cfd0"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 70,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3079629893855,
+          35.5504512559585
+        ]
+      },
+      "properties": {
+        "OBJECTID": 70,
+        "LOC_NAME": "Smokemont Riding Stables Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Stables Trail to Towstring Horse Trail",
+        "ROAD": "Smokemont Horse Stable Parking",
+        "NOTES": null,
+        "ELEVATION": 2200,
+        "X_COORD": 290797,
+        "Y_COORD": 3936539,
+        "LON": -83.30795899,
+        "LAT": 35.55044439,
+        "DMSLAT": "35° 33' 1.600\"",
+        "DMSLON": "-83° 18' 28.652\"",
+        "DDMLAT": "35° 33.0266635' ",
+        "DDMLON": "-83° 18.4775392' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "90ca420e-569f-44e5-8a06-d54a00ac7eda"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 71,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.312966291399,
+          35.5596982566856
+        ]
+      },
+      "properties": {
+        "OBJECTID": 71,
+        "LOC_NAME": "Smokemont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Nature Trail",
+        "ROAD": "Smokemont Campground Road F",
+        "NOTES": null,
+        "ELEVATION": 2221,
+        "X_COORD": 290367,
+        "Y_COORD": 3937575,
+        "LON": -83.31296231,
+        "LAT": 35.55969144,
+        "DMSLAT": "35° 33' 34.889\"",
+        "DMSLON": "-83° 18' 46.664\"",
+        "DDMLAT": "35° 33.5814861' ",
+        "DDMLON": "-83° 18.7777385' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d0d92374-628b-45c0-9020-f47677b7d8ae"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 72,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3123011913182,
+          35.5616386591154
+        ]
+      },
+      "properties": {
+        "OBJECTID": 72,
+        "LOC_NAME": "Smokemont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Stables Trail to Towstring Horse Trail",
+        "ROAD": "Smokemont Campground Road Da",
+        "NOTES": null,
+        "ELEVATION": 2237,
+        "X_COORD": 290432,
+        "Y_COORD": 3937789,
+        "LON": -83.31229717,
+        "LAT": 35.5616318,
+        "DMSLAT": "35° 33' 41.874\"",
+        "DMSLON": "-83° 18' 44.270\"",
+        "DDMLAT": "35° 33.6979079' ",
+        "DDMLON": "-83° 18.7378301' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "a92298e8-13ba-45e2-9865-c1bdb599c97b"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 73,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3114101911022,
+          35.5624091593109
+        ]
+      },
+      "properties": {
+        "OBJECTID": 73,
+        "LOC_NAME": "Smokemont Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Smokemont Stables Trail to Towstring Horse Trail",
+        "ROAD": "Smokemont Campground Road Db",
+        "NOTES": null,
+        "ELEVATION": 2244,
+        "X_COORD": 290515,
+        "Y_COORD": 3937873,
+        "LON": -83.31140621,
+        "LAT": 35.5624023,
+        "DMSLAT": "35° 33' 44.648\"",
+        "DMSLON": "-83° 18' 41.062\"",
+        "DDMLAT": "35° 33.7441379' ",
+        "DDMLON": "-83° 18.6843725' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "535fee61-cbbf-422e-9422-968e262ca908"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 74,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4876503472087,
+          35.6368435668059
+        ]
+      },
+      "properties": {
+        "OBJECTID": 74,
+        "LOC_NAME": "Chimneys Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cove Hardwood Nature Trail",
+        "ROAD": "Chimney Picnic Area #1",
+        "NOTES": null,
+        "ELEVATION": 2816,
+        "X_COORD": 274748,
+        "Y_COORD": 3946520,
+        "LON": -83.48764633,
+        "LAT": 35.63683667,
+        "DMSLAT": "35° 38' 12.612\"",
+        "DMSLON": "-83° 29' 15.527\"",
+        "DDMLAT": "35° 38.2102003' ",
+        "DDMLON": "-83° 29.2587799' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "15295078-906d-4ae0-b2cf-b93426fdfe43"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 75,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4899842478683,
+          35.6364284666271
+        ]
+      },
+      "properties": {
+        "OBJECTID": 75,
+        "LOC_NAME": "Chimneys Picnic Area Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Cove Hardwood Nature Trail",
+        "ROAD": "Chimney Picnic Area #1",
+        "NOTES": null,
+        "ELEVATION": 2782,
+        "X_COORD": 274535,
+        "Y_COORD": 3946479,
+        "LON": -83.48998023,
+        "LAT": 35.63642156,
+        "DMSLAT": "35° 38' 11.118\"",
+        "DMSLON": "-83° 29' 23.929\"",
+        "DDMLAT": "35° 38.1852937' ",
+        "DDMLON": "-83° 29.3988136' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "f6c2d4ee-770e-4408-85a6-0616dbcd5544"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 76,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.8446551486225,
+          35.5849160428387
+        ]
+      },
+      "properties": {
+        "OBJECTID": 76,
+        "LOC_NAME": "Cable Mill Pit Toilet",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Rabbit Creek Trail",
+        "ROAD": "Cable Mill Road",
+        "NOTES": null,
+        "ELEVATION": 1738,
+        "X_COORD": 242247,
+        "Y_COORD": 3941636,
+        "LON": -83.84465103,
+        "LAT": 35.58490919,
+        "DMSLAT": "35° 35' 5.673\"",
+        "DMSLON": "-83° 50' 40.744\"",
+        "DDMLAT": "35° 35.0945511' ",
+        "DDMLON": "-83° 50.6790620' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "2e4aab51-59d9-47dc-a824-a596c5a7b963"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 77,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.3061412226731,
+          35.5134495153271
+        ]
+      },
+      "properties": {
+        "OBJECTID": 77,
+        "LOC_NAME": "Oconaluftee Visitor Center Restrooms",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Oconaluftee River Trail",
+        "ROAD": "Oconaluftee Visitor Center Parking C",
+        "NOTES": null,
+        "ELEVATION": 2031,
+        "X_COORD": 290853,
+        "Y_COORD": 3932369,
+        "LON": -83.30626334,
+        "LAT": 35.51289028,
+        "DMSLAT": "35° 30' 46.405\"",
+        "DMSLON": "-83° 18' 22.548\"",
+        "DDMLAT": "35° 30.7734168' ",
+        "DDMLON": "-83° 18.3758003' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "bb9fd2a3-f7b3-45f4-8e6e-d9819474b415"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 78,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.175404851419,
+          35.5666638635448
+        ]
+      },
+      "properties": {
+        "OBJECTID": 78,
+        "LOC_NAME": "Balsam Mountain Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Balsam Mountain Nature Trail",
+        "ROAD": "Balsam Mountain Campground Road",
+        "NOTES": null,
+        "ELEVATION": 5322,
+        "X_COORD": 302854,
+        "Y_COORD": 3938064,
+        "LON": -83.17540087,
+        "LAT": 35.566657,
+        "DMSLAT": "35° 33' 59.965\"",
+        "DMSLON": "-83° 10' 31.443\"",
+        "DDMLAT": "35° 33.9994197' ",
+        "DDMLON": "-83° 10.5240520' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "5876dc91-d41f-48f8-b4fb-6c37429aaf1e"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 79,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1741799509382,
+          35.5646065641645
+        ]
+      },
+      "properties": {
+        "OBJECTID": 79,
+        "LOC_NAME": "Balsam Mountain Campground Comfort Station",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Balsam Mountain Nature Trail",
+        "ROAD": "Balsam Mountain Campground Road",
+        "NOTES": null,
+        "ELEVATION": 5358,
+        "X_COORD": 302960,
+        "Y_COORD": 3937833,
+        "LON": -83.17417602,
+        "LAT": 35.56459966,
+        "DMSLAT": "35° 33' 52.559\"",
+        "DMSLON": "-83° 10' 27.034\"",
+        "DDMLAT": "35° 33.8759796' ",
+        "DDMLON": "-83° 10.4505613' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Unknown",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "d87ad90c-164c-45b6-964a-1622aadb190f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 80,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0740552265714,
+          35.6505664859912
+        ]
+      },
+      "properties": {
+        "OBJECTID": 80,
+        "LOC_NAME": "Catalochee Group Camp Pit Toilettes",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Lawson Jenkins-Kerr Cemetery Access",
+        "ROAD": "Cataloochee Group Camp Road",
+        "NOTES": null,
+        "ELEVATION": 2539,
+        "X_COORD": 312236,
+        "Y_COORD": 3947173,
+        "LON": -83.07405134,
+        "LAT": 35.65055959,
+        "DMSLAT": "35° 39' 2.015\"",
+        "DMSLON": "-83° 4' 26.585\"",
+        "DDMLAT": "35° 39.0335752' ",
+        "DDMLON": "-83° 4.4430803' ",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Unknown",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Certified",
+        "GlobalID": "3d3349e8-3c72-47ed-8d1f-b64646977aca"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 81,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.4857712729795,
+          35.6757902359549
+        ]
+      },
+      "properties": {
+        "OBJECTID": 81,
+        "LOC_NAME": "Rainbow Falls Parking Vault Toilet",
+        "FACILITYTYPE": 4124,
+        "TRAIL": "Rainbow Falls Trail",
+        "ROAD": "Cherokee Orchard Road",
+        "NOTES": null,
+        "ELEVATION": 0,
+        "X_COORD": 275034,
+        "Y_COORD": 3950835,
+        "LON": -83.4856981,
+        "LAT": 35.6757719,
+        "DMSLAT": "35° 40' 32.78\" N",
+        "DMSLON": "083° 29' 8.51\" W",
+        "DDMLAT": "+35° 40.546'",
+        "DDMLON": "-083° 29.142'",
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Unknown",
+        "SOURCEDATE": null,
+        "XYACCURACY": "Unknown",
+        "VALID_RESULT": "Raw",
+        "GlobalID": "5568ff23-b702-4e58-9f1a-807f94189447"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 416,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0734215205801,
+          35.5859463825626
+        ]
+      },
+      "properties": {
+        "OBJECTID": 416,
+        "LOC_NAME": "The Purchase Knob Learning Center Restrooms",
+        "FACILITYTYPE": 4124,
+        "TRAIL": null,
+        "ROAD": null,
+        "NOTES": null,
+        "ELEVATION": null,
+        "X_COORD": null,
+        "Y_COORD": null,
+        "LON": null,
+        "LAT": null,
+        "DMSLAT": null,
+        "DMSLON": null,
+        "DDMLAT": null,
+        "DDMLON": null,
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Unknown",
+        "SOURCEDATE": null,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Accepted",
+        "GlobalID": "ebc8dcca-ac61-46eb-80e7-f6b3b409091f"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 418,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1117822022667,
+          35.6268613155758
+        ]
+      },
+      "properties": {
+        "OBJECTID": 418,
+        "LOC_NAME": "Cataloochee Horse Camp Pit Toilets",
+        "FACILITYTYPE": 4124,
+        "TRAIL": null,
+        "ROAD": null,
+        "NOTES": null,
+        "ELEVATION": null,
+        "X_COORD": null,
+        "Y_COORD": null,
+        "LON": null,
+        "LAT": null,
+        "DMSLAT": null,
+        "DMSLON": null,
+        "DDMLAT": null,
+        "DDMLON": null,
+        "DATAACCESS": "Unrestricted",
+        "MAPMETHOD": "Digitized",
+        "SOURCEDATE": 1765537844000,
+        "XYACCURACY": ">=1m and <5m",
+        "VALID_RESULT": "Accepted",
+        "GlobalID": "f07df99f-b4f7-463d-9ae0-a576d216b6b6"
+      }
+    }
+  ]
+}

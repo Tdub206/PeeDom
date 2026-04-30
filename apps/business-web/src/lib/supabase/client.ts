@@ -1,7 +1,7 @@
 'use client';
 
 import { createBrowserClient } from '@supabase/ssr';
-import { getPublicEnv } from '@/lib/env';
+import { getPublicEnv } from '../env';
 import type { BusinessWebDatabase } from './database';
 
 // Browser-side Supabase client for React Query / useEffect /

@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { Alert, Linking, Platform } from 'react-native';
+import { Alert } from 'react-native';
 import { useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import * as Haptics from 'expo-haptics';
@@ -18,6 +18,7 @@ import {
   hasServerStarterFeatureAccess,
 } from '@/lib/feature-access';
 import { hasActivePremium } from '@/lib/gamification';
+import { openDirectionsInMaps } from '@/lib/map-navigation';
 import { pushSafely } from '@/lib/navigation';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
 import { BathroomListItem, Coordinates } from '@/types';
@@ -92,27 +93,17 @@ function findTopCandidates(
 }
 
 async function launchNavigation(bathroom: BathroomListItem): Promise<boolean> {
-  const { latitude, longitude } = bathroom.coordinates;
-  const encodedLabel = encodeURIComponent(bathroom.place_name);
-
-  if (Platform.OS === 'ios') {
-    const appleMapsUrl = `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodedLabel}&dirflg=w`;
-
-    if (await Linking.canOpenURL(appleMapsUrl)) {
-      await Linking.openURL(appleMapsUrl);
-      return true;
+  await openDirectionsInMaps(
+    {
+      placeName: bathroom.place_name,
+      coordinates: bathroom.coordinates,
+      address: bathroom.address,
+    },
+    {
+      travelMode: 'walking',
     }
-  } else {
-    const googleNavigationUrl = `google.navigation:q=${latitude},${longitude}&mode=w`;
+  );
 
-    if (await Linking.canOpenURL(googleNavigationUrl)) {
-      await Linking.openURL(googleNavigationUrl);
-      return true;
-    }
-  }
-
-  const browserFallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longitude}&travelmode=walking`;
-  await Linking.openURL(browserFallbackUrl);
   return true;
 }
 

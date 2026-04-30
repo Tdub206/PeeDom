@@ -1,0 +1,572 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 1,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.2516198012437,
+            55.5747599781908
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Fugledegård Toilet",
+        "beskrivels": "Offentligt toilet, lukket i perioder med frost",
+        "lang_beskr": null,
+        "ansvar_org": "Naturpark Åmosen",
+        "kontak_ved": null,
+        "handicap": "Delvist handicapegnet",
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 2,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1421529445174,
+            55.6886728476917
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Multtoilet ved Loch Ness",
+        "beskrivels": "Multtoilet ved Loch Ness søen, adgang til vand i bygningen ved siden af. ",
+        "lang_beskr": "Ved det store, åbne græsareal med bålpladser m.m. er der i udkanten placeret et lille multtoilet. Der er papir, men medbring selv papir for en sikkerheds skyld. Der er adgang til vand i bygningen lige ved siden af toilettet. ",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://www.lochnessvenner.dk/",
+        "ObjectId": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 3,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1555748424746,
+            55.5461941704857
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Bjerge Sydstrand - Beach voll",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=933&target=print",
+        "ObjectId": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 4,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1765264631154,
+            55.4953112671318
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Mullerup strand -Blå Flag",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=938&target=print",
+        "ObjectId": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 5,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            10.8693744739062,
+            55.7433846495003
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Røsnæs Fyr",
+        "beskrivels": "Toiletbygning med handicaptoilet",
+        "lang_beskr": "Døgnåbent handicaptoilet ved Røsnæs Fyr. Der er pusleplads på toilettet. ",
+        "ansvar_org": "Naturstyrelsen Midtsjælland",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 6,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.082738098163,
+            55.6804715519247
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "P-plads Torvet, Kalundborg",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=1120&target=print",
+        "ObjectId": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 7,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.0891601502498,
+            55.6800927705285
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "P-plads Vænget, Kalundborg",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=1121&target=print",
+        "ObjectId": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 8,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            10.9444753431522,
+            55.7512084217693
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Toiletter ved Røsnæs Havn",
+        "beskrivels": "Tre toiletter hvoraf det ene er et handicaptoilet ved fælleshuset ved Røsnæs Havn. ",
+        "lang_beskr": "I fælleshuset på Røsnæs Havn er der særskilt indgang til toiletfaciliteterne. Der er to almindelige toiletter og et stort handicaptoilet i bygningen. Døren ind til toiletterne er 80 cm. bred. Der er vand og papir på alle toiletter. Der er pusleplads på handicaptoilettet. ",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://www.havneguide.dk/havn/roesnaes-havn",
+        "ObjectId": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 9,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1517295428035,
+            55.5866352662829
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Bjerge Nordstrand",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=947&target=print",
+        "ObjectId": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 10,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.2179082142908,
+            55.542116584067
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Handicapvenligt multtoilet ved Gørlev Sø",
+        "beskrivels": "Handicaptoilet ved parkeringspladsen ved Gørlev Sø. ",
+        "lang_beskr": "Multtoilettet ved parkeringspladsen og hundeskoven ved Gørlev Sø er handicapvenligt. Da det er et multtoilet, er der ikke adgang til vand. Det er papir på toilettet, men medbring selv papir og håndsprit for en sikkerhedsskyld. Døren har en bredde på 80 cm. Efterlad multtoilettet opryddet og i hygiejnisk stand til glæde for den næste. Tag dit affald med dig. Multtoilettet er dit og mit – så pas godt på det.",
+        "ansvar_org": "Kalundborg Kommune",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Nej",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "https://friluftsguiden.dk/?print_page_id=31154&target=print",
+        "ObjectId": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 11,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.0654400227911,
+            55.6616204042691
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Lerchenborg teltplads",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=976&target=print",
+        "ObjectId": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 12,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.118395646218,
+            55.5166346273589
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Reersø havn",
+        "beskrivels": "Selve havnen holder i sommersæsonen ofte multer, men respektér de øvrige brugere af havnen. Strækket ud mod Skansen - som spidsen hedder - er godt til hornfisk i sæsonen, men også ørreder i forårsmåne.../lÃ¦s mere pÃ¥ friluftsguiden.dk.",
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=937&target=print",
+        "ObjectId": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 13,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            10.8769663320937,
+            55.7420858010024
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Handicaptoilet ved Fyrskoven",
+        "beskrivels": "Handicaptoilet ved parkeringspladsen i Fyrskoven                                                                                                                                                                                   ",
+        "lang_beskr": "Toilettet ligger i forbindelse med den store P-plads. Toilettet er lukket mellem jul og nytår, og i perioder med hård frost. Der er vand på toilettet. ",
+        "ansvar_org": "Naturstyrelsen Midtsjælland",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": "                                                                                                                                                                                                                                                               ",
+        "ObjectId": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 14,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1060372742646,
+            55.5337808585474
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig Strand ved Reersø Nordstrand -Blå Flag",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=935&target=print",
+        "ObjectId": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 15,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1409445055413,
+            55.5998564523659
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentlig strand ved Svallerup Strand",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=927&target=print",
+        "ObjectId": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 16,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            10.8693367926206,
+            55.7434017259637
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Røsnæs Fyr",
+        "beskrivels": null,
+        "lang_beskr": "Toilettet er åbent fra påske til og med efterårsferien.",
+        "ansvar_org": "Naturstyrelsen Midtsjælland",
+        "kontak_ved": null,
+        "handicap": "Handicapegnet",
+        "vandhane": null,
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 17,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1618660387388,
+            55.5581860418849
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Offentligt Toilet ved Sukkerkanalen",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": "Naturpark Åmosen",
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": "Ja",
+        "betaling": "Nej",
+        "book": "Nej",
+        "link": null,
+        "ObjectId": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 18,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.0698972866754,
+            55.6617250419706
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Stranden v. Asnæsværket",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=977&target=print",
+        "ObjectId": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 19,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.2909714624999,
+            55.745060550893
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Vesterlyng Strand Nord",
+        "beskrivels": "De viste faciliteter findes i tilknytning til hver af de 5 P-pladser på Vesterlyngs nordlige del. Badestranden har blå flag status, dog undtaget år med dårlige måleresultater for coli. ",
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=3025&target=print",
+        "ObjectId": 19
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 20,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.1953488042155,
+            55.5225773972859
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Vinde-Helsinge Fri- og Efterskole",
+        "beskrivels": "Pladsen er en græsplæne bag skolen med shelter til ca. 10 personer og palds til 4-6 telte. 3 km til indkøb. Ring i forvejen på tlf. 58 85 91 00. Vil man bruge pladsen i skoleferien kan man ringe til H.../lÃ¦s mere pÃ¥ friluftsguiden.dk.",
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=6537&target=print",
+        "ObjectId": 20
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 21,
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            11.0647368792108,
+            55.6799668413364
+          ]
+        ]
+      },
+      "properties": {
+        "facil_ty": "Toilet",
+        "navn": "Gisseløre Strand",
+        "beskrivels": null,
+        "lang_beskr": null,
+        "ansvar_org": null,
+        "kontak_ved": null,
+        "handicap": null,
+        "vandhane": null,
+        "betaling": null,
+        "book": null,
+        "link": "https://friluftsguiden.dk/?print_page_id=1117&target=print",
+        "ObjectId": 21
+      }
+    }
+  ]
+}

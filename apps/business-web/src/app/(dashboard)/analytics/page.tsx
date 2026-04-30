@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { ArrowRight, BarChart3, Eye, Navigation, Star, Users } from 'lucide-react';
-import { calculateDashboardTotals } from '@/lib/business/dashboard-metrics';
-import { getApprovedLocations } from '@/lib/business/queries';
-import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { calculateDashboardTotals } from '../../../lib/business/dashboard-metrics';
+import { getApprovedLocations } from '../../../lib/business/queries';
+import { createSupabaseServerClient } from '../../../lib/supabase/server';
 
 export const metadata: Metadata = {
   title: 'Analytics',

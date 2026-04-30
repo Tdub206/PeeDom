@@ -290,7 +290,7 @@ function NearbyBathroomsPanelComponent({
   onViewPremiumOptions,
 }: NearbyBathroomsPanelProps) {
   const { profile } = useAuth();
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
   const {
     data,
     error,

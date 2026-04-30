@@ -1,0 +1,675 @@
+{
+  "item": {
+    "id": "76bfc28857c44df39471cc5453bff739",
+    "owner": "qaadegbi_NCSU",
+    "created": 1777345774000,
+    "modified": 1777345785000,
+    "guid": null,
+    "name": "CADI_Baseline_WebMap_WFL1",
+    "title": "CADI_Baseline_WebMap_WFL1",
+    "type": "Feature Service",
+    "typeKeywords": [
+      "ArcGIS Server",
+      "Data",
+      "Feature Access",
+      "Feature Service",
+      "Metadata",
+      "Multilayer",
+      "Service",
+      "Hosted Service"
+    ],
+    "description": "",
+    "tags": [
+      "CADI",
+      "Public Restrooms",
+      "Accessibility",
+      "Spatial Analysis",
+      "Equity Mapping",
+      "Urban Planning",
+      "GIS",
+      "ArcGIS",
+      "Wake County",
+      "Durham County",
+      "North Carolina",
+      "Infrastructure",
+      "Public Health",
+      "Vulnerability",
+      "Geospatial Analysis"
+    ],
+    "snippet": "Clean Access Desert Initiative (CADI) baseline map for Wake and Durham Counties, North Carolina. \n\nThis web map identifies spatial disparities in access to public restrooms by integrating restroom availability (density and count) with community vulnerability indicators, including poverty levels, vehicle access, and age-related vulnerability. \n\nEach census tract is classified into Low, Moderate, or High priority zones based on a composite CADI score (0–1), where higher values indicate greater need for improved restroom access. \n\nThis map supports planning, equity analysis, and decision-making by highlighting areas with critical infrastructure gaps and enabling further scenario-based analysis through associated geoprocessing tools.",
+    "thumbnail": "thumbnail/thumbnail.png",
+    "documentation": null,
+    "extent": [
+      [
+        -79.01638400202113,
+        35.51753800616
+      ],
+      [
+        -78.24991314768721,
+        36.23933711983109
+      ]
+    ],
+    "categories": [],
+    "spatialReference": "102100",
+    "accessInformation": "",
+    "classification": null,
+    "licenseInfo": "",
+    "culture": "en-us",
+    "properties": null,
+    "advancedSettings": null,
+    "url": "https://services1.arcgis.com/aT1T0pU1ZdpuDk1t/arcgis/rest/services/CADI_Baseline_WebMap_WFL1/FeatureServer",
+    "proxyFilter": null,
+    "access": "public",
+    "size": -1,
+    "subInfo": 0,
+    "appCategories": [],
+    "industries": [],
+    "languages": [],
+    "largeThumbnail": null,
+    "banner": null,
+    "screenshots": [],
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "avgRating": 0,
+    "numViews": 38,
+    "scoreCompleteness": 66,
+    "groupDesignations": null,
+    "apiToken1ExpirationDate": -1,
+    "apiToken2ExpirationDate": -1,
+    "lastViewed": 1777525200000
+  },
+  "layerMetadata": {
+    "currentVersion": 12,
+    "id": 0,
+    "name": "Existing Public Restrooms",
+    "type": "Feature Layer",
+    "serviceItemId": "76bfc28857c44df39471cc5453bff739",
+    "cacheMaxAge": 30,
+    "displayField": "name",
+    "description": "",
+    "copyrightText": "",
+    "defaultVisibility": true,
+    "editingInfo": {
+      "lastEditDate": 1777345780688,
+      "schemaLastEditDate": 1777345780688,
+      "dataLastEditDate": 1777345780688
+    },
+    "relationships": [],
+    "isDataVersioned": false,
+    "hasContingentValuesDefinition": false,
+    "supportsAppend": true,
+    "supportsCalculate": true,
+    "supportsASyncCalculate": true,
+    "supportsTruncate": true,
+    "supportsAttachmentsByUploadId": true,
+    "supportsAttachmentsResizing": true,
+    "supportsRollbackOnFailureParameter": true,
+    "supportsStatistics": true,
+    "supportsExceedsLimitStatistics": true,
+    "supportsAdvancedQueries": true,
+    "supportsValidateSql": true,
+    "supportsCoordinatesQuantization": true,
+    "supportsLayerOverrides": true,
+    "supportsTilesAndBasicQueriesMode": true,
+    "supportsFieldDescriptionProperty": true,
+    "supportsQuantizationEditMode": true,
+    "supportsColumnStoreIndex": true,
+    "supportsApplyEditsWithGlobalIds": false,
+    "supportsReturningQueryGeometry": true,
+    "enableNullGeometry": false,
+    "advancedQueryCapabilities": {
+      "supportsPagination": true,
+      "supportsPaginationOnAggregatedQueries": true,
+      "supportsQueryRelatedPagination": true,
+      "supportsQueryWithDistance": true,
+      "supportsOutDistance": true,
+      "supportsReturningQueryExtent": true,
+      "supportsStatistics": true,
+      "supportsOrderBy": true,
+      "supportsDistinct": true,
+      "supportsQueryWithResultType": true,
+      "supportsSqlExpression": true,
+      "supportsTimeRelation": true,
+      "supportsAdvancedQueryRelated": true,
+      "supportsCountDistinct": true,
+      "supportsPercentileStatistics": true,
+      "supportsApproxPercentileStatistics": true,
+      "supportsSpatialAggregationStatistics": true,
+      "supportedSpatialAggregationStatistics": [
+        "EnvelopeAggregate",
+        "CentroidAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportsLod": true,
+      "supportsQueryWithLodSR": false,
+      "supportedLodTypes": [
+        "geohash"
+      ],
+      "supportsReturningGeometryCentroid": false,
+      "supportsReturningGeometryEnvelope": false,
+      "supportsQueryWithDatumTransformation": true,
+      "supportsCurrentUserQueries": true,
+      "supportsHavingClause": true,
+      "supportsOutFieldSQLExpression": true,
+      "supportsMaxRecordCountFactor": true,
+      "supportsTopFeaturesQuery": true,
+      "supportsDisjointSpatialRel": true,
+      "supportsQueryWithCacheHint": true,
+      "supportedOperationsWithCacheHint": [
+        "query",
+        "queryTopFilter",
+        "queryAnalytics",
+        "queryAttachments",
+        "queryRelated",
+        "queryBins",
+        "queryPivot"
+      ],
+      "supportsQueryAnalytic": true,
+      "supportsQueryPivot": true,
+      "supportsQueryBins": true,
+      "supportsDefaultSR": true,
+      "supportsTranslations": false,
+      "supportsAggIds": true,
+      "supportsQueryWithCollation": true,
+      "supportsISODOW": true,
+      "supportsISOWeek": true,
+      "supportsFullTextSearch": true,
+      "fullTextSearchCapabilities": {
+        "supportsAccentSensitivity": true,
+        "supportsStopWords": true,
+        "supportsSearchOperator": true,
+        "supportsOperator": true
+      }
+    },
+    "advancedQueryAnalyticCapabilities": {
+      "supportsLinearRegression": true,
+      "supportsTrendlineRegression": true,
+      "supportsAsync": true,
+      "supportsPercentileAnalytic": true
+    },
+    "queryBinsCapabilities": {
+      "supportsAsync": true,
+      "supportsAutoIntervalBin": true,
+      "supportsFixedIntervalBin": true,
+      "supportsFixedBoundariesBin": true,
+      "supportsDateBin": true,
+      "supportsClassificationBin": true,
+      "supportsStackBy": true,
+      "supportsSplitBy": true,
+      "supportsFirstDayOfWeek": true,
+      "supportsSnapToData": true,
+      "supportsReturnFullIntervalBin": true,
+      "supportsReturnStackValueRange": true,
+      "supportsNormalization": true,
+      "supportedStatisticTypes": [
+        "COUNT",
+        "SUM",
+        "AVG",
+        "VAR",
+        "STDDEV",
+        "MIN",
+        "MAX",
+        "PERCENTILE_CONT",
+        "PERCENTILE_DISC",
+        "APPROX_PERCENTILE_CONT",
+        "APPROX_PERCENTILE_DISC",
+        "CentroidAggregate",
+        "EnvelopeAggregate",
+        "ConvexHullAggregate"
+      ],
+      "supportedNormalizationTypes": [
+        "boxCox",
+        "field",
+        "inverse",
+        "log",
+        "naturalLog",
+        "percentOfTotal",
+        "squareRoot"
+      ]
+    },
+    "supportedOperationsWithCollation": "query,addField,updateField",
+    "advancedEditingCapabilities": {
+      "supportedSqlFormatsInCalculate": [
+        "standard"
+      ],
+      "supportsAsyncApplyEdits": true,
+      "supportsReturnEditResults": true,
+      "supportsApplyEditsbyUploadID": true,
+      "supportedApplyEditsUploadIDFormats": "JSON,PBF",
+      "supportsTranslation": false,
+      "supportsMaxTranslations": 10
+    },
+    "infoInEstimates": [
+      "extent",
+      "count"
+    ],
+    "useStandardizedQueries": true,
+    "geometryType": "esriGeometryPoint",
+    "minScale": 0,
+    "maxScale": 0,
+    "extent": {
+      "xmin": -8794189.260610402,
+      "ymin": 4249045.833572589,
+      "xmax": -8717012.837665042,
+      "ymax": 4324757.592457438,
+      "spatialReference": {
+        "wkid": 102100,
+        "latestWkid": 3857
+      }
+    },
+    "spatialReference": {
+      "wkid": 102100,
+      "latestWkid": 3857
+    },
+    "drawingInfo": {
+      "renderer": {
+        "type": "simple",
+        "symbol": {
+          "type": "esriPMS",
+          "url": "7910d1b71418dbfa9c8455f98bb58be4",
+          "imageData": "iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADEElEQVRIibVVwWvTcBR+ydquYZKmG0prO9g8DF2nbrDLhh4UZbqjc426g6Ay8KgIg50ED7KLf4DgYYdZk7khoshQ8KB0oiBilwoetFBrx0TbBua21mzyZea3JG7rJvigNHn55fu93/e+98VD/zE81RaoqhpaWeEPGkQhjvgQcsvcr6mBePzdP4OPqWo7t1Iz5BP8JxuCwRpBEHhB8PN4lsvlhxPKhMERjfKcMRKPx2e3DJ5QJocagtJwJBL2te7b63c/t3KfPmcuv37z9nxCmRw5K58aqQp+V5lINNRLvZ2dHXVBSarZ7Nh7mptqd4fD3hcvk8P3lInQGbnvyobgZsX1Uu/xY0dEe16v6CR6HSn6Mp+laF0j+f21PNY/ffb8QkKZnLWfwGPnGFSgYjvIeEah6bkkXe+4wTbQihrd+XibLrYMUkyKmbnDh7p3PHj4eGhMVVmzGTiaB47dVPQ3ydS1s9tROQCRt4AROMGB/a1CKpW+RURHGTjkBlW4mzeeUUgraOa16BPpUssg6eUSqRmF9LJO09+SZs7aGO+/T6XbHbRAx5Cbm2etoJFeKbGcVphhfK+uKZm5rl3dbE00EvYqyv0eWT49ZYJjQKBjO3h2PkuxYIxt0N8s01TuiUnRZgEc4LHKMXnWgLDKyyVqldoYLbgPeAObAq+C+3lrkjec0Ma6RipVdEYLaIL0thMeyysw0vaGRgFeXK0aoRVn6GrsmnmdLmrmPdbEgm0OwFwuXwYeA4cu4RVbrUj0iabGX80lHRJdXFxa/v6jYHg5mnXqnGgUXoGRtnLQMapbr4kB18QivubzFeBYRsbA4W4wIXgFBoK2GYVi0Uhp6UWDM0atHAPHbnA3mJDdW9BYq7mMFm+ARB9+a9Vr2oeFhZ9LNwfkNZ93qAWmA3eDCcErcAKMOSJqW9cTOWH+4xkqBnA2l390Tu5z2O5fUoRtwt1gQvCK9fzcah44BhWo2A28Lrh1ArgbTAhegZF2fYnKUAWaB47tVFQFR/yxTdPd4BXubyjkttHnrSq4PWBCW1nnjt8GjWIyd1VCyQAAAABJRU5ErkJggg==",
+          "contentType": "image/png",
+          "width": 17,
+          "height": 17,
+          "angle": 0,
+          "xoffset": 0,
+          "yoffset": 0
+        }
+      },
+      "scaleSymbols": true,
+      "transparency": 0,
+      "labelingInfo": null
+    },
+    "allowGeometryUpdates": true,
+    "hasAttachments": false,
+    "htmlPopupType": "esriServerHTMLPopupTypeAsHTMLText",
+    "hasMetadata": true,
+    "hasM": false,
+    "hasZ": false,
+    "objectIdField": "OBJECTID",
+    "uniqueIdField": {
+      "name": "OBJECTID",
+      "isSystemMaintained": true
+    },
+    "globalIdField": "",
+    "typeIdField": "",
+    "collation": {
+      "locale": "neutral",
+      "caseSensitive": false,
+      "accentSensitive": true
+    },
+    "fields": [
+      {
+        "name": "OBJECTID",
+        "type": "esriFieldTypeOID",
+        "alias": "OBJECTID",
+        "sqlType": "sqlTypeOther",
+        "nullable": false,
+        "editable": false,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "restroom_id",
+        "type": "esriFieldTypeString",
+        "alias": "restroom_id",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "name",
+        "type": "esriFieldTypeString",
+        "alias": "name",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "longitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "longitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "latitude",
+        "type": "esriFieldTypeDouble",
+        "alias": "latitude",
+        "sqlType": "sqlTypeOther",
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "wheelchair",
+        "type": "esriFieldTypeString",
+        "alias": "wheelchair",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "access",
+        "type": "esriFieldTypeString",
+        "alias": "access",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "fee",
+        "type": "esriFieldTypeString",
+        "alias": "fee",
+        "sqlType": "sqlTypeOther",
+        "length": 8000,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "source",
+        "type": "esriFieldTypeString",
+        "alias": "source",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      },
+      {
+        "name": "created_date",
+        "type": "esriFieldTypeDate",
+        "alias": "created_date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "updated_date",
+        "type": "esriFieldTypeDate",
+        "alias": "updated_date",
+        "sqlType": "sqlTypeOther",
+        "length": 8,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null,
+        "precision": 1
+      },
+      {
+        "name": "status",
+        "type": "esriFieldTypeString",
+        "alias": "status",
+        "sqlType": "sqlTypeOther",
+        "length": 50,
+        "nullable": true,
+        "editable": true,
+        "domain": null,
+        "defaultValue": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "PK__CADI_BAS__F4B70D857AC85069",
+        "fields": "OBJECTID",
+        "isAscending": true,
+        "isUnique": true,
+        "description": "",
+        "indexType": "Attribute"
+      },
+      {
+        "name": "user_7858.CADI_BASELINE_WEBMAP_WFL1_EXISTING_PUBLIC_RESTROOMS_Shape_sidx",
+        "fields": "Shape",
+        "isAscending": true,
+        "isUnique": false,
+        "description": "",
+        "indexType": "Spatial"
+      }
+    ],
+    "dateFieldsTimeReference": {
+      "timeZone": "UTC",
+      "timeZoneIANA": "Etc/UTC",
+      "respectsDaylightSaving": false
+    },
+    "preferredTimeReference": null,
+    "types": [],
+    "templates": [
+      {
+        "name": "Existing Public Restrooms",
+        "description": "",
+        "drawingTool": "esriFeatureEditToolPoint",
+        "prototype": {
+          "attributes": {
+            "updated_date": null,
+            "restroom_id": null,
+            "name": null,
+            "longitude": null,
+            "latitude": null,
+            "wheelchair": null,
+            "access": null,
+            "fee": null,
+            "source": null,
+            "created_date": null,
+            "status": null
+          }
+        }
+      }
+    ],
+    "supportedQueryFormats": "JSON, geoJSON, PBF",
+    "supportedAppendFormats": "sqlite,geoPackage,shapefile,filegdb,featureCollection,geojson,csv,excel,jsonl,featureService,pbf",
+    "supportedAppendSourceFilterFormats": "sqlite,geoPackage,shapefile,filegdb,featureService",
+    "supportedExportFormats": "csv,shapefile,sqlite,geoPackage,filegdb,featureCollection,geojson,kml,excel",
+    "supportedConvertFileFormats": "JSON,PBF",
+    "supportedConvertContentFormats": "LayerEditCollection,FeatureCollection",
+    "supportedSpatialRelationships": [
+      "esriSpatialRelIntersects",
+      "esriSpatialRelContains",
+      "esriSpatialRelCrosses",
+      "esriSpatialRelEnvelopeIntersects",
+      "esriSpatialRelIndexIntersects",
+      "esriSpatialRelOverlaps",
+      "esriSpatialRelTouches",
+      "esriSpatialRelWithin",
+      "esriSpatialRelDisjoint",
+      "esriSpatialRelRelation"
+    ],
+    "guidFormat": "",
+    "supportsContingentValues": true,
+    "supportedContingentValuesFormats": "JSON, PBF",
+    "supportsFieldGroups": true,
+    "supportedSyncDataOptions": 260,
+    "hasStaticData": false,
+    "maxRecordCount": 2000,
+    "standardMaxRecordCount": 16000,
+    "standardMaxRecordCountNoGeometry": 32000,
+    "tileMaxRecordCount": 8000,
+    "maxRecordCountFactor": 1,
+    "capabilities": "Query"
+  },
+  "sampleFeatures": [
+    {
+      "attributes": {
+        "OBJECTID": 1,
+        "restroom_id": "node/316543182",
+        "name": "Restroom_1",
+        "longitude": -78.8950661,
+        "latitude": 36.0319382,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 2,
+        "restroom_id": "node/316543183",
+        "name": "Restroom_2",
+        "longitude": -78.8973873,
+        "latitude": 36.0310671,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 3,
+        "restroom_id": "node/316546136",
+        "name": "Restroom_3",
+        "longitude": -78.9131562,
+        "latitude": 35.9794692,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 4,
+        "restroom_id": "node/316546628",
+        "name": "Restroom_4",
+        "longitude": -78.9020276,
+        "latitude": 36.0003684,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 5,
+        "restroom_id": "node/317887037",
+        "name": "Restroom_5",
+        "longitude": -78.9222085,
+        "latitude": 35.7867748,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 6,
+        "restroom_id": "node/359586728",
+        "name": "Restroom_6",
+        "longitude": -78.8593291,
+        "latitude": 35.7746416,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 7,
+        "restroom_id": "node/359587264",
+        "name": "Restroom_7",
+        "longitude": -78.845469,
+        "latitude": 35.7733216,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 8,
+        "restroom_id": "node/359587506",
+        "name": "Restroom_8",
+        "longitude": -78.8241305,
+        "latitude": 35.7848232,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 9,
+        "restroom_id": "node/359587876",
+        "name": "Restroom_9",
+        "longitude": -78.7880759,
+        "latitude": 35.821607,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    },
+    {
+      "attributes": {
+        "OBJECTID": 10,
+        "restroom_id": "node/359588559",
+        "name": "Restroom_10",
+        "longitude": -78.8258061,
+        "latitude": 35.7812836,
+        "wheelchair": "unknown",
+        "access": "unknown",
+        "fee": "unknown",
+        "source": "OpenStreetMap",
+        "created_date": 1777102797000,
+        "updated_date": 1777102813000,
+        "status": "Active"
+      }
+    }
+  ]
+}
