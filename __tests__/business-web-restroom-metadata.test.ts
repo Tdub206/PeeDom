@@ -2,6 +2,8 @@ import {
   businessDashboardAnalyticsRowsSchema,
   updateBusinessRestroomMetadataSchema,
 } from '../apps/business-web/src/lib/business/schemas';
+import fs from 'fs';
+import path from 'path';
 
 describe('business web restroom metadata validation', () => {
   it('accepts owner-verified restroom metadata with nullable unknown fields', () => {
@@ -133,5 +135,15 @@ describe('business web restroom metadata validation', () => {
 
     expect(parsed[0]?.weekly_unique_visitors).toBe(22);
     expect(parsed[0]?.active_offer_count).toBe(2);
+  });
+
+  it('does not write business claim ids into business_id confirmations', () => {
+    const migration = fs.readFileSync(
+      path.join(process.cwd(), 'supabase/migrations/056_business_restroom_metadata_analytics.sql'),
+      'utf8'
+    );
+
+    expect(migration).toContain('business_id,');
+    expect(migration).not.toMatch(/v_claim_id,\s*\n\s*0\.9500/);
   });
 });

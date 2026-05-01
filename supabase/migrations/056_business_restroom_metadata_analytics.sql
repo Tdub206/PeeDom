@@ -283,7 +283,7 @@ begin
     jsonb_build_object('value', fields.field_value),
     'business_verified',
     v_user_id,
-    v_claim_id,
+    null,
     0.9500,
     now(),
     'Verified from StallPass Business Hub'
