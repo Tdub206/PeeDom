@@ -20,6 +20,7 @@ interface FilterStoreState {
   searchQuery: string;
   filters: BathroomFilters;
   setSearchQuery: (query: string) => void;
+  setFilters: (filters: BathroomFilters) => void;
   toggleFilter: (filterName: ToggleableFilterName) => void;
   setMinCleanlinessRating: (rating: number | null) => void;
   setMinDoorWidth: (width: number | null) => void;
@@ -27,7 +28,7 @@ interface FilterStoreState {
   resetFilters: () => void;
 }
 
-const defaultFilters: BathroomFilters = {
+export const defaultFilters: BathroomFilters = {
   isAccessible: null,
   isLocked: null,
   isCustomerOnly: null,
@@ -50,6 +51,7 @@ export const useFilterStore = create<FilterStoreState>((set) => ({
   searchQuery: '',
   filters: defaultFilters,
   setSearchQuery: (searchQuery) => set({ searchQuery }),
+  setFilters: (filters) => set({ filters }),
   toggleFilter: (filterName) =>
     set((state) => ({
       filters: {

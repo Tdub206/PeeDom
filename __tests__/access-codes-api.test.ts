@@ -145,6 +145,41 @@ describe('access codes API', () => {
     });
   });
 
+  it('passes unlock idempotency and reward verification to code reveal grants', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'grant-2',
+          bathroom_id: 'bathroom-1',
+          user_id: 'user-1',
+          grant_source: 'rewarded_ad',
+          expires_at: '2026-03-20T12:00:00.000Z',
+          created_at: '2026-03-20T12:00:00.000Z',
+          updated_at: '2026-03-20T12:00:00.000Z',
+          points_spent: 0,
+          remaining_points: 240,
+          used_free_unlock: false,
+        },
+      ],
+      error: null,
+    });
+
+    const { grantBathroomCodeRevealAccess } = await import('@/api/access-codes');
+    const result = await grantBathroomCodeRevealAccess('bathroom-1', 'rewarded_ad', {
+      idempotencyKey: 'unlock-key-1',
+      rewardVerificationToken: 'reward-token-1',
+    });
+
+    expect(result.error).toBeNull();
+    expect(result.data?.grant_source).toBe('rewarded_ad');
+    expect(rpc).toHaveBeenCalledWith('grant_bathroom_code_reveal_access', {
+      p_bathroom_id: 'bathroom-1',
+      p_unlock_method: 'rewarded_ad',
+      p_idempotency_key: 'unlock-key-1',
+      p_reward_verification_token: 'reward-token-1',
+    });
+  });
+
   it('maps self-vote protection errors into stable app codes', async () => {
     rpc.mockResolvedValueOnce({
       data: null,

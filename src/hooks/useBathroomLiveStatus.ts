@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { fetchCurrentBathroomStatus, reportBathroomStatus } from '@/api/notifications';
+import { reportBathroomLiveStatusEvent } from '@/api/restroom-intelligence';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
@@ -12,6 +13,7 @@ import { Sentry } from '@/lib/sentry';
 import type { BathroomLiveStatus, LiveStatusReportCreate, MutationOutcome } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import { isTransientNetworkError } from '@/utils/network';
+import { mapLegacyStatusToRichLiveStatus } from '@/lib/restroom-intelligence/live-status-summary';
 
 interface SubmitBathroomLiveStatusOptions {
   draftId?: string | null;
@@ -89,6 +91,24 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
                 Sentry.captureException(error);
               });
           }
+        )
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'bathroom_live_status_events',
+            filter: `bathroom_id=eq.${bathroomId}`,
+          },
+          () => {
+            void queryClient
+              .invalidateQueries({
+                queryKey: bathroomLiveStatusQueryKey(bathroomId),
+              })
+              .catch((error) => {
+                Sentry.captureException(error);
+              });
+          }
         ),
       (status) => {
         if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
@@ -146,6 +166,18 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
 
         if (result.error) {
           throw result.error;
+        }
+
+        const mappedLiveStatus = mapLegacyStatusToRichLiveStatus(status);
+        const richStatusResult = await reportBathroomLiveStatusEvent({
+          bathroomId,
+          statusType: mappedLiveStatus.statusType,
+          statusValue: mappedLiveStatus.statusValue,
+          waitMinutes: mappedLiveStatus.waitMinutes,
+        });
+
+        if (richStatusResult.error) {
+          Sentry.captureException(richStatusResult.error);
         }
 
         await queryClient.invalidateQueries({

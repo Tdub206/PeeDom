@@ -67,6 +67,14 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
     return 'INVALID_UNLOCK_METHOD';
   }
 
+  if (/IDEMPOTENCY_KEY_REQUIRED/i.test(errorMessage)) {
+    return 'IDEMPOTENCY_KEY_REQUIRED';
+  }
+
+  if (/REWARD_VERIFICATION_REQUIRED/i.test(errorMessage)) {
+    return 'REWARD_VERIFICATION_REQUIRED';
+  }
+
   if (/SELF_CODE_VOTE/i.test(errorMessage)) {
     return 'SELF_CODE_VOTE';
   }
@@ -271,13 +279,32 @@ export async function fetchBathroomCodePolicySummary(
 
 export async function grantBathroomCodeRevealAccess(
   bathroomId: string,
-  unlockMethod: FeatureUnlockMethod = 'rewarded_ad'
+  unlockMethod: FeatureUnlockMethod = 'rewarded_ad',
+  options?: {
+    idempotencyKey?: string | null;
+    rewardVerificationToken?: string | null;
+  }
 ): Promise<{ data: CodeRevealUnlockResult | null; error: (Error & { code?: string }) | null }> {
   try {
-    const { data, error } = await getSupabaseClient().rpc('grant_bathroom_code_reveal_access' as never, {
+    const rpcArgs: {
+      p_bathroom_id: string;
+      p_unlock_method: FeatureUnlockMethod;
+      p_idempotency_key?: string;
+      p_reward_verification_token?: string;
+    } = {
       p_bathroom_id: bathroomId,
       p_unlock_method: unlockMethod,
-    } as never);
+    };
+
+    if (options?.idempotencyKey) {
+      rpcArgs.p_idempotency_key = options.idempotencyKey;
+    }
+
+    if (options?.rewardVerificationToken) {
+      rpcArgs.p_reward_verification_token = options.rewardVerificationToken;
+    }
+
+    const { data, error } = await getSupabaseClient().rpc('grant_bathroom_code_reveal_access' as never, rpcArgs as never);
 
     if (error) {
       return {

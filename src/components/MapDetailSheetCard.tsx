@@ -4,7 +4,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { Button } from '@/components/Button';
 import { BathroomOriginBadge } from '@/components/BathroomOriginBadge';
 import { CodeBadge } from '@/components/CodeBadge';
+import { BathroomCorrectionSheet } from '@/components/BathroomCorrectionSheet';
+import { BathroomFreshnessLabel } from '@/components/BathroomFreshnessLabel';
+import { BathroomTrustBadge } from '@/components/BathroomTrustBadge';
 import { colors } from '@/constants/colors';
+import { useBathroomFieldConfirmation } from '@/hooks/useBathroomFieldConfirmation';
+import { useCurrentBathroomLiveStatus } from '@/hooks/useCurrentBathroomLiveStatus';
+import { useBathroomTrustSummary } from '@/hooks/useBathroomTrustSummary';
 import { BathroomListItem } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { VerificationBadge } from '@/components/business/VerificationBadge';
@@ -15,8 +21,11 @@ interface MapDetailSheetCardProps {
   isFavorited: boolean;
   isFavoritePending: boolean;
   isNavigating: boolean;
+  isCorrectionOpen: boolean;
   onNavigate: () => void;
   onOpenDetail: () => void;
+  onOpenCorrection: () => void;
+  onCloseCorrection: () => void;
   onReport?: () => void;
   onToggleFavorite?: () => void;
 }
@@ -97,16 +106,30 @@ function MapDetailSheetCardComponent({
   isFavorited,
   isFavoritePending,
   isNavigating,
+  isCorrectionOpen,
   onNavigate,
   onOpenDetail,
+  onOpenCorrection,
+  onCloseCorrection,
   onReport,
   onToggleFavorite,
 }: MapDetailSheetCardProps) {
   const canFavorite = bathroom.can_favorite !== false && Boolean(onToggleFavorite);
   const canReport = bathroom.can_report_live_status !== false && bathroom.listing_kind === 'canonical' && Boolean(onReport);
+  const canCorrect = bathroom.listing_kind === 'canonical' && Boolean(bathroom.bathroom_id);
   const statusTone = getBathroomMapPinTone(bathroom);
   const statusCopy = STATUS_COPY[statusTone];
   const confidenceProfile = useMemo(() => buildBathroomConfidenceProfile(bathroom), [bathroom]);
+  const { summary: trustSummary } = useBathroomTrustSummary({
+    bathroomId: bathroom.bathroom_id,
+    fallbackConfidenceScore: bathroom.primary_code_summary.confidence_score,
+    fallbackLastConfirmedAt: bathroom.primary_code_summary.last_verified_at ?? bathroom.last_updated_at,
+  });
+  const { headline: liveStatusHeadline } = useCurrentBathroomLiveStatus(bathroom.bathroom_id);
+  const {
+    confirmField,
+    isSubmittingConfirmation,
+  } = useBathroomFieldConfirmation(canCorrect ? bathroom.bathroom_id : null);
   const originBadgeLabel = useMemo(() => getBathroomOriginBadgeLabel(bathroom), [bathroom]);
   const metadataChips = useMemo(() => {
     const chips: string[] = [];
@@ -153,11 +176,19 @@ function MapDetailSheetCardComponent({
             {originBadgeLabel ? <BathroomOriginBadge label={originBadgeLabel} /> : null}
           </View>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{bathroom.address}</Text>
+          <View className="mt-3 flex-row flex-wrap items-center gap-2">
+            <BathroomFreshnessLabel
+              compact
+              lastConfirmedAt={trustSummary.lastConfirmedAt}
+              staleFieldsCount={trustSummary.staleFields.length}
+            />
+            <BathroomTrustBadge compact summary={trustSummary} />
+          </View>
           <View className="mt-3 flex-row items-center gap-2">
             <Text className="text-sm font-semibold text-brand-700">{formatDistance(bathroom.distance_meters)}</Text>
             {formatWalkTime(bathroom.distance_meters) ? (
               <>
-                <Text className="text-sm text-ink-400">·</Text>
+                <Text className="text-sm text-ink-400">|</Text>
                 <Ionicons color={colors.brand[600]} name="walk-outline" size={14} />
                 <Text className="text-sm font-bold text-brand-700">{formatWalkTime(bathroom.distance_meters)}</Text>
               </>
@@ -201,14 +232,23 @@ function MapDetailSheetCardComponent({
           <View className="flex-1">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Live access pulse</Text>
             <Text className="mt-1 text-base font-bold text-ink-900">{confidenceProfile.open_state_label}</Text>
-            <Text className="mt-1 text-xs leading-5 text-ink-600">{confidenceProfile.info_freshness_label}</Text>
+            <Text className="mt-1 text-xs leading-5 text-ink-600">
+              {liveStatusHeadline ?? confidenceProfile.info_freshness_label}
+            </Text>
           </View>
           <View className="items-end">
             <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Trust</Text>
-            <Text className="mt-1 text-sm font-bold text-ink-900">{confidenceProfile.trust_score}% ready</Text>
+            <Text className="mt-1 text-sm font-bold text-ink-900">
+              {Math.round(trustSummary.confidenceScore || confidenceProfile.trust_score)}% ready
+            </Text>
           </View>
         </View>
         <Text className="mt-3 text-sm leading-5 text-ink-600">{confidenceProfile.code_reliability_label}</Text>
+        {trustSummary.staleFields.length > 0 ? (
+          <Text className="mt-2 text-xs font-semibold text-warning">
+            Stale fields: {trustSummary.staleFields.slice(0, 3).join(', ')}
+          </Text>
+        ) : null}
       </View>
 
       <View className="mt-4">
@@ -260,6 +300,15 @@ function MapDetailSheetCardComponent({
         ) : null}
       </View>
 
+      {canCorrect ? (
+        <Button
+          className="mt-4"
+          label="Fix a field"
+          onPress={onOpenCorrection}
+          variant="secondary"
+        />
+      ) : null}
+
       <Button
         className="mt-5"
         label={bathroom.listing_kind === 'source_candidate' ? 'Open candidate details' : 'Open details and verify'}
@@ -270,6 +319,23 @@ function MapDetailSheetCardComponent({
         }
         onPress={onOpenDetail}
       />
+
+      {canCorrect ? (
+        <BathroomCorrectionSheet
+          bathroomName={bathroom.place_name}
+          isOpen={isCorrectionOpen}
+          isSubmitting={isSubmittingConfirmation}
+          onClose={onCloseCorrection}
+          onSubmit={async (input) => {
+            await confirmField({
+              fieldName: input.fieldName,
+              value: input.value,
+              notes: input.notes ?? null,
+            });
+            onCloseCorrection();
+          }}
+        />
+      ) : null}
     </View>
   );
 }

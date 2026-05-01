@@ -154,12 +154,25 @@ class PremiumCityPackStorage {
   private async readAllPacks(): Promise<StoredPremiumCityPackRecord[]> {
     const index = await this.readIndex();
     const packs = await Promise.all(index.map((pack) => this.readPack(pack.slug)));
+    const validRecords = packs.filter((pack): pack is StoredPremiumCityPackRecord => Boolean(pack));
 
-    return packs.filter((pack): pack is StoredPremiumCityPackRecord => Boolean(pack));
+    if (validRecords.length !== index.length) {
+      const validSlugs = new Set(validRecords.map((record) => record.manifest.slug));
+      await this.writeIndex(index.filter((entry) => validSlugs.has(entry.slug)));
+    }
+
+    return validRecords;
   }
 
   async listDownloadedPacks(): Promise<DownloadedPremiumCityPack[]> {
-    return this.readIndex();
+    const packs = await this.readAllPacks();
+
+    return packs
+      .map((pack) => ({
+        ...pack.manifest,
+        downloaded_at: pack.downloaded_at,
+      }))
+      .sort((leftPack, rightPack) => rightPack.downloaded_at.localeCompare(leftPack.downloaded_at));
   }
 
   async savePack(manifest: PremiumCityPackManifest, bathrooms: CityPackBathroomRow[]): Promise<void> {
@@ -284,34 +297,38 @@ class PremiumCityPackStorage {
       return null;
     }
 
-    const dedupedMatches = Array.from(
-      matches.reduce<Map<string, { bathroom: CityPackBathroomRow; downloaded_at: string; score: number }>>((nextMap, match) => {
-        const existingMatch = nextMap.get(match.bathroom.id);
+    const dedupedMatchMap = matches.reduce<
+      Map<string, { bathroom: CityPackBathroomRow; downloaded_at: string; score: number }>
+    >((nextMap, match) => {
+      const existingMatch = nextMap.get(match.bathroom.id);
 
-        if (!existingMatch || match.score > existingMatch.score) {
-          nextMap.set(match.bathroom.id, match);
-        }
+      if (!existingMatch || match.score > existingMatch.score) {
+        nextMap.set(match.bathroom.id, match);
+      }
 
-        return nextMap;
-      }, new Map())
-    ).map(([, match]) => match);
+      return nextMap;
+    }, new Map());
+    const dedupedMatches = Array.from(dedupedMatchMap.values());
 
-    const items = dedupedMatches
-      .map((match) =>
-        mapBathroomRowToListItem(match.bathroom, {
-          cachedAt: match.downloaded_at,
-          stale: false,
-          origin: input.origin ?? null,
-        })
-      )
-      .sort((leftBathroom, rightBathroom) => {
-        const leftMatch = dedupedMatches.find((match) => match.bathroom.id === leftBathroom.id);
-        const rightMatch = dedupedMatches.find((match) => match.bathroom.id === rightBathroom.id);
-        const scoreDelta = (rightMatch?.score ?? 0) - (leftMatch?.score ?? 0);
+    const sortableItems = dedupedMatches
+      .map((match) => ({
+        item:
+          mapBathroomRowToListItem(match.bathroom, {
+            cachedAt: match.downloaded_at,
+            stale: false,
+            origin: input.origin ?? null,
+          }),
+        score: match.score,
+      }))
+      .sort((leftEntry, rightEntry) => {
+        const scoreDelta = rightEntry.score - leftEntry.score;
 
         if (scoreDelta !== 0) {
           return scoreDelta;
         }
+
+        const leftBathroom = leftEntry.item;
+        const rightBathroom = rightEntry.item;
 
         if (
           input.filters.prioritizeAccessible &&
@@ -327,7 +344,10 @@ class PremiumCityPackStorage {
         }
 
         return leftBathroom.place_name.localeCompare(rightBathroom.place_name);
-      })
+      });
+
+    const items = sortableItems
+      .map((entry) => entry.item)
       .slice(0, input.limit ?? 40);
 
     const cachedAt = dedupedMatches

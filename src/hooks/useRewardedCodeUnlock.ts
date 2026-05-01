@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useQueryClient } from '@tanstack/react-query';
 import { fetchBathroomCodeRevealAccess, grantBathroomCodeRevealAccess } from '@/api/access-codes';
@@ -13,6 +13,7 @@ import {
 } from '@/lib/feature-access';
 import { hasActivePremium } from '@/lib/gamification';
 import { pushSafely } from '@/lib/navigation';
+import { createUnlockIdempotencyKey } from '@/lib/unlock-idempotency';
 import { getErrorMessage } from '@/utils/errorMap';
 
 interface UseRewardedCodeUnlockOptions {
@@ -36,6 +37,7 @@ export function useRewardedCodeUnlock({
   const [unlockIssue, setUnlockIssue] = useState<string | null>(null);
   const [unlockMode, setUnlockMode] = useState<UnlockMode>(null);
   const [hasAttemptedPaidUnlock, setHasAttemptedPaidUnlock] = useState(false);
+  const unlockInFlightRef = useRef(false);
   const adMobAvailability = useMemo(() => getAdMobAvailability(), []);
   const isPremiumUser = hasActivePremium(profile);
   const isFreeUnlockAvailable = useMemo(
@@ -151,18 +153,25 @@ export function useRewardedCodeUnlock({
       return false;
     }
 
+    if (unlockInFlightRef.current) {
+      return false;
+    }
+
     const authenticatedUser = requireUnlockAuth();
 
     if (!authenticatedUser) {
       return false;
     }
 
+    unlockInFlightRef.current = true;
     setIsUnlocking(true);
     setUnlockMode('ad');
 
     try {
       if (isFreeUnlockAvailable) {
-        const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'starter_free');
+        const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'starter_free', {
+          idempotencyKey: createUnlockIdempotencyKey(`code_reveal:${bathroomId}:starter_free`),
+        });
 
         if (grantResult.error || !grantResult.data) {
           const message = getErrorMessage(
@@ -198,7 +207,10 @@ export function useRewardedCodeUnlock({
       });
 
       if (result.outcome === 'earned') {
-        const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'rewarded_ad');
+        const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'rewarded_ad', {
+          idempotencyKey: createUnlockIdempotencyKey(`code_reveal:${bathroomId}:rewarded_ad`),
+          rewardVerificationToken: null,
+        });
 
         if (grantResult.error || !grantResult.data) {
           const message = getErrorMessage(
@@ -242,6 +254,7 @@ export function useRewardedCodeUnlock({
       });
       return false;
     } finally {
+      unlockInFlightRef.current = false;
       setIsUnlocking(false);
       setUnlockMode(null);
     }
@@ -256,6 +269,10 @@ export function useRewardedCodeUnlock({
 
   const unlockWithPoints = useCallback(async (): Promise<boolean> => {
     if (!bathroomId) {
+      return false;
+    }
+
+    if (unlockInFlightRef.current) {
       return false;
     }
 
@@ -283,11 +300,14 @@ export function useRewardedCodeUnlock({
       return false;
     }
 
+    unlockInFlightRef.current = true;
     setIsUnlocking(true);
     setUnlockMode('points');
 
     try {
-      const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'points_redeemed');
+      const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'points_redeemed', {
+        idempotencyKey: createUnlockIdempotencyKey(`code_reveal:${bathroomId}:points_redeemed`),
+      });
 
       if (grantResult.error || !grantResult.data) {
         const message = getErrorMessage(grantResult.error, 'Unable to spend points on this code unlock right now.');
@@ -319,6 +339,7 @@ export function useRewardedCodeUnlock({
       });
       return false;
     } finally {
+      unlockInFlightRef.current = false;
       setIsUnlocking(false);
       setUnlockMode(null);
     }

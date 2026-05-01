@@ -11,6 +11,7 @@ import { LoadingScreen } from '@/components/LoadingScreen';
 import { MapDetailSheetCard } from '@/components/MapDetailSheetCard';
 import { MapFilterDrawer } from '@/components/MapFilterDrawer';
 import { BathroomMapView } from '@/components/MapView';
+import { NeedProfileChips } from '@/components/NeedProfileChips';
 import { NearbyBathroomsPanel } from '@/components/NearbyBathroomsPanel';
 import { RealtimeStatusBadge } from '@/components/realtime';
 import { recordBathroomNavigationOpen } from '@/api/bathrooms';
@@ -56,6 +57,7 @@ export default function MapTab() {
   const setRegion = useMapStore((state) => state.setRegion);
   const searchTarget = useMapStore((state) => state.searchTarget);
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  const [isCorrectionSheetOpen, setIsCorrectionSheetOpen] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
   const accessibilityPreferences = useAccessibilityStore((state) => state.preferences);
@@ -291,6 +293,14 @@ export default function MapTab() {
     [router]
   );
 
+  const handleOpenCorrection = useCallback(() => {
+    setIsCorrectionSheetOpen(true);
+  }, []);
+
+  const handleCloseCorrection = useCallback(() => {
+    setIsCorrectionSheetOpen(false);
+  }, []);
+
   const handleOpenAddBathroom = useCallback(() => {
     const authenticatedUser = requireAuth({
       type: 'add_bathroom',
@@ -384,6 +394,7 @@ export default function MapTab() {
         />
 
         <View className="mt-4 flex-1">
+          <NeedProfileChips isCompact />
           <BathroomMapView
             activeFilterCount={activeFilterCount}
             bathrooms={visibleBathrooms}
@@ -451,9 +462,12 @@ export default function MapTab() {
                   isFavorited={isFavorite(activeBathroom.id)}
                   isFavoritePending={isFavoritePending(activeBathroom.id)}
                   isNavigating={isOpeningDirections}
+                  isCorrectionOpen={isCorrectionSheetOpen}
+                  onCloseCorrection={handleCloseCorrection}
                   onNavigate={() => {
                     void handleNavigateToBathroom(activeBathroom);
                   }}
+                  onOpenCorrection={handleOpenCorrection}
                   onOpenDetail={() => handleOpenBathroomDetail(activeBathroom)}
                   onReport={() => handleOpenReport(activeBathroom)}
                   onToggleFavorite={() => {

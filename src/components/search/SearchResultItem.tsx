@@ -2,7 +2,10 @@ import { memo, useMemo } from 'react';
 import { GestureResponderEvent, Pressable, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '@/constants/colors';
-import { BathroomListItem } from '@/types';
+import { BathroomFreshnessLabel } from '@/components/BathroomFreshnessLabel';
+import { BathroomTrustBadge } from '@/components/BathroomTrustBadge';
+import { buildFallbackBathroomTrustSummary } from '@/lib/restroom-intelligence/trust-summary';
+import { BathroomListItem, BathroomTrustSummary } from '@/types';
 import { buildAccessibilityFeatureLabels, buildBathroomAccessibilityLabel } from '@/utils/accessibility';
 import { getBathroomMapPinTone, isBathroomOpenNow } from '@/utils/bathroom';
 import { formatSearchDistance } from '@/utils/search';
@@ -87,6 +90,15 @@ function SearchResultItemComponent({
 
     return [...nextTags, ...buildAccessibilityFeatureLabels(item.accessibility_features, 2)];
   }, [item.accessibility_features, item.distance_meters, item.flags.is_accessible, item.flags.is_customer_only, openNow]);
+  const trustSummary = useMemo<BathroomTrustSummary>(
+    () =>
+      buildFallbackBathroomTrustSummary({
+        lastConfirmedAt: item.primary_code_summary.last_verified_at,
+        fallbackUpdatedAt: item.last_updated_at,
+        confidenceScore: item.primary_code_summary.confidence_score,
+      }),
+    [item.last_updated_at, item.primary_code_summary.confidence_score, item.primary_code_summary.last_verified_at]
+  );
 
   return (
     <Pressable
@@ -110,6 +122,14 @@ function SearchResultItemComponent({
 
           <Text className="mt-3 text-xl font-black text-ink-900">{item.place_name}</Text>
           <Text className="mt-2 text-sm leading-6 text-ink-600">{item.address}</Text>
+          <View className="mt-3 flex-row flex-wrap items-center gap-2">
+            <BathroomFreshnessLabel
+              compact
+              lastConfirmedAt={trustSummary.lastConfirmedAt}
+              staleFieldsCount={trustSummary.staleFields.length}
+            />
+            <BathroomTrustBadge compact summary={trustSummary} />
+          </View>
         </View>
 
         {canFavorite ? (

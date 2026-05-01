@@ -411,6 +411,145 @@ export interface BathroomAccessibilityUpdateResult {
   updated_at: string;
 }
 
+export type NeedProfilePresetKey =
+  | 'wheelchair'
+  | 'family_with_child'
+  | 'ibd_urgency'
+  | 'no_code'
+  | 'single_user_privacy'
+  | 'custom';
+
+export interface BathroomNeedMetadata {
+  bathroom_id: string;
+  has_toilet_paper: boolean | null;
+  has_soap: boolean | null;
+  has_hand_dryer: boolean | null;
+  has_paper_towels: boolean | null;
+  has_changing_table: boolean | null;
+  has_family_restroom: boolean | null;
+  is_gender_neutral: boolean | null;
+  is_single_user: boolean | null;
+  is_private_room: boolean | null;
+  stall_count: number | null;
+  privacy_level: 'unknown' | 'low' | 'medium' | 'high' | 'single_user' | null;
+  access_type:
+    | 'unknown'
+    | 'public'
+    | 'customer_only'
+    | 'ask_employee'
+    | 'key_required'
+    | 'code_required'
+    | 'employee_only'
+    | null;
+  code_required: boolean | null;
+  key_required: boolean | null;
+  customer_only: boolean | null;
+  ask_employee: boolean | null;
+  medical_urgency_friendly: boolean | null;
+  child_friendly: boolean | null;
+  outdoor_traveler_reliable: boolean | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BathroomAccessibilityDetails {
+  bathroom_id: string;
+  wheelchair_accessible: boolean | null;
+  door_clear_width_inches: number | null;
+  turning_space_inches: number | null;
+  stall_width_inches: number | null;
+  stall_depth_inches: number | null;
+  has_grab_bars: boolean | null;
+  has_accessible_sink: boolean | null;
+  has_step_free_access: boolean | null;
+  has_power_door: boolean | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type BathroomAttributeConfirmationSourceType =
+  | 'user_report'
+  | 'business_verified'
+  | 'admin_verified'
+  | 'municipal_verified'
+  | 'system_import'
+  | 'photo_evidence'
+  | 'live_status';
+
+export interface BathroomAttributeConfirmation {
+  id: string;
+  bathroom_id: string;
+  field_name: string;
+  field_value_snapshot: Record<string, unknown>;
+  source_type: BathroomAttributeConfirmationSourceType;
+  source_user_id: string | null;
+  business_id: string | null;
+  confidence_score: number;
+  last_confirmed_at: string;
+  evidence_photo_url: string | null;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type BathroomLiveStatusEventType =
+  | 'cleanliness'
+  | 'line'
+  | 'occupancy'
+  | 'supplies'
+  | 'access'
+  | 'closed'
+  | 'open'
+  | 'safety';
+
+export type BathroomOccupancyLevel = 'unknown' | 'empty' | 'low' | 'medium' | 'high' | 'full';
+
+export interface BathroomLiveStatusEvent {
+  id: string;
+  bathroom_id: string;
+  user_id: string | null;
+  status_type: BathroomLiveStatusEventType;
+  status_value: string;
+  wait_minutes: number | null;
+  occupancy_level: BathroomOccupancyLevel | null;
+  supplies_missing: string[];
+  reported_at: string;
+  expires_at: string;
+  confidence_score: number;
+  evidence_photo_url: string | null;
+  created_at: string;
+}
+
+export interface SavedNeedProfile {
+  id: string;
+  user_id: string;
+  name: string;
+  preset_key: NeedProfilePresetKey | null;
+  filters: Record<string, unknown>;
+  is_default: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface BathroomTrustSourceTrailEntry {
+  fieldName: string;
+  sourceType: BathroomAttributeConfirmationSourceType;
+  confidenceScore: number;
+  lastConfirmedAt: string;
+  sourceUserId: string | null;
+  businessId: string | null;
+}
+
+export interface BathroomTrustSummary {
+  lastConfirmedAt: string | null;
+  confidenceScore: number;
+  sourceTrail: BathroomTrustSourceTrailEntry[];
+  staleFields: string[];
+  freshFields: string[];
+  warningLevel: 'unknown' | 'stale' | 'mixed' | 'fresh' | 'verified';
+}
+
 export interface BathroomFlags {
   is_locked: boolean | null;
   is_accessible: boolean | null;

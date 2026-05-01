@@ -84,7 +84,7 @@ function CodeRevealCardComponent({
     typeof confidenceScore === 'number' ? `${Math.max(0, Math.min(100, Math.round(confidenceScore)))}% confidence` : 'Confidence unavailable';
   const verificationLabel = formatTimestamp('Last verified', lastVerifiedAt);
   const expiryLabel = formatTimestamp('Code expires', expiresAt);
-  const isRevealPending = isRewardedUnlockActive || isLoadingCode;
+  const isRevealPending = isRewardedUnlockActive || isLoadingCode || isUnlockingWithAd || isUnlockingWithPoints;
   const shouldShowPrimaryUnlockButton = requiresAuthForUnlock || isFreeUnlockAvailable || isAdUnlockAvailable;
   const shouldShowPointsUnlockButton = !requiresAuthForUnlock && !isFreeUnlockAvailable && canUnlockWithPoints;
 

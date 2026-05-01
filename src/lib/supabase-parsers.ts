@@ -280,6 +280,152 @@ export const dbBathroomStatusEventSchema = z.object({
   created_at: dateTimeStringSchema,
 });
 
+const bathroomAttributeConfirmationSourceTypeSchema = z.enum([
+  'user_report',
+  'business_verified',
+  'admin_verified',
+  'municipal_verified',
+  'system_import',
+  'photo_evidence',
+  'live_status',
+]);
+
+const bathroomNeedMetadataPrivacyLevelSchema = z.enum([
+  'unknown',
+  'low',
+  'medium',
+  'high',
+  'single_user',
+]);
+
+const bathroomNeedMetadataAccessTypeSchema = z.enum([
+  'unknown',
+  'public',
+  'customer_only',
+  'ask_employee',
+  'key_required',
+  'code_required',
+  'employee_only',
+]);
+
+const bathroomLiveStatusEventTypeSchema = z.enum([
+  'cleanliness',
+  'line',
+  'occupancy',
+  'supplies',
+  'access',
+  'closed',
+  'open',
+  'safety',
+]);
+
+const bathroomOccupancyLevelSchema = z.enum([
+  'unknown',
+  'empty',
+  'low',
+  'medium',
+  'high',
+  'full',
+]);
+
+const needProfilePresetKeySchema = z.enum([
+  'wheelchair',
+  'family_with_child',
+  'ibd_urgency',
+  'no_code',
+  'single_user_privacy',
+  'custom',
+]);
+
+export const bathroomAttributeConfirmationSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  field_name: rawTextSchema,
+  field_value_snapshot: z.record(z.string(), jsonValueSchema).default({}),
+  source_type: bathroomAttributeConfirmationSourceTypeSchema,
+  source_user_id: z.string().nullable().default(null),
+  business_id: z.string().nullable().default(null),
+  confidence_score: z.number(),
+  last_confirmed_at: dateTimeStringSchema,
+  evidence_photo_url: z.string().nullable().default(null),
+  notes: z.string().nullable().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomNeedMetadataSchema = z.object({
+  bathroom_id: rawTextSchema,
+  has_toilet_paper: z.boolean().nullable().default(null),
+  has_soap: z.boolean().nullable().default(null),
+  has_hand_dryer: z.boolean().nullable().default(null),
+  has_paper_towels: z.boolean().nullable().default(null),
+  has_changing_table: z.boolean().nullable().default(null),
+  has_family_restroom: z.boolean().nullable().default(null),
+  is_gender_neutral: z.boolean().nullable().default(null),
+  is_single_user: z.boolean().nullable().default(null),
+  is_private_room: z.boolean().nullable().default(null),
+  stall_count: z.number().int().nonnegative().nullable().default(null),
+  privacy_level: bathroomNeedMetadataPrivacyLevelSchema.nullable().default(null),
+  access_type: bathroomNeedMetadataAccessTypeSchema.nullable().default(null),
+  code_required: z.boolean().nullable().default(null),
+  key_required: z.boolean().nullable().default(null),
+  customer_only: z.boolean().nullable().default(null),
+  ask_employee: z.boolean().nullable().default(null),
+  medical_urgency_friendly: z.boolean().nullable().default(null),
+  child_friendly: z.boolean().nullable().default(null),
+  outdoor_traveler_reliable: z.boolean().nullable().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomAccessibilityDetailsSchema = z.object({
+  bathroom_id: rawTextSchema,
+  wheelchair_accessible: z.boolean().nullable().default(null),
+  door_clear_width_inches: z.number().nullable().default(null),
+  turning_space_inches: z.number().nullable().default(null),
+  stall_width_inches: z.number().nullable().default(null),
+  stall_depth_inches: z.number().nullable().default(null),
+  has_grab_bars: z.boolean().nullable().default(null),
+  has_accessible_sink: z.boolean().nullable().default(null),
+  has_step_free_access: z.boolean().nullable().default(null),
+  has_power_door: z.boolean().nullable().default(null),
+  notes: z.string().nullable().default(null),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
+export const bathroomLiveStatusEventSchema = z.object({
+  id: rawTextSchema,
+  bathroom_id: rawTextSchema,
+  user_id: z.string().nullable().default(null),
+  status_type: bathroomLiveStatusEventTypeSchema,
+  status_value: rawTextSchema,
+  wait_minutes: z.number().int().nonnegative().max(180).nullable().default(null),
+  occupancy_level: bathroomOccupancyLevelSchema.nullable().default(null),
+  supplies_missing: z.array(z.string()).default([]),
+  reported_at: dateTimeStringSchema,
+  expires_at: dateTimeStringSchema,
+  confidence_score: z.number(),
+  evidence_photo_url: z.string().nullable().default(null),
+  created_at: dateTimeStringSchema,
+});
+
+export const bathroomCurrentLiveStatusSchema = bathroomLiveStatusEventSchema.extend({
+  minutes_since_report: z.number().int().nonnegative(),
+  summary_text: rawTextSchema,
+});
+
+export const savedNeedProfileSchema = z.object({
+  id: rawTextSchema,
+  user_id: rawTextSchema,
+  name: z.string().min(1).max(64),
+  preset_key: needProfilePresetKeySchema.nullable().default(null),
+  filters: z.record(z.string(), jsonValueSchema).default({}),
+  is_default: z.boolean(),
+  created_at: dateTimeStringSchema,
+  updated_at: dateTimeStringSchema,
+});
+
 export const notificationSettingsResultSchema = z.object({
   success: z.boolean(),
   error: z.string().optional(),

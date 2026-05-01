@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { CityBrowse, RecentSearches, SearchBar, SearchFilters, SearchResultsList } from '@/components/search';
+import { NeedProfileChips } from '@/components/NeedProfileChips';
 import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
@@ -328,6 +329,7 @@ export default function SearchTab() {
               onSubmitEditing={handleSubmitSearch}
               value={activeQuery}
             />
+            <NeedProfileChips isCompact />
             <SearchFilters />
           </View>
 

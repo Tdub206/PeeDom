@@ -34,7 +34,7 @@ export function EmergencyButton({
         : requiresAuthForUnlock
           ? 'Sign In'
           : isFreeLookupAvailable
-            ? '1 Free'
+            ? 'Go Now'
             : canUnlockWithPoints && isAdUnlockAvailable
               ? 'Unlock'
               : canUnlockWithPoints
@@ -46,7 +46,7 @@ export function EmergencyButton({
     : requiresAuthForUnlock
       ? 'Sign in to use emergency lookup and keep its free use tied to your account'
       : isFreeLookupAvailable
-        ? 'Emergency mode: use your free emergency lookup'
+        ? 'Emergency mode: find the nearest bathroom without an unlock'
         : canUnlockWithPoints && isAdUnlockAvailable
           ? `Emergency mode: choose between ${pointsUnlockCost} points or a rewarded unlock`
           : canUnlockWithPoints
