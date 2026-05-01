@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom Accessibility Layer
+-- StallPass Accessibility Layer
 -- 013_accessibility_layer.sql
 -- Adds persistent accessibility preferences and richer structured bathroom
 -- accessibility metadata on top of the existing JSONB model.

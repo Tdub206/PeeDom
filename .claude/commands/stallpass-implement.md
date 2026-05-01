@@ -1,4 +1,4 @@
-Implement the approved Pee-Dom task in the current repository.
+Implement the approved StallPass task in the current repository.
 
 Requirements:
 - preserve mobile architecture

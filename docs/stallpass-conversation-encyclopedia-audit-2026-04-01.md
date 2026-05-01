@@ -5,7 +5,7 @@ Date: 2026-04-01
 ## Scope
 
 - Source corpus: `thread_exports/parsed-dialogue/manifest.json`
-- Comparison target: the local working directory at `C:\Users\T\Desktop\PeeDom`
+- Comparison target: the local working directory at `C:\Users\T\Desktop\StallPass`
 - Validation target: current local scripts and reachable local services only
 - This audit uses the local directory, not GitHub branch state
 
@@ -358,10 +358,10 @@ This section summarizes every unique parsed conversation and whether it creates 
 - Main outcome: feature was analyzed as feasible, not shipped in that thread
 - Current repo parity: missing as a user-facing feature
 
-### 16. Define PeeDom core architect skill
+### 16. Define StallPass core architect skill
 
 - Nature: mixed meta plus shipping thread
-- Main outcome: PeeDom skill creation plus shipping sections around favorites and related surfaces
+- Main outcome: StallPass skill creation plus shipping sections around favorites and related surfaces
 - Current repo parity: favorites and associated UX are present
 
 ### 17. Confirm 15.5 upgrade details
@@ -412,7 +412,7 @@ This section summarizes every unique parsed conversation and whether it creates 
 - Main outcome: GitHub/local alignment
 - Current repo parity: not relevant to app-feature parity because this audit uses local files
 
-### 25. Export PeeDom threads to zip
+### 25. Export StallPass threads to zip
 
 - Nature: export/meta
 - Main outcome: transcript export packaging

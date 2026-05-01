@@ -7,7 +7,7 @@ const set: jest.MockedFunction<(key: string, value: unknown) => Promise<void>> =
 jest.mock('@/lib/storage', () => ({
   storage: {
     keys: {
-      SEARCH_HISTORY: '@peedom/search_history',
+      SEARCH_HISTORY: '@stallpass/search_history',
     },
     get,
     remove,
@@ -63,7 +63,7 @@ describe('search history storage', () => {
 
     expect(history[0]?.query).toBe('Pike Place');
     expect(history[0]?.result_count).toBe(7);
-    expect(set).toHaveBeenCalledWith('@peedom/search_history', history);
+    expect(set).toHaveBeenCalledWith('@stallpass/search_history', history);
   });
 
   it('forgets a query and persists the reduced history', async () => {
@@ -91,13 +91,13 @@ describe('search history storage', () => {
         result_count: 7,
       },
     ]);
-    expect(set).toHaveBeenCalledWith('@peedom/search_history', history);
+    expect(set).toHaveBeenCalledWith('@stallpass/search_history', history);
   });
 
   it('clears stored search history', async () => {
     const { clearStoredSearchHistory } = await import('@/lib/search-history');
     await clearStoredSearchHistory();
 
-    expect(remove).toHaveBeenCalledWith('@peedom/search_history');
+    expect(remove).toHaveBeenCalledWith('@stallpass/search_history');
   });
 });

@@ -4,7 +4,7 @@
 >
 > **Stack:** Fastify (Node/TS) + PostgreSQL 15+ with PostGIS + React Native (Expo SDK 54+) + TanStack Query v5 + Zustand
 >
-> **Repo:** `Tdub206/Pee-Dom` — monorepo: `frontend/` + `backend/`
+> **Repo:** `Tdub206/StallPass` — monorepo: `frontend/` + `backend/`
 >
 > **Domain:** `stallpass.org` | API: `api.stallpass.org`
 >

@@ -24,7 +24,7 @@ $(cat "$ROOT_DIR/CLAUDE.md")
 
 $(cat "$ROOT_DIR/AGENTS.md")
 
-Implement this Pee-Dom task in the current repository.
+Implement this StallPass task in the current repository.
 
 TASK:
 $(cat "$DOCS_DIR/AGENT_TASK.md")
@@ -52,7 +52,7 @@ claude "$IMPLEMENT_PROMPT"
 REVIEW_PROMPT=$(cat <<EOF
 $(cat "$ROOT_DIR/CODEX.md")
 
-Review the current git diff for Pee-Dom after implementation.
+Review the current git diff for StallPass after implementation.
 
 DIFF:
 $(changed_diff)

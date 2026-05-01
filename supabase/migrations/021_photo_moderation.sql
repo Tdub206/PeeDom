@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom photo moderation infrastructure
+-- StallPass photo moderation infrastructure
 -- 021_photo_moderation.sql
 --
 -- Adds a moderation pipeline for user-uploaded bathroom photos.

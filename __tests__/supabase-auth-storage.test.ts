@@ -51,7 +51,7 @@ describe('Supabase auth storage helpers', () => {
   });
 
   it('builds the default Supabase auth storage key', () => {
-    expect(buildSupabaseAuthStorageKey('https://peedom.supabase.co')).toBe('sb-peedom-auth-token');
+    expect(buildSupabaseAuthStorageKey('https://stallpass.supabase.co')).toBe('sb-stallpass-auth-token');
   });
 
   it('splits legacy session payloads into secure and user storage values', () => {
@@ -87,25 +87,25 @@ describe('Supabase auth storage helpers', () => {
   });
 
   it('persists auth session values in SecureStore only', async () => {
-    await supabaseAuthStorage.setItem('sb-peedom-auth-token', 'secure-session');
+    await supabaseAuthStorage.setItem('sb-stallpass-auth-token', 'secure-session');
 
-    expect(secureStoreMock.setItemAsync).toHaveBeenCalledWith('sb-peedom-auth-token', 'secure-session');
+    expect(secureStoreMock.setItemAsync).toHaveBeenCalledWith('sb-stallpass-auth-token', 'secure-session');
     expect(asyncStorageMock.setItem).not.toHaveBeenCalled();
-    expect(asyncStorageMock.removeItem).toHaveBeenCalledWith('sb-peedom-auth-token');
+    expect(asyncStorageMock.removeItem).toHaveBeenCalledWith('sb-stallpass-auth-token');
   });
 
   it('persists auth user records in SecureStore only', async () => {
-    await supabaseUserStorage.setItem('sb-peedom-auth-token-user', '{"user":{"id":"user-123"}}');
+    await supabaseUserStorage.setItem('sb-stallpass-auth-token-user', '{"user":{"id":"user-123"}}');
 
     expect(secureStoreMock.setItemAsync).toHaveBeenCalledWith(
-      'sb-peedom-auth-token-user',
+      'sb-stallpass-auth-token-user',
       '{"user":{"id":"user-123"}}'
     );
     expect(asyncStorageMock.setItem).not.toHaveBeenCalled();
   });
 
   it('migrates legacy AsyncStorage sessions into SecureStore', async () => {
-    const storageKey = 'sb-peedom-auth-token';
+    const storageKey = 'sb-stallpass-auth-token';
     const legacySessionValue = JSON.stringify({
       access_token: 'access-token',
       refresh_token: 'refresh-token',
@@ -154,8 +154,8 @@ describe('Supabase auth storage helpers', () => {
     secureStoreMock.setItemAsync.mockRejectedValueOnce(new Error('write failed'));
 
     try {
-      await expect(supabaseAuthStorage.setItem('sb-peedom-auth-token', 'secure-session')).rejects.toThrow(
-        'Unable to securely persist Supabase auth data for sb-peedom-auth-token.'
+      await expect(supabaseAuthStorage.setItem('sb-stallpass-auth-token', 'secure-session')).rejects.toThrow(
+        'Unable to securely persist Supabase auth data for sb-stallpass-auth-token.'
       );
       expect(asyncStorageMock.setItem).not.toHaveBeenCalled();
     } finally {

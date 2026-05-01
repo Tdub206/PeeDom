@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Map Surface
+-- StallPass Map Surface
 -- Adds cleanliness summaries to the public bathroom map/detail views.
 -- ============================================================================
 

@@ -21,7 +21,7 @@ repo_snapshot > "$SNAPSHOT"
 DEBUG_PROMPT=$(cat <<EOF
 $(cat "$ROOT_DIR/CLAUDE.md")
 
-Debug this Pee-Dom issue.
+Debug this StallPass issue.
 
 ISSUE:
 $ISSUE

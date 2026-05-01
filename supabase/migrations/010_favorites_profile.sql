@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom Favorites & Profile Surface
+-- StallPass Favorites & Profile Surface
 -- 010_favorites_profile.sql
 -- ============================================================================
 

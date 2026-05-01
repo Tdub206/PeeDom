@@ -1,7 +1,7 @@
 # StallPass Implementation Guide — Surgical Delta on Supabase
 
 > **Locked contract** for translating `STALLPASS_IMPLEMENTATION_GUIDE.md` onto the existing
-> Supabase-based PeeDom codebase. Option A (port to Supabase) + Option 2-a (extend, never
+> Supabase-based StallPass codebase. Option A (port to Supabase) + Option 2-a (extend, never
 > duplicate) + Option 3-a (direct `@supabase/supabase-js`, no new API wrapper). All
 > project-timeline language from the guide is disregarded. Functional time semantics
 > (rate limits, urgency 60-second window, hourly decay) are preserved.

@@ -1,4 +1,4 @@
-# PeeDom Repository Code Review
+# StallPass Repository Code Review
 
 Date: 2026-03-09
 Reviewer: Codex (architecture + quality pass)

@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Trust Engine
+-- StallPass Trust Engine
 -- Adds photo-proof metadata, durable verification point events, and
 -- trust-maintenance functions for bathroom access codes.
 -- ============================================================================

@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom profile account hardening
+-- StallPass profile account hardening
 -- 017_profile_account_hardening.sql
 -- ============================================================================
 

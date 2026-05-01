@@ -1,7 +1,7 @@
 /**
  * queue-storage.ts — Scoped Offline Queue Storage
  *
- * Storage key format: @peedom/offline_queue:<user_id>
+ * Storage key format: @stallpass/offline_queue:<user_id>
  *
  * Each user gets their own queue slot. This enforces the user_id scope rule:
  * a queued mutation may only execute for the same authenticated user that
@@ -37,7 +37,7 @@ export const QueuedMutationSchema = z.object({
 
 // ── Key helpers ───────────────────────────────────────────────────────────────
 
-const QUEUE_PREFIX = '@peedom/offline_queue';
+const QUEUE_PREFIX = '@stallpass/offline_queue';
 
 export function queueKey(userId: string): string {
   return `${QUEUE_PREFIX}:${userId}`;

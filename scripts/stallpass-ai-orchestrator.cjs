@@ -36,7 +36,7 @@ const WALK_EXCLUDED_DIRS = new Set([
   'dist',
   'build',
   'coverage',
-  'PeeDom-thread-export',
+  'StallPass-thread-export',
   'thread_exports',
 ]);
 

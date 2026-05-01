@@ -48,7 +48,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
         <View className="rounded-[28px] border border-surface-strong bg-surface-card p-6">
           <Text className="text-3xl font-black text-ink-900">Something broke at launch.</Text>
           <Text className="mt-3 text-base leading-6 text-ink-600">
-            Pee-Dom hit an unexpected client-side error. You can retry the screen without losing your place.
+            StallPass hit an unexpected client-side error. You can retry the screen without losing your place.
           </Text>
           {this.state.error?.message ? (
             <Text className="mt-4 rounded-2xl bg-surface-muted px-4 py-3 text-sm text-ink-700">

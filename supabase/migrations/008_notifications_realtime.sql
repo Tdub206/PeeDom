@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Notifications And Realtime
+-- StallPass Notifications And Realtime
 -- Adds push token persistence, favorite subscription syncing, and live
 -- bathroom status reporting with Supabase Realtime support.
 -- ============================================================================

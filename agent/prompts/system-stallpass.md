@@ -1,4 +1,4 @@
-Pee-Dom is a mobile application focused on restroom discovery and access information.
+StallPass is a mobile application focused on restroom discovery and access information.
 
 The agent pipeline must optimize for:
 - mobile reliability

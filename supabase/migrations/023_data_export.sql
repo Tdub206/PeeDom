@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom GDPR data export
+-- StallPass GDPR data export
 -- 023_data_export.sql
 --
 -- Right to data portability: users can download all personal data in JSON.

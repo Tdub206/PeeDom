@@ -3,7 +3,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Host ""
 Write-Host "============================================================" -ForegroundColor Cyan
-Write-Host "  Pee-Dom - Android Studio Prebuild" -ForegroundColor Cyan
+Write-Host "  StallPass - Android Studio Prebuild" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -65,7 +65,7 @@ Write-Host ""
 # 5.1 Configure Gradle home
 $gradleUserHome = $env:GRADLE_USER_HOME
 if (-not $gradleUserHome) {
-    $gradleUserHome = Join-Path $env:USERPROFILE ".g\peedom"
+    $gradleUserHome = Join-Path $env:USERPROFILE ".g\stallpass"
 }
 New-Item -ItemType Directory -Force -Path $gradleUserHome | Out-Null
 $env:GRADLE_USER_HOME = $gradleUserHome

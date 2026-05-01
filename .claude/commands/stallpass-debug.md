@@ -1,4 +1,4 @@
-Debug the reported Pee-Dom issue using repository context and recent changes.
+Debug the reported StallPass issue using repository context and recent changes.
 
 Requirements:
 - identify likely root cause

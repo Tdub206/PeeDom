@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Bathroom Contribution Hardening
+-- StallPass Bathroom Contribution Hardening
 -- Moves high-risk community writes behind SECURITY DEFINER functions so the
 -- client can no longer bypass validation or rate-limits with raw table writes.
 -- ============================================================================

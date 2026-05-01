@@ -1,6 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import { createStallPassStateStorage } from '@/lib/zustand-persist-storage';
 import {
   DEFAULT_SEARCH_DISCOVERY_FILTERS,
   SearchDiscoveryFilters,
@@ -85,8 +85,8 @@ export const useSearchStore = create<SearchStoreState>()(
         }),
     }),
     {
-      name: '@peedom/search-discovery',
-      storage: createJSONStorage(() => AsyncStorage),
+      name: '@stallpass/search-discovery',
+      storage: createJSONStorage(() => createStallPassStateStorage()),
       partialize: (state) => ({
         discoveryFilters: state.discoveryFilters,
       }),

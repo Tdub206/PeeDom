@@ -48,7 +48,7 @@ changed_diff() {
 write_task_doc() {
   local task="$1"
   cat > "$DOCS_DIR/AGENT_TASK.md" <<EOF
-# Pee-Dom Task
+# StallPass Task
 
 $task
 EOF

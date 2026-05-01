@@ -1,6 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import { createStallPassStateStorage } from '@/lib/zustand-persist-storage';
 import type { FavoriteToggleAction, FavoritesSortOption } from '@/types';
 
 interface OptimisticFavoriteState {
@@ -215,8 +215,8 @@ export const useFavoritesStore = create<FavoritesStoreState>()(
       isPending: (bathroomId) => Boolean(get().optimisticToggles[bathroomId]),
     }),
     {
-      name: '@peedom/favorites',
-      storage: createJSONStorage(() => AsyncStorage),
+      name: '@stallpass/favorites',
+      storage: createJSONStorage(() => createStallPassStateStorage()),
       partialize: (state) => ({
         ownerUserId: state.ownerUserId,
         sortBy: state.sortBy,

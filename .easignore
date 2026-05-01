@@ -59,7 +59,7 @@ ios/build/
 coverage/
 
 # Local archives, exports, and non-build assets
-PeeDom-thread-export/
+StallPass-thread-export/
 thread_exports/
 StallPass_App_Store_Assets/
 agent/

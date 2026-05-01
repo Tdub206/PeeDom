@@ -15,7 +15,7 @@ $(cat "$ROOT_DIR/CLAUDE.md")
 
 $(cat "$ROOT_DIR/AGENTS.md")
 
-Perform a launch-readiness check for Pee-Dom.
+Perform a launch-readiness check for StallPass.
 
 REPOSITORY SNAPSHOT:
 $(cat "$SNAPSHOT")

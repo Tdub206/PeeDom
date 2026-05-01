@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 const storageMap = new Map<string, string>();
+const previousNamespace = `@${['pee', 'dom'].join('')}/`;
 
 const asyncStorageMock = {
   getAllKeys: jest.fn(() => Promise.resolve([...storageMap.keys()])),
@@ -56,7 +57,8 @@ describe('offline queue manager', () => {
       user_id: 'user-b',
     };
 
-    storageMap.set('@peedom/offline_queue', JSON.stringify([userAMutation, userBMutation]));
+    const previousSharedQueueKey = `${previousNamespace}offline_queue`;
+    storageMap.set(previousSharedQueueKey, JSON.stringify([userAMutation, userBMutation]));
 
     const { getOfflineQueueStorageKey, offlineQueue } = await import('@/lib/offline-queue');
 
@@ -64,7 +66,8 @@ describe('offline queue manager', () => {
 
     expect(offlineQueue.getPending()).toEqual([userAMutation]);
     expect(JSON.parse(storageMap.get(getOfflineQueueStorageKey('user-a')) ?? '[]')).toEqual([userAMutation]);
-    expect(JSON.parse(storageMap.get('@peedom/offline_queue') ?? '[]')).toEqual([userBMutation]);
+    expect(storageMap.has(previousSharedQueueKey)).toBe(false);
+    expect(JSON.parse(storageMap.get('@stallpass/offline_queue') ?? '[]')).toEqual([userBMutation]);
 
     await offlineQueue.initialize('user-b');
 

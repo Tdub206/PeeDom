@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Realtime Channel Configuration
+-- StallPass Realtime Channel Configuration
 -- Ensures all user-facing realtime tables are published to supabase_realtime.
 -- Presence remains client-side only and does not require persistent tables.
 -- ============================================================================

@@ -165,7 +165,7 @@ function resolveGradleUserHome(env) {
     return env.GRADLE_USER_HOME;
   }
 
-  return path.join(env.USERPROFILE ?? os.homedir(), '.g', 'peedom');
+  return path.join(env.USERPROFILE ?? os.homedir(), '.g', 'stallpass');
 }
 
 function resolveAndroidStudioOptionsDirectories(env) {

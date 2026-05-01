@@ -11,14 +11,14 @@ These items were specifically discussed as things to implement (not moonshots) b
 are not present or only partially present in the current code.
 
 ### A1. AuthService Decomposition
-- **Discussed in**: Draft-auth-decomposition-spec, Draft-auth-refactor-spec, Define-PeeDom-core-architect-skill
+- **Discussed in**: Draft-auth-decomposition-spec, Draft-auth-refactor-spec, Define-StallPass-core-architect-skill
 - **What was planned**: Split monolithic `AuthContext.tsx` into `AuthService` singleton + `useAuthStore` (Zustand) + thin `AuthProvider`
 - **Current state**: AuthContext remains monolithic (~24KB). `useAuthStore` exists but auth logic is still in context.
 - **Impact**: Medium. Works as-is but harder to test and maintain.
 - **Decision needed**: Ship as-is or refactor before launch?
 
 ### A2. Mutation Registry
-- **Discussed in**: Define-PeeDom-core-architect-skill, Draft-auth-decomposition-spec
+- **Discussed in**: Define-StallPass-core-architect-skill, Draft-auth-decomposition-spec
 - **What was planned**: `src/lib/mutation-registry.ts` -- centralized registry of queueable mutations with Zod validators, executor functions, and query invalidation metadata
 - **Current state**: Only exists in `_preflight/` (old refactor bundle), not in active `src/`
 - **Impact**: Low. Individual hooks handle their own mutation logic. Registry would be a cleanup.
@@ -67,7 +67,7 @@ are not present or only partially present in the current code.
 - **Decision needed**: Ship without Google sync or finish wiring?
 
 ### A9. Premium Receipt Verification
-- **Discussed in**: Define-PeeDom-core-architect-skill
+- **Discussed in**: Define-StallPass-core-architect-skill
 - **What was planned**: `supabase/functions/verify-premium-receipt/` Edge Function to validate Apple/Google receipts
 - **Current state**: MISSING. No Edge Function for receipt verification.
 - **Impact**: HIGH if premium tier launches with real payments. Low if premium is free/invite-only at launch.

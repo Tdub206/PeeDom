@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom Business Notifications
+-- StallPass Business Notifications
 -- 027_business_notifications.sql
 -- ============================================================================
 

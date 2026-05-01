@@ -15,7 +15,7 @@ function LoadingScreenComponent({
       <View className="flex-1 justify-between px-6 py-10">
         <View className="gap-4">
           <View className="h-28 w-28 rounded-[32px] bg-brand-600/10" />
-          <Text className="text-4xl font-black tracking-tight text-ink-900">Pee-Dom</Text>
+          <Text className="text-4xl font-black tracking-tight text-ink-900">StallPass</Text>
           <Text className="max-w-[300px] text-base leading-6 text-ink-600">{message}</Text>
         </View>
         <View className="gap-4 rounded-[28px] border border-surface-strong bg-surface-card px-5 py-6">

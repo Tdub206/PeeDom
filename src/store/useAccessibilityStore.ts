@@ -1,6 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+import { createStallPassStateStorage } from '@/lib/zustand-persist-storage';
 import {
   AccessibilityPreferenceState,
   AccessibilityPreset,
@@ -107,8 +107,8 @@ export const useAccessibilityStore = create<AccessibilityStoreState>()(
         }),
     }),
     {
-      name: '@peedom/accessibility-preferences',
-      storage: createJSONStorage(() => AsyncStorage),
+      name: '@stallpass/accessibility-preferences',
+      storage: createJSONStorage(() => createStallPassStateStorage()),
       partialize: (state) => ({
         isAccessibilityMode: state.isAccessibilityMode,
         preferences: state.preferences,

@@ -27,7 +27,7 @@ $(cat "$ROOT_DIR/CLAUDE.md")
 
 $(cat "$ROOT_DIR/AGENTS.md")
 
-Create a repo-specific implementation plan for the following Pee-Dom task.
+Create a repo-specific implementation plan for the following StallPass task.
 
 TASK:
 $TASK
@@ -44,7 +44,7 @@ cat "$DOCS_DIR/AGENT_PLAN.md"
 CRITIQUE_PROMPT=$(cat <<EOF
 $(cat "$ROOT_DIR/CODEX.md")
 
-Critique this implementation plan for a mobile Expo/React Native app named Pee-Dom.
+Critique this implementation plan for a mobile Expo/React Native app named StallPass.
 
 PLAN:
 $(cat "$DOCS_DIR/AGENT_PLAN.md")
