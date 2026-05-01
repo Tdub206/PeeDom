@@ -1,4 +1,4 @@
-# PEE-DOM
+# StallPass
 ## Technical Requirement Document & Architecture Blueprint
 
 > **Version 1.0 · React Native / Expo SDK 54 / Supabase**
