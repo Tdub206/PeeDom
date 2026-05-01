@@ -43,6 +43,73 @@ export const updateBusinessBathroomSettingsSchema = z.object({
   is_locked: z.boolean(),
 });
 
+const nullableBooleanSchema = z.boolean().nullable();
+const nullablePositiveDimensionSchema = z
+  .number({ invalid_type_error: 'Enter a valid measurement.' })
+  .positive('Measurements must be greater than 0.')
+  .nullable();
+
+export const businessRestroomAccessTypeSchema = z.enum([
+  'unknown',
+  'public',
+  'customer_only',
+  'ask_employee',
+  'key_required',
+  'code_required',
+  'employee_only',
+]);
+
+export const businessRestroomPrivacyLevelSchema = z.enum([
+  'unknown',
+  'low',
+  'medium',
+  'high',
+  'single_user',
+]);
+
+export const updateBusinessRestroomMetadataSchema = z.object({
+  bathroom_id: z.string().uuid('Select a valid bathroom before saving restroom metadata.'),
+  has_toilet_paper: nullableBooleanSchema,
+  has_soap: nullableBooleanSchema,
+  has_hand_dryer: nullableBooleanSchema,
+  has_paper_towels: nullableBooleanSchema,
+  has_changing_table: nullableBooleanSchema,
+  has_family_restroom: nullableBooleanSchema,
+  is_gender_neutral: nullableBooleanSchema,
+  is_single_user: nullableBooleanSchema,
+  is_private_room: nullableBooleanSchema,
+  stall_count: z
+    .number({ invalid_type_error: 'Stall count must be a whole number.' })
+    .int('Stall count must be a whole number.')
+    .nonnegative('Stall count cannot be negative.')
+    .nullable(),
+  privacy_level: businessRestroomPrivacyLevelSchema.nullable(),
+  access_type: businessRestroomAccessTypeSchema.nullable(),
+  code_required: nullableBooleanSchema,
+  key_required: nullableBooleanSchema,
+  customer_only: nullableBooleanSchema,
+  ask_employee: nullableBooleanSchema,
+  medical_urgency_friendly: nullableBooleanSchema,
+  child_friendly: nullableBooleanSchema,
+  outdoor_traveler_reliable: nullableBooleanSchema,
+  wheelchair_accessible: nullableBooleanSchema,
+  door_clear_width_inches: nullablePositiveDimensionSchema,
+  turning_space_inches: nullablePositiveDimensionSchema,
+  stall_width_inches: nullablePositiveDimensionSchema,
+  stall_depth_inches: nullablePositiveDimensionSchema,
+  has_grab_bars: nullableBooleanSchema,
+  has_accessible_sink: nullableBooleanSchema,
+  has_step_free_access: nullableBooleanSchema,
+  has_power_door: nullableBooleanSchema,
+  accessibility_notes: z
+    .string()
+    .trim()
+    .max(1000, 'Keep accessibility notes under 1000 characters.')
+    .nullable(),
+});
+
+export type UpdateBusinessRestroomMetadataInput = z.infer<typeof updateBusinessRestroomMetadataSchema>;
+
 // Matches the mobile `business_coupons` table + `create_business_coupon`
 // RPC shape so both surfaces stay wire-compatible. The DB constraints
 // come from supabase/migrations/033_coupon_system.sql.

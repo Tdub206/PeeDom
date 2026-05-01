@@ -14,9 +14,14 @@ import {
   Tag,
   Users,
 } from 'lucide-react';
-import { getApprovedLocationById, type ApprovedLocation } from '@/lib/business/queries';
+import {
+  getApprovedLocationById,
+  getBusinessRestroomMetadata,
+  type ApprovedLocation,
+} from '@/lib/business/queries';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { PhotoUploadForm } from './photo-upload-form';
+import { RestroomMetadataForm } from './restroom-metadata-form';
 import { VisibilitySettingsForm } from './visibility-settings-form';
 
 type PageParams = { id: string };
@@ -92,6 +97,12 @@ export default async function LocationDetailPage({
   if (!location) {
     notFound();
   }
+
+  const { metadata: restroomMetadata, error: metadataError } = await getBusinessRestroomMetadata(
+    supabase,
+    user.id,
+    location.bathroom_id
+  );
 
   const { data: photosData, error: photosError } = await supabase
     .from('bathroom_photos')
@@ -185,6 +196,24 @@ export default async function LocationDetailPage({
           showOnFreeMap={location.show_on_free_map}
           isLocationVerified={location.is_location_verified}
           isLocked={location.is_locked ?? false}
+        />
+      </section>
+
+      <section className="mt-10">
+        <SectionHeader
+          eyebrow="Verified restroom metadata"
+          title="Trust-critical details"
+          description="Publish owner-verified supplies, access, privacy, family, urgency, and accessibility facts."
+        />
+        {metadataError ? (
+          <div className="mb-4 rounded-2xl border border-warning/20 bg-warning/10 px-4 py-3 text-sm text-warning">
+            {metadataError}
+          </div>
+        ) : null}
+        <RestroomMetadataForm
+          bathroomId={location.bathroom_id}
+          initialNeedMetadata={restroomMetadata.needMetadata}
+          initialAccessibilityDetails={restroomMetadata.accessibilityDetails}
         />
       </section>
 
