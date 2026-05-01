@@ -1,0 +1,24 @@
+appId: com.stallpass.app
+---
+- launchApp:
+    clearState: true
+    permissions:
+      all: allow
+- setLocation:
+    latitude: 40.758
+    longitude: -73.9855
+- extendedWaitUntil:
+    visible: "Search bathrooms or addresses..."
+    timeout: 30000
+- assertVisible: "Need profiles"
+- openLink: "stallpass://modal/city-packs"
+- extendedWaitUntil:
+    visible: "Offline City Packs"
+    timeout: 15000
+- assertVisible: "Download bathrooms for offline access."
+- back
+- openLink: "stallpass://modal/route-bathrooms"
+- extendedWaitUntil:
+    visible: "Bathrooms Along Route"
+    timeout: 15000
+- assertVisible: "Search destination address"

@@ -1,11 +1,19 @@
-**PeeDom**
+**StallPass**
 
 **MASTER LAUNCH MANIFEST**
 
-March 12, 2026
-Repo-verified on this workspace
+May 1, 2026
+Repo-verified on this workspace for the restroom-intelligence conversion checkpoint
 
-This document is the canonical reference for PeeDom. If a pasted status block or chat summary disagrees with this file, this file wins.
+This document is the canonical reference for StallPass. If a pasted status block or chat summary disagrees with this file, this file wins.
+
+Current checkpoint:
+
+1. Supabase migrations `054_restroom_intelligence_layer.sql`, `055_entitlement_idempotency_and_restroom_rls.sql`, and `056_business_restroom_metadata_analytics.sql` define the restroom-intelligence, entitlement idempotency, business metadata, and analytics contracts.
+2. Mobile surfaces now include trust/freshness labels, saved need profiles, field-level correction entry points, live-status summaries, route destination search, scalable Android clustering behavior, and safer emergency/code unlock flows.
+3. Business Web exposes owner-verified restroom metadata controls and validates the restored dashboard analytics contract.
+4. CI now includes business-web dependency install, typecheck, lint, Jest, Expo config, Android prebuild drift, Android debug build, and Maestro flow inventory checks.
+5. Maestro device-flow assets live under `e2e/maestro` for permission denial, map smoke, route search, city-pack, offline, deep-link, and emergency smoke validation.
 
 | Section | Title |
 | :---- | :---- |
@@ -23,10 +31,10 @@ This document is the canonical reference for PeeDom. If a pasted status block or
 
 | File / Area | Status |
 | :---- | :---- |
-| [app.config.ts](C:/Users/T/Desktop/PeeDom/app.config.ts) | Present and active. Expo config is driven from this file. |
-| [package.json](C:/Users/T/Desktop/PeeDom/package.json) | Present. Required runtime packages for the current implementation are installed. |
+| [app.config.ts](C:/Users/T/Desktop/StallPass/app.config.ts) | Present and active. Expo config is driven from this file. |
+| [package.json](C:/Users/T/Desktop/StallPass/package.json) | Present. Required runtime packages for the current implementation are installed. |
 | `assets/icon.png`, `assets/adaptive-icon.png`, `assets/splash.png` | Present. Placeholder build assets exist and unblock Expo prebuild. Final branded assets are still a release task. |
-| [eas.json](C:/Users/T/Desktop/PeeDom/eas.json) | Present. EAS profiles exist. |
+| [eas.json](C:/Users/T/Desktop/StallPass/eas.json) | Present. EAS profiles exist. |
 | `android/` | Present and supported as the tracked native Android Studio surface. Regenerate it with `npm.cmd run android:prebuild` when Expo config, plugins, or native-capable dependencies change. |
 | `.env` variants | Present. Repo standard is `EXPO_PUBLIC_SUPABASE_ANON_KEY`. |
 
@@ -34,49 +42,49 @@ This document is the canonical reference for PeeDom. If a pasted status block or
 
 | Route / Layer | Status |
 | :---- | :---- |
-| [app/_layout.tsx](C:/Users/T/Desktop/PeeDom/app/_layout.tsx) | Wired with SplashScreen, providers, ErrorBoundary, OfflineBanner, and app shell. |
-| [app/(auth)/login.tsx](C:/Users/T/Desktop/PeeDom/app/(auth)/login.tsx) | Implemented. Zod validation, loading state, error handling. |
-| [app/(auth)/register.tsx](C:/Users/T/Desktop/PeeDom/app/(auth)/register.tsx) | Implemented. Zod validation, loading state, error handling. |
-| [app/bathroom/[id].tsx](C:/Users/T/Desktop/PeeDom/app/bathroom/[id].tsx) | Implemented detail route. |
-| [app/(tabs)/index.tsx](C:/Users/T/Desktop/PeeDom/app/(tabs)/index.tsx) | Implemented map screen. Not a Phase 1 scaffold anymore. |
-| [app/(tabs)/search.tsx](C:/Users/T/Desktop/PeeDom/app/(tabs)/search.tsx) | Implemented search screen. Not a Phase 1 scaffold anymore. |
-| [app/(tabs)/favorites.tsx](C:/Users/T/Desktop/PeeDom/app/(tabs)/favorites.tsx) | Implemented favorites screen. Not a Phase 1 scaffold anymore. |
-| [app/(tabs)/profile.tsx](C:/Users/T/Desktop/PeeDom/app/(tabs)/profile.tsx) | Partial. Auth-aware, but not full product-grade profile management yet. |
-| `app/modal/*` | Report, submit-code, add-bathroom, and claim-business modals are still pending. |
+| [app/_layout.tsx](C:/Users/T/Desktop/StallPass/app/_layout.tsx) | Wired with SplashScreen, providers, ErrorBoundary, OfflineBanner, and app shell. |
+| [app/(auth)/login.tsx](C:/Users/T/Desktop/StallPass/app/(auth)/login.tsx) | Implemented. Zod validation, loading state, error handling. |
+| [app/(auth)/register.tsx](C:/Users/T/Desktop/StallPass/app/(auth)/register.tsx) | Implemented. Zod validation, loading state, error handling. |
+| [app/bathroom/[id].tsx](C:/Users/T/Desktop/StallPass/app/bathroom/[id].tsx) | Implemented detail route. |
+| [app/(tabs)/index.tsx](C:/Users/T/Desktop/StallPass/app/(tabs)/index.tsx) | Implemented map screen. Not a Phase 1 scaffold anymore. |
+| [app/(tabs)/search.tsx](C:/Users/T/Desktop/StallPass/app/(tabs)/search.tsx) | Implemented search screen. Not a Phase 1 scaffold anymore. |
+| [app/(tabs)/favorites.tsx](C:/Users/T/Desktop/StallPass/app/(tabs)/favorites.tsx) | Implemented favorites screen. Not a Phase 1 scaffold anymore. |
+| [app/(tabs)/profile.tsx](C:/Users/T/Desktop/StallPass/app/(tabs)/profile.tsx) | Partial. Auth-aware, but not full product-grade profile management yet. |
+| `app/modal/*` | City packs, live status, route bathrooms, report/edit, submit-code, add-bathroom, and claim-business modal routes are implemented as the current source of truth. |
 
 ## **1.3 Supporting Modules**
 
 | File / Area | Status |
 | :---- | :---- |
-| [src/lib/supabase.ts](C:/Users/T/Desktop/PeeDom/src/lib/supabase.ts) | Single lazy fail-closed Supabase client. |
-| [src/contexts/AuthContext.tsx](C:/Users/T/Desktop/PeeDom/src/contexts/AuthContext.tsx) | Current source of truth for auth state, in-memory guest-intent replay, and `refreshUser()` demotion behavior. |
-| [src/contexts/LocationContext.tsx](C:/Users/T/Desktop/PeeDom/src/contexts/LocationContext.tsx) | Implemented. |
-| [src/hooks/useLocation.ts](C:/Users/T/Desktop/PeeDom/src/hooks/useLocation.ts) | Implemented. |
-| [src/hooks/useBathrooms.ts](C:/Users/T/Desktop/PeeDom/src/hooks/useBathrooms.ts) | Implemented. |
-| [src/hooks/useFavorites.ts](C:/Users/T/Desktop/PeeDom/src/hooks/useFavorites.ts) | Implemented. |
-| [src/hooks/useOfflineSync.ts](C:/Users/T/Desktop/PeeDom/src/hooks/useOfflineSync.ts) | Implemented. |
-| [src/api/favorites.ts](C:/Users/T/Desktop/PeeDom/src/api/favorites.ts) | Implemented. |
-| [src/components/BathroomCard.tsx](C:/Users/T/Desktop/PeeDom/src/components/BathroomCard.tsx) | Implemented. |
-| [src/components/MapView.tsx](C:/Users/T/Desktop/PeeDom/src/components/MapView.tsx) | Implemented. |
-| [src/components/BottomSheet.tsx](C:/Users/T/Desktop/PeeDom/src/components/BottomSheet.tsx) | Implemented. |
-| [src/components/OfflineBanner.tsx](C:/Users/T/Desktop/PeeDom/src/components/OfflineBanner.tsx) | Implemented. |
-| [src/components/CodeBadge.tsx](C:/Users/T/Desktop/PeeDom/src/components/CodeBadge.tsx) | Implemented. |
-| [src/constants/colors.ts](C:/Users/T/Desktop/PeeDom/src/constants/colors.ts) | Present. |
-| [src/constants/routes.ts](C:/Users/T/Desktop/PeeDom/src/constants/routes.ts) | Present. |
-| [supabase/migrations/002_functions.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/002_functions.sql) | Present. Includes `get_bathrooms_near` and `profiles.role` immutability guard. |
-| [src/lib/return-intent.ts](C:/Users/T/Desktop/PeeDom/src/lib/return-intent.ts) | Intentionally absent. Guest-intent replay now lives in memory inside AuthContext and must stay there. |
+| [src/lib/supabase.ts](C:/Users/T/Desktop/StallPass/src/lib/supabase.ts) | Single lazy fail-closed Supabase client. |
+| [src/contexts/AuthContext.tsx](C:/Users/T/Desktop/StallPass/src/contexts/AuthContext.tsx) | Current source of truth for auth state, in-memory guest-intent replay, and `refreshUser()` demotion behavior. |
+| [src/contexts/LocationContext.tsx](C:/Users/T/Desktop/StallPass/src/contexts/LocationContext.tsx) | Implemented. |
+| [src/hooks/useLocation.ts](C:/Users/T/Desktop/StallPass/src/hooks/useLocation.ts) | Implemented. |
+| [src/hooks/useBathrooms.ts](C:/Users/T/Desktop/StallPass/src/hooks/useBathrooms.ts) | Implemented. |
+| [src/hooks/useFavorites.ts](C:/Users/T/Desktop/StallPass/src/hooks/useFavorites.ts) | Implemented. |
+| [src/hooks/useOfflineSync.ts](C:/Users/T/Desktop/StallPass/src/hooks/useOfflineSync.ts) | Implemented. |
+| [src/api/favorites.ts](C:/Users/T/Desktop/StallPass/src/api/favorites.ts) | Implemented. |
+| [src/components/BathroomCard.tsx](C:/Users/T/Desktop/StallPass/src/components/BathroomCard.tsx) | Implemented. |
+| [src/components/MapView.tsx](C:/Users/T/Desktop/StallPass/src/components/MapView.tsx) | Implemented. |
+| [src/components/BottomSheet.tsx](C:/Users/T/Desktop/StallPass/src/components/BottomSheet.tsx) | Implemented. |
+| [src/components/OfflineBanner.tsx](C:/Users/T/Desktop/StallPass/src/components/OfflineBanner.tsx) | Implemented. |
+| [src/components/CodeBadge.tsx](C:/Users/T/Desktop/StallPass/src/components/CodeBadge.tsx) | Implemented. |
+| [src/constants/colors.ts](C:/Users/T/Desktop/StallPass/src/constants/colors.ts) | Present. |
+| [src/constants/routes.ts](C:/Users/T/Desktop/StallPass/src/constants/routes.ts) | Present. |
+| [supabase/migrations/002_functions.sql](C:/Users/T/Desktop/StallPass/supabase/migrations/002_functions.sql) | Present. Includes `get_bathrooms_near` and `profiles.role` immutability guard. |
+| [src/lib/return-intent.ts](C:/Users/T/Desktop/StallPass/src/lib/return-intent.ts) | Intentionally absent. Guest-intent replay now lives in memory inside AuthContext and must stay there. |
 
 # **2. Verification Snapshot**
 
-Verified on March 12, 2026 from this workspace.
-
-Local shell note: this PowerShell environment blocks `npm.ps1` and `npx.ps1`, so validation was run with `npm.cmd` and `npx.cmd`.
+Verified on May 1, 2026 from this workspace.
 
 | Command | Result |
 | :---- | :---- |
-| `npm.cmd run type-check` | PASS |
-| `npm.cmd run lint` | PASS |
-| `npm.cmd test -- --runInBand` | PASS |
+| `npm run type-check` | PASS |
+| `npm run lint` | PASS |
+| `npm test -- --runInBand` | PASS, 72 suites / 350 tests |
+| `npm run typecheck` in `apps/business-web` | PASS |
+| `npm run lint` in `apps/business-web` | PASS |
 | `npx.cmd expo config --type public` | PASS |
 | `npm.cmd run android:prebuild` | PASS |
 | `npm.cmd run android:assembleDebug:emulator` | PASS |
@@ -85,11 +93,11 @@ Local shell note: this PowerShell environment blocks `npm.ps1` and `npx.ps1`, so
 
 | Test File | Status |
 | :---- | :---- |
-| [__tests__/validate.test.ts](C:/Users/T/Desktop/PeeDom/__tests__/validate.test.ts) | Passing |
-| [__tests__/navigation.test.ts](C:/Users/T/Desktop/PeeDom/__tests__/navigation.test.ts) | Passing |
-| [__tests__/queued-mutations.test.ts](C:/Users/T/Desktop/PeeDom/__tests__/queued-mutations.test.ts) | Passing |
-| [__tests__/bathroom-utils.test.ts](C:/Users/T/Desktop/PeeDom/__tests__/bathroom-utils.test.ts) | Passing |
-| [__tests__/runtime-guards.test.ts](C:/Users/T/Desktop/PeeDom/__tests__/runtime-guards.test.ts) | Passing |
+| [__tests__/validate.test.ts](C:/Users/T/Desktop/StallPass/__tests__/validate.test.ts) | Passing |
+| [__tests__/navigation.test.ts](C:/Users/T/Desktop/StallPass/__tests__/navigation.test.ts) | Passing |
+| [__tests__/queued-mutations.test.ts](C:/Users/T/Desktop/StallPass/__tests__/queued-mutations.test.ts) | Passing |
+| [__tests__/bathroom-utils.test.ts](C:/Users/T/Desktop/StallPass/__tests__/bathroom-utils.test.ts) | Passing |
+| [__tests__/runtime-guards.test.ts](C:/Users/T/Desktop/StallPass/__tests__/runtime-guards.test.ts) | Passing |
 
 # **3. Active Blockers**
 
@@ -112,7 +120,7 @@ Recommendation:
 
 1. Treat dependency alignment as a separate upgrade track, not as a simple pre-Phase-4 package-install task.
 2. Do not blindly run `expo install` across the whole drift list under the current pinned architecture.
-3. Decide explicitly whether PeeDom is staying on the current validated stack or upgrading to the newer Expo 54 ecosystem that `--check` expects.
+3. Decide explicitly whether StallPass is staying on the current validated stack or upgrading to the newer Expo 54 ecosystem that `--check` expects.
 
 ## **3.2 Local Android Build Environment**
 
@@ -135,7 +143,7 @@ The full multi-ABI `assembleDebug` build is significantly slower on this Windows
 
 ## **3.3 Release Automation**
 
-The repo now has baseline GitHub mobile verification CI in [.github/workflows/mobile-verify.yml](C:/Users/T/Desktop/PeeDom/.github/workflows/mobile-verify.yml).
+The repo now has baseline GitHub mobile verification CI in [.github/workflows/mobile-verify.yml](C:/Users/T/Desktop/StallPass/.github/workflows/mobile-verify.yml).
 
 What still remains for full mobile CI/CD:
 
@@ -145,12 +153,7 @@ What still remains for full mobile CI/CD:
 
 ## **3.4 Device Verification Gap**
 
-The repo implementation exists for map, location, search, favorites, and offline sync, but it still lacks verified device-level confirmation for:
-
-1. Android location permission flow
-2. Android map rendering
-3. Offline favorite replay on a real reconnect event
-4. iOS parity for location and map behavior
+Maestro flow assets now exist under `e2e/maestro` for permission denial, map smoke, city packs, route search, offline/deep-link smoke, and emergency entry. These flows still need to be executed on real Android and iOS targets before release sign-off.
 
 # **4. Architecture Contracts**
 
@@ -164,7 +167,7 @@ The repo implementation exists for map, location, search, favorites, and offline
 
 | Contract | Rule |
 | :---- | :---- |
-| Single client | Only [src/lib/supabase.ts](C:/Users/T/Desktop/PeeDom/src/lib/supabase.ts) may create the client. |
+| Single client | Only [src/lib/supabase.ts](C:/Users/T/Desktop/StallPass/src/lib/supabase.ts) may create the client. |
 | States | `BOOTSTRAPPING`, `GUEST`, `SESSION_RECOVERY`, `AUTHENTICATED_USER`, `AUTHENTICATED_BUSINESS`, `AUTHENTICATED_ADMIN`, `SESSION_INVALID` |
 | Splash | Splash may hide only after the app exits `BOOTSTRAPPING`. |
 | `refreshUser()` | Must demote to `GUEST` on any failure. |
@@ -187,7 +190,7 @@ The repo implementation exists for map, location, search, favorites, and offline
 | Contract | Rule |
 | :---- | :---- |
 | Public bathroom reads | Must respect public views and RLS |
-| `profiles.role` | Immutable from client; guarded in [002_functions.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/002_functions.sql) |
+| `profiles.role` | Immutable from client; guarded in [002_functions.sql](C:/Users/T/Desktop/StallPass/supabase/migrations/002_functions.sql) |
 | Client secrets | Never use service-role keys in client code |
 | Auth replay storage | Do not recreate persisted return-intent storage |
 
@@ -200,18 +203,20 @@ The repo implementation exists for map, location, search, favorites, and offline
 | Phase 1 | Complete |
 | Phase 2 | Complete |
 | Phase 3 | Complete |
+| Phase 4 | Complete for business-web metadata controls and analytics foundations |
+| Phase 5 | In progress: CI/docs/coverage assets added; device execution remains pending |
 
 ## **5.2 Current Reality**
 
-Phase 4 is not "not started". The repo already contains the core Phase 4 implementation for map, search, favorites, and location.
+Phase 4 is not "not started". The repo contains the core Phase 4 implementation for map, search, favorites, location, business-web verified restroom metadata controls, and analytics foundations.
 
-What is true as of March 11, 2026:
+What is true as of May 1, 2026:
 
 1. The major Phase 4 screens and supporting hooks/components exist in code.
-2. The repo passes `npm.cmd run check-deps`, `npx.cmd expo config --type public`, `npm.cmd run lint`, `npm.cmd run type-check`, and `npm.cmd test`.
+2. The repo passes `npm run lint`, `npm run type-check`, `npm test -- --runInBand`, `apps/business-web` typecheck, and `apps/business-web` lint.
 3. Local Android native build verification now passes through the tracked Android Studio surface with `npm.cmd run android:prebuild` and `npm.cmd run android:assembleDebug:emulator`.
-4. Dependency drift is resolved in this workspace after aligning the Expo SDK 54 companion package set and declaring Zustand explicitly.
-5. Baseline GitHub mobile verification CI now exists; authenticated EAS build and submit automation is still pending.
+4. Baseline GitHub mobile verification CI now includes root tests, business-web checks, Expo config, Android prebuild drift, Android debug build, and Maestro flow inventory.
+5. Authenticated EAS build and submit automation is still pending.
 
 ## **5.3 Do Not Reintroduce Old Assumptions**
 
@@ -230,9 +235,9 @@ The following old assumptions are now false and must not be copied back into sta
 These are safe to do next without forcing a stack upgrade:
 
 1. Add authenticated EAS build and submit automation once Expo GitHub App / `EXPO_TOKEN` / project linkage are configured
-2. Add screen-level integration coverage for auth replay and offline sync
-3. Verify [002_functions.sql](C:/Users/T/Desktop/PeeDom/supabase/migrations/002_functions.sql) is applied in the target Supabase project
-4. Device-test the existing Phase 4 flows now that Android local tooling is available again
+2. Execute and harden the Maestro flows in `e2e/maestro` on Android and iOS targets
+3. Verify [002_functions.sql](C:/Users/T/Desktop/StallPass/supabase/migrations/002_functions.sql) is applied in the target Supabase project
+4. Add CI execution for Maestro once a device runner or Maestro Cloud credentials are configured
 5. Replace temporary app art with final branded assets before store submission
 
 ## **6.2 Work That Needs Explicit Approval**
@@ -248,8 +253,8 @@ These are not safe "background fixes" and should be treated as deliberate tracks
 | Area | Status |
 | :---- | :---- |
 | Android local build | Verified locally through Android Studio / emulator ABI debug build |
-| Device validation | Pending |
-| CI/CD | Baseline GitHub verification added; authenticated EAS build and submit automation pending |
+| Device validation | Maestro flow assets added; execution pending |
+| CI/CD | Baseline GitHub verification plus business-web checks added; authenticated EAS build, EAS submit, and device-flow execution pending |
 | Store metadata | Pending |
 | Final art | Pending |
 | Screen integration tests | Pending |
@@ -259,14 +264,14 @@ These are not safe "background fixes" and should be treated as deliberate tracks
 Use this exact block for future coding sessions:
 
 SYSTEM: ACTIVATE [BUILDER_PRIME_MODE]
-Project: Pee-Dom (bathroom-finder, iOS + Android)
-Repo: Tdub206/Pee-Dom
+Project: StallPass (bathroom-finder, iOS + Android)
+Repo: Tdub206/StallPass
 Stack: React 19.1.0, React Native 0.81.5, Expo SDK 54, Expo Router v6, TypeScript strict, NativeWind v4, Supabase (PostgreSQL + PostGIS + Auth), TanStack Query v5, AsyncStorage
 STATUS:
 - Phase 1/2/3: complete.
-- Phase 4 repo implementation exists for map, search, favorites, and location.
-- March 11, 2026 verification in this workspace: `npm.cmd run check-deps`, `npx.cmd expo config --type public`, `npm.cmd run lint`, `npm.cmd run type-check`, and `npm.cmd test` all pass.
-- Active blockers: local Android SDK/adb missing, device-level verification still pending, authenticated EAS build or submit automation pending, final store metadata and art still pending.
+- Phase 4 repo implementation exists for map, search, favorites, location, business-web verified metadata controls, and analytics foundations.
+- May 1, 2026 verification in this workspace: `npm run lint`, `npm run type-check`, `npm test -- --runInBand`, `apps/business-web` typecheck, and `apps/business-web` lint all pass.
+- Active blockers: device-level Maestro execution still pending, authenticated EAS build or submit automation pending, final store metadata and art still pending.
 THE 3 LAWS:
 1. Pre-Flight: simulate the full dependency graph before writing.
 2. Native Purity: banned web primitives stay banned. Use React Native primitives and `Alert.alert()`.

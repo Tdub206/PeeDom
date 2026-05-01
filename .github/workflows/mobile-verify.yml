@@ -60,6 +60,21 @@ jobs:
       - name: Run tests
         run: npm test -- --runInBand
 
+      - name: Install business web dependencies
+        working-directory: apps/business-web
+        run: npm ci
+
+      - name: Business web type check
+        working-directory: apps/business-web
+        run: npm run typecheck
+
+      - name: Business web lint
+        working-directory: apps/business-web
+        run: npm run lint
+
+      - name: Validate Maestro flow inventory
+        run: test -n "$(find e2e/maestro -name '*.yaml' -print -quit)"
+
       - name: Regenerate Android project
         run: npm run android:prebuild
 

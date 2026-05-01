@@ -1,0 +1,23 @@
+appId: com.stallpass.app
+---
+- launchApp:
+    clearState: false
+    permissions:
+      all: allow
+- extendedWaitUntil:
+    visible: "Search bathrooms or addresses..."
+    timeout: 30000
+- setAirplaneMode:
+    value: Enable
+- openLink: "stallpass://modal/city-packs"
+- extendedWaitUntil:
+    visible: "Offline City Packs"
+    timeout: 15000
+- back
+- setAirplaneMode:
+    value: Disable
+- openLink: "stallpass://modal/route-bathrooms"
+- extendedWaitUntil:
+    visible: "Bathrooms Along Route"
+    timeout: 15000
+- back
