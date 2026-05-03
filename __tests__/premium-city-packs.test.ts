@@ -20,6 +20,7 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
 }));
 
 import { premiumCityPackStorage } from '@/lib/premium-city-packs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { PremiumCityPackManifest, Database } from '@/types';
 
 type BathroomRow = Database['public']['Views']['v_bathroom_detail_public']['Row'];
@@ -102,9 +103,61 @@ const bathroomRow: BathroomRow = {
   imported_location_needs_review: false,
 };
 
+const portlandCityPackManifest: PremiumCityPackManifest = {
+  slug: 'portland-or-us',
+  city: 'Portland',
+  state: 'OR',
+  country_code: 'US',
+  bathroom_count: 1,
+  center_latitude: 45.5152,
+  center_longitude: -122.6784,
+  min_latitude: 45.5,
+  max_latitude: 45.53,
+  min_longitude: -122.7,
+  max_longitude: -122.65,
+  latest_bathroom_update_at: '2026-03-19T10:00:00.000Z',
+  latest_code_verified_at: '2026-03-19T09:00:00.000Z',
+};
+
+const portlandBathroomRow: BathroomRow = {
+  ...bathroomRow,
+  id: 'bathroom-2',
+  place_name: 'Rose Garden Restroom',
+  address_line1: '400 Rose Ave',
+  city: 'Portland',
+  state: 'OR',
+  postal_code: '97205',
+  latitude: 45.5152,
+  longitude: -122.6784,
+};
+
+const defaultFilters = {
+  isAccessible: null,
+  isLocked: null,
+  isCustomerOnly: null,
+  openNow: null,
+  noCodeRequired: null,
+  recentlyVerifiedOnly: null,
+  hasChangingTable: null,
+  isFamilyRestroom: null,
+  requireGrabBars: null,
+  requireAutomaticDoor: null,
+  requireGenderNeutral: null,
+  minDoorWidth: null,
+  minStallWidth: null,
+  prioritizeAccessible: null,
+  hideNonAccessible: null,
+  minCleanlinessRating: null,
+};
+
+function getCurrentPackStorageKey(slug: string): string {
+  return `@stallpass/premium_city_pack:${slug}`;
+}
+
 describe('premium city pack storage', () => {
   beforeEach(async () => {
     storageState.clear();
+    jest.clearAllMocks();
   });
 
   it('saves and lists downloaded city packs', async () => {
@@ -127,22 +180,7 @@ describe('premium city pack storage', () => {
         longitudeDelta: 0.03,
       },
       {
-        isAccessible: null,
-        isLocked: null,
-        isCustomerOnly: null,
-        openNow: null,
-        noCodeRequired: null,
-        recentlyVerifiedOnly: null,
-        hasChangingTable: null,
-        isFamilyRestroom: null,
-        requireGrabBars: null,
-        requireAutomaticDoor: null,
-        requireGenderNeutral: null,
-        minDoorWidth: null,
-        minStallWidth: null,
-        prioritizeAccessible: null,
-        hideNonAccessible: null,
-        minCleanlinessRating: null,
+        ...defaultFilters,
       }
     );
 
@@ -156,22 +194,9 @@ describe('premium city pack storage', () => {
     const result = await premiumCityPackStorage.searchBathrooms({
       query: 'central',
       filters: {
-        isAccessible: null,
-        isLocked: null,
-        isCustomerOnly: null,
-        openNow: null,
-        noCodeRequired: null,
+        ...defaultFilters,
         recentlyVerifiedOnly: true,
         hasChangingTable: true,
-        isFamilyRestroom: null,
-        requireGrabBars: null,
-        requireAutomaticDoor: null,
-        requireGenderNeutral: null,
-        minDoorWidth: null,
-        minStallWidth: null,
-        prioritizeAccessible: null,
-        hideNonAccessible: null,
-        minCleanlinessRating: null,
       },
       origin: {
         latitude: 47.61,
@@ -181,5 +206,70 @@ describe('premium city pack storage', () => {
 
     expect(result?.items).toHaveLength(1);
     expect(result?.items[0]?.accessibility_features.has_changing_table).toBe(true);
+  });
+
+  it('does not read non-intersecting pack records for region lookup', async () => {
+    await premiumCityPackStorage.savePack(cityPackManifest, [bathroomRow]);
+    await premiumCityPackStorage.savePack(portlandCityPackManifest, [portlandBathroomRow]);
+
+    const getItemMock = AsyncStorage.getItem as jest.MockedFunction<typeof AsyncStorage.getItem>;
+    getItemMock.mockClear();
+
+    const result = await premiumCityPackStorage.findBathroomsInRegion(
+      {
+        latitude: 47.61,
+        longitude: -122.33,
+        latitudeDelta: 0.03,
+        longitudeDelta: 0.03,
+      },
+      defaultFilters
+    );
+
+    expect(result?.items).toHaveLength(1);
+    expect(getItemMock).not.toHaveBeenCalledWith(getCurrentPackStorageKey(portlandCityPackManifest.slug));
+  });
+
+  it('uses the lightweight search index before deserializing pack records', async () => {
+    await premiumCityPackStorage.savePack(cityPackManifest, [bathroomRow]);
+    await premiumCityPackStorage.savePack(portlandCityPackManifest, [portlandBathroomRow]);
+
+    const getItemMock = AsyncStorage.getItem as jest.MockedFunction<typeof AsyncStorage.getItem>;
+    getItemMock.mockClear();
+
+    const result = await premiumCityPackStorage.searchBathrooms({
+      query: 'central',
+      filters: defaultFilters,
+      origin: {
+        latitude: 47.61,
+        longitude: -122.33,
+      },
+    });
+
+    expect(result?.items).toHaveLength(1);
+    expect(result?.items[0]?.place_name).toBe('Central Station');
+    expect(getItemMock).not.toHaveBeenCalledWith(getCurrentPackStorageKey(portlandCityPackManifest.slug));
+  });
+
+  it('prunes missing pack records when an indexed lookup finds corruption', async () => {
+    await premiumCityPackStorage.savePack(cityPackManifest, [bathroomRow]);
+    await premiumCityPackStorage.savePack(portlandCityPackManifest, [portlandBathroomRow]);
+    storageState.delete(getCurrentPackStorageKey(cityPackManifest.slug));
+
+    const result = await premiumCityPackStorage.findBathroomsInRegion(
+      {
+        latitude: 47.61,
+        longitude: -122.33,
+        latitudeDelta: 0.03,
+        longitudeDelta: 0.03,
+      },
+      defaultFilters
+    );
+    const storedIndex = JSON.parse(storageState.get('@stallpass/premium_city_pack_index') ?? '[]') as Array<{
+      manifest?: { slug?: string };
+    }>;
+
+    expect(result).toBeNull();
+    expect(storedIndex.some((entry) => entry.manifest?.slug === cityPackManifest.slug)).toBe(false);
+    expect(storedIndex.some((entry) => entry.manifest?.slug === portlandCityPackManifest.slug)).toBe(true);
   });
 });
