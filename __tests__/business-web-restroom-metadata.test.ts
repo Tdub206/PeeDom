@@ -146,4 +146,14 @@ describe('business web restroom metadata validation', () => {
     expect(migration).toContain('business_id,');
     expect(migration).not.toMatch(/v_claim_id,\s*\n\s*0\.9500/);
   });
+
+  it('does not stamp unknown access or privacy values as verified confirmations', () => {
+    const migration = fs.readFileSync(
+      path.join(process.cwd(), 'supabase/migrations/056_business_restroom_metadata_analytics.sql'),
+      'utf8'
+    );
+
+    expect(migration).toContain("fields.field_name in ('access_type', 'privacy_level')");
+    expect(migration).toContain(`fields.field_value = '"unknown"'::jsonb`);
+  });
 });

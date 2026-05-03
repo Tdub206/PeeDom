@@ -305,7 +305,11 @@ begin
       ('child_friendly', to_jsonb(p_child_friendly))
   ) as fields(field_name, field_value)
   where fields.field_value is not null
-    and fields.field_value <> 'null'::jsonb;
+    and fields.field_value <> 'null'::jsonb
+    and not (
+      fields.field_name in ('access_type', 'privacy_level')
+      and fields.field_value = '"unknown"'::jsonb
+    );
 
   return jsonb_build_object(
     'bathroom_id', p_bathroom_id,

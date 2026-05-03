@@ -162,7 +162,7 @@ function ManagedBathroomSectionComponent({
         <View className="mt-4 gap-3">
           <SettingsToggleRow
             body="Hide this location from the free map and reserve it for premium members."
-            label="StallPass Verified"
+            label="Premium-only listing"
             onValueChange={(nextValue) =>
               setSettingsDraft((currentValue) => ({
                 ...currentValue,

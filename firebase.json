@@ -1,6 +1,28 @@
 {
   "hosting": {
     "public": "web",
+    "redirects": [
+      {
+        "source": "/business",
+        "destination": "https://business.stallpass.app",
+        "type": 302
+      },
+      {
+        "source": "/business/**",
+        "destination": "https://business.stallpass.app",
+        "type": 302
+      },
+      {
+        "source": "/dashboard",
+        "destination": "https://business.stallpass.app",
+        "type": 302
+      },
+      {
+        "source": "/dashboard/**",
+        "destination": "https://business.stallpass.app",
+        "type": 302
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",

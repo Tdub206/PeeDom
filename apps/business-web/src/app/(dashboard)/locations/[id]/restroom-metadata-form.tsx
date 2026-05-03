@@ -145,13 +145,13 @@ export function RestroomMetadataForm({
             label="Access type"
             value={draftState.access_type ?? 'unknown'}
             options={ACCESS_TYPE_OPTIONS}
-            onChange={(value) => updateDraft('access_type', value)}
+            onChange={(value) => updateDraft('access_type', value === 'unknown' ? null : value)}
           />
           <SelectField
             label="Privacy level"
             value={draftState.privacy_level ?? 'unknown'}
             options={PRIVACY_LEVEL_OPTIONS}
-            onChange={(value) => updateDraft('privacy_level', value)}
+            onChange={(value) => updateDraft('privacy_level', value === 'unknown' ? null : value)}
           />
           <TriStateSelect label="Code required" value={draftState.code_required} onChange={(value) => updateDraft('code_required', value)} />
           <TriStateSelect label="Key required" value={draftState.key_required} onChange={(value) => updateDraft('key_required', value)} />
@@ -369,8 +369,8 @@ function buildInitialState(
     is_single_user: needMetadata?.is_single_user ?? null,
     is_private_room: needMetadata?.is_private_room ?? null,
     stall_count: needMetadata?.stall_count ?? null,
-    privacy_level: needMetadata?.privacy_level ?? 'unknown',
-    access_type: needMetadata?.access_type ?? 'unknown',
+    privacy_level: needMetadata?.privacy_level === 'unknown' ? null : needMetadata?.privacy_level ?? null,
+    access_type: needMetadata?.access_type === 'unknown' ? null : needMetadata?.access_type ?? null,
     code_required: needMetadata?.code_required ?? null,
     key_required: needMetadata?.key_required ?? null,
     customer_only: needMetadata?.customer_only ?? null,
