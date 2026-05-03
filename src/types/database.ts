@@ -1409,6 +1409,14 @@ export interface Database {
         }
         Returns: boolean
       }
+      has_rewarded_unlock_verification: {
+        Args: {
+          p_feature_key: string
+          p_bathroom_id: string | null
+          p_reward_verification_token: string
+        }
+        Returns: boolean
+      }
       get_action_unlock_cost: {
         Args: {
           p_feature_key: string

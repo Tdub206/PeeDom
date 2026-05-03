@@ -180,6 +180,30 @@ describe('access codes API', () => {
     });
   });
 
+  it('checks rewarded unlock verification before grant attempts', async () => {
+    rpc.mockResolvedValueOnce({
+      data: true,
+      error: null,
+    });
+
+    const { fetchRewardedUnlockVerificationStatus } = await import('@/api/access-codes');
+    const result = await fetchRewardedUnlockVerificationStatus({
+      featureKey: 'code_reveal',
+      bathroomId: 'bathroom-1',
+      rewardVerificationToken: ' reward-token-1 ',
+    });
+
+    expect(result).toEqual({
+      data: true,
+      error: null,
+    });
+    expect(rpc).toHaveBeenCalledWith('has_rewarded_unlock_verification', {
+      p_feature_key: 'code_reveal',
+      p_bathroom_id: 'bathroom-1',
+      p_reward_verification_token: 'reward-token-1',
+    });
+  });
+
   it('maps self-vote protection errors into stable app codes', async () => {
     rpc.mockResolvedValueOnce({
       data: null,

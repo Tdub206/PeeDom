@@ -9,8 +9,8 @@ This document is the canonical reference for StallPass. If a pasted status block
 
 Current checkpoint:
 
-1. Supabase migrations `054_restroom_intelligence_layer.sql`, `055_entitlement_idempotency_and_restroom_rls.sql`, and `056_business_restroom_metadata_analytics.sql` define the restroom-intelligence, entitlement idempotency, business metadata, and analytics contracts.
-2. Mobile surfaces now include trust/freshness labels, saved need profiles, field-level correction entry points, live-status summaries, route destination search, scalable Android clustering behavior, and safer emergency/code unlock flows.
+1. Supabase migrations `054_restroom_intelligence_layer.sql`, `055_entitlement_idempotency_and_restroom_rls.sql`, `056_business_restroom_metadata_analytics.sql`, and `058_rewarded_unlock_verification_polling.sql` define the restroom-intelligence, entitlement idempotency, business metadata, analytics, and AdMob reward verification polling contracts.
+2. Mobile surfaces now include trust/freshness labels, saved need profiles, field-level correction entry points, live-status summaries, route destination search, scalable Android clustering behavior, and safer emergency/code unlock flows that wait for server-side rewarded verification before grant RPCs.
 3. Business Web exposes owner-verified restroom metadata controls and validates the restored dashboard analytics contract.
 4. CI now includes business-web dependency install, typecheck, lint, Jest, Expo config, Android prebuild drift, Android debug build, and Maestro flow inventory checks.
 5. Maestro device-flow assets live under `e2e/maestro` for permission denial, map smoke, route search, city-pack, offline, deep-link, and emergency smoke validation.
@@ -239,6 +239,7 @@ These are safe to do next without forcing a stack upgrade:
 3. Verify [002_functions.sql](C:/Users/T/Desktop/StallPass/supabase/migrations/002_functions.sql) is applied in the target Supabase project
 4. Add CI execution for Maestro once a device runner or Maestro Cloud credentials are configured
 5. Replace temporary app art with final branded assets before store submission
+6. Deploy `supabase/functions/admob-reward-ssv` with `--no-verify-jwt`, set `ADMOB_REWARDED_AD_UNIT_IDS` as a Supabase secret, and point the AdMob rewarded-unit SSV callback at the deployed function before enabling rewarded code reveals in production
 
 ## **6.2 Work That Needs Explicit Approval**
 

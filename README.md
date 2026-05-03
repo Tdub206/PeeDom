@@ -47,6 +47,16 @@ ANDROID_ADMOB_APP_ID=ca-app-pub-3940256099942544~3347511713
 
 - Rewarded code reveals are disabled by default and should stay disabled until AdMob server-side verification writes `rewarded_unlock_verifications` rows.
 - Set `ANDROID_ADMOB_APP_ID`, `IOS_ADMOB_APP_ID`, `EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID`, `EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED=true`, and `EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true` in the active env file only after that callback is live.
+- Deploy `supabase/functions/admob-reward-ssv` with JWT verification disabled because Google calls the callback directly:
+
+```powershell
+supabase functions deploy admob-reward-ssv --no-verify-jwt
+supabase secrets set ADMOB_REWARDED_AD_UNIT_IDS=ca-app-pub-0000000000000000/0000000000
+```
+
+- Configure the AdMob rewarded ad unit server-side verification callback URL to `https://<project-ref>.functions.supabase.co/admob-reward-ssv`.
+- Keep `SUPABASE_SERVICE_ROLE_KEY` only in Supabase Edge Function secrets. Never put it in an Expo or checked-in env file.
+- The app polls `has_rewarded_unlock_verification` after the ad SDK reports an earned reward and only calls the code-reveal grant RPC after the signed AdMob callback has inserted an unconsumed verification row.
 - Local and staging Android builds fall back to Google's test app id when `ANDROID_ADMOB_APP_ID` is blank.
 - Production builds fail closed when rewarded code reveals are enabled without a real AdMob app id, rewarded unit id, and server-side verification flag.
 

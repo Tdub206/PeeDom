@@ -6,6 +6,7 @@ import type {
   DbCodeVote,
   FeatureUnlockMethod,
 } from '@/types';
+import type { RewardedUnlockFeatureKey } from '@/lib/rewarded-unlock-verification';
 import {
   bathroomCodeSubmissionResultSchema,
   bathroomCodePolicySummarySchema,
@@ -228,6 +229,40 @@ export async function fetchBathroomCodeRevealAccess(
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to check whether this code is unlocked.'),
         'Unable to check whether this code is unlocked.'
+      ),
+    };
+  }
+}
+
+export async function fetchRewardedUnlockVerificationStatus(input: {
+  featureKey: RewardedUnlockFeatureKey;
+  bathroomId: string | null;
+  rewardVerificationToken: string;
+}): Promise<{ data: boolean; error: (Error & { code?: string }) | null }> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('has_rewarded_unlock_verification' as never, {
+      p_feature_key: input.featureKey,
+      p_bathroom_id: input.bathroomId,
+      p_reward_verification_token: input.rewardVerificationToken.trim(),
+    } as never);
+
+    if (error) {
+      return {
+        data: false,
+        error: toAppError(error, 'Unable to check whether this reward has been verified.'),
+      };
+    }
+
+    return {
+      data: Boolean(data),
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: false,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to check whether this reward has been verified.'),
+        'Unable to check whether this reward has been verified.'
       ),
     };
   }
