@@ -83,6 +83,7 @@ export type MutationType =
   | 'report_create'
   | 'rating_create'
   | 'status_report'
+  | 'live_status_event'
   | 'accessibility_update'
   | 'bug_report';
 
@@ -112,6 +113,17 @@ export interface BathroomStatusMutationPayload {
   bathroom_id: string;
   status: BathroomLiveStatus;
   note?: string | null;
+}
+
+export interface BathroomLiveStatusEventMutationPayload {
+  bathroom_id: string;
+  status_type: BathroomLiveStatusEventType;
+  status_value: string;
+  wait_minutes?: number | null;
+  occupancy_level?: BathroomOccupancyLevel | null;
+  supplies_missing?: string[];
+  confidence_score?: number;
+  evidence_photo_url?: string | null;
 }
 
 export interface SourceRecordVerificationMutationPayload {

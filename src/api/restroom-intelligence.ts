@@ -527,7 +527,7 @@ export async function createSavedNeedProfile(input: {
         name: input.name,
         preset_key: input.presetKey,
         filters: input.filters,
-        is_default: input.isDefault,
+        is_default: false,
       } as never)
       .select('*')
       .maybeSingle();
@@ -553,8 +553,32 @@ export async function createSavedNeedProfile(input: {
       };
     }
 
+    const createdProfile = (parsedData.data as SavedNeedProfile | null) ?? null;
+
+    if (input.isDefault && createdProfile) {
+      const defaultResult = await setDefaultSavedNeedProfile({
+        profileId: createdProfile.id,
+        userId: input.userId,
+      });
+
+      if (defaultResult.error) {
+        return {
+          data: null,
+          error: defaultResult.error,
+        };
+      }
+
+      return {
+        data: defaultResult.data ?? {
+          ...createdProfile,
+          is_default: true,
+        },
+        error: null,
+      };
+    }
+
     return {
-      data: (parsedData.data as SavedNeedProfile | null) ?? null,
+      data: createdProfile,
       error: null,
     };
   } catch (error) {
@@ -596,8 +620,17 @@ export async function updateSavedNeedProfile(input: {
       patch.preset_key = input.presetKey;
     }
 
-    if (typeof input.isDefault === 'boolean') {
-      patch.is_default = input.isDefault;
+    if (input.isDefault === false) {
+      patch.is_default = false;
+    }
+
+    if (Object.keys(patch).length === 0 && input.isDefault === true) {
+      const defaultResult = await setDefaultSavedNeedProfile({
+        profileId: input.profileId,
+        userId: input.userId,
+      });
+
+      return defaultResult;
     }
 
     const { data, error } = await getSupabaseClient()
@@ -629,8 +662,32 @@ export async function updateSavedNeedProfile(input: {
       };
     }
 
+    const updatedProfile = (parsedData.data as SavedNeedProfile | null) ?? null;
+
+    if (input.isDefault === true && updatedProfile) {
+      const defaultResult = await setDefaultSavedNeedProfile({
+        profileId: updatedProfile.id,
+        userId: input.userId,
+      });
+
+      if (defaultResult.error) {
+        return {
+          data: null,
+          error: defaultResult.error,
+        };
+      }
+
+      return {
+        data: defaultResult.data ?? {
+          ...updatedProfile,
+          is_default: true,
+        },
+        error: null,
+      };
+    }
+
     return {
-      data: (parsedData.data as SavedNeedProfile | null) ?? null,
+      data: updatedProfile,
       error: null,
     };
   } catch (error) {
@@ -677,37 +734,40 @@ export async function deleteSavedNeedProfile(input: {
 export async function setDefaultSavedNeedProfile(input: {
   profileId: string;
   userId: string;
-}): Promise<{ error: (Error & { code?: string }) | null }> {
+}): Promise<{ data: SavedNeedProfile | null; error: (Error & { code?: string }) | null }> {
   try {
-    const resetResult = await getSupabaseClient()
-      .from('saved_need_profiles' as never)
-      .update({ is_default: false } as never)
-      .eq('user_id', input.userId)
-      .eq('is_default', true);
-
-    if (resetResult.error) {
-      return {
-        error: toAppError(resetResult.error, 'Unable to update your default profile right now.'),
-      };
-    }
-
-    const setResult = await getSupabaseClient()
-      .from('saved_need_profiles' as never)
-      .update({ is_default: true } as never)
-      .eq('id', input.profileId)
-      .eq('user_id', input.userId);
+    const setResult = await getSupabaseClient().rpc('set_default_saved_need_profile' as never, {
+      p_profile_id: input.profileId,
+    } as never);
 
     if (setResult.error) {
       return {
+        data: null,
         error: toAppError(setResult.error, 'Unable to update your default profile right now.'),
       };
     }
 
+    const parsedData = parseSupabaseNullableRow(
+      savedNeedProfileSchema,
+      setResult.data,
+      'default saved need profile',
+      'Unable to update your default profile right now.'
+    );
+
+    if (parsedData.error) {
+      return {
+        data: null,
+        error: parsedData.error,
+      };
+    }
+
     return {
+      data: (parsedData.data as SavedNeedProfile | null) ?? null,
       error: null,
     };
   } catch (error) {
     return {
+      data: null,
       error: toAppError(
         error instanceof Error ? error : new Error('Unable to update your default profile right now.'),
         'Unable to update your default profile right now.'

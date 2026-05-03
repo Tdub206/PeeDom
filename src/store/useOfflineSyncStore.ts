@@ -122,6 +122,7 @@ export function formatQueuedMutationLabel(type: MutationType): string {
     case 'rating_create':
       return 'Cleanliness ratings';
     case 'status_report':
+    case 'live_status_event':
       return 'Live status updates';
     case 'accessibility_update':
       return 'Accessibility updates';

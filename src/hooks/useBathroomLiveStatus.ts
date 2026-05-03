@@ -10,7 +10,12 @@ import { offlineQueue } from '@/lib/offline-queue';
 import { pushSafely } from '@/lib/navigation';
 import { realtimeManager } from '@/lib/realtime-manager';
 import { Sentry } from '@/lib/sentry';
-import type { BathroomLiveStatus, LiveStatusReportCreate, MutationOutcome } from '@/types';
+import type {
+  BathroomLiveStatus,
+  BathroomLiveStatusEventMutationPayload,
+  LiveStatusReportCreate,
+  MutationOutcome,
+} from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import { isTransientNetworkError } from '@/utils/network';
 import { mapLegacyStatusToRichLiveStatus } from '@/lib/restroom-intelligence/live-status-summary';
@@ -35,6 +40,20 @@ function buildLiveStatusReturnRoute(
   }
 
   return `${routes.modal.liveStatus}?${searchParams.toString()}`;
+}
+
+function buildRichLiveStatusEventPayload(
+  bathroomId: string,
+  status: BathroomLiveStatus
+): BathroomLiveStatusEventMutationPayload {
+  const mappedLiveStatus = mapLegacyStatusToRichLiveStatus(status);
+
+  return {
+    bathroom_id: bathroomId,
+    status_type: mappedLiveStatus.statusType,
+    status_value: mappedLiveStatus.statusValue,
+    wait_minutes: mappedLiveStatus.waitMinutes,
+  };
 }
 
 export function useBathroomLiveStatus(bathroomId: string | null) {
@@ -168,16 +187,44 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
           throw result.error;
         }
 
-        const mappedLiveStatus = mapLegacyStatusToRichLiveStatus(status);
+        const richStatusPayload = buildRichLiveStatusEventPayload(bathroomId, status);
         const richStatusResult = await reportBathroomLiveStatusEvent({
-          bathroomId,
-          statusType: mappedLiveStatus.statusType,
-          statusValue: mappedLiveStatus.statusValue,
-          waitMinutes: mappedLiveStatus.waitMinutes,
+          bathroomId: richStatusPayload.bathroom_id,
+          statusType: richStatusPayload.status_type,
+          statusValue: richStatusPayload.status_value,
+          waitMinutes: richStatusPayload.wait_minutes,
         });
 
         if (richStatusResult.error) {
           Sentry.captureException(richStatusResult.error);
+
+          if (isTransientNetworkError(richStatusResult.error)) {
+            await offlineQueue.enqueue('live_status_event', richStatusPayload, authenticatedUser.id);
+
+            await queryClient.invalidateQueries({
+              queryKey: bathroomLiveStatusQueryKey(bathroomId),
+            });
+
+            showToast({
+              title: 'Status reported',
+              message: 'The basic status was saved. Detailed live status will sync when the network recovers.',
+              variant: 'warning',
+            });
+
+            return 'queued_retry';
+          }
+
+          await queryClient.invalidateQueries({
+            queryKey: bathroomLiveStatusQueryKey(bathroomId),
+          });
+
+          showToast({
+            title: 'Status reported',
+            message: 'The basic status was saved, but detailed live status could not be added.',
+            variant: 'warning',
+          });
+
+          return 'completed';
         }
 
         await queryClient.invalidateQueries({
@@ -197,6 +244,8 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
           typeof errorWithCode.code === 'string' && errorWithCode.code.toLowerCase() === 'rate_limited';
 
         if (!isRateLimited && isTransientNetworkError(error)) {
+          const richStatusPayload = buildRichLiveStatusEventPayload(bathroomId, status);
+
           await offlineQueue.enqueue(
             'status_report',
             {
@@ -206,6 +255,7 @@ export function useBathroomLiveStatus(bathroomId: string | null) {
             },
             authenticatedUser.id
           );
+          await offlineQueue.enqueue('live_status_event', richStatusPayload, authenticatedUser.id);
 
           showToast({
             title: 'Status queued',
