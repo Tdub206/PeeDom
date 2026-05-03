@@ -5,6 +5,7 @@ const ORIGINAL_ENV = { ...process.env };
 function configureAdMobEnvironment() {
   process.env.EXPO_PUBLIC_ENV = 'local';
   process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED = 'true';
+  process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED = 'true';
   delete process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID;
 }
 
@@ -33,6 +34,22 @@ describe('admob runtime availability', () => {
     expect(result.outcome).toBe('unavailable');
     expect(result.message).toContain('native module');
     expect(consoleWarnSpy).toHaveBeenCalled();
+  });
+
+  it('fails closed before loading the native module when server-side verification is disabled', async () => {
+    process.env.EXPO_PUBLIC_ENV = 'local';
+    process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED = 'true';
+    process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED = 'false';
+    delete process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID;
+
+    const admob = require('../src/lib/admob') as typeof import('../src/lib/admob');
+    const availability = admob.getAdMobAvailability();
+    const result = await admob.showRewardedCodeRevealAd({ bathroomId: 'bathroom-123' });
+
+    expect(availability.isAvailable).toBe(false);
+    expect(availability.errorMessage).toContain('server-side verification');
+    expect(result.outcome).toBe('unavailable');
+    expect(result.message).toContain('server-side verification');
   });
 
   it('reports rewarded ads as available when the native module loads successfully', () => {

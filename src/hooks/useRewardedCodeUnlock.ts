@@ -207,9 +207,23 @@ export function useRewardedCodeUnlock({
       });
 
       if (result.outcome === 'earned') {
+        const rewardVerificationToken = result.rewardVerificationToken?.trim() ?? '';
+
+        if (!rewardVerificationToken) {
+          const message =
+            'The ad reward completed, but StallPass could not verify it safely. Use points or try again after rewarded unlock verification is restored.';
+          setUnlockIssue(message);
+          showToast({
+            title: 'Verification unavailable',
+            message,
+            variant: 'warning',
+          });
+          return false;
+        }
+
         const grantResult = await grantBathroomCodeRevealAccess(bathroomId, 'rewarded_ad', {
           idempotencyKey: createUnlockIdempotencyKey(`code_reveal:${bathroomId}:rewarded_ad`),
-          rewardVerificationToken: null,
+          rewardVerificationToken,
         });
 
         if (grantResult.error || !grantResult.data) {

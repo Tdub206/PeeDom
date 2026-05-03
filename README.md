@@ -45,9 +45,10 @@ ANDROID_ADMOB_APP_ID=ca-app-pub-3940256099942544~3347511713
 
 ## AdMob notes
 
-- Set `ANDROID_ADMOB_APP_ID` and `EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID` in the active env file for rewarded code reveals.
+- Rewarded code reveals are disabled by default and should stay disabled until AdMob server-side verification writes `rewarded_unlock_verifications` rows.
+- Set `ANDROID_ADMOB_APP_ID`, `IOS_ADMOB_APP_ID`, `EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID`, `EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED=true`, and `EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true` in the active env file only after that callback is live.
 - Local and staging Android builds fall back to Google's test app id when `ANDROID_ADMOB_APP_ID` is blank.
-- Production builds should use your real AdMob app id and rewarded unit id.
+- Production builds fail closed when rewarded code reveals are enabled without a real AdMob app id, rewarded unit id, and server-side verification flag.
 
 ## Google Hours Sync
 

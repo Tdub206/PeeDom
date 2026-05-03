@@ -8,12 +8,28 @@ describe('readAdMobRuntimeConfig', () => {
       EXPO_PUBLIC_ENV: 'local',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: 'true',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: '',
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: 'true',
     });
 
     expect(config.isDevelopmentBuild).toBe(true);
     expect(config.usesTestIds).toBe(true);
+    expect(config.isServerSideVerificationEnabled).toBe(true);
     expect(config.isEnabled).toBe(true);
     expect(config.errorMessage).toBeNull();
+  });
+
+  it('fails closed when server-side reward verification is not configured', () => {
+    const config = readAdMobRuntimeConfig({
+      EXPO_PUBLIC_ENV: 'local',
+      EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: 'true',
+      EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: '',
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: 'false',
+    });
+
+    expect(config.usesTestIds).toBe(true);
+    expect(config.isServerSideVerificationEnabled).toBe(false);
+    expect(config.isEnabled).toBe(false);
+    expect(config.errorMessage).toContain('EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true');
   });
 
   it('disables rewarded unlocks when the feature flag is explicitly turned off', () => {
@@ -21,6 +37,7 @@ describe('readAdMobRuntimeConfig', () => {
       EXPO_PUBLIC_ENV: 'staging',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: 'false',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: 'ca-app-pub-1234567890123456/1234567890',
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: 'false',
     });
 
     expect(config.isEnabled).toBe(false);
@@ -33,6 +50,7 @@ describe('readAdMobRuntimeConfig', () => {
       EXPO_PUBLIC_ENV: 'production',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: 'true',
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: '',
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: 'true',
     });
 
     expect(config.isDevelopmentBuild).toBe(false);

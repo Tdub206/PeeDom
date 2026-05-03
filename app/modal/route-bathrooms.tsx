@@ -523,10 +523,12 @@ export default function RouteBathroomsScreen() {
           ) : null}
         </View>
 
-        {isSearching && routeGeometry ? (
+        {isSearching ? (
           <View className="flex-1 items-center justify-center">
             <ActivityIndicator size="large" color={colors.brand[600]} />
-            <Text className="mt-3 text-sm text-ink-500">Ranking bathrooms along your route...</Text>
+            <Text className="mt-3 text-sm text-ink-500">
+              {routeGeometry ? 'Ranking bathrooms along your route...' : 'Calculating route geometry...'}
+            </Text>
           </View>
         ) : routeGeometry ? (
           <FlatList

@@ -2,6 +2,7 @@ interface AdMobRuntimeConfigInput {
   EXPO_PUBLIC_ENV?: string;
   EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED?: string;
   EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID?: string;
+  EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED?: string;
 }
 
 export interface AdMobRuntimeConfig {
@@ -10,6 +11,7 @@ export interface AdMobRuntimeConfig {
   isDevelopmentBuild: boolean;
   usesTestIds: boolean;
   isEnabled: boolean;
+  isServerSideVerificationEnabled: boolean;
   errorMessage: string | null;
 }
 
@@ -36,21 +38,38 @@ export function readAdMobRuntimeConfig(input: AdMobRuntimeConfigInput): AdMobRun
   const isDevelopmentBuild = environment !== 'production';
   const rewardedCodeRevealUnitId = input.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID?.trim() ?? '';
   const explicitEnabled = parseBooleanFlag(input.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED);
+  const isServerSideVerificationEnabled =
+    parseBooleanFlag(input.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED) === true;
   const usesTestIds = rewardedCodeRevealUnitId.length === 0 && isDevelopmentBuild;
-  const isEnabled =
+  const hasRewardedUnit =
     explicitEnabled === false
       ? false
       : rewardedCodeRevealUnitId.length > 0 || usesTestIds;
+  const isEnabled = hasRewardedUnit && isServerSideVerificationEnabled;
 
-  if (explicitEnabled === true && !isEnabled) {
+  if (explicitEnabled === true && !hasRewardedUnit) {
     return {
       environment,
       rewardedCodeRevealUnitId,
       isDevelopmentBuild,
       usesTestIds,
+      isServerSideVerificationEnabled,
       isEnabled: false,
       errorMessage:
         'AdMob rewarded code reveal is enabled but EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID is missing for this environment.',
+    };
+  }
+
+  if (hasRewardedUnit && !isServerSideVerificationEnabled) {
+    return {
+      environment,
+      rewardedCodeRevealUnitId,
+      isDevelopmentBuild,
+      usesTestIds,
+      isServerSideVerificationEnabled,
+      isEnabled: false,
+      errorMessage:
+        'Rewarded code reveal is unavailable until EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true and the AdMob server-side verification callback writes rewarded unlock verifications.',
     };
   }
 
@@ -59,6 +78,7 @@ export function readAdMobRuntimeConfig(input: AdMobRuntimeConfigInput): AdMobRun
     rewardedCodeRevealUnitId,
     isDevelopmentBuild,
     usesTestIds,
+    isServerSideVerificationEnabled,
     isEnabled,
     errorMessage: null,
   };
@@ -68,4 +88,5 @@ export const adMobRuntimeConfig = readAdMobRuntimeConfig({
   EXPO_PUBLIC_ENV: process.env.EXPO_PUBLIC_ENV,
   EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED,
   EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID,
+  EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED,
 });

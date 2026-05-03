@@ -7,9 +7,11 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useLocation } from '@/hooks/useLocation';
 import { useToast } from '@/hooks/useToast';
 import { trackAnalyticsEvent } from '@/lib/analytics';
+import { isEmergencyLocationFresh } from '@/lib/emergency-location';
 import { hasActivePremium } from '@/lib/gamification';
+import { premiumCityPackStorage } from '@/lib/premium-city-packs';
 import { useAccessibilityStore } from '@/store/useAccessibilityStore';
-import { BathroomListItem, Coordinates } from '@/types';
+import { BathroomFilters, BathroomListItem, Coordinates, RegionBounds } from '@/types';
 import {
   calculateBathroomRecommendationScore,
   calculateDistanceMeters,
@@ -89,6 +91,31 @@ function findTopCandidates(
     .map((entry) => entry.bathroom);
 }
 
+async function findOfflineEmergencyCandidates({
+  filters,
+  origin,
+  region,
+  boostAccessible,
+}: {
+  filters: BathroomFilters;
+  origin: Coordinates;
+  region: RegionBounds;
+  boostAccessible: boolean;
+}): Promise<BathroomListItem[]> {
+  try {
+    const offlineResult = await premiumCityPackStorage.findBathroomsInRegion(region, filters);
+
+    if (!offlineResult?.items.length) {
+      return [];
+    }
+
+    return findTopCandidates(offlineResult.items, origin, MAX_CANDIDATES, boostAccessible);
+  } catch (error) {
+    console.warn('Unable to load offline emergency bathrooms:', error);
+    return [];
+  }
+}
+
 async function launchNavigation(bathroom: BathroomListItem): Promise<boolean> {
   const { latitude, longitude } = bathroom.coordinates;
   const encodedLabel = encodeURIComponent(bathroom.place_name);
@@ -116,7 +143,7 @@ async function launchNavigation(bathroom: BathroomListItem): Promise<boolean> {
 
 export function useEmergencyMode() {
   const { profile } = useAuth();
-  const { coordinates, permission_status, requestPermission } = useLocation();
+  const { coordinates, coordinates_updated_at, permission_status, requestPermission } = useLocation();
   const { showToast } = useToast();
   const isAccessibilityMode = useAccessibilityStore((state) => state.isAccessibilityMode);
   const accessibilityPreferences = useAccessibilityStore((state) => state.preferences);
@@ -132,7 +159,7 @@ export function useEmergencyMode() {
   const resolveEmergencyOrigin = useCallback(async (): Promise<Coordinates | null> => {
     setState({ phase: 'locating', nearestBathroom: null, candidates: [] });
 
-    if (coordinates) {
+    if (isEmergencyLocationFresh(coordinates, coordinates_updated_at)) {
       return coordinates;
     }
 
@@ -159,6 +186,15 @@ export function useEmergencyMode() {
         longitude: freshLocation.coords.longitude,
       };
     } catch (_error) {
+      if (coordinates) {
+        showToast({
+          title: 'Using last known location',
+          message: 'We could not refresh your location, so Emergency Mode is using the last location saved on this device.',
+          variant: 'warning',
+        });
+        return coordinates;
+      }
+
       showToast({
         title: 'Location unavailable',
         message: 'We could not determine your location. Please try again.',
@@ -167,44 +203,44 @@ export function useEmergencyMode() {
       setState({ phase: 'error', nearestBathroom: null, candidates: [] });
       return null;
     }
-  }, [coordinates, permission_status, requestPermission, showToast]);
+  }, [coordinates, coordinates_updated_at, permission_status, requestPermission, showToast]);
 
   const loadEmergencyCandidates = useCallback(async (userCoordinates: Coordinates): Promise<BathroomListItem[] | null> => {
+    setState({ phase: 'searching', nearestBathroom: null, candidates: [] });
+
+    const region = {
+      latitude: userCoordinates.latitude,
+      longitude: userCoordinates.longitude,
+      latitudeDelta: EMERGENCY_SEARCH_RADIUS_DELTA,
+      longitudeDelta: EMERGENCY_SEARCH_RADIUS_DELTA,
+    };
+
+    const baseFilters: BathroomFilters = {
+      isAccessible: null,
+      isLocked: null,
+      isCustomerOnly: null,
+      openNow: null,
+      noCodeRequired: null,
+      recentlyVerifiedOnly: null,
+      hasChangingTable: null,
+      isFamilyRestroom: null,
+      requireGrabBars: null,
+      requireAutomaticDoor: null,
+      requireGenderNeutral: null,
+      minDoorWidth: null,
+      minStallWidth: null,
+      prioritizeAccessible: null,
+      hideNonAccessible: null,
+      minCleanlinessRating: null,
+    };
+
+    const emergencyFilters = mergeAccessibilityFilters(
+      baseFilters,
+      isAccessibilityMode,
+      accessibilityPreferences,
+    );
+
     try {
-      setState({ phase: 'searching', nearestBathroom: null, candidates: [] });
-
-      const region = {
-        latitude: userCoordinates.latitude,
-        longitude: userCoordinates.longitude,
-        latitudeDelta: EMERGENCY_SEARCH_RADIUS_DELTA,
-        longitudeDelta: EMERGENCY_SEARCH_RADIUS_DELTA,
-      };
-
-      const baseFilters = {
-        isAccessible: null,
-        isLocked: null,
-        isCustomerOnly: null,
-        openNow: null,
-        noCodeRequired: null,
-        recentlyVerifiedOnly: null,
-        hasChangingTable: null,
-        isFamilyRestroom: null,
-        requireGrabBars: null,
-        requireAutomaticDoor: null,
-        requireGenderNeutral: null,
-        minDoorWidth: null,
-        minStallWidth: null,
-        prioritizeAccessible: null,
-        hideNonAccessible: null,
-        minCleanlinessRating: null,
-      };
-
-      const emergencyFilters = mergeAccessibilityFilters(
-        baseFilters,
-        isAccessibilityMode,
-        accessibilityPreferences,
-      );
-
       const result = await fetchBathroomsNearRegion({ region, filters: emergencyFilters });
       let bathrooms: BathroomListItem[] = [];
 
@@ -226,6 +262,22 @@ export function useEmergencyMode() {
       const topCandidates = findTopCandidates(bathrooms, userCoordinates, MAX_CANDIDATES, isAccessibilityMode);
 
       if (topCandidates.length === 0) {
+        const offlineCandidates = await findOfflineEmergencyCandidates({
+          boostAccessible: isAccessibilityMode,
+          filters: emergencyFilters,
+          origin: userCoordinates,
+          region,
+        });
+
+        if (offlineCandidates.length > 0) {
+          showToast({
+            title: 'Using offline bathrooms',
+            message: 'No live results were available, so Emergency Mode is using downloaded city-pack data.',
+            variant: 'warning',
+          });
+          return offlineCandidates;
+        }
+
         showToast({
           title: 'No bathrooms found',
           message: 'We could not find any bathrooms near you. Try zooming out on the map.',
@@ -237,6 +289,22 @@ export function useEmergencyMode() {
 
       return topCandidates;
     } catch (error) {
+      const offlineCandidates = await findOfflineEmergencyCandidates({
+        boostAccessible: isAccessibilityMode,
+        filters: emergencyFilters,
+        origin: userCoordinates,
+        region,
+      });
+
+      if (offlineCandidates.length > 0) {
+        showToast({
+          title: 'Using offline bathrooms',
+          message: 'Network lookup failed, so Emergency Mode is using downloaded city-pack data.',
+          variant: 'warning',
+        });
+        return offlineCandidates;
+      }
+
       console.error('Emergency mode error:', error);
       showToast({
         title: 'Emergency mode failed',

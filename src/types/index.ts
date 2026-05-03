@@ -922,6 +922,7 @@ export type LocationPermissionState = 'unknown' | 'granted' | 'denied' | 'blocke
 
 export interface LocationSnapshot {
   coordinates: Coordinates | null;
+  coordinates_updated_at: string | null;
   permission_status: LocationPermissionState;
   error_message: string | null;
   is_requesting_permission: boolean;

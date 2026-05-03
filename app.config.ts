@@ -51,6 +51,10 @@ function readRequiredEnv(name: keyof NodeJS.ProcessEnv): string {
   return value;
 }
 
+function readBooleanEnv(name: keyof NodeJS.ProcessEnv): boolean {
+  return (process.env[name]?.trim().toLowerCase() ?? '') === 'true';
+}
+
 function readStaticEasProjectId(config: Partial<ExpoConfig>): string {
   if (!config.extra || typeof config.extra !== 'object') {
     return '';
@@ -82,6 +86,12 @@ function assertProductionBuildEnv(easProjectId: string): void {
     readRequiredEnv('ANDROID_ADMOB_APP_ID');
     readRequiredEnv('IOS_ADMOB_APP_ID');
     readRequiredEnv('EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID');
+
+    if (!readBooleanEnv('EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED')) {
+      throw new Error(
+        'Missing required reward verification configuration for production build: EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED must be true after the AdMob server-side verification callback is configured.'
+      );
+    }
   }
 }
 
@@ -225,6 +235,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       EXPO_PUBLIC_ENV: environment,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID,
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED,
     },
   };
 
