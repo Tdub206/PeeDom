@@ -14,6 +14,7 @@ interface RewardedFeatureUnlockOptions {
 export interface RewardedCodeRevealResult {
   outcome: 'earned' | 'dismissed' | 'unavailable';
   message: string | null;
+  rewardVerificationToken?: string;
 }
 
 export interface AdMobAvailability {
@@ -48,6 +49,49 @@ function getPlatformOs(): string {
   } catch (_error) {
     return 'unknown';
   }
+}
+
+function fillRandomBytes(bytes: Uint8Array): Uint8Array {
+  const cryptoSource = globalThis.crypto as
+    | {
+        getRandomValues?: (array: Uint8Array) => Uint8Array;
+      }
+    | undefined;
+
+  if (cryptoSource?.getRandomValues) {
+    return cryptoSource.getRandomValues(bytes);
+  }
+
+  for (let index = 0; index < bytes.length; index += 1) {
+    bytes[index] = Math.floor(Math.random() * 256);
+  }
+
+  return bytes;
+}
+
+function toHex(bytes: Uint8Array): string {
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function compactUuid(value: string): string {
+  return value.replace(/[^a-fA-F0-9]/g, '').slice(0, 32).toLowerCase();
+}
+
+function createRewardVerificationToken({
+  bathroomId,
+  context,
+}: RewardedFeatureUnlockOptions): string {
+  const randomSegment = toHex(fillRandomBytes(new Uint8Array(8)));
+
+  if (context === 'code_reveal' && bathroomId) {
+    const compactBathroomId = compactUuid(bathroomId);
+
+    if (compactBathroomId.length === 32) {
+      return `cr_${compactBathroomId}_${randomSegment}`;
+    }
+  }
+
+  return `el_${Date.now().toString(36)}_${randomSegment}`;
 }
 
 function loadGoogleMobileAdsModule(): GoogleMobileAdsModuleState {
@@ -149,7 +193,16 @@ async function buildRequestOptions({
   bathroomId,
   context,
   userId,
-}: RewardedFeatureUnlockOptions) {
+}: RewardedFeatureUnlockOptions): Promise<{
+  requestOptions: {
+    requestNonPersonalizedAdsOnly: boolean;
+    serverSideVerificationOptions: {
+      userId: string;
+      customData: string;
+    };
+  };
+  rewardVerificationToken: string;
+}> {
   const googleMobileAdsModule = googleMobileAdsModuleState.module;
   let requestNonPersonalizedAdsOnly = getPlatformOs() === 'ios';
 
@@ -162,17 +215,21 @@ async function buildRequestOptions({
     }
   }
 
-  const customData =
-    context === 'code_reveal' && bathroomId
-      ? bathroomId.slice(0, 64)
-      : context.slice(0, 64);
+  const rewardVerificationToken = createRewardVerificationToken({
+    bathroomId,
+    context,
+    userId,
+  });
 
   return {
-    requestNonPersonalizedAdsOnly,
-    serverSideVerificationOptions: {
-      userId: (userId ?? 'guest').slice(0, 64),
-      customData,
+    requestOptions: {
+      requestNonPersonalizedAdsOnly,
+      serverSideVerificationOptions: {
+        userId: (userId ?? 'guest').slice(0, 64),
+        customData: rewardVerificationToken,
+      },
     },
+    rewardVerificationToken,
   };
 }
 
@@ -191,7 +248,7 @@ export async function showRewardedFeatureUnlockAd(
 
   await ensureMobileAdsReady();
 
-  const requestOptions = await buildRequestOptions(options);
+  const { requestOptions, rewardVerificationToken } = await buildRequestOptions(options);
   const googleMobileAdsModule = googleMobileAdsModuleState.module;
 
   if (!googleMobileAdsModule) {
@@ -243,6 +300,7 @@ export async function showRewardedFeatureUnlockAd(
       finish({
         outcome: earnedReward ? 'earned' : 'dismissed',
         message: earnedReward ? null : 'The ad was closed before the reward completed.',
+        rewardVerificationToken: earnedReward ? rewardVerificationToken : undefined,
       });
     });
     const unsubscribeEarned = rewardedAd.addAdEventListener(

@@ -6,6 +6,7 @@ import type {
   DbCodeVote,
   FeatureUnlockMethod,
 } from '@/types';
+import type { RewardedUnlockFeatureKey } from '@/lib/rewarded-unlock-verification';
 import {
   bathroomCodeSubmissionResultSchema,
   bathroomCodePolicySummarySchema,
@@ -65,6 +66,14 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
 
   if (/INVALID_UNLOCK_METHOD/i.test(errorMessage)) {
     return 'INVALID_UNLOCK_METHOD';
+  }
+
+  if (/IDEMPOTENCY_KEY_REQUIRED/i.test(errorMessage)) {
+    return 'IDEMPOTENCY_KEY_REQUIRED';
+  }
+
+  if (/REWARD_VERIFICATION_REQUIRED/i.test(errorMessage)) {
+    return 'REWARD_VERIFICATION_REQUIRED';
   }
 
   if (/SELF_CODE_VOTE/i.test(errorMessage)) {
@@ -225,6 +234,40 @@ export async function fetchBathroomCodeRevealAccess(
   }
 }
 
+export async function fetchRewardedUnlockVerificationStatus(input: {
+  featureKey: RewardedUnlockFeatureKey;
+  bathroomId: string | null;
+  rewardVerificationToken: string;
+}): Promise<{ data: boolean; error: (Error & { code?: string }) | null }> {
+  try {
+    const { data, error } = await getSupabaseClient().rpc('has_rewarded_unlock_verification' as never, {
+      p_feature_key: input.featureKey,
+      p_bathroom_id: input.bathroomId,
+      p_reward_verification_token: input.rewardVerificationToken.trim(),
+    } as never);
+
+    if (error) {
+      return {
+        data: false,
+        error: toAppError(error, 'Unable to check whether this reward has been verified.'),
+      };
+    }
+
+    return {
+      data: Boolean(data),
+      error: null,
+    };
+  } catch (error) {
+    return {
+      data: false,
+      error: toAppError(
+        error instanceof Error ? error : new Error('Unable to check whether this reward has been verified.'),
+        'Unable to check whether this reward has been verified.'
+      ),
+    };
+  }
+}
+
 export async function fetchBathroomCodePolicySummary(
   bathroomId: string
 ): Promise<{ data: BathroomCodePolicySummary | null; error: (Error & { code?: string }) | null }> {
@@ -271,13 +314,32 @@ export async function fetchBathroomCodePolicySummary(
 
 export async function grantBathroomCodeRevealAccess(
   bathroomId: string,
-  unlockMethod: FeatureUnlockMethod = 'rewarded_ad'
+  unlockMethod: FeatureUnlockMethod = 'rewarded_ad',
+  options?: {
+    idempotencyKey?: string | null;
+    rewardVerificationToken?: string | null;
+  }
 ): Promise<{ data: CodeRevealUnlockResult | null; error: (Error & { code?: string }) | null }> {
   try {
-    const { data, error } = await getSupabaseClient().rpc('grant_bathroom_code_reveal_access' as never, {
+    const rpcArgs: {
+      p_bathroom_id: string;
+      p_unlock_method: FeatureUnlockMethod;
+      p_idempotency_key?: string;
+      p_reward_verification_token?: string;
+    } = {
       p_bathroom_id: bathroomId,
       p_unlock_method: unlockMethod,
-    } as never);
+    };
+
+    if (options?.idempotencyKey) {
+      rpcArgs.p_idempotency_key = options.idempotencyKey;
+    }
+
+    if (options?.rewardVerificationToken) {
+      rpcArgs.p_reward_verification_token = options.rewardVerificationToken;
+    }
+
+    const { data, error } = await getSupabaseClient().rpc('grant_bathroom_code_reveal_access' as never, rpcArgs as never);
 
     if (error) {
       return {

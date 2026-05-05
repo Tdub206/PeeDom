@@ -1140,6 +1140,8 @@ export interface Database {
         Args: {
           p_bathroom_id: string
           p_unlock_method?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          p_idempotency_key?: string | null
+          p_reward_verification_token?: string | null
         }
         Returns: {
           id: string
@@ -1407,6 +1409,14 @@ export interface Database {
         }
         Returns: boolean
       }
+      has_rewarded_unlock_verification: {
+        Args: {
+          p_feature_key: string
+          p_bathroom_id: string | null
+          p_reward_verification_token: string
+        }
+        Returns: boolean
+      }
       get_action_unlock_cost: {
         Args: {
           p_feature_key: string
@@ -1416,6 +1426,8 @@ export interface Database {
       consume_emergency_lookup_access: {
         Args: {
           p_unlock_method?: 'rewarded_ad' | 'starter_free' | 'points_redeemed'
+          p_idempotency_key?: string | null
+          p_reward_verification_token?: string | null
         }
         Returns: {
           user_id: string
