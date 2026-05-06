@@ -366,6 +366,14 @@ function isUnsignedSetupVerificationProbe(params: URLSearchParams): boolean {
   return !params.get('signature')?.trim() || !params.get('key_id')?.trim();
 }
 
+function setupProbeResponse(reason: string): Response {
+  return jsonResponse({
+    success: true,
+    ignored: true,
+    reason,
+  });
+}
+
 Deno.serve(async (request) => {
   if (request.method === 'OPTIONS') {
     return new Response(null, {
@@ -392,13 +400,16 @@ Deno.serve(async (request) => {
 
   const requestUrl = new URL(request.url);
   const params = requestUrl.searchParams;
+  const userId = params.get('user_id')?.trim() ?? '';
+  const customData = params.get('custom_data')?.trim() ?? '';
+  const rewardToken = parseRewardToken(customData);
 
   if (isUnsignedSetupVerificationProbe(params)) {
-    return jsonResponse({
-      success: true,
-      ignored: true,
-      reason: 'Unsigned AdMob setup verification probe accepted without granting a reward.',
-    });
+    return setupProbeResponse('Unsigned AdMob setup verification probe accepted without granting a reward.');
+  }
+
+  if (!isUuid(userId) || !rewardToken) {
+    return setupProbeResponse('Non-StallPass AdMob setup verification probe accepted without granting a reward.');
   }
 
   try {
@@ -417,18 +428,6 @@ Deno.serve(async (request) => {
 
   if (!isTimestampRecent(params.get('timestamp') ?? '')) {
     return jsonResponse({ success: false, error: 'Reward callback timestamp is outside the accepted window.' }, 400);
-  }
-
-  const userId = params.get('user_id')?.trim() ?? '';
-  const customData = params.get('custom_data')?.trim() ?? '';
-  const rewardToken = parseRewardToken(customData);
-
-  if (!isUuid(userId) || !rewardToken) {
-    return jsonResponse({
-      success: true,
-      ignored: true,
-      reason: 'Callback was verified but did not include a StallPass reward token.',
-    });
   }
 
   try {
