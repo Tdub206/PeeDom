@@ -55,7 +55,13 @@ jobs:
       SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
       SENTRY_URL: ${{ secrets.SENTRY_URL }}
       EXPO_PUBLIC_ENV: ${{ github.event_name == 'pull_request' && 'preview' || github.event_name == 'push' && 'production' || inputs.profile }}
+      EAS_BUILD_PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || '' }}
       ANDROID_GOOGLE_MAPS_API_KEY: ${{ secrets.ANDROID_GOOGLE_MAPS_API_KEY }}
+      ANDROID_ADMOB_APP_ID: ${{ secrets.ANDROID_ADMOB_APP_ID }}
+      IOS_ADMOB_APP_ID: ${{ secrets.IOS_ADMOB_APP_ID }}
+      EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: ${{ secrets.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED }}
+      EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: ${{ secrets.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID }}
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: ${{ secrets.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -93,6 +99,26 @@ jobs:
                 missing=1
               fi
             done
+          fi
+          rewarded_ads_enabled="${EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED:-true}"
+          if [[ "${rewarded_ads_enabled}" != "false" ]]; then
+            admob_vars=("EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID" "EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED")
+            if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" || "${{ inputs.platform }}" != "ios" ]]; then
+              admob_vars+=("ANDROID_ADMOB_APP_ID")
+            fi
+            if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" || "${{ inputs.platform }}" != "android" ]]; then
+              admob_vars+=("IOS_ADMOB_APP_ID")
+            fi
+            for var in "${admob_vars[@]}"; do
+              if [[ -z "${!var}" ]]; then
+                echo "::error::$var is required when rewarded AdMob code reveals are enabled."
+                missing=1
+              fi
+            done
+            if [[ "${EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED}" != "true" ]]; then
+              echo "::error::EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED must be true after the callback URL is verified."
+              missing=1
+            fi
           fi
           exit "$missing"
 

@@ -20,6 +20,7 @@ const testAndroidAdMobAppId = 'ca-app-pub-3940256099942544~3347511713';
 const testIosAdMobAppId = 'ca-app-pub-3940256099942544~1458002511';
 const androidAdMobAppId = process.env.ANDROID_ADMOB_APP_ID?.trim() || (isProduction ? '' : testAndroidAdMobAppId);
 const iosAdMobAppId = process.env.IOS_ADMOB_APP_ID?.trim() || (isProduction ? '' : testIosAdMobAppId);
+const easBuildPlatform = process.env.EAS_BUILD_PLATFORM?.trim().toLowerCase() ?? '';
 const googleMobileAdsConfig =
   androidAdMobAppId || iosAdMobAppId
     ? {
@@ -79,9 +80,21 @@ function assertProductionBuildEnv(easProjectId: string): void {
   const rewardedAdsEnabled = (process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED?.trim() ?? 'true') !== 'false';
 
   if (rewardedAdsEnabled) {
-    readRequiredEnv('ANDROID_ADMOB_APP_ID');
-    readRequiredEnv('IOS_ADMOB_APP_ID');
+    if (easBuildPlatform !== 'ios') {
+      readRequiredEnv('ANDROID_ADMOB_APP_ID');
+    }
+
+    if (easBuildPlatform !== 'android') {
+      readRequiredEnv('IOS_ADMOB_APP_ID');
+    }
+
     readRequiredEnv('EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID');
+
+    if (process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED?.trim() !== 'true') {
+      throw new Error(
+        'Missing required environment variable for production build: EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true'
+      );
+    }
   }
 }
 
@@ -225,6 +238,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       EXPO_PUBLIC_ENV: environment,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED,
       EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: process.env.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID,
+      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: process.env.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED,
     },
   };
 

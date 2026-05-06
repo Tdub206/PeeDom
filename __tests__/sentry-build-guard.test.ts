@@ -16,3 +16,19 @@ describe('Sentry build guard', () => {
     expect(easignoreSource).toContain('sentry.properties');
   });
 });
+
+describe('AdMob production build guard', () => {
+  it('requires server-side verification before production rewarded ads can ship', () => {
+    expect(appConfigSource).toContain('EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED?.trim() !== \'true\'');
+    expect(appConfigSource).toContain(
+      'Missing required environment variable for production build: EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED=true'
+    );
+  });
+
+  it('allows platform-specific AdMob app IDs for Android-only or iOS-only EAS builds', () => {
+    expect(appConfigSource).toContain("if (easBuildPlatform !== 'ios')");
+    expect(appConfigSource).toContain("if (easBuildPlatform !== 'android')");
+    expect(appConfigSource).toContain('readRequiredEnv(\'ANDROID_ADMOB_APP_ID\')');
+    expect(appConfigSource).toContain('readRequiredEnv(\'IOS_ADMOB_APP_ID\')');
+  });
+});
