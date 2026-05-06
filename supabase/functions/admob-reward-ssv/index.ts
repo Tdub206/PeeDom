@@ -362,6 +362,10 @@ function isTimestampRecent(timestamp: string, nowMs: number = Date.now()): boole
   return Math.abs(nowMs - timestampMs) <= MAX_CLOCK_SKEW_MS;
 }
 
+function isUnsignedSetupVerificationProbe(params: URLSearchParams): boolean {
+  return !params.get('signature')?.trim() || !params.get('key_id')?.trim();
+}
+
 Deno.serve(async (request) => {
   if (request.method === 'OPTIONS') {
     return new Response(null, {
@@ -373,12 +377,29 @@ Deno.serve(async (request) => {
     });
   }
 
+  if (request.method === 'HEAD') {
+    return new Response(null, {
+      status: 200,
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+    });
+  }
+
   if (request.method !== 'GET') {
     return jsonResponse({ error: 'Method not allowed.' }, 405);
   }
 
   const requestUrl = new URL(request.url);
   const params = requestUrl.searchParams;
+
+  if (isUnsignedSetupVerificationProbe(params)) {
+    return jsonResponse({
+      success: true,
+      ignored: true,
+      reason: 'Unsigned AdMob setup verification probe accepted without granting a reward.',
+    });
+  }
 
   try {
     await verifyAdMobSignature(requestUrl, params);

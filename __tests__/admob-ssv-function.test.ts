@@ -27,6 +27,13 @@ describe('AdMob server-side reward verification function', () => {
     expect(source).toContain('params.get(\'user_id\')');
   });
 
+  it('accepts unsigned AdMob setup probes without creating reward rows', () => {
+    const source = readRepoFile('supabase/functions/admob-reward-ssv/index.ts');
+
+    expect(source).toContain('isUnsignedSetupVerificationProbe');
+    expect(source).toContain('Unsigned AdMob setup verification probe accepted without granting a reward.');
+  });
+
   it('exposes an authenticated polling RPC for unconsumed verified rewards', () => {
     const migration = readRepoFile('supabase/migrations/056_admob_reward_verification.sql');
 
