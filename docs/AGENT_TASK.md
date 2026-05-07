@@ -1,6 +1,6 @@
-# Pee-Dom Task
+# StallPass Task
 
-# Pee-Dom Task
+# StallPass Task
 
 ## Beta Error Boundary with Bug Report Submission
 
@@ -33,7 +33,7 @@ The edge function uses service-role insert with only the anon key protecting it.
 `Sentry.init()` uses `enabled: isProductionEnv`. In beta/dev builds, `Sentry.lastEventId()` will return nothing. The plan MUST NOT depend on Sentry event IDs for beta builds. Treat `sentry_event_id` as optional/nullable. Consider whether Sentry should be enabled in beta builds, or just drop the linkage.
 
 ### MEDIUM — Must use existing offline queue architecture
-PeeDom already has `src/lib/offline-queue.ts` with retry/drop semantics and `src/hooks/useOfflineSync.ts` for reconnect processing. The plan MUST integrate with this existing queue rather than creating a parallel `@stallpass/beta_bug_queue`. This means:
+StallPass already has `src/lib/offline-queue.ts` with retry/drop semantics and `src/hooks/useOfflineSync.ts` for reconnect processing. The plan MUST integrate with this existing queue rather than creating a parallel `@stallpass/beta_bug_queue`. This means:
 - Using the existing queue's per-user scoping
 - Respecting sign-out cleanup in `AuthContext.tsx`
 - Getting poison-item / max-retry handling for free

@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom Premium Tier
+-- StallPass Premium Tier
 -- 011_premium_tier.sql
 -- Adds premium city packs, arrival alerts, and premium-only filter metadata.
 -- ============================================================================

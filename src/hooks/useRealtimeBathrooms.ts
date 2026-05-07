@@ -163,6 +163,21 @@ export function useRealtimeBathrooms({
               Sentry.captureException(error);
             }
           }
+        )
+        .on(
+          'postgres_changes',
+          {
+            event: '*',
+            schema: 'public',
+            table: 'bathroom_live_status_events',
+          },
+          (payload) => {
+            try {
+              handleBathroomScopedChange(payload as unknown as BathroomStatusChangePayload);
+            } catch (error) {
+              Sentry.captureException(error);
+            }
+          }
         );
     });
 

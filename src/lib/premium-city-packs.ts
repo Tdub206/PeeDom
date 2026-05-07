@@ -12,6 +12,12 @@ interface StoredPremiumCityPackRecord {
   downloaded_at: string;
 }
 
+interface StoredPremiumCityPackIndexEntry {
+  manifest: PremiumCityPackManifest;
+  downloaded_at: string;
+  search_text: string;
+}
+
 const isoTimestampSchema = z
   .string()
   .min(1)
@@ -20,6 +26,7 @@ const isoTimestampSchema = z
 const downloadedCityPackSchema = z.object({
   manifest: premiumCityPackManifestSchema,
   downloaded_at: isoTimestampSchema,
+  search_text: z.string().optional().default(''),
 });
 
 const downloadedCityPackListSchema = z.array(downloadedCityPackSchema);
@@ -60,6 +67,65 @@ function normalizeSearchText(value: string | null | undefined): string {
   return value?.trim().toLowerCase() ?? '';
 }
 
+function tokenizeSearchText(value: string | null | undefined): string[] {
+  return normalizeSearchText(value)
+    .replace(/[^a-z0-9]+/g, ' ')
+    .split(/\s+/)
+    .filter((token) => token.length >= 2);
+}
+
+function readJsonBooleanFlag(value: unknown, key: string): boolean {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    return false;
+  }
+
+  return (value as Record<string, unknown>)[key] === true;
+}
+
+function buildPackSearchText(manifest: PremiumCityPackManifest, bathrooms: CityPackBathroomRow[]): string {
+  const tokens = new Set<string>();
+
+  [
+    manifest.slug,
+    manifest.city,
+    manifest.state,
+    manifest.country_code,
+    ...bathrooms.flatMap((bathroom) => [
+      bathroom.place_name,
+      bathroom.address_line1,
+      bathroom.city,
+      bathroom.state,
+      bathroom.postal_code,
+      bathroom.is_accessible ? 'accessible wheelchair' : null,
+      readJsonBooleanFlag(bathroom.accessibility_features, 'has_changing_table')
+        ? 'changing table caregiver family child'
+        : null,
+      readJsonBooleanFlag(bathroom.accessibility_features, 'is_family_restroom')
+        ? 'family restroom child caregiver'
+        : null,
+      readJsonBooleanFlag(bathroom.accessibility_features, 'is_gender_neutral')
+        ? 'gender neutral single user privacy'
+        : null,
+      bathroom.is_locked === false ? 'unlocked no code public' : null,
+      bathroom.is_customer_only ? 'customer only' : null,
+    ]),
+  ].forEach((value) => {
+    tokenizeSearchText(value).forEach((token) => tokens.add(token));
+  });
+
+  return Array.from(tokens).sort().join(' ');
+}
+
+function doesPackIndexMatchQuery(entry: StoredPremiumCityPackIndexEntry, query: string): boolean {
+  const queryTokens = tokenizeSearchText(query);
+
+  if (queryTokens.length === 0 || !entry.search_text) {
+    return true;
+  }
+
+  return queryTokens.every((token) => entry.search_text.includes(token));
+}
+
 function scoreBathroomAgainstQuery(bathroom: CityPackBathroomRow, query: string): number {
   const normalizedQuery = normalizeSearchText(query);
 
@@ -97,7 +163,7 @@ function scoreBathroomAgainstQuery(bathroom: CityPackBathroomRow, query: string)
 }
 
 class PremiumCityPackStorage {
-  private async readIndex(): Promise<DownloadedPremiumCityPack[]> {
+  private async readIndexRecords(): Promise<StoredPremiumCityPackIndexEntry[]> {
     const storedIndex = await storage.get<unknown>(storage.keys.PREMIUM_CITY_PACK_INDEX);
     const parsedIndex = downloadedCityPackListSchema.safeParse(storedIndex ?? []);
 
@@ -107,31 +173,42 @@ class PremiumCityPackStorage {
     }
 
     return parsedIndex.data.map((entry) => ({
+      manifest: entry.manifest,
+      downloaded_at: entry.downloaded_at,
+      search_text: entry.search_text,
+    }));
+  }
+
+  private async readIndex(): Promise<DownloadedPremiumCityPack[]> {
+    const indexRecords = await this.readIndexRecords();
+
+    return indexRecords.map((entry) => ({
       ...entry.manifest,
       downloaded_at: entry.downloaded_at,
     }));
   }
 
-  private async writeIndex(packs: DownloadedPremiumCityPack[]): Promise<void> {
+  private async writeIndexRecords(entries: StoredPremiumCityPackIndexEntry[]): Promise<void> {
     await storage.set(
       storage.keys.PREMIUM_CITY_PACK_INDEX,
-      packs.map((pack) => ({
+      entries.map((entry) => ({
         manifest: {
-          slug: pack.slug,
-          city: pack.city,
-          state: pack.state,
-          country_code: pack.country_code,
-          bathroom_count: pack.bathroom_count,
-          center_latitude: pack.center_latitude,
-          center_longitude: pack.center_longitude,
-          min_latitude: pack.min_latitude,
-          max_latitude: pack.max_latitude,
-          min_longitude: pack.min_longitude,
-          max_longitude: pack.max_longitude,
-          latest_bathroom_update_at: pack.latest_bathroom_update_at,
-          latest_code_verified_at: pack.latest_code_verified_at,
+          slug: entry.manifest.slug,
+          city: entry.manifest.city,
+          state: entry.manifest.state,
+          country_code: entry.manifest.country_code,
+          bathroom_count: entry.manifest.bathroom_count,
+          center_latitude: entry.manifest.center_latitude,
+          center_longitude: entry.manifest.center_longitude,
+          min_latitude: entry.manifest.min_latitude,
+          max_latitude: entry.manifest.max_latitude,
+          min_longitude: entry.manifest.min_longitude,
+          max_longitude: entry.manifest.max_longitude,
+          latest_bathroom_update_at: entry.manifest.latest_bathroom_update_at,
+          latest_code_verified_at: entry.manifest.latest_code_verified_at,
         },
-        downloaded_at: pack.downloaded_at,
+        downloaded_at: entry.downloaded_at,
+        search_text: entry.search_text,
       }))
     );
   }
@@ -151,15 +228,52 @@ class PremiumCityPackStorage {
     return parsedPack.data;
   }
 
-  private async readAllPacks(): Promise<StoredPremiumCityPackRecord[]> {
-    const index = await this.readIndex();
-    const packs = await Promise.all(index.map((pack) => this.readPack(pack.slug)));
+  private async readPacksForIndexEntries(
+    entries: StoredPremiumCityPackIndexEntry[]
+  ): Promise<StoredPremiumCityPackRecord[]> {
+    const packs = await Promise.all(entries.map((entry) => this.readPack(entry.manifest.slug)));
+    const validRecords = packs.filter((pack): pack is StoredPremiumCityPackRecord => Boolean(pack));
+    const validRecordsBySlug = new Map(validRecords.map((record) => [record.manifest.slug, record]));
+    const invalidSlugs = new Set(
+      entries
+        .map((entry) => entry.manifest.slug)
+        .filter((slug) => !validRecordsBySlug.has(slug))
+    );
+    const missingSearchTextSlugs = new Set(
+      entries
+        .filter((entry) => !entry.search_text && validRecordsBySlug.has(entry.manifest.slug))
+        .map((entry) => entry.manifest.slug)
+    );
 
-    return packs.filter((pack): pack is StoredPremiumCityPackRecord => Boolean(pack));
+    if (invalidSlugs.size > 0 || missingSearchTextSlugs.size > 0) {
+      const currentIndex = await this.readIndexRecords();
+      await this.writeIndexRecords(
+        currentIndex
+          .filter((entry) => !invalidSlugs.has(entry.manifest.slug))
+          .map((entry) => {
+            const record = validRecordsBySlug.get(entry.manifest.slug);
+
+            if (!record || entry.search_text) {
+              return entry;
+            }
+
+            return {
+              manifest: record.manifest,
+              downloaded_at: record.downloaded_at,
+              search_text: buildPackSearchText(record.manifest, record.bathrooms),
+            };
+          })
+      );
+    }
+
+    return validRecords;
   }
 
   async listDownloadedPacks(): Promise<DownloadedPremiumCityPack[]> {
-    return this.readIndex();
+    const packs = await this.readIndex();
+
+    return packs
+      .sort((leftPack, rightPack) => rightPack.downloaded_at.localeCompare(leftPack.downloaded_at));
   }
 
   async savePack(manifest: PremiumCityPackManifest, bathrooms: CityPackBathroomRow[]): Promise<void> {
@@ -179,34 +293,37 @@ class PremiumCityPackStorage {
 
     await storage.set(getCityPackStorageKey(manifest.slug), record);
 
-    const existingIndex = await this.readIndex();
+    const existingIndex = await this.readIndexRecords();
     const nextIndex = [
-      ...existingIndex.filter((pack) => pack.slug !== manifest.slug),
+      ...existingIndex.filter((entry) => entry.manifest.slug !== manifest.slug),
       {
-        ...manifest,
+        manifest: parsedManifest.data,
         downloaded_at: downloadedAt,
+        search_text: buildPackSearchText(parsedManifest.data, parsedBathrooms.data as CityPackBathroomRow[]),
       },
     ].sort((leftPack, rightPack) => rightPack.downloaded_at.localeCompare(leftPack.downloaded_at));
 
-    await this.writeIndex(nextIndex);
+    await this.writeIndexRecords(nextIndex);
   }
 
   async removePack(slug: string): Promise<void> {
     await storage.remove(getCityPackStorageKey(slug));
-    const existingIndex = await this.readIndex();
-    await this.writeIndex(existingIndex.filter((pack) => pack.slug !== slug));
+    const existingIndex = await this.readIndexRecords();
+    await this.writeIndexRecords(existingIndex.filter((entry) => entry.manifest.slug !== slug));
   }
 
   async findBathroomsInRegion(
     region: RegionBounds,
     filters: BathroomFilters
   ): Promise<{ items: BathroomListItem[]; cached_at: string } | null> {
-    const packs = await this.readAllPacks();
-    const relevantPacks = packs.filter((pack) => doesPackIntersectRegion(pack.manifest, region));
+    const index = await this.readIndexRecords();
+    const relevantIndexEntries = index.filter((entry) => doesPackIntersectRegion(entry.manifest, region));
 
-    if (!relevantPacks.length) {
+    if (!relevantIndexEntries.length) {
       return null;
     }
+
+    const relevantPacks = await this.readPacksForIndexEntries(relevantIndexEntries);
 
     const rows = relevantPacks.flatMap((pack) =>
       pack.bathrooms
@@ -258,11 +375,14 @@ class PremiumCityPackStorage {
     origin?: { latitude: number; longitude: number } | null;
     limit?: number;
   }): Promise<{ items: BathroomListItem[]; cached_at: string } | null> {
-    const packs = await this.readAllPacks();
+    const index = await this.readIndexRecords();
+    const candidateIndexEntries = index.filter((entry) => doesPackIndexMatchQuery(entry, input.query));
 
-    if (!packs.length) {
+    if (!candidateIndexEntries.length) {
       return null;
     }
+
+    const packs = await this.readPacksForIndexEntries(candidateIndexEntries);
 
     const matches = packs.flatMap((pack) =>
       pack.bathrooms
@@ -284,34 +404,38 @@ class PremiumCityPackStorage {
       return null;
     }
 
-    const dedupedMatches = Array.from(
-      matches.reduce<Map<string, { bathroom: CityPackBathroomRow; downloaded_at: string; score: number }>>((nextMap, match) => {
-        const existingMatch = nextMap.get(match.bathroom.id);
+    const dedupedMatchMap = matches.reduce<
+      Map<string, { bathroom: CityPackBathroomRow; downloaded_at: string; score: number }>
+    >((nextMap, match) => {
+      const existingMatch = nextMap.get(match.bathroom.id);
 
-        if (!existingMatch || match.score > existingMatch.score) {
-          nextMap.set(match.bathroom.id, match);
-        }
+      if (!existingMatch || match.score > existingMatch.score) {
+        nextMap.set(match.bathroom.id, match);
+      }
 
-        return nextMap;
-      }, new Map())
-    ).map(([, match]) => match);
+      return nextMap;
+    }, new Map());
+    const dedupedMatches = Array.from(dedupedMatchMap.values());
 
-    const items = dedupedMatches
-      .map((match) =>
-        mapBathroomRowToListItem(match.bathroom, {
-          cachedAt: match.downloaded_at,
-          stale: false,
-          origin: input.origin ?? null,
-        })
-      )
-      .sort((leftBathroom, rightBathroom) => {
-        const leftMatch = dedupedMatches.find((match) => match.bathroom.id === leftBathroom.id);
-        const rightMatch = dedupedMatches.find((match) => match.bathroom.id === rightBathroom.id);
-        const scoreDelta = (rightMatch?.score ?? 0) - (leftMatch?.score ?? 0);
+    const sortableItems = dedupedMatches
+      .map((match) => ({
+        item:
+          mapBathroomRowToListItem(match.bathroom, {
+            cachedAt: match.downloaded_at,
+            stale: false,
+            origin: input.origin ?? null,
+          }),
+        score: match.score,
+      }))
+      .sort((leftEntry, rightEntry) => {
+        const scoreDelta = rightEntry.score - leftEntry.score;
 
         if (scoreDelta !== 0) {
           return scoreDelta;
         }
+
+        const leftBathroom = leftEntry.item;
+        const rightBathroom = rightEntry.item;
 
         if (
           input.filters.prioritizeAccessible &&
@@ -327,7 +451,10 @@ class PremiumCityPackStorage {
         }
 
         return leftBathroom.place_name.localeCompare(rightBathroom.place_name);
-      })
+      });
+
+    const items = sortableItems
+      .map((entry) => entry.item)
       .slice(0, input.limit ?? 40);
 
     const cachedAt = dedupedMatches

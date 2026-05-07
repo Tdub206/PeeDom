@@ -14,7 +14,7 @@ Replace the thin `ErrorBoundary` with a beta-aware crash screen: text input for 
 
 2. **`sentry_event_id` is always null in beta.** `Sentry.init()` has `enabled: isProductionEnv`. `Sentry.lastEventId()` returns nothing in non-production. The client never calls it; the field is nullable everywhere.
 
-3. **Guest `device_id` from `@peedom/analytics_anonymous_id`.** This AsyncStorage key is already a stable per-device identifier. If absent, the boundary creates and persists a fallback guest ID. This `device_id` doubles as the queue `userId` for unauthenticated submitters.
+3. **Guest `device_id` from `@stallpass/analytics_anonymous_id`.** This AsyncStorage key is already a stable per-device identifier. If absent, the boundary creates and persists a fallback guest ID. This `device_id` doubles as the queue `userId` for unauthenticated submitters.
 
 4. **`offlineQueue.enqueue()` is callable from a class component.** It's a singleton module export — no hooks required.
 
@@ -75,7 +75,7 @@ Add `'bug_report'` to `MutationType` and a new `BugReportMutationPayload` interf
 ### Step 4 — `src/api/bug-reports.ts`
 Three functions:
 - `readStoredAuthToken()` — reads `expo-secure-store` via `buildSupabaseAuthStorageKey`, parses `access_token`, returns `null` on any failure
-- `readOrCreateDeviceId()` — reads `ANALYTICS_ANONYMOUS_ID` from `storage`, falls back to a `@peedom/bug_report_guest_id` in AsyncStorage, generates one if absent
+- `readOrCreateDeviceId()` — reads `ANALYTICS_ANONYMOUS_ID` from `storage`, falls back to a `@stallpass/bug_report_guest_id` in AsyncStorage, generates one if absent
 - `buildBugReportPayload(opts)` — assembles the payload using `Device.*`, `Constants.expoConfig.version`, truncates fields, sets `sentry_event_id: null`
 - `submitBugReportToEdge(payload)` — POSTs to `/functions/v1/submit-bug-report` with `apikey` header and optional `Authorization`
 

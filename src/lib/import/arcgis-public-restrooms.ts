@@ -53,7 +53,7 @@ export interface ArcGisRestroomParseContext {
   sourceItemId: string;
   sourceItemTitle: string;
   sourceItemOwner: string | null;
-  sourceLayerId: number;
+  sourceLayerId: string | number;
   sourceLayerName: string;
   sourceServiceUrl: string;
   sourceItemUrl: string | null;
@@ -62,6 +62,7 @@ export interface ArcGisRestroomParseContext {
   sourceDescription: string | null;
   sourceLayerDescription: string | null;
   sourceDownloadUrl: string | null;
+  allowDatasetLevelRestroomSignal?: boolean;
 }
 
 interface GeoJsonPointGeometry {
@@ -169,8 +170,8 @@ const NEGATIVE_DISCOVERY_TERMS = [
 const PUBLIC_FALSE_TERMS = ['private', 'staff', 'employees only', 'employee only', 'no public access', 'closed to public'];
 const CUSTOMER_ONLY_TERMS = ['customer', 'customers', 'patron', 'patrons'];
 const KEY_ACCESS_TERMS = ['key', 'permit', 'membership', 'members only', 'code'];
-const CLOSED_TERMS = ['closed', 'inactive', 'removed', 'demolished', 'out of service'];
-const OPEN_TERMS = ['open', 'active', 'available', 'yes', 'public'];
+const CLOSED_TERMS = ['closed', 'inactive', 'removed', 'demolished', 'out of service', 'not operational'];
+const OPEN_TERMS = ['open', 'active', 'available', 'yes', 'public', 'operational'];
 const AFFIRMATIVE_TERMS = ['yes', 'y', 'true', '1', 'open', 'active', 'available', 'public'];
 const NEGATIVE_TERMS = ['no', 'n', 'false', '0', 'closed', 'inactive', 'private'];
 const NAME_FIELD_CANDIDATES = [
@@ -196,6 +197,8 @@ const TYPE_FIELD_CANDIDATES = [
   'amenity',
   'structuretype',
   'buildingtype',
+  'restroomtype',
+  'locationtype',
 ];
 const STATUS_FIELD_CANDIDATES = [
   'status',
@@ -205,6 +208,8 @@ const STATUS_FIELD_CANDIDATES = [
   'isactive',
   'open',
   'isopen',
+  'operational',
+  'availabilitystatus',
 ];
 const PUBLIC_FIELD_CANDIDATES = [
   'public',
@@ -214,7 +219,7 @@ const PUBLIC_FIELD_CANDIDATES = [
   'access',
   'availability',
 ];
-const ACCESSIBILITY_FIELD_CANDIDATES = ['ada', 'accessible', 'wheelchair', 'isaccessible', 'adaaccessible'];
+const ACCESSIBILITY_FIELD_CANDIDATES = ['ada', 'accessible', 'wheelchair', 'isaccessible', 'adaaccessible', 'accessibility'];
 const ADDRESS_FIELD_CANDIDATES = [
   'address',
   'facilityaddress',
@@ -222,13 +227,14 @@ const ADDRESS_FIELD_CANDIDATES = [
   'siteaddress',
   'addr',
   'address1',
+  'locationdescription',
 ];
 const CITY_FIELD_CANDIDATES = ['city', 'municipality', 'town', 'locality'];
 const STATE_FIELD_CANDIDATES = ['state', 'st'];
 const POSTAL_FIELD_CANDIDATES = ['postal', 'postalcode', 'zipcode', 'zip'];
 const LONGITUDE_FIELD_CANDIDATES = ['longitude', 'lon', 'long'];
 const LATITUDE_FIELD_CANDIDATES = ['latitude', 'lat'];
-const HOURS_FIELD_CANDIDATES = ['hours', 'hoursofoperation', 'operatinghours', 'openhours'];
+const HOURS_FIELD_CANDIDATES = ['hours', 'hoursofoperation', 'operatinghours', 'openhours', 'openinghours'];
 const LOCKED_FIELD_CANDIDATES = ['locked', 'islocked', 'dailylockstatus', 'lockstatus'];
 
 function buildEmptySkipCounts(): Record<PublicImportSkipReason, number> {
@@ -302,6 +308,10 @@ function buildSearchText(parts: Array<string | null | undefined>): string {
     .toLowerCase();
 }
 
+function normalizeLookupKey(key: string): string {
+  return key.toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
 function buildFieldLookup(properties: Record<string, unknown> | null | undefined): Map<string, unknown> {
   const lookup = new Map<string, unknown>();
 
@@ -310,7 +320,14 @@ function buildFieldLookup(properties: Record<string, unknown> | null | undefined
   }
 
   for (const [key, value] of Object.entries(properties)) {
-    lookup.set(key.toLowerCase(), value);
+    const lowerKey = key.toLowerCase();
+    const normalizedKey = normalizeLookupKey(key);
+
+    lookup.set(lowerKey, value);
+
+    if (normalizedKey.length > 0) {
+      lookup.set(normalizedKey, value);
+    }
   }
 
   return lookup;
@@ -318,8 +335,14 @@ function buildFieldLookup(properties: Record<string, unknown> | null | undefined
 
 function getFirstLookupValue(lookup: Map<string, unknown>, candidates: string[]): unknown {
   for (const candidate of candidates) {
+    const normalizedCandidate = normalizeLookupKey(candidate);
+
     if (lookup.has(candidate)) {
       return lookup.get(candidate);
+    }
+
+    if (normalizedCandidate.length > 0 && lookup.has(normalizedCandidate)) {
+      return lookup.get(normalizedCandidate);
     }
   }
 
@@ -544,28 +567,33 @@ function inferLocationArchetype(...texts: Array<string | null>): ImportedPublicB
   return 'general';
 }
 
-function inferRestroomPlaceName(lookup: Map<string, unknown>, typeText: string | null): string | null {
+function inferRestroomPlaceName(
+  lookup: Map<string, unknown>,
+  typeText: string | null,
+  structuralText: string | null
+): string | null {
   const directName = getFirstLookupText(lookup, NAME_FIELD_CANDIDATES);
+  const restroomSignalText = buildSearchText([typeText, structuralText]);
 
   if (directName) {
     if (containsTerm(directName.toLowerCase(), RESTROOM_TERMS)) {
       return directName;
     }
 
-    if (typeText && containsTerm(typeText.toLowerCase(), RESTROOM_TERMS)) {
+    if (containsTerm(restroomSignalText, RESTROOM_TERMS)) {
       return `${directName} Restroom`;
     }
   }
 
   const contextName = getFirstLookupText(lookup, CONTEXT_NAME_FIELD_CANDIDATES);
 
-  if (contextName && typeText && containsTerm(typeText.toLowerCase(), RESTROOM_TERMS)) {
+  if (contextName && containsTerm(restroomSignalText, RESTROOM_TERMS)) {
     return `Public Restroom at ${contextName}`;
   }
 
   const addressLine = getFirstLookupText(lookup, ADDRESS_FIELD_CANDIDATES);
 
-  if (addressLine && typeText && containsTerm(typeText.toLowerCase(), RESTROOM_TERMS)) {
+  if (addressLine && containsTerm(restroomSignalText, RESTROOM_TERMS)) {
     return `Public Restroom at ${addressLine}`;
   }
 
@@ -800,9 +828,15 @@ export function scoreArcGisLayerRelevance(input: ArcGisLayerScoreInput): number 
 function parseFeatureSkipReason(
   lookup: Map<string, unknown>,
   featureText: string,
-  typeText: string | null
+  typeText: string | null,
+  structuralText: string,
+  allowDatasetLevelRestroomSignal: boolean
 ): PublicImportSkipReason | null {
-  if (!containsTerm(buildSearchText([typeText, featureText]), RESTROOM_TERMS)) {
+  const hasFeatureRestroomSignal = containsTerm(buildSearchText([typeText, featureText]), RESTROOM_TERMS);
+  const hasAllowedDatasetRestroomSignal =
+    allowDatasetLevelRestroomSignal && containsTerm(structuralText, RESTROOM_TERMS);
+
+  if (!hasFeatureRestroomSignal && !hasAllowedDatasetRestroomSignal) {
     return 'not_restroom';
   }
 
@@ -861,14 +895,25 @@ export function parseArcGisRestroomGeoJson(
     const featureText = buildSearchText(
       Object.values(feature.properties ?? {}).map((value) => cleanText(value))
     );
-
-    const skipReason = parseFeatureSkipReason(lookup, featureText, typeText);
+    const structuralText = buildSearchText([
+      context.sourceItemTitle,
+      context.sourceLayerName,
+      context.sourceDescription,
+      context.sourceLayerDescription,
+    ]);
+    const skipReason = parseFeatureSkipReason(
+      lookup,
+      featureText,
+      typeText,
+      structuralText,
+      context.allowDatasetLevelRestroomSignal === true
+    );
 
     if (skipReason) {
       skipCounts[skipReason] += 1;
       skipped.push({
         external_source_id: `${context.sourceItemId}:${context.sourceLayerId}:${sourceObjectId}`,
-        place_name: inferRestroomPlaceName(lookup, typeText),
+        place_name: inferRestroomPlaceName(lookup, typeText, structuralText),
         reason: skipReason,
       });
       continue;
@@ -880,13 +925,13 @@ export function parseArcGisRestroomGeoJson(
       skipCounts.missing_point_geometry += 1;
       skipped.push({
         external_source_id: `${context.sourceItemId}:${context.sourceLayerId}:${sourceObjectId}`,
-        place_name: inferRestroomPlaceName(lookup, typeText),
+        place_name: inferRestroomPlaceName(lookup, typeText, structuralText),
         reason: 'missing_point_geometry',
       });
       continue;
     }
 
-    const placeName = inferRestroomPlaceName(lookup, typeText);
+    const placeName = inferRestroomPlaceName(lookup, typeText, structuralText);
 
     if (!placeName) {
       skipCounts.missing_name += 1;
@@ -952,6 +997,7 @@ export function parseArcGisRestroomGeoJson(
         context.sourceItemTitle,
         context.sourceLayerName,
         placeName,
+        typeText,
         getFirstLookupText(lookup, CONTEXT_NAME_FIELD_CANDIDATES)
       ),
       archetype_metadata: buildArchetypeMetadata(context, feature, lookup, rawHours, ambiguous),

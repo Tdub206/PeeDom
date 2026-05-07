@@ -1,0 +1,17 @@
+appId: com.stallpass.app
+---
+- launchApp:
+    clearState: true
+    permissions:
+      all: deny
+      android.permission.ACCESS_FINE_LOCATION: deny
+      android.permission.ACCESS_COARSE_LOCATION: deny
+- extendedWaitUntil:
+    visible: "Search bathrooms or addresses..."
+    timeout: 30000
+- assertVisible: "Search bathrooms or addresses..."
+- tapOn: "Search bathrooms or addresses..."
+- extendedWaitUntil:
+    visible: "Search"
+    timeout: 15000
+- back

@@ -2,27 +2,32 @@
   "hosting": {
     "site": "stallpass",
     "public": "web",
+    "redirects": [
+      {
+        "source": "/business",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      },
+      {
+        "source": "/business/**",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      },
+      {
+        "source": "/dashboard",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      },
+      {
+        "source": "/dashboard/**",
+        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
+        "type": 302
+      }
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "redirects": [
-      {
-        "source": "/business/:path*",
-        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app/:path",
-        "type": 302
-      },
-      {
-        "source": "/business{,/**}",
-        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
-        "type": 302
-      },
-      {
-        "source": "/business.html",
-        "destination": "https://stallpass-business-web--stallpass.us-central1.hosted.app",
-        "type": 302
-      }
     ]
   },
   "apphosting": [

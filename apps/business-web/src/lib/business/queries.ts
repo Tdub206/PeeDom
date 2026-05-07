@@ -1,4 +1,8 @@
-import type { BusinessDashboardBathroom } from '@mobile/types/index';
+import type {
+  BathroomAccessibilityDetails,
+  BathroomNeedMetadata,
+  BusinessDashboardBathroom,
+} from '@mobile/types/index';
 import {
   businessCouponRowsSchema,
   businessDashboardAnalyticsRowsSchema,
@@ -17,6 +21,17 @@ type ApprovedClaimRow = Pick<
 type BathroomRow = Pick<
   BusinessWebDatabase['public']['Tables']['bathrooms']['Row'],
   'id' | 'place_name' | 'address_line1' | 'city' | 'state' | 'postal_code' | 'show_on_free_map' | 'updated_at' | 'is_locked'
+>;
+
+type BusinessBathroomSettingsRow = Pick<
+  BusinessWebDatabase['public']['Tables']['business_bathroom_settings']['Row'],
+  | 'bathroom_id'
+  | 'requires_premium_access'
+  | 'show_on_free_map'
+  | 'is_location_verified'
+  | 'location_verified_at'
+  | 'pricing_plan'
+  | 'updated_at'
 >;
 
 export type { BusinessCouponRow, BusinessLocationCodeRow } from './schemas';
@@ -74,6 +89,16 @@ export interface ApprovedLocationQueryResult {
 
 export interface ApprovedLocationByIdResult {
   location: ApprovedLocation | null;
+  error: string | null;
+}
+
+export interface BusinessRestroomMetadata {
+  needMetadata: BathroomNeedMetadata | null;
+  accessibilityDetails: BathroomAccessibilityDetails | null;
+}
+
+export interface BusinessRestroomMetadataQueryResult {
+  metadata: BusinessRestroomMetadata;
   error: string | null;
 }
 
@@ -163,6 +188,7 @@ export async function getApprovedLocations(
 
   const [
     { data: bathroomsData, error: bathroomsError },
+    { data: settingsData, error: settingsError },
     { data: analyticsData, error: analyticsError },
   ] = await Promise.all([
     supabase
@@ -170,6 +196,11 @@ export async function getApprovedLocations(
       .select('id, place_name, address_line1, city, state, postal_code, show_on_free_map, updated_at, is_locked')
       .in('id', bathroomIds)
       .overrideTypes<BathroomRow[]>(),
+    supabase
+      .from('business_bathroom_settings')
+      .select('bathroom_id, requires_premium_access, show_on_free_map, is_location_verified, location_verified_at, pricing_plan, updated_at')
+      .in('bathroom_id', bathroomIds)
+      .overrideTypes<BusinessBathroomSettingsRow[]>(),
     (supabase as unknown as AnalyticsRpcClient).rpc('get_business_dashboard_analytics', {
       p_user_id: userId,
     }),
@@ -182,6 +213,13 @@ export async function getApprovedLocations(
     };
   }
 
+  if (settingsError) {
+    return {
+      locations: [],
+      error: settingsError.message,
+    };
+  }
+
   if (analyticsError) {
     return {
       locations: [],
@@ -190,6 +228,7 @@ export async function getApprovedLocations(
   }
 
   const bathroomsById = new Map((bathroomsData ?? []).map((bathroom) => [bathroom.id, bathroom] as const));
+  const settingsByBathroomId = new Map((settingsData ?? []).map((settings) => [settings.bathroom_id, settings] as const));
   const parsedAnalytics = businessDashboardAnalyticsRowsSchema.safeParse(analyticsData ?? []);
 
   if (!parsedAnalytics.success) {
@@ -211,7 +250,14 @@ export async function getApprovedLocations(
       return [];
     }
 
-    return [hydrateApprovedLocation(claim, bathroom, analyticsByBathroomId.get(claim.bathroom_id) ?? null)];
+    return [
+      hydrateApprovedLocation(
+        claim,
+        bathroom,
+        settingsByBathroomId.get(claim.bathroom_id) ?? null,
+        analyticsByBathroomId.get(claim.bathroom_id) ?? null
+      ),
+    ];
   });
 
   return {
@@ -241,9 +287,71 @@ export async function getApprovedLocationById(
   return { location, error: null };
 }
 
+export async function getBusinessRestroomMetadata(
+  supabase: BusinessSupabaseClient,
+  userId: string,
+  bathroomId: string
+): Promise<BusinessRestroomMetadataQueryResult> {
+  const ownership = await getApprovedLocationById(supabase, userId, bathroomId);
+
+  if (ownership.error) {
+    return {
+      metadata: {
+        needMetadata: null,
+        accessibilityDetails: null,
+      },
+      error: ownership.error,
+    };
+  }
+
+  if (!ownership.location) {
+    return {
+      metadata: {
+        needMetadata: null,
+        accessibilityDetails: null,
+      },
+      error: 'Location not found on your account.',
+    };
+  }
+
+  const [needResult, accessibilityResult] = await Promise.all([
+    supabase
+      .from('bathroom_need_metadata')
+      .select('*')
+      .eq('bathroom_id', bathroomId)
+      .maybeSingle()
+      .overrideTypes<BathroomNeedMetadata, { merge: false }>(),
+    supabase
+      .from('bathroom_accessibility_details')
+      .select('*')
+      .eq('bathroom_id', bathroomId)
+      .maybeSingle()
+      .overrideTypes<BathroomAccessibilityDetails, { merge: false }>(),
+  ]);
+
+  if (needResult.error || accessibilityResult.error) {
+    return {
+      metadata: {
+        needMetadata: null,
+        accessibilityDetails: null,
+      },
+      error: 'Unable to load verified restroom metadata right now.',
+    };
+  }
+
+  return {
+    metadata: {
+      needMetadata: needResult.data ?? null,
+      accessibilityDetails: accessibilityResult.data ?? null,
+    },
+    error: null,
+  };
+}
+
 function hydrateApprovedLocation(
   claim: ApprovedClaimRow,
   bathroom: BathroomRow,
+  settings: BusinessBathroomSettingsRow | null,
   analytics: BusinessDashboardBathroom | null
 ): ApprovedLocation {
   if (analytics) {
@@ -254,6 +362,12 @@ function hydrateApprovedLocation(
       business_name: claim.business_name,
       address: formatBathroomAddress(bathroom),
       is_locked: bathroom.is_locked,
+      requires_premium_access: settings?.requires_premium_access ?? analytics.requires_premium_access,
+      show_on_free_map: settings?.show_on_free_map ?? analytics.show_on_free_map,
+      is_location_verified: settings?.is_location_verified ?? analytics.is_location_verified,
+      location_verified_at: settings?.location_verified_at ?? analytics.location_verified_at,
+      pricing_plan: settings?.pricing_plan ?? analytics.pricing_plan,
+      last_updated: maxIsoTimestamp(analytics.last_updated, settings?.updated_at ?? null),
     };
   }
 
@@ -275,15 +389,23 @@ function hydrateApprovedLocation(
     has_active_featured_placement: false,
     active_featured_placements: 0,
     active_offer_count: 0,
-    requires_premium_access: false,
-    show_on_free_map: bathroom.show_on_free_map,
-    is_location_verified: false,
-    location_verified_at: null,
-    pricing_plan: claim.is_lifetime_free ? 'lifetime' : 'standard',
-    last_updated: bathroom.updated_at,
+    requires_premium_access: settings?.requires_premium_access ?? false,
+    show_on_free_map: settings?.show_on_free_map ?? bathroom.show_on_free_map,
+    is_location_verified: settings?.is_location_verified ?? false,
+    location_verified_at: settings?.location_verified_at ?? null,
+    pricing_plan: settings?.pricing_plan ?? (claim.is_lifetime_free ? 'lifetime' : 'standard'),
+    last_updated: maxIsoTimestamp(bathroom.updated_at, settings?.updated_at ?? null),
     address: formatBathroomAddress(bathroom),
     is_locked: bathroom.is_locked,
   };
+}
+
+function maxIsoTimestamp(primary: string, secondary: string | null): string {
+  if (!secondary) {
+    return primary;
+  }
+
+  return new Date(secondary).getTime() > new Date(primary).getTime() ? secondary : primary;
 }
 
 function formatBathroomAddress(bathroom: BathroomRow): string {

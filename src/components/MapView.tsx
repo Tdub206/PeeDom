@@ -193,6 +193,8 @@ function BathroomMapViewComponent({
 
     return rankedBathrooms[0]?.bathroom ?? null;
   }, [bathrooms, userLocation]);
+  const shouldUseClusteredMap = Platform.OS === 'ios' || bathrooms.length >= 30;
+  const nonClusteredMarkerProps = useMemo(() => ({ isClustered: false }), []);
 
   const renderCluster = useCallback((cluster: ClusterRenderInput) => {
     const clusterSize = getClusterDiameter(cluster.properties.point_count);
@@ -258,6 +260,7 @@ function BathroomMapViewComponent({
 
       {searchTarget ? (
         <Marker
+          {...nonClusteredMarkerProps}
           accessibilityHint="Double tap to keep exploring this searched address on the map."
           accessibilityLabel={`Searched address ${searchTarget.label}`}
           accessibilityRole="image"
@@ -346,30 +349,12 @@ function BathroomMapViewComponent({
         Platform.OS === 'ios' ? 'overflow-hidden' : '',
       ].join(' ')}
     >
-      {Platform.OS === 'android' ? (
-        <NativeMapView
-          googleRenderer="LATEST"
-          mapType="standard"
-          moveOnMarkerPress={false}
-          onRegionChangeComplete={handleRegionChange}
-          provider={PROVIDER_GOOGLE}
-          region={region}
-          showsCompass={false}
-          showsMyLocationButton={false}
-          showsUserLocation={Boolean(userLocation)}
-          style={styles.map}
-          toolbarEnabled={false}
-        >
-          {mapChildren}
-        </NativeMapView>
-      ) : (
+      {shouldUseClusteredMap ? (
         <ClusteredMapView
           animationEnabled
           clusterColor={colors.brand[600]}
           clusterTextColor={colors.surface.card}
           edgePadding={{ top: 80, right: 80, bottom: 120, left: 80 }}
-          loadingBackgroundColor={colors.surface.card}
-          loadingEnabled
           moveOnMarkerPress={false}
           onRegionChangeComplete={handleRegionChange}
           preserveClusterPressBehavior={false}
@@ -386,6 +371,22 @@ function BathroomMapViewComponent({
         >
           {mapChildren}
         </ClusteredMapView>
+      ) : (
+        <NativeMapView
+          googleRenderer="LATEST"
+          mapType="standard"
+          moveOnMarkerPress={false}
+          onRegionChangeComplete={handleRegionChange}
+          provider={PROVIDER_GOOGLE}
+          region={region}
+          showsCompass={false}
+          showsMyLocationButton={false}
+          showsUserLocation={Boolean(userLocation)}
+          style={styles.map}
+          toolbarEnabled={false}
+        >
+          {mapChildren}
+        </NativeMapView>
       )}
 
       <View pointerEvents="box-none" className="absolute left-4 right-4 top-4 flex-row justify-between">

@@ -1,4 +1,4 @@
-Perform a launch-readiness pass for Pee-Dom.
+Perform a launch-readiness pass for StallPass.
 
 Check:
 - auth/session robustness

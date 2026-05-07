@@ -1,4 +1,4 @@
-Create a repo-specific implementation plan for Pee-Dom.
+Create a repo-specific implementation plan for StallPass.
 
 Requirements:
 - mobile-first

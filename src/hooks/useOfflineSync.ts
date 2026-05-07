@@ -9,6 +9,7 @@ import { upsertCleanlinessRating } from '@/api/cleanliness-ratings';
 import { addFavorite, removeFavorite } from '@/api/favorites';
 import { reportBathroomStatus } from '@/api/notifications';
 import { createBathroomReport } from '@/api/reports';
+import { reportBathroomLiveStatusEvent } from '@/api/restroom-intelligence';
 import { verifySourceRecordLocation } from '@/api/source-record-verifications';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/useToast';
@@ -17,6 +18,7 @@ import { validateBathroomAccessibilityUpdate } from '@/lib/validators';
 import { isNetworkStateOnline } from '@/lib/network-state';
 import { offlineSyncController } from '@/lib/offline-sync-controller';
 import { offlineQueue } from '@/lib/offline-queue';
+import { isBathroomLiveStatusEventMutationPayload } from '@/lib/live-status-event-queue';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { useOfflineSyncStore } from '@/store/useOfflineSyncStore';
 import {
@@ -272,6 +274,28 @@ export function useOfflineSync() {
             }
 
             return !isTransientNetworkError(statusResult.error);
+          }
+          case 'live_status_event': {
+            if (!isBathroomLiveStatusEventMutationPayload(mutation.payload)) {
+              return false;
+            }
+
+            const statusEventResult = await reportBathroomLiveStatusEvent({
+              bathroomId: mutation.payload.bathroom_id,
+              statusType: mutation.payload.status_type,
+              statusValue: mutation.payload.status_value,
+              waitMinutes: mutation.payload.wait_minutes ?? null,
+              occupancyLevel: mutation.payload.occupancy_level ?? null,
+              suppliesMissing: mutation.payload.supplies_missing ?? [],
+              confidenceScore: mutation.payload.confidence_score,
+              evidencePhotoUrl: mutation.payload.evidence_photo_url ?? null,
+            });
+
+            if (!statusEventResult.error) {
+              return true;
+            }
+
+            return !isTransientNetworkError(statusEventResult.error);
           }
           case 'location_verification': {
             if (!isSourceRecordVerificationMutationPayload(mutation.payload)) {

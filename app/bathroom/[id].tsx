@@ -13,6 +13,11 @@ import { CodeConfidenceCard } from '@/components/CodeConfidenceCard';
 import { CodeRevealCard } from '@/components/CodeRevealCard';
 import { CodeVerificationCard } from '@/components/CodeVerificationCard';
 import { LoadingScreen } from '@/components/LoadingScreen';
+import { BathroomAccessibilityDetails } from '@/components/BathroomAccessibilityDetails';
+import { BathroomCorrectionSheet } from '@/components/BathroomCorrectionSheet';
+import { BathroomFreshnessLabel } from '@/components/BathroomFreshnessLabel';
+import { BathroomSuppliesRow } from '@/components/BathroomSuppliesRow';
+import { BathroomTrustBadge } from '@/components/BathroomTrustBadge';
 import { PhotoProofGallery } from '@/components/PhotoProofGallery';
 import { PremiumArrivalAlertCard } from '@/components/PremiumArrivalAlertCard';
 import { ImportedBathroomReviewCard } from '@/components/ImportedBathroomReviewCard';
@@ -24,9 +29,13 @@ import { colors } from '@/constants/colors';
 import { routes } from '@/constants/routes';
 import { useAuth } from '@/contexts/AuthContext';
 import { useBathroomCodeVerification } from '@/hooks/useBathroomCodeVerification';
+import { useBathroomAccessibilityDetails } from '@/hooks/useBathroomAccessibilityDetails';
 import { shouldRefreshBathroomDetailOnFocus, useBathroomDetail } from '@/hooks/useBathroomDetail';
+import { useBathroomFieldConfirmation } from '@/hooks/useBathroomFieldConfirmation';
 import { useBathroomLiveStatus } from '@/hooks/useBathroomLiveStatus';
+import { useBathroomNeedMetadata } from '@/hooks/useBathroomNeedMetadata';
 import { useCleanlinessRating } from '@/hooks/useCleanlinessRating';
+import { useCurrentBathroomLiveStatus } from '@/hooks/useCurrentBathroomLiveStatus';
 import { useBathroomPhotos } from '@/hooks/useBathroomPhotos';
 import { useFavorites } from '@/hooks/useFavorites';
 import { usePremiumArrivalAlert } from '@/hooks/usePremiumArrivalAlert';
@@ -35,10 +44,12 @@ import { useRealtimePresence } from '@/hooks/useRealtimePresence';
 import { useRewardedCodeUnlock } from '@/hooks/useRewardedCodeUnlock';
 import { useRecordVisit } from '@/hooks/useStallPassVisits';
 import { useToast } from '@/hooks/useToast';
+import { useBathroomTrustSummary } from '@/hooks/useBathroomTrustSummary';
 import { getBathroomStatusLabel } from '@/lib/bathroom-status';
 import { hasActivePremium } from '@/lib/gamification';
 import { openDirectionsInMaps } from '@/lib/map-navigation';
 import { pushSafely, replaceSafely } from '@/lib/navigation';
+import type { SupportedBathroomConfirmationField } from '@/lib/restroom-intelligence/field-confirmations';
 import { BathroomLiveStatus, BathroomPhotoType } from '@/types';
 import { getErrorMessage } from '@/utils/errorMap';
 import {
@@ -130,6 +141,7 @@ export default function BathroomDetailScreen() {
   const [isLoadingCode, setIsLoadingCode] = useState(false);
   const [isOpeningDirections, setIsOpeningDirections] = useState(false);
   const [isPickingPhoto, setIsPickingPhoto] = useState(false);
+  const [isCorrectionSheetOpen, setIsCorrectionSheetOpen] = useState(false);
   const [pendingVerificationVote, setPendingVerificationVote] = useState<-1 | 1 | null>(null);
   const [pendingQuickStatus, setPendingQuickStatus] = useState<BathroomLiveStatus | null>(null);
   const [selectedPhotoType, setSelectedPhotoType] = useState<BathroomPhotoType>('interior');
@@ -287,6 +299,22 @@ export default function BathroomDetailScreen() {
     isReportingStatus: isReportingQuickStatus,
     reportStatus,
   } = useBathroomLiveStatus(bathroomId || null);
+  const needMetadataQuery = useBathroomNeedMetadata(bathroomId || null);
+  const accessibilityDetailsQuery = useBathroomAccessibilityDetails(bathroomId || null);
+  const {
+    summary: trustSummary,
+    isLoadingSummary: isLoadingTrustSummary,
+  } = useBathroomTrustSummary({
+    bathroomId: bathroomId || null,
+    fallbackConfidenceScore: trustScore,
+    fallbackLastConfirmedAt: trustLastVerifiedAt,
+  });
+  const {
+    headline: currentLiveStatusHeadline,
+    summaries: richLiveStatusSummaries,
+    isLoadingCurrentLiveStatus,
+  } = useCurrentBathroomLiveStatus(bathroomId || null);
+  const { confirmField, isSubmittingConfirmation } = useBathroomFieldConfirmation(bathroomId || null);
   const latestPhotoCreatedAt = useMemo(() => {
     if (!photos.length) {
       return null;
@@ -538,6 +566,22 @@ export default function BathroomDetailScreen() {
     }
   }, [favoriteCandidate, toggleFavorite]);
 
+  const handleSubmitCorrection = useCallback(
+    async (input: {
+      fieldName: SupportedBathroomConfirmationField;
+      value: unknown;
+      notes?: string | null;
+    }) => {
+      await confirmField({
+        fieldName: input.fieldName,
+        value: input.value,
+        notes: input.notes ?? null,
+      });
+      setIsCorrectionSheetOpen(false);
+    },
+    [confirmField]
+  );
+
   if (isLoadingBathroomDetail && !bathroomDetail) {
     return <LoadingScreen message="Loading this bathroom and its latest code summary." />;
   }
@@ -628,6 +672,30 @@ export default function BathroomDetailScreen() {
           </View>
 
           <BathroomStatusBanner bathroomId={bathroomDetail.id} />
+
+          <View className="mt-4 rounded-[28px] border border-surface-strong bg-surface-card px-5 py-5">
+            <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Trust and freshness</Text>
+            <View className="mt-3 flex-row flex-wrap items-center gap-2">
+              <BathroomFreshnessLabel
+                lastConfirmedAt={trustSummary.lastConfirmedAt}
+                staleFieldsCount={trustSummary.staleFields.length}
+              />
+              <BathroomTrustBadge summary={trustSummary} />
+            </View>
+            {isLoadingTrustSummary ? (
+              <Text className="mt-3 text-sm text-ink-600">Refreshing trust signals...</Text>
+            ) : null}
+            {trustSummary.staleFields.length > 0 ? (
+              <Text className="mt-3 text-sm leading-6 text-warning">
+                Stale fields: {trustSummary.staleFields.slice(0, 4).join(', ')}
+              </Text>
+            ) : null}
+            {isLoadingCurrentLiveStatus ? (
+              <Text className="mt-2 text-sm text-ink-600">Loading live status summary...</Text>
+            ) : currentLiveStatusHeadline ? (
+              <Text className="mt-2 text-sm leading-6 text-brand-700">{currentLiveStatusHeadline}</Text>
+            ) : null}
+          </View>
 
           {bathroomTrustProfile ? <BathroomConfidenceCard profile={bathroomTrustProfile} /> : null}
           {hasSourceFreshness ? (
@@ -858,6 +926,22 @@ export default function BathroomDetailScreen() {
             </View>
           </View>
 
+          <View className="mt-6">
+            <BathroomSuppliesRow metadata={needMetadataQuery.data ?? null} />
+            {richLiveStatusSummaries.length > 0 ? (
+              <View className="mt-4 rounded-[24px] border border-surface-strong bg-surface-card px-4 py-4">
+                <Text className="text-xs font-semibold uppercase tracking-[1px] text-ink-500">Current live updates</Text>
+                <View className="mt-3 gap-2">
+                  {richLiveStatusSummaries.slice(0, 4).map((liveStatusEvent) => (
+                    <Text className="text-sm leading-6 text-ink-700" key={liveStatusEvent.id}>
+                      {liveStatusEvent.summaryText}
+                    </Text>
+                  ))}
+                </View>
+              </View>
+            ) : null}
+          </View>
+
           <View className="mt-6 rounded-[32px] border border-surface-strong bg-surface-card p-6">
             <Text className="text-sm font-semibold uppercase tracking-[1px] text-ink-500">Cleanliness</Text>
             <Text className="mt-3 text-2xl font-bold text-ink-900">
@@ -901,6 +985,9 @@ export default function BathroomDetailScreen() {
               accessibilityScore={bathroomDetail.accessibility_score ?? 0}
               isAccessible={bathroomDetail.is_accessible}
             />
+            <View className="mt-4">
+              <BathroomAccessibilityDetails details={accessibilityDetailsQuery.data ?? null} />
+            </View>
             <Button
               className="mt-4"
               label="Update Accessibility Details"
@@ -1015,9 +1102,25 @@ export default function BathroomDetailScreen() {
               }
               variant="destructive"
             />
+            <Button
+              className="mt-3"
+              label="Fix A Field"
+              onPress={() => setIsCorrectionSheetOpen(true)}
+              variant="secondary"
+            />
           </View>
         </View>
       </ScrollView>
+
+      <BathroomCorrectionSheet
+        bathroomName={bathroomDetail.place_name}
+        isOpen={isCorrectionSheetOpen}
+        isSubmitting={isSubmittingConfirmation}
+        onClose={() => setIsCorrectionSheetOpen(false)}
+        onSubmit={(input) => {
+          void handleSubmitCorrection(input);
+        }}
+      />
     </SafeAreaView>
   );
 }

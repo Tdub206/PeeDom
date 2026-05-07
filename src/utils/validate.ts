@@ -49,6 +49,7 @@ export const queuedMutationSchema = z.object({
     'report_create',
     'rating_create',
     'status_report',
+    'live_status_event',
     'accessibility_update',
     'bug_report',
   ]),

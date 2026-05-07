@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom user moderation (report + block)
+-- StallPass user moderation (report + block)
 -- 022_user_moderation.sql
 --
 -- Google UGC policy expects user-level moderation, not just content reporting.

@@ -32,6 +32,14 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
     return 'INVALID_UNLOCK_METHOD';
   }
 
+  if (/IDEMPOTENCY_KEY_REQUIRED/i.test(errorMessage)) {
+    return 'IDEMPOTENCY_KEY_REQUIRED';
+  }
+
+  if (/REWARD_VERIFICATION_REQUIRED/i.test(errorMessage)) {
+    return 'REWARD_VERIFICATION_REQUIRED';
+  }
+
   return 'code' in error ? error.code : undefined;
 }
 
@@ -42,12 +50,30 @@ function toAppError(error: AppErrorShape | Error, fallbackMessage: string): Erro
 }
 
 export async function consumeEmergencyLookupAccess(
-  unlockMethod: FeatureUnlockMethod
+  unlockMethod: FeatureUnlockMethod,
+  options?: {
+    idempotencyKey?: string | null;
+    rewardVerificationToken?: string | null;
+  }
 ): Promise<{ data: EmergencyLookupAccessResult | null; error: (Error & { code?: string }) | null }> {
   try {
-    const { data, error } = await getSupabaseClient().rpc('consume_emergency_lookup_access' as never, {
+    const rpcArgs: {
+      p_unlock_method: FeatureUnlockMethod;
+      p_idempotency_key?: string;
+      p_reward_verification_token?: string;
+    } = {
       p_unlock_method: unlockMethod,
-    } as never);
+    };
+
+    if (options?.idempotencyKey) {
+      rpcArgs.p_idempotency_key = options.idempotencyKey;
+    }
+
+    if (options?.rewardVerificationToken) {
+      rpcArgs.p_reward_verification_token = options.rewardVerificationToken;
+    }
+
+    const { data, error } = await getSupabaseClient().rpc('consume_emergency_lookup_access' as never, rpcArgs as never);
 
     if (error) {
       return {

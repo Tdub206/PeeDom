@@ -32,6 +32,7 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
   const setUserLocation = useMapStore((state) => state.setUserLocation);
   const watcherRef = useRef<Location.LocationSubscription | null>(null);
   const [coordinates, setCoordinates] = useState<Coordinates | null>(null);
+  const [coordinatesUpdatedAt, setCoordinatesUpdatedAt] = useState<string | null>(null);
   const [permissionStatus, setPermissionStatus] = useState<LocationPermissionState>('unknown');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isRequestingPermission, setIsRequestingPermission] = useState(false);
@@ -40,7 +41,13 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
   const applyLocationUpdate = useCallback(
     (location: Location.LocationObject) => {
       const nextCoordinates = toCoordinates(location);
+      const updatedAt =
+        typeof location.timestamp === 'number' && Number.isFinite(location.timestamp)
+          ? new Date(location.timestamp).toISOString()
+          : new Date().toISOString();
+
       setCoordinates(nextCoordinates);
+      setCoordinatesUpdatedAt(updatedAt);
       setUserLocation(nextCoordinates);
       setErrorMessage(null);
     },
@@ -172,6 +179,7 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo<LocationContextValue>(
     () => ({
       coordinates,
+      coordinates_updated_at: coordinatesUpdatedAt,
       permission_status: permissionStatus,
       error_message: errorMessage,
       is_requesting_permission: isRequestingPermission,
@@ -179,7 +187,16 @@ export function LocationProvider({ children }: { children: React.ReactNode }) {
       requestPermission,
       refreshLocation,
     }),
-    [coordinates, errorMessage, isRefreshing, isRequestingPermission, permissionStatus, refreshLocation, requestPermission]
+    [
+      coordinates,
+      coordinatesUpdatedAt,
+      errorMessage,
+      isRefreshing,
+      isRequestingPermission,
+      permissionStatus,
+      refreshLocation,
+      requestPermission,
+    ]
   );
 
   return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>;

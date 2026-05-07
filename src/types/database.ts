@@ -1465,12 +1465,20 @@ export interface Database {
           avg_cleanliness: number
           total_ratings: number
           weekly_views: number
+          weekly_unique_visitors: number
+          monthly_unique_visitors: number
+          weekly_navigation_count: number
           verification_badge_type: 'standard' | 'premium' | 'featured' | null
           has_verification_badge: boolean
           has_active_featured_placement: boolean
           active_featured_placements: number
-          last_updated: string
+          active_offer_count: number
+          requires_premium_access: boolean
           show_on_free_map: boolean
+          is_location_verified: boolean
+          location_verified_at: string | null
+          pricing_plan: 'standard' | 'lifetime'
+          last_updated: string
         }[]
       }
       update_business_bathroom_hours: {

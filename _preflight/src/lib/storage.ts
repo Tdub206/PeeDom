@@ -2,19 +2,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const STORAGE_KEYS = {
   // Cache keys
-  CACHED_BATHROOMS: '@peedom/cached_bathrooms',
-  CACHED_REGION: '@peedom/cached_region',
-  CACHED_FAVORITES: '@peedom/cached_favorites',
-  CACHED_PROFILE: '@peedom/cached_profile',
+  CACHED_BATHROOMS: '@stallpass/cached_bathrooms',
+  CACHED_REGION: '@stallpass/cached_region',
+  CACHED_FAVORITES: '@stallpass/cached_favorites',
+  CACHED_PROFILE: '@stallpass/cached_profile',
   
   // Offline keys
-  OFFLINE_QUEUE: '@peedom/offline_queue',
+  OFFLINE_QUEUE: '@stallpass/offline_queue',
   
   // Intent keys
-  RETURN_INTENT: '@peedom/return_intent',
+  RETURN_INTENT: '@stallpass/return_intent',
   
   // User preference keys
-  USER_PREFERENCES: '@peedom/user_preferences',
+  USER_PREFERENCES: '@stallpass/user_preferences',
 } as const;
 
 export const storage = {

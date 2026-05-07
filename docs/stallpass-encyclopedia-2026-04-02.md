@@ -11,7 +11,7 @@
 | Field | Value |
 |---|---|
 | Public name | **StallPass** |
-| Internal/repo name | PeeDom (Pee-Dom) |
+| Internal/repo name | StallPass (StallPass) |
 | Purpose | Crowdsourced restroom/bathroom finder for iOS and Android |
 | Domain | stallpass.org |
 | Bundle ID | `com.stallpass.app` (iOS + Android) |
@@ -63,7 +63,7 @@
 
 ### 3.2 Offline Architecture
 - **Offline queue** (`src/lib/offline-queue.ts`): Authenticated transient failures only
-- **User-scoped**: Storage keyed `@peedom/offline_queue:<user_id>`
+- **User-scoped**: Storage keyed `@stallpass/offline_queue:<user_id>`
 - **Zod-validated on load**; max 3 retries
 - **MutationOutcome**: `'completed' | 'auth_required' | 'queued_retry'`
 - **Flush triggers**: auth_restore, re_auth, network_reconnect, app_foreground
@@ -355,7 +355,7 @@
 | EAS project slug mismatch | Relinked to `stallpass` |
 | Release builds using debug keystore | Fail-closed signing config |
 | `SYSTEM_ALERT_WINDOW` permission leak | Removed via blockedPermissions |
-| Brand inconsistency (Pee-Dom vs StallPass) | Standardized to StallPass |
+| Brand inconsistency (StallPass vs StallPass) | Standardized to StallPass |
 | 11 bare `catch {}` blocks (Hermes-incompatible) | Added proper catch bindings |
 | `CI=1 ` trailing whitespace crashing Metro | Sanitizer wrapper script |
 | Duplicate `show_on_free_map` from merge | Removed duplicate properties |

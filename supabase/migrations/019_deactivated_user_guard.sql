@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom deactivated-user guard
+-- StallPass deactivated-user guard
 -- 019_deactivated_user_guard.sql
 --
 -- Adds a shared database-side helper that every user-facing mutation RPC

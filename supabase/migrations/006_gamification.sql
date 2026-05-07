@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Gamification
+-- StallPass Gamification
 -- Adds contributor streaks, badges, leaderboards, and points redemption.
 -- ============================================================================
 
@@ -410,7 +410,7 @@ begin
           new.user_id,
           'streak_seven',
           'Seven Day Streak',
-          'Contributed to the Pee-Dom community seven days in a row.',
+          'Contributed to the StallPass community seven days in a row.',
           'streak'
         );
       end if;

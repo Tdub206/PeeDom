@@ -8,7 +8,7 @@
 
 ### Repository layout
 ```
-PeeDom/
+StallPass/
 ├── apps/business-web/          ← Next.js 14 App Router (YOUR TARGET)
 │   ├── src/app/(dashboard)/    ← all authenticated pages live here
 │   ├── src/lib/business/       ← queries.ts + schemas.ts

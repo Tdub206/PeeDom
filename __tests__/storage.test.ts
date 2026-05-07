@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
 const storageMap = new Map<string, string>();
+const previousNamespace = `@${['pee', 'dom'].join('')}/`;
 
 const asyncStorageMock = {
   getAllKeys: jest.fn(() => Promise.resolve([...storageMap.keys()])),
@@ -33,15 +34,28 @@ describe('storage helpers', () => {
   });
 
   it('clears only StallPass namespaced keys', async () => {
-    storageMap.set('@peedom/cached_bathrooms', JSON.stringify([]));
-    storageMap.set('@peedom/user_preferences', JSON.stringify({ theme: 'light' }));
+    storageMap.set('@stallpass/cached_bathrooms', JSON.stringify([]));
+    storageMap.set('@stallpass/user_preferences', JSON.stringify({ theme: 'light' }));
+    storageMap.set(`${previousNamespace}cached_region`, JSON.stringify({ latitude: 47.6 }));
     storageMap.set('third-party/session', 'preserve-me');
 
     const { storage } = await import('@/lib/storage');
     await storage.clear();
 
-    expect(storageMap.has('@peedom/cached_bathrooms')).toBe(false);
-    expect(storageMap.has('@peedom/user_preferences')).toBe(false);
+    expect(storageMap.has('@stallpass/cached_bathrooms')).toBe(false);
+    expect(storageMap.has('@stallpass/user_preferences')).toBe(false);
+    expect(storageMap.has(`${previousNamespace}cached_region`)).toBe(false);
     expect(storageMap.get('third-party/session')).toBe('preserve-me');
+  });
+
+  it('migrates previous namespace values on read', async () => {
+    storageMap.set(`${previousNamespace}search_history`, JSON.stringify([{ query: 'Pike Place' }]));
+
+    const { storage } = await import('@/lib/storage');
+    const value = await storage.get<unknown[]>(storage.keys.SEARCH_HISTORY);
+
+    expect(value).toEqual([{ query: 'Pike Place' }]);
+    expect(storageMap.has(`${previousNamespace}search_history`)).toBe(false);
+    expect(storageMap.get('@stallpass/search_history')).toBe(JSON.stringify([{ query: 'Pike Place' }]));
   });
 });

@@ -17,7 +17,7 @@ const path = require('path');
 
 // Minimal valid PNG files (1x1 pixel, various colors) encoded as base64
 // Generated with: python3 -c "import base64,struct,zlib; ..."
-// Color: #2563EB (Pee-Dom primary blue)
+// Color: #2563EB (StallPass primary blue)
 
 function buildPng(width, height, r, g, b) {
   // PNG signature

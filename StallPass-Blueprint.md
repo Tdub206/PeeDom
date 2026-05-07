@@ -1,4 +1,4 @@
-# PEE-DOM
+# StallPass
 ## Technical Requirement Document & Architecture Blueprint
 
 > **Version 1.0 · React Native / Expo SDK 54 / Supabase**
@@ -25,7 +25,7 @@
 
 ## 1. Executive Summary
 
-PeeDom is a community-powered mobile application enabling users to locate, rate, and access bathroom facilities in real time. The platform operates across iOS and Android, built on React Native with Expo SDK 54, Expo Router for file-based navigation, NativeWind v4 for styling, TanStack Query for server-state, and Supabase (PostgreSQL + PostGIS + Auth + Realtime) as the backend.
+StallPass is a community-powered mobile application enabling users to locate, rate, and access bathroom facilities in real time. The platform operates across iOS and Android, built on React Native with Expo SDK 54, Expo Router for file-based navigation, NativeWind v4 for styling, TanStack Query for server-state, and Supabase (PostgreSQL + PostGIS + Auth + Realtime) as the backend.
 
 | Dimension   | Value                                                      |
 |-------------|------------------------------------------------------------|
@@ -48,7 +48,7 @@ Every file listed below must exist and be non-placeholder before the app is cons
 ### 2.1 Root
 
 ```
-peedom-mobile/
+stallpass/
   app.config.ts              [P1] Dynamic Expo config — reads all env vars
   babel.config.js            [P1] NativeWind + Reanimated plugin
   metro.config.js            [P1] NativeWind withNativeWind wrapper
@@ -498,7 +498,7 @@ Every service mutation must return a `MutationOutcome` so UI can respond appropr
 - [ ] `confidence_score` reset trigger deployed.
 - [ ] All sensitive operations go through Edge Functions with `service_role` key (admin approve/reject).
 - [ ] Sentry DSN configured for production build error reporting.
-- [ ] `ANDROID_GOOGLE_MAPS_API_KEY` restricted to package `com.peedom.mobile` in Google Cloud Console.
+- [ ] `ANDROID_GOOGLE_MAPS_API_KEY` restricted to package `com.stallpass.app` in Google Cloud Console.
 
 ### 10.3 Phase Delivery Gates
 
@@ -561,4 +561,4 @@ All environment variables must use `EXPO_PUBLIC_` prefix for client-side access.
 
 ---
 
-*PeeDom TRD v1.0 · Chief Software Architect Blueprint · All phases reference this document as canonical.*
+*StallPass TRD v1.0 · Chief Software Architect Blueprint · All phases reference this document as canonical.*

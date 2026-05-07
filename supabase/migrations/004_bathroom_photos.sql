@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Bathroom Photos
+-- StallPass Bathroom Photos
 -- Adds storage-backed photo metadata for user-submitted bathroom photos.
 -- ============================================================================
 

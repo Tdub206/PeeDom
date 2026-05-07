@@ -1,8 +1,39 @@
 import type {
+  BathroomAccessibilityDetails,
+  BathroomNeedMetadata,
   BusinessBathroomSettings,
   BusinessDashboardBathroom,
   Database as MobileDatabase,
 } from '@mobile/types/index';
+
+type RestroomIntelligenceTables = {
+  business_bathroom_settings: {
+    Row: BusinessBathroomSettings;
+    Insert: Omit<BusinessBathroomSettings, 'created_at' | 'updated_at'> & {
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: Partial<Omit<BusinessBathroomSettings, 'bathroom_id' | 'created_at' | 'updated_at'>>;
+  };
+  bathroom_need_metadata: {
+    Row: BathroomNeedMetadata;
+    Insert: Omit<BathroomNeedMetadata, 'created_at' | 'updated_at'> & {
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: Partial<Omit<BathroomNeedMetadata, 'bathroom_id' | 'created_at' | 'updated_at'>>;
+  };
+  bathroom_accessibility_details: {
+    Row: BathroomAccessibilityDetails;
+    Insert: Omit<BathroomAccessibilityDetails, 'created_at' | 'updated_at'> & {
+      created_at?: string;
+      updated_at?: string;
+    };
+    Update: Partial<Omit<BathroomAccessibilityDetails, 'bathroom_id' | 'created_at' | 'updated_at'>>;
+  };
+};
+
+type BusinessWebTables = MobileDatabase['public']['Tables'] & RestroomIntelligenceTables;
 
 type BusinessWebFunctions = Omit<
   MobileDatabase['public']['Functions'],
@@ -23,6 +54,45 @@ type BusinessWebFunctions = Omit<
       p_is_locked: boolean;
     };
     Returns: BusinessBathroomSettings[];
+  };
+  upsert_business_restroom_metadata: {
+    Args: {
+      p_bathroom_id: string;
+      p_has_toilet_paper?: boolean | null;
+      p_has_soap?: boolean | null;
+      p_has_hand_dryer?: boolean | null;
+      p_has_paper_towels?: boolean | null;
+      p_has_changing_table?: boolean | null;
+      p_has_family_restroom?: boolean | null;
+      p_is_gender_neutral?: boolean | null;
+      p_is_single_user?: boolean | null;
+      p_is_private_room?: boolean | null;
+      p_stall_count?: number | null;
+      p_privacy_level?: BathroomNeedMetadata['privacy_level'];
+      p_access_type?: BathroomNeedMetadata['access_type'];
+      p_code_required?: boolean | null;
+      p_key_required?: boolean | null;
+      p_customer_only?: boolean | null;
+      p_ask_employee?: boolean | null;
+      p_medical_urgency_friendly?: boolean | null;
+      p_child_friendly?: boolean | null;
+      p_outdoor_traveler_reliable?: boolean | null;
+      p_wheelchair_accessible?: boolean | null;
+      p_door_clear_width_inches?: number | null;
+      p_turning_space_inches?: number | null;
+      p_stall_width_inches?: number | null;
+      p_stall_depth_inches?: number | null;
+      p_has_grab_bars?: boolean | null;
+      p_has_accessible_sink?: boolean | null;
+      p_has_step_free_access?: boolean | null;
+      p_has_power_door?: boolean | null;
+      p_accessibility_notes?: string | null;
+    };
+    Returns: {
+      bathroom_id: string;
+      claim_id: string | null;
+      updated_at: string;
+    };
   };
   create_business_coupon: {
     Args: {
@@ -76,7 +146,8 @@ type BusinessWebFunctions = Omit<
 };
 
 export type BusinessWebDatabase = Omit<MobileDatabase, 'public'> & {
-  public: Omit<MobileDatabase['public'], 'Functions'> & {
+  public: Omit<MobileDatabase['public'], 'Functions' | 'Tables'> & {
+    Tables: BusinessWebTables;
     Functions: BusinessWebFunctions;
   };
 };

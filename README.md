@@ -1,4 +1,4 @@
-# PeeDom
+# StallPass
 
 Expo Router mobile app for finding bathrooms. Android local development is supported through the tracked native `android/` project, while release builds remain on EAS.
 
@@ -13,7 +13,7 @@ Set these user environment variables on Windows before opening Android Studio:
 - `JAVA_HOME=C:\Program Files\Android\Android Studio\jbr`
 - `ANDROID_HOME=%LOCALAPPDATA%\Android\Sdk`
 - `ANDROID_SDK_ROOT=%LOCALAPPDATA%\Android\Sdk`
-- `GRADLE_USER_HOME=%USERPROFILE%\.g\peedom`
+- `GRADLE_USER_HOME=%USERPROFILE%\.g\stallpass`
 
 Ensure your user `Path` includes:
 
@@ -51,6 +51,7 @@ ANDROID_ADMOB_APP_ID=ca-app-pub-3940256099942544~3347511713
 
 ```powershell
 supabase functions deploy admob-reward-ssv --no-verify-jwt --use-api
+supabase secrets set ADMOB_REWARDED_AD_UNIT_IDS=ca-app-pub-0000000000000000/0000000000
 ```
 
 - Configure the AdMob rewarded ad unit server-side verification callback URL to `https://<project-ref>.functions.supabase.co/admob-reward-ssv`.

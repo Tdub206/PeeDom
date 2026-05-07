@@ -43,8 +43,8 @@ eas.json
 _codex_tmp/
 .stallpass-ai/
 thread_exports/
-PeeDom-thread-export/
-PeeDom-thread-export.zip
+StallPass-thread-export/
+StallPass-thread-export.zip
 StallPass_App_Store_Assets/
 !StallPass_App_Store_Assets/
 !StallPass_App_Store_Assets/ios/

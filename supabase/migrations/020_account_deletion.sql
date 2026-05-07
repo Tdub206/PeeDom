@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom account deletion (hard delete)
+-- StallPass account deletion (hard delete)
 -- 020_account_deletion.sql
 --
 -- Google Play User Data policy requires apps that allow account creation to

@@ -232,7 +232,13 @@ function buildSourceAttribution(importedRecord: ImportedPublicBathroomRecord, me
   return getMetadataText(metadataObject, 'source_dataset');
 }
 
-function buildSourceLicenseKey(importedRecord: ImportedPublicBathroomRecord): string | null {
+function buildSourceLicenseKey(importedRecord: ImportedPublicBathroomRecord, metadataObject: JsonObject): string | null {
+  const explicitLicenseKey = getMetadataText(metadataObject, 'source_license_key');
+
+  if (explicitLicenseKey) {
+    return explicitLicenseKey;
+  }
+
   return buildSourceKey(importedRecord) === 'osm-overpass-us' ? 'ODbL-1.0' : null;
 }
 
@@ -294,12 +300,17 @@ function buildSourceRecordPayload(
     source_dataset: getMetadataText(metadataObject, 'source_dataset'),
     source_url:
       getMetadataText(metadataObject, 'source_url') ??
+      getMetadataText(metadataObject, 'source_item_url') ??
+      getMetadataText(metadataObject, 'source_resource_url') ??
+      getMetadataText(metadataObject, 'source_download_url') ??
+      getMetadataText(metadataObject, 'source_service_url') ??
       getMetadataText(metadataObject, 'website') ??
       getMetadataText(metadataObject, 'link_1') ??
       getMetadataText(metadataObject, 'link_2'),
-    source_license_key: buildSourceLicenseKey(importedRecord),
+    source_license_key: buildSourceLicenseKey(importedRecord, metadataObject),
     source_attribution_text: buildSourceAttribution(importedRecord, metadataObject),
     source_updated_at:
+      getMetadataText(metadataObject, 'source_updated_at') ??
       getMetadataText(metadataObject, 'source_timestamp') ??
       getMetadataText(metadataObject, 'last_edited_at'),
     raw_payload: rawPayload,

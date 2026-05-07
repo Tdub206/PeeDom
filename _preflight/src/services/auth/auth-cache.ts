@@ -4,7 +4,7 @@
  * Profile data cached per user so returning users see stale data
  * while a fresh fetch is in-flight (stale-while-revalidate pattern).
  *
- * Cache key: @peedom/profile_cache:<user_id>
+ * Cache key: @stallpass/profile_cache:<user_id>
  *
  * NOTE: The cache is NOT a source of truth. AuthProvider reads it only when
  * `allowCachedProfile: true` is explicitly passed. refreshUser() never allows
@@ -17,7 +17,7 @@ import { UserProfile } from '@/types';
 
 // ── Cache key helpers ─────────────────────────────────────────────────────────
 
-const PROFILE_CACHE_PREFIX = '@peedom/profile_cache';
+const PROFILE_CACHE_PREFIX = '@stallpass/profile_cache';
 
 function profileCacheKey(userId: string): string {
   return `${PROFILE_CACHE_PREFIX}:${userId}`;

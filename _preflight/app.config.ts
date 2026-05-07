@@ -2,13 +2,13 @@ import { ExpoConfig, ConfigContext } from 'expo/config';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: 'Pee-Dom',
-  slug: 'peedom-mobile',
+  name: 'StallPass',
+  slug: 'stallpass',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
-  scheme: 'peedom',
+  scheme: 'stallpass',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -17,10 +17,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: false,
-    bundleIdentifier: 'com.peedom.mobile',
+    bundleIdentifier: 'com.stallpass.app',
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
-        'Pee-Dom uses your location to show nearby bathrooms when you tap "Use My Location".',
+        'StallPass uses your location to show nearby bathrooms when you tap "Use My Location".',
     },
   },
   android: {
@@ -28,7 +28,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#ffffff',
     },
-    package: 'com.peedom.mobile',
+    package: 'com.stallpass.app',
     permissions: [
       'ACCESS_FINE_LOCATION',
       'ACCESS_COARSE_LOCATION',
@@ -47,7 +47,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'expo-location',
       {
         locationWhenInUsePermission:
-          'Pee-Dom uses your location to show nearby bathrooms when you tap "Use My Location".',
+          'StallPass uses your location to show nearby bathrooms when you tap "Use My Location".',
       },
     ],
     [

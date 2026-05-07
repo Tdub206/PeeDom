@@ -246,6 +246,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         console.error('Unable to clear cached favorite artifacts:', error);
       }
 
+      try {
+        await Promise.all([
+          storage.remove(storage.keys.PREMIUM_CITY_PACK_INDEX),
+          storage.removeByPrefix(`${storage.keys.PREMIUM_CITY_PACK_PREFIX}:`),
+        ]);
+      } catch (error) {
+        console.error('Unable to clear premium city pack artifacts:', error);
+      }
+
       await clearCachedProfile(userId);
     },
     [clearReturnIntent]

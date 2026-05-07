@@ -99,10 +99,23 @@ export function VisibilitySettingsForm({
     setSaveState('saving');
     setMessage('Saving StallPass settings...');
 
-    startTransition(async () => {
+    startTransition(() => {
+      void submitSettings(nextState, previousConfirmedState);
+    });
+  }
+
+  async function submitSettings(
+    nextState: VisibilitySettingsState,
+    previousConfirmedState: VisibilitySettingsState
+  ) {
+    try {
       const result = await upsertBusinessBathroomSettings(nextState);
       applyActionResult(result, nextState, previousConfirmedState);
-    });
+    } catch {
+      setDraftState(previousConfirmedState);
+      setSaveState('error');
+      setMessage('Unable to save StallPass settings right now. Try again in a moment.');
+    }
   }
 
   function applyActionResult(

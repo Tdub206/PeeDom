@@ -5,7 +5,7 @@ The script accepts a single `.jsonl` file, a directory containing `.jsonl`
 transcripts, or a `.zip` archive such as the exported thread bundle.
 
 Usage:
-  python scripts/extract_codex_dialogue.py --input PeeDom-thread-export.zip --output parsed_threads
+  python scripts/extract_codex_dialogue.py --input StallPass-thread-export.zip --output parsed_threads
   python scripts/extract_codex_dialogue.py --input thread_exports --output parsed_threads
   python scripts/extract_codex_dialogue.py --input some-thread.jsonl --output parsed_threads
 """

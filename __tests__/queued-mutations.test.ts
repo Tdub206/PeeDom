@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
+import { isBathroomLiveStatusEventMutationPayload } from '@/lib/live-status-event-queue';
 import { shouldDropQueuedMutation } from '@/lib/offline-queue';
 import { queuedMutationsSchema } from '@/utils/validate';
 
@@ -99,6 +100,48 @@ describe('queuedMutationsSchema', () => {
     ]);
 
     expect(result.success).toBe(true);
+  });
+
+  it('accepts queued rich live status event mutations', () => {
+    const payload = {
+      bathroom_id: 'bathroom-5',
+      status_type: 'line',
+      status_value: 'long_wait',
+      wait_minutes: 15,
+      supplies_missing: [],
+    };
+    const result = queuedMutationsSchema.safeParse([
+      {
+        id: 'mutation_5b',
+        type: 'live_status_event',
+        payload,
+        created_at: '2026-03-10T12:00:00.000Z',
+        retry_count: 0,
+        last_attempt_at: null,
+        user_id: 'user-5',
+      },
+    ]);
+
+    expect(result.success).toBe(true);
+    expect(isBathroomLiveStatusEventMutationPayload(payload)).toBe(true);
+  });
+
+  it('rejects malformed rich live status event payloads before replay', () => {
+    expect(
+      isBathroomLiveStatusEventMutationPayload({
+        bathroom_id: 'bathroom-5',
+        status_type: 'line',
+        status_value: 'long_wait',
+        wait_minutes: -1,
+      })
+    ).toBe(false);
+    expect(
+      isBathroomLiveStatusEventMutationPayload({
+        bathroom_id: 'bathroom-5',
+        status_type: 'unknown_status_type',
+        status_value: 'long_wait',
+      })
+    ).toBe(false);
   });
 
   it('accepts valid queued accessibility update mutations', () => {

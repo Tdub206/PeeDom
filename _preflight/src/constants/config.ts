@@ -1,5 +1,5 @@
 export const config = {
-  appName: 'Pee-Dom',
+  appName: 'StallPass',
   env: process.env.EXPO_PUBLIC_ENV ?? 'local',
   apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? '',
   supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL ?? '',

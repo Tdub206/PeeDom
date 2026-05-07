@@ -37,7 +37,7 @@ StallPass is materially closer to submission, but store-console work and product
 ### Resolved repo-side issues
 
 - iOS ATT risk was reduced by removing the tracking-usage path from app config and forcing rewarded ads on iOS into a non-personalized request path.
-- The previously mixed `Pee-Dom` and `StallPass` public branding has been normalized to `StallPass`.
+- The previously mixed `StallPass` and `StallPass` public branding has been normalized to `StallPass`.
 - Store-facing contact details now use `support@stallpass.org`.
 - Android release signing no longer defaults silently to the debug keystore for release tasks.
 

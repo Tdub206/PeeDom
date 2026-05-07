@@ -1,9 +1,9 @@
-# Pee-Dom Agent Operating Contract
+# StallPass Agent Operating Contract
 
-This repository is a mobile-first application named Pee-Dom.
+This repository is a mobile-first application named StallPass.
 
 ## Product Scope
-Pee-Dom is a restroom-finder mobile application for iOS and Android users. It is built for launch readiness, reliability, offline tolerance, and app-store compliant mobile UX.
+StallPass is a restroom-finder mobile application for iOS and Android users. It is built for launch readiness, reliability, offline tolerance, and app-store compliant mobile UX.
 
 ## Platform Priorities
 1. Mobile-first behavior

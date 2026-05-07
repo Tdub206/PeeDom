@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom app version configuration
+-- StallPass app version configuration
 -- 024_app_version_config.sql
 --
 -- Remote version config for force-update and soft-update prompts.
@@ -12,8 +12,8 @@ create table if not exists public.app_version_config (
   min_supported_version text not null default '1.0.0',
   latest_version text not null default '1.0.0',
   force_update boolean not null default false,
-  update_message text default 'A new version of Pee-Dom is available. Please update for the best experience.',
-  force_update_message text default 'This version of Pee-Dom is no longer supported. Please update to continue.',
+  update_message text default 'A new version of StallPass is available. Please update for the best experience.',
+  force_update_message text default 'This version of StallPass is no longer supported. Please update to continue.',
   store_url_ios text,
   store_url_android text,
   updated_at timestamptz not null default now(),

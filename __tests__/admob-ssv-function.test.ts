@@ -39,7 +39,7 @@ describe('AdMob server-side reward verification function', () => {
   });
 
   it('exposes an authenticated polling RPC for unconsumed verified rewards', () => {
-    const migration = readRepoFile('supabase/migrations/056_admob_reward_verification.sql');
+    const migration = readRepoFile('supabase/migrations/062_rewarded_unlock_verification_polling.sql');
 
     expect(migration).toContain('create or replace function public.has_rewarded_unlock_verification');
     expect(migration).toContain('verifications.user_id = auth.uid()');

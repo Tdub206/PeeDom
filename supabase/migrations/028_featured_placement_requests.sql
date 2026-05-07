@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom Featured Placement Requests
+-- StallPass Featured Placement Requests
 -- 028_featured_placement_requests.sql
 -- ============================================================================
 

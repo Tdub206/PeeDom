@@ -1,5 +1,5 @@
 -- ============================================================================
--- PeeDom "Thank a Business" Kudos System
+-- StallPass "Thank a Business" Kudos System
 -- 030_business_kudos.sql
 -- ============================================================================
 

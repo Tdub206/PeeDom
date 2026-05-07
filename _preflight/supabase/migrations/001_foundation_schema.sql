@@ -1,5 +1,5 @@
 -- ============================================================================
--- Pee-Dom Foundation Schema
+-- StallPass Foundation Schema
 -- Phase 2 - Complete database structure with RLS
 -- ============================================================================
 
