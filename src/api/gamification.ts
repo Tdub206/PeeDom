@@ -37,6 +37,13 @@ function normalizeAppErrorCode(error: { message?: string; code?: string } | Erro
     return 'INSUFFICIENT_POINTS';
   }
 
+  if (/IDEMPOTENCY_KEY_REQUIRED/i.test(errorMessage)) {
+    return 'IDEMPOTENCY_KEY_REQUIRED';
+  }
+
+  if (/REWARD_VERIFICATION_REQUIRED/i.test(errorMessage)) {
+    return 'REWARD_VERIFICATION_REQUIRED';
+  }
   if (/PROFILE_NOT_FOUND/i.test(errorMessage)) {
     return 'PROFILE_NOT_FOUND';
   }
@@ -246,18 +253,27 @@ export interface AdWatchedPointsResult {
   new_balance: number;
   daily_ad_count: number;
   daily_limit_reached: boolean;
+  duplicate: boolean;
+}
+
+export interface RecordAdWatchedPointsInput {
+  rewardVerificationToken: string;
+  idempotencyKey: string;
 }
 
 /**
- * Records that the authenticated user completed a rewarded ad and awards points.
- * The server enforces a daily cap (5 ads / 50 points per day).
+ * Records a user-initiated rewarded ad after AdMob SSV has verified the reward.
+ * The server enforces idempotency and a daily cap of 5 rewarded earn attempts.
  */
-export async function recordAdWatchedPoints(): Promise<{
+export async function recordAdWatchedPoints(input: RecordAdWatchedPointsInput): Promise<{
   data: AdWatchedPointsResult | null;
   error: (Error & { code?: string }) | null;
 }> {
   try {
-    const { data, error } = await getSupabaseClient().rpc('record_ad_watched_points' as never);
+    const { data, error } = await getSupabaseClient().rpc('record_ad_watched_points' as never, {
+      p_reward_verification_token: input.rewardVerificationToken.trim(),
+      p_idempotency_key: input.idempotencyKey.trim(),
+    } as never);
 
     if (error) {
       return {
@@ -280,7 +296,6 @@ export async function recordAdWatchedPoints(): Promise<{
     };
   }
 }
-
 export interface SpendPointsResult {
   success: boolean;
   points_spent: number;

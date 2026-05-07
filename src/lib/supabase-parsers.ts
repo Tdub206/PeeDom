@@ -195,6 +195,8 @@ export const dbPointEventSchema = z.object({
     'report_resolved',
     'code_milestone',
     'premium_redeemed',
+    'ad_watched',
+    'points_spent',
     'code_verification_consensus',
     'consensus_denial_award',
     'code_reveal_redeemed',

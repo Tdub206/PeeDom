@@ -1,4 +1,4 @@
-export type RewardedUnlockFeatureKey = 'code_reveal' | 'emergency_lookup';
+export type RewardedUnlockFeatureKey = 'code_reveal' | 'emergency_lookup' | 'earn_points';
 
 export interface RewardedUnlockVerificationResponse {
   data: boolean;

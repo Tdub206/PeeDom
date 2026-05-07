@@ -544,6 +544,27 @@ describe('gamification parser schemas', () => {
     expect(result.data?.event_type).toBe('code_reveal_redeemed');
   });
 
+  it('parses rewarded ad earn events', () => {
+    const result = parseSupabaseNullableRow(
+      dbPointEventSchema,
+      {
+        id: 'event-3',
+        user_id: 'user-123',
+        event_type: 'ad_watched',
+        reference_table: 'ad_watch_log',
+        reference_id: 'watch-123',
+        points_awarded: 25,
+        metadata: { reward_source: 'admob_ssv' },
+        created_at: '2026-05-07T12:00:00.000Z',
+      },
+      'point event',
+      'Unable to parse point event.'
+    );
+
+    expect(result.error).toBeNull();
+    expect(result.data?.event_type).toBe('ad_watched');
+  });
+
   it('parses earned badges', () => {
     const result = parseSupabaseNullableRow(
       dbUserBadgeSchema,

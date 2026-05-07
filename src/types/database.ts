@@ -100,6 +100,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
             | 'code_verification_consensus'
             | 'consensus_denial_award'
             | 'code_reveal_redeemed'
@@ -121,6 +123,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
             | 'code_verification_consensus'
             | 'consensus_denial_award'
             | 'code_reveal_redeemed'
@@ -142,6 +146,8 @@ export interface Database {
             | 'report_resolved'
             | 'code_milestone'
             | 'premium_redeemed'
+            | 'ad_watched'
+            | 'points_spent'
             | 'code_verification_consensus'
             | 'consensus_denial_award'
             | 'code_reveal_redeemed'
@@ -1422,6 +1428,13 @@ export interface Database {
           p_feature_key: string
         }
         Returns: number
+      }
+      record_ad_watched_points: {
+        Args: {
+          p_reward_verification_token: string
+          p_idempotency_key: string
+        }
+        Returns: Json
       }
       consume_emergency_lookup_access: {
         Args: {

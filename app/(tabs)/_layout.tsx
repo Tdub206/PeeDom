@@ -7,12 +7,13 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors } from '@/constants/colors';
 import { useAuth } from '@/contexts/AuthContext';
 
-type TabIconName = 'index' | 'search' | 'favorites' | 'profile' | 'business' | 'admin';
+type TabIconName = 'index' | 'search' | 'favorites' | 'store' | 'profile' | 'business' | 'admin';
 
 const TAB_ICON_MAP: Record<TabIconName, keyof typeof Ionicons.glyphMap> = {
   index: 'map-outline',
   search: 'search-outline',
   favorites: 'heart-outline',
+  store: 'storefront-outline',
   profile: 'person-circle-outline',
   business: 'briefcase-outline',
   admin: 'shield-checkmark-outline',
@@ -64,6 +65,13 @@ export default function TabLayout() {
         options={{
           title: 'Favorites',
           tabBarIcon: ({ color }) => <TabBarIcon routeName="favorites" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="store"
+        options={{
+          title: 'Store',
+          tabBarIcon: ({ color }) => <TabBarIcon routeName="store" color={color} />,
         }}
       />
       <Tabs.Screen

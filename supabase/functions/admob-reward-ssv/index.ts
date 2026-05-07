@@ -19,7 +19,7 @@ interface AdMobVerifierKeyResponse {
 }
 
 interface RewardTokenContext {
-  featureKey: 'code_reveal' | 'emergency_lookup';
+  featureKey: 'code_reveal' | 'emergency_lookup' | 'earn_points';
   bathroomId: string | null;
 }
 
@@ -330,6 +330,13 @@ function parseRewardToken(customData: string): RewardTokenContext | null {
   if (/^el_[a-z0-9]+_[a-f0-9]{16}$/i.test(customData)) {
     return {
       featureKey: 'emergency_lookup',
+      bathroomId: null,
+    };
+  }
+
+  if (/^ap_[a-z0-9]+_[a-f0-9]{16}$/i.test(customData)) {
+    return {
+      featureKey: 'earn_points',
       bathroomId: null,
     };
   }

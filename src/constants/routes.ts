@@ -6,6 +6,7 @@ export const routes = {
     map: '/' as Href,
     search: '/search' as Href,
     favorites: '/favorites' as Href,
+    store: '/store' as Href,
     profile: '/profile' as Href,
     business: '/business' as Href,
     admin: '/admin' as Href,

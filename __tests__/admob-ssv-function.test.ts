@@ -18,11 +18,13 @@ describe('AdMob server-side reward verification function', () => {
     expect(source).toContain('ADMOB_REWARDED_AD_UNIT_IDS');
   });
 
-  it('parses StallPass custom_data tokens for code reveals and emergency lookups', () => {
+  it('parses StallPass custom_data tokens for code reveals, emergency lookups, and store points', () => {
     const source = readRepoFile('supabase/functions/admob-reward-ssv/index.ts');
 
     expect(source).toContain("featureKey: 'code_reveal'");
     expect(source).toContain("featureKey: 'emergency_lookup'");
+    expect(source).toContain("featureKey: 'earn_points'");
+    expect(source).toContain('/^ap_[a-z0-9]+_[a-f0-9]{16}$/i');
     expect(source).toContain('params.get(\'custom_data\')');
     expect(source).toContain('params.get(\'user_id\')');
   });
@@ -44,6 +46,15 @@ describe('AdMob server-side reward verification function', () => {
     expect(migration).toContain('create or replace function public.has_rewarded_unlock_verification');
     expect(migration).toContain('verifications.user_id = auth.uid()');
     expect(migration).toContain('verifications.consumed_at is null');
-    expect(migration).toContain("grant execute on function public.has_rewarded_unlock_verification(text, uuid, text) to authenticated");
+    expect(migration).toContain('grant execute on function public.has_rewarded_unlock_verification(text, uuid, text) to authenticated');
+  });
+
+  it('requires AdMob SSV before store points can be banked', () => {
+    const migration = readRepoFile('supabase/migrations/063_store_rewarded_points.sql');
+
+    expect(migration).toContain("feature_key in ('code_reveal', 'emergency_lookup', 'earn_points')");
+    expect(migration).toContain("perform public.verify_rewarded_unlock_token('earn_points', null, v_reward_verification_token)");
+    expect(migration).toContain('create function public.record_ad_watched_points');
+    expect(migration).toContain('p_idempotency_key text');
   });
 });
