@@ -1,5 +1,5 @@
-import type { JsonObject } from './public-restroom-import';
-import { parseGovernmentOpenDataGeoJson, sanitizeFileName } from './government-open-data';
+import type { JsonObject } from './public-restroom-import.ts';
+import { parseGovernmentOpenDataGeoJson, sanitizeFileName } from './government-open-data.ts';
 
 export interface CkanPortalConfig {
   key: string;

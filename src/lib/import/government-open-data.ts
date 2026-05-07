@@ -1,12 +1,12 @@
 import {
   parseArcGisRestroomGeoJson,
   type ArcGisRestroomParseContext,
-} from './arcgis-public-restrooms';
+} from './arcgis-public-restrooms.ts';
 import type {
   ImportedPublicBathroomParseResult,
   JsonObject,
   PublicImportSkipReason,
-} from './public-restroom-import';
+} from './public-restroom-import.ts';
 
 export interface GovernmentGeoJsonParseContext {
   sourceKey: string;
