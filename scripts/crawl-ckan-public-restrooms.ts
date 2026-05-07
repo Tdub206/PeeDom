@@ -461,6 +461,7 @@ async function main(): Promise<void> {
   }
 
   const mergedResult = mergeImportedPublicBathroomParseResults(normalizedResults);
+  await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, JSON.stringify(mergedResult, null, 2));
 
   const manifest: CkanDiscoveryManifest = {
@@ -479,6 +480,7 @@ async function main(): Promise<void> {
     downloaded_datasets: downloadedDatasets,
     rejected_datasets: rejectedDatasets,
   };
+  await mkdir(path.dirname(manifestPath), { recursive: true });
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
   console.log(`Accepted datasets: ${downloadedDatasets.length}`);

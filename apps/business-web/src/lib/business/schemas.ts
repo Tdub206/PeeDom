@@ -145,6 +145,13 @@ export const businessCouponRowsSchema = z.array(businessCouponRowSchema);
 
 export type BusinessCouponRow = z.infer<typeof businessCouponRowSchema>;
 
+export const businessCouponIdSchema = z.string().uuid('Select a valid coupon before updating it.');
+
+export const businessCouponOwnershipRowSchema = z.object({
+  id: z.string().uuid(),
+  business_user_id: z.string().uuid(),
+});
+
 // Input schema for the create-coupon server action. We normalize to
 // the same shape the RPC expects, so the action can hand it straight
 // through after the ownership check.

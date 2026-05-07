@@ -744,6 +744,7 @@ async function main(): Promise<void> {
   }
 
   const mergedResult = mergeParseResults(normalizedResults);
+  await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, JSON.stringify(mergedResult, null, 2));
 
   const manifest: ArcGisDiscoveryManifest = {
@@ -763,6 +764,7 @@ async function main(): Promise<void> {
     downloaded_layers: downloadedLayers,
     rejected_records: rejectedRecords,
   };
+  await mkdir(path.dirname(manifestPath), { recursive: true });
   await writeFile(manifestPath, JSON.stringify(manifest, null, 2));
 
   console.log(`Accepted layers: ${downloadedLayers.length}`);

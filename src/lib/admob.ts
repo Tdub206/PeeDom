@@ -6,7 +6,7 @@ interface RewardedCodeRevealOptions {
 }
 
 interface RewardedFeatureUnlockOptions {
-  context: 'code_reveal' | 'emergency_lookup';
+  context: 'code_reveal' | 'emergency_lookup' | 'earn_points';
   bathroomId?: string | null;
   userId?: string | null;
 }
@@ -89,6 +89,10 @@ function createRewardVerificationToken({
     if (compactBathroomId.length === 32) {
       return `cr_${compactBathroomId}_${randomSegment}`;
     }
+  }
+
+  if (context === 'earn_points') {
+    return `ap_${Date.now().toString(36)}_${randomSegment}`;
   }
 
   return `el_${Date.now().toString(36)}_${randomSegment}`;
@@ -327,5 +331,14 @@ export async function showRewardedCodeRevealAd(
     context: 'code_reveal',
     bathroomId: options.bathroomId,
     userId: options.userId ?? null,
+  });
+}
+
+export async function showRewardedEarnPointsAd(
+  userId?: string | null
+): Promise<RewardedCodeRevealResult> {
+  return showRewardedFeatureUnlockAd({
+    context: 'earn_points',
+    userId: userId ?? null,
   });
 }

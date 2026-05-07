@@ -209,7 +209,9 @@ async function main(): Promise<void> {
     const scriptPath = buildConnectorScriptPath(workspaceRoot, connector);
 
     console.log(`Running government connector: ${connector}`);
+    await mkdir(connectorPaths.raw_directory, { recursive: true });
     await mkdir(path.dirname(connectorPaths.normalized_output_path), { recursive: true });
+    await mkdir(path.dirname(connectorPaths.manifest_path), { recursive: true });
     await runNodeTypescriptScript(scriptPath, [
       `--run-label=${options.runLabel}`,
       `--output=${connectorPaths.normalized_output_path}`,

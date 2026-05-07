@@ -17,6 +17,7 @@ import {
 } from '../../../lib/business/queries';
 import { createSupabaseServerClient } from '../../../lib/supabase/server';
 import { CreateCouponForm } from './create-coupon-form';
+import { DeactivateCouponButton } from './deactivate-coupon-button';
 
 export const metadata: Metadata = {
   title: 'Coupons',
@@ -128,9 +129,11 @@ function CouponCard({
   coupon: BusinessCouponRow;
   locationName: string | null;
 }) {
-  const isExpired = coupon.expires_at !== null && new Date(coupon.expires_at) <= new Date();
+  const now = new Date();
+  const isExpired = coupon.expires_at !== null && new Date(coupon.expires_at) <= now;
   const isExhausted =
     coupon.max_redemptions !== null && coupon.current_redemptions >= coupon.max_redemptions;
+  const isCurrentlyActive = isCouponCurrentlyActive(coupon, now);
   const statusTone = !coupon.is_active || isExpired || isExhausted ? 'warning' : 'success';
   const statusLabel = !coupon.is_active
     ? 'Inactive'
@@ -191,15 +194,19 @@ function CouponCard({
         />
       </dl>
 
-      <footer className="flex flex-wrap gap-2">
-        <Chip icon={<Lock size={12} />} tone={coupon.premium_only ? 'brand' : 'neutral'}>
-          {coupon.premium_only ? 'Premium members only' : 'Open to every guest'}
-        </Chip>
-        {coupon.min_purchase !== null ? (
-          <Chip icon={<Sparkles size={12} />} tone="neutral">
-            Min purchase ${coupon.min_purchase}
+      <footer className="flex flex-col gap-3 border-t border-surface-strong pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap gap-2">
+          <Chip icon={<Lock size={12} />} tone={coupon.premium_only ? 'brand' : 'neutral'}>
+            {coupon.premium_only ? 'Premium members only' : 'Open to every guest'}
           </Chip>
-        ) : null}
+          {coupon.min_purchase !== null ? (
+            <Chip icon={<Sparkles size={12} />} tone="neutral">
+              Min purchase ${coupon.min_purchase}
+            </Chip>
+          ) : null}
+        </div>
+
+        {isCurrentlyActive ? <DeactivateCouponButton couponId={coupon.id} /> : null}
       </footer>
     </article>
   );
@@ -332,4 +339,32 @@ function formatDate(value: string): string {
     month: 'short',
     day: 'numeric',
   });
+}
+
+function isCouponCurrentlyActive(
+  coupon: Pick<
+    BusinessCouponRow,
+    'is_active' | 'expires_at' | 'max_redemptions' | 'current_redemptions'
+  >,
+  now: Date
+): boolean {
+  if (!coupon.is_active) {
+    return false;
+  }
+
+  if (coupon.expires_at !== null) {
+    const expirationDate = new Date(coupon.expires_at);
+    if (!Number.isNaN(expirationDate.getTime()) && expirationDate <= now) {
+      return false;
+    }
+  }
+
+  if (
+    coupon.max_redemptions !== null &&
+    coupon.current_redemptions >= coupon.max_redemptions
+  ) {
+    return false;
+  }
+
+  return true;
 }

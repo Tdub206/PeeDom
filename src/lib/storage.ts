@@ -27,6 +27,7 @@ const STORAGE_KEYS = {
   PREMIUM_CITY_PACK_PREFIX: '@stallpass/premium_city_pack',
   TERMS_ACCEPTED_AT: '@stallpass/terms_accepted_at',
   HAS_COMPLETED_ONBOARDING: '@stallpass/has_completed_onboarding',
+  FIRST_INSTALL_CREDITS: '@stallpass/first_install_credits',
 
   // Beta bug reporting
   BUG_REPORT_GUEST_ID: '@stallpass/bug_report_guest_id',
