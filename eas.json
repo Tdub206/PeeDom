@@ -62,6 +62,19 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "android": {
+        "applicationId": "com.stallpass.app",
+        "track": "internal",
+        "releaseStatus": "draft"
+      },
+      "ios": {
+        "bundleIdentifier": "com.stallpass.app",
+        "sku": "com.stallpass.app",
+        "language": "en-US",
+        "appName": "StallPass",
+        "metadataPath": "./store.config.json"
+      }
+    }
   }
 }

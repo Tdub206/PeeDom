@@ -560,6 +560,53 @@ export async function searchBathrooms(
   }
 
   try {
+    const directoryRpcResult = await getSupabaseClient().rpc(
+      'search_directory_listings' as never,
+      {
+        p_query: trimmedQuery.length >= 2 ? trimmedQuery : null,
+        p_user_lat: options.origin?.latitude ?? null,
+        p_user_lng: options.origin?.longitude ?? null,
+        p_radius_meters: options.radiusMeters ?? 8047,
+        p_is_accessible: options.filters.isAccessible,
+        p_is_locked: options.filters.isLocked,
+        p_has_code: options.hasCode ?? null,
+        p_is_customer_only: options.filters.isCustomerOnly,
+        p_limit: options.limit ?? 25,
+        p_offset: options.offset ?? 0,
+      } as never
+    );
+
+    if (!directoryRpcResult.error) {
+      const parsedData = parseSupabaseRows(
+        directoryListingRowSchema,
+        directoryRpcResult.data,
+        'search bathrooms',
+        'Unable to search bathrooms.'
+      );
+
+      if (parsedData.error) {
+        return {
+          data: [],
+          error: parsedData.error,
+        };
+      }
+
+      return {
+        data: applyBathroomFilters(
+          (parsedData.data as DirectoryListingRow[]).map(normalizeDirectoryListingRow),
+          options.filters
+        ),
+        error: null,
+      };
+    }
+
+    if (!isMissingRpcError(directoryRpcResult.error)) {
+      return {
+        data: [],
+        error: toAppError(directoryRpcResult.error, 'Unable to search bathrooms.'),
+      };
+    }
+
     const legacyRpcResult = await getSupabaseClient().rpc(
       'search_bathrooms' as never,
       {

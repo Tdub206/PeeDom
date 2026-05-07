@@ -46,6 +46,9 @@ thread_exports/
 PeeDom-thread-export/
 PeeDom-thread-export.zip
 StallPass_App_Store_Assets/
+!StallPass_App_Store_Assets/
+!StallPass_App_Store_Assets/ios/
+!StallPass_App_Store_Assets/ios/**
 StallPass_App_Store_Assets.zip
 .firebase/
 desktop.ini
@@ -66,6 +69,8 @@ android/**/*.iml
 *.p8
 *.p12
 ios/
+!StallPass_App_Store_Assets/ios/
+!StallPass_App_Store_Assets/ios/**
 ios/Pods/
 *.pbxuser
 *.xcuserstate

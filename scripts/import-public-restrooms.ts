@@ -337,17 +337,25 @@ function formatSummary(parseResult: ImportedPublicBathroomParseResult): string {
 
 async function requestJson<T>(requestUrl: URL, init: RequestInit): Promise<T> {
   const response = await fetch(requestUrl, init);
+  const responseBody = await response.text();
 
   if (!response.ok) {
-    const responseBody = await response.text();
     throw new Error(`Supabase REST request failed (${response.status}): ${responseBody}`);
   }
 
-  if (response.status === 204) {
+  if (response.status === 204 || responseBody.trim().length === 0) {
     return [] as T;
   }
 
-  return (await response.json()) as T;
+  try {
+    return JSON.parse(responseBody) as T;
+  } catch (error) {
+    throw new Error(
+      `Supabase REST request returned invalid JSON (${response.status}) for ${requestUrl.toString()}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+  }
 }
 
 function createRestContext(supabaseUrl: string, serviceRoleKey: string): SupabaseRestContext {

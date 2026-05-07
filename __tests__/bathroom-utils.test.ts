@@ -167,6 +167,97 @@ describe('bathroom utilities', () => {
     expect(filteredRows[0]?.id).toBe('bathroom-1');
   });
 
+  it('respects server ranking for default nearby ordering so imported candidates do not jump trusted listings', () => {
+    const sortedRows = sortBathroomsByFilters(
+      [
+        {
+          ...bathroomRow,
+          listing_kind: 'source_candidate',
+          bathroom_id: null,
+          source_record_id: 'source-candidate-1',
+          code_id: null,
+          confidence_score: null,
+          up_votes: null,
+          down_votes: null,
+          last_verified_at: null,
+          cleanliness_avg: null,
+          verification_badge_type: null,
+          is_business_location_verified: false,
+          active_offer_count: 0,
+          allow_user_code_submissions: false,
+          has_official_code: false,
+          origin_source_key: 'osm-overpass-us',
+          origin_label: 'OpenStreetMap import',
+          origin_attribution_short: 'OpenStreetMap contributors',
+          source_dataset: 'OpenStreetMap Overpass public restrooms',
+          source_license_key: 'ODbL-1.0',
+          source_url: null,
+          source_updated_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
+          source_last_verified_at: null,
+          source_confirmation_count: 0,
+          source_denial_count: 0,
+          source_weighted_confirmation_score: 0,
+          source_weighted_denial_score: 0,
+          source_freshness_status: 'unreviewed',
+          source_needs_review: true,
+          can_favorite: false,
+          can_submit_code: false,
+          can_report_live_status: false,
+          can_claim_business: false,
+          distance_meters: 60,
+          rank: 42,
+        },
+        {
+          ...bathroomRow,
+          listing_kind: 'canonical',
+          bathroom_id: 'bathroom-1',
+          source_record_id: null,
+          verification_badge_type: 'standard',
+          is_business_location_verified: true,
+          active_offer_count: 2,
+          source_last_verified_at: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+          source_confirmation_count: 3,
+          source_denial_count: 0,
+          source_weighted_confirmation_score: 3,
+          source_weighted_denial_score: 0,
+          source_freshness_status: 'fresh',
+          source_needs_review: false,
+          can_favorite: true,
+          can_submit_code: true,
+          can_report_live_status: true,
+          can_claim_business: true,
+          distance_meters: 220,
+          rank: 91,
+        },
+      ],
+      {
+        isAccessible: null,
+        isLocked: null,
+        isCustomerOnly: null,
+        openNow: null,
+        noCodeRequired: null,
+        recentlyVerifiedOnly: null,
+        hasChangingTable: null,
+        isFamilyRestroom: null,
+        requireGrabBars: null,
+        requireAutomaticDoor: null,
+        requireGenderNeutral: null,
+        minDoorWidth: null,
+        minStallWidth: null,
+        prioritizeAccessible: null,
+        hideNonAccessible: null,
+        minCleanlinessRating: null,
+      },
+      {
+        latitude: 37.789,
+        longitude: -122.39,
+      }
+    );
+
+    expect(sortedRows[0]?.listing_kind).toBe('canonical');
+    expect(sortedRows[0]?.bathroom_id).toBe('bathroom-1');
+  });
+
   it('maps a bathroom row into a render-ready list item', () => {
     const listItem = mapBathroomRowToListItem(overpassBathroomRow, {
       cachedAt: '2026-03-10T12:05:00.000Z',

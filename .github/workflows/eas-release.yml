@@ -15,7 +15,7 @@ on:
       profile:
         description: Which EAS build profile to use
         required: true
-        default: preview
+        default: production
         type: choice
         options:
           - preview
@@ -25,9 +25,6 @@ on:
         required: true
         default: false
         type: boolean
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
@@ -40,28 +37,11 @@ concurrency:
 
 jobs:
   release:
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     permissions:
       contents: read
     env:
       EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-      EAS_PROJECT_ID: ${{ secrets.EAS_PROJECT_ID }}
-      EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
-      EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
-      EXPO_PUBLIC_SENTRY_DSN: ${{ secrets.EXPO_PUBLIC_SENTRY_DSN }}
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-      SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
-      SENTRY_URL: ${{ secrets.SENTRY_URL }}
-      EXPO_PUBLIC_ENV: ${{ github.event_name == 'pull_request' && 'preview' || github.event_name == 'push' && 'production' || inputs.profile }}
-      EAS_BUILD_PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || '' }}
-      ANDROID_GOOGLE_MAPS_API_KEY: ${{ secrets.ANDROID_GOOGLE_MAPS_API_KEY }}
-      ANDROID_ADMOB_APP_ID: ${{ secrets.ANDROID_ADMOB_APP_ID }}
-      IOS_ADMOB_APP_ID: ${{ secrets.IOS_ADMOB_APP_ID }}
-      EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED: ${{ secrets.EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED }}
-      EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: ${{ secrets.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID }}
-      EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: ${{ secrets.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -79,48 +59,77 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: Validate release secrets
+      - name: Resolve release arguments
+        id: release_args
         shell: bash
         run: |
           set -euo pipefail
+
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            platform="all"
+            profile="production"
+            auto_submit="true"
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            platform="all"
+            profile="production"
+            auto_submit="false"
+          else
+            platform="${{ inputs.platform }}"
+            profile="${{ inputs.profile }}"
+            auto_submit="${{ inputs.auto_submit }}"
+          fi
+
+          if [[ "${profile}" == "production" ]]; then
+            eas_environment="production"
+          elif [[ "${profile}" == "preview" ]]; then
+            eas_environment="preview"
+          else
+            echo "::error::Unsupported EAS profile: ${profile}"
+            exit 1
+          fi
+
+          echo "platform=${platform}" >> "$GITHUB_OUTPUT"
+          echo "profile=${profile}" >> "$GITHUB_OUTPUT"
+          echo "auto_submit=${auto_submit}" >> "$GITHUB_OUTPUT"
+          echo "eas_environment=${eas_environment}" >> "$GITHUB_OUTPUT"
+
+      - name: Validate release auth and EAS environment
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${EXPO_TOKEN:-}" ]]; then
+            echo "::error::EXPO_TOKEN is required for authenticated EAS release automation."
+            exit 1
+          fi
+
+          eas whoami
+
+          environment="${{ steps.release_args.outputs.eas_environment }}"
+          eas env:list "${environment}" --format short > eas-env.txt
+
+          required_vars=("EAS_PROJECT_ID")
+          if [[ "${environment}" == "production" ]]; then
+            required_vars+=(
+              "ANDROID_GOOGLE_MAPS_API_KEY"
+              "EXPO_PUBLIC_SUPABASE_URL"
+              "EXPO_PUBLIC_SUPABASE_ANON_KEY"
+              "EXPO_PUBLIC_SENTRY_DSN"
+              "SENTRY_AUTH_TOKEN"
+              "SENTRY_ORG"
+              "SENTRY_PROJECT"
+            )
+          fi
+
           missing=0
-          required_vars=("EXPO_TOKEN" "EAS_PROJECT_ID" "EXPO_PUBLIC_SUPABASE_URL" "EXPO_PUBLIC_SUPABASE_ANON_KEY")
           for var in "${required_vars[@]}"; do
-            if [[ -z "${!var}" ]]; then
-              echo "::error::$var is required for EAS releases."
+            if ! grep -q "^${var}=" eas-env.txt; then
+              echo "::error::${var} is missing from the EAS ${environment} environment."
               missing=1
             fi
           done
-          if [[ -n "${EXPO_PUBLIC_SENTRY_DSN}" ]]; then
-            sentry_vars=("SENTRY_AUTH_TOKEN" "SENTRY_ORG" "SENTRY_PROJECT")
-            for var in "${sentry_vars[@]}"; do
-              if [[ -z "${!var}" ]]; then
-                echo "::error::$var is required when EXPO_PUBLIC_SENTRY_DSN is configured for release builds."
-                missing=1
-              fi
-            done
-          fi
-          rewarded_ads_enabled="${EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED:-true}"
-          if [[ "${rewarded_ads_enabled}" != "false" ]]; then
-            admob_vars=("EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID" "EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED")
-            if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" || "${{ inputs.platform }}" != "ios" ]]; then
-              admob_vars+=("ANDROID_ADMOB_APP_ID")
-            fi
-            if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" || "${{ inputs.platform }}" != "android" ]]; then
-              admob_vars+=("IOS_ADMOB_APP_ID")
-            fi
-            for var in "${admob_vars[@]}"; do
-              if [[ -z "${!var}" ]]; then
-                echo "::error::$var is required when rewarded AdMob code reveals are enabled."
-                missing=1
-              fi
-            done
-            if [[ "${EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED}" != "true" ]]; then
-              echo "::error::EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED must be true after the callback URL is verified."
-              missing=1
-            fi
-          fi
-          exit "$missing"
+
+          exit "${missing}"
 
       - name: Install dependencies
         run: npm ci
@@ -128,8 +137,14 @@ jobs:
       - name: Verify Expo dependency alignment
         run: npm run check-deps
 
+      - name: Verify store metadata and artwork
+        run: npm run store:ready
+
       - name: Verify Expo config
-        run: npx expo config --type public > /dev/null
+        shell: bash
+        run: |
+          set -euo pipefail
+          eas env:exec "${{ steps.release_args.outputs.eas_environment }}" "npx expo config --type public > /dev/null" --non-interactive
 
       - name: Lint
         run: npm run lint
@@ -140,34 +155,18 @@ jobs:
       - name: Run tests
         run: npm test -- --runInBand
 
-      - name: Resolve release arguments
-        id: release_args
-        shell: bash
-        run: |
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            echo "platform=all" >> "$GITHUB_OUTPUT"
-            echo "profile=production" >> "$GITHUB_OUTPUT"
-            echo "auto_submit=true" >> "$GITHUB_OUTPUT"
-          elif [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/main" ]]; then
-            echo "platform=all" >> "$GITHUB_OUTPUT"
-            echo "profile=production" >> "$GITHUB_OUTPUT"
-            echo "auto_submit=false" >> "$GITHUB_OUTPUT"
-          elif [[ "${GITHUB_EVENT_NAME}" == "pull_request" ]]; then
-            echo "platform=all" >> "$GITHUB_OUTPUT"
-            echo "profile=preview" >> "$GITHUB_OUTPUT"
-            echo "auto_submit=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "platform=${{ inputs.platform }}" >> "$GITHUB_OUTPUT"
-            echo "profile=${{ inputs.profile }}" >> "$GITHUB_OUTPUT"
-            echo "auto_submit=${{ inputs.auto_submit }}" >> "$GITHUB_OUTPUT"
-          fi
+      - name: Lint App Store metadata
+        if: steps.release_args.outputs.profile == 'production'
+        run: npm run store:metadata:lint
 
       - name: Build with EAS
         shell: bash
         run: |
           set -euo pipefail
-          COMMAND=(eas build --platform "${{ steps.release_args.outputs.platform }}" --profile "${{ steps.release_args.outputs.profile }}" --non-interactive)
+
+          command="eas build --platform ${{ steps.release_args.outputs.platform }} --profile ${{ steps.release_args.outputs.profile }} --non-interactive"
           if [[ "${{ steps.release_args.outputs.auto_submit }}" == "true" ]]; then
-            COMMAND+=(--auto-submit)
+            command="${command} --auto-submit"
           fi
-          "${COMMAND[@]}"
+
+          eas env:exec "${{ steps.release_args.outputs.eas_environment }}" "${command}" --non-interactive

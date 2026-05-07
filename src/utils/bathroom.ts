@@ -944,6 +944,14 @@ export function calculateBathroomRecommendationScore(
     typeof bathroom.cleanliness_avg === 'number' ? Math.round((bathroom.cleanliness_avg - 3) * 6) : 0;
   const verificationBonus =
     bathroom.verification_badge_type || bathroom.is_business_location_verified ? 10 : 0;
+  const sourceCandidatePenalty =
+    bathroom.listing_kind === 'source_candidate'
+      ? bathroom.imported_location_freshness_status === 'fresh'
+        ? -8
+        : bathroom.imported_location_freshness_status === 'aging'
+          ? -12
+          : -18
+      : 0;
 
   let score =
     confidenceProfile.trust_score * 0.45 +
@@ -952,7 +960,8 @@ export function calculateBathroomRecommendationScore(
     noCodeBonus +
     customerPenalty +
     cleanlinessBonus +
-    verificationBonus;
+    verificationBonus +
+    sourceCandidatePenalty;
 
   if (scenario === 'closest_guaranteed') {
     score += openNow === true ? 18 : openNow === false ? -24 : 0;
@@ -1411,6 +1420,20 @@ export function sortBathroomsByFilters<T extends BathroomDirectoryRow>(
     const rightScore = calculateBathroomRecommendationScore(rightListItem, {
       scenario: filters.prioritizeAccessible ? 'accessible' : 'best_overall',
     });
+    const leftServerRank = typeof leftBathroom.rank === 'number' ? leftBathroom.rank : null;
+    const rightServerRank = typeof rightBathroom.rank === 'number' ? rightBathroom.rank : null;
+
+    if (!filters.prioritizeAccessible && leftServerRank !== null && rightServerRank !== null && leftServerRank !== rightServerRank) {
+      return rightServerRank - leftServerRank;
+    }
+
+    if (!filters.prioritizeAccessible && leftServerRank !== null && rightServerRank === null) {
+      return -1;
+    }
+
+    if (!filters.prioritizeAccessible && leftServerRank === null && rightServerRank !== null) {
+      return 1;
+    }
 
     if (rightScore !== leftScore) {
       return rightScore - leftScore;

@@ -42,10 +42,11 @@
     }
   ],
   "exports": {
-    "ios_iphone_6_7": "1290x2796 PNG",
-    "ios_iphone_6_5": "1284x2778 PNG",
-    "android_screenshots": "1080x1920 PNG",
-    "feature_graphic": "1024x500 PNG",
+    "ios_iphone_6_9": "1290x2796 24-bit PNG, no alpha",
+    "ios_iphone_6_5": "1284x2778 24-bit PNG, no alpha",
+    "ios_iphone_5_5": "1242x2208 24-bit PNG, no alpha",
+    "android_screenshots": "1080x1920 24-bit PNG, no alpha",
+    "feature_graphic": "1024x500 24-bit PNG, no alpha",
     "promo_banner": "1024x500 PNG",
     "notification_icon": "96x96 transparent PNG",
     "pwa_icons": [
@@ -54,6 +55,6 @@
     ],
     "open_graph": "1200x630 PNG",
     "adaptive_icon_background": "1024x1024 PNG",
-    "app_icon": "1024x1024 PNG"
+    "app_icon": "1024x1024 24-bit PNG, no alpha"
   }
 }

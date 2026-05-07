@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "stallpass",
     "public": "web",
     "ignore": [
       "firebase.json",

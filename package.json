@@ -24,6 +24,12 @@
     "test": "jest",
     "type-check": "tsc --noEmit",
     "check-deps": "npx expo install --check",
+    "store:ready": "node scripts/verify-store-readiness.cjs",
+    "store:ready:urls": "node scripts/verify-store-readiness.cjs --check-urls",
+    "store:metadata:lint": "npx eas-cli metadata:lint --profile production",
+    "release:eas:build": "npx eas-cli env:exec production \"npx eas-cli build --platform all --profile production --non-interactive\" --non-interactive",
+    "release:eas:build-submit": "npx eas-cli env:exec production \"npx eas-cli build --platform all --profile production --non-interactive --auto-submit\" --non-interactive",
+    "release:eas:submit:latest": "npx eas-cli env:exec production \"npx eas-cli submit --platform all --profile production --latest --non-interactive\" --non-interactive",
     "firebase:deploy": "npx firebase-tools deploy",
     "firebase:deploy:hosting": "npx firebase-tools deploy --only hosting",
     "firebase:deploy:business-web": "npx firebase-tools deploy --only apphosting:stallpass-business-web"

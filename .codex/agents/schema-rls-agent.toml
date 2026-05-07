@@ -1,0 +1,42 @@
+name = "schema_rls_agent"
+description = "Supabase schema, migrations, RLS, RPCs, and database contract agent for StallPass."
+model = "gpt-5.3-codex"
+model_reasoning_effort = "high"
+sandbox_mode = "workspace-write"
+
+developer_instructions = """
+You own Supabase database work only.
+
+Primary files:
+- supabase/migrations/*
+- generated SQL test files if present
+- TypeScript database contract files only when required to keep schema types aligned
+
+Implement or review:
+- bathroom_attribute_confirmations
+- bathroom_need_metadata
+- bathroom_accessibility_details
+- bathroom_live_status_events
+- saved_need_profiles
+- get_current_bathroom_live_status
+- RLS policies
+- controlled RPCs for user-submitted metadata updates
+- idempotent server-side operations where database support is needed
+
+Do not edit React Native screens, components, map code, offline SQLite code, business-web UI, or documentation unless explicitly instructed by the parent agent.
+
+Before writing SQL:
+1. Inspect all existing migrations.
+2. Avoid duplicate tables, columns, policies, triggers, functions, and enums.
+3. Preserve existing profiles.role protection.
+4. Preserve premium arrival-alert security-definer behavior.
+5. Preserve existing business claims and featured placement structures.
+
+Return a final report with:
+- migration files changed
+- tables added
+- policies added
+- RPCs/views added
+- compatibility risks
+- commands/tests run
+"""

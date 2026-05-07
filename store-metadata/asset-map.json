@@ -1,0 +1,81 @@
+{
+  "apple": {
+    "appIcon": {
+      "path": "StallPass_App_Store_Assets/icons/stallpass_app_icon_1024.png",
+      "width": 1024,
+      "height": 1024,
+      "requiresNoAlpha": true
+    },
+    "iphone69Screenshots": {
+      "width": 1290,
+      "height": 2796,
+      "paths": [
+        "StallPass_App_Store_Assets/ios/iphone_6.9/01_find_unlock_fast.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/02_emergency_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/03_accessibility_details.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/04_live_status_ratings.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/05_favorites_rewards.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/06_offline_route_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/07_community_contributions.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.9/08_business_verified.png"
+      ]
+    },
+    "iphone65Screenshots": {
+      "width": 1284,
+      "height": 2778,
+      "paths": [
+        "StallPass_App_Store_Assets/ios/iphone_6.5/01_find_unlock_fast.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/02_emergency_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/03_accessibility_details.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/04_live_status_ratings.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/05_favorites_rewards.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/06_offline_route_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/07_community_contributions.png",
+        "StallPass_App_Store_Assets/ios/iphone_6.5/08_business_verified.png"
+      ]
+    },
+    "iphone55Screenshots": {
+      "width": 1242,
+      "height": 2208,
+      "paths": [
+        "StallPass_App_Store_Assets/ios/iphone_5.5/01_find_unlock_fast.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/02_emergency_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/03_accessibility_details.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/04_live_status_ratings.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/05_favorites_rewards.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/06_offline_route_mode.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/07_community_contributions.png",
+        "StallPass_App_Store_Assets/ios/iphone_5.5/08_business_verified.png"
+      ]
+    }
+  },
+  "googlePlay": {
+    "appIcon": {
+      "path": "StallPass_App_Store_Assets/icons/stallpass_app_icon_1024.png",
+      "width": 1024,
+      "height": 1024,
+      "requiresNoAlpha": true
+    },
+    "featureGraphic": {
+      "path": "StallPass_App_Store_Assets/android/graphics/google_play_feature_graphic_1024x500.png",
+      "width": 1024,
+      "height": 500,
+      "requiresNoAlpha": true
+    },
+    "phoneScreenshots": {
+      "width": 1080,
+      "height": 1920,
+      "requiresNoAlpha": true,
+      "paths": [
+        "StallPass_App_Store_Assets/android/screenshots/01_find_unlock_fast.png",
+        "StallPass_App_Store_Assets/android/screenshots/02_emergency_mode.png",
+        "StallPass_App_Store_Assets/android/screenshots/03_accessibility_details.png",
+        "StallPass_App_Store_Assets/android/screenshots/04_live_status_ratings.png",
+        "StallPass_App_Store_Assets/android/screenshots/05_favorites_rewards.png",
+        "StallPass_App_Store_Assets/android/screenshots/06_offline_route_mode.png",
+        "StallPass_App_Store_Assets/android/screenshots/07_community_contributions.png",
+        "StallPass_App_Store_Assets/android/screenshots/08_business_verified.png"
+      ]
+    }
+  }
+}

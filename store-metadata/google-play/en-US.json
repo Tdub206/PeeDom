@@ -1,0 +1,50 @@
+{
+  "appName": "StallPass",
+  "defaultLanguage": "en-US",
+  "packageName": "com.stallpass.app",
+  "category": "Maps & Navigation",
+  "contact": {
+    "email": "support@stallpass.app",
+    "website": "https://www.stallpass.org",
+    "privacyPolicy": "https://www.stallpass.org/privacy"
+  },
+  "listing": {
+    "shortDescription": "Find nearby bathrooms with access details, ratings, and offline saves.",
+    "fullDescription": "StallPass helps you find a usable bathroom when timing matters.\n\nOpen the map to discover nearby public and business restrooms, check access-code availability, compare cleanliness signals, and save dependable stops for later. StallPass is built for city movement, travel days, families, delivery shifts, accessibility needs, and urgent moments where a reliable stop matters.\n\nFeatures:\n- Nearby bathroom discovery on a mobile-first map\n- Search filters for access, accessibility, cleanliness, and public availability\n- Access-code support with community verification\n- Live status and cleanliness ratings\n- Favorites for trusted stops\n- Offline city packs and route-aware bathroom planning\n- Business-verified listing details where owners manage metadata\n\nYou can browse as a guest. Sign-in is optional unless you want to save favorites, submit updates, or manage business listings. Location access is requested in context and is used to find relevant nearby bathrooms and improve search relevance."
+  },
+  "releaseNotes": {
+    "1.0.0": "Initial StallPass launch with nearby restroom discovery, search filters, access-code support, favorites, accessibility details, offline-aware flows, and business-verified listing controls."
+  },
+  "graphics": {
+    "appIcon": "StallPass_App_Store_Assets/icons/stallpass_app_icon_1024.png",
+    "featureGraphic": "StallPass_App_Store_Assets/android/graphics/google_play_feature_graphic_1024x500.png",
+    "phoneScreenshots": [
+      "StallPass_App_Store_Assets/android/screenshots/01_find_unlock_fast.png",
+      "StallPass_App_Store_Assets/android/screenshots/02_emergency_mode.png",
+      "StallPass_App_Store_Assets/android/screenshots/03_accessibility_details.png",
+      "StallPass_App_Store_Assets/android/screenshots/04_live_status_ratings.png",
+      "StallPass_App_Store_Assets/android/screenshots/05_favorites_rewards.png",
+      "StallPass_App_Store_Assets/android/screenshots/06_offline_route_mode.png",
+      "StallPass_App_Store_Assets/android/screenshots/07_community_contributions.png",
+      "StallPass_App_Store_Assets/android/screenshots/08_business_verified.png"
+    ],
+    "altText": {
+      "StallPass_App_Store_Assets/android/screenshots/01_find_unlock_fast.png": "Map screen showing nearby bathroom pins and quick access details.",
+      "StallPass_App_Store_Assets/android/screenshots/02_emergency_mode.png": "Urgent bathroom search flow highlighting the closest available stop.",
+      "StallPass_App_Store_Assets/android/screenshots/03_accessibility_details.png": "Bathroom detail screen with accessibility and entry information.",
+      "StallPass_App_Store_Assets/android/screenshots/04_live_status_ratings.png": "Live status and cleanliness ratings for a restroom listing.",
+      "StallPass_App_Store_Assets/android/screenshots/05_favorites_rewards.png": "Saved bathrooms and contribution rewards in the profile flow.",
+      "StallPass_App_Store_Assets/android/screenshots/06_offline_route_mode.png": "Offline city packs and route planning for bathroom stops.",
+      "StallPass_App_Store_Assets/android/screenshots/07_community_contributions.png": "Community update flow for submitting current restroom details.",
+      "StallPass_App_Store_Assets/android/screenshots/08_business_verified.png": "Business-verified restroom listing with trusted owner-managed details.",
+      "StallPass_App_Store_Assets/android/graphics/google_play_feature_graphic_1024x500.png": "StallPass branding with a restroom discovery map and access details."
+    }
+  },
+  "dataSafetySummary": {
+    "location": "Used to find nearby bathrooms and improve search relevance.",
+    "personalInfo": "Email may be used for optional account authentication and support.",
+    "userContent": "Bathroom submissions, ratings, reports, photos, and access-code updates may be stored when users contribute.",
+    "diagnostics": "Crash diagnostics and performance signals may be used to maintain reliability.",
+    "dataDeletion": "Users can delete their account in the app or at https://www.stallpass.org/delete-account."
+  }
+}

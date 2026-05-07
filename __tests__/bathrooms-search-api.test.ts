@@ -71,13 +71,121 @@ const publicBathroomRow = {
   updated_at: '2026-03-16T10:00:00.000Z',
 };
 
+const directoryListingRow = {
+  listing_kind: 'canonical',
+  bathroom_id: 'bathroom-1',
+  source_record_id: null,
+  ...publicBathroomRow,
+  verification_badge_type: null,
+  stallpass_access_tier: 'public',
+  show_on_free_map: true,
+  is_business_location_verified: false,
+  location_verified_at: null,
+  active_offer_count: 0,
+  location_archetype: 'general',
+  archetype_metadata: {},
+  code_policy: 'community',
+  allow_user_code_submissions: true,
+  has_official_code: false,
+  owner_code_last_verified_at: null,
+  official_access_instructions: null,
+  origin_source_key: null,
+  origin_label: null,
+  origin_attribution_short: null,
+  source_dataset: null,
+  source_license_key: null,
+  source_url: null,
+  source_updated_at: null,
+  source_last_verified_at: null,
+  source_confirmation_count: 0,
+  source_denial_count: 0,
+  source_weighted_confirmation_score: 0,
+  source_weighted_denial_score: 0,
+  source_freshness_status: null,
+  source_needs_review: false,
+  can_favorite: true,
+  can_submit_code: true,
+  can_report_live_status: true,
+  can_claim_business: true,
+  distance_meters: 220,
+  rank: 94,
+} as const;
+
 describe('bathrooms search API', () => {
   beforeEach(() => {
     from.mockReset();
     rpc.mockReset();
   });
 
-  it('uses the search_bathrooms RPC when available', async () => {
+  it('uses the mixed directory search RPC when available', async () => {
+    rpc.mockResolvedValueOnce({
+      data: [
+        {
+          ...directoryListingRow,
+          listing_kind: 'source_candidate',
+          bathroom_id: null,
+          source_record_id: 'source-1',
+          code_id: null,
+          confidence_score: null,
+          up_votes: null,
+          down_votes: null,
+          last_verified_at: null,
+          cleanliness_avg: null,
+          verification_badge_type: null,
+          is_business_location_verified: false,
+          active_offer_count: 0,
+          allow_user_code_submissions: false,
+          has_official_code: false,
+          can_favorite: false,
+          can_submit_code: false,
+          can_report_live_status: false,
+          can_claim_business: false,
+          origin_source_key: 'osm-overpass-us',
+          origin_label: 'OpenStreetMap import',
+          origin_attribution_short: 'OpenStreetMap contributors',
+          source_dataset: 'OpenStreetMap Overpass public restrooms',
+          source_license_key: 'ODbL-1.0',
+          source_freshness_status: 'unreviewed',
+        },
+      ],
+      error: null,
+    });
+
+    const { searchBathrooms } = await import('@/api/bathrooms');
+    const result = await searchBathrooms({
+      query: 'central',
+      filters: defaultFilters,
+      origin: {
+        latitude: 47.61,
+        longitude: -122.33,
+      },
+    });
+
+    expect(result.error).toBeNull();
+    expect(rpc).toHaveBeenCalledWith('search_directory_listings', {
+      p_query: 'central',
+      p_user_lat: 47.61,
+      p_user_lng: -122.33,
+      p_radius_meters: 8047,
+      p_is_accessible: null,
+      p_is_locked: null,
+      p_has_code: null,
+      p_is_customer_only: null,
+      p_limit: 25,
+      p_offset: 0,
+    });
+    expect(result.data[0]?.listing_kind).toBe('source_candidate');
+    expect(result.data[0]?.source_record_id).toBe('source-1');
+  });
+
+  it('falls back to the legacy canonical search RPC when the mixed RPC is missing', async () => {
+    rpc.mockResolvedValueOnce({
+      data: null,
+      error: {
+        code: 'PGRST202',
+        message: 'Could not find the function public.search_directory_listings',
+      },
+    });
     rpc.mockResolvedValueOnce({
       data: [
         {
@@ -100,7 +208,7 @@ describe('bathrooms search API', () => {
     });
 
     expect(result.error).toBeNull();
-    expect(rpc).toHaveBeenCalledWith('search_bathrooms', {
+    expect(rpc).toHaveBeenNthCalledWith(2, 'search_bathrooms', {
       p_query: 'central',
       p_user_lat: 47.61,
       p_user_lng: -122.33,
@@ -115,7 +223,14 @@ describe('bathrooms search API', () => {
     expect(result.data[0]?.id).toBe('bathroom-1');
   });
 
-  it('falls back to ilike search when the RPC is missing', async () => {
+  it('falls back to ilike search when both RPCs are missing', async () => {
+    rpc.mockResolvedValueOnce({
+      data: null,
+      error: {
+        code: 'PGRST202',
+        message: 'Could not find the function public.search_directory_listings',
+      },
+    });
     rpc.mockResolvedValueOnce({
       data: null,
       error: {

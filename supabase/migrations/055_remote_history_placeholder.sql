@@ -1,0 +1,5 @@
+-- ============================================================================
+-- 055_remote_history_placeholder.sql
+-- Placeholder to align local migration history with the already-applied remote
+-- 055 version. No schema changes belong in this file.
+-- ============================================================================

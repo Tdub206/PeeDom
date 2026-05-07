@@ -1,5 +1,5 @@
 -- ============================================================================
--- 055_directory_ranking_scale.sql
+-- 057_directory_ranking_scale.sql
 -- Scalable directory ranking and indexed search for canonical bathrooms plus
 -- source candidates.
 -- ============================================================================

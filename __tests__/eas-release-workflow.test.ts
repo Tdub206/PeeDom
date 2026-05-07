@@ -8,37 +8,42 @@ const easReleaseWorkflow = readFileSync(
 );
 
 describe('EAS release workflow', () => {
-  it('wires Sentry upload secrets into the release environment', () => {
-    expect(easReleaseWorkflow).toContain('SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}');
-    expect(easReleaseWorkflow).toContain('SENTRY_ORG: ${{ secrets.SENTRY_ORG }}');
-    expect(easReleaseWorkflow).toContain('SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}');
+  it('uses EAS-managed environment variables for production release secrets', () => {
+    expect(easReleaseWorkflow).toContain('eas env:list "${environment}" --format short > eas-env.txt');
+    expect(easReleaseWorkflow).toContain('"ANDROID_GOOGLE_MAPS_API_KEY"');
+    expect(easReleaseWorkflow).toContain('"EXPO_PUBLIC_SUPABASE_URL"');
+    expect(easReleaseWorkflow).toContain('"EXPO_PUBLIC_SUPABASE_ANON_KEY"');
+    expect(easReleaseWorkflow).toContain('"EXPO_PUBLIC_SENTRY_DSN"');
+    expect(easReleaseWorkflow).toContain('"SENTRY_AUTH_TOKEN"');
+    expect(easReleaseWorkflow).toContain('"SENTRY_ORG"');
+    expect(easReleaseWorkflow).toContain('"SENTRY_PROJECT"');
   });
 
-  it('fails fast when Sentry is enabled without the upload secrets', () => {
-    expect(easReleaseWorkflow).toContain('if [[ -n "${EXPO_PUBLIC_SENTRY_DSN}" ]]; then');
-    expect(easReleaseWorkflow).toContain('SENTRY_AUTH_TOKEN');
-    expect(easReleaseWorkflow).toContain('SENTRY_ORG');
-    expect(easReleaseWorkflow).toContain('SENTRY_PROJECT');
+  it('fails fast when required EAS environment variables are missing', () => {
+    expect(easReleaseWorkflow).toContain('if ! grep -q "^${var}=" eas-env.txt; then');
+    expect(easReleaseWorkflow).toContain('echo "::error::${var} is missing from the EAS ${environment} environment."');
+    expect(easReleaseWorkflow).toContain('exit "${missing}"');
   });
 
-  it('wires AdMob rewarded code reveal configuration into release builds', () => {
+  it('evaluates Expo config and build commands inside the selected EAS environment', () => {
     expect(easReleaseWorkflow).toContain(
-      "EAS_BUILD_PLATFORM: ${{ github.event_name == 'workflow_dispatch' && inputs.platform || '' }}"
-    );
-    expect(easReleaseWorkflow).toContain('ANDROID_ADMOB_APP_ID: ${{ secrets.ANDROID_ADMOB_APP_ID }}');
-    expect(easReleaseWorkflow).toContain('IOS_ADMOB_APP_ID: ${{ secrets.IOS_ADMOB_APP_ID }}');
-    expect(easReleaseWorkflow).toContain(
-      'EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID: ${{ secrets.EXPO_PUBLIC_ADMOB_CODE_REVEAL_UNIT_ID }}'
+      'eas env:exec "${{ steps.release_args.outputs.eas_environment }}" "npx expo config --type public > /dev/null" --non-interactive'
     );
     expect(easReleaseWorkflow).toContain(
-      'EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED: ${{ secrets.EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED }}'
+      'eas env:exec "${{ steps.release_args.outputs.eas_environment }}" "${command}" --non-interactive'
     );
   });
 
-  it('fails fast when rewarded ads are enabled without SSV and platform ad ids', () => {
-    expect(easReleaseWorkflow).toContain('rewarded_ads_enabled="${EXPO_PUBLIC_ADMOB_CODE_REVEAL_ENABLED:-true}"');
-    expect(easReleaseWorkflow).toContain('EXPO_PUBLIC_ADMOB_REWARD_SSV_ENABLED must be true');
-    expect(easReleaseWorkflow).toContain('ANDROID_ADMOB_APP_ID');
-    expect(easReleaseWorkflow).toContain('IOS_ADMOB_APP_ID');
+  it('checks store metadata and artwork before triggering EAS builds', () => {
+    expect(easReleaseWorkflow).toContain('npm run store:ready');
+    expect(easReleaseWorkflow).toContain('npm run store:metadata:lint');
+  });
+
+  it('auto-submits tagged production releases only', () => {
+    expect(easReleaseWorkflow).toContain('if [[ "${GITHUB_REF}" == refs/tags/* ]]; then');
+    expect(easReleaseWorkflow).toContain('auto_submit="true"');
+    expect(easReleaseWorkflow).toContain('elif [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/main" ]]; then');
+    expect(easReleaseWorkflow).toContain('auto_submit="false"');
+    expect(easReleaseWorkflow).not.toContain('pull_request:');
   });
 });
